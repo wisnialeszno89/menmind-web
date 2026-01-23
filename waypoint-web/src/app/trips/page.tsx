@@ -8,35 +8,45 @@ export default function TripsPage() {
       </h1>
 
       <p className="text-zinc-400 max-w-3xl mb-10">
-        Nie musisz nic naprawiać. Wystarczy się ruszyć.
-        Zmiana otoczenia porządkuje myśli szybciej niż analiza.
+        Nie sprzedajemy wyjazdów.
+        Pokazujemy miejsca i inicjatywy, które warto sprawdzić,
+        jeśli chcesz ruszyć się z miejsca.
       </p>
 
       <section className="grid gap-6 md:grid-cols-2">
         <TripCard
           title="Wyjazdy męskie"
-          description="Krótkie wypady. Góry, las, woda. Bez gadania o emocjach."
-          cta="Zobacz propozycje"
+          description="Krótkie wypady. Góry, las, woda. Konkret."
         />
 
         <TripCard
           title="Aktywność lokalna"
-          description="Siłownia, sztuki walki, bieganie, survival."
-          cta="Znajdź coś blisko"
+          description="Sport, siłownia, sztuki walki, bieganie."
         />
 
         <TripCard
           title="Wyprawy zagraniczne"
           description="Zmiana kraju = reset perspektywy."
-          cta="Sprawdź kierunki"
         />
 
         <TripCard
           title="Grupy i inicjatywy"
-          description="Małe grupy. Konkretne działania. Zero sekciarstwa."
-          cta="Dołącz"
+          description="Małe grupy. Bez sekciarstwa."
         />
       </section>
+
+      <div className="mt-12 border-t border-zinc-800 pt-8">
+        <p className="text-zinc-400 mb-4">
+          Niektóre inicjatywy są płatne. Część współpracuje z Waypoint.
+        </p>
+
+        <Link
+          href="/partners"
+          className="inline-block text-sm text-zinc-300 hover:text-white transition"
+        >
+          Zobacz współpracę i rekomendacje →
+        </Link>
+      </div>
 
       <div className="mt-12">
         <Link
@@ -50,23 +60,21 @@ export default function TripsPage() {
   );
 }
 
+/* =========================
+   KOMPONENT POMOCNICZY
+   ========================= */
+
 function TripCard({
   title,
   description,
-  cta,
 }: {
   title: string;
   description: string;
-  cta: string;
 }) {
   return (
     <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-6 hover:bg-zinc-800 transition">
       <h2 className="text-xl font-medium mb-2">{title}</h2>
-      <p className="text-zinc-400 mb-4">{description}</p>
-
-      <button className="text-sm text-zinc-200 hover:text-white transition">
-        {cta} →
-      </button>
+      <p className="text-zinc-400">{description}</p>
     </div>
   );
 }
