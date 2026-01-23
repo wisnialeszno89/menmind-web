@@ -13,23 +13,23 @@ export default function StateTemplate({
 }: StateTemplateProps) {
   return (
     <main className="min-h-screen px-6 py-16 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-semibold mb-4">{title}</h1>
+      <h1 className="text-3xl font-semibold mb-3">{title}</h1>
 
-      <p className="text-zinc-400 mb-10">{description}</p>
+      <p className="text-zinc-400 mb-8">{description}</p>
 
       <div className="space-y-4">
         <Link
           href={`/navimind?state=${stateKey}`}
           className="block rounded-md border border-zinc-800 p-4 hover:bg-zinc-800 transition"
         >
-          Zatrzymaj się i pogadaj (Navimind)
+          Sprawdź możliwe kierunki (krótka rozmowa)
         </Link>
 
         <Link
           href="/"
           className="text-sm text-zinc-500 inline-block mt-6 hover:text-zinc-300 transition"
         >
-          ← Zmień punkt orientacyjny
+          ← Zmień punkt
         </Link>
       </div>
     </main>

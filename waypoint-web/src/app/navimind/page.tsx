@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { MICROCOPY } from "@/content/microcopy";
 
 function NavimindContent({
   searchParams,
@@ -10,14 +11,15 @@ function NavimindContent({
   return (
     <main className="min-h-screen px-6 py-10 max-w-6xl mx-auto">
       <h1 className="text-2xl md:text-3xl font-semibold mb-3">
-        Zatrzymaj się i sprawdź kierunek
+        Zatrzymaj się na chwilę
       </h1>
 
-      <p className="text-zinc-400 max-w-2xl mb-8">
-        Rozmowa startuje z kontekstem:
-        <span className="ml-2 text-zinc-200 font-medium">
-          {state}
-        </span>
+      <p className="text-zinc-400 max-w-2xl mb-6">
+        {MICROCOPY.navimindIntro}
+      </p>
+
+      <p className="text-sm text-zinc-500 mb-6">
+        Kontekst startowy: <span className="text-zinc-300">{state}</span>
       </p>
 
       <div className="w-full h-[70vh] rounded-lg overflow-hidden border border-zinc-800 bg-zinc-900">
@@ -30,7 +32,7 @@ function NavimindContent({
       </div>
 
       <p className="text-xs text-zinc-500 mt-4">
-        Rozmowy nie są zapisywane. Możesz zakończyć w dowolnym momencie.
+        Bez zapisu rozmów. Bez ocen. Możesz wyjść w każdej chwili.
       </p>
     </main>
   );
