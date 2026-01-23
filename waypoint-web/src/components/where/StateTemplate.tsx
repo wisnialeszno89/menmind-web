@@ -1,44 +1,53 @@
 import Link from "next/link";
 
-type StateTemplateProps = {
+export type StateAction = {
+  label: string;
+  href: string;
+};
+
+export type StateTemplateProps = {
   title: string;
+  subtitle?: string;
   description: string;
-  stateKey: string;
+  actions?: StateAction[];
+  stateKey?: string;
 };
 
 export default function StateTemplate({
   title,
+  subtitle,
   description,
+  actions = [],
   stateKey,
 }: StateTemplateProps) {
   return (
-    <main className="min-h-screen px-6 py-16 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-semibold mb-3">{title}</h1>
+    <main
+      className="min-h-screen flex items-center justify-center px-6"
+      data-state={stateKey}
+    >
+      <section className="max-w-xl w-full text-center space-y-6">
+        <h1 className="text-3xl font-semibold">{title}</h1>
 
-      <p className="text-zinc-400 mb-8">{description}</p>
+        {subtitle && (
+          <p className="text-lg text-neutral-500">{subtitle}</p>
+        )}
 
-      <div className="space-y-4">
-        <Link
-          href={`/navimind?state=${stateKey}`}
-          className="block rounded-md border border-zinc-800 p-4 hover:bg-zinc-800 transition"
-        >
-          Sprawdź możliwe kierunki (krótka rozmowa)
-        </Link>
+        <p className="text-neutral-400">{description}</p>
 
-        <Link
-          href="/trips"
-          className="block rounded-md border border-zinc-800 p-4 hover:bg-zinc-800 transition"
-        >
-          Rusz się fizycznie (działanie)
-        </Link>
-
-        <Link
-          href="/"
-          className="text-sm text-zinc-500 inline-block mt-6 hover:text-zinc-300 transition"
-        >
-          ← Zmień punkt
-        </Link>
-      </div>
+        {actions.length > 0 && (
+          <div className="flex flex-col gap-3 pt-4">
+            {actions.map((action, index) => (
+              <Link
+                key={index}
+                href={action.href}
+                className="block rounded-md border border-neutral-700 px-4 py-2 hover:bg-neutral-800 transition"
+              >
+                {action.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
     </main>
   );
 }
