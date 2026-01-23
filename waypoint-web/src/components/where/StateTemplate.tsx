@@ -26,6 +26,13 @@ export default function StateTemplate({
         </Link>
 
         <Link
+          href="/trips"
+          className="block rounded-md border border-zinc-800 p-4 hover:bg-zinc-800 transition"
+        >
+          Rusz się fizycznie (działanie)
+        </Link>
+
+        <Link
           href="/"
           className="text-sm text-zinc-500 inline-block mt-6 hover:text-zinc-300 transition"
         >
