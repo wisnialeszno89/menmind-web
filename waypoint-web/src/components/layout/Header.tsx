@@ -13,10 +13,24 @@ export default function Header() {
 
         <nav className="flex items-center gap-4 text-sm">
           <Link
-            href="/"
+            href="/about"
             className="text-zinc-400 hover:text-zinc-200 transition"
           >
-            Zmień punkt
+            Manifest
+          </Link>
+
+          <Link
+            href="/trips"
+            className="text-zinc-400 hover:text-zinc-200 transition"
+          >
+            Ruch
+          </Link>
+
+          <Link
+            href="/partners"
+            className="text-zinc-400 hover:text-zinc-200 transition"
+          >
+            Współpraca
           </Link>
 
           <Link
@@ -30,3 +44,4 @@ export default function Header() {
     </header>
   );
 }
+
