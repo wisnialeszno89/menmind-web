@@ -43,59 +43,17 @@ export default function WhereBreakupPageEN() {
               Suggestions
             </h3>
 
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="mt-4 grid grid-cols-1 gap-3">
               <Link
-                href="/en/partners?tag=community"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+                href="/en/suggestions?state=breakup&city=online"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Don’t do it alone</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Private groups / forums
+                <p className="text-sm text-zinc-400">Step by step</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  What helps after a breakup (choose location)
                 </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  No explaining. Just people who get it.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Open →</p>
-              </Link>
-
-              <Link
-                href="/en/navimind?state=breakup"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">Release pressure</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Navimind (talk)
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  When you need to unload and find direction.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Open →</p>
-              </Link>
-
-              <Link
-                href="/en/partners?tag=psychologists"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">If it floods you</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Psychologists (support)
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Talk and clarity. No shame.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Open →</p>
-              </Link>
-
-              <Link
-                href="/en/partners?tag=psychiatrists"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">If it’s really heavy</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Psychiatrists (support)
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  When symptoms are too strong and sleep collapses.
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Groups / talk / specialists — without looping around.
                 </p>
                 <p className="mt-3 text-sm text-cyan-200">Open →</p>
               </Link>
@@ -119,3 +77,4 @@ export default function WhereBreakupPageEN() {
     </main>
   );
 }
+

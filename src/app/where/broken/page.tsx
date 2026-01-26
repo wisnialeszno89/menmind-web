@@ -42,22 +42,24 @@ export default function WhereBrokenPage() {
 
           <div className="mt-10">
             <h3 className="text-sm font-semibold text-zinc-200">
-              Wybierz opcję dla siebie
+              Propozycje
             </h3>
 
             <div className="mt-4 grid grid-cols-1 gap-3">
               <Link
-                href="/partners?tag=mental"
+                href="/propozycje?state=broken&city=online"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Najprościej i najskuteczniej</p>
+                <p className="text-sm text-zinc-400">
+                  Najprościej i najskuteczniej
+                </p>
                 <p className="mt-1 text-lg font-semibold text-zinc-100">
-                  Pomoc specjalistów: psychologowie + psychiatrzy
+                  Pomoc specjalistów (dobierz miasto)
                 </p>
                 <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Jeśli czujesz, że już nie ciągniesz — to jest właściwy kierunek.
+                  Psychologowie i psychiatrzy — tylko to, co ma sens na tym etapie.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
               </Link>
             </div>
           </div>

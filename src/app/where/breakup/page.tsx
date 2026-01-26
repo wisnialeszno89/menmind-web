@@ -39,65 +39,21 @@ export default function WhereBreakupPage() {
           <Reset60 lang="pl" />
 
           <div className="mt-10">
-            <h3 className="text-sm font-semibold text-zinc-200">
-              Propozycje
-            </h3>
+            <h3 className="text-sm font-semibold text-zinc-200">Propozycje</h3>
 
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="mt-4 grid grid-cols-1 gap-3">
               <Link
-                href="/partners?tag=community"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+                href="/propozycje?state=breakup&city=online"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Nie bądź w tym sam</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Zamknięte grupy / fora
+                <p className="text-sm text-zinc-400">Krok po kroku</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  Co ma sens po rozstaniu (dobierz miasto)
                 </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Bez tłumaczenia się. Ludzie, którzy rozumieją.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
-              </Link>
-
-              <Link
-                href="/navimind?state=breakup"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">Rozładuj emocje</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Navimind (rozmowa)
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Gdy chcesz wyrzucić z siebie chaos i złapać tor.
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Grupy / rozmowa / specjaliści — bez błądzenia po stronie.
                 </p>
                 <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
-              </Link>
-
-              <Link
-                href="/partners?tag=psychologists"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">Gdy Cię zalewa</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Psychologowie (wsparcie)
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Rozmowa i uporządkowanie emocji.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
-              </Link>
-
-              <Link
-                href="/partners?tag=psychiatrists"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">Gdy jest naprawdę ciężko</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Psychiatrzy (wsparcie)
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Kiedy objawy są za duże i organizm nie ciągnie.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
             </div>
           </div>
