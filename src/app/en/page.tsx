@@ -1,4 +1,4 @@
-import WhereYouAre from "@/components/where/WhereYouAre";
+import WhereYouAreEN from "@/components/where/WhereYouAreEN";
 import { MICROCOPY_EN } from "@/content/microcopy";
 
 export default function HomeEN() {
@@ -16,7 +16,7 @@ export default function HomeEN() {
         </p>
 
         <div className="mt-10 rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
-          <WhereYouAre />
+          <WhereYouAreEN />
         </div>
 
         <p className="text-xs text-zinc-500 mt-10">
