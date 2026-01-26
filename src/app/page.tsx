@@ -3,20 +3,26 @@ import { MICROCOPY } from "@/content/microcopy";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-3xl md:text-5xl font-semibold mb-4">
-        {MICROCOPY.heroTitle}
-      </h1>
+    <main className="min-h-screen px-6 py-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-sm text-zinc-400">Waypoint</p>
 
-      <p className="text-zinc-400 max-w-xl mb-10">
-        {MICROCOPY.heroLead}
-      </p>
+        <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
+          {MICROCOPY.heroTitle}
+        </h1>
 
-      <WhereYouAre />
+        <p className="mt-4 text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+          {MICROCOPY.heroLead}
+        </p>
 
-      <p className="text-xs text-zinc-500 mt-10">
-        {MICROCOPY.footerNote}
-      </p>
+        <div className="mt-10 rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
+          <WhereYouAre />
+        </div>
+
+        <p className="text-xs text-zinc-500 mt-10">
+          {MICROCOPY.footerNote}
+        </p>
+      </div>
     </main>
   );
 }

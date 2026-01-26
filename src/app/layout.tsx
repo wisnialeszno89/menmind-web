@@ -7,14 +7,10 @@ export const metadata = {
   description: "Punkt orientacyjny dla facetów w drodze",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pl">
-      <body className="bg-zinc-900 text-zinc-100 antialiased">
+      <body className="text-zinc-100 antialiased">
         <Header />
         {children}
       </body>

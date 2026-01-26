@@ -1,47 +1,94 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const NAV_PL = [
+  { label: "Start", href: "/" },
+  { label: "O projekcie", href: "/about" },
+  { label: "Navimind", href: "/navimind" },
+];
+
+const NAV_EN = [
+  { label: "Home", href: "/en" },
+  { label: "About", href: "/en/about" },
+  { label: "Navimind", href: "/en/navimind" },
+];
+
+function isEnglishPath(pathname: string) {
+  return pathname === "/en" || pathname.startsWith("/en/");
+}
 
 export default function Header() {
+  const pathname = usePathname();
+  const isEN = isEnglishPath(pathname);
+
+  const nav = isEN ? NAV_EN : NAV_PL;
+
+  // Przełączanie języka: mapujemy aktualną stronę na odpowiednik
+  const languageSwitchHref = (() => {
+    if (!isEN) {
+      // PL -> EN
+      if (pathname === "/") return "/en";
+      if (pathname === "/about") return "/en/about";
+      if (pathname === "/navimind") return "/en/navimind";
+      return "/en";
+    }
+
+    // EN -> PL
+    if (pathname === "/en") return "/";
+    if (pathname === "/en/about") return "/about";
+    if (pathname === "/en/navimind") return "/navimind";
+    return "/";
+  })();
+
   return (
-    <header className="w-full border-b border-zinc-800 bg-zinc-900/80 backdrop-blur">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-zinc-800/60 bg-zinc-950/40 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-4">
+        {/* Logo */}
         <Link
-          href="/"
-          className="text-zinc-100 font-medium tracking-wide hover:text-zinc-300 transition"
+          href={isEN ? "/en" : "/"}
+          className="font-semibold tracking-tight text-zinc-100 hover:text-cyan-200 transition"
         >
           Waypoint
+          <span className="ml-2 text-xs font-medium text-zinc-500">beta</span>
         </Link>
 
-        <nav className="flex items-center gap-4 text-sm">
-          <Link
-            href="/about"
-            className="text-zinc-400 hover:text-zinc-200 transition"
-          >
-            Manifest
-          </Link>
+        {/* Nav + Language */}
+        <div className="flex items-center gap-3">
+          {/* Navigation */}
+          <nav className="flex items-center gap-1">
+            {nav.map((item) => {
+              const active = pathname === item.href;
 
-          <Link
-            href="/trips"
-            className="text-zinc-400 hover:text-zinc-200 transition"
-          >
-            Ruch
-          </Link>
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={[
+                    "px-3 py-2 rounded-xl text-sm transition",
+                    active
+                      ? "bg-cyan-500/15 text-cyan-200 ring-1 ring-cyan-400/20"
+                      : "text-zinc-300 hover:bg-zinc-800/50 hover:text-zinc-100",
+                  ].join(" ")}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
+          {/* Language Switch */}
           <Link
-            href="/partners"
-            className="text-zinc-400 hover:text-zinc-200 transition"
+            href={languageSwitchHref}
+            aria-label={isEN ? "Switch language to Polish" : "Switch language to English"}
+            className="inline-flex items-center justify-center rounded-xl border border-zinc-800/70 bg-zinc-900/40 px-3 py-2 text-sm text-zinc-200 hover:bg-zinc-800/50 transition"
+            title={isEN ? "PL" : "EN"}
           >
-            Współpraca
+            <span className="text-lg leading-none">{isEN ? "🇵🇱" : "🇬🇧"}</span>
           </Link>
-
-          <Link
-            href="/navimind"
-            className="text-zinc-400 hover:text-zinc-200 transition"
-          >
-            Navimind
-          </Link>
-        </nav>
+        </div>
       </div>
     </header>
   );
 }
-

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
+import { MICROCOPY_EN } from "@/content/microcopy";
 
-function NavimindContent({
+function NavimindContentEN({
   searchParams,
 }: {
   searchParams?: { state?: string };
@@ -11,19 +12,18 @@ function NavimindContent({
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-6xl">
         <header className="mb-8">
-          <p className="text-sm text-zinc-400">Waypoint · rozmowa</p>
+          <p className="text-sm text-zinc-400">Waypoint · conversation</p>
 
           <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
-            Zatrzymaj się na chwilę
+            Pause for a moment
           </h1>
 
           <p className="mt-4 text-zinc-300 max-w-2xl leading-relaxed">
-            To jest przestrzeń, w której możesz wejść w rozmowę bez presji,
-            bez ocen i bez zbędnych etykiet.
+            {MICROCOPY_EN.navimindIntro}
           </p>
 
           <p className="mt-4 text-sm text-zinc-500">
-            Kontekst startowy: <span className="text-zinc-200">{state}</span>
+            Starting context: <span className="text-zinc-200">{state}</span>
           </p>
         </header>
 
@@ -39,19 +39,19 @@ function NavimindContent({
         </section>
 
         <p className="text-xs text-zinc-500 mt-4">
-          Bez zapisu rozmów. Bez ocen. Możesz wyjść w każdej chwili.
+          No history saved. No judgment. You can leave anytime.
         </p>
       </div>
     </main>
   );
 }
 
-export default function NavimindPage(props: {
+export default function NavimindPageEN(props: {
   searchParams?: { state?: string };
 }) {
   return (
     <Suspense>
-      <NavimindContent {...props} />
+      <NavimindContentEN {...props} />
     </Suspense>
   );
 }

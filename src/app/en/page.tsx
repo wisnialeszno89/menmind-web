@@ -1,22 +1,28 @@
-import EnWhereYouAre from "../../components/where/EnWhereYouAre";
-import { MICROCOPY_EN } from "../../content/microcopy.en";
+import WhereYouAre from "@/components/where/WhereYouAre";
+import { MICROCOPY_EN } from "@/content/microcopy";
 
-export default function EnHome() {
+export default function HomeEN() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-      <h1 className="text-3xl md:text-5xl font-semibold mb-4">
-        {MICROCOPY_EN.heroTitle}
-      </h1>
+    <main className="min-h-screen px-6 py-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-sm text-zinc-400">Waypoint</p>
 
-      <p className="text-zinc-400 max-w-xl mb-10">
-        {MICROCOPY_EN.heroLead}
-      </p>
+        <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
+          {MICROCOPY_EN.heroTitle}
+        </h1>
 
-      <EnWhereYouAre />
+        <p className="mt-4 text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+          {MICROCOPY_EN.heroLead}
+        </p>
 
-      <p className="text-xs text-zinc-500 mt-10">
-        {MICROCOPY_EN.footerNote}
-      </p>
+        <div className="mt-10 rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
+          <WhereYouAre />
+        </div>
+
+        <p className="text-xs text-zinc-500 mt-10">
+          {MICROCOPY_EN.footerNote}
+        </p>
+      </div>
     </main>
   );
 }
