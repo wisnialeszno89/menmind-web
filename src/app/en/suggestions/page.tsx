@@ -14,7 +14,7 @@ type Offer = {
   kind: "psychologists" | "psychiatrists" | "community" | "training" | "trips" | "law" | "navimind";
   title: string;
   desc: string;
-  href: string;
+  href: (city: string) => string;
   badge?: string;
 };
 
@@ -29,8 +29,6 @@ const STATES: { key: StateKey; label: string; hint: string }[] = [
 
 const CITIES: City[] = [
   { key: "online", label: "Online" },
-
-  // Poland - main cities (simple for EN MVP)
   { key: "warsaw", label: "Warsaw" },
   { key: "krakow", label: "Kraków" },
   { key: "wroclaw", label: "Wrocław" },
@@ -43,14 +41,13 @@ const CITIES: City[] = [
 ];
 
 const OFFERS: Offer[] = [
-  // BROKEN
   {
     id: "broken-psychiatrists",
     state: "broken",
     kind: "psychiatrists",
     title: "Psychiatrists (medical support)",
     desc: "When it’s really heavy: sleep collapses and symptoms are too strong.",
-    href: "/en/partners?tag=psychiatrists",
+    href: (city) => `/en/spec/psychiatrists?city=${city}`,
     badge: "Priority",
   },
   {
@@ -59,7 +56,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologists (support)",
     desc: "Talk, clarity, emotional stability.",
-    href: "/en/partners?tag=psychologists",
+    href: (city) => `/en/spec/psychologists?city=${city}`,
   },
   {
     id: "broken-navimind",
@@ -67,134 +64,8 @@ const OFFERS: Offer[] = [
     kind: "navimind",
     title: "Navimind (talk)",
     desc: "Unload the chaos and find direction — no judgment.",
-    href: "/en/navimind?state=broken",
+    href: () => "/en/navimind?state=broken",
     badge: "Fast relief",
-  },
-
-  // BREAKUP
-  {
-    id: "breakup-community",
-    state: "breakup",
-    kind: "community",
-    title: "Private groups / forums",
-    desc: "No explaining. Just people who get it.",
-    href: "/en/partners?tag=community",
-  },
-  {
-    id: "breakup-navimind",
-    state: "breakup",
-    kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "Release pressure and regain direction after a breakup.",
-    href: "/en/navimind?state=breakup",
-    badge: "For now",
-  },
-  {
-    id: "breakup-psychologists",
-    state: "breakup",
-    kind: "psychologists",
-    title: "Psychologists (support)",
-    desc: "When it floods you — support can save your week.",
-    href: "/en/partners?tag=psychologists",
-  },
-  {
-    id: "breakup-psychiatrists",
-    state: "breakup",
-    kind: "psychiatrists",
-    title: "Psychiatrists (support)",
-    desc: "If you don’t sleep, don’t eat and feel like drifting away.",
-    href: "/en/partners?tag=psychiatrists",
-  },
-
-  // EMPTY
-  {
-    id: "empty-training",
-    state: "empty",
-    kind: "training",
-    title: "Movement / training",
-    desc: "Not for performance. For energy and stability.",
-    href: "/en/partners?tag=training",
-    badge: "Best start",
-  },
-  {
-    id: "empty-community",
-    state: "empty",
-    kind: "community",
-    title: "Groups / forums",
-    desc: "Emptiness shrinks when you’re not alone in it.",
-    href: "/en/partners?tag=community",
-  },
-  {
-    id: "empty-navimind",
-    state: "empty",
-    kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "When you feel stuck and can’t explain why.",
-    href: "/en/navimind?state=empty",
-  },
-
-  // PRESSURE
-  {
-    id: "pressure-psychologists",
-    state: "pressure",
-    kind: "psychologists",
-    title: "Psychologists (support)",
-    desc: "When pressure squeezes you and you lose direction.",
-    href: "/en/partners?tag=psychologists",
-  },
-  {
-    id: "pressure-training",
-    state: "pressure",
-    kind: "training",
-    title: "Movement / training",
-    desc: "Body releases tension faster than the mind.",
-    href: "/en/partners?tag=training",
-  },
-  {
-    id: "pressure-navimind",
-    state: "pressure",
-    kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "Unload and return to concrete steps.",
-    href: "/en/navimind?state=pressure",
-    badge: "Now",
-  },
-
-  // FATHER
-  {
-    id: "father-law",
-    state: "father",
-    kind: "law",
-    title: "Legal / mediation",
-    desc: "When you need clear agreements without war.",
-    href: "/en/partners?tag=law",
-  },
-  {
-    id: "father-community",
-    state: "father",
-    kind: "community",
-    title: "Fathers community",
-    desc: "Experience exchange without judgment.",
-    href: "/en/partners?tag=community",
-  },
-  {
-    id: "father-psychologists",
-    state: "father",
-    kind: "psychologists",
-    title: "Psychologists (support)",
-    desc: "If tension leaks into home and you want to stop it.",
-    href: "/en/partners?tag=psychologists",
-  },
-
-  // READY
-  {
-    id: "ready-trips",
-    state: "ready",
-    kind: "trips",
-    title: "Trips / men’s activities",
-    desc: "Movement + people + new environment. No pressure.",
-    href: "/en/partners?tag=trips",
-    badge: "One click",
   },
 ];
 
@@ -297,7 +168,7 @@ function SuggestionsContent({
           {offers.map((o) => (
             <Link
               key={o.id}
-              href={o.href}
+              href={o.href(city)}
               className="block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-5 hover:bg-zinc-900/55 transition"
             >
               <div className="flex items-start justify-between gap-3">
