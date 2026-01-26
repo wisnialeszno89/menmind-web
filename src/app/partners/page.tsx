@@ -49,7 +49,6 @@ const PARTNERS: Partner[] = [
     note: "Wkrótce: prawnicy + mediacje + materiały",
   },
 
-  // NEW: MENTAL
   {
     name: "Wsparcie kryzysowe",
     title: "Psycholog / psychiatra (szybkie wsparcie)",
@@ -60,7 +59,6 @@ const PARTNERS: Partner[] = [
     note: "Wkrótce: polecani specjaliści",
   },
 
-  // NEW: LAW
   {
     name: "Wsparcie prawne",
     title: "Prawo: ojcostwo / ustalenia / konflikty",
@@ -71,7 +69,6 @@ const PARTNERS: Partner[] = [
     note: "Wkrótce: polecani prawnicy",
   },
 
-  // NEW: ADDICTION
   {
     name: "Używki i alkohol",
     title: "Gdy zaczyna ciągnąć w złą stronę",
@@ -82,7 +79,6 @@ const PARTNERS: Partner[] = [
     note: "Wkrótce: kontakty i materiały",
   },
 
-  // NEW: COMMUNITY
   {
     name: "Społeczność",
     title: "Zamknięte grupy / rozmowy z innymi facetami",
@@ -93,7 +89,6 @@ const PARTNERS: Partner[] = [
     note: "Wkrótce: kanały tematyczne",
   },
 
-  // EXISTING
   {
     name: "Specjaliści / pomoc",
     title: "Polecani specjaliści (nie tylko terapia)",
@@ -126,20 +121,13 @@ const TAGS: { key: string; label: string }[] = [
   { key: "empty", label: "Pustka" },
 ];
 
-function PartnersContent({
-  searchParams,
-}: {
-  searchParams?: { tag?: string };
-}) {
+function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
   const tag = searchParams?.tag ?? "all";
 
   const filtered =
-    tag === "all"
-      ? PARTNERS
-      : PARTNERS.filter((p) => p.tags.includes(tag));
+    tag === "all" ? PARTNERS : PARTNERS.filter((p) => p.tags.includes(tag));
 
-  const activeTagLabel =
-    TAGS.find((t) => t.key === tag)?.label ?? "Wszystko";
+  const activeTagLabel = TAGS.find((t) => t.key === tag)?.label ?? "Wszystko";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -152,8 +140,8 @@ function PartnersContent({
           </h1>
 
           <p className="mt-4 text-zinc-300 max-w-3xl leading-relaxed">
-            Tu są kierunki i zasoby, które realnie pomagają ruszyć dalej:
-            ruch, rozmowa, wsparcie, formalności. Bez spamu i bez przypadkowych poleceń.
+            Tu są kierunki i zasoby, które realnie pomagają ruszyć dalej: ruch,
+            rozmowa, wsparcie, formalności. Bez spamu i bez przypadkowych poleceń.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -178,7 +166,8 @@ function PartnersContent({
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            Filtr aktywny: <span className="text-zinc-300">{activeTagLabel}</span>
+            Filtr aktywny:{" "}
+            <span className="text-zinc-300">{activeTagLabel}</span>
           </p>
         </header>
 
@@ -233,16 +222,16 @@ function PartnersContent({
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
             Jeśli masz realną ofertę, która pomaga facetom ruszyć z miejsca
-            (wyjazdy, trening, konsultacje, prawo, społeczność) — będziesz mógł tu dołączyć.
+            (wyjazdy, trening, konsultacje, prawo, społeczność) — możesz się zgłosić.
             Bez taniej reklamy. Tylko rzeczy, które mają sens.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/kontakt"
+              href="/partnerstwo"
               className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
             >
-              Napisz przez formularz →
+              Zgłoś się jako partner →
             </Link>
 
             <Link
@@ -254,7 +243,7 @@ function PartnersContent({
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            W kolejnej wersji dodamy formularz partnera + selekcję i weryfikację.
+            W kolejnej wersji dodamy weryfikację + panel partnerów.
           </p>
         </section>
       </div>
@@ -262,9 +251,7 @@ function PartnersContent({
   );
 }
 
-export default function PartnersPage(props: {
-  searchParams?: { tag?: string };
-}) {
+export default function PartnersPage(props: { searchParams?: { tag?: string } }) {
   return (
     <Suspense>
       <PartnersContent {...props} />

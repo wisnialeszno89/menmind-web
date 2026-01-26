@@ -13,38 +13,36 @@ export default function WhereBreakupPage() {
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Rozstanie potrafi rozbić dzień na kawałki: myśli, ciało, sen,
-            poczucie wartości. To normalne. I to minie, jeśli przestaniesz
-            walczyć na ślepo.
+            Rozstanie potrafi mielić głowę i ciało. Dziś cel jest prosty:
+            utrzymać stabilność, nie robić destrukcyjnych ruchów.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <h2 className="text-lg font-semibold text-zinc-100">
-            Na dziś: mniej kontaktu z bólem, więcej stabilności
+            Na dziś
           </h2>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Nie rób dziś “wielkich decyzji” — rób małe ruchy.
+              Nie podejmuj dziś wielkich decyzji.
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Jak Cię ciągnie do pisania / sprawdzania: odczekaj 20 minut.
+              Gdy ciągnie do pisania/sprawdzania: odczekaj 20 minut.
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Jedna rzecz dla ciała: spacer, prysznic, jedzenie.
+              Jedna rzecz dla ciała: spacer / prysznic / jedzenie.
             </li>
           </ul>
 
           <Reset60 lang="pl" />
 
-          {/* CO DALEJ */}
           <div className="mt-10">
             <h3 className="text-sm font-semibold text-zinc-200">
-              Co dalej?
+              Co dalej? (wybierz 1)
             </h3>
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -52,14 +50,14 @@ export default function WhereBreakupPage() {
                 href="/tools/sleep-reset"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Wieczór / noc</p>
+                <p className="text-sm text-zinc-400">Wieczór</p>
                 <p className="mt-1 font-semibold text-zinc-100">
                   Reset snu
                 </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Żeby jutro nie zaczynało się od rozjechania.
+                <p className="mt-2 text-sm text-zinc-400">
+                  Żeby jutro nie było jeszcze gorzej.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Otwórz narzędzie →</p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
               </Link>
 
               <Link
@@ -68,26 +66,26 @@ export default function WhereBreakupPage() {
               >
                 <p className="text-sm text-zinc-400">Ludzie</p>
                 <p className="mt-1 font-semibold text-zinc-100">
-                  Zamknięte grupy / rozmowy
+                  Rozmowy / zamknięte grupy
                 </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Czasem wystarczy przestać być z tym sam.
+                <p className="mt-2 text-sm text-zinc-400">
+                  Przestań nieść to sam.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
 
               <Link
                 href="/partners?tag=mental"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
               >
-                <p className="text-sm text-zinc-400">Jeśli Cię zalewa</p>
+                <p className="text-sm text-zinc-400">Gdy Cię zalewa</p>
                 <p className="mt-1 font-semibold text-zinc-100">
                   Psycholog / psychiatra (wsparcie)
                 </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Gdy emocje są za duże — to nie wstyd sięgnąć po pomoc.
+                <p className="mt-2 text-sm text-zinc-400">
+                  To nie wstyd. To ratunek przed osunięciem.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
             </div>
           </div>
@@ -107,10 +105,6 @@ export default function WhereBreakupPage() {
               ← Wróć do wyboru
             </Link>
           </div>
-
-          <p className="mt-6 text-xs text-zinc-500">
-            Zasada: dziś stabilność. Jutro kierunek.
-          </p>
         </section>
       </div>
     </main>

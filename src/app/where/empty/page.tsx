@@ -13,38 +13,36 @@ export default function WhereEmptyPage() {
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Pustka to nie “lenistwo”. Często to system, który mówi:{" "}
-            <span className="text-zinc-100 font-medium">“za dużo było na raz”</span>.
-            Tu wracamy do energii, nie do presji.
+            Pustka to często sygnał przeciążenia. Nie naprawiamy sensu życia.
+            Przywracamy energię i kontakt z rzeczywistością.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <h2 className="text-lg font-semibold text-zinc-100">
-            Twoje minimum na dziś
+            Minimum na dziś
           </h2>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Zadbaj o bazę: woda + jedzenie + 10 minut ruchu
+              10 minut ruchu (bez ambicji)
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Jeden bodziec mniej: wyłącz coś, co Cię mieli
+              1 rzecz mniej: wyłącz bodziec, który Cię mieli
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Jedno małe “tak”: coś prostego, co daje Ci oddech
+              1 rzecz prosta: jedzenie / woda / prysznic
             </li>
           </ul>
 
           <Reset60 lang="pl" />
 
-          {/* CO DALEJ */}
           <div className="mt-10">
             <h3 className="text-sm font-semibold text-zinc-200">
-              Co dalej?
+              Co dalej? (wybierz 1)
             </h3>
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -54,12 +52,12 @@ export default function WhereEmptyPage() {
               >
                 <p className="text-sm text-zinc-400">Regeneracja</p>
                 <p className="mt-1 font-semibold text-zinc-100">
-                  Reset snu (wieczór)
+                  Reset snu
                 </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Jeśli sen siada, wszystko siada. Ustawmy noc.
+                <p className="mt-2 text-sm text-zinc-400">
+                  Sen jest fundamentem energii.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Otwórz narzędzie →</p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
               </Link>
 
               <Link
@@ -68,40 +66,26 @@ export default function WhereEmptyPage() {
               >
                 <p className="text-sm text-zinc-400">Energia</p>
                 <p className="mt-1 font-semibold text-zinc-100">
-                  Trening / ruch / dyscyplina
+                  Trening / ruch
                 </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Nie na rekordy. Na powrót do siebie.
+                <p className="mt-2 text-sm text-zinc-400">
+                  Nie dla formy. Dla powrotu do siebie.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
 
               <Link
                 href="/partners?tag=community"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
               >
                 <p className="text-sm text-zinc-400">Kontakt</p>
                 <p className="mt-1 font-semibold text-zinc-100">
-                  Grupy / rozmowy z innymi facetami
+                  Grupy / rozmowy z innymi
                 </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Pustka rośnie w ciszy. Ludzie ją zmniejszają.
+                <p className="mt-2 text-sm text-zinc-400">
+                  Pustka maleje, gdy nie jesteś w tym sam.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
-              </Link>
-
-              <Link
-                href="/partners?tag=mental"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">Gdy długo nie puszcza</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Psycholog / psychiatra (wsparcie)
-                </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Jeśli czujesz, że to się ciągnie — nie ciągnij tego sam.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
             </div>
           </div>
@@ -121,10 +105,6 @@ export default function WhereEmptyPage() {
               ← Wróć do wyboru
             </Link>
           </div>
-
-          <p className="mt-6 text-xs text-zinc-500">
-            Pustka nie oznacza końca. Czasem oznacza: pora na restart.
-          </p>
         </section>
       </div>
     </main>
