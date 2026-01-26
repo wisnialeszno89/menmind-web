@@ -14,7 +14,7 @@ type Offer = {
   kind: "psychologists" | "psychiatrists" | "community" | "training" | "trips" | "law" | "navimind";
   title: string;
   desc: string;
-  href: string;
+  href: (city: string) => string;
   badge?: string;
 };
 
@@ -27,12 +27,8 @@ const STATES: { key: StateKey; label: string; hint: string }[] = [
   { key: "ready", label: "Po przejściach, gotowy", hint: "Ruch, ludzie, doświadczenia. Bez gadania." },
 ];
 
-// ✅ Miasta: wojewódzkie + “duże” (rozsądny start)
-// Jeśli chcesz full “>50k wszystkie” to dołożymy jako krok 2, ale UX będzie wymagał wyszukiwarki (już jest).
 const CITIES: City[] = [
   { key: "online", label: "Online" },
-
-  // Wojewódzkie
   { key: "warszawa", label: "Warszawa" },
   { key: "krakow", label: "Kraków" },
   { key: "wroclaw", label: "Wrocław" },
@@ -51,27 +47,6 @@ const CITIES: City[] = [
   { key: "zielonagora", label: "Zielona Góra" },
   { key: "torun", label: "Toruń" },
   { key: "bydgoszcz", label: "Bydgoszcz" },
-
-  // Duże miasta (bonus)
-  { key: "gdynia", label: "Gdynia" },
-  { key: "sopot", label: "Sopot" },
-  { key: "gliwice", label: "Gliwice" },
-  { key: "zabrze", label: "Zabrze" },
-  { key: "bielsko", label: "Bielsko-Biała" },
-  { key: "czestochowa", label: "Częstochowa" },
-  { key: "radom", label: "Radom" },
-  { key: "plock", label: "Płock" },
-  { key: "siedlce", label: "Siedlce" },
-  { key: "tarnow", label: "Tarnów" },
-  { key: "nowysacz", label: "Nowy Sącz" },
-  { key: "elblag", label: "Elbląg" },
-  { key: "slupsk", label: "Słupsk" },
-  { key: "koszalin", label: "Koszalin" },
-  { key: "legnica", label: "Legnica" },
-  { key: "walbrzych", label: "Wałbrzych" },
-  { key: "jeleniagora", label: "Jelenia Góra" },
-  { key: "piotrkow", label: "Piotrków Trybunalski" },
-  { key: "suwalki", label: "Suwałki" },
 ];
 
 const OFFERS: Offer[] = [
@@ -82,7 +57,7 @@ const OFFERS: Offer[] = [
     kind: "psychiatrists",
     title: "Psychiatrzy (wsparcie medyczne)",
     desc: "Gdy jest naprawdę ciężko: sen siada, organizm nie ciągnie, objawy są za duże.",
-    href: "/partners?tag=psychiatrists",
+    href: (city) => `/spec/psychiatrzy?city=${city}`,
     badge: "Priorytet",
   },
   {
@@ -91,7 +66,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
     desc: "Rozmowa, uporządkowanie emocji i powrót do minimalnej stabilności.",
-    href: "/partners?tag=psychologists",
+    href: (city) => `/spec/psychologowie?city=${city}`,
   },
   {
     id: "broken-navimind",
@@ -99,7 +74,7 @@ const OFFERS: Offer[] = [
     kind: "navimind",
     title: "Navimind (rozmowa)",
     desc: "Gdy chcesz wyrzucić chaos i złapać kierunek — bez ocen.",
-    href: "/navimind?state=broken",
+    href: () => "/navimind?state=broken",
     badge: "Szybka ulga",
   },
 
@@ -110,7 +85,7 @@ const OFFERS: Offer[] = [
     kind: "community",
     title: "Zamknięte grupy / fora",
     desc: "Nie tłumaczysz się. Ludzie rozumieją. Jest lżej oddychać.",
-    href: "/partners?tag=community",
+    href: () => "/partners?tag=community",
   },
   {
     id: "breakup-navimind",
@@ -118,7 +93,7 @@ const OFFERS: Offer[] = [
     kind: "navimind",
     title: "Navimind (rozmowa)",
     desc: "Rozładuj emocje po rozstaniu i wróć na tor.",
-    href: "/navimind?state=breakup",
+    href: () => "/navimind?state=breakup",
     badge: "Na teraz",
   },
   {
@@ -127,7 +102,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
     desc: "Gdy Cię zalewa. Rozmowa może uratować Ci tydzień.",
-    href: "/partners?tag=psychologists",
+    href: (city) => `/spec/psychologowie?city=${city}`,
   },
   {
     id: "breakup-psychiatrists",
@@ -135,87 +110,7 @@ const OFFERS: Offer[] = [
     kind: "psychiatrists",
     title: "Psychiatrzy (wsparcie)",
     desc: "Jeśli nie śpisz, nie jesz i czujesz, że odpływasz.",
-    href: "/partners?tag=psychiatrists",
-  },
-
-  // EMPTY
-  {
-    id: "empty-training",
-    state: "empty",
-    kind: "training",
-    title: "Ruch / trening",
-    desc: "Nie dla formy. Dla energii i powrotu do siebie.",
-    href: "/partners?tag=training",
-    badge: "Najlepszy start",
-  },
-  {
-    id: "empty-community",
-    state: "empty",
-    kind: "community",
-    title: "Grupy / fora",
-    desc: "Pustka maleje, kiedy nie jesteś w tym sam.",
-    href: "/partners?tag=community",
-  },
-  {
-    id: "empty-navimind",
-    state: "empty",
-    kind: "navimind",
-    title: "Navimind (rozmowa)",
-    desc: "Gdy czujesz, że stoisz w miejscu i nie masz wytłumaczenia.",
-    href: "/navimind?state=empty",
-  },
-
-  // PRESSURE
-  {
-    id: "pressure-psychologists",
-    state: "pressure",
-    kind: "psychologists",
-    title: "Psychologowie (wsparcie)",
-    desc: "Gdy presja Cię ściska i tracisz kierunek.",
-    href: "/partners?tag=psychologists",
-  },
-  {
-    id: "pressure-training",
-    state: "pressure",
-    kind: "training",
-    title: "Ruch / trening",
-    desc: "Z ciała schodzi napięcie szybciej niż z głowy.",
-    href: "/partners?tag=training",
-  },
-  {
-    id: "pressure-navimind",
-    state: "pressure",
-    kind: "navimind",
-    title: "Navimind (rozmowa)",
-    desc: "Rozładuj emocje i wróć do konkretu.",
-    href: "/navimind?state=pressure",
-    badge: "Tu i teraz",
-  },
-
-  // FATHER
-  {
-    id: "father-law",
-    state: "father",
-    kind: "law",
-    title: "Prawnicy / mediacje",
-    desc: "Gdy trzeba ustalić zasady, kontakty i granice — bez wojny.",
-    href: "/partners?tag=law",
-  },
-  {
-    id: "father-community",
-    state: "father",
-    kind: "community",
-    title: "Społeczność ojców / grupy",
-    desc: "Wymiana doświadczeń, bez oceniania.",
-    href: "/partners?tag=community",
-  },
-  {
-    id: "father-psychologists",
-    state: "father",
-    kind: "psychologists",
-    title: "Psychologowie (wsparcie)",
-    desc: "Gdy napięcie przenosisz na dom i chcesz to zatrzymać.",
-    href: "/partners?tag=psychologists",
+    href: (city) => `/spec/psychiatrzy?city=${city}`,
   },
 
   // READY
@@ -225,7 +120,7 @@ const OFFERS: Offer[] = [
     kind: "trips",
     title: "Wyjazdy / aktywności męskie",
     desc: "Ruch + ludzie + nowe środowisko. Bez spiny.",
-    href: "/partners?tag=trips",
+    href: () => "/partners?tag=trips",
     badge: "Jedno kliknięcie",
   },
 ];
@@ -243,7 +138,6 @@ function SuggestionsContent({
   const stateHint = STATES.find((s) => s.key === state)?.hint ?? "";
 
   const cityOptions = CITIES.filter((c) => c.label.toLowerCase().includes(q));
-
   const offers = OFFERS.filter((o) => o.state === state);
 
   const currentCityLabel = CITIES.find((c) => c.key === city)?.label ?? "Online";
@@ -330,7 +224,7 @@ function SuggestionsContent({
           {offers.map((o) => (
             <Link
               key={o.id}
-              href={o.href}
+              href={o.href(city)}
               className="block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-5 hover:bg-zinc-900/55 transition"
             >
               <div className="flex items-start justify-between gap-3">
