@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const NAV_PL = [
   { label: "Start", href: "/" },
   { label: "O projekcie", href: "/about" },
+  { label: "Propozycje", href: "/propozycje?state=broken&city=online" },
   { label: "Partnerzy", href: "/partners" },
   { label: "Partnerstwo", href: "/partnerstwo" },
   { label: "Kontakt", href: "/kontakt" },
@@ -15,6 +16,7 @@ const NAV_PL = [
 const NAV_EN = [
   { label: "Home", href: "/en" },
   { label: "About", href: "/en/about" },
+  { label: "Suggestions", href: "/en/suggestions?state=broken&city=online" },
   { label: "Partners", href: "/en/partners" },
   { label: "Partnership", href: "/en/partnership" },
   { label: "Contact", href: "/en/contact" },
@@ -32,6 +34,7 @@ function toEnglishPath(pathname: string) {
   if (pathname === "/partners") return "/en/partners";
   if (pathname === "/partnerstwo") return "/en/partnership";
   if (pathname === "/kontakt") return "/en/contact";
+  if (pathname === "/propozycje") return "/en/suggestions";
 
   if (pathname.startsWith("/where/")) {
     return pathname.replace("/where/", "/en/where/");
@@ -47,6 +50,7 @@ function toPolishPath(pathname: string) {
   if (pathname === "/en/partners") return "/partners";
   if (pathname === "/en/partnership") return "/partnerstwo";
   if (pathname === "/en/contact") return "/kontakt";
+  if (pathname === "/en/suggestions") return "/propozycje";
 
   if (pathname.startsWith("/en/where/")) {
     return pathname.replace("/en/where/", "/where/");
@@ -60,7 +64,13 @@ export default function Header() {
   const isEN = isEnglishPath(pathname);
 
   const nav = isEN ? NAV_EN : NAV_PL;
-  const languageSwitchHref = isEN ? toPolishPath(pathname) : toEnglishPath(pathname);
+
+  // ✅ bez useSearchParams → zero problemów
+  const queryString =
+    typeof window !== "undefined" ? window.location.search : "";
+
+  const mappedBase = isEN ? toPolishPath(pathname) : toEnglishPath(pathname);
+  const languageSwitchHref = `${mappedBase}${queryString}`;
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800/60 bg-zinc-950/40 backdrop-blur">
@@ -79,7 +89,7 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-1">
             {nav.map((item) => {
-              const active = pathname === item.href;
+              const active = pathname === item.href.split("?")[0];
 
               return (
                 <Link
@@ -101,14 +111,18 @@ export default function Header() {
           {/* Mobile shortcut */}
           <div className="md:hidden flex items-center gap-2">
             <Link
-              href={isEN ? "/en/partners" : "/partners"}
+              href={
+                isEN
+                  ? "/en/suggestions?state=broken&city=online"
+                  : "/propozycje?state=broken&city=online"
+              }
               className="px-3 py-2 rounded-xl text-sm text-zinc-300 ring-1 ring-zinc-800/70 bg-zinc-900/40 hover:bg-zinc-800/50 transition"
             >
-              {isEN ? "Partners" : "Partnerzy"}
+              {isEN ? "Suggestions" : "Propozycje"}
             </Link>
           </div>
 
-          {/* Language Switch */}
+          {/* Language switch */}
           <Link
             href={languageSwitchHref}
             aria-label={isEN ? "Switch language to Polish" : "Switch language to English"}
@@ -124,7 +138,7 @@ export default function Header() {
       <div className="md:hidden border-t border-zinc-800/60 bg-zinc-950/30">
         <div className="mx-auto max-w-6xl px-6 py-3 flex flex-wrap gap-2">
           {nav.map((item) => {
-            const active = pathname === item.href;
+            const active = pathname === item.href.split("?")[0];
 
             return (
               <Link
