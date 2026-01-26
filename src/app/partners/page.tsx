@@ -25,7 +25,7 @@ const PARTNERS: Partner[] = [
     name: "Trening / Combat",
     title: "Trening i sporty walki",
     desc: "Dla ciała i głowy. Regularność daje szybki zwrot: energia, spokój, pewność siebie.",
-    tags: ["training", "ready"],
+    tags: ["training", "ready", "pressure", "empty"],
     cta: "Zobacz polecanych",
     href: "#",
     note: "Wkrótce: miejsca + trenerzy",
@@ -37,45 +37,93 @@ const PARTNERS: Partner[] = [
     tags: ["fatherhood", "father"],
     cta: "Zobacz wsparcie",
     href: "#",
+    note: "Wkrótce: polecane zasoby",
   },
   {
     name: "Co-parenting",
     title: "Granice i współrodzicielstwo",
     desc: "Pomoc w uporządkowaniu komunikacji, zasad i emocji w relacji z matką dziecka — bez wojny.",
-    tags: ["co-parenting", "father"],
+    tags: ["co-parenting", "father", "law"],
     cta: "Zobacz opcje",
     href: "#",
+    note: "Wkrótce: prawnicy + mediacje + materiały",
   },
+
+  // NEW: MENTAL
   {
-    name: "Psychologowie / terapeuci",
+    name: "Wsparcie kryzysowe",
+    title: "Psycholog / psychiatra (szybkie wsparcie)",
+    desc: "Gdy robi się naprawdę ciężko — warto pogadać z kimś kompetentnym. Bez wstydu i bez etykiet.",
+    tags: ["mental", "father", "pressure", "broken", "breakup", "empty"],
+    cta: "Zobacz opcje",
+    href: "#",
+    note: "Wkrótce: polecani specjaliści",
+  },
+
+  // NEW: LAW
+  {
+    name: "Wsparcie prawne",
+    title: "Prawo: ojcostwo / ustalenia / konflikty",
+    desc: "Dla facetów, którzy chcą uporządkować sytuację formalnie i odzyskać spokój.",
+    tags: ["law", "father", "co-parenting"],
+    cta: "Zobacz opcje",
+    href: "#",
+    note: "Wkrótce: polecani prawnicy",
+  },
+
+  // NEW: ADDICTION
+  {
+    name: "Używki i alkohol",
+    title: "Gdy zaczyna ciągnąć w złą stronę",
+    desc: "Bez moralizowania. Narzędzia i wsparcie, gdy uciekasz w alkohol, używki albo autodestrukcję.",
+    tags: ["addiction", "broken", "pressure", "breakup", "empty"],
+    cta: "Zobacz wsparcie",
+    href: "#",
+    note: "Wkrótce: kontakty i materiały",
+  },
+
+  // NEW: COMMUNITY
+  {
+    name: "Społeczność",
+    title: "Zamknięte grupy / rozmowy z innymi facetami",
+    desc: "Czasem nie potrzebujesz porad. Potrzebujesz ludzi, którzy rozumieją i nie oceniają.",
+    tags: ["community", "broken", "breakup", "empty", "father", "ready"],
+    cta: "Zobacz opcje",
+    href: "#",
+    note: "Wkrótce: kanały tematyczne",
+  },
+
+  // EXISTING
+  {
+    name: "Specjaliści / pomoc",
     title: "Polecani specjaliści (nie tylko terapia)",
     desc: "Czasem potrzeba rozmowy z kimś kompetentnym. Zero wstydu. To narzędzie jak każde inne.",
-    tags: ["broken", "breakup", "empty"],
+    tags: ["broken", "breakup", "empty", "pressure", "mental"],
     cta: "Zobacz polecanych",
     href: "#",
     note: "Wkrótce: selekcja i zasady współpracy",
-  },
-  {
-    name: "Forum / społeczność",
-    title: "Społeczność i rozmowy z ludźmi",
-    desc: "Nie musisz ogarniać wszystkiego sam. Kontakt z innymi facetami często działa szybciej niż teoria.",
-    tags: ["broken", "breakup", "empty", "ready", "father"],
-    cta: "Wejdź",
-    href: "#",
-    note: "Wkrótce: przestrzeń społeczności / kanały tematyczne",
   },
 ];
 
 const TAGS: { key: string; label: string }[] = [
   { key: "all", label: "Wszystko" },
+  { key: "pressure", label: "Presja" },
+  { key: "ready", label: "Gotowość" },
   { key: "trips", label: "Wyjazdy" },
   { key: "training", label: "Trening" },
-  { key: "fatherhood", label: "Ojcostwo" },
+
+  { key: "father", label: "Ojcostwo" },
+  { key: "fatherhood", label: "Obecność" },
   { key: "co-parenting", label: "Granice" },
+  { key: "law", label: "Prawo" },
+
+  { key: "mental", label: "Psycholog / psychiatra" },
+  { key: "community", label: "Grupy" },
+  { key: "addiction", label: "Używki" },
+
   { key: "breakup", label: "Rozstanie" },
   { key: "broken", label: "Rozsypka" },
   { key: "empty", label: "Pustka" },
-  { key: "ready", label: "Gotowość" },
 ];
 
 function PartnersContent({
@@ -104,8 +152,8 @@ function PartnersContent({
           </h1>
 
           <p className="mt-4 text-zinc-300 max-w-3xl leading-relaxed">
-            Tu będą miejsca i ludzie, którzy realnie pomagają ruszyć dalej:
-            wyjazdy, trening, konsultacje, społeczność. Bez spamu i bez przypadkowych poleceń.
+            Tu są kierunki i zasoby, które realnie pomagają ruszyć dalej:
+            ruch, rozmowa, wsparcie, formalności. Bez spamu i bez przypadkowych poleceń.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -185,16 +233,16 @@ function PartnersContent({
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
             Jeśli masz realną ofertę, która pomaga facetom ruszyć z miejsca
-            (wyjazdy, trening, konsultacje, wsparcie prawne, społeczność),
-            będziesz mógł tu dołączyć. Bez taniej reklamy — tylko rzeczy, które mają sens.
+            (wyjazdy, trening, konsultacje, prawo, społeczność) — będziesz mógł tu dołączyć.
+            Bez taniej reklamy. Tylko rzeczy, które mają sens.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/navimind?state=partners"
-              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+              href="/kontakt"
+              className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
             >
-              Napisz w czacie →
+              Napisz przez formularz →
             </Link>
 
             <Link

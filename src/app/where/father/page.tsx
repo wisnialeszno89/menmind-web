@@ -28,7 +28,6 @@ export default function WhereFatherPage() {
             Wybierz jeden kierunek. Reszta nie ucieknie.
           </p>
 
-          {/* Kafelki: tylko to co ma sens jest linkiem */}
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4">
               <p className="text-sm text-zinc-400">Spokój</p>
@@ -36,7 +35,7 @@ export default function WhereFatherPage() {
                 Co mogę zrobić, żeby nie przenosić napięcia na dziecko?
               </p>
               <p className="mt-2 text-xs text-zinc-500">
-                Pro tip: “ciszej i wolniej” działa lepiej niż “mocniej”.
+                Dziś wygrywa “ciszej i wolniej”, nie “mocniej”.
               </p>
             </div>
 
@@ -51,9 +50,7 @@ export default function WhereFatherPage() {
               <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
                 Bez telefonu. Prosty rytuał, który buduje relację.
               </p>
-              <p className="mt-3 text-sm text-cyan-200">
-                Zobacz pomysły / wsparcie →
-              </p>
+              <p className="mt-3 text-sm text-cyan-200">Zobacz wsparcie →</p>
             </Link>
 
             <Link
@@ -67,13 +64,62 @@ export default function WhereFatherPage() {
               <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
                 Ustalenia, komunikacja, spokojne “nie”. Bez wojny i bez gry w winę.
               </p>
-              <p className="mt-3 text-sm text-cyan-200">
-                Zobacz wsparcie / polecanych →
-              </p>
+              <p className="mt-3 text-sm text-cyan-200">Zobacz wsparcie →</p>
             </Link>
           </div>
 
           <Reset60 lang="pl" />
+
+          {/* CO DALEJ */}
+          <div className="mt-10">
+            <h3 className="text-sm font-semibold text-zinc-200">
+              Co dalej?
+            </h3>
+
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                href="/partners?tag=mental"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Gdy jest naprawdę ciężko</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Psycholog / psychiatra (wsparcie)
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Bez wstydu. Czasem jedna rozmowa robi różnicę.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
+              </Link>
+
+              <Link
+                href="/partners?tag=law"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Formalności i spokój</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Polecani prawnicy / ustalenia
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Uporządkuj zasady, żeby nie żyć w napięciu.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
+              </Link>
+
+              <Link
+                href="/partners?tag=community"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
+              >
+                <p className="text-sm text-zinc-400">Nie bądź z tym sam</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Zamknięte grupy / rozmowy z innymi ojcami
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Czasem wystarczy kontakt z ludźmi, którzy rozumieją.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz opcje →</p>
+              </Link>
+            </div>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
