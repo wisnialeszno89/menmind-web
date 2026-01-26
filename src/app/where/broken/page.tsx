@@ -13,28 +13,28 @@ export default function WhereBrokenPage() {
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Dziś nie naprawiasz całego życia. Dziś stabilizujesz podstawy.
-            Jeden mały ruch = mniej chaosu.
+            Jeśli jesteś w tym stanie, to nie jest moment na “motywację”.
+            To moment na minimalną stabilizację i pomoc, jeśli trzeba.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <h2 className="text-lg font-semibold text-zinc-100">
-            3 rzeczy, które trzymają Cię na powierzchni
+            Dziś tylko baza
           </h2>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Woda + coś do jedzenia
+              Woda + jedzenie (cokolwiek prostego)
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              10 minut ruchu (spacer / prysznic / rozciąganie)
+              Prysznic albo 5 minut ruchu
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Jedna mała rzecz domknięta dziś
+              Jedno małe domknięcie (żeby odzyskać ster)
             </li>
           </ul>
 
@@ -42,48 +42,20 @@ export default function WhereBrokenPage() {
 
           <div className="mt-10">
             <h3 className="text-sm font-semibold text-zinc-200">
-              Co dalej? (wybierz 1)
+              Wybierz opcję dla siebie
             </h3>
 
-            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Link
-                href="/tools/minimum-plan"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">Stabilizacja</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Plan minimum na dziś
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  3 rzeczy, które przywracają tor.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
-              </Link>
-
+            <div className="mt-4 grid grid-cols-1 gap-3">
               <Link
                 href="/partners?tag=mental"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Wsparcie</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Psycholog / psychiatra
+                <p className="text-sm text-zinc-400">Najprościej i najskuteczniej</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  Pomoc specjalistów: psychologowie + psychiatrzy
                 </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Gdy robi się ciężko — to jest normalna pomoc.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
-              </Link>
-
-              <Link
-                href="/partners?tag=addiction"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
-              >
-                <p className="text-sm text-zinc-400">Gdy ciągnie w ucieczki</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Alkohol / używki / autodestrukcja
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Bez moralizowania. Po prostu: jak nie polecieć w dół.
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Jeśli czujesz, że już nie ciągniesz — to jest właściwy kierunek.
                 </p>
                 <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>

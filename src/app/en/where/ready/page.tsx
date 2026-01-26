@@ -64,21 +64,21 @@ export default function WhereReadyPageEN() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/en/navimind?state=ready"
-              className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
-            >
-              I want to talk →
-            </Link>
-
-            <Link
-              href="/en"
-              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
-            >
-              ← Back to choices
-            </Link>
-          </div>
+          <div className="mt-8 grid grid-cols-1 gap-3">
+  <Link
+    href="/en/partners?tag=trips"
+    className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+  >
+    <p className="text-sm text-zinc-400">Past it — moving forward</p>
+    <p className="mt-1 text-lg font-semibold text-zinc-100">
+      Trips / sports / men’s activities
+    </p>
+    <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+      Change environment + movement + people. No pressure.
+    </p>
+    <p className="mt-3 text-sm text-cyan-200">Explore →</p>
+  </Link>
+</div>
 
           <p className="mt-6 text-xs text-zinc-500">
             Ready = movement. Not perfection.

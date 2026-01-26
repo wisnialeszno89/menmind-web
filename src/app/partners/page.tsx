@@ -49,14 +49,26 @@ const PARTNERS: Partner[] = [
     note: "Wkrótce: prawnicy + mediacje + materiały",
   },
 
+  // ✅ Psychologists
   {
-    name: "Wsparcie kryzysowe",
-    title: "Psycholog / psychiatra (szybkie wsparcie)",
-    desc: "Gdy robi się naprawdę ciężko — warto pogadać z kimś kompetentnym. Bez wstydu i bez etykiet.",
-    tags: ["mental", "father", "pressure", "broken", "breakup", "empty"],
+    name: "Wsparcie psychologiczne",
+    title: "Psychologowie (rozmowa i praca nad sobą)",
+    desc: "Gdy chcesz z kimś pogadać, poukładać emocje i odzyskać stabilność. Bez wstydu, bez etykiet.",
+    tags: ["psychologists", "father", "pressure", "broken", "breakup", "empty"],
     cta: "Zobacz opcje",
     href: "#",
     note: "Wkrótce: polecani specjaliści",
+  },
+
+  // ✅ Psychiatrists
+  {
+    name: "Wsparcie medyczne",
+    title: "Psychiatrzy (gdy jest naprawdę ciężko)",
+    desc: "Dla momentów, kiedy objawy są za duże, sen się sypie, a organizm nie ciągnie. To leczenie, nie słabość.",
+    tags: ["psychiatrists", "father", "pressure", "broken", "breakup", "empty"],
+    cta: "Zobacz opcje",
+    href: "#",
+    note: "Wkrótce: kontakty i wskazówki",
   },
 
   {
@@ -88,37 +100,33 @@ const PARTNERS: Partner[] = [
     href: "#",
     note: "Wkrótce: kanały tematyczne",
   },
-
-  {
-    name: "Specjaliści / pomoc",
-    title: "Polecani specjaliści (nie tylko terapia)",
-    desc: "Czasem potrzeba rozmowy z kimś kompetentnym. Zero wstydu. To narzędzie jak każde inne.",
-    tags: ["broken", "breakup", "empty", "pressure", "mental"],
-    cta: "Zobacz polecanych",
-    href: "#",
-    note: "Wkrótce: selekcja i zasady współpracy",
-  },
 ];
 
 const TAGS: { key: string; label: string }[] = [
   { key: "all", label: "Wszystko" },
+
+  // states
   { key: "pressure", label: "Presja" },
   { key: "ready", label: "Gotowość" },
+  { key: "breakup", label: "Rozstanie" },
+  { key: "broken", label: "Rozsypka" },
+  { key: "empty", label: "Pustka" },
+
+  // action paths
   { key: "trips", label: "Wyjazdy" },
   { key: "training", label: "Trening" },
+  { key: "community", label: "Grupy / fora" },
+  { key: "addiction", label: "Używki" },
 
+  // fatherhood
   { key: "father", label: "Ojcostwo" },
   { key: "fatherhood", label: "Obecność" },
   { key: "co-parenting", label: "Granice" },
   { key: "law", label: "Prawo" },
 
-  { key: "mental", label: "Psycholog / psychiatra" },
-  { key: "community", label: "Grupy" },
-  { key: "addiction", label: "Używki" },
-
-  { key: "breakup", label: "Rozstanie" },
-  { key: "broken", label: "Rozsypka" },
-  { key: "empty", label: "Pustka" },
+  // specialists
+  { key: "psychologists", label: "Psychologowie" },
+  { key: "psychiatrists", label: "Psychiatrzy" },
 ];
 
 function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
@@ -140,13 +148,13 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </h1>
 
           <p className="mt-4 text-zinc-300 max-w-3xl leading-relaxed">
-            Tu są kierunki i zasoby, które realnie pomagają ruszyć dalej: ruch,
-            rozmowa, wsparcie, formalności. Bez spamu i bez przypadkowych poleceń.
+            Tu są kierunki i zasoby, które realnie pomagają ruszyć dalej:
+            ruch, rozmowa, wsparcie, formalności. Bez spamu i bez przypadkowych poleceń.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {TAGS.map((t) => {
-              const active = (tag ?? "all") === t.key;
+              const active = tag === t.key;
 
               return (
                 <Link
@@ -221,9 +229,8 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </h2>
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-            Jeśli masz realną ofertę, która pomaga facetom ruszyć z miejsca
-            (wyjazdy, trening, konsultacje, prawo, społeczność) — możesz się zgłosić.
-            Bez taniej reklamy. Tylko rzeczy, które mają sens.
+            Jeśli masz realną ofertę (wyjazdy, trening, wsparcie, prawo, społeczność) —
+            możesz się zgłosić. Bez taniej reklamy.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
