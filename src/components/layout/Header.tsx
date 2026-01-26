@@ -6,12 +6,18 @@ import { usePathname } from "next/navigation";
 const NAV_PL = [
   { label: "Start", href: "/" },
   { label: "O projekcie", href: "/about" },
+  { label: "Partnerzy", href: "/partners" },
+  { label: "Partnerstwo", href: "/partnerstwo" },
+  { label: "Kontakt", href: "/kontakt" },
   { label: "Navimind", href: "/navimind" },
 ];
 
 const NAV_EN = [
   { label: "Home", href: "/en" },
   { label: "About", href: "/en/about" },
+  { label: "Partners", href: "/en/partners" },
+  { label: "Partnership", href: "/en/partnership" },
+  { label: "Contact", href: "/en/contact" },
   { label: "Navimind", href: "/en/navimind" },
 ];
 
@@ -19,28 +25,42 @@ function isEnglishPath(pathname: string) {
   return pathname === "/en" || pathname.startsWith("/en/");
 }
 
+function toEnglishPath(pathname: string) {
+  if (pathname === "/") return "/en";
+  if (pathname === "/about") return "/en/about";
+  if (pathname === "/navimind") return "/en/navimind";
+  if (pathname === "/partners") return "/en/partners";
+  if (pathname === "/partnerstwo") return "/en/partnership";
+  if (pathname === "/kontakt") return "/en/contact";
+
+  if (pathname.startsWith("/where/")) {
+    return pathname.replace("/where/", "/en/where/");
+  }
+
+  return "/en";
+}
+
+function toPolishPath(pathname: string) {
+  if (pathname === "/en") return "/";
+  if (pathname === "/en/about") return "/about";
+  if (pathname === "/en/navimind") return "/navimind";
+  if (pathname === "/en/partners") return "/partners";
+  if (pathname === "/en/partnership") return "/partnerstwo";
+  if (pathname === "/en/contact") return "/kontakt";
+
+  if (pathname.startsWith("/en/where/")) {
+    return pathname.replace("/en/where/", "/where/");
+  }
+
+  return "/";
+}
+
 export default function Header() {
   const pathname = usePathname();
   const isEN = isEnglishPath(pathname);
 
   const nav = isEN ? NAV_EN : NAV_PL;
-
-  // Przełączanie języka: mapujemy aktualną stronę na odpowiednik
-  const languageSwitchHref = (() => {
-    if (!isEN) {
-      // PL -> EN
-      if (pathname === "/") return "/en";
-      if (pathname === "/about") return "/en/about";
-      if (pathname === "/navimind") return "/en/navimind";
-      return "/en";
-    }
-
-    // EN -> PL
-    if (pathname === "/en") return "/";
-    if (pathname === "/en/about") return "/about";
-    if (pathname === "/en/navimind") return "/navimind";
-    return "/";
-  })();
+  const languageSwitchHref = isEN ? toPolishPath(pathname) : toEnglishPath(pathname);
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800/60 bg-zinc-950/40 backdrop-blur">
@@ -56,8 +76,8 @@ export default function Header() {
 
         {/* Nav + Language */}
         <div className="flex items-center gap-3">
-          {/* Navigation */}
-          <nav className="flex items-center gap-1">
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1">
             {nav.map((item) => {
               const active = pathname === item.href;
 
@@ -78,6 +98,16 @@ export default function Header() {
             })}
           </nav>
 
+          {/* Mobile shortcut */}
+          <div className="md:hidden flex items-center gap-2">
+            <Link
+              href={isEN ? "/en/partners" : "/partners"}
+              className="px-3 py-2 rounded-xl text-sm text-zinc-300 ring-1 ring-zinc-800/70 bg-zinc-900/40 hover:bg-zinc-800/50 transition"
+            >
+              {isEN ? "Partners" : "Partnerzy"}
+            </Link>
+          </div>
+
           {/* Language Switch */}
           <Link
             href={languageSwitchHref}
@@ -87,6 +117,30 @@ export default function Header() {
           >
             <span className="text-lg leading-none">{isEN ? "🇵🇱" : "🇬🇧"}</span>
           </Link>
+        </div>
+      </div>
+
+      {/* Mobile nav */}
+      <div className="md:hidden border-t border-zinc-800/60 bg-zinc-950/30">
+        <div className="mx-auto max-w-6xl px-6 py-3 flex flex-wrap gap-2">
+          {nav.map((item) => {
+            const active = pathname === item.href;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={[
+                  "px-3 py-2 rounded-xl text-sm transition",
+                  active
+                    ? "bg-cyan-500/15 text-cyan-200 ring-1 ring-cyan-400/20"
+                    : "bg-zinc-900/40 text-zinc-300 ring-1 ring-zinc-800/70 hover:bg-zinc-800/50",
+                ].join(" ")}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </header>
