@@ -11,7 +11,7 @@ type Partner = {
   note?: string;
 };
 
-const PARTNERS_EN: Partner[] = [
+const PARTNERS: Partner[] = [
   {
     name: "Waypoint Trips",
     title: "Men’s trips: reset + outdoors",
@@ -48,15 +48,29 @@ const PARTNERS_EN: Partner[] = [
     href: "#",
     note: "Coming soon",
   },
+
+  // ✅ Psychologists
   {
-    name: "Crisis support",
-    title: "Psychologist / psychiatrist (fast support)",
-    desc: "When it gets really heavy — talking to a competent person can help. No shame.",
-    tags: ["mental", "father", "pressure", "broken", "breakup", "empty"],
+    name: "Psychological support",
+    title: "Psychologists (talk + clarity)",
+    desc: "When you need to talk, untangle emotions and regain stability. No shame.",
+    tags: ["psychologists", "father", "pressure", "broken", "breakup", "empty"],
     cta: "See options",
     href: "#",
     note: "Coming soon: vetted specialists",
   },
+
+  // ✅ Psychiatrists
+  {
+    name: "Medical support",
+    title: "Psychiatrists (when it’s really heavy)",
+    desc: "For moments when symptoms are too strong, sleep collapses and your body can’t carry it. Treatment, not weakness.",
+    tags: ["psychiatrists", "father", "pressure", "broken", "breakup", "empty"],
+    cta: "See options",
+    href: "#",
+    note: "Coming soon",
+  },
+
   {
     name: "Legal support",
     title: "Legal: fatherhood / agreements / conflict",
@@ -66,6 +80,7 @@ const PARTNERS_EN: Partner[] = [
     href: "#",
     note: "Coming soon",
   },
+
   {
     name: "Substances & alcohol",
     title: "When you start escaping",
@@ -75,9 +90,10 @@ const PARTNERS_EN: Partner[] = [
     href: "#",
     note: "Coming soon",
   },
+
   {
     name: "Community",
-    title: "Private groups / men-to-men conversations",
+    title: "Private groups / forums",
     desc: "Sometimes you don’t need advice. You need people who get it.",
     tags: ["community", "broken", "breakup", "empty", "father", "ready"],
     cta: "See options",
@@ -86,34 +102,40 @@ const PARTNERS_EN: Partner[] = [
   },
 ];
 
-const TAGS_EN: { key: string; label: string }[] = [
+const TAGS: { key: string; label: string }[] = [
   { key: "all", label: "All" },
+
+  // states
   { key: "pressure", label: "Pressure" },
   { key: "ready", label: "Ready" },
+  { key: "breakup", label: "Breakup" },
+  { key: "broken", label: "Crisis" },
+  { key: "empty", label: "Burnout" },
+
+  // paths
   { key: "trips", label: "Trips" },
   { key: "training", label: "Training" },
+  { key: "community", label: "Groups / forums" },
+  { key: "addiction", label: "Substances" },
 
+  // fatherhood
   { key: "father", label: "Fatherhood" },
   { key: "fatherhood", label: "Presence" },
   { key: "co-parenting", label: "Boundaries" },
   { key: "law", label: "Legal" },
 
-  { key: "mental", label: "Mental health" },
-  { key: "community", label: "Community" },
-  { key: "addiction", label: "Substances" },
-
-  { key: "breakup", label: "Breakup" },
-  { key: "broken", label: "Crisis" },
-  { key: "empty", label: "Burnout" },
+  // specialists
+  { key: "psychologists", label: "Psychologists" },
+  { key: "psychiatrists", label: "Psychiatrists" },
 ];
 
-function PartnersContentEN({ searchParams }: { searchParams?: { tag?: string } }) {
+function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
   const tag = searchParams?.tag ?? "all";
 
   const filtered =
-    tag === "all" ? PARTNERS_EN : PARTNERS_EN.filter((p) => p.tags.includes(tag));
+    tag === "all" ? PARTNERS : PARTNERS.filter((p) => p.tags.includes(tag));
 
-  const activeTagLabel = TAGS_EN.find((t) => t.key === tag)?.label ?? "All";
+  const activeTagLabel = TAGS.find((t) => t.key === tag)?.label ?? "All";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -126,13 +148,13 @@ function PartnersContentEN({ searchParams }: { searchParams?: { tag?: string } }
           </h1>
 
           <p className="mt-4 text-zinc-300 max-w-3xl leading-relaxed">
-            Curated directions and resources that actually help: movement, support,
-            structure and clarity. No spam.
+            Curated directions and resources that actually help: movement,
+            support, structure and clarity. No spam.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            {TAGS_EN.map((t) => {
-              const active = (tag ?? "all") === t.key;
+            {TAGS.map((t) => {
+              const active = tag === t.key;
 
               return (
                 <Link
@@ -152,7 +174,8 @@ function PartnersContentEN({ searchParams }: { searchParams?: { tag?: string } }
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            Active filter: <span className="text-zinc-300">{activeTagLabel}</span>
+            Active filter:{" "}
+            <span className="text-zinc-300">{activeTagLabel}</span>
           </p>
         </header>
 
@@ -207,8 +230,8 @@ function PartnersContentEN({ searchParams }: { searchParams?: { tag?: string } }
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
             If you offer something that genuinely helps men move forward
-            (trips, training, professional support, legal, community) — you can apply.
-            No cheap ads. Only useful offers.
+            (trips, training, support, legal, community) — you can apply.
+            No cheap ads.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -239,7 +262,7 @@ function PartnersContentEN({ searchParams }: { searchParams?: { tag?: string } }
 export default function PartnersPageEN(props: { searchParams?: { tag?: string } }) {
   return (
     <Suspense>
-      <PartnersContentEN {...props} />
+      <PartnersContent {...props} />
     </Suspense>
   );
 }
