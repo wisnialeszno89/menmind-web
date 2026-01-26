@@ -22,10 +22,16 @@ const OPTIONS_EN = [
     tag: "burnout",
   },
   {
-    title: "I’m under pressure & angry",
-    desc: "Tension is rising. I need relief and direction.",
+    title: "I’m under pressure",
+    desc: "Too much on my mind. Tension is rising. I need calm and direction.",
+    href: "/en/where/pressure",
+    tag: "pressure",
+  },
+  {
+    title: "I’ve been through a lot — I’m ready",
+    desc: "Not perfect, but I’m back at the wheel. Time to rebuild momentum.",
     href: "/en/where/ready",
-    tag: "anger",
+    tag: "move",
   },
   {
     title: "This is about fatherhood",
@@ -54,9 +60,7 @@ export default function WhereYouAreEN() {
             className="group rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 text-left shadow-sm shadow-black/20 backdrop-blur transition hover:bg-zinc-900/40 hover:border-zinc-700"
           >
             <div className="flex items-center justify-between gap-3">
-              <p className="text-base font-semibold text-zinc-100">
-                {o.title}
-              </p>
+              <p className="text-base font-semibold text-zinc-100">{o.title}</p>
 
               <span className="rounded-full bg-cyan-500/10 px-2 py-1 text-[11px] font-medium text-cyan-200 ring-1 ring-cyan-400/15">
                 {o.tag}

@@ -11,7 +11,7 @@ const OPTIONS = [
   },
   {
     title: "Jestem w środku rozsypki",
-    desc: "Nie wiem co dalej. Jestem zmęczony i rozbity.",
+    desc: "Nie wiem co dalej. Jestem zmęczony i przeciążony.",
     href: "/where/broken",
     tag: "kryzys",
   },
@@ -22,10 +22,16 @@ const OPTIONS = [
     tag: "wypalenie",
   },
   {
-    title: "Mam presję i wkurw",
-    desc: "Napięcie rośnie. Potrzebuję spuścić ciśnienie i złapać kierunek.",
+    title: "Jestem pod presją",
+    desc: "Za dużo na głowie. Napięcie rośnie. Potrzebuję spokoju i kierunku.",
+    href: "/where/pressure",
+    tag: "presja",
+  },
+  {
+    title: "Jestem po przejściach, ale gotowy",
+    desc: "Nie jest idealnie, ale wracam do steru. Chcę działać i odbudować formę.",
     href: "/where/ready",
-    tag: "złość",
+    tag: "ruch",
   },
   {
     title: "Chodzi o ojcostwo",
@@ -54,9 +60,7 @@ export default function WhereYouAre() {
             className="group rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 text-left shadow-sm shadow-black/20 backdrop-blur transition hover:bg-zinc-900/40 hover:border-zinc-700"
           >
             <div className="flex items-center justify-between gap-3">
-              <p className="text-base font-semibold text-zinc-100">
-                {o.title}
-              </p>
+              <p className="text-base font-semibold text-zinc-100">{o.title}</p>
 
               <span className="rounded-full bg-cyan-500/10 px-2 py-1 text-[11px] font-medium text-cyan-200 ring-1 ring-cyan-400/15">
                 {o.tag}
