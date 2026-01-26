@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import CitySearch from "../../components/suggestions/CitySearch";
+
 
 type StateKey = "broken" | "breakup" | "empty" | "pressure" | "father" | "ready";
 
@@ -50,7 +52,6 @@ const CITIES: City[] = [
 ];
 
 const OFFERS: Offer[] = [
-  // BROKEN
   {
     id: "broken-psychiatrists",
     state: "broken",
@@ -78,7 +79,6 @@ const OFFERS: Offer[] = [
     badge: "Szybka ulga",
   },
 
-  // BREAKUP
   {
     id: "breakup-community",
     state: "breakup",
@@ -113,7 +113,6 @@ const OFFERS: Offer[] = [
     href: (city) => `/spec/psychiatrzy?city=${city}`,
   },
 
-  // READY
   {
     id: "ready-trips",
     state: "ready",
@@ -125,19 +124,13 @@ const OFFERS: Offer[] = [
   },
 ];
 
-function SuggestionsContent({
-  searchParams,
-}: {
-  searchParams?: { state?: string; city?: string; q?: string };
-}) {
+function Content({ searchParams }: { searchParams?: { state?: string; city?: string } }) {
   const state = (searchParams?.state as StateKey) ?? "broken";
   const city = searchParams?.city ?? "online";
-  const q = (searchParams?.q ?? "").toLowerCase();
 
   const stateLabel = STATES.find((s) => s.key === state)?.label ?? "Rozsypka";
   const stateHint = STATES.find((s) => s.key === state)?.hint ?? "";
 
-  const cityOptions = CITIES.filter((c) => c.label.toLowerCase().includes(q));
   const offers = OFFERS.filter((o) => o.state === state);
 
   const currentCityLabel = CITIES.find((c) => c.key === city)?.label ?? "Online";
@@ -157,6 +150,7 @@ function SuggestionsContent({
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
               const active = s.key === state;
+
               return (
                 <Link
                   key={s.key}
@@ -174,50 +168,18 @@ function SuggestionsContent({
             })}
           </div>
 
-          <section className="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-4">
-            <p className="text-xs text-zinc-500 mb-2">
-              Lokalizacja: <span className="text-zinc-300">{currentCityLabel}</span>
-            </p>
+          <p className="mt-4 text-xs text-zinc-500">
+            Lokalizacja: <span className="text-zinc-300">{currentCityLabel}</span>
+          </p>
 
-            <div className="flex flex-col gap-3">
-              <input
-                defaultValue={searchParams?.q ?? ""}
-                placeholder="Szukaj miasta…"
-                className="w-full rounded-xl border border-zinc-800/70 bg-zinc-950/30 px-4 py-2 text-sm text-zinc-200 placeholder:text-zinc-500 outline-none focus:ring-2 focus:ring-cyan-500/20"
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    const value = (e.target as HTMLInputElement).value;
-                    const url = `/propozycje?state=${state}&city=${city}&q=${encodeURIComponent(value)}`;
-                    window.location.href = url;
-                  }
-                }}
-              />
-
-              <div className="flex flex-wrap gap-2">
-                {cityOptions.slice(0, 16).map((c) => {
-                  const active = c.key === city;
-                  return (
-                    <Link
-                      key={c.key}
-                      href={`/propozycje?state=${state}&city=${c.key}`}
-                      className={[
-                        "rounded-full px-3 py-2 text-sm transition",
-                        active
-                          ? "bg-cyan-500/15 text-cyan-200 ring-1 ring-cyan-400/20"
-                          : "bg-zinc-950/30 text-zinc-300 ring-1 ring-zinc-800/70 hover:bg-zinc-900/50",
-                      ].join(" ")}
-                    >
-                      {c.label}
-                    </Link>
-                  );
-                })}
-              </div>
-
-              <p className="text-xs text-zinc-500">
-                Tip: wpisz nazwę miasta i wciśnij Enter.
-              </p>
-            </div>
-          </section>
+          <CitySearch
+            baseHref="/propozycje"
+            state={state}
+            city={city}
+            cities={CITIES}
+            placeholder="Szukaj miasta…"
+            tip="Tip: wpisz nazwę miasta (np. Rzeszów)."
+          />
         </header>
 
         <section className="grid grid-cols-1 gap-3">
@@ -269,12 +231,10 @@ function SuggestionsContent({
   );
 }
 
-export default function PropozycjePage(props: {
-  searchParams?: { state?: string; city?: string; q?: string };
-}) {
+export default function PropozycjePage(props: { searchParams?: { state?: string; city?: string } }) {
   return (
     <Suspense>
-      <SuggestionsContent {...props} />
+      <Content {...props} />
     </Suspense>
   );
 }
