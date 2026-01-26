@@ -1,15 +1,20 @@
-export const MICROCOPY = {
-  heroTitle: "Nie jesteś zgubiony.",
-  heroLead:
-    "To nie test ani diagnoza. To punkt orientacyjny — żebyś wiedział, gdzie jesteś i co dalej.",
-
-  selectorTitle: "Wybierz miejsce, w którym jesteś teraz",
-  selectorHint:
-    "Nie szukaj idealnej etykiety. Wystarczy ta, która jest najbliżej.",
-
-  footerNote:
-    "Bez kont. Bez ocen. Bez zapisywania rozmów. Możesz wyjść w każdej chwili.",
-
+export const MICROCOPY_PL = {
+  heroTitle: "Nie jesteś zagubiony.",
+  heroLead: "To nie test ani diagnoza. To punkt orientacyjny.",
+  footerNote: "Bez kont. Bez ocen. Bez zapisywania rozmów.",
   navimindIntro:
-    "Krótka rozmowa, która porządkuje myśli i pokazuje możliwe kierunki.",
+    "To jest przestrzeń, w której możesz wejść w rozmowę bez presji, bez ocen i bez zbędnych etykiet.",
 };
+
+export const MICROCOPY_EN = {
+  heroTitle: "You’re not lost.",
+  heroLead: "This is not a test or a diagnosis. It’s a waypoint.",
+  footerNote: "No accounts. No judgment. No chat history saved.",
+  navimindIntro:
+    "This is a space where you can enter a conversation without pressure, without judgment, and without labels.",
+};
+
+/**
+ * Domyślnie PL — żeby nic Ci się nie posypało
+ */
+export const MICROCOPY = MICROCOPY_PL;
