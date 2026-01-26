@@ -8,12 +8,12 @@ export default function WhereReadyPage() {
           <p className="text-sm text-zinc-400">Waypoint · stan</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            Jestem gotowy iść dalej
+            Jestem po przejściach, ale gotowy
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Jeśli tu jesteś, to znaczy, że chcesz ruchu — nie kolejnego
-            “przeczekania”. To najlepszy moment na mały, realny krok.
+            To nie musi być idealny start. Wystarczy, że wracasz do steru.
+            Dziś robimy ruch, a nie perfekcję.
           </p>
         </header>
 
@@ -24,42 +24,44 @@ export default function WhereReadyPage() {
 
           <ol className="mt-4 space-y-3 text-zinc-300 leading-relaxed list-decimal list-inside">
             <li>Wybierz 1 rzecz, którą kończysz dziś (małą, ale realną).</li>
-            <li>Zrób 20 minut “prostej konsekwencji” — bez analizowania.</li>
+            <li>Zrób 20 minut prostej konsekwencji — bez analizowania.</li>
             <li>Ustal jedną granicę: czego dziś nie robisz (scroll, chaos, drama).</li>
           </ol>
 
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <Link
-              href="/partners?tag=trips"
-              className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-            >
-              <p className="text-sm text-zinc-400">Opcja dla facetów</p>
-              <p className="mt-1 font-semibold text-zinc-100">
-                Wyjazdy / wyprawy / outdoor
-              </p>
-              <p className="mt-2 text-sm text-zinc-400">
-                Zmiana otoczenia + ruch + ludzie. Bez presji.
-              </p>
-              <p className="mt-3 text-sm text-cyan-200">
-                Zobacz polecanych →
-              </p>
-            </Link>
+          <div className="mt-10">
+            <h3 className="text-sm font-semibold text-zinc-200">
+              Co dalej?
+            </h3>
 
-            <Link
-              href="/partners?tag=training"
-              className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-            >
-              <p className="text-sm text-zinc-400">Opcja dla ciała</p>
-              <p className="mt-1 font-semibold text-zinc-100">
-                Trening / sporty walki
-              </p>
-              <p className="mt-2 text-sm text-zinc-400">
-                Dyscyplina i pewność wracają szybciej niż myślisz.
-              </p>
-              <p className="mt-3 text-sm text-cyan-200">
-                Zobacz polecanych →
-              </p>
-            </Link>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                href="/partners?tag=trips"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Wyjście z rutyny</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Wyjazdy / wyprawy / outdoor
+                </p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Zmiana otoczenia + ruch + ludzie. Bez presji.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
+              </Link>
+
+              <Link
+                href="/partners?tag=training"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Powrót do formy</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Trening / sporty walki
+                </p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Regularność daje spokój i pewność szybciej niż myślisz.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
+              </Link>
+            </div>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">

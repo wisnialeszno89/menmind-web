@@ -9,7 +9,7 @@ type Partner = {
   href: string;
   cta: string;
   region: "EU";
-  country?: string; // "PL", "DE", "ES"...
+  country?: string;
   note?: string;
 };
 
@@ -17,29 +17,27 @@ const PARTNERS_EN: Partner[] = [
   {
     name: "Waypoint Trips",
     title: "Men’s trips: reset + outdoors",
-    desc: "Expeditions, hiking, nature, simple structure. For men who need change, movement, and people.",
+    desc: "Expeditions, hiking, nature, simple structure. For men who need movement and a change of environment.",
     tags: ["trips", "ready"],
     href: "#",
     cta: "Explore trips",
     region: "EU",
-    country: "PL",
-    note: "Coming soon: verified organizers across Europe",
+    note: "Coming soon: verified organizers",
   },
   {
     name: "Training / Combat",
     title: "Training & martial arts",
-    desc: "Body + mind. Consistency returns energy, calmness and confidence faster than you expect.",
-    tags: ["training", "ready"],
+    desc: "Body + mind. Consistency brings back energy, calm and confidence.",
+    tags: ["training", "ready", "pressure", "empty"],
     href: "#",
     cta: "See options",
     region: "EU",
-    country: "DE",
     note: "Coming soon: gyms & coaches",
   },
   {
     name: "Fatherhood Support",
-    title: "Fatherhood: presence, connection, communication",
-    desc: "Practical support for fathers. No guru energy. No shame. Just real tools.",
+    title: "Fatherhood: presence & communication",
+    desc: "Practical tools and support for fathers. No judgment. No guru vibe.",
     tags: ["fatherhood", "father"],
     href: "#",
     cta: "Explore support",
@@ -49,30 +47,58 @@ const PARTNERS_EN: Partner[] = [
   {
     name: "Co-parenting",
     title: "Boundaries & co-parenting",
-    desc: "Clear agreements, calm communication, less conflict. A way to protect the child and yourself.",
-    tags: ["co-parenting", "father"],
+    desc: "Clear agreements, calm communication, less conflict. Protect the child and yourself.",
+    tags: ["co-parenting", "father", "law"],
     href: "#",
     cta: "See options",
     region: "EU",
     note: "Coming soon",
   },
+
+  // NEW: MENTAL
   {
-    name: "Specialists",
-    title: "Recommended professionals",
-    desc: "Sometimes you need a competent person. Not a life sentence — just a tool that helps.",
-    tags: ["broken", "breakup", "empty"],
+    name: "Crisis support",
+    title: "Psychologist / psychiatrist (fast support)",
+    desc: "When it gets really heavy — talking to a competent person can help. No shame.",
+    tags: ["mental", "father", "pressure", "broken", "breakup", "empty"],
     href: "#",
-    cta: "See recommendations",
+    cta: "See options",
     region: "EU",
-    note: "Coming soon: curated list",
+    note: "Coming soon: vetted specialists",
   },
+
+  // NEW: LAW
+  {
+    name: "Legal support",
+    title: "Legal: fatherhood / agreements / conflict",
+    desc: "For men who want clarity and calm through structure and proper boundaries.",
+    tags: ["law", "father", "co-parenting"],
+    href: "#",
+    cta: "See options",
+    region: "EU",
+    note: "Coming soon",
+  },
+
+  // NEW: ADDICTION
+  {
+    name: "Substances & alcohol",
+    title: "When you start escaping",
+    desc: "No preaching. Practical support when you slip into alcohol, substances or self-destruction.",
+    tags: ["addiction", "broken", "pressure", "breakup", "empty"],
+    href: "#",
+    cta: "Explore support",
+    region: "EU",
+    note: "Coming soon",
+  },
+
+  // NEW: COMMUNITY
   {
     name: "Community",
-    title: "Community & real conversations",
-    desc: "You don’t have to carry everything alone. The right people can change everything.",
-    tags: ["broken", "breakup", "empty", "ready", "father"],
+    title: "Private groups / men-to-men conversations",
+    desc: "Sometimes you don’t need advice. You need people who get it.",
+    tags: ["community", "broken", "breakup", "empty", "father", "ready"],
     href: "#",
-    cta: "Enter",
+    cta: "See options",
     region: "EU",
     note: "Coming soon",
   },
@@ -80,62 +106,38 @@ const PARTNERS_EN: Partner[] = [
 
 const TAGS_EN: { key: string; label: string }[] = [
   { key: "all", label: "All" },
+  { key: "pressure", label: "Pressure" },
+  { key: "ready", label: "Ready" },
   { key: "trips", label: "Trips" },
   { key: "training", label: "Training" },
-  { key: "fatherhood", label: "Fatherhood" },
+
+  { key: "father", label: "Fatherhood" },
+  { key: "fatherhood", label: "Presence" },
   { key: "co-parenting", label: "Boundaries" },
+  { key: "law", label: "Legal" },
+
+  { key: "mental", label: "Mental health" },
+  { key: "community", label: "Community" },
+  { key: "addiction", label: "Substances" },
+
   { key: "breakup", label: "Breakup" },
   { key: "broken", label: "Crisis" },
   { key: "empty", label: "Burnout" },
-  { key: "ready", label: "Ready" },
 ];
-
-const COUNTRIES_EU: { key: string; label: string }[] = [
-  { key: "all", label: "Europe" },
-  { key: "PL", label: "Poland" },
-  { key: "DE", label: "Germany" },
-  { key: "CZ", label: "Czechia" },
-  { key: "SK", label: "Slovakia" },
-  { key: "AT", label: "Austria" },
-  { key: "CH", label: "Switzerland" },
-  { key: "NL", label: "Netherlands" },
-  { key: "BE", label: "Belgium" },
-  { key: "FR", label: "France" },
-  { key: "ES", label: "Spain" },
-  { key: "IT", label: "Italy" },
-  { key: "SE", label: "Sweden" },
-  { key: "NO", label: "Norway" },
-  { key: "DK", label: "Denmark" },
-  { key: "UK", label: "United Kingdom" },
-];
-
-function buildUrl(base: string, params: Record<string, string | undefined>) {
-  const query = new URLSearchParams();
-  Object.entries(params).forEach(([k, v]) => {
-    if (v && v !== "all") query.set(k, v);
-  });
-  const qs = query.toString();
-  return qs ? `${base}?${qs}` : base;
-}
 
 function PartnersContentEN({
   searchParams,
 }: {
-  searchParams?: { tag?: string; country?: string };
+  searchParams?: { tag?: string };
 }) {
   const tag = searchParams?.tag ?? "all";
-  const country = searchParams?.country ?? "all";
 
-  const filtered = PARTNERS_EN.filter((p) => {
-    const matchTag = tag === "all" ? true : p.tags.includes(tag);
-    const matchCountry =
-      country === "all" ? true : (p.country ?? "EU") === country;
-    return matchTag && matchCountry;
-  });
+  const filtered =
+    tag === "all"
+      ? PARTNERS_EN
+      : PARTNERS_EN.filter((p) => p.tags.includes(tag));
 
   const activeTagLabel = TAGS_EN.find((t) => t.key === tag)?.label ?? "All";
-  const activeCountryLabel =
-    COUNTRIES_EU.find((c) => c.key === country)?.label ?? "Europe";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -148,18 +150,18 @@ function PartnersContentEN({
           </h1>
 
           <p className="mt-4 text-zinc-300 max-w-3xl leading-relaxed">
-            A curated space for offers that actually help men move forward:
-            trips, training, professional support, community. No spam.
+            Curated directions and resources that actually help: movement, support,
+            structure and clarity. No spam.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {TAGS_EN.map((t) => {
-              const active = tag === t.key;
+              const active = (tag ?? "all") === t.key;
 
               return (
                 <Link
                   key={t.key}
-                  href={buildUrl("/en/partners", { tag: t.key, country })}
+                  href={t.key === "all" ? "/en/partners" : `/en/partners?tag=${t.key}`}
                   className={[
                     "rounded-full px-3 py-2 text-sm transition",
                     active
@@ -173,36 +175,8 @@ function PartnersContentEN({
             })}
           </div>
 
-          <div className="mt-3 flex flex-wrap gap-2">
-            {COUNTRIES_EU.map((c) => {
-              const active = country === c.key;
-
-              return (
-                <Link
-                  key={c.key}
-                  href={buildUrl("/en/partners", { tag, country: c.key })}
-                  className={[
-                    "rounded-full px-3 py-2 text-sm transition",
-                    active
-                      ? "bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-400/20"
-                      : "bg-zinc-900/40 text-zinc-300 ring-1 ring-zinc-800/70 hover:bg-zinc-800/50",
-                  ].join(" ")}
-                >
-                  {c.label}
-                </Link>
-              );
-            })}
-          </div>
-
           <p className="mt-4 text-xs text-zinc-500">
-            Active filters:{" "}
-            <span className="text-zinc-300">
-              {activeTagLabel}
-            </span>{" "}
-            ·{" "}
-            <span className="text-zinc-300">
-              {activeCountryLabel}
-            </span>
+            Active filter: <span className="text-zinc-300">{activeTagLabel}</span>
           </p>
         </header>
 
@@ -212,10 +186,7 @@ function PartnersContentEN({
               key={p.title}
               className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur"
             >
-              <p className="text-xs text-zinc-500">
-                {p.name} · {p.region}
-                {p.country ? ` · ${p.country}` : ""}
-              </p>
+              <p className="text-xs text-zinc-500">{p.name} · {p.region}</p>
 
               <h2 className="mt-2 text-lg font-semibold text-zinc-100">
                 {p.title}
@@ -229,7 +200,7 @@ function PartnersContentEN({
                 {p.tags.map((tg) => (
                   <Link
                     key={tg}
-                    href={buildUrl("/en/partners", { tag: tg, country })}
+                    href={`/en/partners?tag=${tg}`}
                     className="rounded-full bg-zinc-950/30 px-2 py-1 text-[11px] text-zinc-300 ring-1 ring-zinc-800/70 hover:bg-zinc-900/50 transition"
                   >
                     #{tg}
@@ -260,16 +231,16 @@ function PartnersContentEN({
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
             If you offer something that genuinely helps men move forward
-            (trips, training, coaching, legal support, community),
-            you’ll be able to join this space. No cheap ads — only useful offers.
+            (trips, training, professional support, legal, community) — you can join.
+            No cheap ads. Only useful offers.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/en/navimind?state=partners"
-              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+              href="/en/contact"
+              className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
             >
-              Message us →
+              Message via form →
             </Link>
 
             <Link
@@ -290,7 +261,7 @@ function PartnersContentEN({
 }
 
 export default function PartnersPageEN(props: {
-  searchParams?: { tag?: string; country?: string };
+  searchParams?: { tag?: string };
 }) {
   return (
     <Suspense>

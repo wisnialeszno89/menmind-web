@@ -8,12 +8,12 @@ export default function WhereReadyPageEN() {
           <p className="text-sm text-zinc-400">Waypoint · state</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            I’m ready to move forward
+            I’ve been through a lot — I’m ready
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            If you’re here, it means you want movement — not more waiting.
-            This is the best time for a small, real step.
+            It doesn’t have to be a perfect start. It’s enough that you’re back at the wheel.
+            Today we move — not overthink.
           </p>
         </header>
 
@@ -28,34 +28,40 @@ export default function WhereReadyPageEN() {
             <li>Set one boundary: what you won’t do today (scroll, chaos, drama).</li>
           </ol>
 
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <Link
-              href="/partners?tag=trips"
-              className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-            >
-              <p className="text-sm text-zinc-400">For men</p>
-              <p className="mt-1 font-semibold text-zinc-100">
-                Trips / expeditions / outdoors
-              </p>
-              <p className="mt-2 text-sm text-zinc-400">
-                Change environment + movement + people. No pressure.
-              </p>
-              <p className="mt-3 text-sm text-cyan-200">See partners →</p>
-            </Link>
+          <div className="mt-10">
+            <h3 className="text-sm font-semibold text-zinc-200">
+              What next?
+            </h3>
 
-            <Link
-              href="/partners?tag=training"
-              className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-            >
-              <p className="text-sm text-zinc-400">For the body</p>
-              <p className="mt-1 font-semibold text-zinc-100">
-                Training / martial arts
-              </p>
-              <p className="mt-2 text-sm text-zinc-400">
-                Discipline and confidence return faster than you think.
-              </p>
-              <p className="mt-3 text-sm text-cyan-200">See partners →</p>
-            </Link>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                href="/en/partners?tag=trips"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Change environment</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Trips / expeditions / outdoors
+                </p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Movement + people + reset. No pressure.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">See →</p>
+              </Link>
+
+              <Link
+                href="/en/partners?tag=training"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Rebuild strength</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Training / martial arts
+                </p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Consistency brings calm and confidence fast.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">See →</p>
+              </Link>
+            </div>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -82,3 +88,4 @@ export default function WhereReadyPageEN() {
     </main>
   );
 }
+

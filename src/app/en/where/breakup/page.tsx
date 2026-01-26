@@ -7,36 +7,89 @@ export default function WhereBreakupPageEN() {
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
           <p className="text-sm text-zinc-400">Waypoint · state</p>
+
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             I’m coming from a breakup
           </h1>
+
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            A breakup can flip everything: sleep, appetite, meaning, identity.
-            That’s not “overreacting”. That’s a real nervous system response.
+            Breakups can split the day into pieces: thoughts, body, sleep,
+            self-worth. That’s normal. And it passes when you stop fighting blind.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <h2 className="text-lg font-semibold text-zinc-100">
-            Today you don’t have to win. You have to get through.
+            Today: less pain-contact, more stability
           </h2>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
             <li>
-              <span className="text-cyan-200 font-medium">•</span> Don’t make big decisions
-              at peak emotion.
+              <span className="text-cyan-200 font-medium">•</span>{" "}
+              Don’t make “big decisions” today — make small moves.
             </li>
             <li>
-              <span className="text-cyan-200 font-medium">•</span> Do one stabilizing thing:
-              food / walk / clean one corner.
+              <span className="text-cyan-200 font-medium">•</span>{" "}
+              If you want to text/check: wait 20 minutes.
             </li>
             <li>
-              <span className="text-cyan-200 font-medium">•</span> Don’t isolate completely.
-              One message to one person is enough.
+              <span className="text-cyan-200 font-medium">•</span>{" "}
+              One thing for the body: walk, shower, food.
             </li>
           </ul>
 
           <Reset60 lang="en" />
+
+          {/* WHAT NEXT */}
+          <div className="mt-10">
+            <h3 className="text-sm font-semibold text-zinc-200">
+              What next?
+            </h3>
+
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                href="/en/tools/sleep-reset"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Evening / night</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Sleep reset
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  So tomorrow doesn’t start broken.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Open tool →</p>
+              </Link>
+
+              <Link
+                href="/en/partners?tag=community"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">People</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Private groups / conversations
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Sometimes it’s enough to not carry it alone.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">See options →</p>
+              </Link>
+
+              <Link
+                href="/en/partners?tag=mental"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
+              >
+                <p className="text-sm text-zinc-400">If you’re drowning in it</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Psychologist / psychiatrist (support)
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  When emotions are too strong — reaching for help is smart.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">See options →</p>
+              </Link>
+            </div>
+          </div>
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -55,7 +108,7 @@ export default function WhereBreakupPageEN() {
           </div>
 
           <p className="mt-6 text-xs text-zinc-500">
-            No accounts. No judgment. No saved conversations.
+            Rule: stability today. Direction tomorrow.
           </p>
         </section>
       </div>
