@@ -80,7 +80,7 @@ export default function Header() {
           href={isEN ? "/en" : "/"}
           className="font-semibold tracking-tight text-zinc-100 hover:text-cyan-200 transition"
         >
-          Waypoint
+          MenMind
           <span className="ml-2 text-xs font-medium text-zinc-500">beta</span>
         </Link>
 

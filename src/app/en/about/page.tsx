@@ -3,10 +3,10 @@ export default function AboutPageEN() {
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-10">
-          <p className="text-sm text-zinc-400">Waypoint · about</p>
+          <p className="text-sm text-zinc-400">MenMind · about</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            Why <span className="text-cyan-300">Waypoint</span> exists
+            Why <span className="text-cyan-300">MenMind</span> exists
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
@@ -17,7 +17,7 @@ export default function AboutPageEN() {
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <div className="space-y-6 text-zinc-300 leading-relaxed">
             <p>
-              Waypoint exists for a simple reason: many men reach a point where old strategies
+              MenMind exists for a simple reason: many men reach a point where old strategies
               no longer work, and new ones haven’t arrived yet.
             </p>
 
@@ -32,7 +32,7 @@ export default function AboutPageEN() {
             </p>
 
             <p className="text-zinc-100 font-medium">
-              Waypoint does neither.
+              MenMind does neither.
             </p>
 
             <p>
@@ -41,7 +41,7 @@ export default function AboutPageEN() {
             </p>
 
             <p>
-              Waypoint is a marker. A pause. A moment to see where you are — without judgment.
+              MenMind is a marker. A pause. A moment to see where you are — without judgment.
             </p>
 
             <p>
@@ -60,7 +60,7 @@ export default function AboutPageEN() {
             </p>
 
             <p className="mt-2 text-sm text-zinc-500">
-              Waypoint respects privacy, because without it there is no trust.
+              MenMind respects privacy, because without it there is no trust.
             </p>
           </div>
         </section>

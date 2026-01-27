@@ -13,7 +13,7 @@ type Partner = {
 
 const PARTNERS: Partner[] = [
   {
-    name: "Waypoint Trips",
+    name: "MenMind Trips",
     title: "Wyjazdy męskie: reset + outdoor",
     desc: "Wyprawy, trekking, natura, prosta forma. Dla facetów, którzy chcą zmiany otoczenia i kontaktu z ludźmi.",
     tags: ["trips", "ready"],
@@ -141,7 +141,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-6xl">
         <header className="mb-10">
-          <p className="text-sm text-zinc-400">Waypoint · polecani</p>
+          <p className="text-sm text-zinc-400">MenMind · polecani</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             Partnerzy i zasoby

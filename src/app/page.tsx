@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="text-sm text-zinc-400">Waypoint</p>
+        <p className="text-sm text-zinc-400">MenMind</p>
 
         <h1 className="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">
           {MICROCOPY.heroTitle}

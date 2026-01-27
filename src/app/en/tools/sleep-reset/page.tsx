@@ -4,7 +4,7 @@ export default function SleepResetToolPageEN() {
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
-        <p className="text-sm text-zinc-400">Waypoint · tool</p>
+        <p className="text-sm text-zinc-400">MenMind · tool</p>
 
         <h1 className="mt-3 text-4xl font-semibold tracking-tight">
           Sleep reset (evening)

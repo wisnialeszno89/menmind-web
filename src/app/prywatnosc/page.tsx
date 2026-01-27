@@ -2,14 +2,14 @@ export default function PrivacyPL() {
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
-        <p className="text-sm text-zinc-400">Waypoint · dokument</p>
+        <p className="text-sm text-zinc-400">MenMind · dokument</p>
 
         <h1 className="mt-3 text-4xl font-semibold tracking-tight">
           Polityka prywatności
         </h1>
 
         <p className="mt-4 text-zinc-300 leading-relaxed">
-          Waypoint szanuje prywatność. Strona działa bez kont i bez wymogu podawania danych.
+          MenMind szanuje prywatność. Strona działa bez kont i bez wymogu podawania danych.
         </p>
 
         <section className="mt-10 space-y-6 text-zinc-300 leading-relaxed">
@@ -38,7 +38,7 @@ export default function PrivacyPL() {
               3. Cookies
             </h2>
             <p className="mt-2">
-              Waypoint nie używa cookies do śledzenia w celach reklamowych.
+              MenMind nie używa cookies do śledzenia w celach reklamowych.
               Jeśli w przyszłości pojawią się narzędzia analityczne, informacje zostaną tu zaktualizowane.
             </p>
           </div>

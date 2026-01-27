@@ -13,7 +13,7 @@ type Partner = {
 
 const PARTNERS: Partner[] = [
   {
-    name: "Waypoint Trips",
+    name: "MenMind Trips",
     title: "Men’s trips: reset + outdoors",
     desc: "Expeditions, hiking, nature, simple structure. For men who need movement and a change of environment.",
     tags: ["trips", "ready"],
@@ -141,7 +141,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-6xl">
         <header className="mb-10">
-          <p className="text-sm text-zinc-400">Waypoint · partners</p>
+          <p className="text-sm text-zinc-400">MenMind · partners</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             Partners & resources
