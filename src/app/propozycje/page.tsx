@@ -1,7 +1,5 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import CitySearch from "../../components/suggestions/CitySearch";
-import { CITIES_PL } from "data/cities-pl";
 
 type StateKey =
   | "broken"
@@ -25,20 +23,18 @@ type Offer = {
     | "navimind";
   title: string;
   desc: string;
-  href: (city: string) => string;
+  href: () => string;
   badge?: string;
 };
 
 const STATES: { key: StateKey; label: string; hint: string }[] = [
   { key: "broken", label: "Rozsypka", hint: "Minimalna stabilizacja + pomoc, jeśli trzeba." },
   { key: "breakup", label: "Rozstanie", hint: "Nie rób destrukcyjnych ruchów. Stabilizuj bazę." },
-
   {
     key: "relationship",
     label: "Kryzys w związku",
     hint: "Kłótnie, napięcie, chaos. Zatrzymaj eskalację i wróć do rozmowy + granic.",
   },
-
   { key: "empty", label: "Pustka", hint: "Regeneracja + kontakt z ludźmi + powrót energii." },
   { key: "pressure", label: "Presja", hint: "Uspokój układ nerwowy i wróć na tor." },
   { key: "father", label: "Ojcostwo", hint: "Spokój, obecność, granice. Bez napinki." },
@@ -55,7 +51,7 @@ const OFFERS: Offer[] = [
     kind: "psychiatrists",
     title: "Psychiatrzy (wsparcie medyczne)",
     desc: "Gdy jest naprawdę ciężko: sen siada, organizm nie ciągnie, objawy są za duże.",
-    href: (city) => `/spec/psychiatrzy?city=${city}`,
+    href: () => `/spec/psychiatrzy`,
     badge: "Priorytet",
   },
   {
@@ -64,7 +60,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
     desc: "Rozmowa, uporządkowanie emocji i powrót do minimalnej stabilności.",
-    href: (city) => `/spec/psychologowie?city=${city}`,
+    href: () => `/spec/psychologowie`,
   },
   {
     id: "broken-navimind",
@@ -85,7 +81,7 @@ const OFFERS: Offer[] = [
     kind: "community",
     title: "Zamknięte grupy / fora",
     desc: "Nie tłumaczysz się. Ludzie rozumieją. Jest lżej oddychać.",
-    href: (city) => `/spec/grupy?city=${city}`,
+    href: () => `/spec/grupy`,
   },
   {
     id: "breakup-navimind",
@@ -102,7 +98,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
     desc: "Gdy Cię zalewa. Rozmowa może uratować Ci tydzień.",
-    href: (city) => `/spec/psychologowie?city=${city}`,
+    href: () => `/spec/psychologowie`,
   },
   {
     id: "breakup-psychiatrists",
@@ -110,7 +106,7 @@ const OFFERS: Offer[] = [
     kind: "psychiatrists",
     title: "Psychiatrzy (wsparcie)",
     desc: "Jeśli nie śpisz, nie jesz i czujesz, że odpływasz.",
-    href: (city) => `/spec/psychiatrzy?city=${city}`,
+    href: () => `/spec/psychiatrzy`,
   },
 
   // ======================
@@ -131,7 +127,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
     desc: "Jeśli napięcie trwa długo — neutralna rozmowa robi porządek i daje plan.",
-    href: (city) => `/spec/psychologowie?city=${city}`,
+    href: () => `/spec/psychologowie`,
   },
   {
     id: "relationship-training",
@@ -139,7 +135,7 @@ const OFFERS: Offer[] = [
     kind: "training",
     title: "Trening / ruch",
     desc: "Zredukuj napięcie w ciele. Jak ciało spokojniejsze, głowa też przestaje odpalać.",
-    href: (city) => `/spec/trening?city=${city}`,
+    href: () => `/spec/trening`,
   },
 
   // ======================
@@ -151,7 +147,7 @@ const OFFERS: Offer[] = [
     kind: "training",
     title: "Trening / ruch",
     desc: "Zapal ciało, zanim zrobisz 100 kolejnych analiz w głowie.",
-    href: (city) => `/spec/trening?city=${city}`,
+    href: () => `/spec/trening`,
     badge: "Reset",
   },
   {
@@ -160,7 +156,7 @@ const OFFERS: Offer[] = [
     kind: "community",
     title: "Zamknięte grupy / fora",
     desc: "Najpierw ludzie. Potem reszta. Izolacja karmi pustkę.",
-    href: (city) => `/spec/grupy?city=${city}`,
+    href: () => `/spec/grupy`,
   },
   {
     id: "empty-navimind",
@@ -189,7 +185,7 @@ const OFFERS: Offer[] = [
     kind: "training",
     title: "Trening / ruch",
     desc: "Zbij napięcie fizycznie. To działa szybciej niż myślisz.",
-    href: (city) => `/spec/trening?city=${city}`,
+    href: () => `/spec/trening`,
   },
   {
     id: "pressure-psychologists",
@@ -197,7 +193,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
     desc: "Jeśli presja Cię mieli, rozmowa robi porządek w głowie.",
-    href: (city) => `/spec/psychologowie?city=${city}`,
+    href: () => `/spec/psychologowie`,
   },
 
   // ======================
@@ -209,7 +205,7 @@ const OFFERS: Offer[] = [
     kind: "law",
     title: "Prawo / mediacje",
     desc: "Kiedy trzeba ogarnąć konkrety i mieć spokój na papierze.",
-    href: (city) => `/spec/prawo?city=${city}`,
+    href: () => `/spec/prawo`,
     badge: "Konkret",
   },
   {
@@ -218,7 +214,7 @@ const OFFERS: Offer[] = [
     kind: "community",
     title: "Zamknięte grupy / fora",
     desc: "Wsparcie od ludzi, którzy ogarniają ojcostwo bez teorii.",
-    href: (city) => `/spec/grupy?city=${city}`,
+    href: () => `/spec/grupy`,
   },
   {
     id: "father-psychologists",
@@ -226,7 +222,7 @@ const OFFERS: Offer[] = [
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
     desc: "Obecność, spokój, granice. Bez napinki.",
-    href: (city) => `/spec/psychologowie?city=${city}`,
+    href: () => `/spec/psychologowie`,
   },
 
   // ======================
@@ -238,7 +234,7 @@ const OFFERS: Offer[] = [
     kind: "trips",
     title: "Wyjazdy / aktywności",
     desc: "Ruch + ludzie + nowe środowisko. Bez spiny.",
-    href: (city) => `/spec/wyjazdy?city=${city}`,
+    href: () => `/spec/wyjazdy`,
     badge: "Jedno kliknięcie",
   },
   {
@@ -247,20 +243,16 @@ const OFFERS: Offer[] = [
     kind: "training",
     title: "Trening / ruch",
     desc: "Jak jesteś gotowy — ciało robi resztę.",
-    href: (city) => `/spec/trening?city=${city}`,
+    href: () => `/spec/trening`,
   },
 ];
 
-function Content({ searchParams }: { searchParams?: { state?: string; city?: string } }) {
+function Content({ searchParams }: { searchParams?: { state?: string } }) {
   const state = (searchParams?.state as StateKey) ?? "broken";
-  const city = searchParams?.city ?? "online";
 
   const stateLabel = STATES.find((s) => s.key === state)?.label ?? "Rozsypka";
   const stateHint = STATES.find((s) => s.key === state)?.hint ?? "";
-
   const offers = OFFERS.filter((o) => o.state === state);
-
-  const currentCityLabel = CITIES_PL.find((c) => c.key === city)?.label ?? "Online";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -272,9 +264,7 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
             Propozycje: {stateLabel}
           </h1>
 
-          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">
-  {stateHint}
-</p>
+          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">{stateHint}</p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
@@ -283,7 +273,7 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
               return (
                 <Link
                   key={s.key}
-                  href={`/propozycje?state=${s.key}&city=${city}`}
+                  href={`/propozycje?state=${s.key}`}
                   className={[
                     "rounded-full px-3 py-2 text-sm transition",
                     active
@@ -298,33 +288,21 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
           </div>
 
           <p className="mt-4 text-sm text-zinc-400">
-  Lokalizacja:{" "}
-  <span className="text-zinc-200 font-medium">{currentCityLabel}</span>
-</p>
-
-          <CitySearch
-            baseHref="/propozycje"
-            state={state}
-            city={city}
-            cities={CITIES_PL}
-            placeholder="Szukaj miasta…"
-            tip="Tip: wpisz nazwę miasta (np. Leszno)."
-          />
+            Tryb: <span className="text-zinc-200 font-medium">Online</span>
+          </p>
         </header>
 
         <section className="grid grid-cols-1 gap-3">
           {offers.map((o) => (
             <Link
               key={o.id}
-              href={o.href(city)}
+              href={o.href()}
               className="block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-5 transition hover:bg-zinc-900/55 hover:border-zinc-700/70 hover:shadow-lg hover:shadow-black/30"
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h2 className="text-lg font-semibold text-zinc-100">{o.title}</h2>
-                 <p className="mt-2 text-base text-zinc-300 leading-relaxed">
-  {o.desc}
-</p>
+                  <p className="mt-2 text-base text-zinc-300 leading-relaxed">{o.desc}</p>
                 </div>
 
                 {o.badge ? (
@@ -359,7 +337,7 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
   );
 }
 
-export default function PropozycjePage(props: { searchParams?: { state?: string; city?: string } }) {
+export default function PropozycjePage(props: { searchParams?: { state?: string } }) {
   return (
     <Suspense>
       <Content {...props} />
