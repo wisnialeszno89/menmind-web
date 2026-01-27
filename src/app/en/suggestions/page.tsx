@@ -1,9 +1,16 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import CitySearch from "../../../components/suggestions/CitySearch";
-import { CITIES_EN } from "../../../data/cities-en";
+import { CITIES_EN } from "data/cities-en";
 
-type StateKey = "broken" | "breakup" | "empty" | "pressure" | "father" | "ready";
+type StateKey =
+  | "broken"
+  | "breakup"
+  | "relationship"
+  | "empty"
+  | "pressure"
+  | "father"
+  | "ready";
 
 type Offer = {
   id: string;
@@ -25,6 +32,11 @@ type Offer = {
 const STATES: { key: StateKey; label: string; hint: string }[] = [
   { key: "broken", label: "Crisis", hint: "Basics first + help if needed." },
   { key: "breakup", label: "Breakup", hint: "Stabilize and avoid destructive moves." },
+  {
+    key: "relationship",
+    label: "Relationship conflict",
+    hint: "Arguments, tension, chaos. Stop escalation and rebuild communication + boundaries.",
+  },
   { key: "empty", label: "Burnout", hint: "Recovery + people + energy." },
   { key: "pressure", label: "Pressure", hint: "Calm the system and regain direction." },
   { key: "father", label: "Fatherhood", hint: "Presence, calm, boundaries." },
@@ -97,6 +109,35 @@ const OFFERS: Offer[] = [
     title: "Psychiatrists (medical support)",
     desc: "If you don’t sleep, don’t eat, and feel like you’re drifting.",
     href: (city) => `/en/spec/psychiatrists?city=${city}`,
+  },
+
+  // ======================
+  // RELATIONSHIP CONFLICT (max 3)
+  // ======================
+  {
+    id: "relationship-navimind",
+    state: "relationship",
+    kind: "navimind",
+    title: "Navimind (talk)",
+    desc: "When you keep fighting. We stop escalation and rebuild communication + boundaries.",
+    href: () => "/en/navimind?state=relationship",
+    badge: "Right now",
+  },
+  {
+    id: "relationship-psychologists",
+    state: "relationship",
+    kind: "psychologists",
+    title: "Psychologists (support)",
+    desc: "If the tension lasts — clarity and structure help a lot.",
+    href: (city) => `/en/spec/psychologists?city=${city}`,
+  },
+  {
+    id: "relationship-training",
+    state: "relationship",
+    kind: "training",
+    title: "Training / movement",
+    desc: "Reduce tension in your body. A calmer body means a calmer mind.",
+    href: (city) => `/en/spec/training?city=${city}`,
   },
 
   // ======================
@@ -223,13 +264,15 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
-          <p className="text-sm text-zinc-400">Waypoint · suggestions</p>
+          <p className="text-base text-zinc-300">Waypoint · suggestions</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             Suggestions: {stateLabel}
           </h1>
 
-          <p className="mt-3 text-zinc-300 leading-relaxed">{stateHint}</p>
+          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">
+            {stateHint}
+          </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
@@ -252,8 +295,9 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
             })}
           </div>
 
-          <p className="mt-4 text-xs text-zinc-500">
-            Location: <span className="text-zinc-300">{currentCityLabel}</span>
+          <p className="mt-4 text-sm text-zinc-400">
+            Location:{" "}
+            <span className="text-zinc-200 font-medium">{currentCityLabel}</span>
           </p>
 
           <CitySearch
@@ -271,12 +315,15 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
             <Link
               key={o.id}
               href={o.href(city)}
-              className="block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-5 hover:bg-zinc-900/55 transition"
+              className="block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-5 transition hover:bg-zinc-900/55 hover:border-zinc-700/70 hover:shadow-lg hover:shadow-black/30"
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <h2 className="text-lg font-semibold text-zinc-100">{o.title}</h2>
-                  <p className="mt-2 text-sm text-zinc-400 leading-relaxed">{o.desc}</p>
+
+                  <p className="mt-2 text-base text-zinc-300 leading-relaxed">
+                    {o.desc}
+                  </p>
                 </div>
 
                 {o.badge ? (
