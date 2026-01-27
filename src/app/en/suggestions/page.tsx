@@ -1,18 +1,21 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import CitySearch from "../../../components/suggestions/CitySearch";
+import { CITIES_EN } from "../../../data/cities-en";
 
 type StateKey = "broken" | "breakup" | "empty" | "pressure" | "father" | "ready";
-
-type City = {
-  key: string;
-  label: string;
-};
 
 type Offer = {
   id: string;
   state: StateKey;
-  kind: "psychologists" | "psychiatrists" | "community" | "training" | "trips" | "law" | "navimind";
+  kind:
+    | "psychologists"
+    | "psychiatrists"
+    | "community"
+    | "training"
+    | "trips"
+    | "law"
+    | "navimind";
   title: string;
   desc: string;
   href: (city: string) => string;
@@ -28,20 +31,10 @@ const STATES: { key: StateKey; label: string; hint: string }[] = [
   { key: "ready", label: "Ready", hint: "Movement, people, experiences. No overthinking." },
 ];
 
-const CITIES: City[] = [
-  { key: "online", label: "Online" },
-  { key: "warsaw", label: "Warsaw" },
-  { key: "krakow", label: "Kraków" },
-  { key: "wroclaw", label: "Wrocław" },
-  { key: "poznan", label: "Poznań" },
-  { key: "gdansk", label: "Gdańsk" },
-  { key: "lodz", label: "Łódź" },
-  { key: "katowice", label: "Katowice" },
-  { key: "szczecin", label: "Szczecin" },
-  { key: "lublin", label: "Lublin" },
-];
-
 const OFFERS: Offer[] = [
+  // ======================
+  // CRISIS (max 3)
+  // ======================
   {
     id: "broken-psychiatrists",
     state: "broken",
@@ -68,6 +61,151 @@ const OFFERS: Offer[] = [
     href: () => "/en/navimind?state=broken",
     badge: "Fast relief",
   },
+
+  // ======================
+  // BREAKUP (max 4)
+  // ======================
+  {
+    id: "breakup-community",
+    state: "breakup",
+    kind: "community",
+    title: "Community / closed groups",
+    desc: "People who get it. Less isolation, more air.",
+    href: (city) => `/en/spec/community?city=${city}`,
+  },
+  {
+    id: "breakup-navimind",
+    state: "breakup",
+    kind: "navimind",
+    title: "Navimind (talk)",
+    desc: "Stabilize after breakup and regain direction.",
+    href: () => "/en/navimind?state=breakup",
+    badge: "Right now",
+  },
+  {
+    id: "breakup-psychologists",
+    state: "breakup",
+    kind: "psychologists",
+    title: "Psychologists (support)",
+    desc: "When emotions flood you — a talk can save your week.",
+    href: (city) => `/en/spec/psychologists?city=${city}`,
+  },
+  {
+    id: "breakup-psychiatrists",
+    state: "breakup",
+    kind: "psychiatrists",
+    title: "Psychiatrists (medical support)",
+    desc: "If you don’t sleep, don’t eat, and feel like you’re drifting.",
+    href: (city) => `/en/spec/psychiatrists?city=${city}`,
+  },
+
+  // ======================
+  // BURNOUT (max 3)
+  // ======================
+  {
+    id: "empty-training",
+    state: "empty",
+    kind: "training",
+    title: "Training / movement",
+    desc: "Light up the body before you run 100 more mental loops.",
+    href: (city) => `/en/spec/training?city=${city}`,
+    badge: "Reset",
+  },
+  {
+    id: "empty-community",
+    state: "empty",
+    kind: "community",
+    title: "Community / closed groups",
+    desc: "People first. Isolation feeds burnout.",
+    href: (city) => `/en/spec/community?city=${city}`,
+  },
+  {
+    id: "empty-navimind",
+    state: "empty",
+    kind: "navimind",
+    title: "Navimind (talk)",
+    desc: "If you feel there’s no point — we rebuild direction from zero.",
+    href: () => "/en/navimind?state=empty",
+  },
+
+  // ======================
+  // PRESSURE (max 3)
+  // ======================
+  {
+    id: "pressure-navimind",
+    state: "pressure",
+    kind: "navimind",
+    title: "Navimind (talk)",
+    desc: "Calm your nervous system and reduce chaos fast.",
+    href: () => "/en/navimind?state=pressure",
+    badge: "Fast",
+  },
+  {
+    id: "pressure-training",
+    state: "pressure",
+    kind: "training",
+    title: "Training / movement",
+    desc: "Cut tension physically. Works better than you think.",
+    href: (city) => `/en/spec/training?city=${city}`,
+  },
+  {
+    id: "pressure-psychologists",
+    state: "pressure",
+    kind: "psychologists",
+    title: "Psychologists (support)",
+    desc: "When pressure grinds you down — clarity helps.",
+    href: (city) => `/en/spec/psychologists?city=${city}`,
+  },
+
+  // ======================
+  // FATHERHOOD (max 3)
+  // ======================
+  {
+    id: "father-law",
+    state: "father",
+    kind: "law",
+    title: "Law / mediation",
+    desc: "Practical steps, agreements, and peace on paper.",
+    href: (city) => `/en/spec/law?city=${city}`,
+    badge: "Practical",
+  },
+  {
+    id: "father-community",
+    state: "father",
+    kind: "community",
+    title: "Community / closed groups",
+    desc: "Support from men who understand fatherhood in real life.",
+    href: (city) => `/en/spec/community?city=${city}`,
+  },
+  {
+    id: "father-psychologists",
+    state: "father",
+    kind: "psychologists",
+    title: "Psychologists (support)",
+    desc: "Presence, calm, boundaries. No pressure.",
+    href: (city) => `/en/spec/psychologists?city=${city}`,
+  },
+
+  // ======================
+  // READY (max 2)
+  // ======================
+  {
+    id: "ready-trips",
+    state: "ready",
+    kind: "trips",
+    title: "Trips / activities",
+    desc: "Movement + people + new environment. No overthinking.",
+    href: (city) => `/en/spec/trips?city=${city}`,
+    badge: "One click",
+  },
+  {
+    id: "ready-training",
+    state: "ready",
+    kind: "training",
+    title: "Training / movement",
+    desc: "When you’re ready — the body does the rest.",
+    href: (city) => `/en/spec/training?city=${city}`,
+  },
 ];
 
 function Content({ searchParams }: { searchParams?: { state?: string; city?: string } }) {
@@ -79,7 +217,7 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
 
   const offers = OFFERS.filter((o) => o.state === state);
 
-  const currentCityLabel = CITIES.find((c) => c.key === city)?.label ?? "Online";
+  const currentCityLabel = CITIES_EN.find((c) => c.key === city)?.label ?? "Online";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -122,7 +260,7 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
             baseHref="/en/suggestions"
             state={state}
             city={city}
-            cities={CITIES}
+            cities={CITIES_EN}
             placeholder="Search city…"
             tip="Tip: type a city name (e.g. Warsaw)."
           />
@@ -137,12 +275,8 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-semibold text-zinc-100">
-                    {o.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                    {o.desc}
-                  </p>
+                  <h2 className="text-lg font-semibold text-zinc-100">{o.title}</h2>
+                  <p className="mt-2 text-sm text-zinc-400 leading-relaxed">{o.desc}</p>
                 </div>
 
                 {o.badge ? (

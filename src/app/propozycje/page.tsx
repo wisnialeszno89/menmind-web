@@ -1,19 +1,21 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import CitySearch from "../../components/suggestions/CitySearch";
-
+import { CITIES_PL } from "../../data/cities-pl";
 
 type StateKey = "broken" | "breakup" | "empty" | "pressure" | "father" | "ready";
-
-type City = {
-  key: string;
-  label: string;
-};
 
 type Offer = {
   id: string;
   state: StateKey;
-  kind: "psychologists" | "psychiatrists" | "community" | "training" | "trips" | "law" | "navimind";
+  kind:
+    | "psychologists"
+    | "psychiatrists"
+    | "community"
+    | "training"
+    | "trips"
+    | "law"
+    | "navimind";
   title: string;
   desc: string;
   href: (city: string) => string;
@@ -29,29 +31,10 @@ const STATES: { key: StateKey; label: string; hint: string }[] = [
   { key: "ready", label: "Po przejściach, gotowy", hint: "Ruch, ludzie, doświadczenia. Bez gadania." },
 ];
 
-const CITIES: City[] = [
-  { key: "online", label: "Online" },
-  { key: "warszawa", label: "Warszawa" },
-  { key: "krakow", label: "Kraków" },
-  { key: "wroclaw", label: "Wrocław" },
-  { key: "poznan", label: "Poznań" },
-  { key: "gdansk", label: "Gdańsk" },
-  { key: "szczecin", label: "Szczecin" },
-  { key: "lodz", label: "Łódź" },
-  { key: "katowice", label: "Katowice" },
-  { key: "lublin", label: "Lublin" },
-  { key: "bialystok", label: "Białystok" },
-  { key: "rzeszow", label: "Rzeszów" },
-  { key: "olsztyn", label: "Olsztyn" },
-  { key: "kielce", label: "Kielce" },
-  { key: "opole", label: "Opole" },
-  { key: "gorzow", label: "Gorzów Wielkopolski" },
-  { key: "zielonagora", label: "Zielona Góra" },
-  { key: "torun", label: "Toruń" },
-  { key: "bydgoszcz", label: "Bydgoszcz" },
-];
-
 const OFFERS: Offer[] = [
+  // ======================
+  // ROZSYPKA (max 3)
+  // ======================
   {
     id: "broken-psychiatrists",
     state: "broken",
@@ -79,13 +62,16 @@ const OFFERS: Offer[] = [
     badge: "Szybka ulga",
   },
 
+  // ======================
+  // ROZSTANIE (max 4)
+  // ======================
   {
     id: "breakup-community",
     state: "breakup",
     kind: "community",
     title: "Zamknięte grupy / fora",
     desc: "Nie tłumaczysz się. Ludzie rozumieją. Jest lżej oddychać.",
-    href: () => "/partners?tag=community",
+    href: (city) => `/spec/grupy?city=${city}`,
   },
   {
     id: "breakup-navimind",
@@ -113,14 +99,112 @@ const OFFERS: Offer[] = [
     href: (city) => `/spec/psychiatrzy?city=${city}`,
   },
 
+  // ======================
+  // PUSTKA (max 3)
+  // ======================
+  {
+    id: "empty-training",
+    state: "empty",
+    kind: "training",
+    title: "Trening / ruch",
+    desc: "Zapal ciało, zanim zrobisz 100 kolejnych analiz w głowie.",
+    href: (city) => `/spec/trening?city=${city}`,
+    badge: "Reset",
+  },
+  {
+    id: "empty-community",
+    state: "empty",
+    kind: "community",
+    title: "Zamknięte grupy / fora",
+    desc: "Najpierw ludzie. Potem reszta. Izolacja karmi pustkę.",
+    href: (city) => `/spec/grupy?city=${city}`,
+  },
+  {
+    id: "empty-navimind",
+    state: "empty",
+    kind: "navimind",
+    title: "Navimind (rozmowa)",
+    desc: "Gdy czujesz, że nie ma sensu — łapiemy kierunek od zera.",
+    href: () => "/navimind?state=empty",
+  },
+
+  // ======================
+  // PRESJA (max 3)
+  // ======================
+  {
+    id: "pressure-navimind",
+    state: "pressure",
+    kind: "navimind",
+    title: "Navimind (rozmowa)",
+    desc: "Uspokój układ nerwowy. Zredukuj chaos. Wróć na tor.",
+    href: () => "/navimind?state=pressure",
+    badge: "Szybko",
+  },
+  {
+    id: "pressure-training",
+    state: "pressure",
+    kind: "training",
+    title: "Trening / ruch",
+    desc: "Zbij napięcie fizycznie. To działa szybciej niż myślisz.",
+    href: (city) => `/spec/trening?city=${city}`,
+  },
+  {
+    id: "pressure-psychologists",
+    state: "pressure",
+    kind: "psychologists",
+    title: "Psychologowie (wsparcie)",
+    desc: "Jeśli presja Cię mieli, rozmowa robi porządek w głowie.",
+    href: (city) => `/spec/psychologowie?city=${city}`,
+  },
+
+  // ======================
+  // OJCOSTWO (max 3)
+  // ======================
+  {
+    id: "father-law",
+    state: "father",
+    kind: "law",
+    title: "Prawo / mediacje",
+    desc: "Kiedy trzeba ogarnąć konkrety i mieć spokój na papierze.",
+    href: (city) => `/spec/prawo?city=${city}`,
+    badge: "Konkret",
+  },
+  {
+    id: "father-community",
+    state: "father",
+    kind: "community",
+    title: "Zamknięte grupy / fora",
+    desc: "Wsparcie od ludzi, którzy ogarniają ojcostwo bez teorii.",
+    href: (city) => `/spec/grupy?city=${city}`,
+  },
+  {
+    id: "father-psychologists",
+    state: "father",
+    kind: "psychologists",
+    title: "Psychologowie (wsparcie)",
+    desc: "Obecność, spokój, granice. Bez napinki.",
+    href: (city) => `/spec/psychologowie?city=${city}`,
+  },
+
+  // ======================
+  // GOTOWY (max 2)
+  // ======================
   {
     id: "ready-trips",
     state: "ready",
     kind: "trips",
-    title: "Wyjazdy / aktywności męskie",
+    title: "Wyjazdy / aktywności",
     desc: "Ruch + ludzie + nowe środowisko. Bez spiny.",
-    href: () => "/partners?tag=trips",
+    href: (city) => `/spec/wyjazdy?city=${city}`,
     badge: "Jedno kliknięcie",
+  },
+  {
+    id: "ready-training",
+    state: "ready",
+    kind: "training",
+    title: "Trening / ruch",
+    desc: "Jak jesteś gotowy — ciało robi resztę.",
+    href: (city) => `/spec/trening?city=${city}`,
   },
 ];
 
@@ -133,7 +217,7 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
 
   const offers = OFFERS.filter((o) => o.state === state);
 
-  const currentCityLabel = CITIES.find((c) => c.key === city)?.label ?? "Online";
+  const currentCityLabel = CITIES_PL.find((c) => c.key === city)?.label ?? "Online";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -176,9 +260,9 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
             baseHref="/propozycje"
             state={state}
             city={city}
-            cities={CITIES}
+            cities={CITIES_PL}
             placeholder="Szukaj miasta…"
-            tip="Tip: wpisz nazwę miasta (np. Rzeszów)."
+            tip="Tip: wpisz nazwę miasta (np. Leszno)."
           />
         </header>
 
@@ -191,12 +275,8 @@ function Content({ searchParams }: { searchParams?: { state?: string; city?: str
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-semibold text-zinc-100">
-                    {o.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                    {o.desc}
-                  </p>
+                  <h2 className="text-lg font-semibold text-zinc-100">{o.title}</h2>
+                  <p className="mt-2 text-sm text-zinc-400 leading-relaxed">{o.desc}</p>
                 </div>
 
                 {o.badge ? (

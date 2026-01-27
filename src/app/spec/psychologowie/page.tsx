@@ -1,22 +1,10 @@
 import Link from "next/link";
 import { Suspense } from "react";
-
-const CITIES = [
-  { key: "online", label: "Online" },
-  { key: "warszawa", label: "Warszawa" },
-  { key: "krakow", label: "Kraków" },
-  { key: "wroclaw", label: "Wrocław" },
-  { key: "poznan", label: "Poznań" },
-  { key: "gdansk", label: "Gdańsk" },
-  { key: "lodz", label: "Łódź" },
-  { key: "katowice", label: "Katowice" },
-  { key: "szczecin", label: "Szczecin" },
-  { key: "lublin", label: "Lublin" },
-];
+import { CITIES_PL } from "../../../data/cities-pl";
 
 function Content({ searchParams }: { searchParams?: { city?: string } }) {
   const city = searchParams?.city ?? "online";
-  const cityLabel = CITIES.find((c) => c.key === city)?.label ?? "Online";
+  const cityLabel = CITIES_PL.find((c) => c.key === city)?.label ?? "Online";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -29,18 +17,19 @@ function Content({ searchParams }: { searchParams?: { city?: string } }) {
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            To kierunek, kiedy chcesz pogadać, złapać klarowność i zacząć wracać do stabilności.
-            Bez wstydu. Bez etykiet.
+            To kierunek, kiedy chcesz pogadać, złapać klarowność i zacząć wracać
+            do stabilności. Bez wstydu. Bez etykiet.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <p className="text-sm text-zinc-400">
-            Lokalizacja: <span className="text-zinc-200 font-medium">{cityLabel}</span>
+            Lokalizacja:{" "}
+            <span className="text-zinc-200 font-medium">{cityLabel}</span>
           </p>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            {CITIES.map((c) => {
+            {CITIES_PL.map((c) => {
               const active = c.key === city;
               return (
                 <Link
@@ -92,7 +81,7 @@ function Content({ searchParams }: { searchParams?: { city?: string } }) {
 
           <div className="mt-8">
             <Link
-              href="/propozycje?state=broken&city=online"
+              href={`/propozycje?state=broken&city=${city}`}
               className="text-sm text-cyan-200 hover:text-cyan-100 transition"
             >
               ← Wróć do Propozycji
