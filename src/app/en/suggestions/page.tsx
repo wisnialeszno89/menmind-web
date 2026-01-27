@@ -10,176 +10,230 @@ type StateKey =
   | "father"
   | "ready";
 
-type OfferKind =
-  | "psychologists"
-  | "psychiatrists"
-  | "community"
-  | "training"
-  | "trips"
-  | "law"
-  | "navimind"
-  | "activities";
-
 type Offer = {
   id: string;
   state: StateKey;
-  kind: OfferKind;
+  kind:
+    | "psychologists"
+    | "psychiatrists"
+    | "community"
+    | "training"
+    | "trips"
+    | "law"
+    | "places"
+    | "navimind";
   title: string;
   desc: string;
   href: () => string;
   badge?: string;
 };
 
-const STATES: { key: StateKey; label: string; hint: string }[] = [
-  { key: "broken", label: "Crisis", hint: "Basics first + help if needed." },
+const STATES: {
+  key: StateKey;
+  label: string;
+  hint: string;
+  extra?: string;
+}[] = [
   {
     key: "breakup",
-    label: "Breakup",
-    hint: "We won’t assume your mental state. We show all available options.",
+    label: "After a breakup",
+    hint: "Stabilize first. Decisions later. You don’t have to carry this alone.",
+    extra:
+      "It’s normal to feel a mix: emptiness / anger / relief / longing. That’s not weakness — it’s a process.",
   },
   {
     key: "relationship",
     label: "Relationship conflict",
-    hint: "Fights and tension. Talk first — stop escalation.",
+    hint: "Arguments, tension, chaos. Stop escalation and rebuild communication + boundaries.",
+    extra:
+      "If you keep looping the same fight — you don’t need to win. You need calm and structure.",
   },
-  { key: "empty", label: "Burnout", hint: "Recovery + people + energy." },
-  { key: "pressure", label: "Pressure", hint: "Calm the system and regain direction." },
-  { key: "father", label: "Fatherhood", hint: "Boundaries, agreements, calm. Practical steps." },
-  { key: "ready", label: "Ready", hint: "Movement, environment, men’s activities." },
+  {
+    key: "pressure",
+    label: "Pressure",
+    hint: "Too much on your mind. Calm your system and regain direction.",
+    extra:
+      "Pressure loves silence inside. Your brain brings noise. Body first, plan second.",
+  },
+  {
+    key: "empty",
+    label: "Burnout / emptiness",
+    hint: "Biological + mental recovery, people, and energy coming back.",
+    extra:
+      "You don’t need meaning today. You need small movement and small connection.",
+  },
+  {
+    key: "father",
+    label: "Fatherhood",
+    hint: "Presence, calm, boundaries. No pressure.",
+    extra:
+      "This is not about ego. It’s about stability — for the child and for you.",
+  },
+  {
+    key: "ready",
+    label: "Ready for change",
+    hint: "Movement, new environment, people. No overthinking.",
+    extra:
+      "You have fuel. Now you burn it well: consistency + new input + fresh environment.",
+  },
+  {
+    key: "broken",
+    label: "Crisis",
+    hint: "Basics first + help if needed.",
+    extra:
+      "If you don’t sleep or eat — this is not an ambition moment. This is a base-rebuild moment.",
+  },
 ];
 
 const OFFERS: Offer[] = [
-  // ======================
-  // CRISIS (max 3)
-  // ======================
-  {
-    id: "broken-psychiatrists",
-    state: "broken",
-    kind: "psychiatrists",
-    title: "Psychiatrists (medical support)",
-    desc: "When symptoms are too strong and sleep collapses.",
-    href: () => `/en/spec/psychiatrists`,
-    badge: "Priority",
-  },
-  {
-    id: "broken-psychologists",
-    state: "broken",
-    kind: "psychologists",
-    title: "Psychologists (support)",
-    desc: "Talk, clarity, emotional stability.",
-    href: () => `/en/spec/psychologists`,
-  },
-  {
-    id: "broken-navimind",
-    state: "broken",
-    kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "Unload the chaos and find direction — no judgment.",
-    href: () => "/en/navimind?state=broken",
-    badge: "Start",
-  },
-
-  // ======================
-  // BREAKUP (ALL)
-  // ======================
+  // =========================================
+  // BREAKUP — full set, clean order
+  // =========================================
   {
     id: "breakup-navimind",
     state: "breakup",
     kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "Stabilize after breakup and regain direction.",
+    title: "Navimind (talk it out)",
+    desc: "Unload the chaos and get direction — no judgment.",
     href: () => "/en/navimind?state=breakup",
-    badge: "Start",
-  },
-  {
-    id: "breakup-psychologists",
-    state: "breakup",
-    kind: "psychologists",
-    title: "Psychologists (support)",
-    desc: "When emotions flood you or your mind loops.",
-    href: () => `/en/spec/psychologists`,
-  },
-  {
-    id: "breakup-psychiatrists",
-    state: "breakup",
-    kind: "psychiatrists",
-    title: "Psychiatrists (medical support)",
-    desc: "If you can’t sleep or eat and feel like you’re drifting.",
-    href: () => `/en/spec/psychiatrists`,
+    badge: "Start here",
   },
   {
     id: "breakup-community",
     state: "breakup",
     kind: "community",
     title: "Community / closed groups",
-    desc: "Less isolation. People who get it.",
-    href: () => `/en/spec/community`,
+    desc: "People who get it. Less isolation, more air.",
+    href: () => "/en/spec/community",
   },
   {
     id: "breakup-training",
     state: "breakup",
     kind: "training",
     title: "Training / sport",
-    desc: "Regulate tension through the body. Works fast.",
-    href: () => `/en/spec/training`,
+    desc: "Kill the mental loop through the body. Simple and effective.",
+    href: () => "/en/spec/training",
+    badge: "Reset",
   },
   {
     id: "breakup-trips",
     state: "breakup",
     kind: "trips",
-    title: "Men’s trips: reset + outdoor",
-    desc: "New environment and structure. No overthinking.",
-    href: () => `/en/spec/trips`,
+    title: "Trips / outdoor / change environment",
+    desc: "Sometimes the best therapy is new air and a new rhythm.",
+    href: () => "/en/spec/trips",
+  },
+  {
+    id: "breakup-psychologists",
+    state: "breakup",
+    kind: "psychologists",
+    title: "Psychologists (optional)",
+    desc: "If you’re drowning — a structured talk helps a lot.",
+    href: () => "/en/spec/psychologists",
+  },
+  {
+    id: "breakup-psychiatrists",
+    state: "breakup",
+    kind: "psychiatrists",
+    title: "Psychiatrists (if it’s really heavy)",
+    desc: "When sleep collapses and symptoms are too strong.",
+    href: () => "/en/spec/psychiatrists",
+    badge: "Priority",
   },
   {
     id: "breakup-law",
     state: "breakup",
     kind: "law",
-    title: "Legal help (if agreements matter)",
-    desc: "Structure and boundaries when things get formal.",
-    href: () => `/en/spec/law`,
+    title: "Law / mediation (if needed)",
+    desc: "Child / assets / conflict. Paper can create peace.",
+    href: () => "/en/spec/law",
   },
 
-  // ======================
-  // RELATIONSHIP CONFLICT (max 2)
-  // ======================
+  // =========================================
+  // RELATIONSHIP CONFLICT
+  // =========================================
   {
     id: "relationship-navimind",
     state: "relationship",
     kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "Stop escalation. Rebuild communication and boundaries.",
+    title: "Navimind (calm + boundaries)",
+    desc: "When you keep fighting. Stop escalation and rebuild communication.",
     href: () => "/en/navimind?state=relationship",
-    badge: "First",
+    badge: "Right now",
+  },
+  {
+    id: "relationship-community",
+    state: "relationship",
+    kind: "community",
+    title: "Community / closed groups",
+    desc: "Support without shame. Real experience, not lectures.",
+    href: () => "/en/spec/community",
   },
   {
     id: "relationship-psychologists",
     state: "relationship",
     kind: "psychologists",
     title: "Psychologists (support)",
-    desc: "When the tension lasts and the pattern repeats.",
-    href: () => `/en/spec/psychologists`,
+    desc: "Neutral perspective + plan. No drama, no tug-of-war.",
+    href: () => "/en/spec/psychologists",
   },
 
-  // ======================
-  // BURNOUT (max 3)
-  // ======================
+  // =========================================
+  // PRESSURE
+  // =========================================
+  {
+    id: "pressure-navimind",
+    state: "pressure",
+    kind: "navimind",
+    title: "Navimind (calm + direction)",
+    desc: "Calm your system and get back to the wheel.",
+    href: () => "/en/navimind?state=pressure",
+    badge: "Fast",
+  },
+  {
+    id: "pressure-training",
+    state: "pressure",
+    kind: "training",
+    title: "Training / sport",
+    desc: "Cut tension physically. Faster than analysis.",
+    href: () => "/en/spec/training",
+  },
+  {
+    id: "pressure-community",
+    state: "pressure",
+    kind: "community",
+    title: "Support groups / community",
+    desc: "You don’t have to hold pressure alone.",
+    href: () => "/en/spec/community",
+  },
+
+  // =========================================
+  // BURNOUT / EMPTY
+  // =========================================
   {
     id: "empty-training",
     state: "empty",
     kind: "training",
-    title: "Training / sport",
-    desc: "Move your body before your mind runs 100 more loops.",
-    href: () => `/en/spec/training`,
-    badge: "Reset",
+    title: "Training / sport (light)",
+    desc: "Minimum movement. Maximum return.",
+    href: () => "/en/spec/training",
+    badge: "Base",
+  },
+  {
+    id: "empty-trips",
+    state: "empty",
+    kind: "trips",
+    title: "Trips / change environment",
+    desc: "Burnout often improves when your rhythm changes.",
+    href: () => "/en/spec/trips",
   },
   {
     id: "empty-community",
     state: "empty",
     kind: "community",
-    title: "Community / closed groups",
-    desc: "People first. Isolation feeds burnout.",
-    href: () => `/en/spec/community`,
+    title: "Community / people",
+    desc: "Isolation feeds burnout. People weaken it.",
+    href: () => "/en/spec/community",
   },
   {
     id: "empty-navimind",
@@ -189,100 +243,109 @@ const OFFERS: Offer[] = [
     desc: "If nothing makes sense — we rebuild direction from zero.",
     href: () => "/en/navimind?state=empty",
   },
-
-  // ======================
-  // PRESSURE (NO law / NO psychiatry)
-  // ======================
   {
-    id: "pressure-navimind",
-    state: "pressure",
-    kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "Calm your nervous system and reduce chaos fast.",
-    href: () => "/en/navimind?state=pressure",
-    badge: "Fast",
-  },
-  {
-    id: "pressure-training",
-    state: "pressure",
-    kind: "training",
-    title: "Training / sport",
-    desc: "Cut tension physically. Works better than you think.",
-    href: () => `/en/spec/training`,
-  },
-  {
-    id: "pressure-psychologists",
-    state: "pressure",
+    id: "empty-psychologists",
+    state: "empty",
     kind: "psychologists",
-    title: "Psychologists (support)",
-    desc: "Clarity and structure when pressure grinds you down.",
-    href: () => `/en/spec/psychologists`,
+    title: "Psychologists (optional)",
+    desc: "If you’ve been stuck for too long — clarity helps.",
+    href: () => "/en/spec/psychologists",
   },
 
-  // ======================
-  // FATHERHOOD (3) — practical + chat
-  // ======================
-  {
-    id: "father-navimind",
-    state: "father",
-    kind: "navimind",
-    title: "Navimind (talk)",
-    desc: "One boundary. One next step. Calm and practical.",
-    href: () => "/en/navimind?state=father",
-    badge: "Practical",
-  },
+  // =========================================
+  // FATHERHOOD
+  // =========================================
   {
     id: "father-law",
     state: "father",
     kind: "law",
     title: "Law / mediation",
-    desc: "Agreements, structure and peace on paper.",
-    href: () => `/en/spec/law`,
+    desc: "Agreements, boundaries and peace on paper.",
+    href: () => "/en/spec/law",
+    badge: "Practical",
   },
   {
-    id: "father-psychologists",
+    id: "father-community",
     state: "father",
-    kind: "psychologists",
-    title: "Psychologists (support)",
-    desc: "Emotions, communication, boundaries. No pressure.",
-    href: () => `/en/spec/psychologists`,
+    kind: "community",
+    title: "Support groups / fathers",
+    desc: "Support from men who understand fatherhood in real life.",
+    href: () => "/en/spec/community",
+  },
+  {
+    id: "father-navimind",
+    state: "father",
+    kind: "navimind",
+    title: "Navimind (calm + direction)",
+    desc: "If emotions are chaotic — we get calm and boundaries back.",
+    href: () => "/en/navimind?state=father",
   },
 
-  // ======================
-  // READY (max 3)
-  // ======================
+  // =========================================
+  // READY
+  // =========================================
   {
     id: "ready-trips",
     state: "ready",
     kind: "trips",
-    title: "Men’s trips: reset + outdoor",
-    desc: "Movement + people + new environment. No overthinking.",
-    href: () => `/en/spec/trips`,
-    badge: "Top",
+    title: "Trips / outdoor / men’s activities",
+    desc: "New environment. New people. Reset and momentum.",
+    href: () => "/en/spec/trips",
+    badge: "Start",
   },
   {
-    id: "ready-community",
+    id: "ready-training",
     state: "ready",
-    kind: "community",
-    title: "Community / closed groups",
-    desc: "Your environment matters. Find your people.",
-    href: () => `/en/spec/community`,
+    kind: "training",
+    title: "Training / sport",
+    desc: "Momentum comes from repetition, not motivation.",
+    href: () => "/en/spec/training",
   },
   {
-    id: "ready-activities",
+    id: "ready-places",
     state: "ready",
-    kind: "activities",
-    title: "Other activities (list)",
-    desc: "Sport, routine, outdoor. Simple things that build calm.",
-    href: () => `/en/spec/trips`,
+    kind: "places",
+    title: "Places / meetups / new environment",
+    desc: "Clubs, restaurants, public places — we’ll add curated options soon.",
+    href: () => "/en/partners?tag=community",
+    badge: "Soon",
+  },
+
+  // =========================================
+  // CRISIS
+  // =========================================
+  {
+    id: "broken-navimind",
+    state: "broken",
+    kind: "navimind",
+    title: "Navimind (first aid)",
+    desc: "Stop the chaos and breathe. No judgment.",
+    href: () => "/en/navimind?state=broken",
+    badge: "Start here",
+  },
+  {
+    id: "broken-psychologists",
+    state: "broken",
+    kind: "psychologists",
+    title: "Psychologists (support)",
+    desc: "Talk, clarity, and minimal stability.",
+    href: () => "/en/spec/psychologists",
+  },
+  {
+    id: "broken-psychiatrists",
+    state: "broken",
+    kind: "psychiatrists",
+    title: "Psychiatrists (medical support)",
+    desc: "When symptoms are too strong and sleep collapses.",
+    href: () => "/en/spec/psychiatrists",
+    badge: "Priority",
   },
 ];
 
 function Content({ searchParams }: { searchParams?: { state?: string } }) {
-  const state = (searchParams?.state as StateKey) ?? "broken";
+  const state = (searchParams?.state as StateKey) ?? "breakup";
 
-  const stateLabel = STATES.find((s) => s.key === state)?.label ?? "Crisis";
-  const stateHint = STATES.find((s) => s.key === state)?.hint ?? "";
+  const current = STATES.find((s) => s.key === state) ?? STATES[0];
   const offers = OFFERS.filter((o) => o.state === state);
 
   return (
@@ -292,12 +355,22 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
           <p className="text-base text-zinc-300">MenMind · suggestions</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            Suggestions: {stateLabel}
+            Suggestions
           </h1>
 
-          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">
-            {stateHint}
+          <p className="mt-2 text-lg text-zinc-200 leading-relaxed">
+            {current.label}
           </p>
+
+          <p className="mt-4 text-base text-zinc-300 leading-relaxed">
+            {current.hint}
+          </p>
+
+          {current.extra ? (
+            <p className="mt-3 text-sm text-zinc-500 leading-relaxed">
+              {current.extra}
+            </p>
+          ) : null}
 
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
@@ -374,9 +447,7 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
   );
 }
 
-export default function SuggestionsPageEN(props: {
-  searchParams?: { state?: string };
-}) {
+export default function SuggestionsPageEN(props: { searchParams?: { state?: string } }) {
   return (
     <Suspense>
       <Content {...props} />
