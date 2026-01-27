@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 
 export const metadata = {
-  title: "Waypoint",
+  title: "MenMind",
   description: "Punkt orientacyjny dla facetów w drodze",
 };
 

@@ -37,7 +37,7 @@ export default function TripsPage() {
 
       <div className="mt-12 border-t border-zinc-800 pt-8">
         <p className="text-zinc-400 mb-4">
-          Niektóre inicjatywy są płatne. Część współpracuje z Waypoint.
+          Niektóre inicjatywy są płatne. Część współpracuje z MenMind.
         </p>
 
         <Link

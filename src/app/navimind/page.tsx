@@ -7,7 +7,7 @@ function NavimindContent({ searchParams }: { searchParams?: { state?: string } }
     <main className="min-h-[100dvh] px-6 py-12 md:py-16">
       <div className="mx-auto max-w-6xl">
         <header className="mb-8">
-          <p className="text-base text-zinc-300">Waypoint · rozmowa</p>
+          <p className="text-base text-zinc-300">MenMind · rozmowa</p>
 
           <h1 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
             Zatrzymaj się na chwilę

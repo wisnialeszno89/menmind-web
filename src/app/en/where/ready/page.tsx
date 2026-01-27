@@ -5,7 +5,7 @@ export default function WhereReadyPageEN() {
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
-          <p className="text-sm text-zinc-400">Waypoint · state</p>
+          <p className="text-sm text-zinc-400">MenMind · state</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             I’ve been through a lot — I’m ready

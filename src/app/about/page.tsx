@@ -3,10 +3,10 @@ export default function AboutPage() {
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-10">
-          <p className="text-sm text-zinc-400">Waypoint · o projekcie</p>
+          <p className="text-sm text-zinc-400">MenMind · o projekcie</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            Po co istnieje <span className="text-cyan-300">Waypoint</span>
+            Po co istnieje <span className="text-cyan-300">MenMind</span>
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
@@ -18,7 +18,7 @@ export default function AboutPage() {
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <div className="space-y-6 text-zinc-300 leading-relaxed">
             <p>
-              Waypoint powstał z prostego powodu: wielu facetów trafia w moment,
+              MenMind powstał z prostego powodu: wielu facetów trafia w moment,
               w którym stare sposoby przestają działać, a nowe jeszcze się nie
               pojawiły.
             </p>
@@ -34,7 +34,7 @@ export default function AboutPage() {
             </p>
 
             <p className="text-zinc-100 font-medium">
-              Waypoint nie robi żadnej z tych rzeczy.
+              MenMind nie robi żadnej z tych rzeczy.
             </p>
 
             <p>
@@ -43,7 +43,7 @@ export default function AboutPage() {
             </p>
 
             <p>
-              Waypoint to punkt orientacyjny. Miejsce, w którym możesz na chwilę
+              MenMind to punkt orientacyjny. Miejsce, w którym możesz na chwilę
               zatrzymać się i zobaczyć, gdzie jesteś — bez ocen.
             </p>
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
             </p>
 
             <p className="mt-2 text-sm text-zinc-500">
-              Waypoint szanuje prywatność, bo bez niej nie ma zaufania.
+              MenMind szanuje prywatność, bo bez niej nie ma zaufania.
             </p>
           </div>
         </section>
