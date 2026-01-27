@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 export default function PartnershipPL() {
+  const formUrl = process.env.NEXT_PUBLIC_PARTNER_FORM_URL_PL ?? "";
+
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
@@ -21,40 +23,75 @@ export default function PartnershipPL() {
           </h2>
 
           <p className="mt-2 text-sm text-zinc-400">
-            Poniżej jest formularz (możesz dodać plik: PDF / oferta / linki).
+            Podaj nazwę, opis, linki i miasto/online. Jeśli masz PDF/ofertę —
+            dorzuć. Im konkretniej, tym szybciej przejdzie weryfikacja.
           </p>
 
-          <div className="mt-6 w-full h-[70vh] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950/30">
-            <iframe
-              title="Partner form"
-              // ✅ TU PODMIENISZ NA SWOJ LINK Z TALLY/TYPEFORM
-              src="https://tally.so/r/XXXXXXXX"
-              className="w-full h-full border-0"
-            />
-          </div>
+          {!formUrl ? (
+            <div className="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
+              <p className="text-sm text-zinc-300">
+                Formularz nie jest jeszcze podpięty.
+              </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              href="/partners"
-              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
-            >
-              ← Wróć do partnerów
-            </Link>
+              <p className="mt-2 text-sm text-zinc-500">
+                Ustaw{" "}
+                <span className="text-zinc-200 font-medium">
+                  NEXT_PUBLIC_PARTNER_FORM_URL_PL
+                </span>{" "}
+                w .env i wróć tutaj.
+              </p>
 
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
-            >
-              Strona główna →
-            </Link>
-          </div>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href="/partners"
+                  className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+                >
+                  ← Wróć do partnerów
+                </Link>
 
-          <p className="mt-6 text-xs text-zinc-500">
-            Weryfikujemy zgłoszenia ręcznie. Nie publikujemy wszystkiego.
-          </p>
+                <Link
+                  href="/"
+                  className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
+                >
+                  Strona główna →
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="mt-6 w-full h-[70vh] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-950/30">
+                <iframe
+                  title="Partner form"
+                  src={formUrl}
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                  allow="clipboard-write; fullscreen"
+                />
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/partners"
+                  className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+                >
+                  ← Wróć do partnerów
+                </Link>
+
+                <Link
+                  href="/"
+                  className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
+                >
+                  Strona główna →
+                </Link>
+              </div>
+
+              <p className="mt-6 text-xs text-zinc-500">
+                Weryfikujemy zgłoszenia ręcznie. Nie publikujemy wszystkiego.
+              </p>
+            </>
+          )}
         </section>
       </div>
     </main>
   );
 }
-
