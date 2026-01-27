@@ -1,40 +1,40 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { CITIES_PL } from "../../../data/cities-pl";
+import { CITIES_EN } from "../../../../data/cities-en";
 
 function Content({ searchParams }: { searchParams?: { city?: string } }) {
   const city = searchParams?.city ?? "online";
-  const cityLabel = CITIES_PL.find((c) => c.key === city)?.label ?? "Online";
+  const cityLabel = CITIES_EN.find((c) => c.key === city)?.label ?? "Online";
 
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
-          <p className="text-sm text-zinc-400">Waypoint · wsparcie</p>
+          <p className="text-sm text-zinc-400">Waypoint · experiences</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            Psychiatrzy
+            Trips / activities
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            To kierunek, kiedy objawy są za duże, sen się sypie i organizm nie ciągnie.
-            Leczenie to narzędzie. Nie etykieta.
+            This direction is for when you’re ready for movement and a new
+            environment. Less talk, more real life: people, energy, experiences.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <p className="text-sm text-zinc-400">
-            Lokalizacja:{" "}
+            Location:{" "}
             <span className="text-zinc-200 font-medium">{cityLabel}</span>
           </p>
 
           <div className="mt-4 flex flex-wrap gap-2">
-            {CITIES_PL.map((c) => {
+            {CITIES_EN.map((c) => {
               const active = c.key === city;
               return (
                 <Link
                   key={c.key}
-                  href={`/spec/psychiatrzy?city=${c.key}`}
+                  href={`/en/spec/trips?city=${c.key}`}
                   className={[
                     "rounded-full px-3 py-2 text-sm transition",
                     active
@@ -50,41 +50,41 @@ function Content({ searchParams }: { searchParams?: { city?: string } }) {
 
           <div className="mt-8 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
             <h2 className="text-lg font-semibold text-zinc-100">
-              Lista lekarzy (wkrótce)
+              Verified list (coming soon)
             </h2>
 
             <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-              Jeszcze nie mamy gotowej listy. W kolejnych wersjach dodamy:
-              online / miasta / szybkie opcje.
+              Soon: weekend trips, trekking, sports, men’s activities and real
+              events — filtered by city.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href="/navimind?state=broken"
+                href="/en/navimind?state=ready"
                 className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
               >
-                Chcę pogadać →
+                I want to talk →
               </Link>
 
               <Link
-                href="/partnerstwo"
+                href="/en/partnership"
                 className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
               >
-                Zgłoś lekarza →
+                Submit an organizer →
               </Link>
             </div>
 
             <p className="mt-5 text-xs text-zinc-500">
-              Docelowo: selekcja + klarowne zasady + brak spamu.
+              Only real options. No spam.
             </p>
           </div>
 
           <div className="mt-8">
             <Link
-              href={`/propozycje?state=broken&city=${city}`}
+              href={`/en/suggestions?state=ready&city=${city}`}
               className="text-sm text-cyan-200 hover:text-cyan-100 transition"
             >
-              ← Wróć do Propozycji
+              ← Back to Suggestions
             </Link>
           </div>
         </section>
@@ -93,7 +93,7 @@ function Content({ searchParams }: { searchParams?: { city?: string } }) {
   );
 }
 
-export default function PsychiatrzyPage(props: { searchParams?: { city?: string } }) {
+export default function TripsPageEN(props: { searchParams?: { city?: string } }) {
   return (
     <Suspense>
       <Content {...props} />
