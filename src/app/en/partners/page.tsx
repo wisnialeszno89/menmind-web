@@ -12,93 +12,81 @@ type Partner = {
 };
 
 const PARTNERS: Partner[] = [
+  // ✅ Trips
   {
-    name: "MenMind Trips",
-    title: "Men’s trips: reset + outdoors",
+    name: "MenMind",
+    title: "Men’s trips: reset + outdoor",
     desc: "Expeditions, hiking, nature, simple structure. For men who need movement and a change of environment.",
-    tags: ["trips", "ready"],
-    cta: "Explore trips",
-    href: "#",
+    tags: ["trips", "ready", "breakup"],
+    cta: "Open trips",
+    href: "/en/spec/trips",
     note: "Coming soon: verified organizers",
   },
+
+  // ✅ Training / sport
   {
-    name: "Training / Combat",
-    title: "Training & martial arts",
-    desc: "Body + mind. Consistency brings back energy, calm and confidence.",
-    tags: ["training", "ready", "pressure", "empty"],
-    cta: "See options",
-    href: "#",
+    name: "MenMind",
+    title: "Training / sport",
+    desc: "Body first. Consistency brings back energy, calm and confidence.",
+    tags: ["training", "ready", "pressure", "empty", "breakup"],
+    cta: "Open training",
+    href: "/en/spec/training",
     note: "Coming soon: gyms & coaches",
   },
+
+  // ✅ Community
   {
-    name: "Fatherhood Support",
-    title: "Fatherhood: presence & communication",
-    desc: "Practical tools and support for fathers. No judgment. No guru vibe.",
-    tags: ["fatherhood", "father"],
-    cta: "Explore support",
-    href: "#",
-    note: "Coming soon",
-  },
-  {
-    name: "Co-parenting",
-    title: "Boundaries & co-parenting",
-    desc: "Clear agreements, calmer communication, less conflict. Protect the child and yourself.",
-    tags: ["co-parenting", "father", "law"],
-    cta: "See options",
-    href: "#",
+    name: "MenMind",
+    title: "Private groups / forums",
+    desc: "Sometimes you don’t need advice. You need people who get it.",
+    tags: ["community", "broken", "breakup", "empty", "father", "ready"],
+    cta: "Open community",
+    href: "/en/spec/community",
     note: "Coming soon",
   },
 
   // ✅ Psychologists
   {
-    name: "Psychological support",
+    name: "MenMind",
     title: "Psychologists (talk + clarity)",
     desc: "When you need to talk, untangle emotions and regain stability. No shame.",
-    tags: ["psychologists", "father", "pressure", "broken", "breakup", "empty"],
-    cta: "See options",
-    href: "#",
-    note: "Coming soon: vetted specialists",
+    tags: ["psychologists", "father", "pressure", "broken", "breakup", "empty", "relationship"],
+    cta: "Open psychologists",
+    href: "/en/spec/psychologists",
+    note: "Verified list coming soon",
   },
 
   // ✅ Psychiatrists
   {
-    name: "Medical support",
-    title: "Psychiatrists (when it’s really heavy)",
-    desc: "For moments when symptoms are too strong, sleep collapses and your body can’t carry it. Treatment, not weakness.",
-    tags: ["psychiatrists", "father", "pressure", "broken", "breakup", "empty"],
-    cta: "See options",
-    href: "#",
+    name: "MenMind",
+    title: "Psychiatrists (medical support)",
+    desc: "When symptoms are too strong, sleep collapses and your body can’t carry it. Treatment is a tool — not weakness.",
+    tags: ["psychiatrists", "broken", "breakup"],
+    cta: "Open psychiatrists",
+    href: "/en/spec/psychiatrists",
+    note: "Verified list coming soon",
+  },
+
+  // ✅ Law / mediation
+  {
+    name: "MenMind",
+    title: "Legal support (fatherhood / agreements)",
+    desc: "Practical steps, agreements and calmer communication. Structure creates peace.",
+    tags: ["law", "father", "breakup"],
+    cta: "Open legal support",
+    href: "/en/spec/law",
     note: "Coming soon",
   },
 
+  // ✅ Navimind (always useful)
   {
-    name: "Legal support",
-    title: "Legal: fatherhood / agreements / conflict",
-    desc: "For men who want clarity and calm through structure and proper boundaries.",
-    tags: ["law", "father", "co-parenting"],
-    cta: "See options",
-    href: "#",
-    note: "Coming soon",
-  },
-
-  {
-    name: "Substances & alcohol",
-    title: "When you start escaping",
-    desc: "No preaching. Practical support when you slip into alcohol, substances or self-destruction.",
-    tags: ["addiction", "broken", "pressure", "breakup", "empty"],
-    cta: "Explore support",
-    href: "#",
-    note: "Coming soon",
-  },
-
-  {
-    name: "Community",
-    title: "Private groups / forums",
-    desc: "Sometimes you don’t need advice. You need people who get it.",
-    tags: ["community", "broken", "breakup", "empty", "father", "ready"],
-    cta: "See options",
-    href: "#",
-    note: "Coming soon",
+    name: "Navimind",
+    title: "Talk now (Navimind chat)",
+    desc: "If you need calm and direction right now — no judgment, no pressure.",
+    tags: ["navimind", "broken", "breakup", "empty", "pressure", "father", "ready", "relationship"],
+    cta: "Open chat",
+    href: "/en/navimind?state=unknown",
+    note: "Available now",
   },
 ];
 
@@ -111,22 +99,21 @@ const TAGS: { key: string; label: string }[] = [
   { key: "breakup", label: "Breakup" },
   { key: "broken", label: "Crisis" },
   { key: "empty", label: "Burnout" },
+  { key: "father", label: "Fatherhood" },
+  { key: "relationship", label: "Relationship" },
 
   // paths
   { key: "trips", label: "Trips" },
   { key: "training", label: "Training" },
   { key: "community", label: "Groups / forums" },
-  { key: "addiction", label: "Substances" },
-
-  // fatherhood
-  { key: "father", label: "Fatherhood" },
-  { key: "fatherhood", label: "Presence" },
-  { key: "co-parenting", label: "Boundaries" },
   { key: "law", label: "Legal" },
 
   // specialists
   { key: "psychologists", label: "Psychologists" },
   { key: "psychiatrists", label: "Psychiatrists" },
+
+  // tool
+  { key: "navimind", label: "Chat" },
 ];
 
 function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
@@ -174,8 +161,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            Active filter:{" "}
-            <span className="text-zinc-300">{activeTagLabel}</span>
+            Active filter: <span className="text-zinc-300">{activeTagLabel}</span>
           </p>
         </header>
 

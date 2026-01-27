@@ -4,51 +4,57 @@ import Link from "next/link";
 
 const OPTIONS_EN = [
   {
-    title: "I’m coming from a breakup",
-    desc: "Messy emotions, emptiness, longing — or relief. All at once.",
-    href: "/en/where/breakup",
+    title: "After a breakup",
+    desc: "It can be chaos, relief, emptiness — or a new start. We show all available options.",
+    href: "/en/suggestions?state=breakup",
     tag: "breakup",
   },
   {
-    title: "I’m falling apart",
-    desc: "I don’t know what’s next. I’m tired and overwhelmed.",
-    href: "/en/where/broken",
+    title: "I’m in crisis",
+    desc: "Too much happening at once. I need stability and fast support.",
+    href: "/en/suggestions?state=broken",
     tag: "crisis",
   },
   {
-    title: "I feel empty / burned out",
-    desc: "I’m here, but it doesn’t feel like living.",
-    href: "/en/where/empty",
+    title: "Relationship conflict",
+    desc: "Fights, tension, repeating patterns. Talk first — stop escalation.",
+    href: "/en/relationship-conflict",
+    tag: "relationship",
+  },
+  {
+    title: "Burnout / empty",
+    desc: "Life works, but it doesn’t feel alive. Movement + people first.",
+    href: "/en/suggestions?state=empty",
     tag: "burnout",
   },
   {
     title: "I’m under pressure",
-    desc: "Too much on my mind. Tension is rising. I need calm and direction.",
-    href: "/en/where/pressure",
+    desc: "Too much on my mind. Rising tension. I need calm and direction.",
+    href: "/en/suggestions?state=pressure",
     tag: "pressure",
   },
   {
-    title: "I’ve been through a lot — I’m ready",
-    desc: "Not perfect, but I’m back at the wheel. Time to rebuild momentum.",
-    href: "/en/where/ready",
-    tag: "move",
+    title: "Fatherhood",
+    desc: "Responsibility, boundaries, agreements, emotions. No chaos.",
+    href: "/en/suggestions?state=father",
+    tag: "father",
   },
   {
-    title: "This is about fatherhood",
-    desc: "Responsibility, emotions, boundaries, relationships.",
-    href: "/en/where/father",
-    tag: "father",
+    title: "Ready for change",
+    desc: "I’m back at the wheel. Movement + environment + men’s activities.",
+    href: "/en/suggestions?state=ready",
+    tag: "ready",
   },
 ];
 
 export default function WhereYouAreEN() {
   return (
     <section className="w-full">
-      <h2 className="text-lg md:text-xl font-semibold text-zinc-100">
+      <h2 className="text-xl md:text-2xl font-semibold text-zinc-100">
         Where are you right now?
       </h2>
 
-      <p className="mt-2 text-sm text-zinc-400">
+      <p className="mt-2 text-base text-zinc-300">
         Pick one. This is just a starting point — no judgment.
       </p>
 
@@ -57,17 +63,17 @@ export default function WhereYouAreEN() {
           <Link
             key={o.href}
             href={o.href}
-            className="group rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 text-left shadow-sm shadow-black/20 backdrop-blur transition hover:bg-zinc-900/40 hover:border-zinc-700"
+            className="group rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 text-left shadow-sm shadow-black/20 backdrop-blur transition hover:bg-zinc-900/40 hover:border-zinc-700"
           >
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-base font-semibold text-zinc-100">{o.title}</p>
+            <div className="flex items-start justify-between gap-3">
+              <p className="text-lg font-semibold text-zinc-100">{o.title}</p>
 
-              <span className="rounded-full bg-cyan-500/10 px-2 py-1 text-[11px] font-medium text-cyan-200 ring-1 ring-cyan-400/15">
+              <span className="shrink-0 rounded-full bg-cyan-500/10 px-2 py-1 text-[11px] font-medium text-cyan-200 ring-1 ring-cyan-400/15">
                 {o.tag}
               </span>
             </div>
 
-            <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+            <p className="mt-2 text-sm text-zinc-300 leading-relaxed">
               {o.desc}
             </p>
 
@@ -79,7 +85,7 @@ export default function WhereYouAreEN() {
       </div>
 
       <p className="mt-5 text-xs text-zinc-500">
-        No accounts. No judgment. No saved conversations.
+        No accounts. No saved conversations.
       </p>
     </section>
   );

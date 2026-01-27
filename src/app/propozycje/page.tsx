@@ -10,17 +10,20 @@ type StateKey =
   | "father"
   | "ready";
 
+type OfferKind =
+  | "psychologists"
+  | "psychiatrists"
+  | "community"
+  | "training"
+  | "trips"
+  | "law"
+  | "navimind"
+  | "activities";
+
 type Offer = {
   id: string;
   state: StateKey;
-  kind:
-    | "psychologists"
-    | "psychiatrists"
-    | "community"
-    | "training"
-    | "trips"
-    | "law"
-    | "navimind";
+  kind: OfferKind;
   title: string;
   desc: string;
   href: () => string;
@@ -28,17 +31,41 @@ type Offer = {
 };
 
 const STATES: { key: StateKey; label: string; hint: string }[] = [
-  { key: "broken", label: "Rozsypka", hint: "Minimalna stabilizacja + pomoc, jeśli trzeba." },
-  { key: "breakup", label: "Rozstanie", hint: "Nie rób destrukcyjnych ruchów. Stabilizuj bazę." },
+  {
+    key: "broken",
+    label: "Rozsypka",
+    hint: "Minimalna stabilizacja + pomoc, jeśli trzeba.",
+  },
+  {
+    key: "breakup",
+    label: "Rozstanie",
+    hint: "Nie zakładamy Twojego stanu. Pokażemy wszystkie sensowne opcje.",
+  },
   {
     key: "relationship",
-    label: "Kryzys w związku",
-    hint: "Kłótnie, napięcie, chaos. Zatrzymaj eskalację i wróć do rozmowy + granic.",
+    label: "Problem w związku",
+    hint: "Kłótnie i napięcie. Najpierw rozmowa i zatrzymanie eskalacji.",
   },
-  { key: "empty", label: "Pustka", hint: "Regeneracja + kontakt z ludźmi + powrót energii." },
-  { key: "pressure", label: "Presja", hint: "Uspokój układ nerwowy i wróć na tor." },
-  { key: "father", label: "Ojcostwo", hint: "Spokój, obecność, granice. Bez napinki." },
-  { key: "ready", label: "Po przejściach, gotowy", hint: "Ruch, ludzie, doświadczenia. Bez gadania." },
+  {
+    key: "empty",
+    label: "Pustka",
+    hint: "Regeneracja + kontakt z ludźmi + powrót energii.",
+  },
+  {
+    key: "pressure",
+    label: "Presja",
+    hint: "Uspokój układ nerwowy i wróć na tor.",
+  },
+  {
+    key: "father",
+    label: "Ojcostwo",
+    hint: "Spokój, obecność, granice. Konkrety bez chaosu.",
+  },
+  {
+    key: "ready",
+    label: "Gotowy",
+    hint: "Ruch, środowisko i męskie aktywności. Bez gadania.",
+  },
 ];
 
 const OFFERS: Offer[] = [
@@ -50,7 +77,7 @@ const OFFERS: Offer[] = [
     state: "broken",
     kind: "psychiatrists",
     title: "Psychiatrzy (wsparcie medyczne)",
-    desc: "Gdy jest naprawdę ciężko: sen siada, organizm nie ciągnie, objawy są za duże.",
+    desc: "Gdy objawy są za duże: sen siada, organizm nie ciągnie, jest za ciężko.",
     href: () => `/spec/psychiatrzy`,
     badge: "Priorytet",
   },
@@ -67,75 +94,91 @@ const OFFERS: Offer[] = [
     state: "broken",
     kind: "navimind",
     title: "Navimind (rozmowa)",
-    desc: "Gdy chcesz wyrzucić chaos i złapać kierunek — bez ocen.",
+    desc: "Jeśli chcesz wyrzucić chaos i złapać kierunek — bez ocen.",
     href: () => "/navimind?state=broken",
-    badge: "Szybka ulga",
+    badge: "Na teraz",
   },
 
   // ======================
-  // ROZSTANIE (max 4)
+  // ROZSTANIE (ALL)
   // ======================
-  {
-    id: "breakup-community",
-    state: "breakup",
-    kind: "community",
-    title: "Zamknięte grupy / fora",
-    desc: "Nie tłumaczysz się. Ludzie rozumieją. Jest lżej oddychać.",
-    href: () => `/spec/grupy`,
-  },
   {
     id: "breakup-navimind",
     state: "breakup",
     kind: "navimind",
     title: "Navimind (rozmowa)",
-    desc: "Rozładuj emocje po rozstaniu i wróć na tor.",
+    desc: "Uspokój emocje i złap kierunek po rozstaniu.",
     href: () => "/navimind?state=breakup",
-    badge: "Na teraz",
+    badge: "Start",
   },
   {
     id: "breakup-psychologists",
     state: "breakup",
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
-    desc: "Gdy Cię zalewa. Rozmowa może uratować Ci tydzień.",
+    desc: "Gdy Cię zalewa, wraca tęsknota albo masz chaos w głowie.",
     href: () => `/spec/psychologowie`,
   },
   {
     id: "breakup-psychiatrists",
     state: "breakup",
     kind: "psychiatrists",
-    title: "Psychiatrzy (wsparcie)",
+    title: "Psychiatrzy (wsparcie medyczne)",
     desc: "Jeśli nie śpisz, nie jesz i czujesz, że odpływasz.",
     href: () => `/spec/psychiatrzy`,
   },
+  {
+    id: "breakup-community",
+    state: "breakup",
+    kind: "community",
+    title: "Zamknięte grupy / fora",
+    desc: "Ludzie rozumieją. Jest lżej oddychać. Mniej izolacji.",
+    href: () => `/spec/grupy`,
+  },
+  {
+    id: "breakup-training",
+    state: "breakup",
+    kind: "training",
+    title: "Trening / sport",
+    desc: "Wyrównaj napięcie ciałem. Ruch stabilizuje głowę.",
+    href: () => `/spec/trening`,
+  },
+  {
+    id: "breakup-trips",
+    state: "breakup",
+    kind: "trips",
+    title: "Męskie wyjazdy: reset + outdoor",
+    desc: "Zmiana środowiska i struktura. Bez udawania, bez gadania.",
+    href: () => `/spec/wyjazdy`,
+  },
+  {
+    id: "breakup-law",
+    state: "breakup",
+    kind: "law",
+    title: "Pomoc prawna (gdy wchodzą ustalenia)",
+    desc: "Jeśli sprawy idą w stronę formalności, ochrony i granic.",
+    href: () => `/spec/prawo`,
+  },
 
   // ======================
-  // KRYZYS W ZWIĄZKU (max 3)
+  // PROBLEM W ZWIĄZKU (max 2)
   // ======================
   {
     id: "relationship-navimind",
     state: "relationship",
     kind: "navimind",
     title: "Navimind (rozmowa)",
-    desc: "Gdy ciągle się kłócicie. Zatrzymujemy eskalację i ustawiamy komunikację + granice.",
+    desc: "Zatrzymujemy eskalację. Ustawiamy komunikację i granice.",
     href: () => "/navimind?state=relationship",
-    badge: "Na teraz",
+    badge: "Najpierw",
   },
   {
     id: "relationship-psychologists",
     state: "relationship",
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
-    desc: "Jeśli napięcie trwa długo — neutralna rozmowa robi porządek i daje plan.",
+    desc: "Gdy napięcie trwa długo i wracacie w kółko do tego samego.",
     href: () => `/spec/psychologowie`,
-  },
-  {
-    id: "relationship-training",
-    state: "relationship",
-    kind: "training",
-    title: "Trening / ruch",
-    desc: "Zredukuj napięcie w ciele. Jak ciało spokojniejsze, głowa też przestaje odpalać.",
-    href: () => `/spec/trening`,
   },
 
   // ======================
@@ -145,8 +188,8 @@ const OFFERS: Offer[] = [
     id: "empty-training",
     state: "empty",
     kind: "training",
-    title: "Trening / ruch",
-    desc: "Zapal ciało, zanim zrobisz 100 kolejnych analiz w głowie.",
+    title: "Trening / sport",
+    desc: "Zapal ciało, zanim zrobisz kolejne 100 analiz w głowie.",
     href: () => `/spec/trening`,
     badge: "Reset",
   },
@@ -155,7 +198,7 @@ const OFFERS: Offer[] = [
     state: "empty",
     kind: "community",
     title: "Zamknięte grupy / fora",
-    desc: "Najpierw ludzie. Potem reszta. Izolacja karmi pustkę.",
+    desc: "Ludzie najpierw. Izolacja karmi pustkę.",
     href: () => `/spec/grupy`,
   },
   {
@@ -163,12 +206,12 @@ const OFFERS: Offer[] = [
     state: "empty",
     kind: "navimind",
     title: "Navimind (rozmowa)",
-    desc: "Gdy czujesz, że nie ma sensu — łapiemy kierunek od zera.",
+    desc: "Jeśli nie czujesz sensu — łapiemy kierunek od zera.",
     href: () => "/navimind?state=empty",
   },
 
   // ======================
-  // PRESJA (max 3)
+  // PRESJA (max 2-3) — BEZ psychiatrii / prawa
   // ======================
   {
     id: "pressure-navimind",
@@ -183,8 +226,8 @@ const OFFERS: Offer[] = [
     id: "pressure-training",
     state: "pressure",
     kind: "training",
-    title: "Trening / ruch",
-    desc: "Zbij napięcie fizycznie. To działa szybciej niż myślisz.",
+    title: "Trening / sport",
+    desc: "Zbij napięcie fizycznie. Działa szybciej niż myślisz.",
     href: () => `/spec/trening`,
   },
   {
@@ -192,58 +235,66 @@ const OFFERS: Offer[] = [
     state: "pressure",
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
-    desc: "Jeśli presja Cię mieli, rozmowa robi porządek w głowie.",
+    desc: "Gdy presja mieli głowę — rozmowa i plan robią robotę.",
     href: () => `/spec/psychologowie`,
   },
 
   // ======================
-  // OJCOSTWO (max 3)
+  // OJCOSTWO (3) — konkret + czat
   // ======================
+  {
+    id: "father-navimind",
+    state: "father",
+    kind: "navimind",
+    title: "Navimind (rozmowa)",
+    desc: "Dziś ustawiamy jedną granicę i jeden kolejny krok.",
+    href: () => "/navimind?state=father",
+    badge: "Konkret",
+  },
   {
     id: "father-law",
     state: "father",
     kind: "law",
-    title: "Prawo / mediacje",
-    desc: "Kiedy trzeba ogarnąć konkrety i mieć spokój na papierze.",
+    title: "Pomoc prawna / mediacje",
+    desc: "Gdy trzeba ogarnąć ustalenia i mieć spokój na papierze.",
     href: () => `/spec/prawo`,
-    badge: "Konkret",
-  },
-  {
-    id: "father-community",
-    state: "father",
-    kind: "community",
-    title: "Zamknięte grupy / fora",
-    desc: "Wsparcie od ludzi, którzy ogarniają ojcostwo bez teorii.",
-    href: () => `/spec/grupy`,
   },
   {
     id: "father-psychologists",
     state: "father",
     kind: "psychologists",
     title: "Psychologowie (wsparcie)",
-    desc: "Obecność, spokój, granice. Bez napinki.",
+    desc: "Emocje, komunikacja i spokój. Bez napinki.",
     href: () => `/spec/psychologowie`,
   },
 
   // ======================
-  // GOTOWY (max 2)
+  // GOTOWY (max 3) — MĘSKIE aktywności
   // ======================
   {
     id: "ready-trips",
     state: "ready",
     kind: "trips",
-    title: "Wyjazdy / aktywności",
-    desc: "Ruch + ludzie + nowe środowisko. Bez spiny.",
+    title: "Męskie wyjazdy: reset + outdoor",
+    desc: "Ruch + ludzie + nowe środowisko. Bez udawania.",
     href: () => `/spec/wyjazdy`,
-    badge: "Jedno kliknięcie",
+    badge: "Top",
   },
   {
-    id: "ready-training",
+    id: "ready-community",
     state: "ready",
-    kind: "training",
-    title: "Trening / ruch",
-    desc: "Jak jesteś gotowy — ciało robi resztę.",
-    href: () => `/spec/trening`,
+    kind: "community",
+    title: "Zamknięte grupy / fora",
+    desc: "Ekipa, środowisko, kontakt. Bez tłumaczenia się.",
+    href: () => `/spec/grupy`,
+  },
+  {
+    id: "ready-activities",
+    state: "ready",
+    kind: "activities",
+    title: "Inne aktywności (lista)",
+    desc: "Sport, outdoor, struktura dnia. Proste rzeczy, które stabilizują.",
+    href: () => `/spec/wyjazdy`,
   },
 ];
 
@@ -264,7 +315,9 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
             Propozycje: {stateLabel}
           </h1>
 
-          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">{stateHint}</p>
+          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">
+            {stateHint}
+          </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
@@ -301,8 +354,12 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-semibold text-zinc-100">{o.title}</h2>
-                  <p className="mt-2 text-base text-zinc-300 leading-relaxed">{o.desc}</p>
+                  <h2 className="text-lg font-semibold text-zinc-100">
+                    {o.title}
+                  </h2>
+                  <p className="mt-2 text-base text-zinc-300 leading-relaxed">
+                    {o.desc}
+                  </p>
                 </div>
 
                 {o.badge ? (
@@ -337,7 +394,9 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
   );
 }
 
-export default function PropozycjePage(props: { searchParams?: { state?: string } }) {
+export default function PropozycjePage(props: {
+  searchParams?: { state?: string };
+}) {
   return (
     <Suspense>
       <Content {...props} />

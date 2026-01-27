@@ -10,17 +10,20 @@ type StateKey =
   | "father"
   | "ready";
 
+type OfferKind =
+  | "psychologists"
+  | "psychiatrists"
+  | "community"
+  | "training"
+  | "trips"
+  | "law"
+  | "navimind"
+  | "activities";
+
 type Offer = {
   id: string;
   state: StateKey;
-  kind:
-    | "psychologists"
-    | "psychiatrists"
-    | "community"
-    | "training"
-    | "trips"
-    | "law"
-    | "navimind";
+  kind: OfferKind;
   title: string;
   desc: string;
   href: () => string;
@@ -29,16 +32,20 @@ type Offer = {
 
 const STATES: { key: StateKey; label: string; hint: string }[] = [
   { key: "broken", label: "Crisis", hint: "Basics first + help if needed." },
-  { key: "breakup", label: "Breakup", hint: "Stabilize and avoid destructive moves." },
+  {
+    key: "breakup",
+    label: "Breakup",
+    hint: "We won’t assume your mental state. We show all available options.",
+  },
   {
     key: "relationship",
     label: "Relationship conflict",
-    hint: "Arguments, tension, chaos. Stop escalation and rebuild communication + boundaries.",
+    hint: "Fights and tension. Talk first — stop escalation.",
   },
   { key: "empty", label: "Burnout", hint: "Recovery + people + energy." },
   { key: "pressure", label: "Pressure", hint: "Calm the system and regain direction." },
-  { key: "father", label: "Fatherhood", hint: "Presence, calm, boundaries." },
-  { key: "ready", label: "Ready", hint: "Movement, people, experiences. No overthinking." },
+  { key: "father", label: "Fatherhood", hint: "Boundaries, agreements, calm. Practical steps." },
+  { key: "ready", label: "Ready", hint: "Movement, environment, men’s activities." },
 ];
 
 const OFFERS: Offer[] = [
@@ -50,7 +57,7 @@ const OFFERS: Offer[] = [
     state: "broken",
     kind: "psychiatrists",
     title: "Psychiatrists (medical support)",
-    desc: "When it’s really heavy: sleep collapses and symptoms are too strong.",
+    desc: "When symptoms are too strong and sleep collapses.",
     href: () => `/en/spec/psychiatrists`,
     badge: "Priority",
   },
@@ -69,20 +76,12 @@ const OFFERS: Offer[] = [
     title: "Navimind (talk)",
     desc: "Unload the chaos and find direction — no judgment.",
     href: () => "/en/navimind?state=broken",
-    badge: "Fast relief",
+    badge: "Start",
   },
 
   // ======================
-  // BREAKUP (max 4)
+  // BREAKUP (ALL)
   // ======================
-  {
-    id: "breakup-community",
-    state: "breakup",
-    kind: "community",
-    title: "Community / closed groups",
-    desc: "People who get it. Less isolation, more air.",
-    href: () => `/en/spec/community`,
-  },
   {
     id: "breakup-navimind",
     state: "breakup",
@@ -90,14 +89,14 @@ const OFFERS: Offer[] = [
     title: "Navimind (talk)",
     desc: "Stabilize after breakup and regain direction.",
     href: () => "/en/navimind?state=breakup",
-    badge: "Right now",
+    badge: "Start",
   },
   {
     id: "breakup-psychologists",
     state: "breakup",
     kind: "psychologists",
     title: "Psychologists (support)",
-    desc: "When emotions flood you — a talk can save your week.",
+    desc: "When emotions flood you or your mind loops.",
     href: () => `/en/spec/psychologists`,
   },
   {
@@ -105,37 +104,61 @@ const OFFERS: Offer[] = [
     state: "breakup",
     kind: "psychiatrists",
     title: "Psychiatrists (medical support)",
-    desc: "If you don’t sleep, don’t eat, and feel like you’re drifting.",
+    desc: "If you can’t sleep or eat and feel like you’re drifting.",
     href: () => `/en/spec/psychiatrists`,
+  },
+  {
+    id: "breakup-community",
+    state: "breakup",
+    kind: "community",
+    title: "Community / closed groups",
+    desc: "Less isolation. People who get it.",
+    href: () => `/en/spec/community`,
+  },
+  {
+    id: "breakup-training",
+    state: "breakup",
+    kind: "training",
+    title: "Training / sport",
+    desc: "Regulate tension through the body. Works fast.",
+    href: () => `/en/spec/training`,
+  },
+  {
+    id: "breakup-trips",
+    state: "breakup",
+    kind: "trips",
+    title: "Men’s trips: reset + outdoor",
+    desc: "New environment and structure. No overthinking.",
+    href: () => `/en/spec/trips`,
+  },
+  {
+    id: "breakup-law",
+    state: "breakup",
+    kind: "law",
+    title: "Legal help (if agreements matter)",
+    desc: "Structure and boundaries when things get formal.",
+    href: () => `/en/spec/law`,
   },
 
   // ======================
-  // RELATIONSHIP CONFLICT (max 3)
+  // RELATIONSHIP CONFLICT (max 2)
   // ======================
   {
     id: "relationship-navimind",
     state: "relationship",
     kind: "navimind",
     title: "Navimind (talk)",
-    desc: "When you keep fighting. We stop escalation and rebuild communication + boundaries.",
+    desc: "Stop escalation. Rebuild communication and boundaries.",
     href: () => "/en/navimind?state=relationship",
-    badge: "Right now",
+    badge: "First",
   },
   {
     id: "relationship-psychologists",
     state: "relationship",
     kind: "psychologists",
     title: "Psychologists (support)",
-    desc: "If the tension lasts — clarity and structure help a lot.",
+    desc: "When the tension lasts and the pattern repeats.",
     href: () => `/en/spec/psychologists`,
-  },
-  {
-    id: "relationship-training",
-    state: "relationship",
-    kind: "training",
-    title: "Training / movement",
-    desc: "Reduce tension in your body. A calmer body means a calmer mind.",
-    href: () => `/en/spec/training`,
   },
 
   // ======================
@@ -145,8 +168,8 @@ const OFFERS: Offer[] = [
     id: "empty-training",
     state: "empty",
     kind: "training",
-    title: "Training / movement",
-    desc: "Light up the body before you run 100 more mental loops.",
+    title: "Training / sport",
+    desc: "Move your body before your mind runs 100 more loops.",
     href: () => `/en/spec/training`,
     badge: "Reset",
   },
@@ -163,12 +186,12 @@ const OFFERS: Offer[] = [
     state: "empty",
     kind: "navimind",
     title: "Navimind (talk)",
-    desc: "If you feel there’s no point — we rebuild direction from zero.",
+    desc: "If nothing makes sense — we rebuild direction from zero.",
     href: () => "/en/navimind?state=empty",
   },
 
   // ======================
-  // PRESSURE (max 3)
+  // PRESSURE (NO law / NO psychiatry)
   // ======================
   {
     id: "pressure-navimind",
@@ -183,7 +206,7 @@ const OFFERS: Offer[] = [
     id: "pressure-training",
     state: "pressure",
     kind: "training",
-    title: "Training / movement",
+    title: "Training / sport",
     desc: "Cut tension physically. Works better than you think.",
     href: () => `/en/spec/training`,
   },
@@ -192,58 +215,66 @@ const OFFERS: Offer[] = [
     state: "pressure",
     kind: "psychologists",
     title: "Psychologists (support)",
-    desc: "When pressure grinds you down — clarity helps.",
+    desc: "Clarity and structure when pressure grinds you down.",
     href: () => `/en/spec/psychologists`,
   },
 
   // ======================
-  // FATHERHOOD (max 3)
+  // FATHERHOOD (3) — practical + chat
   // ======================
+  {
+    id: "father-navimind",
+    state: "father",
+    kind: "navimind",
+    title: "Navimind (talk)",
+    desc: "One boundary. One next step. Calm and practical.",
+    href: () => "/en/navimind?state=father",
+    badge: "Practical",
+  },
   {
     id: "father-law",
     state: "father",
     kind: "law",
     title: "Law / mediation",
-    desc: "Practical steps, agreements, and peace on paper.",
+    desc: "Agreements, structure and peace on paper.",
     href: () => `/en/spec/law`,
-    badge: "Practical",
-  },
-  {
-    id: "father-community",
-    state: "father",
-    kind: "community",
-    title: "Community / closed groups",
-    desc: "Support from men who understand fatherhood in real life.",
-    href: () => `/en/spec/community`,
   },
   {
     id: "father-psychologists",
     state: "father",
     kind: "psychologists",
     title: "Psychologists (support)",
-    desc: "Presence, calm, boundaries. No pressure.",
+    desc: "Emotions, communication, boundaries. No pressure.",
     href: () => `/en/spec/psychologists`,
   },
 
   // ======================
-  // READY (max 2)
+  // READY (max 3)
   // ======================
   {
     id: "ready-trips",
     state: "ready",
     kind: "trips",
-    title: "Trips / activities",
+    title: "Men’s trips: reset + outdoor",
     desc: "Movement + people + new environment. No overthinking.",
     href: () => `/en/spec/trips`,
-    badge: "One click",
+    badge: "Top",
   },
   {
-    id: "ready-training",
+    id: "ready-community",
     state: "ready",
-    kind: "training",
-    title: "Training / movement",
-    desc: "When you’re ready — the body does the rest.",
-    href: () => `/en/spec/training`,
+    kind: "community",
+    title: "Community / closed groups",
+    desc: "Your environment matters. Find your people.",
+    href: () => `/en/spec/community`,
+  },
+  {
+    id: "ready-activities",
+    state: "ready",
+    kind: "activities",
+    title: "Other activities (list)",
+    desc: "Sport, routine, outdoor. Simple things that build calm.",
+    href: () => `/en/spec/trips`,
   },
 ];
 
@@ -264,7 +295,9 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
             Suggestions: {stateLabel}
           </h1>
 
-          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">{stateHint}</p>
+          <p className="mt-4 text-lg text-zinc-200 leading-relaxed">
+            {stateHint}
+          </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
@@ -301,8 +334,12 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h2 className="text-lg font-semibold text-zinc-100">{o.title}</h2>
-                  <p className="mt-2 text-base text-zinc-300 leading-relaxed">{o.desc}</p>
+                  <h2 className="text-lg font-semibold text-zinc-100">
+                    {o.title}
+                  </h2>
+                  <p className="mt-2 text-base text-zinc-300 leading-relaxed">
+                    {o.desc}
+                  </p>
                 </div>
 
                 {o.badge ? (
@@ -337,7 +374,9 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
   );
 }
 
-export default function SuggestionsPageEN(props: { searchParams?: { state?: string } }) {
+export default function SuggestionsPageEN(props: {
+  searchParams?: { state?: string };
+}) {
   return (
     <Suspense>
       <Content {...props} />
