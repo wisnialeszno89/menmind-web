@@ -22,34 +22,60 @@ export default function WhereFatherEN() {
           <h2 className="text-lg font-semibold text-zinc-100">For today</h2>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
-            <li><span className="text-cyan-200 font-medium">•</span> 15 minutes of full attention (no phone).</li>
-            <li><span className="text-cyan-200 font-medium">•</span> One activity: walk / play / build / cook together.</li>
-            <li><span className="text-cyan-200 font-medium">•</span> One boundary: no escalation today.</li>
+            <li>
+              <span className="text-cyan-200 font-medium">•</span>{" "}
+              15 minutes of full attention (no phone).
+            </li>
+            <li>
+              <span className="text-cyan-200 font-medium">•</span>{" "}
+              One activity: walk / play / build / cook together.
+            </li>
+            <li>
+              <span className="text-cyan-200 font-medium">•</span>{" "}
+              One boundary: no escalation today.
+            </li>
           </ul>
 
           <Reset60 lang="en" />
 
+          {/* ✅ TIME WITH YOUR CHILD */}
           <div className="mt-10">
             <h3 className="text-sm font-semibold text-zinc-200">
-              Time with your child (coming soon)
+              Time with your child
             </h3>
 
             <div className="mt-4 grid grid-cols-1 gap-3">
-              <div className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
+              <Link
+                href="/en/spec/fatherhood-rituals"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+              >
                 <p className="text-sm text-zinc-400">Simple ideas</p>
                 <p className="mt-1 text-lg font-semibold text-zinc-100">
                   Activities & rituals
                 </p>
                 <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  A short list of ideas that work even when you’re tired.
+                  Age-based ideas you can use even when you’re tired.
                 </p>
-                <p className="mt-3 text-sm text-zinc-500">
-                  Verified partners coming soon.
+                <p className="mt-3 text-sm text-cyan-200">Open →</p>
+              </Link>
+
+              <Link
+                href="/en/spec/fatherhood-emergency"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Backup</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  Emergency list: 10 ideas
                 </p>
-              </div>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  When your mind is empty — pick one.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Open →</p>
+              </Link>
             </div>
           </div>
 
+          {/* ✅ PRACTICAL / TALK */}
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Link
               href="/en/spec/law"

@@ -27,39 +27,64 @@ export default function WhereReadyPL() {
           <Reset60 lang="pl" />
 
           <div className="mt-10">
-            <h3 className="text-sm font-semibold text-zinc-200">Co teraz ma sens?</h3>
+            <h3 className="text-sm font-semibold text-zinc-200">
+              Co teraz ma sens?
+            </h3>
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <Link href="/spec/wyjazdy" className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition">
+              <Link
+                href="/spec/wyjazdy"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
                 <p className="text-sm text-zinc-400">Start</p>
                 <p className="mt-1 font-semibold text-zinc-100">Wyjazdy / outdoor</p>
-                <p className="mt-2 text-sm text-zinc-400">Zmiana otoczenia = świeża energia.</p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Zmiana otoczenia = świeża energia.
+                </p>
                 <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
 
-              <Link href="/spec/trening" className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition">
+              <Link
+                href="/spec/trening"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
                 <p className="text-sm text-zinc-400">Forma</p>
                 <p className="mt-1 font-semibold text-zinc-100">Trening / sport</p>
-                <p className="mt-2 text-sm text-zinc-400">Powtarzalność daje spokój.</p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Powtarzalność daje spokój.
+                </p>
                 <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
 
               {/* ✅ Nightlife tylko tutaj i breakup */}
-              <Link href="/propozycje" className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2">
+              <Link
+                href="/spec/kluby"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
+              >
                 <p className="text-sm text-zinc-400">Ludzie</p>
-                <p className="mt-1 font-semibold text-zinc-100">Kluby / bary / imprezy (wkrótce)</p>
-                <p className="mt-2 text-sm text-zinc-400">Nowe środowisko i kontakt z ludźmi. Partnerzy w przygotowaniu.</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Kluby / bary / imprezy
+                </p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Nowe środowisko i kontakt z ludźmi. Bez spiny.
+                </p>
                 <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
             </div>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/navimind?state=ready" className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition">
+            <Link
+              href="/navimind?state=ready"
+              className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
+            >
               Chcę pogadać →
             </Link>
 
-            <Link href="/" className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+            >
               ← Wróć na start
             </Link>
           </div>
