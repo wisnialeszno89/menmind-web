@@ -18,7 +18,9 @@ export default function WhereReadyEN() {
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
-          <h2 className="text-lg font-semibold text-zinc-100">3 steps for today</h2>
+          <h2 className="text-lg font-semibold text-zinc-100">
+            3 steps for today
+          </h2>
 
           <ol className="mt-4 space-y-3 text-zinc-300 leading-relaxed list-decimal list-inside">
             <li>Pick one small but real thing you finish today.</li>
@@ -63,18 +65,19 @@ export default function WhereReadyEN() {
               </Link>
 
               {/* ✅ Nightlife ONLY here + breakup */}
-              <div className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 sm:col-span-2">
+              <Link
+                href="/en/spec/nightlife"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
+              >
                 <p className="text-sm text-zinc-400">People</p>
                 <p className="mt-1 font-semibold text-zinc-100">
-                  Clubs / bars / nightlife (coming soon)
+                  Clubs / bars / nightlife
                 </p>
-                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  New environment and social contact. Partners in preparation.
+                <p className="mt-2 text-sm text-zinc-400">
+                  New environment and social contact — without pressure.
                 </p>
-                <p className="mt-3 text-sm text-zinc-500">
-                  Verified partners coming soon.
-                </p>
-              </div>
+                <p className="mt-3 text-sm text-cyan-200">See →</p>
+              </Link>
             </div>
           </div>
 

@@ -40,6 +40,7 @@ export default function WhereFatherPage() {
 
           <Reset60 lang="pl" />
 
+          {/* ✅ POMYSŁY NA CZAS Z DZIECKIEM */}
           <div className="mt-10">
             <h3 className="text-sm font-semibold text-zinc-200">
               Pomysły na czas z dzieckiem
@@ -47,21 +48,36 @@ export default function WhereFatherPage() {
 
             <div className="mt-4 grid grid-cols-1 gap-3">
               <Link
-                href="/spec/ojcostwo"
+                href="/spec/ojcostwo-rytualy"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
               >
                 <p className="text-sm text-zinc-400">Bez kombinowania</p>
                 <p className="mt-1 text-lg font-semibold text-zinc-100">
-                  Proste aktywności i rytuały (wkrótce)
+                  Proste aktywności i rytuały
                 </p>
                 <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Lista rzeczy, które działają nawet gdy jesteś zmęczony.
+                  Pomysły według wieku. 10–20 minut. Zero presji.
                 </p>
                 <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
+              </Link>
+
+              <Link
+                href="/spec/ojcostwo-awaryjna"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Awaryjnie</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  Lista awaryjna: 10 pomysłów
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Gdy masz pustkę w głowie — wybierz 1 i zrobione.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
               </Link>
             </div>
           </div>
 
+          {/* ✅ KONFLIKT / USTALENIA */}
           <div className="mt-10">
             <h3 className="text-sm font-semibold text-zinc-200">
               Jeśli jest konflikt / ustalenia
@@ -83,29 +99,22 @@ export default function WhereFatherPage() {
               </Link>
 
               <Link
-                href="/spec/grupy"
+                href="/navimind?state=father"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Wsparcie</p>
+                <p className="text-sm text-zinc-400">Rozmowa</p>
                 <p className="mt-1 font-semibold text-zinc-100">
-                  Grupy ojców (wkrótce)
+                  Navimind
                 </p>
                 <p className="mt-2 text-sm text-zinc-400">
-                  Ludzie, którzy to ogarniają w praktyce.
+                  Spokój, klarowność i konkretne kroki.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
               </Link>
             </div>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link
-              href="/navimind?state=father"
-              className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
-            >
-              Chcę pogadać →
-            </Link>
-
             <Link
               href="/"
               className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
