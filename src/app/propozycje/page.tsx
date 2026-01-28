@@ -22,6 +22,7 @@ type Offer = {
     | "trips"
     | "law"
     | "places"
+    | "nightlife"
     | "navimind";
   title: string;
   desc: string;
@@ -80,6 +81,15 @@ const OFFERS: Offer[] = [
     title: "Wyjazdy / outdoor / zmiana środowiska",
     desc: "Czasem najlepszą terapią jest inne powietrze i nowy rytm.",
     href: () => "/spec/wyjazdy",
+  },
+  {
+    id: "breakup-nightlife",
+    state: "breakup",
+    kind: "nightlife",
+    title: "Kluby / bary / imprezy",
+    desc: "Nie po to, żeby uciekać. Po to, żeby wrócić do życia i ludzi.",
+    href: () => "/partners?tag=nightlife",
+    badge: "Opcja",
   },
   {
     id: "breakup-psychologists",
@@ -298,6 +308,15 @@ const OFFERS: Offer[] = [
     href: () => "/spec/trening",
   },
   {
+    id: "ready-nightlife",
+    state: "ready",
+    kind: "nightlife",
+    title: "Kluby / bary / imprezy",
+    desc: "Wyjście do ludzi i nowe środowisko. Bez spiny — po prostu ruch i kontakt.",
+    href: () => "/partners?tag=nightlife",
+    badge: "Wkrótce",
+  },
+  {
     id: "ready-places",
     state: "ready",
     kind: "places",
@@ -354,7 +373,6 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
             Propozycje
           </h1>
 
-          {/* ✅ zostawiamy tylko zakładki (bez tekstów pod spodem) */}
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
               const active = s.key === state;
