@@ -1,250 +1,222 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { Suspense } from "react";
 
-type Partner = {
-  name: string;
-  title: string;
-  desc: string;
-  tags: string[];
-  cta: string;
-  href: string;
-  note?: string;
-};
+export default function PartnershipPL() {
+  const action = process.env.NEXT_PUBLIC_PARTNER_FORM_ACTION_PL ?? "";
 
-const PARTNERS: Partner[] = [
-  {
-    name: "MenMind",
-    title: "Wyjazdy męskie: reset + outdoor",
-    desc: "Wyprawy, góry, natura i prosta struktura. Dla facetów, którzy potrzebują ruchu i zmiany otoczenia.",
-    tags: ["trips"],
-    cta: "Otwórz wyjazdy",
-    href: "/spec/wyjazdy",
-    note: "Wkrótce: zweryfikowani organizatorzy",
-  },
-  {
-    name: "MenMind",
-    title: "Trening / sport",
-    desc: "Najpierw ciało. Regularność wraca energię, spokój i pewność.",
-    tags: ["training"],
-    cta: "Otwórz trening",
-    href: "/spec/trening",
-    note: "Wkrótce: siłownie i trenerzy",
-  },
-  {
-    name: "MenMind",
-    title: "Zamknięte grupy / fora",
-    desc: "Czasem nie potrzebujesz rady. Potrzebujesz ludzi, którzy rozumieją.",
-    tags: ["community"],
-    cta: "Otwórz grupy",
-    href: "/spec/grupy",
-    note: "Wkrótce",
-  },
-  {
-    name: "MenMind",
-    title: "Psychologowie (rozmowa + klarowność)",
-    desc: "Gdy potrzebujesz rozmowy, uporządkowania emocji i stabilizacji. Bez wstydu.",
-    tags: ["psychologists"],
-    cta: "Otwórz psychologów",
-    href: "/spec/psychologowie",
-    note: "Wkrótce zweryfikowana lista",
-  },
-  {
-    name: "MenMind",
-    title: "Psychiatrzy (wsparcie medyczne)",
-    desc: "Gdy objawy są za mocne, sen siada i organizm nie ciągnie. Leczenie to narzędzie — nie słabość.",
-    tags: ["psychiatrists"],
-    cta: "Otwórz psychiatrów",
-    href: "/spec/psychiatrzy",
-    note: "Wkrótce zweryfikowana lista",
-  },
-  {
-    name: "MenMind",
-    title: "Prawo (rozwód / ojcostwo / ustalenia / mediacje)",
-    desc: "Konkretne kroki, zasady i spokojniejsza komunikacja. Struktura daje spokój.",
-    tags: ["law"],
-    cta: "Otwórz prawo",
-    href: "/spec/prawo",
-    note: "Wkrótce",
-  },
-  {
-    name: "Navimind",
-    title: "Porozmawiaj teraz (Navimind)",
-    desc: "Jeśli potrzebujesz spokoju i kierunku — bez ocen, bez presji.",
-    tags: ["navimind"],
-    cta: "Otwórz czat",
-    href: "/navimind?state=unknown",
-    note: "Dostępne teraz",
-  },
-];
-
-// ✅ Tylko widoczne filtry (nightlife specjalnie ukryty)
-const TAGS: { key: string; label: string }[] = [
-  { key: "all", label: "Wszystko" },
-
-  // stany
-  { key: "pressure", label: "Presja" },
-  { key: "ready", label: "Gotowy" },
-  { key: "breakup", label: "Rozstanie" },
-  { key: "broken", label: "Rozsypka" },
-  { key: "empty", label: "Wypalenie" },
-  { key: "father", label: "Ojcostwo" },
-  { key: "relationship", label: "Związek" },
-
-  // kierunki
-  { key: "trips", label: "Wyjazdy" },
-  { key: "training", label: "Trening" },
-  { key: "community", label: "Grupy / fora" },
-  { key: "law", label: "Prawo" },
-
-  // specjaliści
-  { key: "psychologists", label: "Psychologowie" },
-  { key: "psychiatrists", label: "Psychiatrzy" },
-
-  // narzędzie
-  { key: "navimind", label: "Czat" },
-];
-
-// ✅ Ukryte tagi (działają przez URL, nie są widoczne jako przyciski)
-const HIDDEN_TAG_LABELS: Record<string, string> = {
-  nightlife: "Kluby / bary / imprezy",
-};
-
-function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
-  const tag = searchParams?.tag ?? "all";
-
-  const filtered =
-    tag === "all" ? PARTNERS : PARTNERS.filter((p) => p.tags.includes(tag));
-
-  const activeTagLabel =
-    TAGS.find((t) => t.key === tag)?.label ??
-    HIDDEN_TAG_LABELS[tag] ??
-    "Wszystko";
+  const [sent, setSent] = useState(false);
 
   return (
     <main className="min-h-screen px-6 py-16">
-      <div className="mx-auto max-w-6xl">
-        <header className="mb-10">
-          <p className="text-sm text-zinc-400">MenMind · partnerzy</p>
+      <div className="mx-auto max-w-3xl">
+        <p className="text-sm text-zinc-400">MenMind · partnerstwo</p>
 
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            Partnerzy i zasoby
-          </h1>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight">
+          Zgłoszenie partnera
+        </h1>
 
-          <p className="mt-4 text-zinc-300 max-w-3xl leading-relaxed">
-            Wybrane kierunki i zasoby, które realnie pomagają: ruch, wsparcie,
-            struktura i klarowność. Bez spamu.
-          </p>
+        <p className="mt-4 text-zinc-300 leading-relaxed">
+          Jeśli oferujesz coś, co realnie pomaga facetom (trening, wyjazdy, prawo,
+          wsparcie, społeczność) — możesz się zgłosić. Weryfikujemy ręcznie.
+          Publikujemy tylko konkret.
+        </p>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            {TAGS.map((t) => {
-              const active = tag === t.key;
-
-              return (
-                <Link
-                  key={t.key}
-                  href={t.key === "all" ? "/partners" : `/partners?tag=${t.key}`}
-                  className={[
-                    "rounded-full px-3 py-2 text-sm transition",
-                    active
-                      ? "bg-cyan-500/15 text-cyan-200 ring-1 ring-cyan-400/20"
-                      : "bg-zinc-900/40 text-zinc-300 ring-1 ring-zinc-800/70 hover:bg-zinc-800/50",
-                  ].join(" ")}
-                >
-                  {t.label}
-                </Link>
-              );
-            })}
-          </div>
-
-          <p className="mt-4 text-xs text-zinc-500">
-            Aktywny filtr:{" "}
-            <span className="text-zinc-300">{activeTagLabel}</span>
-          </p>
-        </header>
-
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filtered.map((p) => (
-            <div
-              key={p.title}
-              className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur"
-            >
-              <p className="text-xs text-zinc-500">{p.name}</p>
-
-              <h2 className="mt-2 text-lg font-semibold text-zinc-100">
-                {p.title}
-              </h2>
-
-              <p className="mt-3 text-sm text-zinc-300 leading-relaxed">
-                {p.desc}
-              </p>
-
-              <div className="mt-4 flex flex-wrap gap-2">
-                {p.tags.map((tg) => (
-                  <Link
-                    key={tg}
-                    href={`/partners?tag=${tg}`}
-                    className="rounded-full bg-zinc-950/30 px-2 py-1 text-[11px] text-zinc-300 ring-1 ring-zinc-800/70 hover:bg-zinc-900/50 transition"
-                  >
-                    #{tg}
-                  </Link>
-                ))}
-              </div>
-
-              <div className="mt-6 flex items-center justify-between gap-3">
-                <Link
-                  href={p.href}
-                  className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
-                >
-                  {p.cta} →
-                </Link>
-
-                <span className="text-xs text-zinc-500">
-                  {p.note ?? "Wkrótce"}
-                </span>
-              </div>
-            </div>
-          ))}
-        </section>
-
-        <section className="mt-12 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-6 shadow-sm shadow-black/20 backdrop-blur">
+        <section className="mt-8 rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
           <h2 className="text-lg font-semibold text-zinc-100">
-            Chcesz zostać partnerem?
+            Formularz zgłoszeniowy
           </h2>
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-            Jeśli dajesz realną wartość dla facetów (wyjazdy, trening, wsparcie,
-            prawo, społeczność) — możesz się zgłosić. Zero spamu. Tylko konkret.
+            Wypełnij dane. Jeśli masz PDF/ofertę lub link do materiałów — dodaj.
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/partnerstwo"
-              className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-4 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
-            >
-              Zgłoś się jako partner →
-            </Link>
+          {!action ? (
+            <div className="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
+              <p className="text-sm text-zinc-200 font-semibold">
+                Formularz nie jest jeszcze podpięty.
+              </p>
 
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
-            >
-              ← Wróć na start
-            </Link>
-          </div>
+              <p className="mt-2 text-sm text-zinc-500">
+                Ustaw{" "}
+                <span className="text-zinc-200 font-medium">
+                  NEXT_PUBLIC_PARTNER_FORM_ACTION_PL
+                </span>{" "}
+                w <span className="text-zinc-200 font-medium">.env.local</span>{" "}
+                (np. Formspree), a potem wróć tutaj.
+              </p>
 
-          <p className="mt-4 text-xs text-zinc-500">
-            Następna wersja: weryfikacja + panel partnera.
-          </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                <Link
+                  href="/"
+                  className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+                >
+                  ← Strona główna
+                </Link>
+              </div>
+            </div>
+          ) : sent ? (
+            <div className="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-6">
+              <h3 className="text-lg font-semibold text-zinc-100">
+                Dzięki — zgłoszenie wysłane ✅
+              </h3>
+
+              <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                Jeśli będzie fit, odezwiemy się mailowo. Zwykle w 24–72h.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href="/partners"
+                  className="inline-flex items-center justify-center rounded-xl bg-zinc-900/40 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-800/70 hover:bg-zinc-800/50 transition"
+                >
+                  Zobacz zasoby →
+                </Link>
+
+                <Link
+                  href="/"
+                  className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+                >
+                  ← Wróć
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <form
+              action={action}
+              method="POST"
+              encType="multipart/form-data"
+              className="mt-6 grid grid-cols-1 gap-4"
+              onSubmit={() => setSent(true)}
+            >
+              {/* Honeypot anti-spam */}
+              <input type="text" name="_gotcha" className="hidden" />
+
+              {/* Meta */}
+              <input type="hidden" name="source" value="menmind.app/partnerstwo (PL)" />
+              <input type="hidden" name="language" value="pl" />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Field label="Imię i nazwisko / firma" name="name" required />
+                <Field label="Email kontaktowy" name="email" type="email" required />
+              </div>
+
+              <Field
+                label="Twoja oferta (krótko, konkretnie)"
+                name="offer"
+                textarea
+                placeholder="Np. Trening personalny dla mężczyzn po rozstaniu / Mediacje rodzinne / Wyjazdy outdoor..."
+                required
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <Field
+                  label="Miasto (albo: Online)"
+                  name="city"
+                  placeholder="Np. Poznań / Wrocław / Online"
+                  required
+                />
+                <Field
+                  label="Strona / Instagram / link"
+                  name="link"
+                  placeholder="https://..."
+                />
+              </div>
+
+              <Field
+                label="Dla kogo jest ta oferta?"
+                name="target"
+                textarea
+                placeholder="Np. faceci w kryzysie, ojcowie, rozwód, presja..."
+              />
+
+              <Field
+                label="Dlaczego to działa? (2–3 zdania)"
+                name="proof"
+                textarea
+                placeholder="Np. liczba klientów, doświadczenie, podejście, styl pracy..."
+              />
+
+              <div className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4">
+                <p className="text-sm font-semibold text-zinc-100">
+                  Załączniki (opcjonalnie)
+                </p>
+                <p className="mt-1 text-xs text-zinc-500">
+                  Możesz dodać PDF/ofertę/cennik. (Jeśli Twój provider formularza to obsługuje)
+                </p>
+
+                <input
+                  type="file"
+                  name="attachment"
+                  className="mt-3 w-full text-sm text-zinc-300 file:mr-4 file:rounded-xl file:border-0 file:bg-zinc-800/60 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-zinc-200 hover:file:bg-zinc-800 transition"
+                />
+              </div>
+
+              <div className="mt-2 flex flex-wrap gap-3">
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center rounded-xl bg-cyan-500/15 px-5 py-2 text-sm font-semibold text-cyan-200 ring-1 ring-cyan-400/20 hover:bg-cyan-500/20 transition"
+                >
+                  Wyślij zgłoszenie →
+                </button>
+
+                <Link
+                  href="/"
+                  className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-5 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
+                >
+                  ← Wróć
+                </Link>
+              </div>
+
+              <p className="mt-3 text-xs text-zinc-500">
+                Wysyłając zgłoszenie, potwierdzasz, że podane dane są prawdziwe.
+                Nie publikujemy wszystkiego — weryfikujemy ręcznie.
+              </p>
+            </form>
+          )}
         </section>
       </div>
     </main>
   );
 }
 
-export default function PartnersPagePL(props: { searchParams?: { tag?: string } }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required = false,
+  textarea = false,
+  placeholder,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  textarea?: boolean;
+  placeholder?: string;
+}) {
   return (
-    <Suspense>
-      <PartnersContent {...props} />
-    </Suspense>
+    <label className="block">
+      <span className="text-sm font-medium text-zinc-200">{label}</span>
+
+      {textarea ? (
+        <textarea
+          name={name}
+          required={required}
+          placeholder={placeholder}
+          rows={4}
+          className="mt-2 w-full rounded-xl border border-zinc-800/70 bg-zinc-950/30 px-4 py-3 text-sm text-zinc-200 placeholder:text-zinc-500 outline-none focus:ring-2 focus:ring-cyan-500/20"
+        />
+      ) : (
+        <input
+          type={type}
+          name={name}
+          required={required}
+          placeholder={placeholder}
+          className="mt-2 w-full rounded-xl border border-zinc-800/70 bg-zinc-950/30 px-4 py-3 text-sm text-zinc-200 placeholder:text-zinc-500 outline-none focus:ring-2 focus:ring-cyan-500/20"
+        />
+      )}
+    </label>
   );
 }
