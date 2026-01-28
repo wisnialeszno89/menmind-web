@@ -15,7 +15,7 @@ const PARTNERS: Partner[] = [
   {
     name: "MenMind",
     title: "Men’s trips: reset + outdoor",
-    desc: "Expeditions, hiking, nature, simple structure. For men who need movement and a change of environment.",
+    desc: "Hiking, nature, simple structure. For men who need movement and a new environment.",
     tags: ["trips"],
     cta: "Open trips",
     href: "/en/spec/trips",
@@ -32,11 +32,11 @@ const PARTNERS: Partner[] = [
   },
   {
     name: "MenMind",
-    title: "Private groups / forums",
+    title: "Closed groups / forums",
     desc: "Sometimes you don’t need advice. You need people who get it.",
     tags: ["community"],
-    cta: "Open community",
-    href: "/en/spec/community",
+    cta: "Open groups",
+    href: "/en/spec/groups",
     note: "Coming soon",
   },
   {
@@ -68,45 +68,43 @@ const PARTNERS: Partner[] = [
   },
   {
     name: "Navimind",
-    title: "Talk now (Navimind chat)",
+    title: "Talk now (Navimind)",
     desc: "If you need calm and direction right now — no judgment, no pressure.",
     tags: ["navimind"],
     cta: "Open chat",
     href: "/en/navimind?state=unknown",
     note: "Available now",
   },
+
+  // ✅ Hidden resource – works via URL, not visible as filter
+  {
+    name: "MenMind",
+    title: "Clubs / bars / nightlife",
+    desc: "Future option: places, events and partners. Reconnect with people — no pressure.",
+    tags: ["nightlife"],
+    cta: "See (soon)",
+    href: "/en/partners?tag=nightlife",
+    note: "Coming soon: partners",
+  },
 ];
 
-// ✅ Only visible filters (nightlife is intentionally hidden)
+// ✅ Resource filters only (no “states” here!)
 const TAGS: { key: string; label: string }[] = [
   { key: "all", label: "All" },
 
-  // states
-  { key: "pressure", label: "Pressure" },
-  { key: "ready", label: "Ready" },
-  { key: "breakup", label: "Breakup" },
-  { key: "broken", label: "Crisis" },
-  { key: "empty", label: "Burnout" },
-  { key: "father", label: "Fatherhood" },
-  { key: "relationship", label: "Relationship" },
-
-  // paths
   { key: "trips", label: "Trips" },
   { key: "training", label: "Training" },
   { key: "community", label: "Groups / forums" },
   { key: "law", label: "Legal" },
 
-  // specialists
   { key: "psychologists", label: "Psychologists" },
   { key: "psychiatrists", label: "Psychiatrists" },
 
-  // tool
   { key: "navimind", label: "Chat" },
 ];
 
-// ✅ Hidden tag labels (allowed via URL, not shown as buttons)
 const HIDDEN_TAG_LABELS: Record<string, string> = {
-  nightlife: "Nightlife",
+  nightlife: "Clubs / bars / nightlife",
 };
 
 function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
@@ -157,8 +155,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            Active filter:{" "}
-            <span className="text-zinc-300">{activeTagLabel}</span>
+            Active filter: <span className="text-zinc-300">{activeTagLabel}</span>
           </p>
         </header>
 
@@ -212,8 +209,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </h2>
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-            If you offer something that genuinely helps men move forward (trips,
-            training, support, legal, community) — you can apply. No cheap ads.
+            Apply your service. Manual verification. We publish only solid value.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">

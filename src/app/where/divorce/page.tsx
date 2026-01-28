@@ -13,48 +13,91 @@ export default function WhereDivorcePage() {
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Rozwód boli, ale chaos kosztuje najwięcej. Uspokój głowę, ogarnij
-            papier, zabezpiecz siebie i dziecko. Wybierz jedną rzecz na dziś i
-            rusz.
+            Rozwód to emocje + decyzje, które zostają na lata. Najpierw
+            stabilizacja, potem ruchy prawne. Bez chaosu.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
-          <h2 className="text-lg font-semibold text-zinc-100">Na dziś</h2>
+          <h2 className="text-lg font-semibold text-zinc-100">Na teraz</h2>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Zero długich wiadomości i tłumaczeń. Tylko minimum komunikacji.
+              Nie eskaluj konfliktu wiadomościami i telefonami.
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Jedna rzecz “papierowa”: termin / dokument / notatka / plan.
+              Zapisz fakty: daty, ustalenia, koszty (bez interpretacji).
             </li>
             <li>
               <span className="text-cyan-200 font-medium">•</span>{" "}
-              Jedna rzecz dla ciała: spacer / prysznic / jedzenie / sen.
+              Jedna rzecz dla ciała: sen / spacer / posiłek.
             </li>
           </ul>
 
           <Reset60 lang="pl" />
 
           <div className="mt-10">
-            <h3 className="text-sm font-semibold text-zinc-200">Propozycje</h3>
+            <h3 className="text-sm font-semibold text-zinc-200">
+              Propozycje (konkret)
+            </h3>
 
             <div className="mt-4 grid grid-cols-1 gap-3">
               <Link
-                href="/propozycje?state=divorce"
+                href="/spec/prawo"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Krok po kroku</p>
+                <p className="text-sm text-zinc-400">Priorytet</p>
                 <p className="mt-1 text-lg font-semibold text-zinc-100">
-                  Rozwód: prawo / wsparcie / grupy (wszystkie opcje)
+                  Prawnicy / mediacje
                 </p>
                 <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Czysta lista: bez lania wody, tylko konkretne kierunki.
+                  Kontakty, alimenty, majątek, porozumienia. Papier daje spokój.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Wejdź →</p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
+              </Link>
+
+              <Link
+                href="/spec/psychologowie"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Stabilizacja</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  Psycholog
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Żeby nie podejmować decyzji z emocji.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
+              </Link>
+
+              <Link
+                href="/spec/grupy"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Nie bądź sam</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  Grupy wsparcia
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Faceci po rozwodzie. Bez tłumaczenia się.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
+              </Link>
+
+              <Link
+                href="/spec/psychiatrzy"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Gdy jest źle</p>
+                <p className="mt-1 text-lg font-semibold text-zinc-100">
+                  Psychiatra
+                </p>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Gdy sen siada, organizm nie ciągnie, objawy są zbyt mocne.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">Otwórz →</p>
               </Link>
             </div>
           </div>
@@ -71,12 +114,12 @@ export default function WhereDivorcePage() {
               href="/"
               className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
             >
-              ← Wróć do wyboru
+              ← Wróć
             </Link>
           </div>
 
           <p className="mt-6 text-xs text-zinc-500">
-            Rozwód to proces. Ty masz wygrać spokój i kontrolę — reszta przyjdzie.
+            Rozwód to proces. Twoim celem jest przejść go spokojnie i mądrze.
           </p>
         </section>
       </div>
