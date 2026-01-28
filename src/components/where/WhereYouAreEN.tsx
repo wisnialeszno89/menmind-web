@@ -42,7 +42,7 @@ const OPTIONS_EN = [
   {
     title: "Fatherhood",
     desc: "Your child, boundaries, agreements, emotions. No chaos.",
-    href: "/en/suggestions?state=father",
+    href: "/en/where/father",
     tag: "father",
   },
   {
