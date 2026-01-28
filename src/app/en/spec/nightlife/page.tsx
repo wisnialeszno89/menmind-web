@@ -1,36 +1,45 @@
 import Link from "next/link";
+import MiniBadge from "@/components/ui/MiniBadge";
+import { Users } from "lucide-react";
 
-export default function SpecNightlifeEN() {
+export default function NightlifeEN() {
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
-          <p className="text-sm text-zinc-400">MenMind · community</p>
+          <p className="text-sm text-zinc-400">MenMind · nightlife</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             Clubs / bars / nightlife
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Sometimes the best move is not more analysis — it’s leaving the house
-            and switching environment.
+            This is not about “escaping into partying”.
+            It’s about social contact and leaving isolation — if done smart.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
-          <h2 className="text-lg font-semibold text-zinc-100">
-            Nightlife partners (coming soon)
-          </h2>
+          <div className="flex items-start justify-between gap-3">
+            <h2 className="text-lg font-semibold text-zinc-100">
+              Nightlife partners
+            </h2>
+            <MiniBadge label="soon" tone="soon" />
+          </div>
 
-          <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-            A verified list of places and partners will appear here (clubs,
-            events, tickets, local communities). No spam. No random ads.
-          </p>
+          <div className="mt-4 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
+            <div className="flex items-center gap-2 text-zinc-200">
+              <Users size={18} />
+              <p className="font-semibold">Curated list in progress</p>
+            </div>
 
-          <div className="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
-            <p className="text-sm text-zinc-300">✅ Manual verification</p>
-            <p className="mt-2 text-sm text-zinc-500">
-              Only places aligned with MenMind vibe: safe, solid, and not toxic.
+            <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+              Next versions will include verified clubs, bars and events
+              (online + cities). No spam. No random ads.
+            </p>
+
+            <p className="mt-3 text-sm text-zinc-500">
+              Want to join as a partner? Use the Partnership tab.
             </p>
           </div>
 
@@ -51,14 +60,14 @@ export default function SpecNightlifeEN() {
 
             <Link
               href="/en"
-              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/40 px-4 py-2 text-sm font-semibold text-zinc-300 ring-1 ring-zinc-800 hover:bg-zinc-800 transition"
+              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/30 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-800/70 hover:bg-zinc-800/50 transition"
             >
-              Home →
+              Home
             </Link>
           </div>
 
           <p className="mt-6 text-xs text-zinc-500">
-            This is about rebuilding social life — not escaping into chaos.
+            Tip: go “towards people”, not “towards drama”.
           </p>
         </section>
       </div>
