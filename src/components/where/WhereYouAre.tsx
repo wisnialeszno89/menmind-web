@@ -10,6 +10,12 @@ const OPTIONS = [
     tag: "rozstanie",
   },
   {
+    title: "Jestem w trakcie rozwodu",
+    desc: "Rozwód boli, ale chaos kosztuje najwięcej. Uspokój głowę, ogarnij papier, zabezpiecz siebie i dziecko.",
+    href: "/where/divorce",
+    tag: "rozwód",
+  },
+  {
     title: "Jestem w środku rozsypki",
     desc: "Za dużo się dzieje. Potrzebuję stabilizacji i szybkiego wsparcia.",
     href: "/propozycje?state=broken",

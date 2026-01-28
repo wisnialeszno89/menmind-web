@@ -20,8 +20,9 @@ export default function Home() {
           <WhereYouAre />
         </div>
 
-        {/* Szybki skrót */}
+        {/* Szybkie skróty */}
         <div className="mt-6 grid grid-cols-1 gap-3 text-left">
+          {/* 1) Problem w związku */}
           <Link
             href="/navimind?state=relationship"
             className="block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-5 transition hover:bg-zinc-900/55 hover:border-zinc-700/70 hover:shadow-lg hover:shadow-black/30"
@@ -41,15 +42,34 @@ export default function Home() {
               </span>
             </div>
 
-            <p className="mt-3 text-sm text-cyan-200">
-              Porozmawiaj teraz →
-            </p>
+            <p className="mt-3 text-sm text-cyan-200">Porozmawiaj teraz →</p>
+          </Link>
+
+          {/* 2) Rozwód */}
+          <Link
+            href="/propozycje?state=divorce"
+            className="block rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-5 transition hover:bg-zinc-900/55 hover:border-zinc-700/70 hover:shadow-lg hover:shadow-black/30"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <h2 className="text-lg font-semibold text-zinc-100">
+                  Rozwód (prawo + wsparcie)
+                </h2>
+                <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+                  Prawnicy, grupy, psycholog, psychiatra. Zbierasz się i działasz bez chaosu.
+                </p>
+              </div>
+
+              <span className="shrink-0 rounded-full bg-cyan-500/15 px-3 py-1 text-xs text-cyan-200 ring-1 ring-cyan-400/20">
+                Start
+              </span>
+            </div>
+
+            <p className="mt-3 text-sm text-cyan-200">Otwórz wsparcie →</p>
           </Link>
         </div>
 
-        <p className="text-xs text-zinc-500 mt-10">
-          {MICROCOPY.footerNote}
-        </p>
+        <p className="text-xs text-zinc-500 mt-10">{MICROCOPY.footerNote}</p>
       </div>
     </main>
   );
