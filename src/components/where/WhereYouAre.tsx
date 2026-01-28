@@ -42,7 +42,7 @@ const OPTIONS = [
   {
     title: "Chodzi o ojcostwo",
     desc: "Dziecko, matka dziecka, granice i ustalenia. Bez chaosu.",
-    href: "/propozycje?state=father",
+    href: "/where/father",
     tag: "ojciec",
   },
   {
