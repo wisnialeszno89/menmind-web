@@ -13,121 +13,103 @@ type Partner = {
 
 const PARTNERS: Partner[] = [
   {
-    name: "MenMind Trips",
+    name: "MenMind",
     title: "Wyjazdy męskie: reset + outdoor",
-    desc: "Wyprawy, trekking, natura, prosta forma. Dla facetów, którzy chcą zmiany otoczenia i kontaktu z ludźmi.",
-    tags: ["trips", "ready"],
-    cta: "Zobacz wyjazdy",
-    href: "#",
-    note: "Wkrótce: lista organizatorów + formularz zgłoszeń",
+    desc: "Wyprawy, góry, natura i prosta struktura. Dla facetów, którzy potrzebują ruchu i zmiany otoczenia.",
+    tags: ["trips"],
+    cta: "Otwórz wyjazdy",
+    href: "/spec/wyjazdy",
+    note: "Wkrótce: zweryfikowani organizatorzy",
   },
   {
-    name: "Trening / Combat",
-    title: "Trening i sporty walki",
-    desc: "Dla ciała i głowy. Regularność daje szybki zwrot: energia, spokój, pewność siebie.",
-    tags: ["training", "ready", "pressure", "empty"],
-    cta: "Zobacz polecanych",
-    href: "#",
-    note: "Wkrótce: miejsca + trenerzy",
+    name: "MenMind",
+    title: "Trening / sport",
+    desc: "Najpierw ciało. Regularność przywraca energię, spokój i pewność.",
+    tags: ["training"],
+    cta: "Otwórz trening",
+    href: "/spec/trening",
+    note: "Wkrótce: siłownie i trenerzy",
   },
   {
-    name: "Fatherhood Support",
-    title: "Ojcostwo: relacja, obecność, komunikacja",
-    desc: "Materiały, konsultacje i praktyczne wsparcie dla ojców. Bez oceniania, bez guru.",
-    tags: ["fatherhood", "father"],
-    cta: "Zobacz wsparcie",
-    href: "#",
-    note: "Wkrótce: polecane zasoby",
+    name: "MenMind",
+    title: "Zamknięte grupy / fora",
+    desc: "Czasem nie potrzebujesz rady. Potrzebujesz ludzi, którzy rozumieją.",
+    tags: ["community"],
+    cta: "Otwórz grupy",
+    href: "/spec/grupy",
+    note: "Wkrótce",
   },
   {
-    name: "Co-parenting",
-    title: "Granice i współrodzicielstwo",
-    desc: "Pomoc w uporządkowaniu komunikacji, zasad i emocji w relacji z matką dziecka — bez wojny.",
-    tags: ["co-parenting", "father", "law"],
-    cta: "Zobacz opcje",
-    href: "#",
-    note: "Wkrótce: prawnicy + mediacje + materiały",
+    name: "MenMind",
+    title: "Psychologowie (rozmowa + klarowność)",
+    desc: "Gdy potrzebujesz rozmowy, uporządkowania emocji i stabilizacji. Bez wstydu.",
+    tags: ["psychologists"],
+    cta: "Otwórz psychologów",
+    href: "/spec/psychologowie",
+    note: "Wkrótce: zweryfikowana lista",
   },
-
-  // ✅ Psychologists
   {
-    name: "Wsparcie psychologiczne",
-    title: "Psychologowie (rozmowa i praca nad sobą)",
-    desc: "Gdy chcesz z kimś pogadać, poukładać emocje i odzyskać stabilność. Bez wstydu, bez etykiet.",
-    tags: ["psychologists", "father", "pressure", "broken", "breakup", "empty"],
-    cta: "Zobacz opcje",
-    href: "#",
-    note: "Wkrótce: polecani specjaliści",
+    name: "MenMind",
+    title: "Psychiatrzy (wsparcie medyczne)",
+    desc: "Gdy objawy są za mocne, sen siada i organizm nie ciągnie. Leczenie to narzędzie — nie słabość.",
+    tags: ["psychiatrists"],
+    cta: "Otwórz psychiatrów",
+    href: "/spec/psychiatrzy",
+    note: "Wkrótce: zweryfikowana lista",
   },
-
-  // ✅ Psychiatrists
   {
-    name: "Wsparcie medyczne",
-    title: "Psychiatrzy (gdy jest naprawdę ciężko)",
-    desc: "Dla momentów, kiedy objawy są za duże, sen się sypie, a organizm nie ciągnie. To leczenie, nie słabość.",
-    tags: ["psychiatrists", "father", "pressure", "broken", "breakup", "empty"],
-    cta: "Zobacz opcje",
-    href: "#",
-    note: "Wkrótce: kontakty i wskazówki",
+    name: "MenMind",
+    title: "Prawo (rozwód / ojcostwo / ustalenia / mediacje)",
+    desc: "Konkretne kroki, zasady i spokojniejsza komunikacja. Struktura daje spokój.",
+    tags: ["law"],
+    cta: "Otwórz prawo",
+    href: "/spec/prawo",
+    note: "Wkrótce",
   },
-
   {
-    name: "Wsparcie prawne",
-    title: "Prawo: ojcostwo / ustalenia / konflikty",
-    desc: "Dla facetów, którzy chcą uporządkować sytuację formalnie i odzyskać spokój.",
-    tags: ["law", "father", "co-parenting"],
-    cta: "Zobacz opcje",
-    href: "#",
-    note: "Wkrótce: polecani prawnicy",
+    name: "Navimind",
+    title: "Porozmawiaj teraz (Navimind)",
+    desc: "Jeśli potrzebujesz spokoju i kierunku — bez ocen, bez presji.",
+    tags: ["navimind"],
+    cta: "Otwórz czat",
+    href: "/navimind?state=unknown",
+    note: "Dostępne teraz",
   },
 
+  // ✅ Nightlife jako “ukryty zasób” – działa przez URL, nie pokazujemy go jako filtr
   {
-    name: "Używki i alkohol",
-    title: "Gdy zaczyna ciągnąć w złą stronę",
-    desc: "Bez moralizowania. Narzędzia i wsparcie, gdy uciekasz w alkohol, używki albo autodestrukcję.",
-    tags: ["addiction", "broken", "pressure", "breakup", "empty"],
-    cta: "Zobacz wsparcie",
-    href: "#",
-    note: "Wkrótce: kontakty i materiały",
-  },
-
-  {
-    name: "Społeczność",
-    title: "Zamknięte grupy / rozmowy z innymi facetami",
-    desc: "Czasem nie potrzebujesz porad. Potrzebujesz ludzi, którzy rozumieją i nie oceniają.",
-    tags: ["community", "broken", "breakup", "empty", "father", "ready"],
-    cta: "Zobacz opcje",
-    href: "#",
-    note: "Wkrótce: kanały tematyczne",
+    name: "MenMind",
+    title: "Kluby / bary / imprezy",
+    desc: "Opcja na przyszłość: miejsca, wydarzenia i partnerzy. Kontakt z ludźmi — bez spiny.",
+    tags: ["nightlife"],
+    cta: "Zobacz (wkrótce)",
+    href: "/partners?tag=nightlife",
+    note: "Wkrótce: partnerzy",
   },
 ];
 
+// ✅ Filtry TYLKO zasobów (bez stanów!)
 const TAGS: { key: string; label: string }[] = [
   { key: "all", label: "Wszystko" },
 
-  // states
-  { key: "pressure", label: "Presja" },
-  { key: "ready", label: "Gotowość" },
-  { key: "breakup", label: "Rozstanie" },
-  { key: "broken", label: "Rozsypka" },
-  { key: "empty", label: "Pustka" },
-
-  // action paths
+  // kierunki / zasoby
   { key: "trips", label: "Wyjazdy" },
   { key: "training", label: "Trening" },
   { key: "community", label: "Grupy / fora" },
-  { key: "addiction", label: "Używki" },
-
-  // fatherhood
-  { key: "father", label: "Ojcostwo" },
-  { key: "fatherhood", label: "Obecność" },
-  { key: "co-parenting", label: "Granice" },
   { key: "law", label: "Prawo" },
 
-  // specialists
+  // specjaliści
   { key: "psychologists", label: "Psychologowie" },
   { key: "psychiatrists", label: "Psychiatrzy" },
+
+  // narzędzie
+  { key: "navimind", label: "Czat" },
 ];
+
+// ✅ Tag działa przez URL, ale nie jest widoczny jako przycisk filtra
+const HIDDEN_TAG_LABELS: Record<string, string> = {
+  nightlife: "Kluby / bary / imprezy",
+};
 
 function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
   const tag = searchParams?.tag ?? "all";
@@ -135,21 +117,24 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
   const filtered =
     tag === "all" ? PARTNERS : PARTNERS.filter((p) => p.tags.includes(tag));
 
-  const activeTagLabel = TAGS.find((t) => t.key === tag)?.label ?? "Wszystko";
+  const activeTagLabel =
+    TAGS.find((t) => t.key === tag)?.label ??
+    HIDDEN_TAG_LABELS[tag] ??
+    "Wszystko";
 
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-6xl">
         <header className="mb-10">
-          <p className="text-sm text-zinc-400">MenMind · polecani</p>
+          <p className="text-sm text-zinc-400">MenMind · partnerzy</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             Partnerzy i zasoby
           </h1>
 
           <p className="mt-4 text-zinc-300 max-w-3xl leading-relaxed">
-            Tu są kierunki i zasoby, które realnie pomagają ruszyć dalej:
-            ruch, rozmowa, wsparcie, formalności. Bez spamu i bez przypadkowych poleceń.
+            Wybrane kierunki i zasoby, które realnie pomagają: ruch, wsparcie,
+            struktura i klarowność. Bez spamu.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -174,7 +159,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            Filtr aktywny:{" "}
+            Aktywny filtr:{" "}
             <span className="text-zinc-300">{activeTagLabel}</span>
           </p>
         </header>
@@ -216,7 +201,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
                 </Link>
 
                 <span className="text-xs text-zinc-500">
-                  {p.note ?? "Dostępne wkrótce"}
+                  {p.note ?? "Wkrótce"}
                 </span>
               </div>
             </div>
@@ -225,12 +210,11 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
 
         <section className="mt-12 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-6 shadow-sm shadow-black/20 backdrop-blur">
           <h2 className="text-lg font-semibold text-zinc-100">
-            Chcesz być partnerem?
+            Chcesz zostać partnerem?
           </h2>
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-            Jeśli masz realną ofertę (wyjazdy, trening, wsparcie, prawo, społeczność) —
-            możesz się zgłosić. Bez taniej reklamy.
+            Zgłoś swoją usługę. Weryfikujemy ręcznie. Publikujemy tylko konkret.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -250,7 +234,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            W kolejnej wersji dodamy weryfikację + panel partnerów.
+            Następna wersja: weryfikacja + panel partnera.
           </p>
         </section>
       </div>
@@ -258,7 +242,7 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
   );
 }
 
-export default function PartnersPage(props: { searchParams?: { tag?: string } }) {
+export default function PartnersPagePL(props: { searchParams?: { tag?: string } }) {
   return (
     <Suspense>
       <PartnersContent {...props} />

@@ -20,17 +20,6 @@ type Offer = {
   badge?: string;
 };
 
-const STATE_LABELS: Record<StateKey, string> = {
-  breakup: "Breakup",
-  divorce: "Divorce",
-  relationship: "Relationship conflict",
-  pressure: "Pressure",
-  empty: "Burnout / empty",
-  father: "Fatherhood",
-  ready: "Ready",
-  broken: "Crisis",
-};
-
 const OFFERS: Offer[] = [
   // ======================
   // BREAKUP
@@ -116,7 +105,7 @@ const OFFERS: Offer[] = [
   },
 
   // ======================
-  // FATHERHOOD
+  // FATHERHOOD (no nightlife)
   // ======================
   {
     id: "father-law",
@@ -149,7 +138,7 @@ const OFFERS: Offer[] = [
   },
 
   // ======================
-  // PRESSURE
+  // PRESSURE (no nightlife)
   // ======================
   {
     id: "pressure-navimind",
@@ -208,7 +197,7 @@ const OFFERS: Offer[] = [
   },
 
   // ======================
-  // READY
+  // READY (nightlife OK)
   // ======================
   {
     id: "ready-trips",
@@ -235,7 +224,7 @@ const OFFERS: Offer[] = [
   },
 
   // ======================
-  // CRISIS
+  // CRISIS (no nightlife)
   // ======================
   {
     id: "broken-navimind",
@@ -290,7 +279,6 @@ const OFFERS: Offer[] = [
 
 function Content({ searchParams }: { searchParams?: { state?: string } }) {
   const state = (searchParams?.state as StateKey) ?? "breakup";
-  const label = STATE_LABELS[state] ?? "Suggestions";
   const offers = OFFERS.filter((o) => o.state === state);
 
   return (
@@ -302,8 +290,6 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             Suggestions
           </h1>
-
-          <p className="mt-3 text-lg text-zinc-200">{label}</p>
         </header>
 
         <section className="grid grid-cols-1 gap-3">

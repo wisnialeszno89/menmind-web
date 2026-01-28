@@ -5,13 +5,13 @@ import Link from "next/link";
 const OPTIONS_EN = [
   {
     title: "After a breakup",
-    desc: "It can be chaos, relief, emptiness — or a new start. We show all available options.",
+    desc: "It can be chaos, relief, emptiness — or a new start. In this mode we show all helpful options.",
     href: "/en/suggestions?state=breakup",
     tag: "breakup",
   },
   {
-    title: "Going through a divorce",
-    desc: "Divorce hurts — but chaos will cost you more. Calm down, get the legal basics right, protect yourself and your child.",
+    title: "I’m going through a divorce",
+    desc: "Divorce hurts, but chaos costs the most. Calm your head, handle the paperwork, protect yourself and your child.",
     href: "/en/where/divorce",
     tag: "divorce",
   },
@@ -41,7 +41,7 @@ const OPTIONS_EN = [
   },
   {
     title: "Fatherhood",
-    desc: "Responsibility, boundaries, agreements, emotions. No chaos.",
+    desc: "Your child, boundaries, agreements, emotions. No chaos.",
     href: "/en/suggestions?state=father",
     tag: "father",
   },
@@ -92,3 +92,4 @@ export default function WhereYouAreEN() {
     </section>
   );
 }
+
