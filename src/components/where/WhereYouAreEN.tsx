@@ -5,50 +5,50 @@ import Link from "next/link";
 const OPTIONS_EN = [
   {
     title: "After a breakup",
-    desc: "It can be chaos, relief, emptiness — or a new start. In this mode we show all helpful options.",
-    href: "/en/suggestions?state=breakup",
+    desc: "Chaos, relief, emptiness — or a new start. We set direction without drama.",
+    href: "/en/where/breakup",
     tag: "breakup",
   },
   {
-    title: "I’m going through a divorce",
-    desc: "Divorce hurts, but chaos costs the most. Calm your head, handle the paperwork, protect yourself and your child.",
+    title: "Going through a divorce",
+    desc: "Divorce hurts, but chaos costs the most. Calm + paperwork + protection.",
     href: "/en/where/divorce",
     tag: "divorce",
   },
   {
     title: "I’m in crisis",
-    desc: "Too much happening at once. I need stability and fast support.",
-    href: "/en/suggestions?state=broken",
+    desc: "Too much happening at once. First: sleep, food, stability, support.",
+    href: "/en/where/broken",
     tag: "crisis",
   },
   {
     title: "Relationship conflict",
-    desc: "Fights, tension, repeating patterns. Talk first — stop escalation.",
-    href: "/en/relationship-conflict",
+    desc: "Fights, tension, repeating patterns. Stop escalation and reset communication.",
+    href: "/en/where/relationship",
     tag: "relationship",
   },
   {
     title: "Burnout / empty",
-    desc: "Life works, but it doesn’t feel alive. Movement + people first.",
-    href: "/en/suggestions?state=empty",
+    desc: "Life works but feels empty. Recovery + movement + people.",
+    href: "/en/where/empty",
     tag: "burnout",
   },
   {
     title: "I’m under pressure",
-    desc: "Too much on my mind. Rising tension. I need calm and direction.",
-    href: "/en/suggestions?state=pressure",
+    desc: "Too much on your mind. Calm the nervous system, then build a plan.",
+    href: "/en/where/pressure",
     tag: "pressure",
   },
   {
     title: "Fatherhood",
-    desc: "Your child, boundaries, agreements, emotions. No chaos.",
+    desc: "Your child, boundaries, agreements. Calm and practical — no war.",
     href: "/en/where/father",
     tag: "father",
   },
   {
     title: "Ready for change",
-    desc: "I’m back at the wheel. Movement + environment + men’s activities.",
-    href: "/en/suggestions?state=ready",
+    desc: "Back at the wheel. Movement + environment + people.",
+    href: "/en/where/ready",
     tag: "ready",
   },
 ];
@@ -61,7 +61,7 @@ export default function WhereYouAreEN() {
       </h2>
 
       <p className="mt-2 text-base text-zinc-300">
-        Pick one. This is just a starting point — no judgment.
+        Pick one. This is a starting point — no judgment.
       </p>
 
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -92,4 +92,3 @@ export default function WhereYouAreEN() {
     </section>
   );
 }
-
