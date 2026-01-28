@@ -12,95 +12,65 @@ type Partner = {
 };
 
 const PARTNERS: Partner[] = [
-  // ✅ Wyjazdy
   {
     name: "MenMind",
     title: "Wyjazdy męskie: reset + outdoor",
     desc: "Wyprawy, góry, natura i prosta struktura. Dla facetów, którzy potrzebują ruchu i zmiany otoczenia.",
-    tags: ["trips", "ready", "breakup"],
+    tags: ["trips"],
     cta: "Otwórz wyjazdy",
     href: "/spec/wyjazdy",
     note: "Wkrótce: zweryfikowani organizatorzy",
   },
-
-  // ✅ Trening / sport
   {
     name: "MenMind",
     title: "Trening / sport",
     desc: "Najpierw ciało. Regularność wraca energię, spokój i pewność.",
-    tags: ["training", "ready", "pressure", "empty", "breakup"],
+    tags: ["training"],
     cta: "Otwórz trening",
     href: "/spec/trening",
     note: "Wkrótce: siłownie i trenerzy",
   },
-
-  // ✅ Społeczność
   {
     name: "MenMind",
     title: "Zamknięte grupy / fora",
     desc: "Czasem nie potrzebujesz rady. Potrzebujesz ludzi, którzy rozumieją.",
-    tags: ["community", "broken", "breakup", "empty", "father", "ready"],
+    tags: ["community"],
     cta: "Otwórz grupy",
     href: "/spec/grupy",
     note: "Wkrótce",
   },
-
-  // ✅ Psychologowie
   {
     name: "MenMind",
     title: "Psychologowie (rozmowa + klarowność)",
     desc: "Gdy potrzebujesz rozmowy, uporządkowania emocji i stabilizacji. Bez wstydu.",
-    tags: [
-      "psychologists",
-      "father",
-      "pressure",
-      "broken",
-      "breakup",
-      "empty",
-      "relationship",
-    ],
+    tags: ["psychologists"],
     cta: "Otwórz psychologów",
     href: "/spec/psychologowie",
     note: "Wkrótce zweryfikowana lista",
   },
-
-  // ✅ Psychiatrzy
   {
     name: "MenMind",
     title: "Psychiatrzy (wsparcie medyczne)",
     desc: "Gdy objawy są za mocne, sen siada i organizm nie ciągnie. Leczenie to narzędzie — nie słabość.",
-    tags: ["psychiatrists", "broken", "breakup"],
+    tags: ["psychiatrists"],
     cta: "Otwórz psychiatrów",
     href: "/spec/psychiatrzy",
     note: "Wkrótce zweryfikowana lista",
   },
-
-  // ✅ Prawo / mediacje
   {
     name: "MenMind",
-    title: "Prawo (ojcostwo / ustalenia / mediacje)",
+    title: "Prawo (rozwód / ojcostwo / ustalenia / mediacje)",
     desc: "Konkretne kroki, zasady i spokojniejsza komunikacja. Struktura daje spokój.",
-    tags: ["law", "father", "breakup"],
+    tags: ["law"],
     cta: "Otwórz prawo",
     href: "/spec/prawo",
     note: "Wkrótce",
   },
-
-  // ✅ Navimind (zawsze)
   {
     name: "Navimind",
     title: "Porozmawiaj teraz (Navimind)",
     desc: "Jeśli potrzebujesz spokoju i kierunku — bez ocen, bez presji.",
-    tags: [
-      "navimind",
-      "broken",
-      "breakup",
-      "empty",
-      "pressure",
-      "father",
-      "ready",
-      "relationship",
-    ],
+    tags: ["navimind"],
     cta: "Otwórz czat",
     href: "/navimind?state=unknown",
     note: "Dostępne teraz",

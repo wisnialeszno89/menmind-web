@@ -12,95 +12,65 @@ type Partner = {
 };
 
 const PARTNERS: Partner[] = [
-  // ✅ Trips
   {
     name: "MenMind",
     title: "Men’s trips: reset + outdoor",
     desc: "Expeditions, hiking, nature, simple structure. For men who need movement and a change of environment.",
-    tags: ["trips", "ready", "breakup"],
+    tags: ["trips"],
     cta: "Open trips",
     href: "/en/spec/trips",
     note: "Coming soon: verified organizers",
   },
-
-  // ✅ Training / sport
   {
     name: "MenMind",
     title: "Training / sport",
     desc: "Body first. Consistency brings back energy, calm and confidence.",
-    tags: ["training", "ready", "pressure", "empty", "breakup"],
+    tags: ["training"],
     cta: "Open training",
     href: "/en/spec/training",
     note: "Coming soon: gyms & coaches",
   },
-
-  // ✅ Community
   {
     name: "MenMind",
     title: "Private groups / forums",
     desc: "Sometimes you don’t need advice. You need people who get it.",
-    tags: ["community", "broken", "breakup", "empty", "father", "ready"],
+    tags: ["community"],
     cta: "Open community",
     href: "/en/spec/community",
     note: "Coming soon",
   },
-
-  // ✅ Psychologists
   {
     name: "MenMind",
     title: "Psychologists (talk + clarity)",
     desc: "When you need to talk, untangle emotions and regain stability. No shame.",
-    tags: [
-      "psychologists",
-      "father",
-      "pressure",
-      "broken",
-      "breakup",
-      "empty",
-      "relationship",
-    ],
+    tags: ["psychologists"],
     cta: "Open psychologists",
     href: "/en/spec/psychologists",
     note: "Verified list coming soon",
   },
-
-  // ✅ Psychiatrists
   {
     name: "MenMind",
     title: "Psychiatrists (medical support)",
     desc: "When symptoms are too strong, sleep collapses and your body can’t carry it. Treatment is a tool — not weakness.",
-    tags: ["psychiatrists", "broken", "breakup"],
+    tags: ["psychiatrists"],
     cta: "Open psychiatrists",
     href: "/en/spec/psychiatrists",
     note: "Verified list coming soon",
   },
-
-  // ✅ Law / mediation
   {
     name: "MenMind",
-    title: "Legal support (fatherhood / agreements)",
+    title: "Legal support (divorce / fatherhood / agreements)",
     desc: "Practical steps, agreements and calmer communication. Structure creates peace.",
-    tags: ["law", "father", "breakup"],
+    tags: ["law"],
     cta: "Open legal support",
     href: "/en/spec/law",
     note: "Coming soon",
   },
-
-  // ✅ Navimind (always useful)
   {
     name: "Navimind",
     title: "Talk now (Navimind chat)",
     desc: "If you need calm and direction right now — no judgment, no pressure.",
-    tags: [
-      "navimind",
-      "broken",
-      "breakup",
-      "empty",
-      "pressure",
-      "father",
-      "ready",
-      "relationship",
-    ],
+    tags: ["navimind"],
     cta: "Open chat",
     href: "/en/navimind?state=unknown",
     note: "Available now",
