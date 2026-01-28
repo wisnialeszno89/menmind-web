@@ -1,30 +1,29 @@
 import Link from "next/link";
 import Reset60 from "@/components/tools/Reset60";
 
-export default function WhereEmptyEN() {
+export default function WhereRelationshipEN() {
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
-          <p className="text-sm text-zinc-400">MenMind · burnout</p>
+          <p className="text-sm text-zinc-400">MenMind · relationship</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-            Burnout / empty
+            Relationship conflict
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            We’re not “fixing life meaning” today.  
-            We restore energy and connection to reality.
+            First we stop escalation. Then we rebuild communication and boundaries.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
-          <h2 className="text-lg font-semibold text-zinc-100">Minimum for today</h2>
+          <h2 className="text-lg font-semibold text-zinc-100">For today</h2>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
-            <li><span className="text-cyan-200 font-medium">•</span> 10 minutes of movement (no ambition).</li>
-            <li><span className="text-cyan-200 font-medium">•</span> Turn off one draining stimulus.</li>
-            <li><span className="text-cyan-200 font-medium">•</span> Food + water + shower = base.</li>
+            <li><span className="text-cyan-200 font-medium">•</span> Don’t solve “who is right” today.</li>
+            <li><span className="text-cyan-200 font-medium">•</span> One sentence: “I need a minute, I’ll come back.”</li>
+            <li><span className="text-cyan-200 font-medium">•</span> 10 minutes of movement reduces tension.</li>
           </ul>
 
           <Reset60 lang="en" />
@@ -36,43 +35,45 @@ export default function WhereEmptyEN() {
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
-                href="/en/spec/training"
+                href="/en/navimind?state=relationship"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
               >
-                <p className="text-sm text-zinc-400">Light</p>
+                <p className="text-sm text-zinc-400">Talk</p>
                 <p className="mt-1 font-semibold text-zinc-100">
-                  Movement / training
+                  Navimind (boundaries + clarity)
                 </p>
                 <p className="mt-2 text-sm text-zinc-400">
-                  Minimum effort, maximum mental reset.
+                  Set direction instead of fighting.
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">See →</p>
+                <p className="mt-3 text-sm text-cyan-200">Open →</p>
+              </Link>
+
+              <Link
+                href="/en/spec/psychologists"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+              >
+                <p className="text-sm text-zinc-400">Support</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Psychologist
+                </p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  Neutral structure and calmer communication.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">See options →</p>
               </Link>
 
               <Link
                 href="/en/spec/community"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
-              >
-                <p className="text-sm text-zinc-400">Connection</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Groups / people
-                </p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  Isolation feeds burnout.
-                </p>
-                <p className="mt-3 text-sm text-cyan-200">See →</p>
-              </Link>
-
-              <Link
-                href="/en/navimind?state=empty"
                 className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition sm:col-span-2"
               >
-                <p className="text-sm text-zinc-400">Talk</p>
-                <p className="mt-1 font-semibold text-zinc-100">Navimind</p>
-                <p className="mt-2 text-sm text-zinc-400">
-                  If it feels pointless — we rebuild direction from zero.
+                <p className="text-sm text-zinc-400">People</p>
+                <p className="mt-1 font-semibold text-zinc-100">
+                  Support groups (coming soon)
                 </p>
-                <p className="mt-3 text-sm text-cyan-200">Open →</p>
+                <p className="mt-2 text-sm text-zinc-400">
+                  No judgment. No pushing advice.
+                </p>
+                <p className="mt-3 text-sm text-cyan-200">See →</p>
               </Link>
             </div>
           </div>
