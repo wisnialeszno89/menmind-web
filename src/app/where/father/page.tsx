@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Reset60 from "@/components/tools/Reset60";
+import MiniBadge from "@/components/ui/MiniBadge";
+import { Baby, Scale, MessageCircle, Sparkles } from "lucide-react";
 
 export default function WhereFatherPage() {
   return (
@@ -13,15 +15,18 @@ export default function WhereFatherPage() {
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Tu nie chodzi o „bycie idealnym”.  
+            Tu nie chodzi o „bycie idealnym”.
             Chodzi o stabilność, obecność i mądre granice — bez wojny i bez ego.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
-          <h2 className="text-lg font-semibold text-zinc-100">
-            Na dziś (prosto)
-          </h2>
+          <div className="flex items-start justify-between gap-3">
+            <h2 className="text-lg font-semibold text-zinc-100">
+              Na dziś (prosto)
+            </h2>
+            <MiniBadge label="5–10 min" tone="info" />
+          </div>
 
           <ul className="mt-4 space-y-3 text-zinc-300 leading-relaxed">
             <li>
@@ -42,33 +47,48 @@ export default function WhereFatherPage() {
 
           {/* ✅ POMYSŁY NA CZAS Z DZIECKIEM */}
           <div className="mt-10">
-            <h3 className="text-sm font-semibold text-zinc-200">
-              Pomysły na czas z dzieckiem
-            </h3>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-sm font-semibold text-zinc-200">
+                Pomysły na czas z dzieckiem
+              </h3>
+              <MiniBadge label="Gotowe" tone="start" />
+            </div>
 
             <div className="mt-4 grid grid-cols-1 gap-3">
               <Link
                 href="/spec/ojcostwo-rytualy"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition hover:-translate-y-[1px] hover:shadow-xl"
               >
-                <p className="text-sm text-zinc-400">Bez kombinowania</p>
-                <p className="mt-1 text-lg font-semibold text-zinc-100">
-                  Proste aktywności i rytuały
-                </p>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-2 text-zinc-200">
+                    <Baby size={18} />
+                    <p className="text-lg font-semibold text-zinc-100">
+                      Proste aktywności i rytuały
+                    </p>
+                  </div>
+                  <MiniBadge label="10–20 min" tone="default" />
+                </div>
+
                 <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-                  Pomysły według wieku. 10–20 minut. Zero presji.
+                  Podział wieku + gotowe pomysły. Zero presji.
                 </p>
                 <p className="mt-3 text-sm text-cyan-200">Zobacz →</p>
               </Link>
 
               <Link
                 href="/spec/ojcostwo-awaryjna"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5 hover:bg-zinc-900/50 transition hover:-translate-y-[1px] hover:shadow-xl"
               >
-                <p className="text-sm text-zinc-400">Awaryjnie</p>
-                <p className="mt-1 text-lg font-semibold text-zinc-100">
-                  Lista awaryjna: 10 pomysłów
-                </p>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-2 text-zinc-200">
+                    <Sparkles size={18} />
+                    <p className="text-lg font-semibold text-zinc-100">
+                      Lista awaryjna: 10 pomysłów
+                    </p>
+                  </div>
+                  <MiniBadge label="Od razu" tone="info" />
+                </div>
+
                 <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
                   Gdy masz pustkę w głowie — wybierz 1 i zrobione.
                 </p>
@@ -77,21 +97,28 @@ export default function WhereFatherPage() {
             </div>
           </div>
 
-          {/* ✅ KONFLIKT / USTALENIA */}
+          {/* ✅ USTALENIA / KONFLIKT */}
           <div className="mt-10">
-            <h3 className="text-sm font-semibold text-zinc-200">
-              Jeśli jest konflikt / ustalenia
-            </h3>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="text-sm font-semibold text-zinc-200">
+                Jeśli jest konflikt / ustalenia
+              </h3>
+              <MiniBadge label="Konkret" tone="priority" />
+            </div>
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Link
                 href="/spec/prawo"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition hover:-translate-y-[1px] hover:shadow-xl"
               >
-                <p className="text-sm text-zinc-400">Formalności</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Prawo / mediacje
-                </p>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-2 text-zinc-200">
+                    <Scale size={18} />
+                    <p className="font-semibold text-zinc-100">Prawo / mediacje</p>
+                  </div>
+                  <MiniBadge label="30–60 min" tone="default" />
+                </div>
+
                 <p className="mt-2 text-sm text-zinc-400">
                   Ustalenia i granice. Papier = mniej chaosu.
                 </p>
@@ -100,12 +127,16 @@ export default function WhereFatherPage() {
 
               <Link
                 href="/navimind?state=father"
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition"
+                className="rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-4 hover:bg-zinc-900/50 transition hover:-translate-y-[1px] hover:shadow-xl"
               >
-                <p className="text-sm text-zinc-400">Rozmowa</p>
-                <p className="mt-1 font-semibold text-zinc-100">
-                  Navimind
-                </p>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-2 text-zinc-200">
+                    <MessageCircle size={18} />
+                    <p className="font-semibold text-zinc-100">Navimind</p>
+                  </div>
+                  <MiniBadge label="Teraz" tone="info" />
+                </div>
+
                 <p className="mt-2 text-sm text-zinc-400">
                   Spokój, klarowność i konkretne kroki.
                 </p>

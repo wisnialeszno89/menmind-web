@@ -1,39 +1,45 @@
 import Link from "next/link";
+import MiniBadge from "@/components/ui/MiniBadge";
+import { Users } from "lucide-react";
 
-export default function SpecKlubyPL() {
+export default function ClubsPL() {
   return (
     <main className="min-h-screen px-6 py-16">
       <div className="mx-auto max-w-3xl">
         <header className="mb-8">
-          <p className="text-sm text-zinc-400">MenMind · społeczność</p>
+          <p className="text-sm text-zinc-400">MenMind · kluby</p>
 
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
             Kluby / bary / imprezy
           </h1>
 
           <p className="mt-4 text-zinc-300 leading-relaxed">
-            Czasem najlepszym ruchem nie jest kolejna analiza — tylko wyjście do
-            ludzi i zmiana otoczenia.
+            To nie jest “ucieczka w balet”.
+            To jest kontakt z ludźmi i wyjście z izolacji — jeśli robisz to mądrze.
           </p>
         </header>
 
         <section className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-6 shadow-lg shadow-black/20 backdrop-blur">
-          <h2 className="text-lg font-semibold text-zinc-100">
-            Partnerzy klubowi (wkrótce)
-          </h2>
+          <div className="flex items-start justify-between gap-3">
+            <h2 className="text-lg font-semibold text-zinc-100">
+              Partnerzy klubowi
+            </h2>
+            <MiniBadge label="wkrótce" tone="soon" />
+          </div>
 
-          <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
-            Tu pojawi się lista sprawdzonych miejsc i partnerów (kluby, eventy,
-            bilety, lokalne inicjatywy). Bez spamu i bez przypadkowych reklam.
-          </p>
+          <div className="mt-4 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
+            <div className="flex items-center gap-2 text-zinc-200">
+              <Users size={18} />
+              <p className="font-semibold">Lista miejsc w przygotowaniu</p>
+            </div>
 
-          <div className="mt-6 rounded-2xl border border-zinc-800/70 bg-zinc-950/30 p-5">
-            <p className="text-sm text-zinc-300">
-              ✅ Weryfikacja ręczna
+            <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
+              W kolejnych wersjach pojawią się zweryfikowane kluby, bary i wydarzenia
+              (online + miasta). Bez spamu i przypadkowych reklam.
             </p>
-            <p className="mt-2 text-sm text-zinc-500">
-              Publikujemy tylko miejsca, które pasują do klimatu MenMind:
-              bezpiecznie, konkretnie, bez patologii.
+
+            <p className="mt-3 text-sm text-zinc-500">
+              Jeśli chcesz dołączyć jako partner — przejdź do zakładki Partnerstwo.
             </p>
           </div>
 
@@ -49,19 +55,19 @@ export default function SpecKlubyPL() {
               href="/where/ready"
               className="inline-flex items-center justify-center rounded-xl bg-zinc-800/60 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-700 hover:bg-zinc-800 transition"
             >
-              ← Wróć (gotowy)
+              ← Wróć (gotowość)
             </Link>
 
             <Link
               href="/"
-              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/40 px-4 py-2 text-sm font-semibold text-zinc-300 ring-1 ring-zinc-800 hover:bg-zinc-800 transition"
+              className="inline-flex items-center justify-center rounded-xl bg-zinc-800/30 px-4 py-2 text-sm font-semibold text-zinc-200 ring-1 ring-zinc-800/70 hover:bg-zinc-800/50 transition"
             >
-              Start →
+              Start
             </Link>
           </div>
 
           <p className="mt-6 text-xs text-zinc-500">
-            To ma być opcja na odbudowę życia społecznego — nie ucieczka w chaos.
+            Tip: idź “do ludzi”, nie “do dramy”.
           </p>
         </section>
       </div>
