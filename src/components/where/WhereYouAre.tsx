@@ -89,10 +89,6 @@ export default function WhereYouAre() {
           </Link>
         ))}
       </div>
-
-      <p className="mt-5 text-xs text-zinc-500">
-        Bez kont. Bez ocen. Bez zapisywania rozmów.
-      </p>
     </section>
   );
 }

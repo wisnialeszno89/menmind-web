@@ -50,7 +50,15 @@ const PARTNERS: Partner[] = [
     name: "MenMind",
     title: "Psychologists (talk + clarity)",
     desc: "When you need to talk, untangle emotions and regain stability. No shame.",
-    tags: ["psychologists", "father", "pressure", "broken", "breakup", "empty", "relationship"],
+    tags: [
+      "psychologists",
+      "father",
+      "pressure",
+      "broken",
+      "breakup",
+      "empty",
+      "relationship",
+    ],
     cta: "Open psychologists",
     href: "/en/spec/psychologists",
     note: "Verified list coming soon",
@@ -83,13 +91,23 @@ const PARTNERS: Partner[] = [
     name: "Navimind",
     title: "Talk now (Navimind chat)",
     desc: "If you need calm and direction right now — no judgment, no pressure.",
-    tags: ["navimind", "broken", "breakup", "empty", "pressure", "father", "ready", "relationship"],
+    tags: [
+      "navimind",
+      "broken",
+      "breakup",
+      "empty",
+      "pressure",
+      "father",
+      "ready",
+      "relationship",
+    ],
     cta: "Open chat",
     href: "/en/navimind?state=unknown",
     note: "Available now",
   },
 ];
 
+// ✅ Only visible filters (nightlife is intentionally hidden)
 const TAGS: { key: string; label: string }[] = [
   { key: "all", label: "All" },
 
@@ -116,13 +134,21 @@ const TAGS: { key: string; label: string }[] = [
   { key: "navimind", label: "Chat" },
 ];
 
+// ✅ Hidden tag labels (allowed via URL, not shown as buttons)
+const HIDDEN_TAG_LABELS: Record<string, string> = {
+  nightlife: "Nightlife",
+};
+
 function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) {
   const tag = searchParams?.tag ?? "all";
 
   const filtered =
     tag === "all" ? PARTNERS : PARTNERS.filter((p) => p.tags.includes(tag));
 
-  const activeTagLabel = TAGS.find((t) => t.key === tag)?.label ?? "All";
+  const activeTagLabel =
+    TAGS.find((t) => t.key === tag)?.label ??
+    HIDDEN_TAG_LABELS[tag] ??
+    "All";
 
   return (
     <main className="min-h-screen px-6 py-16">
@@ -161,7 +187,8 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </div>
 
           <p className="mt-4 text-xs text-zinc-500">
-            Active filter: <span className="text-zinc-300">{activeTagLabel}</span>
+            Active filter:{" "}
+            <span className="text-zinc-300">{activeTagLabel}</span>
           </p>
         </header>
 
@@ -215,9 +242,8 @@ function PartnersContent({ searchParams }: { searchParams?: { tag?: string } }) 
           </h2>
 
           <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
-            If you offer something that genuinely helps men move forward
-            (trips, training, support, legal, community) — you can apply.
-            No cheap ads.
+            If you offer something that genuinely helps men move forward (trips,
+            training, support, legal, community) — you can apply. No cheap ads.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">

@@ -89,10 +89,6 @@ export default function WhereYouAreEN() {
           </Link>
         ))}
       </div>
-
-      <p className="mt-5 text-xs text-zinc-500">
-        No accounts. No judgment. No saved conversations.
-      </p>
     </section>
   );
 }
