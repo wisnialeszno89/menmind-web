@@ -91,7 +91,7 @@ export default function WhereYouAre() {
       </div>
 
       <p className="mt-5 text-xs text-zinc-500">
-        Nie zapisujemy rozmów. Możesz wyjść w każdej chwili.
+        Bez kont. Bez ocen. Bez zapisywania rozmów.
       </p>
     </section>
   );

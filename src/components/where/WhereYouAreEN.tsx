@@ -91,7 +91,7 @@ export default function WhereYouAreEN() {
       </div>
 
       <p className="mt-5 text-xs text-zinc-500">
-        No accounts. No saved conversations.
+        No accounts. No judgment. No saved conversations.
       </p>
     </section>
   );
