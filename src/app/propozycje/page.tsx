@@ -4,6 +4,7 @@ import { Suspense } from "react";
 type StateKey =
   | "broken"
   | "breakup"
+  | "divorce"
   | "relationship"
   | "empty"
   | "pressure"
@@ -31,70 +32,27 @@ type Offer = {
 const STATES: {
   key: StateKey;
   label: string;
-  hint: string;
-  extra?: string;
 }[] = [
-  {
-    key: "breakup",
-    label: "Rozstanie",
-    hint: "Najpierw stabilizacja, potem decyzje. Nie musisz tego nieść sam.",
-    extra:
-      "To normalne, że czujesz miks: pustka / złość / ulga / tęsknota. To nie jest słabość — to proces.",
-  },
-  {
-    key: "relationship",
-    label: "Kryzys w związku",
-    hint: "Kłótnie, napięcie, chaos. Zatrzymaj eskalację i wróć do rozmowy + granic.",
-    extra:
-      "Jeśli ciągle wracacie do tego samego konfliktu — nie potrzebujesz wygranej. Potrzebujesz spokoju i struktury.",
-  },
-  {
-    key: "pressure",
-    label: "Presja",
-    hint: "Za dużo na głowie. Uspokój układ nerwowy i wróć na tor.",
-    extra:
-      "Presja lubi ciszę w środku. Ty robisz hałas w głowie. Najpierw ciało, potem plan.",
-  },
-  {
-    key: "empty",
-    label: "Wypalenie / pustka",
-    hint: "Regeneracja biologiczno-psychiczna + ludzie + powrót energii.",
-    extra:
-      "Nie musisz mieć dziś sensu. Wystarczy, że masz minimalny ruch i minimalny kontakt z ludźmi.",
-  },
-  {
-    key: "father",
-    label: "Ojcostwo",
-    hint: "Spokój, obecność, granice. Bez napinki.",
-    extra:
-      "Tu nie wygrywa ego. Wygrywa stabilność i to, co jest dobre dla dziecka (i dla Ciebie).",
-  },
-  {
-    key: "ready",
-    label: "Po przejściach, gotowy",
-    hint: "Ruch, nowe środowisko, ludzie. Bez gadania.",
-    extra:
-      "Masz paliwo. Teraz trzeba je dobrze spalić: konsekwencja + nowe bodźce + świeże otoczenie.",
-  },
-  {
-    key: "broken",
-    label: "Rozsypka",
-    hint: "Minimalna stabilizacja + pomoc, jeśli trzeba.",
-    extra:
-      "Jeśli nie śpisz i nie jesz — to nie jest moment na ambicję. To moment na ratowanie bazy.",
-  },
+  { key: "breakup", label: "Rozstanie" },
+  { key: "divorce", label: "Rozwód" },
+  { key: "relationship", label: "Kryzys w związku" },
+  { key: "pressure", label: "Presja" },
+  { key: "empty", label: "Wypalenie / pustka" },
+  { key: "father", label: "Ojcostwo" },
+  { key: "ready", label: "Po przejściach, gotowy" },
+  { key: "broken", label: "Rozsypka" },
 ];
 
 const OFFERS: Offer[] = [
   // =========================================
-  // ROZSTANIE — pełny zestaw (ale uporządkowany)
+  // ROZSTANIE
   // =========================================
   {
     id: "breakup-navimind",
     state: "breakup",
     kind: "navimind",
     title: "Navimind (wygadaj się)",
-    desc: "Wyrzuć chaos, ustaw kierunek, bez ocen. To często ratuje dzień.",
+    desc: "Wyrzuć chaos, ustaw kierunek, bez ocen.",
     href: () => "/navimind?state=breakup",
     badge: "Najpierw",
   },
@@ -144,9 +102,47 @@ const OFFERS: Offer[] = [
     id: "breakup-law",
     state: "breakup",
     kind: "law",
-    title: "Prawo / mediacje (na koniec, jeśli trzeba)",
+    title: "Prawo / mediacje (jeśli trzeba)",
     desc: "Dziecko / majątek / konflikt. Papier czasem daje spokój.",
     href: () => "/spec/prawo",
+  },
+
+  // =========================================
+  // ROZWÓD
+  // =========================================
+  {
+    id: "divorce-law",
+    state: "divorce",
+    kind: "law",
+    title: "Pomoc prawna (rozwód / alimenty / kontakty)",
+    desc: "Prawnicy, mediacje, przygotowanie do sprawy i ochrona Twoich interesów.",
+    href: () => "/spec/prawo",
+    badge: "Konkret",
+  },
+  {
+    id: "divorce-community",
+    state: "divorce",
+    kind: "community",
+    title: "Grupy wsparcia dla facetów po rozwodzie",
+    desc: "Bez tłumaczenia się. Ludzie, którzy wiedzą jak to wygląda od środka.",
+    href: () => "/spec/grupy",
+  },
+  {
+    id: "divorce-psychologists",
+    state: "divorce",
+    kind: "psychologists",
+    title: "Psycholog (emocje + stabilizacja)",
+    desc: "Jeśli czujesz, że Cię mieli — rozmowa daje strukturę i plan działania.",
+    href: () => "/spec/psychologowie",
+  },
+  {
+    id: "divorce-psychiatrists",
+    state: "divorce",
+    kind: "psychiatrists",
+    title: "Psychiatra (gdy nie śpisz / jedziesz na oparach)",
+    desc: "Gdy organizm siada. To medyczne wsparcie, nie etykieta.",
+    href: () => "/spec/psychiatrzy",
+    badge: "Priorytet",
   },
 
   // =========================================
@@ -166,7 +162,7 @@ const OFFERS: Offer[] = [
     state: "relationship",
     kind: "community",
     title: "Zamknięte grupy / fora",
-    desc: "Kontakt z ludźmi, którzy nie dorzucają wstydu, tylko realne doświadczenie.",
+    desc: "Kontakt z ludźmi, którzy nie dorzucają wstydu, tylko doświadczenie.",
     href: () => "/spec/grupy",
   },
   {
@@ -358,20 +354,7 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
             Propozycje
           </h1>
 
-          <p className="mt-2 text-lg text-zinc-200 leading-relaxed">
-            {current.label}
-          </p>
-
-          <p className="mt-4 text-base text-zinc-300 leading-relaxed">
-            {current.hint}
-          </p>
-
-          {current.extra ? (
-            <p className="mt-3 text-sm text-zinc-500 leading-relaxed">
-              {current.extra}
-            </p>
-          ) : null}
-
+          {/* ✅ zostawiamy tylko zakładki (bez tekstów pod spodem) */}
           <div className="mt-6 flex flex-wrap gap-2">
             {STATES.map((s) => {
               const active = s.key === state;
@@ -392,10 +375,6 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
               );
             })}
           </div>
-
-          <p className="mt-4 text-sm text-zinc-400">
-            Tryb: <span className="text-zinc-200 font-medium">Online</span>
-          </p>
         </header>
 
         <section className="grid grid-cols-1 gap-3">
@@ -447,7 +426,9 @@ function Content({ searchParams }: { searchParams?: { state?: string } }) {
   );
 }
 
-export default function PropozycjePage(props: { searchParams?: { state?: string } }) {
+export default function PropozycjePage(props: {
+  searchParams?: { state?: string };
+}) {
   return (
     <Suspense>
       <Content {...props} />
