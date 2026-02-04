@@ -8,6 +8,11 @@ export const metadata = {
   description: "Punkt orientacyjny dla facetów w drodze",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pl">
