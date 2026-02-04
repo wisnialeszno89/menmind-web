@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import Link from "next/link";
+import NavimindEmbed from "@/components/NavimindEmbed";
 
 function NavimindContent({
   searchParams,
@@ -12,7 +13,6 @@ function NavimindContent({
   return (
     <main className="min-h-[100dvh] px-4 sm:px-6 py-6 md:py-12">
       <div className="mx-auto max-w-6xl">
-        {/* ✅ Mobile-first header (smaller, less scroll) */}
         <header className="mb-4 md:mb-8">
           <p className="text-sm md:text-base text-zinc-300">MenMind · rozmowa</p>
 
@@ -30,7 +30,6 @@ function NavimindContent({
           </p>
         </header>
 
-        {/* ✅ Sticky controls: always visible */}
         <div className="sticky top-2 z-20 mb-4">
           <div className="rounded-2xl border border-zinc-800/60 bg-zinc-900/60 px-3 py-3 shadow-lg shadow-black/30 backdrop-blur">
             <div className="flex flex-wrap items-center justify-between gap-2">
@@ -59,23 +58,13 @@ function NavimindContent({
           </div>
         </div>
 
-        {/* ✅ iframe wrapper */}
         <section
           id="navimind"
           className="rounded-2xl border border-zinc-800/60 bg-zinc-900/30 shadow-lg shadow-black/20 backdrop-blur overflow-hidden"
         >
-          {/* 
-            ✅ Better mobile height:
-            - mobile: almost fullscreen
-            - desktop: comfortable
-          */}
           <div className="w-full h-[92dvh] md:h-[78dvh]">
-            <iframe
-              src={iframeSrc}
-              title="Navimind"
-              className="w-full h-full border-0"
-              allow="clipboard-write"
-            />
+            {/* ✅ iframe with uid (stable demo limit) */}
+            <NavimindEmbed state={state} />
           </div>
         </section>
 
