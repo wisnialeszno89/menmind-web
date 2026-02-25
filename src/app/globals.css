@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== Base ===== */
 :root {
   color-scheme: dark;
 }
@@ -12,62 +11,20 @@ body {
   height: 100%;
 }
 
-/* ✅ Readability upgrade */
-html {
-  font-size: 16px; /* baza, a Tailwind dalej działa normalnie */
-}
-
-body {
-  /* ✅ lekko czytelniejsze teksty w całej apce */
-  font-size: 16px;
-  line-height: 1.65;
-  letter-spacing: 0.2px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  background:
-    radial-gradient(900px 500px at 50% -10%, rgba(34, 211, 238, 0.10), transparent 60%),
-    radial-gradient(700px 420px at 105% 20%, rgba(139, 92, 246, 0.10), transparent 55%),
-    radial-gradient(700px 500px at -10% 80%, rgba(16, 185, 129, 0.08), transparent 60%),
-    #0a0a0b;
-
-  color: #fafafa;
-}
-
-/* ✅ Podtytuły i opisy będą “bardziej obecne”, bez grzebania w 30 plikach */
-p {
-  font-size: 1rem;
-  line-height: 1.65;
-}
-
-/* Subtelny noise (premium, nie brud) */
 body {
   font-size: 16px;
   line-height: 1.65;
   letter-spacing: 0.2px;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
   background:
-    radial-gradient(900px 500px at 50% -10%, rgba(34, 211, 238, 0.09), transparent 60%),
-    radial-gradient(700px 420px at 105% 20%, rgba(139, 92, 246, 0.08), transparent 55%),
-    radial-gradient(700px 500px at -10% 80%, rgba(16, 185, 129, 0.06), transparent 60%),
-    #111114;
+    radial-gradient(900px 600px at 50% -10%, rgba(59,130,246,0.08), transparent 60%),
+    radial-gradient(600px 500px at 100% 20%, rgba(96,165,250,0.05), transparent 55%),
+    #0e1628;
 
-  color: #fafafa;
+  color: #f1f5f9;
 }
 
-/* ✅ Link hover minimalnie “żywszy” */
-a:hover {
-  opacity: 0.95;
-}
-
-/* ✅ Czytelne zaznaczanie */
 ::selection {
-  background: rgba(34, 211, 238, 0.25);
-}
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(63, 63, 70, 0.9) transparent;
+  background: rgba(59, 130, 246, 0.3);
 }

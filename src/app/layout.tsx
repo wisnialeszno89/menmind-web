@@ -1,27 +1,25 @@
 import type { ReactNode } from "react";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
-import NavimindCornerButton from "@/components/NavimindCornerButton";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "MenMind",
-  description: "Punkt orientacyjny dla facetów w drodze",
+  description: "Przestrzeń dla mężczyzn w drodze",
 };
 
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-};
-
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <html lang="pl">
-      <body className="text-zinc-100 antialiased">
+      <body className={`${inter.className} bg-midnight text-textPrimary antialiased`}>
         <Header />
         {children}
-
-        {/* ✅ Szybkie przejście do Navimind.app */}
-        <NavimindCornerButton />
       </body>
     </html>
   );
