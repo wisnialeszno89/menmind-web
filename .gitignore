@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+caly_projekt.txt
+*.txt
+.env
+.env.local

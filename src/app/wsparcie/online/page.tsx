@@ -7,20 +7,14 @@ import {
   categoryLabels,
 } from "@/lib/partners";
 
-type Props = {
-  params: {
-    miasto: string;
-  };
-};
-
-export default function MiastoPage({ params }: Props) {
+export default function OnlinePage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  const cityPartners = partners.filter(
-    (p) => p.city === params.miasto
+  const onlinePartners = partners.filter(
+    (p) => p.city === "online"
   );
 
-  const filteredPartners = cityPartners
+  const filteredPartners = onlinePartners
     .filter((p) =>
       activeCategory ? p.category === activeCategory : true
     )
@@ -29,9 +23,13 @@ export default function MiastoPage({ params }: Props) {
   return (
     <main className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-5xl">
-        <h1 className="text-3xl font-semibold capitalize">
-          Wsparcie – {params.miasto}
+        <h1 className="text-3xl font-semibold">
+          Wsparcie online
         </h1>
+
+        <p className="mt-4 text-textMuted max-w-2xl">
+          Specjaliści i usługi dostępne z dowolnego miejsca.
+        </p>
 
         {/* FILTR */}
         <div className="mt-10 flex flex-wrap gap-3">
@@ -43,11 +41,11 @@ export default function MiastoPage({ params }: Props) {
                 : "border-borderSoft text-textMuted"
             }`}
           >
-            Wszystkie ({cityPartners.length})
+            Wszystkie ({onlinePartners.length})
           </button>
 
           {categories.map((cat) => {
-            const count = cityPartners.filter(
+            const count = onlinePartners.filter(
               (p) => p.category === cat.value
             ).length;
 
@@ -108,6 +106,24 @@ export default function MiastoPage({ params }: Props) {
               </p>
             </a>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-20 rounded-2xl border border-borderSoft bg-navySoft p-10 text-center">
+          <h2 className="text-2xl font-semibold">
+            Prowadzisz działalność online?
+          </h2>
+
+          <p className="mt-4 text-textMuted">
+            Możesz dotrzeć do mężczyzn z całej Polski.
+          </p>
+
+          <a
+            href="/dla-partnerow/zglos-sie"
+            className="inline-block mt-8 rounded-xl bg-accent px-8 py-4 font-medium text-black"
+          >
+            Dołącz jako partner →
+          </a>
         </div>
       </div>
     </main>

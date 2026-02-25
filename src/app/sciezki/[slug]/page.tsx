@@ -1,97 +1,128 @@
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import { sciezki } from "@/lib/sciezki";
-import Card from "@/components/ui/Card";
+import Link from "next/link";
 
-export default function WszystkieSciezkiPage() {
-  const tryby = [
-    {
-      key: "kryzys",
-      label: "Kryzys",
-      opis: "Stabilizacja i zatrzymanie chaosu.",
-    },
-    {
-      key: "odbicie",
-      label: "Odbudowa",
-      opis: "Powrót do struktury i porządku.",
-    },
-    {
-      key: "wzrost",
-      label: "Wzrost",
-      opis: "Budowa siły, charakteru i kierunku.",
-    },
-  ] as const;
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+export default function SciezkaPage({ params }: Props) {
+  const sciezka = sciezki.find(
+    (s) => s.slug === params.slug
+  );
+
+  if (!sciezka) return notFound();
 
   return (
     <main className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-3xl">
+        {/* HEADER */}
         <h1 className="text-4xl font-semibold tracking-tight">
-          Mapa ścieżek
+          {sciezka.title}
         </h1>
 
-        <p className="mt-6 text-textMuted max-w-2xl">
-          Każdy etap ma swój sens. Nie przeskakujesz poziomów.
-          Przechodzisz je.
-        </p>
+        {/* TRYB ORIENTACYJNY */}
+<div className="mt-6 flex gap-6 text-sm uppercase tracking-wide">
+  {[
+    { label: "Kryzys", href: "/kryzys", key: "kryzys" },
+    { label: "Odbudowa", href: "/odbicie", key: "odbicie" },
+    { label: "Wzrost", href: "/wzrost", key: "wzrost" },
+  ].map((mode) => (
+    <Link
+      key={mode.key}
+      href={mode.href}
+      className={
+        sciezka.tryb === mode.key
+          ? "text-accent font-semibold"
+          : "text-textMuted hover:text-textPrimary"
+      }
+    >
+      {mode.label}
+    </Link>
+  ))}
+</div>
 
+        {/* ETAPY */}
         <div className="mt-16 space-y-16">
-          {tryby.map((tryb) => {
-            const filtered = sciezki.filter(
-              (s) => s.tryb === tryb.key
-            );
+          {sciezka.etapy.map((etap, etapIndex) => (
+            <div
+              key={etapIndex}
+              className="rounded-2xl border border-borderSoft p-8"
+            >
+              <h2 className="text-2xl font-semibold">
+                {etap.title}
+              </h2>
 
-            if (filtered.length === 0) return null;
+              <p className="mt-4 text-textMuted">
+                {etap.description}
+              </p>
 
-            return (
-              <section key={tryb.key}>
-                <div className="mb-6 flex justify-between items-center">
-                  <div>
-                    <h2 className="text-2xl font-semibold">
-                      {tryb.label}
-                    </h2>
-                    <p className="text-sm text-textMuted mt-2">
-                      {tryb.opis}
-                    </p>
-                  </div>
+              {/* DLACZEGO */}
+              {etap.why && (
+                <div className="mt-8">
+                  <h3 className="text-sm uppercase tracking-wide text-textMuted">
+                    Dlaczego to działa
+                  </h3>
 
-                  {/* NaviMind integration */}
-                  <Link
-                    href={`https://navimind.app/chat?from=menmind&tryb=${tryb.key}`}
-                    target="_blank"
-                    className="text-sm text-accent hover:underline"
-                  >
-                    Zaplanuj w NaviMind →
-                  </Link>
+                  <ul className="mt-4 space-y-2 text-sm text-textMuted">
+                    {etap.why.map((item, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-accent">•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+              )}
 
-                <div className="grid gap-6 md:grid-cols-2">
-                  {filtered.map((sciezka) => (
-                    <Link
-                      key={sciezka.slug}
-                      href={`/sciezki/${sciezka.slug}`}
+              {/* DZIAŁANIA */}
+              <div className="mt-10">
+                <h3 className="text-sm uppercase tracking-wide text-textMuted">
+                  Działania
+                </h3>
+
+                <ul className="mt-4 space-y-3 text-sm">
+                  {etap.actions.map((action, actionIndex) => (
+                    <li
+                      key={actionIndex}
+                      className="flex gap-2 text-textMuted"
                     >
-                      <Card>
-                        <h3 className="text-lg font-medium">
-                          {sciezka.title}
-                        </h3>
-
-                        <p className="mt-2 text-sm text-textMuted">
-                          {sciezka.intro}
-                        </p>
-
-                        <div className="mt-4 flex justify-between text-xs text-textMuted uppercase tracking-wide">
-                          <span>Poziom: {sciezka.level}</span>
-                          <span>
-                            {sciezka.etapy.length} etapy
-                          </span>
-                        </div>
-                      </Card>
-                    </Link>
+                      <span className="text-accent">•</span>
+                      {action}
+                    </li>
                   ))}
-                </div>
-              </section>
-            );
-          })}
+                </ul>
+              </div>
+            </div>
+          ))}
         </div>
+
+        {/* DODATKOWE POŁĄCZENIE Z OJCOSTWEM */}
+        {sciezka.slug === "ojciec-po-rozstaniu" && (
+          <div className="mt-20 rounded-2xl border border-borderSoft bg-navySoft p-8">
+            <h2 className="text-xl font-semibold">
+              Narzędzia dla ojców
+            </h2>
+
+            <div className="mt-6 flex flex-col gap-4">
+              <a
+                href="/ojcostwo/zabawy"
+                className="text-accent"
+              >
+                Generator zabaw →
+              </a>
+
+              <a
+                href="/ojcostwo/rytual-15-min"
+                className="text-accent"
+              >
+                Rytuał 15 minut →
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     </main>
   );

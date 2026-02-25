@@ -547,4 +547,56 @@ export const sciezki: Sciezka[] = [
     },
   ],
 },
+{
+  slug: "ojciec-po-rozstaniu",
+  title: "Ojciec po rozstaniu",
+  tryb: "kryzys",
+  level: "srednia",
+  intro:
+    "Rozstanie to jedno. Ojcostwo po rozstaniu to drugie. Budujesz relację na nowo – świadomie.",
+  etapy: [
+    {
+      title: "Etap 1 – Stabilizacja emocji",
+      description:
+        "Najpierw uspokój siebie. Dziecko czuje Twoje napięcie.",
+      why: [
+        "Dziecko potrzebuje bezpiecznego dorosłego.",
+        "Stabilność ojca to stabilność relacji.",
+      ],
+      actions: [
+        "Zero konfliktu przy dziecku.",
+        "Rozmowy o byłej partnerce – poza dzieckiem.",
+        "Codzienny reset 5 minut przed spotkaniem.",
+      ],
+    },
+    {
+      title: "Etap 2 – Struktura kontaktu",
+      description:
+        "Dziecko potrzebuje przewidywalności.",
+      why: [
+        "Stałość buduje poczucie bezpieczeństwa.",
+        "Rytuały wzmacniają więź.",
+      ],
+      actions: [
+        "Stały dzień i godzina kontaktu.",
+        "Rytuał 15 minut obecności.",
+        "1 wspólna aktywność ruchowa.",
+      ],
+    },
+    {
+      title: "Etap 3 – Relacja długoterminowa",
+      description:
+        "Budujesz relację, nie tylko weekend.",
+      why: [
+        "Ojcostwo to proces, nie epizod.",
+        "Twoja rola nie kończy się po rozstaniu.",
+      ],
+      actions: [
+        "Rozmowa o emocjach dziecka.",
+        "Plan wspólnego projektu (np. wyjazd).",
+        "Regularny kontakt telefoniczny między spotkaniami.",
+      ],
+    },
+  ],
+}
 ];
