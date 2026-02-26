@@ -1,52 +1,30 @@
-import Link from "next/link";
+import BreathingTool from "@/components/BreathingTool";
+import EnergyGauge from "@/components/EnergyGauge";
+import MoodLog from "@/components/MoodLog";
 
 export default function NarzedziaPage() {
-  const tools = [
-    {
-      title: "Reset 5 minut",
-      desc: "Zatrzymaj napięcie. Uspokój układ nerwowy.",
-      href: "/narzedzia/reset",
-    },
-    {
-      title: "Minimum dnia",
-      desc: "Zrób minimum. Wystarczy.",
-      href: "/narzedzia/minimum",
-    },
-    {
-      title: "Brain Dump",
-      desc: "Wyrzuć chaos z głowy.",
-      href: "/narzedzia/brain-dump",
-    },
-  ];
-
   return (
-    <main className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-4xl">
-        <h1 className="text-4xl font-semibold tracking-tight">
+    <main className="section-compact bg-[#0F172A]">
+      <div className="container-2026 max-w-3xl">
+
+        <h1 className="text-4xl font-semibold tracking-tight mb-6">
           Narzędzia
         </h1>
 
-        <p className="mt-6 text-textMuted max-w-2xl">
-          Krótkie moduły do działania. Bez logowania. Bez teorii.
+        <p className="text-zinc-400 text-lg mb-12">
+          Bez logowania. Bez zapisu w chmurze. 
+          Tylko przestrzeń do regulacji i refleksji.
         </p>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {tools.map((tool) => (
-            <Link
-              key={tool.href}
-              href={tool.href}
-              className="rounded-2xl border border-borderSoft p-8 hover:bg-navySoft transition"
-            >
-              <h2 className="text-xl font-medium">
-                {tool.title}
-              </h2>
+        <BreathingTool />
+        <EnergyGauge />
+        <MoodLog />
+        <div className="mt-16 border-t border-zinc-700 pt-6 text-xs text-zinc-500 leading-relaxed">
+  Dane wprowadzone w narzędziach przechowywane są wyłącznie w pamięci Twojej przeglądarki 
+  i przypisane do tego urządzenia. 
+  Nie są wysyłane na serwer ani zapisywane w chmurze.
+</div>
 
-              <p className="mt-3 text-sm text-textMuted">
-                {tool.desc}
-              </p>
-            </Link>
-          ))}
-        </div>
       </div>
     </main>
   );

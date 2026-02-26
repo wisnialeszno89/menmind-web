@@ -3,7 +3,10 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import FloatingChat from "../components/FloatingChat";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -12,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body className={`${inter.className} bg-[#0F172A] text-zinc-100`}>
+      <body className={inter.className}>
 
         <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0F172A]/70 border-b border-zinc-800/60">
           <div className="container-2026 flex items-center justify-between py-4">
@@ -22,14 +25,23 @@ export default function RootLayout({
             </Link>
 
             <nav className="hidden md:flex items-center gap-8 text-sm text-zinc-300">
-              <Link href="/#kryzys" className="hover:text-white transition">
-                Droga
+              <Link href="/kryzys" className="hover:text-white transition">
+                Kryzys
+              </Link>
+              <Link href="/odbudowa" className="hover:text-white transition">
+                Odbudowa
+              </Link>
+              <Link href="/wzrost" className="hover:text-white transition">
+                Wzrost
+              </Link>
+              <Link href="/ojcostwo" className="hover:text-white transition">
+                Ojcostwo
+              </Link>
+              <Link href="/narzedzia" className="hover:text-white transition">
+                Narzędzia
               </Link>
               <Link href="/propozycje" className="hover:text-white transition">
                 Propozycje
-              </Link>
-              <Link href="/#ojcostwo" className="hover:text-white transition">
-                Ojcostwo
               </Link>
               <a
                 href="https://navimind.app"

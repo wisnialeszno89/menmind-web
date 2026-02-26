@@ -1,102 +1,103 @@
-import Link from "next/link";
-
 export default function DlaPartnerowPage() {
   return (
-    <main className="min-h-screen px-6 py-24">
-      <div className="mx-auto max-w-4xl">
+    <main className="bg-[#F8F8F6] text-zinc-900">
 
-        {/* HERO */}
-        <section>
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
-            Dołącz do ekosystemu wsparcia dla mężczyzn
+      {/* HERO */}
+      <section className="section-2026">
+        <div className="container-2026 max-w-3xl">
+
+          <h1 className="text-5xl font-semibold tracking-tight mb-8">
+            Dla partnerów
           </h1>
 
-          <p className="mt-6 text-textMuted max-w-2xl leading-relaxed">
-            MenMind łączy mężczyzn z realnym wsparciem: psychologicznym,
-            prawnym, sportowym i rozwojowym. Jeśli Twoja praca pomaga
-            mężczyznom stanąć na nogi — możesz być częścią tego systemu.
+          <p className="text-lg text-zinc-600 leading-relaxed">
+            MenMind to kuratorska przestrzeń wsparcia dla mężczyzn.
+            Współpracujemy wyłącznie z wybranymi specjalistami.
           </p>
 
-          <div className="mt-10">
-            <Link
-              href="/dla-partnerow/zglos-sie"
-              className="inline-block rounded-xl bg-accent px-8 py-4 font-medium text-black"
+        </div>
+      </section>
+
+      {/* DLA KOGO */}
+      <section className="section-compact">
+        <div className="container-2026 grid md:grid-cols-3 gap-8">
+
+          <div className="card-2026 p-8 bg-white">
+            <h3 className="text-xl font-semibold mb-4">
+              Psychologowie / Terapeuci
+            </h3>
+            <p className="text-sm text-zinc-600">
+              Praca z mężczyznami w kryzysie, rozstaniu, wypaleniu.
+            </p>
+          </div>
+
+          <div className="card-2026 p-8 bg-white">
+            <h3 className="text-xl font-semibold mb-4">
+              Prawnicy / Mediatorzy
+            </h3>
+            <p className="text-sm text-zinc-600">
+              Sprawy rodzinne, opieka, konflikty.
+            </p>
+          </div>
+
+          <div className="card-2026 p-8 bg-white">
+            <h3 className="text-xl font-semibold mb-4">
+              Trenerzy / Organizatorzy
+            </h3>
+            <p className="text-sm text-zinc-600">
+              Ruch, reset, rozwój, wyjazdy.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* JAK DZIAŁA */}
+      <section className="section-compact">
+        <div className="container-2026 max-w-3xl">
+
+          <div className="card-2026 p-10 bg-white">
+            <h3 className="text-2xl font-semibold mb-6">
+              Jak działa współpraca?
+            </h3>
+
+            <ul className="space-y-4 text-sm text-zinc-600 leading-relaxed">
+              <li>• Weryfikujemy zgłoszenia</li>
+              <li>• Dbamy o jakość i dopasowanie</li>
+              <li>• Budujemy długofalową współpracę</li>
+              <li>• Selekcja ważniejsza niż ilość</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-compact">
+        <div className="container-2026 max-w-2xl text-center">
+
+          <div className="card-2026 p-8 bg-white">
+            <h3 className="text-xl font-semibold mb-4">
+              Zgłoszenie współpracy
+            </h3>
+
+            <p className="text-sm text-zinc-600 mb-6">
+              Opisz swoją specjalizację i doświadczenie.
+              Odpowiadamy po weryfikacji.
+            </p>
+
+            <a
+              href="/kontakt"
+              className="accent-bg px-6 py-3 rounded-xl text-sm inline-block"
             >
-              Zgłoś swoją działalność →
-            </Link>
-          </div>
-        </section>
-
-        {/* DLA KOGO */}
-        <section className="mt-24">
-          <h2 className="text-2xl font-semibold">
-            Kogo szukamy
-          </h2>
-
-          <ul className="mt-6 space-y-4 text-textMuted">
-            <li>• Psychologów i psychiatrów</li>
-            <li>• Trenerów i specjalistów pracy z ciałem</li>
-            <li>• Prawników rodzinnych</li>
-            <li>• Grup wsparcia i społeczności męskich</li>
-            <li>• Organizatorów wyjazdów rozwojowych</li>
-          </ul>
-        </section>
-
-        {/* MODEL */}
-        <section className="mt-24">
-          <h2 className="text-2xl font-semibold">
-            Model współpracy
-          </h2>
-
-          <div className="mt-8 grid md:grid-cols-2 gap-8">
-
-            <div className="rounded-2xl border border-borderSoft p-8">
-              <h3 className="text-lg font-medium">
-                Wpis standardowy
-              </h3>
-              <p className="mt-4 text-sm text-textMuted">
-                Nazwa, krótki opis, link zewnętrzny. Widoczność w wybranym mieście
-                i kategorii.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-accent p-8">
-              <h3 className="text-lg font-medium">
-                Partner Premium
-              </h3>
-              <p className="mt-4 text-sm text-textMuted">
-                Wyróżnienie w mieście, rozszerzony opis, dedykowana sekcja
-                oraz możliwość prezentacji oferty dla społeczności MenMind.
-              </p>
-            </div>
+              Zgłoś współpracę
+            </a>
 
           </div>
-        </section>
 
-        {/* DLACZEGO TO DZIAŁA */}
-        <section className="mt-24">
-          <h2 className="text-2xl font-semibold">
-            Dlaczego to działa
-          </h2>
+        </div>
+      </section>
 
-          <p className="mt-6 text-textMuted leading-relaxed">
-            MenMind nie jest katalogiem przypadkowych usług. To system drogi.
-            Użytkownicy trafiają tu w konkretnym momencie życia i szukają
-            realnych rozwiązań. Intencja jest wysoka.
-          </p>
-        </section>
-
-        {/* CTA */}
-        <section className="mt-24 text-center">
-          <Link
-            href="/dla-partnerow/zglos-sie"
-            className="inline-block rounded-xl bg-accent px-8 py-4 font-medium text-black"
-          >
-            Dołącz do systemu →
-          </Link>
-        </section>
-
-      </div>
     </main>
   );
 }
