@@ -1,26 +1,56 @@
+import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import Card from "@/components/Card";
 import { cities } from "@/data/cities-pl";
 import Link from "next/link";
 
+const categories = [
+  "wsparcie-psychiczne",
+  "prawo-i-mediacje",
+  "trening-i-cialo",
+  "wyjazdy-i-reset",
+  "rozwoj-zawodowy",
+  "gastronomia-i-spotkania",
+  "inne",
+];
+
+/* ================= STATIC GENERATION ================= */
+
 export async function generateStaticParams() {
-  return [
-    { slug: "wsparcie-psychiczne" },
-    { slug: "prawo-i-mediacje" },
-    { slug: "trening-i-cialo" },
-    { slug: "wyjazdy-i-reset" },
-    { slug: "rozwoj-zawodowy" },
-    { slug: "gastronomia-i-spotkania" },
-    { slug: "inne" },
-  ];
+  return categories.map((slug) => ({ slug }));
 }
+
+/* ================= METADATA ================= */
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug?: string };
+}) {
+  if (!params?.slug) {
+    return {};
+  }
+
+  const category = params.slug.replace(/-/g, " ");
+
+  return {
+    title: `${category} | MenMind`,
+    description: `Sprawdzone kierunki działania w kategorii ${category}.`,
+  };
+}
+
+/* ================= PAGE ================= */
 
 export default function CategoryPage({
   params,
 }: {
-  params: { slug: string };
+  params: { slug?: string };
 }) {
+  if (!params?.slug) return notFound();
+
   const { slug } = params;
+
+  if (!categories.includes(slug)) return notFound();
 
   const categoryTitle = slug.replace(/-/g, " ");
 
@@ -75,7 +105,7 @@ export default function CategoryPage({
         </div>
       </section>
 
-      {/* CTA DLA PARTNERÓW */}
+      {/* CTA */}
       <section className="section-compact">
         <div className="container-2026 max-w-3xl">
           <Card variant="subtle" className="p-8 text-center">
