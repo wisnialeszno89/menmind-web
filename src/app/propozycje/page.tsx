@@ -1,118 +1,64 @@
-import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import Card from "@/components/Card";
-import { cities } from "@/data/cities-pl";
 import Link from "next/link";
 
 const categories = [
-  "wsparcie-psychiczne",
-  "prawo-i-mediacje",
-  "trening-i-cialo",
-  "wyjazdy-i-reset",
-  "rozwoj-zawodowy",
-  "gastronomia-i-spotkania",
-  "inne",
+  {
+    slug: "wsparcie-psychiczne",
+    title: "Wsparcie psychiczne",
+  },
+  {
+    slug: "prawo-i-mediacje",
+    title: "Prawo i mediacje",
+  },
+  {
+    slug: "trening-i-cialo",
+    title: "Trening i ciało",
+  },
+  {
+    slug: "wyjazdy-i-reset",
+    title: "Wyjazdy i reset",
+  },
+  {
+    slug: "rozwoj-zawodowy",
+    title: "Rozwój zawodowy",
+  },
+  {
+    slug: "gastronomia-i-spotkania",
+    title: "Gastronomia i spotkania",
+  },
+  {
+    slug: "inne",
+    title: "Inne",
+  },
 ];
 
-/* ================= STATIC GENERATION ================= */
-
-export async function generateStaticParams() {
-  return categories.map((slug) => ({ slug }));
-}
-
-/* ================= METADATA ================= */
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const category = params.slug.replace(/-/g, " ");
-
-  return {
-    title: `${category} | MenMind`,
-    description: `Sprawdzone kierunki działania w kategorii ${category}.`,
-  };
-}
-
-/* ================= PAGE ================= */
-
-export default function CategoryPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = params;
-
-  if (!categories.includes(slug)) return notFound();
-
-  const categoryTitle = slug.replace(/-/g, " ");
-
+export default function PropozycjePage() {
   return (
     <main className="bg-[#0F172A] text-zinc-100 min-h-screen">
 
       <Hero
         highlight="Propozycje"
-        title={categoryTitle}
-        subtitle="Sprawdzone kierunki działania. Lokalnie. Konkretnie."
+        title="Wybierz kierunek"
+        subtitle="Konkretnie. Lokalnie. Bez chaosu."
       />
 
-      {/* PREMIUM */}
       <section className="section-compact">
-        <div className="container-2026">
-          <h2 className="text-xl font-semibold mb-6">
-            Polecane przez MenMind
-          </h2>
+        <div className="container-2026 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-          <Card variant="highlight" className="p-8">
-            <h3 className="text-lg font-semibold mb-2">
-              Miejsce na partnera premium
-            </h3>
-            <p className="text-sm text-zinc-400 mb-4">
-              Wyróżniona obecność w tej kategorii.
-            </p>
-            <button className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition text-sm">
-              Zobacz ofertę
-            </button>
-          </Card>
-        </div>
-      </section>
-
-      {/* WYBÓR MIASTA */}
-      <section className="section-compact">
-        <div className="container-2026">
-          <h2 className="text-xl font-semibold mb-6">
-            Wybierz miasto
-          </h2>
-
-          <div className="flex flex-wrap gap-4">
-            {cities.map((city) => (
-              <Link
-                key={city.slug}
-                href={`/propozycje/${slug}/${city.slug}`}
-                className="px-5 py-2 rounded-lg border border-zinc-700 hover:border-white transition text-sm"
-              >
-                {city.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl">
-          <Card variant="subtle" className="p-8 text-center">
-            <h3 className="text-lg font-semibold mb-4">
-              Chcesz być widoczny w tej kategorii?
-            </h3>
-            <Link
-              href="/dla-partnerow"
-              className="inline-block px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition"
-            >
-              Zostań partnerem
+          {categories.map((cat) => (
+            <Link key={cat.slug} href={`/propozycje/${cat.slug}`}>
+              <Card className="p-8 hover:scale-[1.02] transition">
+                <h3 className="text-lg font-semibold mb-2">
+                  {cat.title}
+                </h3>
+                <p className="text-sm text-zinc-400">
+                  Sprawdź dostępne opcje w tej kategorii.
+                </p>
+              </Card>
             </Link>
-          </Card>
+          ))}
+
         </div>
       </section>
 
