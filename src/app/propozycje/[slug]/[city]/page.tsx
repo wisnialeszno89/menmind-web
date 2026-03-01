@@ -17,7 +17,15 @@ const categories = [
 /* ================= STATIC GENERATION ================= */
 
 export async function generateStaticParams() {
-  return categories.map((slug) => ({ slug }));
+  const params: { slug: string; city: string }[] = [];
+
+  for (const slug of categories) {
+    for (const city of cities) {
+      params.push({ slug, city: city.slug });
+    }
+  }
+
+  return params;
 }
 
 /* ================= METADATA ================= */
@@ -25,26 +33,32 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; city: string };
 }) {
+  const cityName =
+    cities.find((c) => c.slug === params.city)?.name ?? params.city;
+
   const category = params.slug.replace(/-/g, " ");
 
   return {
-    title: `${category} | MenMind`,
-    description: `Sprawdzone kierunki działania w kategorii ${category}.`,
+    title: `${category} – ${cityName} | MenMind`,
+    description: `Lokalne wsparcie: ${category} w mieście ${cityName}.`,
   };
 }
 
 /* ================= PAGE ================= */
 
-export default function CategoryPage({
+export default function CityPage({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; city: string };
 }) {
-  const { slug } = params;
+  const { slug, city } = params;
 
   if (!categories.includes(slug)) return notFound();
+
+  const cityData = cities.find((c) => c.slug === city);
+  if (!cityData) return notFound();
 
   const categoryTitle = slug.replace(/-/g, " ");
 
@@ -52,24 +66,24 @@ export default function CategoryPage({
     <main className="bg-[#0F172A] text-zinc-100 min-h-screen">
 
       <Hero
-        highlight="Propozycje"
+        highlight={cityData.name}
         title={categoryTitle}
-        subtitle="Sprawdzone kierunki działania. Lokalnie. Konkretnie."
+        subtitle="Lokalne możliwości działania."
       />
 
       {/* PREMIUM */}
       <section className="section-compact">
         <div className="container-2026">
           <h2 className="text-xl font-semibold mb-6">
-            Polecane przez MenMind
+            Polecane w {cityData.name}
           </h2>
 
           <Card variant="highlight" className="p-8">
             <h3 className="text-lg font-semibold mb-2">
-              Miejsce na partnera premium
+              Partner premium
             </h3>
             <p className="text-sm text-zinc-400 mb-4">
-              Wyróżniona obecność w tej kategorii.
+              Wyróżniona obecność w tej lokalizacji.
             </p>
             <button className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition text-sm">
               Zobacz ofertę
@@ -78,23 +92,39 @@ export default function CategoryPage({
         </div>
       </section>
 
-      {/* WYBÓR MIASTA */}
+      {/* LISTA PARTNERÓW */}
       <section className="section-compact">
         <div className="container-2026">
           <h2 className="text-xl font-semibold mb-6">
-            Wybierz miasto
+            Dostępni partnerzy
           </h2>
 
-          <div className="flex flex-wrap gap-4">
-            {cities.map((city) => (
-              <Link
-                key={city.slug}
-                href={`/propozycje/${slug}/${city.slug}`}
-                className="px-5 py-2 rounded-lg border border-zinc-700 hover:border-white transition text-sm"
-              >
-                {city.name}
-              </Link>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">
+                Partner lokalny
+              </h3>
+              <p className="text-sm text-zinc-400 mb-4">
+                Opis oferty lokalnej.
+              </p>
+              <button className="text-sm text-blue-400 hover:underline">
+                Sprawdź
+              </button>
+            </Card>
+
+            <Card className="p-6">
+              <h3 className="font-semibold mb-2">
+                Partner lokalny
+              </h3>
+              <p className="text-sm text-zinc-400 mb-4">
+                Opis oferty lokalnej.
+              </p>
+              <button className="text-sm text-blue-400 hover:underline">
+                Sprawdź
+              </button>
+            </Card>
+
           </div>
         </div>
       </section>
@@ -104,13 +134,13 @@ export default function CategoryPage({
         <div className="container-2026 max-w-3xl">
           <Card variant="subtle" className="p-8 text-center">
             <h3 className="text-lg font-semibold mb-4">
-              Chcesz być widoczny w tej kategorii?
+              Prowadzisz działalność w {cityData.name}?
             </h3>
             <Link
               href="/dla-partnerow"
               className="inline-block px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition"
             >
-              Zostań partnerem
+              Dołącz jako partner
             </Link>
           </Card>
         </div>
