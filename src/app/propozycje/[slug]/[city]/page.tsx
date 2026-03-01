@@ -17,15 +17,12 @@ const categories = [
 /* ================= STATIC GENERATION ================= */
 
 export async function generateStaticParams() {
-  const params: { slug: string; city: string }[] = [];
-
-  for (const slug of categories) {
-    for (const city of cities) {
-      params.push({ slug, city: city.slug });
-    }
-  }
-
-  return params;
+  return categories.flatMap((slug) =>
+    cities.map((city) => ({
+      slug,
+      city: city.slug,
+    }))
+  );
 }
 
 /* ================= METADATA ================= */
@@ -33,8 +30,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string; city: string };
+  params: { slug?: string; city?: string };
 }) {
+  if (!params?.slug || !params?.city) {
+    return {};
+  }
+
   const cityName =
     cities.find((c) => c.slug === params.city)?.name ?? params.city;
 
@@ -51,8 +52,10 @@ export async function generateMetadata({
 export default function CityPage({
   params,
 }: {
-  params: { slug: string; city: string };
+  params: { slug?: string; city?: string };
 }) {
+  if (!params?.slug || !params?.city) return notFound();
+
   const { slug, city } = params;
 
   if (!categories.includes(slug)) return notFound();
@@ -71,7 +74,6 @@ export default function CityPage({
         subtitle="Lokalne możliwości działania."
       />
 
-      {/* PREMIUM */}
       <section className="section-compact">
         <div className="container-2026">
           <h2 className="text-xl font-semibold mb-6">
@@ -92,7 +94,6 @@ export default function CityPage({
         </div>
       </section>
 
-      {/* LISTA PARTNERÓW */}
       <section className="section-compact">
         <div className="container-2026">
           <h2 className="text-xl font-semibold mb-6">
@@ -113,23 +114,10 @@ export default function CityPage({
               </button>
             </Card>
 
-            <Card className="p-6">
-              <h3 className="font-semibold mb-2">
-                Partner lokalny
-              </h3>
-              <p className="text-sm text-zinc-400 mb-4">
-                Opis oferty lokalnej.
-              </p>
-              <button className="text-sm text-blue-400 hover:underline">
-                Sprawdź
-              </button>
-            </Card>
-
           </div>
         </div>
       </section>
 
-      {/* CTA */}
       <section className="section-compact">
         <div className="container-2026 max-w-3xl">
           <Card variant="subtle" className="p-8 text-center">
