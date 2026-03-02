@@ -6,9 +6,10 @@ export default function WsparciePage() {
   return (
     <main className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-5xl">
-        <h1 className="text-4xl font-semibold tracking-tight">
-          Wsparcie
-        </h1>
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-blue-500">
+  Wsparcie
+</h1>
+<div className="h-px w-12 bg-blue-500 mb-10" />
 
         <p className="mt-6 text-textMuted max-w-2xl">
           Wybierz miasto i znajdź sprawdzone wsparcie:

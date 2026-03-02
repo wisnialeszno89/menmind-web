@@ -13,9 +13,11 @@ export default function KryzysPage() {
       <div className="max-w-3xl mx-auto px-6 py-24">
 
         {/* H1 */}
-        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-12">
-          Kryzys
-        </h1>
+        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
+  Kryzys
+</h1>
+
+<div className="h-px w-16 bg-blue-500 mb-12" />
 
         {/* Fundament */}
         <section className="mt-12">
@@ -167,28 +169,37 @@ export default function KryzysPage() {
 <section className="mt-24 border-t border-neutral-800 pt-16">
 
   <h2 className="text-2xl md:text-3xl font-semibold mb-6">
-    Jeśli nie jesteś gotowy na rozmowę z kimś zewnętrznym
+    Nie musisz wiedzieć, co wybrać.
   </h2>
 
-  <p className="text-neutral-200 text-lg leading-8 mb-8">
-    Możesz zacząć od spokojnego uporządkowania myśli
-    albo regulacji napięcia.
+  <p className="text-neutral-200 text-lg leading-8 mb-10">
+    Możesz sprawdzić dostępne kierunki i zobaczyć,
+    które rozwiązanie najbardziej pasuje do Twojej sytuacji.
   </p>
 
-  <div className="space-y-4">
+  {/* Główna ścieżka */}
+  <Link
+    href="/propozycje"
+    className="block text-blue-500 underline underline-offset-4 hover:text-blue-400 text-lg mb-10"
+  >
+    Zobacz propozycje →
+  </Link>
+
+  {/* Alternatywy */}
+  <div className="space-y-4 text-base">
+
+    <Link
+      href="/narzedzia"
+      className="block text-neutral-400 underline underline-offset-4 hover:text-neutral-200"
+    >
+      Regulacja napięcia →
+    </Link>
 
     <Link
       href="https://navimind.app"
       className="block text-neutral-400 underline underline-offset-4 hover:text-neutral-200"
     >
       Porozmawiaj z NaviMind →
-    </Link>
-
-    <Link
-      href="/narzedzia"
-      className="block text-neutral-400 underline underline-offset-4 hover:text-neutral-200"
-    >
-      Regulacja napięcia i narzędzia →
     </Link>
 
   </div>

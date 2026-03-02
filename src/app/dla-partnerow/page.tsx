@@ -1,67 +1,81 @@
-import Hero from "@/components/Hero";
-import Card from "@/components/Card";
-import Link from "next/link";
+"use client";
 
-export default function PartnerPage() {
+import { useState } from "react";
+
+export default function PartnerFormPage() {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    const res = await fetch("/api/partner", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    setLoading(false);
+
+    if (res.ok) {
+      setSuccess(true);
+      e.currentTarget.reset();
+    }
+  };
+
   return (
-    <main className="bg-[#0F172A] text-zinc-100 min-h-screen">
+    <div className="text-neutral-200">
+      <div className="max-w-3xl mx-auto px-6 py-24">
 
-      <Hero
-        highlight="Dla partnerów"
-        title="Bądź widoczny tam, gdzie mężczyźni szukają kierunku."
-        subtitle="MenMind łączy lokalne usługi z realnymi potrzebami."
-        align="center"
-      />
+        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
+          Zostań partnerem
+        </h1>
+        <div className="h-px w-16 bg-blue-500 mb-12" />
 
-      <section className="section-compact">
-        <div className="container-2026 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <p className="text-lg text-neutral-300 mb-12">
+          Jeśli realnie wspierasz mężczyzn w decyzjach, kryzysie
+          lub rozwoju – możesz zgłosić swoją działalność.
+        </p>
 
-          <Card className="p-6">
-            <h3 className="font-semibold mb-3">
-              Widoczność lokalna
-            </h3>
-            <p className="text-sm text-zinc-400">
-              Twoja oferta w konkretnej kategorii i mieście.
-            </p>
-          </Card>
+        {success && (
+          <p className="mb-6 text-green-400">
+            Zgłoszenie zostało wysłane.
+          </p>
+        )}
 
-          <Card className="p-6">
-            <h3 className="font-semibold mb-3">
-              Wyróżnienie premium
-            </h3>
-            <p className="text-sm text-zinc-400">
-              Stałe miejsce w sekcji polecanej.
-            </p>
-          </Card>
+        <form onSubmit={handleSubmit} className="space-y-6">
 
-          <Card className="p-6">
-            <h3 className="font-semibold mb-3">
-              Ekosystem
-            </h3>
-            <p className="text-sm text-zinc-400">
-              Dostęp do rosnącej społeczności mężczyzn.
-            </p>
-          </Card>
+          <input name="name" placeholder="Imię i nazwisko" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
 
-        </div>
-      </section>
+          <input name="company" placeholder="Nazwa działalności" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
 
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl text-center">
-          <Card variant="highlight" className="p-8">
-            <h3 className="text-lg font-semibold mb-4">
-              Chcesz porozmawiać o współpracy?
-            </h3>
-            <Link
-              href="/kontakt"
-              className="inline-block px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition"
-            >
-              Skontaktuj się
-            </Link>
-          </Card>
-        </div>
-      </section>
+          <input name="city" placeholder="Miasto" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
 
-    </main>
+          <input name="category" placeholder="Kategoria" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+
+          <input name="website" placeholder="Strona www" className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+
+          <input name="email" type="email" placeholder="Email kontaktowy" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+
+          <input name="phone" placeholder="Telefon" className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+
+          <textarea name="description" placeholder="Krótki opis działalności" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg min-h-[120px]" />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-blue-500 hover:bg-blue-400 text-black font-semibold px-6 py-3 rounded-lg transition"
+          >
+            {loading ? "Wysyłanie..." : "Wyślij zgłoszenie"}
+          </button>
+
+        </form>
+
+      </div>
+    </div>
   );
 }

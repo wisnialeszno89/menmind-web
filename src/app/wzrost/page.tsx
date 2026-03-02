@@ -8,9 +8,10 @@ export default function WzrostPage() {
       <section className="section-2026">
         <div className="container-2026 max-w-3xl">
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-8">
-            Wzrost
-          </h1>
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
+  Wzrost
+</h1>
+<div className="h-px w-16 bg-blue-500 mb-12" />
 
           <p className="text-lg text-zinc-400 leading-relaxed">
             Rozwój to kierunek i konsekwencja.
