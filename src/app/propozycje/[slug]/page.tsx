@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import Card from "@/components/Card";
-import { cities } from "@/data/cities-pl";
+import { cities } from "@/data/cities";
 import Link from "next/link";
 
 const categories = [
