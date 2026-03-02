@@ -1,122 +1,39 @@
-import BreathingTool from "@/components/BreathingTool";
-import EnergyGauge from "@/components/EnergyGauge";
-import Link from "next/link";
+import CrisisStabilization from "@/components/CrisisStabilization";
+import WorldFAQ from "@/components/WorldFAQ";
+import WorldArticles from "@/components/WorldArticles";
+import { kryzysFAQ, kryzysArticles } from "@/content/kryzys";
 
 export default function KryzysPage() {
   return (
-    <main className="bg-[#0F172A] text-zinc-100">
+    <div className="max-w-5xl mx-auto px-6 py-16">
 
-      {/* HERO */}
-      <section className="section-2026">
-        <div className="container-2026 max-w-3xl">
+      <section className="max-w-3xl">
+        <h1 className="text-3xl font-bold mb-6">Kryzys</h1>
 
-          <h1 className="text-5xl font-semibold tracking-tight mb-8">
-            Kryzys
-          </h1>
+        <p className="text-lg text-gray-700 mb-6">
+          Kryzys to moment, w którym dotychczasowa konstrukcja przestaje działać.
+        </p>
 
-          <p className="text-lg text-zinc-400 leading-relaxed mb-8">
-            Najpierw regulacja. Potem decyzje.
-            Nie musisz rozwiązywać wszystkiego dziś.
-          </p>
+        <div className="border-l-4 border-red-500 pl-6 mb-6">
+          <p className="italic">Co dokładnie się rozpada – sytuacja czy Twoje wyobrażenie?</p>
+        </div>
 
+        <p className="mb-4">Nie musisz być silny. Musisz być przytomny.</p>
+
+        <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-600 mb-8">
+          Jeśli wszystko jest za ciężkie — oddychaj i nie podejmuj dziś wielkich decyzji.
+        </div>
+
+        <div className="text-sm text-gray-500 space-y-1">
+          <p>To nie jest terapia online.</p>
+          <p>Nie rozwiążesz tu wszystkiego w tydzień.</p>
+          <p>To nie jest miejsce na udawanie siły.</p>
         </div>
       </section>
 
-      {/* REGULACJA */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl">
-          <BreathingTool />
-        </div>
-      </section>
-
-      {/* STABILIZACJA */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl">
-
-          <h2 className="text-2xl font-semibold mb-6">
-            Sprawdź fundament
-          </h2>
-
-          <EnergyGauge />
-
-        </div>
-      </section>
-
-      {/* MIKRO-KROKI */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl">
-
-          <div className="card-2026 p-8">
-            <h3 className="text-xl font-semibold mb-6">
-              Pierwsze 24 godziny
-            </h3>
-
-            <ul className="space-y-4 text-sm text-zinc-300 leading-relaxed">
-              <li>• Wypij wodę i zjedz coś prostego</li>
-              <li>• Wyjdź na 10 minut na świeże powietrze</li>
-              <li>• Nie podejmuj dziś dużych decyzji</li>
-              <li>• Napisz do jednej zaufanej osoby</li>
-            </ul>
-
-            <div className="mt-6 text-xs text-zinc-500">
-              Czasem stabilizacja to najważniejsza decyzja.
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ROZMOWA */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl grid md:grid-cols-2 gap-8">
-
-          <a
-            href="https://navimind.app"
-            target="_blank"
-            className="card-2026 p-8 text-center"
-          >
-            <h3 className="text-xl font-semibold mb-4">
-              Porozmawiaj z Navimind
-            </h3>
-            <p className="text-zinc-400 text-sm">
-              Bez logowania. Bez presji.
-            </p>
-          </a>
-
-          <Link
-            href="/spec/psychologowie"
-            className="card-2026 p-8 text-center"
-          >
-            <h3 className="text-xl font-semibold mb-4">
-              Wsparcie specjalisty
-            </h3>
-            <p className="text-zinc-400 text-sm">
-              Jeśli potrzebujesz realnej pomocy.
-            </p>
-          </Link>
-
-        </div>
-      </section>
-
-      {/* REALNE WSPARCIE */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl">
-
-          <div className="card-2026 p-8">
-            <h3 className="text-xl font-semibold mb-6">
-              Nie musisz być sam
-            </h3>
-
-            <div className="grid md:grid-cols-3 gap-6 text-sm text-zinc-300">
-              <Link href="/spec/grupy">Grupy wsparcia</Link>
-              <Link href="/spec/prawo">Prawo / mediacja</Link>
-              <Link href="/spec/psychiatrzy">Pomoc medyczna</Link>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-    </main>
+      <CrisisStabilization />
+      <WorldFAQ items={kryzysFAQ} />
+<WorldArticles world="kryzys" articles={kryzysArticles} />
+    </div>
   );
 }
