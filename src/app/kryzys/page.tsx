@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function KryzysPage() {
   return (
-    <div className="bg-black text-neutral-200 min-h-screen">
+    <div className="text-neutral-200">
 
       <div className="max-w-3xl mx-auto px-6 py-24">
 
@@ -23,12 +23,12 @@ export default function KryzysPage() {
             Kryzys to utrata kontroli
           </h2>
 
-          <p className="text-neutral-300 text-lg leading-8">
+          <p className="text-neutral-200 text-lg leading-8">
             Kryzys nie zawsze zaczyna się od dramatu.
             Częściej zaczyna się od napięcia, które nie znika.
           </p>
 
-          <ul className="mt-6 space-y-3 text-neutral-300 text-lg">
+          <ul className="mt-6 space-y-3 text-neutral-200 text-lg">
             <li>– rozmowy, które niczego nie rozwiązują</li>
             <li>– decyzje odkładane na później</li>
             <li>– brak snu</li>
@@ -36,7 +36,7 @@ export default function KryzysPage() {
             <li>– cisza w domu</li>
           </ul>
 
-          <p className="mt-6 text-neutral-300 text-lg leading-8">
+          <p className="mt-6 text-neutral-200 text-lg leading-8">
             Nie ma spektakularnego momentu.
             Jest powolne rozchodzenie się rzeczywistości z tym, jak miało być.
           </p>
@@ -48,12 +48,12 @@ export default function KryzysPage() {
             Czym jest kryzys emocjonalny naprawdę?
           </h2>
 
-          <p className="text-neutral-300 text-lg leading-8">
+          <p className="text-neutral-200 text-lg leading-8">
             Kryzys emocjonalny rzadko wygląda jak załamanie.
             Częściej wygląda jak przeciążenie.
           </p>
 
-          <ul className="mt-6 space-y-3 text-neutral-300 text-lg">
+          <ul className="mt-6 space-y-3 text-neutral-200 text-lg">
             <li>– irytacja bez powodu</li>
             <li>– wycofanie</li>
             <li>– impulsywność</li>
@@ -61,7 +61,7 @@ export default function KryzysPage() {
             <li>– chłód wobec bliskich</li>
           </ul>
 
-          <p className="mt-6 text-neutral-300 text-lg leading-8">
+          <p className="mt-6 text-neutral-200 text-lg leading-8">
             W kryzysie myślenie zawęża się do przetrwania.
             Dlatego wiele decyzji podjętych w tym stanie później okazuje się błędnych.
           </p>
@@ -73,7 +73,7 @@ export default function KryzysPage() {
             Najczęstsze scenariusze kryzysu
           </h2>
 
-          <ul className="space-y-6 text-neutral-300 text-lg leading-8">
+          <ul className="space-y-6 text-neutral-200 text-lg leading-8">
             <li>
               <strong>Kryzys relacyjny</strong><br />
               Miesiące napięcia bez rozwiązania.
@@ -102,19 +102,19 @@ export default function KryzysPage() {
             Największy problem? To, że trwa.
           </h2>
 
-          <p className="text-neutral-300 text-lg leading-8">
+          <p className="text-neutral-200 text-lg leading-8">
             Na początku myślisz, że to przejdzie.
             Potem: „ogarnę to”.
             Potem: „jakoś to jest”.
           </p>
 
-          <p className="mt-6 text-neutral-300 text-lg leading-8">
+          <p className="mt-6 text-neutral-200 text-lg leading-8">
             I mijają miesiące.
             Najgroźniejsze nie jest wydarzenie.
             Najgroźniejsze jest utknięcie.
           </p>
 
-          <ul className="mt-6 space-y-3 text-neutral-300 text-lg">
+          <ul className="mt-6 space-y-3 text-neutral-200 text-lg">
             <li>– funkcjonujesz, ale nie jesteś obecny</li>
             <li>– pracujesz więcej, żeby nie myśleć</li>
             <li>– unikasz rozmowy, bo „to nie moment”</li>
@@ -127,7 +127,7 @@ export default function KryzysPage() {
             Najczęstsze błędy w kryzysie
           </h2>
 
-          <ul className="space-y-3 text-neutral-300 text-lg">
+          <ul className="space-y-3 text-neutral-200 text-lg">
             <li>– decyzje pod wpływem impulsu</li>
             <li>– eskalowanie konfliktu z ego</li>
             <li>– izolowanie się</li>
@@ -142,7 +142,7 @@ export default function KryzysPage() {
             Co możesz zrobić teraz?
           </h2>
 
-          <ul className="space-y-3 text-neutral-300 text-lg">
+          <ul className="space-y-3 text-neutral-200 text-lg">
             <li>– uporządkować fakty</li>
             <li>– porozmawiać z kimś neutralnym</li>
             <li>– sprawdzić swoją sytuację prawną</li>
@@ -163,6 +163,37 @@ export default function KryzysPage() {
             >
               Wsparcie prawne →
             </Link>
+            {/* Dodatkowe wsparcie */}
+<section className="mt-24 border-t border-neutral-800 pt-16">
+
+  <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+    Jeśli nie jesteś gotowy na rozmowę z kimś zewnętrznym
+  </h2>
+
+  <p className="text-neutral-200 text-lg leading-8 mb-8">
+    Możesz zacząć od spokojnego uporządkowania myśli
+    albo regulacji napięcia.
+  </p>
+
+  <div className="space-y-4">
+
+    <Link
+      href="https://navimind.app"
+      className="block text-neutral-400 underline underline-offset-4 hover:text-neutral-200"
+    >
+      Porozmawiaj z NaviMind →
+    </Link>
+
+    <Link
+      href="/narzedzia"
+      className="block text-neutral-400 underline underline-offset-4 hover:text-neutral-200"
+    >
+      Regulacja napięcia i narzędzia →
+    </Link>
+
+  </div>
+
+</section>
           </div>
         </section>
 
