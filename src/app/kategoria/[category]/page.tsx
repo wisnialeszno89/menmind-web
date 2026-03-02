@@ -3,6 +3,8 @@ import { cities } from "@/data/cities";
 import { partners } from "@/data/partners";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import WorldFAQ from "@/components/WorldFAQ";
+import { categoryFAQ } from "@/content/categoryFAQ";
 
 export async function generateStaticParams() {
   return categories.map((cat) => ({
@@ -123,6 +125,10 @@ export default function CategoryPage({
           Zostań partnerem MenMind
         </Link>
       </section>
+
+      {categoryFAQ[params.category] && (
+  <WorldFAQ items={categoryFAQ[params.category]} />
+)}
 
     </div>
   );
