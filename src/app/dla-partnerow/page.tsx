@@ -1,81 +1,109 @@
-"use client";
+import Link from "next/link";
 
-import { useState } from "react";
+export const metadata = {
+  title: "Współpraca | MenMind",
+  description:
+    "Dołącz do MenMind jako partner. Docieraj do mężczyzn w realnych momentach decyzyjnych.",
+};
 
-export default function PartnerFormPage() {
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    const res = await fetch("/api/partner", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-
-    setLoading(false);
-
-    if (res.ok) {
-      setSuccess(true);
-      e.currentTarget.reset();
-    }
-  };
-
+export default function DlaPartnerowPage() {
   return (
-    <div className="text-neutral-200">
-      <div className="max-w-3xl mx-auto px-6 py-24">
+    <main className="bg-[#111827] text-zinc-100">
+      <section className="section-2026">
+        <div className="container-2026 max-w-4xl">
 
-        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
-          Zostań partnerem
-        </h1>
-        <div className="h-px w-16 bg-blue-500 mb-12" />
+          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
+            Współpraca
+          </h1>
 
-        <p className="text-lg text-neutral-300 mb-12">
-          Jeśli realnie wspierasz mężczyzn w decyzjach, kryzysie
-          lub rozwoju – możesz zgłosić swoją działalność.
-        </p>
+          <div className="h-px w-16 bg-blue-500 mb-12" />
 
-        {success && (
-          <p className="mb-6 text-green-400">
-            Zgłoszenie zostało wysłane.
+          <p className="text-lg text-zinc-400 mb-16 leading-relaxed max-w-2xl">
+            MenMind to przestrzeń dla mężczyzn w kryzysie, odbudowie,
+            wzroście i ojcostwie.  
+            Partnerzy pojawiają się wtedy, gdy są naprawdę potrzebni.
           </p>
-        )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* DLACZEGO TO DZIAŁA */}
+          <div className="space-y-14 mb-20">
 
-          <input name="name" placeholder="Imię i nazwisko" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Docierasz do konkretnego momentu
+              </h2>
+              <p className="text-zinc-400 leading-relaxed">
+                Użytkownik trafia do Ciebie nie przypadkiem.
+                Jest w procesie decyzyjnym – szuka rozwiązania.
+              </p>
+            </section>
 
-          <input name="company" placeholder="Nazwa działalności" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Nie jesteśmy katalogiem firm
+              </h2>
+              <p className="text-zinc-400 leading-relaxed">
+                Selekcjonujemy partnerów.
+                Stawiamy na jakość, nie ilość.
+              </p>
+            </section>
 
-          <input name="city" placeholder="Miasto" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">
+                Transparentny model
+              </h2>
+              <p className="text-zinc-400 leading-relaxed">
+                Jasne zasady obecności.
+                Widoczność zależna od poziomu współpracy.
+              </p>
+            </section>
 
-          <input name="category" placeholder="Kategoria" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+          </div>
 
-          <input name="website" placeholder="Strona www" className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+          {/* POZIOMY WSPÓŁPRACY */}
+          <div className="grid md:grid-cols-2 gap-12 mb-28">
 
-          <input name="email" type="email" placeholder="Email kontaktowy" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+            <div className="card-2026 p-10 space-y-6">
+              <h3 className="text-xl font-semibold">
+                Standard
+              </h3>
+              <ul className="space-y-3 text-sm text-zinc-400">
+                <li>• Obecność w wybranej kategorii i mieście</li>
+                <li>• Opis działalności</li>
+                <li>• Link do strony</li>
+              </ul>
+            </div>
 
-          <input name="phone" placeholder="Telefon" className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg" />
+            <div className="card-2026 p-10 space-y-6 border border-blue-500">
+              <h3 className="text-xl font-semibold">
+                Strategic
+              </h3>
+              <ul className="space-y-3 text-sm text-zinc-400">
+                <li>• Wyróżnienie „Polecane przez MenMind”</li>
+                <li>• Priorytetowa widoczność</li>
+                <li>• Możliwość rozszerzonego opisu</li>
+              </ul>
+            </div>
 
-          <textarea name="description" placeholder="Krótki opis działalności" required className="w-full bg-neutral-900 border border-neutral-800 p-4 rounded-lg min-h-[120px]" />
+          </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="bg-blue-500 hover:bg-blue-400 text-black font-semibold px-6 py-3 rounded-lg transition"
-          >
-            {loading ? "Wysyłanie..." : "Wyślij zgłoszenie"}
-          </button>
+          {/* CTA */}
+          <div className="border-t border-neutral-800 pt-12 text-center">
+            <p className="text-zinc-400 mb-6">
+              Jeśli Twoja działalność realnie wspiera mężczyzn,
+              porozmawiajmy.
+            </p>
 
-        </form>
+            <Link
+              href="/dla-partnerow/zgloszenie"
+              className="text-blue-500 underline underline-offset-4 hover:text-blue-400 text-lg"
+            >
+              Zgłoś chęć współpracy →
+            </Link>
 
-      </div>
-    </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
   );
 }

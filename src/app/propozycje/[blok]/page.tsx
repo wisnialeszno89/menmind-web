@@ -1,6 +1,7 @@
 import { cities } from "@/data/cities";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ViewTracker from "@/components/ViewTracker";
 
 type Props = {
   params: {
@@ -15,11 +16,20 @@ export default function BlokPage({ params }: Props) {
 
   return (
     <div className="text-neutral-200">
+      {/* 🔥 TRACK WEJŚCIA W BLOK */}
+      <ViewTracker
+        event="view_block"
+        data={{
+          blok: params.blok,
+        }}
+      />
+
       <div className="max-w-4xl mx-auto px-6 py-24">
 
         <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
           {params.blok.charAt(0).toUpperCase() + params.blok.slice(1)}
         </h1>
+
         <div className="h-px w-16 bg-blue-500 mb-12" />
 
         <p className="text-lg text-neutral-300 mb-12">

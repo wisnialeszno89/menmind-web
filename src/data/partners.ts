@@ -10,6 +10,7 @@ export type Partner = {
   tier: PartnerTier;
   verified?: boolean;
   featured?: boolean;
+  website?: string; // ✅ DODANE
 };
 
 export const partners: Partner[] = [
@@ -22,6 +23,7 @@ export const partners: Partner[] = [
     state: "kryzys",
     tier: "strategic",
     verified: true,
+    website: "https://example.com",
   },
   {
     id: "p2",
@@ -31,6 +33,7 @@ export const partners: Partner[] = [
     description: "Trening funkcjonalny i odbudowa energii.",
     state: "odbudowa",
     tier: "standard",
+    website: "https://example.com",
   },
   {
     id: "p3",
@@ -42,6 +45,7 @@ export const partners: Partner[] = [
     tier: "strategic",
     verified: true,
     featured: true,
+    website: "https://example.com",
   },
   {
     id: "p4",
@@ -51,5 +55,6 @@ export const partners: Partner[] = [
     description: "Weekendowy reset dla mężczyzn.",
     state: "wzrost",
     tier: "standard",
+    website: "https://example.com",
   },
 ];
