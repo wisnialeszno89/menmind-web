@@ -1,175 +1,133 @@
 import Link from "next/link";
-import FatherPlanTool from "@/components/FatherPlanTool";
-import FatherLawBasics from "@/components/FatherLawBasics";
-import FatherPresenceChecklist from "@/components/FatherPresenceChecklist";
-import FatherActivityGenerator from "@/components/FatherActivityGenerator";
+
+export const metadata = {
+  title: "Ojcostwo – relacja, stabilność, odpowiedzialność | MenMind",
+  description:
+    "Ojcostwo to relacja. Znajdź wsparcie w sytuacji trudnej lub wzmocnij kontakt z dzieckiem.",
+};
 
 export default function OjcostwoPage() {
   return (
     <main className="bg-[#111827] text-zinc-100">
-
-      {/* HERO */}
       <section className="section-2026">
-        <div className="container-2026 max-w-4xl">
+        <div className="container-2026 max-w-5xl">
 
           <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
             Ojcostwo
           </h1>
+
           <div className="h-px w-16 bg-blue-500 mb-12" />
 
-          <p className="text-lg text-zinc-400 mb-16 leading-relaxed max-w-2xl">
-            Ojcostwo to nie teoria.  
-            To obecność.  
-            Czasem spokojna. Czasem trudna.  
+          <p className="text-lg text-zinc-400 mb-8 max-w-2xl leading-relaxed">
+            Ojcostwo to relacja. Czasem stabilna. Czasem napięta.
             Zawsze realna.
           </p>
 
-          {/* 3 OBSZARY */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <p className="text-sm text-zinc-500 mb-20 max-w-2xl">
+            Nie chodzi o bycie idealnym ojcem.
+            Chodzi o bycie obecnym i odpowiedzialnym.
+          </p>
 
-            <Link href="/propozycje/stabilizacja" className="card-2026 p-8">
-              <h3 className="text-xl font-semibold mb-4">
-                Konflikt / Rozstanie
-              </h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">
-                Mediacja, prawo rodzinne, ochrona relacji z dzieckiem.
-              </p>
-            </Link>
+          {/* 2 GŁÓWNE ŚCIEŻKI */}
+          <div className="grid md:grid-cols-2 gap-12 mb-28">
 
-            <Link href="#relacja" className="card-2026 p-8">
-              <h3 className="text-xl font-semibold mb-4">
-                Budowanie relacji
-              </h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">
-                Obecność, rozmowa, wspólny czas.
-              </p>
-            </Link>
-
-            <Link href="/propozycje/stabilizacja" className="card-2026 p-8">
-              <h3 className="text-xl font-semibold mb-4">
-                Wsparcie specjalisty
-              </h3>
-              <p className="text-zinc-400 text-sm leading-relaxed">
-                Gdy potrzebujesz spojrzenia z zewnątrz.
-              </p>
-            </Link>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* WIEK + KONKRET */}
-      <section id="relacja" className="section-compact">
-        <div className="container-2026 max-w-4xl">
-
-          <div className="card-2026 p-10 space-y-16">
-
-            <div>
-              <h2 className="text-2xl font-semibold mb-8">
-                Jak spędzać czas – przykłady według wieku
+            {/* SYTUACJA TRUDNA */}
+            <div className="card-2026 p-10 space-y-6">
+              <h2 className="text-2xl font-semibold">
+                Jeśli sytuacja jest trudna
               </h2>
 
-              <div className="space-y-12 text-zinc-300 leading-relaxed">
+              <p className="text-zinc-400 leading-relaxed">
+                Rozwód, konflikt, ograniczony kontakt,
+                sprawy prawne lub alimenty.
+              </p>
 
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">0–3 lata</h3>
-                  <ul className="space-y-2">
-                    <li>– stały spacer o tej samej porze</li>
-                    <li>– czytanie tej samej książki przez tydzień</li>
-                    <li>– kąpiel jako rytuał tylko Wasz</li>
-                  </ul>
-                </div>
+              <div className="space-y-3 text-sm">
+                <Link href="/ojcostwo/ojciec-po-rozwodzie" className="block text-blue-500 underline underline-offset-4 hover:text-blue-400">
+                  Ojciec po rozwodzie →
+                </Link>
 
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">4–7 lat</h3>
-                  <ul className="space-y-2">
-                    <li>– wspólne gotowanie czegoś prostego</li>
-                    <li>– budowanie / rysowanie wspólnego projektu</li>
-                    <li>– wyjście tylko we dwoje</li>
-                  </ul>
-                </div>
+                <Link href="/ojcostwo/prawa-ojca" className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200">
+                  Prawa ojca →
+                </Link>
 
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">8–12 lat</h3>
-                  <ul className="space-y-2">
-                    <li>– sport lub aktywność w terenie</li>
-                    <li>– planowanie krótkiej wycieczki razem</li>
-                    <li>– rozmowa podczas spaceru</li>
-                  </ul>
-                </div>
+                <Link href="/ojcostwo/opieka-naprzemienna" className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200">
+                  Opieka naprzemienna →
+                </Link>
 
-                <div>
-                  <h3 className="text-lg font-semibold mb-3">13+ lat</h3>
-                  <ul className="space-y-2">
-                    <li>– wspólny trening</li>
-                    <li>– rozmowa bez wykładu</li>
-                    <li>– realne wsparcie w decyzjach</li>
-                  </ul>
-                </div>
+                <Link href="/ojcostwo/alimenty" className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200">
+                  Alimenty →
+                </Link>
 
+                <Link href="/ojcostwo/kontakty-z-dzieckiem" className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200">
+                  Kontakty z dzieckiem →
+                </Link>
               </div>
             </div>
 
-            {/* PLAN 3H */}
-            <div>
-              <h2 className="text-2xl font-semibold mb-6">
-                Prosty plan 3-godzinnego spotkania
+            {/* RELACJA */}
+            <div className="card-2026 p-10 space-y-6">
+              <h2 className="text-2xl font-semibold">
+                Chcę wzmocnić relację z dzieckiem
               </h2>
 
-              <ul className="space-y-3 text-zinc-300">
-                <li>1. 30 min – ruch</li>
-                <li>2. 60 min – wspólny projekt / zabawa</li>
-                <li>3. 30 min – posiłek razem</li>
-                <li>4. 30 min – rozmowa bez telefonu</li>
-                <li>5. 30 min – spokojne zakończenie</li>
-              </ul>
-
-              <p className="text-zinc-500 mt-6">
-                Nie chodzi o perfekcję.  
-                Chodzi o regularność.
+              <p className="text-zinc-400 leading-relaxed">
+                Dystans, milczenie, napięcie,
+                trudny etap dojrzewania.
               </p>
+
+              <div className="space-y-3 text-sm">
+                <Link href="/ojcostwo/odbudowa-relacji" className="block text-blue-500 underline underline-offset-4 hover:text-blue-400">
+                  Odbudowa relacji →
+                </Link>
+
+                <Link href="/ojcostwo/co-oddala-relacje" className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200">
+                  Co oddala relację →
+                </Link>
+
+                <Link href="/ojcostwo/relacja-z-nastolatkiem" className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200">
+                  Relacja z nastolatkiem →
+                </Link>
+
+                <Link href="/ojcostwo/gdy-dziecko-nie-chce-rozmawiac" className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200">
+                  Gdy dziecko nie chce rozmawiać →
+                </Link>
+              </div>
             </div>
+          </div>
 
-            {/* GENERATOR */}
-            <FatherActivityGenerator />
+          {/* MOST DO ODBUDOWY */}
+          <div className="mb-20">
+            <p className="text-sm text-zinc-500 mb-4">
+              Jeśli oprócz relacji z dzieckiem czujesz, że potrzebujesz
+              wzmocnić siebie — zobacz również świat Odbudowy.
+            </p>
 
+            <Link
+              href="/odbudowa"
+              className="text-blue-500 underline underline-offset-4 hover:text-blue-400"
+            >
+              Przejdź do Odbudowy →
+            </Link>
+          </div>
+
+          {/* CTA */}
+          <div className="border-t border-neutral-800 pt-12 text-center">
+            <p className="text-zinc-400 mb-6">
+              Jeśli sytuacja wymaga wsparcia specjalisty,
+              możesz sprawdzić dostępne opcje.
+            </p>
+
+            <Link
+              href="/propozycje/stabilizacja"
+              className="text-blue-500 underline underline-offset-4 hover:text-blue-400"
+            >
+              Sprawdź dostępne wsparcie →
+            </Link>
           </div>
 
         </div>
       </section>
-
-      {/* REFLEKSJA */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl">
-
-          <div className="card-2026 p-10">
-            <h2 className="text-2xl font-semibold mb-6">
-              Pytania, które warto sobie zadać
-            </h2>
-
-            <ul className="space-y-4 text-zinc-300 leading-relaxed">
-              <li>• Czy moje dziecko czuje się przy mnie bezpieczne?</li>
-              <li>• Czy jestem obecny czy tylko fizycznie dostępny?</li>
-              <li>• Czy moje reakcje budują czy burzą relację?</li>
-              <li>• Czy dbam o siebie, żeby móc dbać o nie?</li>
-            </ul>
-          </div>
-
-        </div>
-      </section>
-
-      {/* NARZĘDZIA */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-3xl space-y-16">
-
-          <FatherPlanTool />
-          <FatherPresenceChecklist />
-          <FatherLawBasics />
-
-        </div>
-      </section>
-
     </main>
   );
 }

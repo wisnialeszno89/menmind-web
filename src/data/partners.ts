@@ -9,6 +9,7 @@ export type Partner = {
   state: "kryzys" | "odbudowa" | "wzrost" | "ojcostwo";
   tier: PartnerTier;
   verified?: boolean;
+  featured?: boolean;
 };
 
 export const partners: Partner[] = [
@@ -35,11 +36,12 @@ export const partners: Partner[] = [
     id: "p3",
     name: "Mediacja Rodzinna Nowak",
     city: "Warszawa",
-    category: "Prawo",
+    category: "Prawo rodzinne",
     description: "Mediacje w sprawach rodzinnych i opieki.",
     state: "ojcostwo",
     tier: "strategic",
     verified: true,
+    featured: true,
   },
   {
     id: "p4",
