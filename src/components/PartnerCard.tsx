@@ -11,6 +11,7 @@ type Props = {
   tier: string;
   website?: string;
   highlighted?: boolean;
+  isTop?: boolean;
 };
 
 export default function PartnerCard({
@@ -21,13 +22,21 @@ export default function PartnerCard({
   tier,
   website,
   highlighted,
+  isTop,
 }: Props) {
   return (
     <div
-      className={`rounded-xl p-6 border ${
+      className={`rounded-xl p-6 border transition ${
         highlighted ? "border-blue-500" : "border-neutral-800"
       }`}
     >
+      {/* 🔥 Badge lidera */}
+      {isTop && (
+        <div className="text-xs text-yellow-400 mb-2 font-medium">
+          Najczęściej wybierany
+        </div>
+      )}
+
       <h3 className="text-xl font-semibold mb-2">{name}</h3>
 
       <p className="text-neutral-300 mb-4">{description}</p>

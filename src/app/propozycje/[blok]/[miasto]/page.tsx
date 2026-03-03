@@ -4,6 +4,12 @@ import { partners } from "@/data/partners";
 import Link from "next/link";
 import PartnerCard from "@/components/PartnerCard";
 import ViewTracker from "@/components/ViewTracker";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 type Props = {
   params: {
@@ -19,7 +25,7 @@ const blokMap: Record<string, string[]> = {
   tozsamosc: [],
 };
 
-export default function PropozycjeMiastoPage({ params }: Props) {
+export default async function PropozycjeMiastoPage({ params }: Props) {
   const city = cities.find((c) => c.slug === params.miasto);
   if (!city) return notFound();
 
@@ -32,17 +38,41 @@ export default function PropozycjeMiastoPage({ params }: Props) {
       p.city.toLowerCase() === city.name.toLowerCase()
   );
 
-  const strategicPartners = filteredPartners.filter(
-    (p) => p.tier === "strategic"
-  );
+  // 🔥 POBIERAMY KLIKNIĘCIA Z BAZY
+  const { data: clickEvents } = await supabase
+    .from("events")
+    .select("data")
+    .eq("event", "partner_click");
 
-  const standardPartners = filteredPartners.filter(
-    (p) => p.tier === "standard"
-  );
+  const clickCounts: Record<string, number> = {};
+
+  clickEvents?.forEach((row: any) => {
+    const name = row.data?.partner;
+    if (!name) return;
+    clickCounts[name] = (clickCounts[name] || 0) + 1;
+  });
+
+  // 🔥 SORTOWANIE WG KLIKÓW W RAMACH TIER
+  const strategicPartners = filteredPartners
+    .filter((p) => p.tier === "strategic")
+    .sort(
+      (a, b) =>
+        (clickCounts[b.name] || 0) - (clickCounts[a.name] || 0)
+    );
+
+  const standardPartners = filteredPartners
+    .filter((p) => p.tier === "standard")
+    .sort(
+      (a, b) =>
+        (clickCounts[b.name] || 0) - (clickCounts[a.name] || 0)
+    );
+
+  // 🔥 LIDER (najwięcej klików w mieście)
+  const allSorted = [...strategicPartners, ...standardPartners];
+  const topPartner = allSorted[0]?.name;
 
   return (
     <div className="text-neutral-200">
-      {/* 🔥 TRACK WEJŚCIA W BLOK + MIASTO */}
       <ViewTracker
         event="view_block_city"
         data={{
@@ -59,7 +89,6 @@ export default function PropozycjeMiastoPage({ params }: Props) {
 
         <div className="h-px w-16 bg-blue-500 mb-12" />
 
-        {/* BRAK PARTNERÓW */}
         {filteredPartners.length === 0 && (
           <>
             <ViewTracker
@@ -85,7 +114,7 @@ export default function PropozycjeMiastoPage({ params }: Props) {
           </>
         )}
 
-        {/* POLECANE */}
+        {/* STRATEGIC */}
         {strategicPartners.length > 0 && (
           <section className="mb-16">
             <h2 className="text-2xl font-semibold mb-6">
@@ -104,6 +133,7 @@ export default function PropozycjeMiastoPage({ params }: Props) {
                   tier={partner.tier}
                   website={partner.website}
                   highlighted
+                  isTop={partner.name === topPartner}
                 />
               ))}
             </div>
@@ -128,13 +158,13 @@ export default function PropozycjeMiastoPage({ params }: Props) {
                   blok={params.blok}
                   tier={partner.tier}
                   website={partner.website}
+                  isTop={partner.name === topPartner}
                 />
               ))}
             </div>
           </section>
         )}
 
-        {/* CTA */}
         <section className="mt-24 border-t border-neutral-800 pt-16">
           <h2 className="text-2xl font-semibold mb-6">
             Znasz specjalistę, którego tu brakuje?
