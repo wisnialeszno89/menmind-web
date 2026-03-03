@@ -1,81 +1,94 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Wzrost | MenMind",
+  description:
+    "Świadome rozszerzanie wpływu, kierunku i odpowiedzialności.",
+};
+
 export default function WzrostPage() {
   return (
-    <main className="bg-[#0F172A] text-zinc-100">
+    <div className="text-neutral-200">
+      <div className="max-w-4xl mx-auto px-6 py-24">
 
-      {/* HERO */}
-      <section className="section-2026">
-        <div className="container-2026 max-w-3xl">
+        {/* Nagłówek */}
+        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
+          Wzrost
+        </h1>
+        <div className="h-px w-16 bg-blue-500 mb-12" />
 
-          <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
-  Wzrost
-</h1>
-<div className="h-px w-16 bg-blue-500 mb-12" />
+        <p className="text-lg text-neutral-300 mb-16 max-w-2xl leading-8">
+          Gdy sytuacja jest stabilna, pojawia się pytanie:  
+          co dalej?  
+          Wzrost to nie napinka.  
+          To świadome rozszerzanie wpływu.
+        </p>
 
-          <p className="text-lg text-zinc-400 leading-relaxed">
-            Rozwój to kierunek i konsekwencja.
-            Bez presji. Bez spektaklu.
-          </p>
+        {/* 3 filary */}
+        <div className="space-y-16 mb-24">
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">
+              1. Kierunek
+            </h2>
+            <p className="text-neutral-300 leading-8">
+              Czy wiesz, dokąd zmierzasz?
+              Wzrost zaczyna się od jasności.
+              Nie od ambicji, tylko od decyzji.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">
+              2. Odpowiedzialność
+            </h2>
+            <p className="text-neutral-300 leading-8">
+              Zamiast reagować na świat,
+              zaczynasz go współtworzyć.
+              Odpowiedzialność to sprawczość.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">
+              3. Wpływ
+            </h2>
+            <p className="text-neutral-300 leading-8">
+              Twoje decyzje zaczynają mieć większy zasięg —
+              w pracy, relacjach, w tym jak jesteś postrzegany.
+            </p>
+          </section>
 
         </div>
-      </section>
 
-      {/* FILARY */}
-      <section className="section-compact">
-        <div className="container-2026 grid md:grid-cols-3 gap-8">
+        {/* Przejścia */}
+        <section className="border-t border-neutral-800 pt-16">
 
-          <div className="card-2026 p-8">
-            <h3 className="text-xl font-semibold mb-4">
-              Kierunek
-            </h3>
-            <p className="text-sm text-zinc-400 leading-relaxed">
-              Jasność celu upraszcza decyzje i eliminuje chaos.
-            </p>
-          </div>
+          <h2 className="text-2xl font-semibold mb-6">
+            Możesz pójść dalej:
+          </h2>
 
-          <div className="card-2026 p-8">
-            <h3 className="text-xl font-semibold mb-4">
-              Relacje
-            </h3>
-            <p className="text-sm text-zinc-400 leading-relaxed">
-              Otoczenie wpływa na tempo i jakość wzrostu.
-            </p>
-          </div>
+          <div className="space-y-4 text-lg">
 
-          <div className="card-2026 p-8">
-            <h3 className="text-xl font-semibold mb-4">
-              Dyscyplina
-            </h3>
-            <p className="text-sm text-zinc-400 leading-relaxed">
-              Małe działania powtarzane codziennie.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section-compact">
-        <div className="container-2026 max-w-2xl">
-
-          <div className="card-2026 p-10 text-center">
-            <p className="text-zinc-300 leading-relaxed mb-6">
-              Jeśli czujesz, że potrzebujesz wsparcia w swoim kierunku —
-              możesz skorzystać z wyselekcjonowanych propozycji.
-            </p>
+            <Link
+              href="/propozycje/kierunek"
+              className="block text-blue-500 underline underline-offset-4 hover:text-blue-400"
+            >
+              Rozwój zawodowy i mentoring →
+            </Link>
 
             <Link
               href="/propozycje"
-              className="accent-bg px-8 py-3 rounded-xl text-sm inline-block"
+              className="block text-neutral-400 underline underline-offset-4 hover:text-neutral-200"
             >
-              Zobacz propozycje
+              Sprawdź propozycje →
             </Link>
+
           </div>
 
-        </div>
-      </section>
+        </section>
 
-    </main>
+      </div>
+    </div>
   );
 }
