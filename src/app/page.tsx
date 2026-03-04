@@ -15,7 +15,7 @@ export default function HomePage() {
       <section className="section-compact">
         <div className="container-2026 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
 
-          <Link href="/kryzys">
+          <Link href="/propozycje/kryzys/warszawa">
             <Card className="p-6 text-center">
               <h3 className="font-semibold mb-2">Kryzys</h3>
               <p className="text-sm text-zinc-400">
@@ -24,7 +24,7 @@ export default function HomePage() {
             </Card>
           </Link>
 
-          <Link href="/odbudowa">
+          <Link href="/propozycje/odbudowa/warszawa">
             <Card className="p-6 text-center">
               <h3 className="font-semibold mb-2">Odbudowa</h3>
               <p className="text-sm text-zinc-400">
@@ -33,7 +33,7 @@ export default function HomePage() {
             </Card>
           </Link>
 
-          <Link href="/wzrost">
+          <Link href="/propozycje/wzrost/warszawa">
             <Card className="p-6 text-center">
               <h3 className="font-semibold mb-2">Wzrost</h3>
               <p className="text-sm text-zinc-400">
@@ -42,7 +42,7 @@ export default function HomePage() {
             </Card>
           </Link>
 
-          <Link href="/ojcostwo">
+          <Link href="/propozycje/ojcostwo/warszawa">
             <Card className="p-6 text-center">
               <h3 className="font-semibold mb-2">Ojcostwo</h3>
               <p className="text-sm text-zinc-400">
