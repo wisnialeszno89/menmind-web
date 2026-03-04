@@ -1,189 +1,48 @@
-import { notFound } from "next/navigation";
-import { cities } from "@/data/cities";
-import { partners } from "@/data/partners";
-import Link from "next/link";
-import PartnerCard from "@/components/PartnerCard";
-import ViewTracker from "@/components/ViewTracker";
-import { createClient } from "@supabase/supabase-js";
+import PartnerCard from "@/components/PartnerCard"
+import { getPartners } from "@/lib/getPartners"
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+export default async function Page({
+  params,
+}: {
+  params: { blok: string; miasto: string }
+}) {
 
-type Props = {
-  params: {
-    blok: string;
-    miasto: string;
-  };
-};
-
-const blokMap: Record<string, string[]> = {
-  stabilizacja: ["kryzys"],
-  energia: ["odbudowa"],
-  kierunek: ["wzrost"],
-  tozsamosc: [],
-};
-
-export default async function PropozycjeMiastoPage({ params }: Props) {
-  const city = cities.find((c) => c.slug === params.miasto);
-  if (!city) return notFound();
-
-  const allowedStates = blokMap[params.blok];
-  if (!allowedStates) return notFound();
-
-  const filteredPartners = partners.filter(
-    (p) =>
-      allowedStates.includes(p.state) &&
-      p.city.toLowerCase() === city.name.toLowerCase()
-  );
-
-  // 🔥 POBIERAMY KLIKNIĘCIA Z BAZY
-  const { data: clickEvents } = await supabase
-    .from("events")
-    .select("data")
-    .eq("event", "partner_click");
-
-  const clickCounts: Record<string, number> = {};
-
-  clickEvents?.forEach((row: any) => {
-    const name = row.data?.partner;
-    if (!name) return;
-    clickCounts[name] = (clickCounts[name] || 0) + 1;
-  });
-
-  // 🔥 SORTOWANIE WG KLIKÓW W RAMACH TIER
-  const strategicPartners = filteredPartners
-    .filter((p) => p.tier === "strategic")
-    .sort(
-      (a, b) =>
-        (clickCounts[b.name] || 0) - (clickCounts[a.name] || 0)
-    );
-
-  const standardPartners = filteredPartners
-    .filter((p) => p.tier === "standard")
-    .sort(
-      (a, b) =>
-        (clickCounts[b.name] || 0) - (clickCounts[a.name] || 0)
-    );
-
-  // 🔥 LIDER (najwięcej klików w mieście)
-  const allSorted = [...strategicPartners, ...standardPartners];
-  const topPartner = allSorted[0]?.name;
+  const partners = await getPartners(params.blok, params.miasto)
 
   return (
-    <div className="text-neutral-200">
-      <ViewTracker
-        event="view_block_city"
-        data={{
-          blok: params.blok,
-          city: city.name,
-        }}
-      />
+    <div className="min-h-screen bg-[#111827] text-neutral-200 px-6 py-20">
 
-      <div className="max-w-5xl mx-auto px-6 py-24">
+      <div className="max-w-5xl mx-auto">
 
-        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
-          {params.blok.charAt(0).toUpperCase() + params.blok.slice(1)} – {city.name}
+        <h1 className="text-4xl mb-10 text-blue-500">
+          Pomoc dla mężczyzn – {params.miasto}
         </h1>
 
-        <div className="h-px w-16 bg-blue-500 mb-12" />
-
-        {filteredPartners.length === 0 && (
-          <>
-            <ViewTracker
-              event="view_city_empty"
-              data={{
-                blok: params.blok,
-                city: city.name,
-              }}
-            />
-
-            <div>
-              <p className="text-lg text-neutral-300 mb-8">
-                Aktualnie brak partnerów w tym mieście.
-              </p>
-
-              <Link
-                href="/dla-partnerow"
-                className="text-blue-500 underline underline-offset-4 hover:text-blue-400"
-              >
-                Zgłoś partnera →
-              </Link>
-            </div>
-          </>
-        )}
-
-        {/* STRATEGIC */}
-        {strategicPartners.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-2xl font-semibold mb-6">
-              Polecane przez MenMind
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {strategicPartners.map((partner) => (
-                <PartnerCard
-                  key={partner.id}
-                  id={partner.id}
-                  name={partner.name}
-                  description={partner.description}
-                  city={partner.city}
-                  blok={params.blok}
-                  tier={partner.tier}
-                  website={partner.website}
-                  highlighted
-                  isTop={partner.name === topPartner}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* STANDARD */}
-        {standardPartners.length > 0 && (
-          <section>
-            <h2 className="text-2xl font-semibold mb-6">
-              Dostępni w mieście
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {standardPartners.map((partner) => (
-                <PartnerCard
-                  key={partner.id}
-                  id={partner.id}
-                  name={partner.name}
-                  description={partner.description}
-                  city={partner.city}
-                  blok={params.blok}
-                  tier={partner.tier}
-                  website={partner.website}
-                  isTop={partner.name === topPartner}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        <section className="mt-24 border-t border-neutral-800 pt-16">
-          <h2 className="text-2xl font-semibold mb-6">
-            Znasz specjalistę, którego tu brakuje?
-          </h2>
-
-          <p className="text-neutral-300 text-lg leading-8 mb-8 max-w-2xl">
-            Jeśli w Twoim mieście działa ktoś, kto realnie pomaga mężczyznom,
-            możesz zgłosić go do MenMind.
+        {partners.length === 0 && (
+          <p className="text-neutral-400 mb-10">
+            Jeszcze nie mamy partnerów w tym mieście.
           </p>
+        )}
 
-          <Link
-            href="/dla-partnerow"
-            className="text-blue-500 underline underline-offset-4 hover:text-blue-400 text-lg"
-          >
-            Zostań partnerem →
-          </Link>
-        </section>
+        <div className="grid md:grid-cols-2 gap-6">
+
+          {partners.map((partner: any, index: number) => (
+            <PartnerCard
+              key={partner.id}
+              id={partner.id}
+              name={partner.name}
+              description={partner.description}
+              tier={partner.tier}
+              website={partner.website}
+              highlighted={partner.tier === "strategic"}
+              isTop={index === 0}
+            />
+          ))}
+
+        </div>
 
       </div>
+
     </div>
-  );
+  )
 }
