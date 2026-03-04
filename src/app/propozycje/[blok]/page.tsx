@@ -1,4 +1,4 @@
-import { cities } from "@/data/cities";
+import { cities } from "@/lib/cities";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ViewTracker from "@/components/ViewTracker";
