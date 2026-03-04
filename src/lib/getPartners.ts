@@ -5,12 +5,18 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-export async function getPartners(block: string, city: string) {
-  const { data } = await supabase
+export async function getPartners(category: string, city: string) {
+  const { data, error } = await supabase
     .from("partners")
     .select("*")
+    .eq("category", category)
     .eq("city", city)
-    .contains("blocks", [block]);
+    .order("tier", { ascending: false });
+
+  if (error) {
+    console.error("Supabase partners error:", error);
+    return [];
+  }
 
   return data || [];
 }

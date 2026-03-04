@@ -1,26 +1,47 @@
-import { cities } from "@/data/cities";
-import { categories } from "@/data/categories";
-import { notFound } from "next/navigation";
+import PartnerCard from "@/components/PartnerCard";
+import { getPartners } from "@/lib/getPartners";
 
-export default function CategoryCityPage({
-  params,
-}: {
-  params: { category: string; city: string };
-}) {
-  const category = categories.find(c => c.slug === params.category);
-  const city = cities.find(c => c.slug === params.city);
+export default async function Page({ params }: any) {
 
-  if (!category || !city) return notFound();
+  const partners = await getPartners(
+    params.category,
+    params.city
+  );
 
   return (
-    <div className="max-w-5xl mx-auto py-16 px-6">
-      <h1 className="text-3xl font-bold mb-6">
-        {category.name} – {city.name}
-      </h1>
+    <main className="bg-gray-100 min-h-screen">
 
-      <p>
-        Lista specjalistów w kategorii {category.name} w mieście {city.name}.
-      </p>
-    </div>
+      <section className="max-w-5xl mx-auto px-6 py-20">
+
+        <h1 className="text-4xl mb-10 capitalize">
+          {params.category} – {params.city}
+        </h1>
+
+        {partners.length === 0 && (
+          <p className="text-gray-600">
+            Jeszcze nie mamy partnerów w tym mieście.
+          </p>
+        )}
+
+        <div className="grid md:grid-cols-2 gap-6">
+
+          {partners.map((partner: any, index: number) => (
+            <PartnerCard
+              key={partner.id}
+              id={partner.id}
+              name={partner.name}
+              description={partner.description}
+              tier={partner.tier}
+              website={partner.website}
+              highlighted={partner.tier === "strategic"}
+              isTop={index === 0}
+            />
+          ))}
+
+        </div>
+
+      </section>
+
+    </main>
   );
 }
