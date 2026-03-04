@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { cities } from "@/lib/cities";
-import { partners } from "@/lib/partners";
 
 export default function WsparciePage() {
   return (
     <main className="min-h-screen px-6 py-20">
       <div className="mx-auto max-w-5xl">
+
         <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-blue-500">
-  Wsparcie
-</h1>
-<div className="h-px w-12 bg-blue-500 mb-10" />
+          Wsparcie
+        </h1>
+
+        <div className="h-px w-12 bg-blue-500 mb-10" />
 
         <p className="mt-6 text-textMuted max-w-2xl">
           Wybierz miasto i znajdź sprawdzone wsparcie:
@@ -17,33 +18,26 @@ export default function WsparciePage() {
         </p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {cities.map((city) => {
-            const count = partners.filter(
-              (p) => p.city === city.slug
-            ).length;
+          {cities.map((city) => (
+            <Link
+              key={city.slug}
+              href={`/wsparcie/${city.slug}`}
+              className="rounded-2xl border border-borderSoft p-6 hover:bg-navySoft transition"
+            >
+              <div className="flex justify-between items-center">
 
-            return (
-              <Link
-                key={city.slug}
-                href={`/wsparcie/${city.slug}`}
-                className="rounded-2xl border border-borderSoft p-6 hover:bg-navySoft transition"
-              >
-                <div className="flex justify-between items-center">
-                  <span className="font-medium">
-                    {city.name}
-                  </span>
+                <span className="font-medium">
+                  {city.name}
+                </span>
 
-                  <span className="text-sm text-textMuted">
-                    {count}
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
+              </div>
+            </Link>
+          ))}
         </div>
 
         {/* ONLINE */}
         <div className="mt-20 rounded-2xl border border-accent p-8 text-center">
+
           <h2 className="text-2xl font-semibold">
             Wsparcie online
           </h2>
@@ -58,7 +52,9 @@ export default function WsparciePage() {
           >
             Zobacz online →
           </Link>
+
         </div>
+
       </div>
     </main>
   );
