@@ -8,87 +8,71 @@ export const metadata = {
 
 export default function WzrostPage() {
   return (
-    <div className="text-neutral-200">
+    <main className="bg-gray-100 min-h-screen text-gray-800">
       <div className="max-w-4xl mx-auto px-6 py-24">
 
-        {/* Nagłówek */}
-        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
+        <h1 className="text-5xl md:text-6xl font-semibold mb-6 text-gray-900">
           Wzrost
         </h1>
-        <div className="h-px w-16 bg-blue-500 mb-12" />
 
-        <p className="text-lg text-neutral-300 mb-16 max-w-2xl leading-8">
-          Gdy sytuacja jest stabilna, pojawia się pytanie:  
-          co dalej?  
-          Wzrost to nie napinka.  
-          To świadome rozszerzanie wpływu.
+        <div className="h-px w-16 bg-blue-600 mb-12" />
+
+        <p className="text-lg text-gray-700 mb-16 max-w-2xl leading-8">
+          Gdy sytuacja jest stabilna, pojawia się pytanie:
+          co dalej? Wzrost to świadome budowanie kierunku.
         </p>
 
-        {/* 3 filary */}
         <div className="space-y-16 mb-24">
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4">
-              1. Kierunek
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+              Kierunek
             </h2>
-            <p className="text-neutral-300 leading-8">
-              Czy wiesz, dokąd zmierzasz?
-              Wzrost zaczyna się od jasności.
-              Nie od ambicji, tylko od decyzji.
+
+            <p className="text-gray-700 leading-8">
+              Wzrost zaczyna się od jasności celu.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4">
-              2. Odpowiedzialność
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+              Odpowiedzialność
             </h2>
-            <p className="text-neutral-300 leading-8">
-              Zamiast reagować na świat,
-              zaczynasz go współtworzyć.
-              Odpowiedzialność to sprawczość.
+
+            <p className="text-gray-700 leading-8">
+              Odpowiedzialność daje sprawczość.
             </p>
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold mb-4">
-              3. Wpływ
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
+              Wpływ
             </h2>
-            <p className="text-neutral-300 leading-8">
-              Twoje decyzje zaczynają mieć większy zasięg —
-              w pracy, relacjach, w tym jak jesteś postrzegany.
+
+            <p className="text-gray-700 leading-8">
+              Decyzje zaczynają mieć realny wpływ
+              na Twoje życie i otoczenie.
             </p>
           </section>
 
         </div>
 
-        {/* Przejścia */}
-        <section className="border-t border-neutral-800 pt-16">
+        <section className="border-t border-gray-300 pt-16">
 
-          <h2 className="text-2xl font-semibold mb-6">
-            Możesz pójść dalej:
+          <h2 className="text-2xl font-semibold mb-6 text-gray-900">
+            Zobacz dostępne możliwości rozwoju
           </h2>
 
-          <div className="space-y-4 text-lg">
-
-            <Link
-              href="/propozycje/kierunek"
-              className="block text-blue-500 underline underline-offset-4 hover:text-blue-400"
-            >
-              Rozwój zawodowy i mentoring →
-            </Link>
-
-            <Link
-              href="/propozycje"
-              className="block text-neutral-400 underline underline-offset-4 hover:text-neutral-200"
-            >
-              Sprawdź propozycje →
-            </Link>
-
-          </div>
+          <Link
+            href="/propozycje"
+            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg"
+          >
+            Zobacz propozycje
+          </Link>
 
         </section>
 
       </div>
-    </div>
+    </main>
   );
 }
