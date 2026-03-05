@@ -1,59 +1,47 @@
 import Link from "next/link"
 
 export const metadata = {
-title: "Dołącz jako partner | MenMind",
+title: "Dla partnerów | MenMind",
 description:
-"Dołącz do platformy MenMind i docieraj do mężczyzn szukających wsparcia, rozwoju i aktywności."
+"Dołącz do platformy wsparcia dla mężczyzn i pokaż swoją ofertę tysiącom użytkowników.",
 }
 
-export default function PartnerPage() {
+export default function PartnerzyPage() {
 
 return (
 
 <main className="bg-gray-100 min-h-screen">
 
-<div className="max-w-4xl mx-auto px-6 py-20">
+<div className="max-w-4xl mx-auto px-6 py-24">
 
-<h1 className="text-4xl font-semibold text-gray-900 mb-6">
-Dołącz jako partner
+<h1 className="text-5xl font-semibold text-gray-900 mb-6">
+Dla partnerów
 </h1>
 
 <div className="h-px w-16 bg-blue-600 mb-10" />
 
-<p className="text-gray-700 mb-12 max-w-2xl">
+<p className="text-gray-700 mb-10 max-w-2xl">
 
-MenMind to platforma dla mężczyzn, którzy szukają
-realnego wsparcia w kryzysie, ojcostwie,
-rozwoju i zdrowiu.
-
-Jeśli prowadzisz działalność, która może
-pomóc mężczyznom – możesz dołączyć jako partner.
+MenMind to mapa wsparcia dla mężczyzn w Polsce.
+Łączymy użytkowników z psychologami, prawnikami,
+trenerami, mediatorami i specjalistami.
 
 </p>
 
-<section className="mb-16">
+<p className="text-gray-700 mb-16 max-w-2xl">
 
-<h2 className="text-2xl font-semibold mb-4">
-Dlaczego warto
-</h2>
+Jeśli Twoja działalność pomaga mężczyznom
+rozwiązywać realne problemy lub rozwijać życie —
+możesz zostać partnerem platformy.
 
-<ul className="space-y-3 text-gray-700">
-
-<li>– widoczność w wyszukiwarce MenMind</li>
-<li>– ruch z artykułów i poradników</li>
-<li>– profil partnera</li>
-<li>– możliwość dotarcia do nowych klientów</li>
-
-</ul>
-
-</section>
+</p>
 
 <Link
 href="/dla-partnerow/zgloszenie"
-className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition"
+className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg"
 >
 
-Zgłoś się jako partner →
+Zgłoś swoją działalność
 
 </Link>
 

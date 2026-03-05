@@ -1,107 +1,59 @@
-import Link from "next/link"
 import { getPartner } from "@/lib/getPartners"
 
-export default async function PartnerPage({
-params,
-}:{
-params:{ slug:string }
-}){
-
-const partner = await getPartner(params.slug)
-
-if(!partner){
-
-return(
-
-<main className="min-h-screen flex items-center justify-center bg-gray-100">
-<p>Partner nie istnieje.</p>
-</main>
-
-)
-
+type Props = {
+  params: Promise<{ slug: string }>
 }
 
-return(
+export default async function PartnerPage({ params }: Props) {
 
-<main className="bg-gray-100 min-h-screen">
+  const { slug } = await params
 
-<div className="max-w-4xl mx-auto px-6 py-20">
+  const partner = await getPartner(slug)
 
-{/* BREADCRUMBS */}
+  if (!partner) {
+    return (
+      <main className="min-h-screen flex items-center justify-center bg-gray-100">
+        <p className="text-gray-600">Partner nie znaleziony</p>
+      </main>
+    )
+  }
 
-<nav className="text-sm text-gray-500 mb-6">
+  return (
+    <main className="min-h-screen bg-gray-100">
 
-<Link href="/">MenMind</Link>
+      <div className="max-w-4xl mx-auto px-6 py-20">
 
-<span className="mx-2">/</span>
+        <h1 className="text-4xl font-semibold mb-4">
+          {partner.name}
+        </h1>
 
-<Link href="/propozycje">
-propozycje
-</Link>
+        <p className="text-gray-500 mb-8">
+          {partner.city} • {partner.category}
+        </p>
 
-<span className="mx-2">/</span>
+        <div className="bg-white border border-gray-200 rounded-xl p-8 mb-10">
 
-<span>{partner.name}</span>
+          <p className="text-gray-700 leading-relaxed">
+            {partner.description}
+          </p>
 
-</nav>
+        </div>
 
-{/* TYTUŁ */}
+        {partner.website && (
 
-<h1 className="text-4xl font-semibold text-gray-900 mb-4">
-{partner.name}
-</h1>
+          <a
+            href={partner.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg"
+          >
+            Przejdź do strony
+          </a>
 
-<p className="text-gray-600 mb-10 capitalize">
-{partner.category} • {partner.city}
-</p>
+        )}
 
-{/* OPIS */}
+      </div>
 
-<p className="text-gray-700 mb-12 max-w-2xl">
-{partner.description}
-</p>
-
-{/* STRONA */}
-
-{partner.website && (
-
-<a
-href={partner.website}
-target="_blank"
-className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg"
->
-
-Przejdź do strony →
-
-</a>
-
-)}
-
-{/* CTA */}
-
-<section className="mt-20 border-t border-gray-300 pt-10">
-
-<p className="text-gray-700 mb-4">
-
-Szukasz podobnego wsparcia w swoim mieście?
-
-</p>
-
-<Link
-href={`/kategoria/${partner.category}/${partner.city}`}
-className="text-blue-600 hover:underline"
->
-
-Zobacz więcej →
-
-</Link>
-
-</section>
-
-</div>
-
-</main>
-
-)
-
+    </main>
+  )
 }

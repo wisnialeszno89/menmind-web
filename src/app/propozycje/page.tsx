@@ -1,80 +1,71 @@
 import Link from "next/link"
-import { categoryGroups } from "@/lib/categories"
-
-export const metadata = {
-title: "Propozycje wsparcia | MenMind",
-description:
-"Znajdź wsparcie, aktywność lub miejsce które pomoże Ci uporządkować sytuację i zrobić kolejny krok."
-}
+import { categories, categoryGroups } from "@/lib/categories"
 
 export default function PropozycjePage() {
 
-return (
+  return (
 
-<main className="bg-gray-100 min-h-screen">
+    <main className="min-h-screen bg-gray-100">
 
-<div className="max-w-5xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-20">
 
-{/* TYTUŁ */}
+        <h1 className="text-4xl font-semibold mb-8">
+          Propozycje wsparcia
+        </h1>
 
-<h1 className="text-4xl font-semibold text-gray-900 mb-6">
-Propozycje
-</h1>
+        <p className="text-gray-600 mb-16 max-w-2xl">
+          Wybierz obszar, w którym potrzebujesz wsparcia.
+          Następnie sprawdź dostępne opcje w Twoim mieście.
+        </p>
 
-<div className="h-px w-16 bg-blue-600 mb-10" />
+        {categoryGroups.map((group) => {
 
-{/* OPIS */}
+          const groupCategories = categories.filter(
+            (cat) => cat.group === group.slug
+          )
 
-<p className="text-gray-700 max-w-2xl mb-16">
+          return (
 
-Jeśli potrzebujesz wsparcia, rozmowy lub miejsca
-które pomoże Ci wrócić do równowagi — tutaj
-znajdziesz dostępne możliwości.
+            <div key={group.slug} className="mb-16">
 
-Wybierz obszar życia i zobacz dostępne opcje.
+              <h2 className="text-2xl font-semibold mb-6">
+                {group.label}
+              </h2>
 
-</p>
+              <div className="grid md:grid-cols-3 gap-4">
 
-{/* GRUPY KATEGORII */}
+                {groupCategories.map((category) => (
 
-<div className="space-y-16">
+                  <Link
+                    key={category.slug}
+                    href={`/kategoria/${category.slug}`}
+                    className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition"
+                  >
 
-{categoryGroups.map((group) => (
+                    <h3 className="font-semibold mb-2">
+                      {category.label}
+                    </h3>
 
-<section key={group.name}>
+                    <p className="text-sm text-gray-600">
+                      {category.seoDescription}
+                    </p>
 
-<h2 className="text-2xl font-semibold text-gray-900 mb-6">
-{group.name}
-</h2>
+                  </Link>
 
-<div className="grid md:grid-cols-3 gap-4">
+                ))}
 
-{group.categories.map((category) => (
+              </div>
 
-<Link
-key={category}
-href={`/kategoria/${category}`}
-className="border border-gray-300 rounded-lg p-4 hover:border-blue-600 transition capitalize"
->
+            </div>
 
-{category.replaceAll("-", " ")}
+          )
 
-</Link>
+        })}
 
-))}
+      </div>
 
-</div>
+    </main>
 
-</section>
-
-))}
-
-</div>
-
-</div>
-
-</main>
-
-)
+  )
 
 }
