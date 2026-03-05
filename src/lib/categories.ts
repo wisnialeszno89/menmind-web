@@ -1,50 +1,111 @@
 export const categories = [
-  {
-    slug: "psycholog",
-    name: "Psycholog",
-    description:
-      "Wsparcie w kryzysie, stresie i trudnych decyzjach życiowych.",
-  },
-  {
-    slug: "psychiatra",
-    name: "Psychiatra",
-    description:
-      "Diagnoza i leczenie problemów psychicznych.",
-  },
-  {
-    slug: "prawo",
-    name: "Prawo rodzinne",
-    description:
-      "Rozwody, alimenty, kontakty z dzieckiem.",
-  },
-  {
-    slug: "mediacje",
-    name: "Mediacje",
-    description:
-      "Pomoc w rozwiązywaniu konfliktów.",
-  },
-  {
-    slug: "finanse",
-    name: "Finanse",
-    description:
-      "Porządkowanie sytuacji finansowej.",
-  },
-  {
-    slug: "sport",
-    name: "Sport",
-    description:
-      "Aktywność fizyczna i regeneracja.",
-  },
-  {
-    slug: "fitness",
-    name: "Fitness",
-    description:
-      "Trening i powrót do formy.",
-  },
-  {
-    slug: "grupy",
-    name: "Grupy wsparcia",
-    description:
-      "Spotkania i warsztaty dla mężczyzn.",
-  },
-];
+
+"psycholog",
+"psychoterapeuta",
+"psychiatra",
+
+"prawo-rodzinne",
+"prawnik-rozwodowy",
+"mediacje",
+
+"doradztwo-zawodowe",
+"coaching-kariery",
+"mentor-biznesowy",
+"doradztwo-finansowe",
+
+"trener-personalny",
+"fizjoterapia",
+"dietetyk",
+"masaz",
+
+"sztuki-walki",
+"silownia",
+"crossfit",
+
+"spa",
+"sauna",
+
+"warsztaty-mezczyzn",
+"spotkania-mezczyzn",
+
+"bar",
+"restauracja",
+"kawiarnia"
+
+]
+
+export const categoryGroups = [
+
+{
+name: "Wsparcie psychiczne",
+categories: [
+"psycholog",
+"psychoterapeuta",
+"psychiatra",
+"warsztaty-mezczyzn"
+]
+},
+
+{
+name: "Prawo i sprawy rodzinne",
+categories: [
+"prawo-rodzinne",
+"prawnik-rozwodowy",
+"mediacje"
+]
+},
+
+{
+name: "Praca i finanse",
+categories: [
+"doradztwo-zawodowe",
+"coaching-kariery",
+"mentor-biznesowy",
+"doradztwo-finansowe"
+]
+},
+
+{
+name: "Ciało i zdrowie",
+categories: [
+"trener-personalny",
+"fizjoterapia",
+"dietetyk",
+"masaz"
+]
+},
+
+{
+name: "Aktywność",
+categories: [
+"silownia",
+"sztuki-walki",
+"crossfit"
+]
+},
+
+{
+name: "Regeneracja",
+categories: [
+"spa",
+"sauna"
+]
+},
+
+{
+name: "Społeczność",
+categories: [
+"spotkania-mezczyzn"
+]
+},
+
+{
+name: "Miejsca spotkań",
+categories: [
+"bar",
+"restauracja",
+"kawiarnia"
+]
+}
+
+]

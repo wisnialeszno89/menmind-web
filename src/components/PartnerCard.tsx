@@ -8,6 +8,7 @@ type Props = {
   description: string
   tier: string
   website?: string
+  featured?: boolean
   highlighted?: boolean
   isTop?: boolean
 }
@@ -18,48 +19,85 @@ export default function PartnerCard({
   description,
   tier,
   website,
+  featured,
   highlighted,
   isTop,
 }: Props) {
 
+  function handleClick() {
+
+    trackEvent("partner_click", {
+      partner_id: id,
+      partner_name: name
+    })
+
+    fetch("/api/partner/click", {
+      method: "POST",
+      body: JSON.stringify({
+        id
+      })
+    }).catch(() => {})
+
+  }
+
   return (
+
     <div
-      className={`rounded-xl p-6 border transition ${
-        highlighted ? "border-blue-500" : "border-neutral-800"
+      className={`rounded-xl p-6 border transition bg-white ${
+        highlighted
+          ? "border-blue-500 shadow-md"
+          : "border-neutral-300"
       }`}
     >
 
+      {/* BADGE FEATURED */}
+
+      {featured && (
+        <div className="text-xs text-green-600 mb-2 font-medium">
+          Polecany przez MenMind
+        </div>
+      )}
+
+      {/* BADGE TOP */}
+
       {isTop && (
-        <div className="text-xs text-yellow-400 mb-2 font-medium">
+        <div className="text-xs text-yellow-500 mb-2 font-medium">
           Najczęściej wybierany
         </div>
       )}
 
-      <h3 className="text-xl font-semibold mb-2">
+      {/* NAZWA */}
+
+      <h3 className="text-xl font-semibold mb-2 text-gray-900">
         {name}
       </h3>
 
-      <p className="text-neutral-300 mb-4">
+      {/* OPIS */}
+
+      <p className="text-gray-600 mb-4">
         {description}
       </p>
 
+      {/* LINK */}
+
       {website && (
+
         <a
           href={website}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() =>
-            trackEvent("partner_click", {
-              partner_id: id,
-              partner_name: name
-            })
-          }
-          className="text-blue-400 hover:underline"
+          onClick={handleClick}
+          className="text-blue-600 hover:underline"
         >
-          Przejdź do strony
+
+          Przejdź do strony →
+
         </a>
+
       )}
 
     </div>
+
   )
+
 }

@@ -6,13 +6,13 @@ export default function NarzedziaPage() {
   return (
     <main className="bg-gray-100 min-h-screen">
 
-      <div className="max-w-3xl mx-auto px-6 py-24">
+      <div className="max-w-3xl mx-auto px-6 py-16">
 
         <h1 className="text-5xl font-semibold mb-6 text-gray-900">
           Narzędzia
         </h1>
 
-        <div className="h-px w-16 bg-blue-600 mb-12" />
+        <div className="h-px w-16 bg-blue-600 mb-8" />
 
         <p className="text-lg text-gray-700 mb-16">
           Proste narzędzia które pomagają uporządkować

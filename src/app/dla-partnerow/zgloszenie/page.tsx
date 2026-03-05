@@ -1,90 +1,125 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-export default function ZgloszeniePartneraPage() {
-  const [submitted, setSubmitted] = useState(false);
+export default function PartnerFormPage() {
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
+const [sent,setSent] = useState(false)
 
-  if (submitted) {
-    return (
-      <main className="bg-[#111827] text-zinc-100 min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-6">
-          <h1 className="text-3xl font-semibold text-blue-500">
-            Dziękujemy za zgłoszenie
-          </h1>
-          <p className="text-zinc-400">
-            Odpowiemy w ciągu 48 godzin.
-          </p>
-        </div>
-      </main>
-    );
-  }
+async function handleSubmit(e:any){
 
-  return (
-    <main className="bg-[#111827] text-zinc-100">
-      <div className="max-w-3xl mx-auto px-6 py-24">
+e.preventDefault()
 
-        <h1 className="text-4xl font-semibold mb-8 text-blue-500">
-          Zgłoszenie partnera
-        </h1>
+const form = new FormData(e.target)
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+await fetch("/api/partner/apply",{
+method:"POST",
+body:JSON.stringify({
+name:form.get("name"),
+company:form.get("company"),
+category:form.get("category"),
+city:form.get("city"),
+website:form.get("website"),
+email:form.get("email")
+})
+})
 
-          <input
-            type="text"
-            placeholder="Nazwa działalności"
-            required
-            className="w-full p-3 bg-neutral-900 border border-neutral-800 rounded-lg"
-          />
+setSent(true)
 
-          <input
-            type="text"
-            placeholder="Miasto"
-            required
-            className="w-full p-3 bg-neutral-900 border border-neutral-800 rounded-lg"
-          />
+}
 
-          <select
-            required
-            className="w-full p-3 bg-neutral-900 border border-neutral-800 rounded-lg"
-          >
-            <option value="">Obszar działalności</option>
-            <option>Prawo</option>
-            <option>Psycholog</option>
-            <option>Mediacja</option>
-            <option>Finanse</option>
-            <option>Trening</option>
-          </select>
+if(sent){
 
-          <textarea
-            placeholder="Krótki opis działalności"
-            rows={4}
-            required
-            className="w-full p-3 bg-neutral-900 border border-neutral-800 rounded-lg"
-          />
+return(
 
-          <input
-            type="email"
-            placeholder="Adres e-mail"
-            required
-            className="w-full p-3 bg-neutral-900 border border-neutral-800 rounded-lg"
-          />
+<main className="min-h-screen flex items-center justify-center bg-gray-100">
 
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 transition px-6 py-3 rounded-lg font-semibold"
-          >
-            Wyślij zgłoszenie
-          </button>
+<div className="text-center">
 
-        </form>
+<h1 className="text-2xl font-semibold mb-4">
+Dziękujemy za zgłoszenie
+</h1>
 
-      </div>
-    </main>
-  );
+<p className="text-gray-600">
+Odezwemy się po weryfikacji.
+</p>
+
+</div>
+
+</main>
+
+)
+
+}
+
+return(
+
+<main className="bg-gray-100 min-h-screen">
+
+<div className="max-w-2xl mx-auto px-6 py-20">
+
+<h1 className="text-3xl font-semibold mb-10">
+Zgłoszenie partnera
+</h1>
+
+<form onSubmit={handleSubmit} className="space-y-6">
+
+<input
+name="name"
+placeholder="Imię i nazwisko"
+required
+className="w-full border p-3 rounded"
+/>
+
+<input
+name="company"
+placeholder="Firma / działalność"
+required
+className="w-full border p-3 rounded"
+/>
+
+<input
+name="category"
+placeholder="Kategoria (np. psycholog)"
+required
+className="w-full border p-3 rounded"
+/>
+
+<input
+name="city"
+placeholder="Miasto"
+required
+className="w-full border p-3 rounded"
+/>
+
+<input
+name="website"
+placeholder="Strona internetowa"
+className="w-full border p-3 rounded"
+/>
+
+<input
+name="email"
+placeholder="Email kontaktowy"
+required
+className="w-full border p-3 rounded"
+/>
+
+<button
+type="submit"
+className="bg-blue-600 text-white px-6 py-3 rounded"
+>
+
+Wyślij zgłoszenie
+
+</button>
+
+</form>
+
+</div>
+
+</main>
+
+)
+
 }
