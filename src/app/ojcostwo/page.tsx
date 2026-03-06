@@ -4,28 +4,21 @@ import WorldLayout from "@/components/layout/WorldLayout";
 export const metadata = {
   title: "Ojcostwo | MenMind",
   description:
-    "Relacja z dzieckiem, prawa ojca i odbudowa kontaktu po konflikcie.",
+    "Relacja z dzieckiem, prawa ojca i odbudowa kontaktu.",
 };
 
 export default function OjcostwoPage() {
   return (
     <WorldLayout
       title="Ojcostwo"
-      intro="Relacja z dzieckiem bywa jedną z najważniejszych
-      i jednocześnie najtrudniejszych części życia mężczyzny.
-      Czasem naturalna. Czasem wymaga walki, cierpliwości
-      i wsparcia."
+      intro="Relacja z dzieckiem jest jedną z najważniejszych części życia mężczyzny. 
+Czasem naturalna. Czasem wymaga cierpliwości i wsparcia."
     >
-
-      {/* szybkie wejścia */}
 
       <section className="grid md:grid-cols-2 gap-6">
 
-        <Link
-          href="/ojcostwo/ojciec-po-rozwodzie"
-          className="bg-white border border-gray-300 rounded-lg p-6 hover:border-blue-600 transition"
-        >
-          <h3 className="font-semibold text-lg mb-2">
+        <Link href="/ojcostwo/ojciec-po-rozwodzie" className="card">
+          <h3 className="font-semibold mb-2">
             Mam konflikt prawny
           </h3>
 
@@ -34,27 +27,22 @@ export default function OjcostwoPage() {
           </p>
         </Link>
 
-        <Link
-          href="/ojcostwo/odbudowa-relacji"
-          className="bg-white border border-gray-300 rounded-lg p-6 hover:border-blue-600 transition"
-        >
-          <h3 className="font-semibold text-lg mb-2">
+        <Link href="/ojcostwo/odbudowa-relacji" className="card">
+          <h3 className="font-semibold mb-2">
             Chcę poprawić relację
           </h3>
 
           <p className="text-gray-600 text-sm">
-            Dystans, brak kontaktu lub trudny etap.
+            Dystans lub trudny etap.
           </p>
         </Link>
 
       </section>
 
-      {/* PRAWO */}
-
       <section>
 
         <h2 className="text-xl font-semibold mb-4">
-          Sytuacja prawna ojca
+          Prawo i sytuacja formalna
         </h2>
 
         <div className="grid md:grid-cols-2 gap-4">
@@ -78,8 +66,6 @@ export default function OjcostwoPage() {
         </div>
 
       </section>
-
-      {/* RELACJA */}
 
       <section>
 
@@ -109,8 +95,6 @@ export default function OjcostwoPage() {
 
       </section>
 
-      {/* STABILIZACJA */}
-
       <section>
 
         <h2 className="text-xl font-semibold mb-4">
@@ -131,32 +115,26 @@ export default function OjcostwoPage() {
 
       </section>
 
-      {/* mini artykuł */}
-
-      <section className="bg-white border border-gray-300 rounded-lg p-6">
+      <section className="card">
 
         <h2 className="text-xl font-semibold mb-3">
           Dlaczego relacja z ojcem jest ważna
         </h2>
 
         <p className="text-gray-700 mb-4">
-          Badania pokazują że obecność ojca ma ogromny wpływ
-          na poczucie bezpieczeństwa i rozwój emocjonalny dziecka.
-          Problem polega na tym, że wielu ojców traci kontakt
-          nie dlatego że nie chcą być ojcami,
+          Obecność ojca wpływa na poczucie bezpieczeństwa i rozwój dziecka.
+          Wielu ojców traci kontakt nie dlatego że nie chcą,
           ale dlatego że nie wiedzą jak przejść przez konflikt.
         </p>
 
         <Link
           href="/ojcostwo/ojciec-po-rozwodzie"
-          className="text-blue-600 hover:underline"
+          className="text-black underline"
         >
           Czytaj dalej →
         </Link>
 
       </section>
-
-      {/* pomoc */}
 
       <section>
 
@@ -166,20 +144,17 @@ export default function OjcostwoPage() {
 
         <div className="space-y-2">
 
-          <Link href="/kategoria/prawo-rodzinne" className="text-blue-600">
+          <Link href="/kategoria/prawo-rodzinne" className="link-subtle">
             Prawo rodzinne
           </Link>
 
-          <Link href="/kategoria/mediacje" className="block text-blue-600">
+          <Link href="/kategoria/mediacje" className="block link-subtle">
             Mediacje
           </Link>
 
-          <Link href="/kategoria/psycholog" className="block text-blue-600">
+          <Link href="/kategoria/psycholog" className="block link-subtle">
             Psycholog rodzinny
           </Link>
-          <Link href="/ojcostwo/prawa-ojca">
-Prawa ojca
-</Link>
 
         </div>
 

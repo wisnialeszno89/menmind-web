@@ -1,54 +1,53 @@
-import Link from "next/link";
+import Link from "next/link"
+<section className="section-compact bg-gray-50">
+  <div className="container-2026">
 
-export default function HomePage() {
-  return (
-    <main className="bg-gray-100 min-h-screen text-gray-900">
+    <h2 className="text-2xl font-semibold mb-10 text-center">
+      Od czego chcesz zacząć
+    </h2>
 
-      <section className="max-w-6xl mx-auto px-6 py-20">
+    <div className="grid md:grid-cols-3 gap-6">
 
-        <h1 className="text-4xl md:text-5xl font-semibold mb-10">
-          MenMind
-        </h1>
+      <Link
+        href="/zacznij"
+        className="card text-center p-8"
+      >
+        <h3 className="font-semibold mb-2">
+          Znajdź kierunek
+        </h3>
 
-        <p className="text-lg text-gray-600 mb-16 max-w-xl">
-          Mapa dla mężczyzn w kryzysie, odbudowie, wzroście
-          i ojcostwie.
+        <p className="text-gray-600 text-sm">
+          Kompas MenMind pomaga wybrać pierwszy krok.
         </p>
+      </Link>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <Link
+        href="/narzedzia"
+        className="card text-center p-8"
+      >
+        <h3 className="font-semibold mb-2">
+          Zrób szybkie narzędzie
+        </h3>
 
-          <Link href="/kryzys" className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md">
-            <h3 className="font-semibold mb-2">Kryzys</h3>
-            <p className="text-sm text-gray-600">
-              Gdy wszystko zaczyna się sypać.
-            </p>
-          </Link>
+        <p className="text-gray-600 text-sm">
+          Kilka minut może pomóc uporządkować sytuację.
+        </p>
+      </Link>
 
-          <Link href="/odbudowa" className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md">
-            <h3 className="font-semibold mb-2">Odbudowa</h3>
-            <p className="text-sm text-gray-600">
-              Powrót do równowagi.
-            </p>
-          </Link>
+      <Link
+        href="/propozycje"
+        className="card text-center p-8"
+      >
+        <h3 className="font-semibold mb-2">
+          Znajdź wsparcie
+        </h3>
 
-          <Link href="/wzrost" className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md">
-            <h3 className="font-semibold mb-2">Wzrost</h3>
-            <p className="text-sm text-gray-600">
-              Nowy kierunek i rozwój.
-            </p>
-          </Link>
+        <p className="text-gray-600 text-sm">
+          Sprawdź dostępne możliwości pomocy.
+        </p>
+      </Link>
 
-          <Link href="/ojcostwo" className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md">
-            <h3 className="font-semibold mb-2">Ojcostwo</h3>
-            <p className="text-sm text-gray-600">
-              Relacja z dzieckiem i odpowiedzialność.
-            </p>
-          </Link>
+    </div>
 
-        </div>
-
-      </section>
-
-    </main>
-  );
-}
+  </div>
+</section>

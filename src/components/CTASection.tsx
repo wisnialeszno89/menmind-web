@@ -1,35 +1,31 @@
 import Link from "next/link";
 
-type Props = {
-  leftHref: string;
-  leftLabel: string;
-  rightHref: string;
-  rightLabel: string;
-};
-
-export default function CTASection({
-  leftHref,
-  leftLabel,
-  rightHref,
-  rightLabel,
-}: Props) {
+export default function CTASection() {
   return (
-    <section className="section-compact">
-      <div className="container-2026 flex flex-col md:flex-row gap-6 max-w-3xl">
-        <Link
-          href={leftHref}
-          className="flex-1 text-center px-6 py-3 rounded-xl border border-zinc-600 hover:border-white transition"
-        >
-          {leftLabel}
-        </Link>
+
+    <section className="section-compact bg-gray-100">
+
+      <div className="container-2026 text-center max-w-xl">
+
+        <h2 className="text-xl font-semibold mb-4">
+          Jeśli potrzebujesz wsparcia
+        </h2>
+
+        <p className="text-gray-600 mb-8">
+          Czasem kilka kroków pomaga,
+          a czasem warto porozmawiać z kimś,
+          kto zna podobne sytuacje.
+        </p>
 
         <Link
-          href={rightHref}
-          className="flex-1 text-center px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition"
+          href="/propozycje"
+          className="inline-block bg-black text-white px-6 py-3 rounded-lg"
         >
-          {rightLabel}
+          Zobacz dostępne możliwości
         </Link>
+
       </div>
+
     </section>
   );
 }

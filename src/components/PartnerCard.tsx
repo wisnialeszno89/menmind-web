@@ -6,9 +6,10 @@ type Props = {
   id: string
   name: string
   description: string
-  tier: string
+  tier: "standard" | "strategic"
   website?: string
   featured?: boolean
+  verified?: boolean
   highlighted?: boolean
   isTop?: boolean
 }
@@ -20,6 +21,7 @@ export default function PartnerCard({
   tier,
   website,
   featured,
+  verified,
   highlighted,
   isTop,
 }: Props) {
@@ -33,9 +35,10 @@ export default function PartnerCard({
 
     fetch("/api/partner/click", {
       method: "POST",
-      body: JSON.stringify({
-        id
-      })
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id })
     }).catch(() => {})
 
   }
@@ -44,27 +47,41 @@ export default function PartnerCard({
 
     <div
       className={`rounded-xl p-6 border transition bg-white ${
-        highlighted
-          ? "border-blue-500 shadow-md"
+        tier === "strategic"
+          ? "border-blue-500 shadow-lg"
           : "border-neutral-300"
       }`}
     >
 
-      {/* BADGE FEATURED */}
+      {/* BADGES */}
 
-      {featured && (
-        <div className="text-xs text-green-600 mb-2 font-medium">
-          Polecany przez MenMind
-        </div>
-      )}
+      <div className="flex flex-wrap gap-2 mb-3">
 
-      {/* BADGE TOP */}
+        {tier === "strategic" && (
+          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+            Partner Premium
+          </span>
+        )}
 
-      {isTop && (
-        <div className="text-xs text-yellow-500 mb-2 font-medium">
-          Najczęściej wybierany
-        </div>
-      )}
+        {featured && (
+          <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
+            Polecany przez MenMind
+          </span>
+        )}
+
+        {verified && (
+          <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+            Zweryfikowany
+          </span>
+        )}
+
+        {isTop && (
+          <span className="text-xs bg-black text-white px-2 py-1 rounded">
+            Najczęściej wybierany
+          </span>
+        )}
+
+      </div>
 
       {/* NAZWA */}
 
@@ -87,7 +104,7 @@ export default function PartnerCard({
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleClick}
-          className="text-blue-600 hover:underline"
+          className="text-blue-600 hover:underline font-medium"
         >
 
           Przejdź do strony →

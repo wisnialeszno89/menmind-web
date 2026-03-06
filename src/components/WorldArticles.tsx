@@ -1,41 +1,52 @@
-import Link from "next/link";
+import Link from "next/link"
+import { articles } from "@/content/articles"
 
-type Article = {
-  title: string;
-  excerpt: string;
-  slug: string;
-};
+type Props = {
+  world: string
+}
 
-export default function WorldArticles({
-  world,
-  articles,
-}: {
-  world: string;
-  articles: Article[];
-}) {
+export default function WorldArticles({ world }: Props) {
+
+  const filtered = articles.filter(
+    article => article.world === world
+  )
+
+  if (!filtered.length) return null
+
   return (
-    <section className="mt-24 max-w-4xl">
-      <h2 className="text-xl font-semibold mb-8">
-        Teksty pogłębiające
+
+    <section>
+
+      <h2 className="text-xl font-semibold mb-6">
+        Artykuły
       </h2>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {articles.map((article) => (
+      <div className="grid md:grid-cols-2 gap-4">
+
+        {filtered.map(article => (
+
           <Link
             key={article.slug}
-            href={`/${world}/${article.slug}`}
-            className="border rounded-xl p-6 hover:bg-gray-50 transition"
+            href={`/${article.world}/${article.slug}`}
+            className="card"
           >
-            <h3 className="font-semibold mb-3">
+
+            <h3 className="font-medium mb-2">
               {article.title}
             </h3>
 
             <p className="text-sm text-gray-600">
-              {article.excerpt}
+              {article.intro}
             </p>
+
           </Link>
+
         ))}
+
       </div>
+
     </section>
-  );
+
+  )
+
 }

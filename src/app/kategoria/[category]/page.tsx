@@ -1,22 +1,21 @@
-import Link from "next/link"
-import { cities } from "@/lib/cities"
+import Link from "next/link";
+import { cities } from "@/lib/cities";
 
 export default function CategoryPage({
   params,
 }: {
-  params: { category: string }
+  params: { category: string };
 }) {
-
   return (
-    <main className="bg-gray-100 min-h-screen">
+    <main className="bg-gray-50 min-h-screen">
 
       <div className="max-w-5xl mx-auto px-6 py-20">
 
-        <h1 className="text-4xl font-semibold mb-10 capitalize">
+        <h1 className="text-4xl font-semibold mb-6 capitalize">
           {params.category}
         </h1>
 
-        <p className="text-gray-600 mb-12 max-w-2xl">
+        <p className="text-gray-600 mb-12 max-w-xl">
           Sprawdź dostępne wsparcie w Twoim mieście.
         </p>
 
@@ -26,7 +25,7 @@ export default function CategoryPage({
             <Link
               key={city.slug}
               href={`/kategoria/${params.category}/${city.slug}`}
-              className="border rounded-xl p-6 bg-white hover:shadow"
+              className="card"
             >
               {city.name}
             </Link>
@@ -37,5 +36,5 @@ export default function CategoryPage({
       </div>
 
     </main>
-  )
+  );
 }

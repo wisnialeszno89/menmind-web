@@ -3,16 +3,15 @@
 @tailwind utilities;
 
 /* ============================= */
-/* MENMIND DESIGN SYSTEM 2026   */
+/* MENMIND DESIGN SYSTEM        */
 /* ============================= */
 
 :root {
-  --bg-dark: #0F172A;
-  --bg-mid: #1F2937;
-  --bg-light: #F5F1EA;
-  --text-main: #E5E7EB;
-  --text-muted: #9CA3AF;
-  --accent: #334155;
+  --bg-dark: #0f172a;
+  --bg-light: #f5f1ea;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --accent: #111827;
 }
 
 html {
@@ -20,22 +19,28 @@ html {
 }
 
 body {
-  background-color: var(--bg-dark);
+  background: var(--bg-light);
   color: var(--text-main);
-  font-feature-settings: "ss01", "ss02";
 }
 
 /* Typography */
-h1, h2, h3 {
+
+h1,
+h2,
+h3 {
+  color: #111827;
   letter-spacing: -0.02em;
 }
 
-/* Layout system */
+p {
+  color: #374151;
+}
+
+/* Layout */
 
 .container-2026 {
   max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   padding-left: 24px;
   padding-right: 24px;
 }
@@ -50,102 +55,27 @@ h1, h2, h3 {
   padding-bottom: 80px;
 }
 
-/* Unified Card */
+/* Cards */
 
-/* Premium Card 2026 */
-
-.card-2026 {
-  border-radius: 18px;
-  border: 1px solid rgba(39, 39, 42, 0.5);
-  background-color: rgba(24, 24, 27, 0.6);
-  backdrop-filter: blur(8px);
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.15),
-    0 8px 24px rgba(0, 0, 0, 0.25);
-  transition: all 0.25s ease;
-}
-
-.card-2026:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.2),
-    0 12px 32px rgba(0, 0, 0, 0.35);
-}
-
-/* Accent */
-
-.accent-bg {
-  background-color: var(--accent);
-  color: white;
-}
-
-.link-subtle {
-  color: #94A3B8;
-  transition: color 0.2s ease;
-}
-
-.link-subtle:hover {
-  color: #E5E7EB;
-}
-.accent-bg {
-  background: linear-gradient(135deg, #334155, #1E293B);
-  transition: all 0.2s ease;
-}
-
-.accent-bg:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-}
-
-/* Fade */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeIn 0.8s ease forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  /* Subtle Grain Overlay */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
-  z-index: 9999;
-}
-/* MENMIND TYPOGRAPHY */
-
-h1 {
-  color: #111827;
-}
-
-h2 {
-  color: #111827;
-}
-
-h3 {
-  color: #111827;
-}
-
-p {
-  color: #374151;
-}
 .card {
   background: white;
   border: 1px solid #d1d5db;
   padding: 16px;
-  border-radius: 8px;
-  transition: all .2s;
+  border-radius: 10px;
+  transition: all 0.2s;
 }
 
 .card:hover {
-  border-color: #2563eb;
+  border-color: black;
+  transform: translateY(-2px);
 }
+
+/* subtle links */
+
+.link-subtle {
+  color: #6b7280;
+}
+
+.link-subtle:hover {
+  color: #111827;
 }
