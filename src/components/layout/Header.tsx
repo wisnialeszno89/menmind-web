@@ -57,6 +57,14 @@ export default function Header() {
             Wsparcie
           </Link>
 
+          {/* PARTNERZY */}
+
+          <Link
+            href="/dla-partnerow"
+            className="hover:text-black transition"
+          >
+            Dla partnerów
+          </Link>
 
           {/* NAVIMIND */}
 

@@ -3,6 +3,7 @@ import Footer from "../components/layout/Footer"
 import NaviMindButton from "../components/NaviMindButton"
 import NavimindCornerButton from "../components/NavimindCornerButton"
 
+
 import "./globals.css"
 
 export const metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({
 
     <html lang="pl">
 
-      <body>
+      <body className="bg-gray-50">
 
 <Header />
 
