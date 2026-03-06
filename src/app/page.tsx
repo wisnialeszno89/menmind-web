@@ -1,53 +1,58 @@
-import Link from "next/link"
-<section className="section-compact bg-gray-50">
-  <div className="container-2026">
+import Link from "next/link";
 
-    <h2 className="text-2xl font-semibold mb-10 text-center">
-      Od czego chcesz zacząć
-    </h2>
+export default function HomePage() {
 
-    <div className="grid md:grid-cols-3 gap-6">
+  return (
 
-      <Link
-        href="/zacznij"
-        className="card text-center p-8"
-      >
-        <h3 className="font-semibold mb-2">
-          Znajdź kierunek
-        </h3>
+    <main className="bg-gray-50 min-h-screen">
 
-        <p className="text-gray-600 text-sm">
-          Kompas MenMind pomaga wybrać pierwszy krok.
+      <div className="max-w-5xl mx-auto px-6 py-24">
+
+        <h1 className="text-5xl font-semibold text-gray-900 mb-6">
+          MenMind
+        </h1>
+
+        <p className="text-gray-600 mb-16 max-w-2xl">
+          Mapa wsparcia dla mężczyzn.
+          Narzędzia, wiedza i specjaliści pomagający przejść przez kryzys,
+          odbudowę i rozwój.
         </p>
-      </Link>
 
-      <Link
-        href="/narzedzia"
-        className="card text-center p-8"
-      >
-        <h3 className="font-semibold mb-2">
-          Zrób szybkie narzędzie
-        </h3>
+        <div className="grid md:grid-cols-2 gap-6">
 
-        <p className="text-gray-600 text-sm">
-          Kilka minut może pomóc uporządkować sytuację.
-        </p>
-      </Link>
+          <Link
+            href="/kryzys"
+            className="border rounded-xl p-6 bg-white hover:shadow"
+          >
+            Kryzys
+          </Link>
 
-      <Link
-        href="/propozycje"
-        className="card text-center p-8"
-      >
-        <h3 className="font-semibold mb-2">
-          Znajdź wsparcie
-        </h3>
+          <Link
+            href="/odbudowa"
+            className="border rounded-xl p-6 bg-white hover:shadow"
+          >
+            Odbudowa
+          </Link>
 
-        <p className="text-gray-600 text-sm">
-          Sprawdź dostępne możliwości pomocy.
-        </p>
-      </Link>
+          <Link
+            href="/wzrost"
+            className="border rounded-xl p-6 bg-white hover:shadow"
+          >
+            Wzrost
+          </Link>
 
-    </div>
+          <Link
+            href="/ojcostwo"
+            className="border rounded-xl p-6 bg-white hover:shadow"
+          >
+            Ojcostwo
+          </Link>
 
-  </div>
-</section>
+        </div>
+
+      </div>
+
+    </main>
+
+  );
+}
