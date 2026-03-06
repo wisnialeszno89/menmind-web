@@ -1,8 +1,10 @@
 import Link from "next/link";
 
 export default function Header() {
+
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur">
+
+    <header className="border-b border-zinc-200 bg-white">
 
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
 
@@ -10,18 +12,19 @@ export default function Header() {
 
         <Link
           href="/"
-          className="font-semibold tracking-tight text-lg text-black"
+          className="font-semibold tracking-tight text-lg"
         >
           MenMind
         </Link>
 
+
         {/* NAV */}
 
-        <nav className="flex items-center gap-6 text-sm text-neutral-600">
+        <nav className="flex items-center gap-6 text-sm text-zinc-600">
 
           <Link
             href="/zacznij"
-            className="font-medium hover:text-black transition"
+            className="hover:text-black transition"
           >
             Zacznij
           </Link>
@@ -54,18 +57,14 @@ export default function Header() {
             Wsparcie
           </Link>
 
-          <Link
-            href="/dla-partnerow"
-            className="hover:text-black transition"
-          >
-            Dla partnerów
-          </Link>
+
+          {/* NAVIMIND */}
 
           <Link
-            href="/kontakt"
-            className="hover:text-black transition"
+            href="/navimind"
+            className="ml-2 px-4 py-2 rounded-full bg-black text-white font-medium hover:opacity-90 transition"
           >
-            Kontakt
+            NaviMind
           </Link>
 
         </nav>
@@ -73,5 +72,7 @@ export default function Header() {
       </div>
 
     </header>
+
   );
+
 }

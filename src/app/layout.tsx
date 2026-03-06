@@ -1,6 +1,7 @@
 import Header from "../components/layout/Header"
 import Footer from "../components/layout/Footer"
 import NaviMindButton from "../components/NaviMindButton"
+import NavimindCornerButton from "../components/NavimindCornerButton"
 
 import "./globals.css"
 
@@ -19,17 +20,17 @@ export default function RootLayout({
 
     <html lang="pl">
 
-      <body className="bg-gray-50">
+      <body>
 
-        <Header />
+<Header />
 
-        {children}
+{children}
 
-        <Footer />
+<Footer />
 
-        <NaviMindButton />
+<NavimindCornerButton />
 
-      </body>
+</body>
 
     </html>
 
