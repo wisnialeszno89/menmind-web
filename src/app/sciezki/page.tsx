@@ -1,87 +1,44 @@
-import Link from "next/link";
-import { sciezki } from "@/lib/sciezki";
-import Card from "@/components/ui/Card";
+import Link from "next/link"
+import { paths } from "@/data/paths"
 
-export default function SciezkiPage() {
-  const tryby = [
-    {
-      key: "kryzys",
-      label: "Kryzys",
-      opis: "Stabilizacja i zatrzymanie chaosu.",
-    },
-    {
-      key: "odbicie",
-      label: "Odbudowa",
-      opis: "Powrót do struktury i porządku.",
-    },
-    {
-      key: "wzrost",
-      label: "Wzrost",
-      opis: "Budowa siły, charakteru i kierunku.",
-    },
-  ] as const;
+export default function SciezkiPage(){
 
-  return (
-    <main className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-5xl">
-        <h1 className="text-4xl font-semibold tracking-tight">
-          Ścieżki rozwoju
-        </h1>
+return(
 
-        <p className="mt-6 text-textMuted max-w-2xl">
-          Wybierz obszar, w którym jesteś. Nie musisz być gotowy na wszystko.
-          Wystarczy jeden kierunek.
-        </p>
+<main className="bg-white min-h-screen">
 
-        <div className="mt-16 space-y-20">
-          {tryby.map((tryb) => {
-            const filtered = sciezki.filter(
-              (s) => s.tryb === tryb.key
-            );
+<div className="max-w-6xl mx-auto px-6 py-24">
 
-            if (filtered.length === 0) return null;
+<h1 className="text-4xl font-semibold text-black mb-10">
+Ścieżki
+</h1>
 
-            return (
-              <section key={tryb.key}>
-                <div className="mb-6">
-                  <h2 className="text-2xl font-semibold">
-                    {tryb.label}
-                  </h2>
-                  <p className="text-sm text-textMuted mt-2">
-                    {tryb.opis}
-                  </p>
-                </div>
+<div className="grid md:grid-cols-2 gap-6">
 
-                <div className="grid gap-6 md:grid-cols-2">
-                  {filtered.map((sciezka) => (
-                    <Link
-                      key={sciezka.slug}
-                      href={`/sciezki/${sciezka.slug}`}
-                    >
-                      <Card>
-                        <h3 className="text-lg font-medium">
-                          {sciezka.title}
-                        </h3>
+{paths.map((path)=>(
+<Link
+key={path.slug}
+href={`/sciezki/${path.slug}`}
+className="border rounded-xl p-6 hover:shadow"
+>
 
-                        <p className="mt-2 text-sm text-textMuted">
-                          {sciezka.intro}
-                        </p>
+<h3 className="text-xl font-semibold text-black mb-2">
+{path.title}
+</h3>
 
-                        <div className="mt-4 flex justify-between text-xs uppercase tracking-wide text-textMuted">
-                          <span>Poziom: {sciezka.level}</span>
-                          <span>
-                            {sciezka.etapy.length} etapy
-                          </span>
-                        </div>
-                      </Card>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
-      </div>
-    </main>
-  );
+<p className="text-black">
+{path.description}
+</p>
+
+</Link>
+))}
+
+</div>
+
+</div>
+
+</main>
+
+)
+
 }

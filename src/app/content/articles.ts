@@ -1,82 +1,67 @@
 export type Article = {
   slug: string
   title: string
-  description: string
-  world: "kryzys" | "odbudowa" | "wzrost" | "ojcostwo"
+  intro: string
+  world: string
+  path?: string
 }
 
 export const articles: Article[] = [
 
-  {
-    slug: "kryzys-mezczyzny",
-    title: "Kryzys mężczyzny – objawy i co dalej",
-    description:
-      "Jak rozpoznać kryzys życiowy u mężczyzny i jakie są pierwsze kroki wyjścia z chaosu.",
-    world: "kryzys"
-  },
+{
+slug: "dlaczego-mezczyzni-zwlekaja",
+title: "Dlaczego mężczyźni zwlekają z decyzją",
+intro: "Wielu mężczyzn w kryzysie wstrzymuje decyzje. To nie zawsze brak odwagi.",
+world: "kryzys",
+path: "rozstanie"
+},
 
-  {
-    slug: "jak-uspokoic-stres",
-    title: "Jak uspokoić stres w kilka minut",
-    description:
-      "Proste metody regulacji napięcia i stresu które można zastosować od razu.",
-    world: "kryzys"
-  },
+{
+slug: "jak-mezczyzni-reaguja-na-stres",
+title: "Jak mężczyźni reagują na stres",
+intro: "Stres u mężczyzn często objawia się wycofaniem albo agresją.",
+world: "kryzys",
+path: "rozstanie"
+},
 
-  {
-    slug: "jak-podjac-decyzje",
-    title: "Jak podjąć decyzję gdy wszystko jest chaosem",
-    description:
-      "Dlaczego w kryzysie trudno podejmować decyzje i jak odzyskać klarowność.",
-    world: "kryzys"
-  },
+{
+slug: "dlaczego-mezczyzni-milcza",
+title: "Dlaczego mężczyźni milczą w kryzysie",
+intro: "Milczenie to często mechanizm obronny.",
+world: "kryzys",
+path: "dol-psychiczny"
+},
 
-  {
-    slug: "jak-odzyskac-energie",
-    title: "Jak odzyskać energię gdy wszystko przytłacza",
-    description:
-      "Odbudowa energii po kryzysie, stresie lub wypaleniu.",
-    world: "odbudowa"
-  },
+{
+slug: "energia-i-dyscyplina",
+title: "Dlaczego dyscyplina daje energię",
+intro: "Struktura dnia stabilizuje psychikę.",
+world: "odbudowa",
+path: "fundament-dyscypliny"
+},
 
-  {
-    slug: "rutyna-mezczyzny",
-    title: "Rutyna dnia która stabilizuje życie",
-    description:
-      "Prosty system dnia który pomaga odzyskać kontrolę.",
-    world: "odbudowa"
-  },
+{
+slug: "dlaczego-cialo-ma-znaczenie",
+title: "Dlaczego ciało wpływa na psychikę",
+intro: "Energia fizyczna i mentalna są połączone.",
+world: "odbudowa",
+path: "odbudowa-ciala"
+},
 
-  {
-    slug: "plan-zycia",
-    title: "Jak stworzyć plan życia krok po kroku",
-    description:
-      "Jak wrócić do kierunku gdy nie wiesz co dalej.",
-    world: "wzrost"
-  },
+{
+slug: "czym-jest-przywodztwo",
+title: "Czym naprawdę jest przywództwo",
+intro: "Przywództwo zaczyna się od odpowiedzialności za siebie.",
+world: "wzrost",
+path: "przywodztwo"
+},
 
-  {
-    slug: "nawyki-mezczyzny",
-    title: "Nawyki które budują stabilne życie",
-    description:
-      "Małe codzienne działania które zmieniają kierunek życia.",
-    world: "wzrost"
-  },
-
-  {
-    slug: "ojciec-po-rozwodzie",
-    title: "Ojciec po rozwodzie – jak nie stracić relacji z dzieckiem",
-    description:
-      "Co zrobić aby zachować więź z dzieckiem po rozstaniu.",
-    world: "ojcostwo"
-  },
-
-  {
-    slug: "relacja-z-dzieckiem",
-    title: "Jak budować relację z dzieckiem",
-    description:
-      "Obecność ojca i codzienne działania które budują więź.",
-    world: "ojcostwo"
-  }
+{
+slug: "koncentracja-w-swiecie-rozproszen",
+title: "Koncentracja w świecie rozproszeń",
+intro: "Uwaga to jedna z najcenniejszych umiejętności.",
+world: "wzrost",
+path: "koncentracja"
+}
 
 ]
