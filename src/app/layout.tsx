@@ -1,5 +1,6 @@
 import Header from "../components/layout/Header"
 import Footer from "../components/layout/Footer"
+import NaviMindButton from "../components/NaviMindButton"
 
 import "./globals.css"
 
@@ -25,6 +26,8 @@ export default function RootLayout({
         {children}
 
         <Footer />
+
+        <NaviMindButton />
 
       </body>
 
