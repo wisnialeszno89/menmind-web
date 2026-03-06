@@ -22,7 +22,6 @@ export default function PartnerCard({
   website,
   featured,
   verified,
-  highlighted,
   isTop,
 }: Props) {
 
@@ -46,10 +45,10 @@ export default function PartnerCard({
   return (
 
     <div
-      className={`rounded-xl p-6 border transition bg-white ${
+      className={`rounded-xl p-6 border transition bg-white hover:shadow-md ${
         tier === "strategic"
-          ? "border-blue-500 shadow-lg"
-          : "border-neutral-300"
+          ? "border-blue-500"
+          : "border-neutral-200"
       }`}
     >
 

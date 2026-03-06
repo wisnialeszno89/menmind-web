@@ -1,23 +1,34 @@
-import { getPartner } from "@/lib/getPartners";
-import Link from "next/link";
+import { partners } from "@/data/partners"
+import Link from "next/link"
 
-export default async function PartnerPage({ params }: any) {
 
-  const partner = await getPartner(params.slug);
+export default function PartnerPage({
+  params
+}: {
+  params: { slug: string }
+}) {
+
+  const partner = partners.find(
+    (p) => p.slug === params.slug
+  )
 
   if (!partner) {
-    return <div>Nie znaleziono partnera</div>;
+    return <div>Partner nie istnieje</div>
   }
 
   return (
 
-    <main className="bg-gray-50 min-h-screen">
+    <main className="bg-white min-h-screen">
 
-      <div className="max-w-3xl mx-auto px-6 py-20">
+      <div className="max-w-4xl mx-auto px-6 py-20">
 
-        <h1 className="text-4xl font-semibold mb-6">
+        <h1 className="text-4xl font-semibold mb-4">
           {partner.name}
         </h1>
+
+        <p className="text-gray-600 mb-8">
+          {partner.city}
+        </p>
 
         <p className="text-gray-700 mb-10">
           {partner.description}
@@ -28,31 +39,38 @@ export default async function PartnerPage({ params }: any) {
           <a
             href={partner.website}
             target="_blank"
-            className="inline-block bg-black text-white px-6 py-3 rounded-lg mb-16"
+            className="inline-block bg-black text-white px-6 py-3 rounded-lg"
           >
-            Strona partnera
+
+            Przejdź do strony
+
           </a>
 
         )}
 
-        <section className="mt-16">
+        <div className="mt-16 border-t pt-10">
 
-          <h2 className="text-2xl font-semibold mb-4">
-            Inne wsparcie w tym mieście
+          <h2 className="text-xl font-semibold mb-4">
+
+            Szukasz podobnego wsparcia?
+
           </h2>
 
           <Link
-            href={`/kategoria/${partner.category}/${partner.city}`}
-            className="text-black underline"
+            href={`/kategoria/${partner.category}`}
+            className="text-blue-600 underline"
           >
-            Zobacz więcej specjalistów w {partner.city}
+
+            Zobacz więcej specjalistów
+
           </Link>
 
-        </section>
+        </div>
 
       </div>
 
     </main>
 
-  );
+  )
+
 }

@@ -1,21 +1,28 @@
-import { ReactNode } from "react";
-import clsx from "clsx";
+type Props = {
+  children: React.ReactNode
+}
 
-export default function Card({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export default function Card({ children }: Props) {
+
   return (
+
     <div
-      className={clsx(
-        "rounded-2xl border border-borderSoft bg-navy p-8 transition hover:bg-navySoft",
-        className
-      )}
+      className="
+      bg-white
+      border
+      border-gray-200
+      rounded-2xl
+      p-6
+      transition
+      hover:shadow-xl
+      hover:-translate-y-1
+      "
     >
+
       {children}
+
     </div>
-  );
+
+  )
+
 }

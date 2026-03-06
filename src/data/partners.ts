@@ -1,21 +1,36 @@
-export type PartnerTier = "standard" | "strategic";
-
 export type Partner = {
-  id: string;
-  name: string;
-  city: string;
-  category: string;
-  description: string;
-  state: "kryzys" | "odbudowa" | "wzrost" | "ojcostwo";
+  id: string
+  slug: string
+  name: string
+  description: string
+  city: string
+  category: string
 
-  tier: PartnerTier;
+  website?: string
 
-  verified?: boolean;
-  featured?: boolean;
+  tier?: "standard" | "strategic"
 
-  views?: number;
-  rating?: number;
-  reviews?: number;
+  featured?: boolean
+  verified?: boolean
 
-  website?: string;
-};
+  views?: number
+}
+
+export const partners: Partner[] = [
+  {
+    id: "1",
+    slug: "centrum-terapii-meskiej",
+    name: "Centrum Terapii Męskiej",
+    description: "Wsparcie psychologiczne dla mężczyzn",
+    city: "poznan",
+    category: "psycholog"
+  },
+  {
+    id: "2",
+    slug: "mediacje-nowak",
+    name: "Mediacje Rodzinne Nowak",
+    description: "Mediacje rodzinne i sprawy opieki",
+    city: "warszawa",
+    category: "mediacje"
+  }
+]
