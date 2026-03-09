@@ -1,86 +1,82 @@
-import Link from "next/link";
+import Link from "next/link"
+import TrustSection from "@/components/TrustSection"
 
 export default function HomePage() {
 
-  return (
+return (
 
-    <main className="bg-gray-50 min-h-screen">
+<main className="bg-white min-h-screen">
 
-      {/* HERO */}
+<div className="max-w-6xl mx-auto px-6 py-24">
 
-      <section className="py-28 border-b bg-white">
+<h1 className="text-5xl font-semibold text-black mb-6">
+MenMind
+</h1>
 
-        <div className="mx-auto max-w-5xl px-6 text-center">
+<p className="text-black max-w-2xl mb-16">
+Platforma wsparcia dla mężczyzn w trudnych momentach życia
+oraz w rozwoju osobistym.
+</p>
 
-          <h1 className="text-5xl font-semibold text-gray-900 mb-6">
-            MenMind
-          </h1>
+<div className="grid md:grid-cols-2 gap-8">
 
-          <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
-            Mapa wsparcia dla mężczyzn.  
-            Narzędzia, wiedza i specjaliści pomagający przejść przez kryzys,
-            odbudowę i rozwój.
-          </p>
+<Link href="/kryzys" className="border rounded-xl p-10 hover:shadow">
 
-        </div>
+<h2 className="text-2xl font-semibold text-black mb-2">
+Kryzys
+</h2>
 
-      </section>
+<p className="text-black">
+Rozstanie, stres, utrata pracy lub moment,
+w którym wszystko się sypie.
+</p>
 
-      {/* ŚWIATY */}
+</Link>
 
-      <section className="py-24">
+<Link href="/odbudowa" className="border rounded-xl p-10 hover:shadow">
 
-        <div className="max-w-5xl mx-auto px-6">
+<h2 className="text-2xl font-semibold text-black mb-2">
+Odbudowa
+</h2>
 
-          <div className="grid md:grid-cols-2 gap-6">
+<p className="text-black">
+Powrót do równowagi, energii i stabilności.
+</p>
 
-            <Link
-              href="/kryzys"
-              className="border rounded-xl p-6 bg-white hover:shadow transition"
-            >
-              <h2 className="text-xl font-semibold mb-2">Kryzys</h2>
-              <p className="text-gray-600 text-sm">
-                Gdy wszystko się rozpada i trzeba znaleźć kierunek.
-              </p>
-            </Link>
+</Link>
 
-            <Link
-              href="/odbudowa"
-              className="border rounded-xl p-6 bg-white hover:shadow transition"
-            >
-              <h2 className="text-xl font-semibold mb-2">Odbudowa</h2>
-              <p className="text-gray-600 text-sm">
-                Powrót do energii, struktury i stabilności.
-              </p>
-            </Link>
+<Link href="/wzrost" className="border rounded-xl p-10 hover:shadow">
 
-            <Link
-              href="/wzrost"
-              className="border rounded-xl p-6 bg-white hover:shadow transition"
-            >
-              <h2 className="text-xl font-semibold mb-2">Wzrost</h2>
-              <p className="text-gray-600 text-sm">
-                Rozwój życia, kariery i relacji.
-              </p>
-            </Link>
+<h2 className="text-2xl font-semibold text-black mb-2">
+Wzrost
+</h2>
 
-            <Link
-              href="/ojcostwo"
-              className="border rounded-xl p-6 bg-white hover:shadow transition"
-            >
-              <h2 className="text-xl font-semibold mb-2">Ojcostwo</h2>
-              <p className="text-gray-600 text-sm">
-                Relacja z dzieckiem, prawo rodzinne i odbudowa kontaktu.
-              </p>
-            </Link>
+<p className="text-black">
+Budowanie siły, kierunku i mentalności.
+</p>
 
-          </div>
+</Link>
 
-        </div>
+<Link href="/ojcostwo" className="border rounded-xl p-10 hover:shadow">
 
-      </section>
+<h2 className="text-2xl font-semibold text-black mb-2">
+Ojcostwo
+</h2>
 
-    </main>
+<p className="text-black">
+Relacja z dzieckiem i rola ojca.
+</p>
 
-  );
+</Link>
+
+</div>
+
+<TrustSection/>
+
+</div>
+
+</main>
+
+)
+
 }

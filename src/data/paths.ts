@@ -3,6 +3,8 @@ export type Path = {
   title: string
   description: string
   navimindState: string
+  tool?: string
+  category?: string
 }
 
 export const paths: Path[] = [

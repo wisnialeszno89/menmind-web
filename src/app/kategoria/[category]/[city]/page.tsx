@@ -2,6 +2,7 @@ import { getPartners } from "@/lib/getPartners"
 import PartnerCard from "@/components/PartnerCard"
 import Link from "next/link"
 import { categoryFAQ } from "@/content/categoryFAQ";
+import { rankPartners } from "@/lib/partnerRanking"
 
 export async function generateMetadata({ params }: any) {
 
@@ -16,7 +17,9 @@ export async function generateMetadata({ params }: any) {
 
 export default async function Page({ params }: any) {
 
-  const partners = await getPartners(params.category, params.city)
+  const rawPartners = await getPartners(params.category, params.city)
+
+const partners = rankPartners(rawPartners)
 
   const faq = categoryFAQ[params.category] || [];
 

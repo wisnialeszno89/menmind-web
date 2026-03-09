@@ -1,45 +1,81 @@
-import Link from "next/link";
-import { articles } from "@/content/articles";
+import Link from "next/link"
+import { articles } from "@/content/articles"
 
-export default function ArticlesPage() {
+export const metadata = {
+title: "Artykuły | MenMind",
+description:
+"Wiedza i artykuły dla mężczyzn: kryzys, rozwój, ojcostwo i kierunek w życiu."
+}
 
-  return (
+export default function ContentPage(){
 
-    <main className="bg-gray-50 min-h-screen">
+const worlds = ["kryzys","ojcostwo","wzrost"]
 
-      <div className="max-w-4xl mx-auto px-6 py-20">
+return(
 
-        <h1 className="text-4xl font-semibold mb-12">
-          Artykuły
-        </h1>
+<main className="bg-white min-h-screen">
 
-        <div className="space-y-6">
+<div className="max-w-5xl mx-auto px-6 py-24">
 
-          {articles.map((article) => (
+<h1 className="text-4xl font-semibold text-black mb-6">
+Artykuły
+</h1>
 
-            <Link
-              key={article.slug}
-              href={article.slug}
-              className="card block"
-            >
+<p className="text-black max-w-xl mb-16">
+Wiedza pomagająca uporządkować sytuację,
+zrozumieć mechanizmy i odzyskać kierunek.
+</p>
 
-              <h2 className="text-xl font-semibold mb-2">
-                {article.title}
-              </h2>
+{worlds.map((world)=>{
 
-              <p className="text-gray-600">
-                {article.intro}
-              </p>
+const worldArticles = articles.filter(
+(a)=>a.world === world
+)
 
-            </Link>
+if(worldArticles.length === 0) return null
 
-          ))}
+return(
 
-        </div>
+<section key={world} className="mb-20">
 
-      </div>
+<h2 className="text-2xl font-semibold text-black mb-6 capitalize">
+{world}
+</h2>
 
-    </main>
+<div className="grid md:grid-cols-2 gap-6">
 
-  );
+{worldArticles.map((article)=>(
+
+<Link
+key={article.slug}
+href={`/content/${article.slug}`}
+className="border rounded-xl p-6 hover:shadow"
+>
+
+<h3 className="font-semibold text-black mb-2">
+{article.title}
+</h3>
+
+<p className="text-black text-sm">
+{article.intro}
+</p>
+
+</Link>
+
+))}
+
+</div>
+
+</section>
+
+)
+
+})}
+
+</div>
+
+</main>
+
+)
+
 }

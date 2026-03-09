@@ -1,117 +1,153 @@
-import ArticleCard from "@/components/ArticleCard"
-import PrimaryButton from "@/components/ui/PrimaryButton"
-import WorldPage from "@/components/layout/WorldPage"
-import Hero from "@/components/layout/Hero"
+import Link from "next/link"
+import FAQSection from "@/components/FAQSection"
 
-<Hero
-title="Kryzys"
-intro="
-Moment kiedy stare rozwiązania przestają działać.
-Chaos, napięcie i brak kierunku.
-"
-/>
+export const metadata = {
+title: "Kryzys mężczyzny | MenMind",
+description:
+"Wsparcie dla mężczyzn w kryzysie: rozstanie, stres, brak kierunku. Narzędzia, rozmowa i pomoc specjalistów."
+}
 
-export default function KryzysPage() {
+export default function KryzysPage(){
 
-  return (
+return(
 
-    <WorldPage
-      title="Kryzys"
-      intro="
-      Moment kiedy stare rozwiązania przestają działać.
-      Chaos, napięcie i brak kierunku.
+<main className="bg-white min-h-screen">
 
-      Kryzys nie musi być końcem.
-      Często jest początkiem zmiany.
-      "
-    >
+<div className="max-w-5xl mx-auto px-6 py-24">
 
-      {/* OBJAWY */}
+<h1 className="text-4xl font-semibold text-black mb-6">
+Kryzys
+</h1>
 
-      <section>
+<p className="text-black max-w-xl mb-16">
+Moment, w którym życie przestaje układać się tak jak wcześniej.
+Rozstanie, presja, brak kierunku lub przeciążenie.
+To miejsce, gdzie możesz zacząć porządkować sytuację.
+</p>
 
-        <h2 className="text-xl font-semibold mb-4">
-          Co często się wtedy dzieje
-        </h2>
+<h2 className="text-2xl font-semibold text-black mb-6">
+Najczęstsze sytuacje
+</h2>
 
-        <ul className="space-y-2 text-gray-700">
+<div className="grid md:grid-cols-2 gap-6 mb-20">
 
-          <li>• chaos decyzyjny</li>
-          <li>• napięcie i brak snu</li>
-          <li>• konflikty w relacjach</li>
-          <li>• poczucie braku kierunku</li>
-          <li>• spadek energii</li>
+<Link href="/sciezki/rozstanie" className="border rounded-xl p-6 hover:shadow">
 
-        </ul>
+<h3 className="text-xl font-semibold text-black mb-2">
+Rozstanie
+</h3>
 
-      </section>
+<p className="text-black text-sm">
+Jak przejść przez rozpad relacji i odzyskać stabilność.
+</p>
 
+</Link>
 
-      {/* PIERWSZE KROKI */}
+<Link href="/sciezki/stres" className="border rounded-xl p-6 hover:shadow">
 
-      <section>
+<h3 className="text-xl font-semibold text-black mb-2">
+Przeciążenie i stres
+</h3>
 
-        <h2 className="text-xl font-semibold mb-4">
-          Pierwsze kroki
-        </h2>
+<p className="text-black text-sm">
+Kiedy napięcie zaczyna przejmować kontrolę.
+</p>
 
-        <ul className="space-y-2 text-gray-700">
+</Link>
 
-          <li>• ogranicz chaos informacji</li>
-          <li>• zapisz fakty zamiast myśli</li>
-          <li>• podejmij jedną decyzję</li>
-          <li>• zadbaj o sen i ciało</li>
+<Link href="/sciezki/brak-kierunku" className="border rounded-xl p-6 hover:shadow">
 
-        </ul>
+<h3 className="text-xl font-semibold text-black mb-2">
+Brak kierunku
+</h3>
 
-      </section>
+<p className="text-black text-sm">
+Moment kiedy nie wiesz co dalej zrobić.
+</p>
 
+</Link>
 
-      {/* ARTYKUŁY */}
+<Link href="/sciezki/problemy-finansowe" className="border rounded-xl p-6 hover:shadow">
 
-      <section>
+<h3 className="text-xl font-semibold text-black mb-2">
+Problemy finansowe
+</h3>
 
-        <h2 className="text-xl font-semibold mb-6">
-          Zrozum sytuację
-        </h2>
+<p className="text-black text-sm">
+Presja pieniędzy i odpowiedzialności.
+</p>
 
-        <div className="grid md:grid-cols-2 gap-6">
+</Link>
 
-          <ArticleCard
-            title="Dlaczego mężczyźni zwlekają z decyzją"
-            intro="Presja odpowiedzialności sprawia że wielu mężczyzn odkłada decyzje."
-            href="/kryzys/dlaczego-mezczyzni-zwlekaja"
-          />
+</div>
 
-          <ArticleCard
-            title="Jak mężczyźni reagują na stres"
-            intro="Trzy najczęstsze reakcje na stres i napięcie."
-            href="/kryzys/jak-mezczyzni-reaguja-na-stres"
-          />
+<h2 className="text-2xl font-semibold text-black mb-6">
+Możesz spróbować
+</h2>
 
-        </div>
+<div className="grid md:grid-cols-2 gap-6 mb-20">
 
-      </section>
+<Link href="/narzedzia/oddech-4-7-8" className="border rounded-xl p-6 hover:shadow">
+Regulacja oddechu 4-7-8
+</Link>
 
+<Link href="/narzedzia/reset-stresu" className="border rounded-xl p-6 hover:shadow">
+Reset stresu
+</Link>
 
-      {/* WSPARCIE */}
+<Link href="/narzedzia/test-stresu" className="border rounded-xl p-6 hover:shadow">
+Sprawdź poziom stresu
+</Link>
 
-      <section>
+<Link href="/narzedzia/dziennik-mysli" className="border rounded-xl p-6 hover:shadow">
+Dziennik myśli
+</Link>
 
-        <h2 className="text-xl font-semibold mb-4">
-          Jeśli potrzebujesz wsparcia
-        </h2>
+</div>
 
-        <PrimaryButton href="/propozycje">
+<h2 className="text-2xl font-semibold text-black mb-6">
+Możesz też porozmawiać
+</h2>
 
-          Sprawdź dostępne możliwości
+<div className="mb-20">
 
-        </PrimaryButton>
+<Link
+href="/navimind?state=kryzys"
+className="inline-block bg-black text-white px-6 py-3 rounded-lg"
+>
 
-      </section>
+Rozpocznij rozmowę w NaviMind
 
-    </WorldPage>
+</Link>
 
-  )
+</div>
+
+<h2 className="text-2xl font-semibold text-black mb-6">
+Znajdź wsparcie
+</h2>
+
+<div className="grid md:grid-cols-3 gap-4">
+
+<Link href="/kategoria/psycholog/warszawa" className="border rounded-lg p-4 hover:shadow">
+Psycholog – Warszawa
+</Link>
+
+<Link href="/kategoria/psycholog/krakow" className="border rounded-lg p-4 hover:shadow">
+Psycholog – Kraków
+</Link>
+
+<Link href="/kategoria/psycholog/wroclaw" className="border rounded-lg p-4 hover:shadow">
+Psycholog – Wrocław
+</Link>
+
+</div>
+
+<FAQSection world="kryzys"/>
+
+</div>
+
+</main>
+
+)
 
 }

@@ -75,15 +75,15 @@ export default function PartnerCard({
         )}
 
         {isTop && (
-          <span className="text-xs bg-black text-white px-2 py-1 rounded">
-            Najczęściej wybierany
-          </span>
-        )}
+<span className="text-xs bg-black text-white px-2 py-1 rounded">
+Najczęściej wybierany
+</span>
+)}
 
       </div>
 
       {/* NAZWA */}
-
+        
       <h3 className="text-xl font-semibold mb-2 text-gray-900">
         {name}
       </h3>

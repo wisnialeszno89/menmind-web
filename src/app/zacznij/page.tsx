@@ -1,110 +1,201 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 
-export default function ZacznijPage() {
+type Mode = "kryzys" | "kierunek" | "rozwoj" | null
 
-  return (
+export default function StartPage(){
 
-    <main className="bg-white min-h-screen">
+const [mode,setMode]=useState<Mode>(null)
 
-      <div className="max-w-5xl mx-auto px-6 py-24 text-center">
+return(
 
-        {/* TITLE */}
+<main className="bg-white min-h-screen">
 
-        <h1 className="text-5xl font-semibold mb-6">
+<div className="max-w-4xl mx-auto px-6 py-24">
 
-          MenMind
+<h1 className="text-4xl font-semibold text-black mb-6">
+Od czego chcesz zacząć?
+</h1>
 
-        </h1>
+<p className="text-black mb-12 max-w-xl">
+Nie musisz wiedzieć dokładnie czego potrzebujesz.
+Wybierz opcję najbliższą Twojej sytuacji.
+</p>
 
-        <p className="text-gray-600 max-w-xl mx-auto mb-16">
+{/* WYBÓR */}
 
-          Jeśli nie wiesz od czego zacząć,
-          wybierz kierunek który najlepiej opisuje Twoją sytuację.
+<div className="grid md:grid-cols-3 gap-6 mb-16">
 
-        </p>
+<button
+onClick={()=>setMode("kryzys")}
+className="border rounded-xl p-6 hover:shadow text-left"
+>
+<h2 className="font-semibold text-black mb-2">
+Mam kryzys
+</h2>
 
+<p className="text-black text-sm">
+Rozstanie, stres, problemy w życiu.
+</p>
 
-        {/* KOMPAS */}
+</button>
 
-        <div className="grid md:grid-cols-2 gap-8">
+<button
+onClick={()=>setMode("kierunek")}
+className="border rounded-xl p-6 hover:shadow text-left"
+>
+<h2 className="font-semibold text-black mb-2">
+Szukam kierunku
+</h2>
 
-          {/* STABILIZACJA */}
+<p className="text-black text-sm">
+Czuję że utknąłem lub potrzebuję zmiany.
+</p>
 
-          <Link
-            href="/narzedzia/stabilizacja"
-            className="border rounded-xl p-10 hover:shadow-md transition"
-          >
+</button>
 
-            <h2 className="text-xl font-semibold mb-2">
-              Stabilizacja
-            </h2>
+<button
+onClick={()=>setMode("rozwoj")}
+className="border rounded-xl p-6 hover:shadow text-left"
+>
+<h2 className="font-semibold text-black mb-2">
+Chcę wzmocnić życie
+</h2>
 
-            <p className="text-gray-600 text-sm">
-              Uspokój napięcie i uporządkuj sytuację.
-            </p>
+<p className="text-black text-sm">
+Rozwój, energia, dyscyplina.
+</p>
 
-          </Link>
+</button>
 
+</div>
 
-          {/* ODBUDOWA */}
+{/* REKOMENDACJE */}
 
-          <Link
-            href="/odbudowa"
-            className="border rounded-xl p-10 hover:shadow-md transition"
-          >
+{mode==="kryzys" &&(
 
-            <h2 className="text-xl font-semibold mb-2">
-              Odbuduj energię
-            </h2>
+<div className="space-y-6">
 
-            <p className="text-gray-600 text-sm">
-              Sen, ruch i odzyskanie równowagi.
-            </p>
+<h2 className="text-2xl font-semibold text-black">
+Możesz zacząć od:
+</h2>
 
-          </Link>
+<div className="grid md:grid-cols-2 gap-4">
 
+<Link
+href="/kryzys"
+className="border rounded-lg p-4 hover:shadow"
+>
+Zobacz ścieżki kryzysu
+</Link>
 
-          {/* WSPARCIE */}
+<Link
+href="/narzedzia/stabilizacja"
+className="border rounded-lg p-4 hover:shadow"
+>
+Narzędzia stabilizacji
+</Link>
 
-          <Link
-            href="/propozycje"
-            className="border rounded-xl p-10 hover:shadow-md transition"
-          >
+<Link
+href="/navimind?state=kryzys"
+className="border rounded-lg p-4 hover:shadow"
+>
+Porozmawiaj w NaviMind
+</Link>
 
-            <h2 className="text-xl font-semibold mb-2">
-              Znajdź wsparcie
-            </h2>
+<Link
+href="/propozycje"
+className="border rounded-lg p-4 hover:shadow"
+>
+Znajdź wsparcie
+</Link>
 
-            <p className="text-gray-600 text-sm">
-              Psycholog, mediator lub specjalista.
-            </p>
+</div>
 
-          </Link>
+</div>
 
+)}
 
-          {/* ROZWÓJ */}
+{mode==="kierunek" &&(
 
-          <Link
-            href="/wzrost"
-            className="border rounded-xl p-10 hover:shadow-md transition"
-          >
+<div className="space-y-6">
 
-            <h2 className="text-xl font-semibold mb-2">
-              Rozwój
-            </h2>
+<h2 className="text-2xl font-semibold text-black">
+Możesz sprawdzić:
+</h2>
 
-            <p className="text-gray-600 text-sm">
-              Cele, dyscyplina i kierunek życia.
-            </p>
+<div className="grid md:grid-cols-2 gap-4">
 
-          </Link>
+<Link
+href="/odbudowa"
+className="border rounded-lg p-4 hover:shadow"
+>
+Ścieżki odbudowy
+</Link>
 
-        </div>
+<Link
+href="/narzedzia/mapa-energii"
+className="border rounded-lg p-4 hover:shadow"
+>
+Mapa energii dnia
+</Link>
 
-      </div>
+<Link
+href="/navimind?state=kierunek"
+className="border rounded-lg p-4 hover:shadow"
+>
+Porozmawiaj w NaviMind
+</Link>
 
-    </main>
+</div>
 
-  )
+</div>
+
+)}
+
+{mode==="rozwoj" &&(
+
+<div className="space-y-6">
+
+<h2 className="text-2xl font-semibold text-black">
+Możesz eksplorować:
+</h2>
+
+<div className="grid md:grid-cols-2 gap-4">
+
+<Link
+href="/wzrost"
+className="border rounded-lg p-4 hover:shadow"
+>
+Ścieżki wzrostu
+</Link>
+
+<Link
+href="/narzedzia"
+className="border rounded-lg p-4 hover:shadow"
+>
+Zobacz narzędzia
+</Link>
+
+<Link
+href="/navimind?state=rozwoj"
+className="border rounded-lg p-4 hover:shadow"
+>
+Porozmawiaj w NaviMind
+</Link>
+
+</div>
+
+</div>
+
+)}
+
+</div>
+
+</main>
+
+)
 
 }

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { paths } from "@/data/paths"
 import { getPathArticles } from "@/lib/getPathArticles"
+import { cities } from "@/data/cities"
 
 export async function generateStaticParams() {
   return paths.map((path) => ({

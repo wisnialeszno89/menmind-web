@@ -57,6 +57,9 @@ export default function Footer() {
           <Link href="/dla-partnerow" className="block text-gray-600 hover:text-black">
             Dla partnerów
           </Link>
+          <Link href="/pomoc/warszawa">Pomoc dla mężczyzn Warszawa</Link>
+<Link href="/pomoc/krakow">Pomoc dla mężczyzn Kraków</Link>
+<Link href="/pomoc/wroclaw">Pomoc dla mężczyzn Wrocław</Link>
 
         </div>
 

@@ -1,29 +1,30 @@
-import { Partner } from "@/data/partners";
+import { Partner } from "@/data/partners"
 
-export function calculatePartnerScore(partner: Partner) {
+export function rankPartners(partners: Partner[]) {
 
-  let score = 0;
+return partners
+.map((partner) => {
 
-  if (partner.featured) score += 100;
-  if (partner.verified) score += 50;
-  if (partner.tier === "strategic") score += 40;
+let score = 0
 
-  if (partner.views) {
-    score += Math.floor(partner.views / 10);
-  }
+if (partner.featured) score += 100
+if (partner.verified) score += 50
+if (partner.tier === "strategic") score += 40
 
-  return score;
+if (partner.views) {
+score += Math.floor(partner.views / 10)
 }
 
-export function sortPartners(partners: Partner[]) {
+if (partner.reviews) {
+score += partner.reviews
+}
 
-  return partners.sort((a,b)=>{
+return {
+...partner,
+score
+}
 
-    const scoreA = calculatePartnerScore(a);
-    const scoreB = calculatePartnerScore(b);
-
-    return scoreB - scoreA;
-
-  });
+})
+.sort((a, b) => b.score - a.score)
 
 }

@@ -53,7 +53,12 @@ export default function Header() {
           >
             Wsparcie
           </Link>
-
+<Link
+  href="/content"
+  className="hover:text-white transition"
+>
+  Artykuły
+</Link>
           <Link
             href="/dla-partnerow"
             className="hover:text-white transition"

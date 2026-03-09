@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { articles } from "@/content/articles"
+import SaveButton from "@/components/SaveButton"
 
 type Props = {
   world: string
@@ -38,7 +39,7 @@ export default function WorldArticles({ world }: Props) {
             <p className="text-sm text-gray-600">
               {article.intro}
             </p>
-
+<SaveButton id={article.slug}/>
           </Link>
 
         ))}
