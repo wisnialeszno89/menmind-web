@@ -1,11 +1,19 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 
 export default function SleepTracker(){
 
 const [hours,setHours]=useState(7)
+
+function interpretation(){
+
+if(hours<=4) return "alarm"
+if(hours<=6) return "przeciążenie"
+if(hours<=7) return "ok"
+return "regeneracja"
+
+}
 
 return(
 
@@ -13,7 +21,7 @@ return(
 
 <div className="max-w-xl mx-auto px-6 py-24">
 
-<h1 className="text-3xl font-semibold text-black mb-8">
+<h1 className="text-3xl font-semibold mb-8">
 Tracker snu
 </h1>
 
@@ -30,16 +38,9 @@ className="w-full"
 Spałeś: {hours} godzin
 </p>
 
-<div className="mt-10">
-
-<Link
-href="/propozycje"
-className="text-blue-600 underline"
->
-Zobacz wsparcie które pomaga odzyskać energię
-</Link>
-
-</div>
+<p className="mt-4 text-black">
+Stan: {interpretation()}
+</p>
 
 </div>
 

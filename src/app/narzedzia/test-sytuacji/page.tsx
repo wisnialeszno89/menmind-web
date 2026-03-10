@@ -1,49 +1,92 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 
-export default function TestPage(){
+const questions = [
+"Czuję że moje życie zaczyna się sypać",
+"Brakuje mi energii",
+"Nie wiem w którą stronę iść",
+"Czuję duży stres",
+"Moje relacje są napięte"
+]
 
-const router = useRouter()
+export default function SituationTest(){
 
-const [score,setScore] = useState({
-kryzys:0,
-odbudowa:0,
-wzrost:0
-})
+const [step,setStep]=useState(0)
+const [score,setScore]=useState(0)
 
-function answer(type:string){
+function answer(yes:boolean){
 
-setScore(prev=>({
+if(yes) setScore(score+1)
 
-...prev,
-
-[type]:prev[type as keyof typeof prev]+1
-
-}))
-
-}
-
-function finish(){
-
-if(score.kryzys>score.odbudowa){
-
-router.push("/sciezki/rozstanie")
+setStep(step+1)
 
 }
 
-else if(score.odbudowa>score.wzrost){
+if(step >= questions.length){
 
-router.push("/sciezki/brak-kierunku")
+let state="stabilnie"
+let description="Twoja sytuacja wygląda na względnie stabilną."
 
+if(score>=2){
+state="przeciążenie"
+description="W Twoim życiu pojawia się przeciążenie."
 }
 
-else{
-
-router.push("/sciezki/przywodztwo")
-
+if(score>=4){
+state="możliwy kryzys"
+description="Możliwe że przechodzisz trudniejszy moment."
 }
+
+return(
+
+<main className="bg-white min-h-screen">
+
+<div className="max-w-xl mx-auto px-6 py-24">
+
+<h1 className="text-3xl font-semibold mb-6">
+Twój stan: {state}
+</h1>
+
+<p className="text-gray-700 mb-10">
+{description}
+</p>
+
+<h2 className="text-lg font-semibold mb-4">
+Co możesz zrobić
+</h2>
+
+<div className="space-y-4">
+
+<Link
+href="/narzedzia/reset"
+className="block border p-4 rounded-lg"
+>
+Zrób szybki reset
+</Link>
+
+<Link
+href="/sciezki"
+className="block border p-4 rounded-lg"
+>
+Zobacz ścieżki działania
+</Link>
+
+<Link
+href="/propozycje"
+className="block bg-black text-white px-6 py-3 rounded-lg text-center"
+>
+Znajdź wsparcie
+</Link>
+
+</div>
+
+</div>
+
+</main>
+
+)
 
 }
 
@@ -53,41 +96,27 @@ return(
 
 <div className="max-w-xl mx-auto px-6 py-24">
 
-<h1 className="text-3xl font-semibold text-black mb-8">
-Krótki test sytuacji
+<h1 className="text-2xl mb-10">
+{questions[step]}
 </h1>
 
 <div className="space-y-4">
 
 <button
-onClick={()=>answer("kryzys")}
-className="w-full border p-4 rounded-lg"
+onClick={()=>answer(true)}
+className="block w-full border p-4 rounded-lg"
 >
-Czuję że moje życie się sypie
+Tak
 </button>
 
 <button
-onClick={()=>answer("odbudowa")}
-className="w-full border p-4 rounded-lg"
+onClick={()=>answer(false)}
+className="block w-full border p-4 rounded-lg"
 >
-Chcę odzyskać energię i stabilność
-</button>
-
-<button
-onClick={()=>answer("wzrost")}
-className="w-full border p-4 rounded-lg"
->
-Chcę rozwijać się i iść dalej
+Nie
 </button>
 
 </div>
-
-<button
-onClick={finish}
-className="mt-10 bg-black text-white px-6 py-3 rounded-lg"
->
-Zobacz wynik
-</button>
 
 </div>
 

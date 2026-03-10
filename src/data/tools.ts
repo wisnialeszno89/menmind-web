@@ -50,7 +50,7 @@ world:"odbudowa"
 },
 
 {
-slug:"burnout-test",
+slug:"test-wypaleniat",
 title:"Test wypalenia",
 description:"Sprawdź czy pojawiają się oznaki wypalenia.",
 world:"wzrost"
