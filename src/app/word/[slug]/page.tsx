@@ -4,6 +4,10 @@ import { getPathArticles } from "@/lib/getPathArticles"
 import { getToolsByWorld } from "@/lib/getToolsByCategory"
 import Link from "next/link"
 
+import WorldFirstSteps from "@/components/WorldFirstSteps"
+import WorldSupport from "@/components/WorldSupport"
+import WorldPaths from "@/components/WorldPaths"
+
 export async function generateStaticParams() {
   return worlds.map((world) => ({
     slug: world.slug
@@ -33,6 +37,14 @@ export default function WorldPage({ params }: { params: { slug: string } }) {
         <p className="text-black max-w-xl mb-16">
           {world.description}
         </p>
+
+        {/* PIERWSZE KROKI */}
+
+        <WorldFirstSteps world={world.slug} />
+
+        {/* DROGI W ŚWIECIE */}
+
+        <WorldPaths world={world.slug} />
 
         {/* ARTYKUŁY */}
 
@@ -111,7 +123,7 @@ export default function WorldPage({ params }: { params: { slug: string } }) {
 
         {/* NAVIMIND */}
 
-        <section className="border rounded-xl p-8">
+        <section className="border rounded-xl p-8 mb-20">
 
           <h2 className="text-xl font-semibold text-black mb-4">
             Nie jesteś pewien co zrobić?
@@ -129,6 +141,10 @@ export default function WorldPage({ params }: { params: { slug: string } }) {
           </Link>
 
         </section>
+
+        {/* REALNE WSPARCIE */}
+
+        <WorldSupport world={world.slug} />
 
       </div>
 

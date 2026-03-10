@@ -1,99 +1,30 @@
-import Link from "next/link"
-import { paths } from "@/data/paths"
-import { getPathArticles } from "@/lib/getPathArticles"
-import { cities } from "@/data/cities"
+import { notFound } from "next/navigation"
+import PathSteps from "@/components/PathSteps"
 
-export async function generateStaticParams() {
-  return paths.map((path) => ({
-    slug: path.slug
-  }))
-}
+export default function PathPage({ params }: { params: { slug: string } }) {
 
-export default function PathPage({
-  params
-}:{
-  params:{slug:string}
-}){
+  if (!params.slug) return notFound()
 
-const path = paths.find((p)=>p.slug===params.slug)
+  return (
 
-if(!path) return null
+    <main className="bg-white min-h-screen">
 
-const articles = getPathArticles(params.slug)
+      <div className="max-w-4xl mx-auto px-6 py-24">
 
-return(
+        <h1 className="text-4xl font-semibold mb-6">
+          Ścieżka
+        </h1>
 
-<main className="bg-white min-h-screen">
+        <p className="text-black mb-12">
+          Zobacz kolejne kroki które pomogą przejść przez tę sytuację.
+        </p>
 
-<div className="max-w-4xl mx-auto px-6 py-24">
+        <PathSteps slug={params.slug} />
 
-<h1 className="text-4xl font-semibold text-black mb-6">
-{path.title}
-</h1>
+      </div>
 
-<p className="text-black mb-12">
-{path.description}
-</p>
+    </main>
 
-<h2 className="text-2xl font-semibold text-black mb-4">
-Artykuły
-</h2>
-
-<div className="space-y-4 mb-12">
-
-{articles.map((article)=>(
-<Link
-key={article.slug}
-href={`/content/${article.slug}`}
-className="block border p-4 rounded-lg hover:shadow"
->
-
-<h3 className="font-semibold text-black">
-{article.title}
-</h3>
-
-<p className="text-black text-sm">
-{article.intro}
-</p>
-
-</Link>
-))}
-
-</div>
-
-<h2 className="text-2xl font-semibold text-black mb-4">
-Narzędzia
-</h2>
-
-<Link
-href="/narzedzia/stabilizacja"
-className="block border p-4 rounded-lg mb-12 hover:shadow"
->
-Narzędzia stabilizacji
-</Link>
-
-<h2 className="text-2xl font-semibold text-black mb-4">
-Wsparcie
-</h2>
-
-<Link
-href="/propozycje"
-className="block border p-4 rounded-lg mb-12 hover:shadow"
->
-Znajdź specjalistę
-</Link>
-
-<Link
-href={`/navimind?state=${path.navimindState}`}
-className="inline-block bg-black text-white px-6 py-3 rounded-lg"
->
-Porozmawiaj w NaviMind
-</Link>
-
-</div>
-
-</main>
-
-)
+  )
 
 }

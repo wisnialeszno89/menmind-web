@@ -1,29 +1,30 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 
 export function useProgress(key: string) {
-  const storageKey = `menmind-progress-${key}`;
-  const [completed, setCompleted] = useState<string[]>([]);
+
+  const [items, setItems] = useState<string[]>([])
 
   useEffect(() => {
-    const saved = localStorage.getItem(storageKey);
-    if (saved) {
-      setCompleted(JSON.parse(saved));
+    const saved = localStorage.getItem(key)
+    if (saved) setItems(JSON.parse(saved))
+  }, [key])
+
+  function toggle(id: string) {
+
+    let updated: string[]
+
+    if (items.includes(id)) {
+      updated = items.filter((i) => i !== id)
+    } else {
+      updated = [...items, id]
     }
-  }, [storageKey]);
 
-  useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(completed));
-  }, [completed, storageKey]);
-
-  function toggle(item: string) {
-    setCompleted((prev) =>
-      prev.includes(item)
-        ? prev.filter((i) => i !== item)
-        : [...prev, item]
-    );
+    setItems(updated)
+    localStorage.setItem(key, JSON.stringify(updated))
   }
 
-  return { completed, toggle };
+  return { items, toggle }
+
 }

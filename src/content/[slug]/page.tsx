@@ -1,7 +1,9 @@
 import Link from "next/link"
 import { articles } from "@/content/articles"
+
 import RelatedArticles from "@/components/RelatedArticles"
 import NextSteps from "@/components/NextSteps"
+import ExploreTools from "@/components/ExploreTools"
 
 export async function generateStaticParams() {
 
@@ -41,7 +43,7 @@ export default function ArticlePage({
           {article.intro}
         </p>
 
-        {/* TREŚĆ (na razie placeholder) */}
+        {/* TREŚĆ */}
 
         <div className="prose max-w-none mb-16">
 
@@ -91,6 +93,10 @@ export default function ArticlePage({
         {/* NASTĘPNE KROKI */}
 
         <NextSteps world={article.world} />
+
+        {/* NARZĘDZIA */}
+
+        <ExploreTools />
 
         {/* PODOBNE ARTYKUŁY */}
 
