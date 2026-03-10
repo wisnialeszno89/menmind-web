@@ -77,7 +77,12 @@ Znajdź wsparcie
 </Link>
 
 </div>
-
+<Link
+href="/stan"
+className="block bg-black text-white px-6 py-3 rounded-lg text-center mt-6"
+>
+Zobacz swój ogólny stan
+</Link>
 </div>
 
 </main>

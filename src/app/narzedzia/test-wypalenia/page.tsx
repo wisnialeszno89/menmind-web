@@ -58,6 +58,13 @@ className="block border p-4 rounded-lg hover:shadow"
 
 </div>
 
+<Link
+href="/stan"
+className="block bg-black text-white px-6 py-3 rounded-lg text-center mt-6"
+>
+Zobacz swój ogólny stan
+</Link>
+
 <div className="mt-10 border rounded-lg p-4 text-sm text-gray-600">
 
 <p className="font-semibold mb-2">
