@@ -7,17 +7,17 @@ export default function WorldFirstSteps({ world }: { world: string }) {
     kryzys: [
       {
         title: "Zrozum co się dzieje",
-        description: "Najpierw uporządkuj sytuację i zobacz co naprawdę się wydarzyło.",
-        link: "/content/dlaczego-mezczyzni-zwlekaja"
+        description: "Najpierw zobacz co naprawdę się wydarzyło.",
+        link: "/content/co-dzieje-sie-w-kryzysie"
       },
       {
         title: "Uspokój chaos",
-        description: "Zatrzymaj emocjonalną spiralę i odzyskaj kontrolę.",
+        description: "Zatrzymaj spiralę emocji i odzyskaj stabilność.",
         link: "/narzedzia/reset"
       },
       {
-        title: "Zrób pierwszy ruch",
-        description: "Nie wszystko naraz. Jeden konkretny krok.",
+        title: "Zrób pierwszy krok",
+        description: "Mały konkretny krok pomaga odzyskać kontrolę.",
         link: "/narzedzia/minimum"
       }
     ],
@@ -25,53 +25,53 @@ export default function WorldFirstSteps({ world }: { world: string }) {
     odbudowa: [
       {
         title: "Odzyskaj energię",
-        description: "Sen, ruch i podstawowa stabilność.",
+        description: "Sen, ruch i regeneracja są fundamentem.",
         link: "/narzedzia/energia"
       },
       {
         title: "Uporządkuj dzień",
-        description: "Zbuduj prostą strukturę dnia.",
+        description: "Mała struktura dnia przywraca stabilność.",
         link: "/narzedzia/minimum"
       },
       {
-        title: "Wracaj do działania",
-        description: "Małe kroki które przywracają sprawczość.",
+        title: "Zacznij działać",
+        description: "Powoli wracaj do aktywności i planów.",
         link: "/narzedzia/kierunek"
       }
     ],
 
     wzrost: [
       {
-        title: "Wyznacz kierunek",
-        description: "Zdecyduj dokąd naprawdę chcesz iść.",
+        title: "Określ kierunek",
+        description: "Zastanów się gdzie chcesz iść dalej.",
         link: "/narzedzia/kierunek"
       },
       {
         title: "Buduj dyscyplinę",
-        description: "System codziennych działań.",
+        description: "System działania jest ważniejszy niż motywacja.",
         link: "/narzedzia/minimum"
       },
       {
-        title: "Rozwijaj potencjał",
-        description: "Wejdź na wyższy poziom życia.",
-        link: "/narzedzia/energia"
+        title: "Rozwijaj kompetencje",
+        description: "Nowe umiejętności otwierają nowe możliwości.",
+        link: "/content/rozwoj-mezczyzny"
       }
     ],
 
     ojcostwo: [
       {
         title: "Zrozum sytuację",
-        description: "Zobacz gdzie naprawdę jesteś jako ojciec.",
+        description: "Najpierw zobacz gdzie jesteś jako ojciec.",
         link: "/ojcostwo/ojciec-po-rozwodzie"
       },
       {
         title: "Popraw relację",
-        description: "Małe działania które odbudowują więź.",
+        description: "Małe działania budują więź z dzieckiem.",
         link: "/ojcostwo/rytual-15-min"
       },
       {
         title: "Zadbaj o przyszłość",
-        description: "Świadome ojcostwo na dłuższą drogę.",
+        description: "Świadome ojcostwo to decyzje na lata.",
         link: "/ojcostwo/plan-awaryjny"
       }
     ]
@@ -87,7 +87,7 @@ export default function WorldFirstSteps({ world }: { world: string }) {
     <section className="mb-20">
 
       <h2 className="text-2xl font-semibold text-black mb-6">
-        Pierwsze kroki
+        Możesz zacząć od
       </h2>
 
       <div className="grid md:grid-cols-3 gap-6">
@@ -100,15 +100,11 @@ export default function WorldFirstSteps({ world }: { world: string }) {
             className="border rounded-xl p-6 hover:shadow"
           >
 
-            <div className="text-sm text-gray-500 mb-2">
-              krok {index + 1}
-            </div>
-
             <h3 className="font-semibold text-black mb-2">
               {step.title}
             </h3>
 
-            <p className="text-sm text-gray-700">
+            <p className="text-sm text-gray-600">
               {step.description}
             </p>
 

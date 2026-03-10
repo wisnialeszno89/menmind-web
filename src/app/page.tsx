@@ -1,5 +1,6 @@
 import Link from "next/link"
 import TrustSection from "@/components/TrustSection"
+import WorldPreview from "@/components/WorldPreview"
 
 export default function HomePage() {
 
@@ -72,6 +73,7 @@ Relacja z dzieckiem i rola ojca.
 </div>
 
 <TrustSection/>
+<WorldPreview />
 
 </div>
 

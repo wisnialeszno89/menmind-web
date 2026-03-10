@@ -31,19 +31,19 @@ export const worldPaths: Record<string, WorldPath[]> = {
 
   odbudowa: [
     {
-      name: "Odzyskanie energii",
+      name: "Powrót do energii",
       slug: "energia",
-      description: "Sen, ruch i powrót do podstaw."
+      description: "Jak odzyskać siłę fizyczną i psychiczną."
     },
     {
-      name: "Powrót do stabilności",
+      name: "Nowa stabilność",
       slug: "stabilnosc",
-      description: "Jak zbudować nową równowagę."
+      description: "Budowanie nowej równowagi w życiu."
     },
     {
-      name: "Nowy plan życia",
-      slug: "plan",
-      description: "Ułożenie kierunku na kolejne lata."
+      name: "Rutyna i dyscyplina",
+      slug: "rutyna",
+      description: "Małe codzienne działania które stabilizują życie."
     }
   ],
 
@@ -51,7 +51,7 @@ export const worldPaths: Record<string, WorldPath[]> = {
     {
       name: "Kariera",
       slug: "kariera",
-      description: "Budowanie silniejszej drogi zawodowej."
+      description: "Rozwój zawodowy i nowe możliwości."
     },
     {
       name: "Dyscyplina",
@@ -67,60 +67,20 @@ export const worldPaths: Record<string, WorldPath[]> = {
 
   ojcostwo: [
     {
-      name: "Po rozwodzie",
-      slug: "po-rozwodzie",
-      description: "Jak być ojcem mimo rozpadu związku."
-    },
-    {
       name: "Relacja z dzieckiem",
       slug: "relacja",
-      description: "Jak odbudować więź z dzieckiem."
+      description: "Jak budować więź z dzieckiem."
+    },
+    {
+      name: "Po rozwodzie",
+      slug: "po-rozwodzie",
+      description: "Jak być ojcem mimo rozpadu relacji."
     },
     {
       name: "Sprawy prawne",
       slug: "prawo",
-      description: "Kontakty z dzieckiem, opieka i prawo."
+      description: "Kontakty, opieka i prawo rodzinne."
     }
-    
   ]
 
 }
-kryzys: [
-
-{
-name: "Rozstanie",
-slug: "rozstanie",
-description: "Jak przejść przez rozpad relacji i nie rozwalić sobie życia."
-},
-
-{
-name: "Silny stres",
-slug: "stres",
-description: "Kiedy napięcie i presja zaczynają przejmować kontrolę."
-},
-
-{
-name: "Samotność",
-slug: "samotnosc",
-description: "Gdy czujesz że zostałeś z tym wszystkim sam."
-},
-
-{
-name: "Problemy finansowe",
-slug: "finanse",
-description: "Kiedy sytuacja finansowa zaczyna się sypać."
-},
-
-{
-name: "Problemy prawne",
-slug: "prawo",
-description: "Rozwód, alimenty, konflikty i sprawy sądowe."
-},
-
-{
-name: "Utrata kierunku",
-slug: "brak-kierunku",
-description: "Moment kiedy nie wiesz już dokąd iść dalej."
-}
-
-]
