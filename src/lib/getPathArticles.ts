@@ -1,9 +1,7 @@
 import { articles } from "@/content/articles"
 
-export function getPathArticles(path: string) {
-
+export function getPathArticles(world: string) {
   return articles.filter(
-    (article) => article.world === path
+    (article) => article.world === world
   )
-
 }

@@ -1,201 +1,110 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 
-type Mode = "kryzys" | "kierunek" | "rozwoj" | null
+export default function ZacznijPage() {
 
-export default function StartPage(){
+  const router = useRouter()
 
-const [mode,setMode]=useState<Mode>(null)
+  function go(world: string) {
+    router.push(`/world/${world}`)
+  }
 
-return(
+  return (
 
-<main className="bg-white min-h-screen">
+    <main className="bg-white min-h-screen">
 
-<div className="max-w-4xl mx-auto px-6 py-24">
+      <div className="max-w-4xl mx-auto px-6 py-24">
 
-<h1 className="text-4xl font-semibold text-black mb-6">
-Od czego chcesz zacząć?
-</h1>
+        {/* TYTUŁ */}
 
-<p className="text-black mb-12 max-w-xl">
-Nie musisz wiedzieć dokładnie czego potrzebujesz.
-Wybierz opcję najbliższą Twojej sytuacji.
-</p>
+        <h1 className="text-4xl font-semibold text-black mb-6">
+          Od czego chcesz zacząć?
+        </h1>
 
-{/* WYBÓR */}
+        <p className="text-black max-w-xl mb-16">
+          Nie musisz wiedzieć dokładnie czego potrzebujesz.
+          Wybierz sytuację która jest najbliższa temu,
+          gdzie jesteś teraz.
+        </p>
 
-<div className="grid md:grid-cols-3 gap-6 mb-16">
+        {/* OPCJE */}
 
-<button
-onClick={()=>setMode("kryzys")}
-className="border rounded-xl p-6 hover:shadow text-left"
->
-<h2 className="font-semibold text-black mb-2">
-Mam kryzys
-</h2>
+        <div className="grid md:grid-cols-2 gap-6">
 
-<p className="text-black text-sm">
-Rozstanie, stres, problemy w życiu.
-</p>
+          {/* KRYZYS */}
 
-</button>
+          <button
+            onClick={() => go("kryzys")}
+            className="border rounded-xl p-8 text-left hover:shadow"
+          >
 
-<button
-onClick={()=>setMode("kierunek")}
-className="border rounded-xl p-6 hover:shadow text-left"
->
-<h2 className="font-semibold text-black mb-2">
-Szukam kierunku
-</h2>
+            <h2 className="text-xl font-semibold text-black mb-2">
+              Mam kryzys
+            </h2>
 
-<p className="text-black text-sm">
-Czuję że utknąłem lub potrzebuję zmiany.
-</p>
+            <p className="text-black text-sm">
+              Rozstanie, chaos, stres, problemy w życiu.
+            </p>
 
-</button>
+          </button>
 
-<button
-onClick={()=>setMode("rozwoj")}
-className="border rounded-xl p-6 hover:shadow text-left"
->
-<h2 className="font-semibold text-black mb-2">
-Chcę wzmocnić życie
-</h2>
+          {/* ODBUDOWA */}
 
-<p className="text-black text-sm">
-Rozwój, energia, dyscyplina.
-</p>
+          <button
+            onClick={() => go("odbudowa")}
+            className="border rounded-xl p-8 text-left hover:shadow"
+          >
 
-</button>
+            <h2 className="text-xl font-semibold text-black mb-2">
+              Chcę się odbudować
+            </h2>
 
-</div>
+            <p className="text-black text-sm">
+              Potrzebuję odzyskać energię i stabilność.
+            </p>
 
-{/* REKOMENDACJE */}
+          </button>
 
-{mode==="kryzys" &&(
+          {/* WZROST */}
 
-<div className="space-y-6">
+          <button
+            onClick={() => go("wzrost")}
+            className="border rounded-xl p-8 text-left hover:shadow"
+          >
 
-<h2 className="text-2xl font-semibold text-black">
-Możesz zacząć od:
-</h2>
+            <h2 className="text-xl font-semibold text-black mb-2">
+              Chcę się rozwijać
+            </h2>
 
-<div className="grid md:grid-cols-2 gap-4">
+            <p className="text-black text-sm">
+              Dyscyplina, kierunek, rozwój życia.
+            </p>
 
-<Link
-href="/kryzys"
-className="border rounded-lg p-4 hover:shadow"
->
-Zobacz ścieżki kryzysu
-</Link>
+          </button>
 
-<Link
-href="/narzedzia/stabilizacja"
-className="border rounded-lg p-4 hover:shadow"
->
-Narzędzia stabilizacji
-</Link>
+          {/* OJCOSTWO */}
 
-<Link
-href="/navimind?state=kryzys"
-className="border rounded-lg p-4 hover:shadow"
->
-Porozmawiaj w NaviMind
-</Link>
+          <button
+            onClick={() => go("ojcostwo")}
+            className="border rounded-xl p-8 text-left hover:shadow"
+          >
 
-<Link
-href="/propozycje"
-className="border rounded-lg p-4 hover:shadow"
->
-Znajdź wsparcie
-</Link>
+            <h2 className="text-xl font-semibold text-black mb-2">
+              Chodzi o moje dziecko
+            </h2>
 
-</div>
+            <p className="text-black text-sm">
+              Relacja z dzieckiem, sprawy ojcostwa.
+            </p>
 
-</div>
+          </button>
 
-)}
+        </div>
 
-{mode==="kierunek" &&(
+      </div>
 
-<div className="space-y-6">
+    </main>
 
-<h2 className="text-2xl font-semibold text-black">
-Możesz sprawdzić:
-</h2>
-
-<div className="grid md:grid-cols-2 gap-4">
-
-<Link
-href="/odbudowa"
-className="border rounded-lg p-4 hover:shadow"
->
-Ścieżki odbudowy
-</Link>
-
-<Link
-href="/narzedzia/mapa-energii"
-className="border rounded-lg p-4 hover:shadow"
->
-Mapa energii dnia
-</Link>
-
-<Link
-href="/navimind?state=kierunek"
-className="border rounded-lg p-4 hover:shadow"
->
-Porozmawiaj w NaviMind
-</Link>
-
-</div>
-
-</div>
-
-)}
-
-{mode==="rozwoj" &&(
-
-<div className="space-y-6">
-
-<h2 className="text-2xl font-semibold text-black">
-Możesz eksplorować:
-</h2>
-
-<div className="grid md:grid-cols-2 gap-4">
-
-<Link
-href="/wzrost"
-className="border rounded-lg p-4 hover:shadow"
->
-Ścieżki wzrostu
-</Link>
-
-<Link
-href="/narzedzia"
-className="border rounded-lg p-4 hover:shadow"
->
-Zobacz narzędzia
-</Link>
-
-<Link
-href="/navimind?state=rozwoj"
-className="border rounded-lg p-4 hover:shadow"
->
-Porozmawiaj w NaviMind
-</Link>
-
-</div>
-
-</div>
-
-)}
-
-</div>
-
-</main>
-
-)
-
+  )
 }
