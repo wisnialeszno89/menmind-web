@@ -36,7 +36,7 @@ return(
 
 <div className="max-w-xl mx-auto px-6 py-24">
 
-<h1 className="text-3xl font-semibold mb-4">
+<h1 className={`text-3xl font-semibold mb-4 ${state.color}`}>
 Poziom: {state.label}
 </h1>
 
@@ -50,11 +50,27 @@ Poziom: {state.label}
 <Link
 key={a.href}
 href={a.href}
-className="block border p-4 rounded-lg"
+className="block border p-4 rounded-lg hover:shadow"
 >
 {a.label}
 </Link>
 ))}
+
+</div>
+
+<div className="mt-10 border rounded-lg p-4 text-sm text-gray-600">
+
+<p className="font-semibold mb-2">
+Skala MenMind
+</p>
+
+<ul className="space-y-1">
+<li className="text-green-600">0 – stabilnie</li>
+<li className="text-yellow-600">1 – napięcie</li>
+<li className="text-orange-600">2 – przeciążenie</li>
+<li className="text-red-600">3 – kryzys</li>
+<li className="text-red-700">4 – alarm</li>
+</ul>
 
 </div>
 

@@ -61,6 +61,26 @@ slug:"sytuacja-test",
 title:"Test sytuacji",
 description:"Krótka diagnoza Twojej sytuacji życiowej.",
 world:"kryzys"
+},
+{
+slug:"test-stresu",
+title:"Test poziomu stresu",
+description:"Sprawdź czy Twój poziom stresu zaczyna przekraczać bezpieczny poziom.",
+world:"kryzys"
+},
+
+{
+slug:"test-wypalenia",
+title:"Test wypalenia",
+description:"Sprawdź czy pojawiają się oznaki wypalenia.",
+world:"wzrost"
+},
+
+{
+slug:"test-sytuacji",
+title:"Test sytuacji",
+description:"Krótka diagnoza Twojej obecnej sytuacji życiowej.",
+world:"kryzys"
 }
 
 ]
