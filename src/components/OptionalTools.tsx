@@ -1,46 +1,46 @@
 import Link from "next/link"
-import { getToolsByCategory } from "@/lib/getToolsByCategory"
+import { getToolsByWorld } from "@/lib/getToolsByCategory"
 
-export default function OptionalTools({category}:{category:string}){
+export default function OptionalTools({ world }: { world: string }) {
 
-const tools=getToolsByCategory(category)
+  const tools = getToolsByWorld(world)
 
-if(tools.length===0) return null
+  if (tools.length === 0) return null
 
-return(
+  return (
 
-<section className="mt-16">
+    <section className="mt-16">
 
-<h2 className="text-2xl font-semibold text-black mb-6">
-Możesz spróbować
-</h2>
+      <h2 className="text-xl font-semibold text-black mb-6">
+        Dodatkowe narzędzia
+      </h2>
 
-<div className="grid md:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
 
-{tools.slice(0,3).map((tool)=>(
+        {tools.map((tool) => (
 
-<Link
-key={tool.slug}
-href={`/narzedzia/${tool.slug}`}
-className="border rounded-lg p-4 hover:shadow"
->
+          <Link
+            key={tool.slug}
+            href={`/narzedzia/${tool.slug}`}
+            className="border rounded-lg p-4 hover:shadow"
+          >
 
-<h3 className="font-semibold text-black">
-{tool.title}
-</h3>
+            <h3 className="font-semibold mb-1">
+              {tool.title}
+            </h3>
 
-<p className="text-black text-sm">
-{tool.description}
-</p>
+            <p className="text-sm text-gray-600">
+              {tool.description}
+            </p>
 
-</Link>
+          </Link>
 
-))}
+        ))}
 
-</div>
+      </div>
 
-</section>
+    </section>
 
-)
+  )
 
 }

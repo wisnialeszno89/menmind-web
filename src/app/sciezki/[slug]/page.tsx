@@ -4,7 +4,7 @@ import Link from "next/link"
 import PathSteps from "@/components/PathSteps"
 
 import { getArticlesByPath } from "../../../lib/getArticlesByPath"
-import { getToolsByCategory } from "@/lib/getToolsByCategory"
+import { getToolsByWorld } from "@/lib/getToolsByCategory"
 
 export default function PathPage({
   params
@@ -16,7 +16,7 @@ export default function PathPage({
 
   const articles = getArticlesByPath(params.slug)
 
-  const tools = getToolsByCategory(params.slug)
+  const tools = getToolsByWorld(params.slug)
 
   return (
 

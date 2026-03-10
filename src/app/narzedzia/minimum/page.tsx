@@ -1,59 +1,64 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-export default function MinimumPage() {
-  const [checked, setChecked] = useState<string[]>([]);
+export default function MinimumPage(){
 
-  const tasks = [
-    "7 godzin snu",
-    "20 minut ruchu",
-    "Zero alkoholu",
-    "1 trudna rzecz",
-  ];
+const [checked,setChecked]=useState<string[]>([])
 
-  const toggle = (task: string) => {
-    setChecked((prev) =>
-      prev.includes(task)
-        ? prev.filter((t) => t !== task)
-        : [...prev, task]
-    );
-  };
+const tasks=[
+"7 godzin snu",
+"20 minut ruchu",
+"jedna trudna rzecz",
+"zero alkoholu"
+]
 
-  return (
-    <main className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-2xl">
-        <h1 className="text-3xl font-semibold">
-          Minimum dnia
-        </h1>
+function toggle(task:string){
 
-        <div className="mt-10 space-y-4">
-          {tasks.map((task) => (
-            <div
-              key={task}
-              onClick={() => toggle(task)}
-              className="cursor-pointer rounded-xl border border-borderSoft p-4 flex items-center gap-4"
-            >
-              <div
-                className={`h-5 w-5 rounded border ${
-                  checked.includes(task)
-                    ? "bg-accent border-accent"
-                    : "border-borderSoft"
-                }`}
-              />
-              <span
-                className={
-                  checked.includes(task)
-                    ? "line-through text-textMuted"
-                    : ""
-                }
-              >
-                {task}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </main>
-  );
+setChecked(prev=>
+prev.includes(task)
+? prev.filter(t=>t!==task)
+: [...prev,task]
+)
+
+}
+
+return(
+
+<main className="bg-white min-h-screen">
+
+<div className="max-w-2xl mx-auto px-6 py-24">
+
+<h1 className="text-3xl font-semibold text-black mb-10">
+Minimum dnia
+</h1>
+
+<div className="space-y-4">
+
+{tasks.map(task=>(
+<div
+key={task}
+onClick={()=>toggle(task)}
+className="border rounded-lg p-4 cursor-pointer flex justify-between"
+>
+
+<span className={checked.includes(task) ? "line-through text-gray-500" : ""}>
+{task}
+</span>
+
+<span>
+{checked.includes(task) ? "✓" : ""}
+</span>
+
+</div>
+))}
+
+</div>
+
+</div>
+
+</main>
+
+)
+
 }
