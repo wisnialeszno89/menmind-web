@@ -1,147 +1,105 @@
-import { getPartners } from "@/lib/getPartners"
-import PartnerCard from "@/components/PartnerCard"
-import Link from "next/link"
-import { categoryFAQ } from "@/content/categoryFAQ";
-import { rankPartners } from "@/lib/partnerRanking"
+import { notFound } from "next/navigation"
+import { categories } from "@/data/categories"
+import { cities } from "@/data/cities"
 
-export async function generateMetadata({ params }: any) {
+type Params = {
+  params: {
+    category: string
+    city: string
+  }
+}
+export function generateMetadata({ params }: Params) {
 
-  const { category, city } = params
+  const category = categories.find(
+    (c) => c.slug === params.category
+  )
+
+  const city = cities.find(
+    (c) => c.slug === params.city
+  )
+
+  if (!category || !city) return {}
 
   return {
-    title: `${category} w ${city} | MenMind`,
-    description: `Znajdź wsparcie: ${category} w ${city}. Sprawdzeni specjaliści i pomoc dla mężczyzn.`,
+    title: `${category.name} dla mężczyzn ${city.name} | MenMind`,
+    description: `Znajdź wsparcie w kategorii ${category.name} w mieście ${city.name}.`
+  }
+}
+export function generateStaticParams() {
+
+  const params: { category: string; city: string }[] = []
+
+  for (const category of categories) {
+    for (const city of cities) {
+      params.push({
+        category: category.slug,
+        city: city.slug
+      })
+    }
   }
 
+  return params
 }
 
-export default async function Page({ params }: any) {
+export default function CategoryCityPage({ params }: Params) {
 
-  const rawPartners = await getPartners(params.category, params.city)
+  const category = categories.find(
+    (c) => c.slug === params.category
+  )
 
-const partners = rankPartners(rawPartners)
+  const city = cities.find(
+    (c) => c.slug === params.city
+  )
 
-  const faq = categoryFAQ[params.category] || [];
+  if (!category || !city) return notFound()
 
   return (
 
-    <main className="bg-gray-50 min-h-screen">
+    <main className="bg-white min-h-screen">
 
-      <div className="max-w-5xl mx-auto px-6 py-20">
+      <div className="max-w-5xl mx-auto px-6 py-24">
 
-        {/* TITLE */}
-
-        <h1 className="text-4xl font-semibold mb-6 capitalize">
-          {params.category} – {params.city}
+        <h1 className="text-4xl font-semibold mb-6">
+          {category.name} dla mężczyzn — {city.name}
         </h1>
 
-        <p className="text-gray-600 mb-10 max-w-xl">
-          Sprawdź dostępne wsparcie w mieście {params.city}.
+        <p className="text-gray-700 mb-10 max-w-xl">
+
+          Szukasz wsparcia w kategorii <strong>{category.name}</strong> w mieście <strong>{city.name}</strong>?  
+          Na MenMind znajdziesz specjalistów, artykuły oraz narzędzia,
+          które pomagają przejść przez trudne sytuacje życiowe.
+
         </p>
-<p className="text-gray-600 mb-10 max-w-xl">
-  Najlepiej dopasowani specjaliści w mieście {params.city}.
-</p>
 
-        {/* PARTNERS */}
+        <section className="mb-16">
 
-        {partners.length === 0 && (
-          <p className="text-gray-500 mb-10">
-            Jeszcze nie mamy partnerów w tym mieście.
-          </p>
-        )}
-
-        <div className="grid md:grid-cols-2 gap-6 mb-20">
-
-          {partners.map((partner: any, index: number) => (
-
-            <PartnerCard
-              key={partner.id}
-              id={partner.id}
-              name={partner.name}
-              description={partner.description}
-              tier={partner.tier}
-              website={partner.website}
-              featured={partner.featured}
-              verified={partner.verified}
-              highlighted={partner.tier === "strategic"}
-              isTop={index === 0}
-            />
-
-          ))}
-
-        </div>
-
-
-        {/* MENMIND DIRECTIONS */}
-
-        <section className="mb-20">
-
-          <h2 className="text-2xl font-semibold mb-6">
-            Jeśli potrzebujesz więcej wsparcia
+          <h2 className="text-2xl font-semibold mb-4">
+            W jakich sytuacjach pomaga {category.name}?
           </h2>
 
-          <div className="space-y-4">
+          <ul className="space-y-2 text-gray-700">
 
-            <Link
-              href="/narzedzia/stabilizacja"
-              className="block border p-4 rounded-lg"
-            >
-              Zobacz narzędzia stabilizacji
-            </Link>
+            <li>• kryzys w relacji lub rozstanie</li>
+            <li>• stres i przeciążenie</li>
+            <li>• problemy rodzinne</li>
+            <li>• rozwój osobisty</li>
 
-            <Link
-              href="/narzedzia/energia"
-              className="block border p-4 rounded-lg"
-            >
-              Odbuduj energię
-            </Link>
-
-            <Link
-              href="/propozycje"
-              className="block border p-4 rounded-lg"
-            >
-              Poszukaj czegoś dla siebie
-            </Link>
-
-            <Link
-              href="/propozycje"
-              className="block bg-black text-white px-6 py-3 rounded-lg text-center"
-            >
-              Sprawdź dostępne wsparcie
-            </Link>
-
-          </div>
+          </ul>
 
         </section>
 
-
-        {/* FAQ SEO */}
-
         <section>
 
-          <h2 className="text-2xl font-semibold mb-6">
-            Najczęstsze pytania
+          <h2 className="text-2xl font-semibold mb-4">
+            Specjaliści {category.name} w mieście {city.name}
           </h2>
 
-          <div className="space-y-6">
+          <p className="text-gray-700">
 
-            {faq.map((f: any) => (
+            W tym miejscu będą pojawiać się profile specjalistów
+            oferujących wsparcie w kategorii <strong>{category.name}</strong> w mieście <strong>{city.name}</strong>.
 
-              <div key={f.q}>
-
-                <p className="font-semibold mb-1">
-                  {f.q}
-                </p>
-
-                <p className="text-gray-600">
-                  {f.a}
-                </p>
-
-              </div>
-
-            ))}
-
-          </div>
+          </p>
 
         </section>
 

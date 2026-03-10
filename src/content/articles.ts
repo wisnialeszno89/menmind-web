@@ -3,6 +3,7 @@ export type Article = {
   title: string
   intro: string
   world: string
+  path?: string
   author?: string
   authorSlug?: string
 }

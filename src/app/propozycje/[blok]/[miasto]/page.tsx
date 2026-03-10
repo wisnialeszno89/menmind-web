@@ -1,48 +1,46 @@
-import PartnerCard from "@/components/PartnerCard"
-import { getPartners } from "@/lib/getPartners"
+import { notFound } from "next/navigation"
+import { cities } from "@/data/cities"
+import { proposalCategories } from "@/data/proposalsCategories"
 
-export default async function Page({
-  params,
-}: {
-  params: { blok: string; miasto: string }
-}) {
+export default function ProposalCityPage({ params }) {
 
-  const partners = await getPartners(params.blok, params.miasto)
+const category = proposalCategories.find(
+c => c.slug === params.blok
+)
 
-  return (
-    <div className="min-h-screen bg-[#111827] text-neutral-200 px-6 py-20">
+const city = cities.find(
+c => c.slug === params.miasto
+)
 
-      <div className="max-w-5xl mx-auto">
+if(!category || !city) return notFound()
 
-        <h1 className="text-4xl mb-10 text-blue-500">
-          Pomoc dla mężczyzn – {params.miasto}
-        </h1>
+return (
 
-        {partners.length === 0 && (
-          <p className="text-neutral-400 mb-10">
-            Jeszcze nie mamy partnerów w tym mieście.
-          </p>
-        )}
+<main className="bg-white min-h-screen">
 
-        <div className="grid md:grid-cols-2 gap-6">
+<div className="max-w-5xl mx-auto px-6 py-24">
 
-          {partners.map((partner: any, index: number) => (
-            <PartnerCard
-              key={partner.id}
-              id={partner.id}
-              name={partner.name}
-              description={partner.description}
-              tier={partner.tier}
-              website={partner.website}
-              highlighted={partner.tier === "strategic"}
-              isTop={index === 0}
-            />
-          ))}
+<h1 className="text-4xl font-semibold mb-6">
+{category.name} — {city.name}
+</h1>
 
-        </div>
+<p className="text-gray-700 mb-10">
+W tym miejscu będą pojawiać się firmy i organizacje oferujące
+aktywności w kategorii {category.name} w mieście {city.name}.
+</p>
 
-      </div>
+<div className="border rounded-xl p-6">
 
-    </div>
-  )
+<p className="text-gray-600">
+Lista partnerów pojawi się tutaj.
+</p>
+
+</div>
+
+</div>
+
+</main>
+
+)
+
 }

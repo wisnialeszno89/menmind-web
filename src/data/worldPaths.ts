@@ -57,11 +57,6 @@ export const worldPaths: Record<string, WorldPath[]> = {
       name: "Dyscyplina",
       slug: "dyscyplina",
       description: "System działania zamiast chaosu."
-    },
-    {
-      name: "Relacje",
-      slug: "relacje",
-      description: "Budowanie wartościowych relacji."
     }
   ],
 
@@ -70,11 +65,6 @@ export const worldPaths: Record<string, WorldPath[]> = {
       name: "Relacja z dzieckiem",
       slug: "relacja",
       description: "Jak budować więź z dzieckiem."
-    },
-    {
-      name: "Po rozwodzie",
-      slug: "po-rozwodzie",
-      description: "Jak być ojcem mimo rozpadu relacji."
     },
     {
       name: "Sprawy prawne",

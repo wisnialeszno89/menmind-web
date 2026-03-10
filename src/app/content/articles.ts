@@ -62,6 +62,27 @@ title: "Koncentracja w świecie rozproszeń",
 intro: "Uwaga to jedna z najcenniejszych umiejętności.",
 world: "wzrost",
 path: "koncentracja"
-}
+},
 
+{
+slug: "ojciec-po-rozwodzie",
+title: "Ojciec po rozwodzie",
+intro: "Jak utrzymać relację z dzieckiem po rozpadzie związku.",
+world: "ojcostwo",
+path: "po-rozwodzie"
+},
+{
+slug: "kontakty-z-dzieckiem",
+title: "Kontakty z dzieckiem po rozstaniu",
+intro: "Jak zadbać o regularny kontakt i relację.",
+world: "ojcostwo",
+path: "relacja"
+},
+{
+slug: "prawa-ojca",
+title: "Prawa ojca w Polsce",
+intro: "Jakie prawa ma ojciec w relacji z dzieckiem.",
+world: "ojcostwo",
+path: "prawo"
+}
 ]

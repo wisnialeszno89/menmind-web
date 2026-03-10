@@ -1,54 +1,52 @@
-import { cities } from "@/lib/cities";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import ViewTracker from "@/components/ViewTracker";
+import { cities } from "@/data/cities"
+import { proposalCategories } from "@/data/proposalsCategories"
+import Link from "next/link"
+import { notFound } from "next/navigation"
 
-type Props = {
-  params: {
-    blok: string;
-  };
-};
+export default function ProposalCategoryPage({ params }) {
 
-const allowedBloki = ["stabilizacja", "energia", "kierunek", "tozsamosc"];
+const category = proposalCategories.find(
+c => c.slug === params.blok
+)
 
-export default function BlokPage({ params }: Props) {
-  if (!allowedBloki.includes(params.blok)) return notFound();
+if(!category) return notFound()
 
-  return (
-    <div className="text-neutral-200">
-      {/* 🔥 TRACK WEJŚCIA W BLOK */}
-      <ViewTracker
-        event="view_block"
-        data={{
-          blok: params.blok,
-        }}
-      />
+return (
 
-      <div className="max-w-4xl mx-auto px-6 py-24">
+<main className="bg-white min-h-screen">
 
-        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-6 text-blue-500">
-          {params.blok.charAt(0).toUpperCase() + params.blok.slice(1)}
-        </h1>
+<div className="max-w-6xl mx-auto px-6 py-24">
 
-        <div className="h-px w-16 bg-blue-500 mb-12" />
+<h1 className="text-4xl font-semibold mb-6">
+{category.name}
+</h1>
 
-        <p className="text-lg text-neutral-300 mb-12">
-          Wybierz miasto.
-        </p>
+<p className="text-gray-700 mb-10">
+Zobacz dostępne propozycje w różnych miastach.
+</p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {cities.map((city) => (
-            <Link
-              key={city.slug}
-              href={`/propozycje/${params.blok}/${city.slug}`}
-              className="border border-neutral-800 rounded-lg p-4 hover:border-blue-500 transition"
-            >
-              {city.name}
-            </Link>
-          ))}
-        </div>
+<div className="grid md:grid-cols-3 gap-4">
 
-      </div>
-    </div>
-  );
+{cities.map((city)=>(
+
+<Link
+key={city.slug}
+href={`/propozycje/${category.slug}/${city.slug}`}
+className="border rounded-lg p-4 hover:shadow"
+>
+
+{category.name} — {city.name}
+
+</Link>
+
+))}
+
+</div>
+
+</div>
+
+</main>
+
+)
+
 }

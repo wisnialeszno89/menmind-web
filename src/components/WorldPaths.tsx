@@ -5,15 +5,19 @@ export default function WorldPaths({ world }: { world: string }) {
 
   const paths = worldPaths[world] || []
 
-  if (paths.length === 0) return null
+  if (!paths.length) return null
 
   return (
 
     <section className="mb-20">
 
       <h2 className="text-2xl font-semibold text-black mb-6">
-        Drogi w tym świecie
+        Najczęstsze sytuacje
       </h2>
+
+      <p className="text-gray-600 mb-8 max-w-xl">
+        Wybierz sytuację która najlepiej opisuje moment w którym jesteś.
+      </p>
 
       <div className="grid md:grid-cols-2 gap-6">
 
@@ -22,7 +26,7 @@ export default function WorldPaths({ world }: { world: string }) {
           <Link
             key={path.slug}
             href={`/sciezki/${path.slug}`}
-            className="border rounded-xl p-6 hover:shadow"
+            className="border rounded-xl p-6 hover:shadow transition"
           >
 
             <h3 className="font-semibold text-black mb-2">

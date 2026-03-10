@@ -7,56 +7,57 @@ export type World = {
 
 export const worlds: World[] = [
 
-  {
-    slug: "kryzys",
-    name: "Kryzys",
-    description:
-      "Moment kiedy życie się sypie: rozstanie, stres, chaos i trudne decyzje.",
-    preview: [
-      "rozstanie",
-      "silny stres",
-      "samotność",
-      "problemy finansowe"
-    ]
-  },
+{
+slug: "kryzys",
+name: "Kryzys",
+description: "Gdy życie zaczyna się sypać: rozstanie, stres, chaos.",
 
-  {
-    slug: "odbudowa",
-    name: "Odbudowa",
-    description:
-      "Powrót do równowagi. Odbudowa energii, zdrowia i stabilności.",
-    preview: [
-      "powrót do energii",
-      "nowa rutyna",
-      "zdrowie i forma",
-      "stabilność życia"
-    ]
-  },
+preview: [
+"rozstanie",
+"silny stres",
+"problemy finansowe",
+"samotność"
+]
 
-  {
-    slug: "wzrost",
-    name: "Wzrost",
-    description:
-      "Rozwój, kierunek i budowanie silniejszego życia.",
-    preview: [
-      "kariera",
-      "dyscyplina",
-      "kompetencje",
-      "relacje"
-    ]
-  },
+},
 
-  {
-    slug: "ojcostwo",
-    name: "Ojcostwo",
-    description:
-      "Relacja z dzieckiem, odpowiedzialność i rola ojca.",
-    preview: [
-      "relacja z dzieckiem",
-      "po rozwodzie",
-      "sprawy prawne",
-      "codzienne ojcostwo"
-    ]
-  }
+{
+slug: "odbudowa",
+name: "Odbudowa",
+description: "Powrót do stabilności, energii i poukładania życia.",
+
+preview: [
+"powrót do energii",
+"nowa rutyna",
+"stabilizacja"
+]
+
+},
+
+{
+slug: "wzrost",
+name: "Wzrost",
+description: "Rozwój osobisty, kierunek życia i nowe możliwości.",
+
+preview: [
+"kariera",
+"dyscyplina",
+"rozwój osobisty"
+]
+
+},
+
+{
+slug: "ojcostwo",
+name: "Ojcostwo",
+description: "Relacja z dzieckiem i odpowiedzialność ojca.",
+
+preview: [
+"relacja z dzieckiem",
+"opieka naprzemienna",
+"prawa ojca"
+]
+
+}
 
 ]
