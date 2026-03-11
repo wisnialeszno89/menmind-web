@@ -6,12 +6,6 @@ export default function QuickScan(){
 
 const router = useRouter()
 
-function start(){
-
-router.push("/narzedzia/test-sytuacji")
-
-}
-
 return(
 
 <section className="border rounded-xl p-10 mb-16">
@@ -21,16 +15,18 @@ Skan stanu (60 sekund)
 </h2>
 
 <p className="text-gray-600 mb-6">
-Jeśli nie wiesz od czego zacząć,
-zrób szybki test który pokaże
-Twój aktualny stan.
+Szybki test który pokaże
+Twój aktualny stan życia.
+Zajmuje około 60 sekund.
 </p>
 
 <button
-onClick={start}
+onClick={()=>router.push("/narzedzia/test-zycia")}
 className="bg-black text-white px-6 py-3 rounded-lg"
 >
+
 Rozpocznij skan
+
 </button>
 
 </section>

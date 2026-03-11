@@ -1,28 +1,53 @@
+import Link from "next/link"
+
 type Props = {
-  children: React.ReactNode
+title:string
+description?:string
+href?:string
+badge?:string
 }
 
-export default function Card({ children }: Props) {
+export default function Card({
+title,
+description,
+href,
+badge
+}:Props){
 
-  return (
+const content=(
 
-    <div
-      className="
-      bg-white
-      border
-      border-gray-200
-      rounded-2xl
-      p-6
-      transition
-      hover:shadow-xl
-      hover:-translate-y-1
-      "
-    >
+<div className="border border-neutral-200 rounded-xl p-6 hover:shadow-md transition bg-white">
 
-      {children}
+{badge &&(
 
-    </div>
+<span className="text-xs bg-neutral-100 px-2 py-1 rounded mb-3 inline-block">
+{badge}
+</span>
 
-  )
+)}
+
+<h3 className="text-lg font-semibold mb-2">
+{title}
+</h3>
+
+{description &&(
+
+<p className="text-gray-600 text-sm">
+{description}
+</p>
+
+)}
+
+</div>
+
+)
+
+if(href){
+
+return <Link href={href}>{content}</Link>
+
+}
+
+return content
 
 }

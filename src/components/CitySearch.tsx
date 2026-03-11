@@ -33,7 +33,7 @@ className="border rounded-lg px-4 py-2 w-full"
 
 <div
 key={city.slug}
-onClick={()=>router.push(`/propozycje/${city.slug}`)}
+onClick={()=>router.push(`/propozycje/sport/${city.slug}`)}
 className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
 >
 

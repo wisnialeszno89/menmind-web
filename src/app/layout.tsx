@@ -2,6 +2,7 @@ import Header from "../components/layout/Header"
 import Footer from "../components/layout/Footer"
 import NaviMindButton from "../components/NaviMindButton"
 import NavimindCornerButton from "../components/NavimindCornerButton"
+import UserStateBar from "@/components/UserStateBar"
 
 
 import "./globals.css"
@@ -32,6 +33,8 @@ export default function RootLayout({
 <NavimindCornerButton />
 
 </body>
+<UserStateBar/>
+{children}
 
     </html>
 
