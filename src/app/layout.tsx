@@ -1,9 +1,7 @@
 import Header from "../components/layout/Header"
 import Footer from "../components/layout/Footer"
-import NaviMindButton from "../components/NaviMindButton"
 import NavimindCornerButton from "../components/NavimindCornerButton"
 import UserStateBar from "@/components/UserStateBar"
-
 
 import "./globals.css"
 
@@ -24,17 +22,17 @@ export default function RootLayout({
 
       <body className="bg-gray-50">
 
-<Header />
+        <Header />
 
-{children}
+        <UserStateBar />
 
-<Footer />
+        {children}
 
-<NavimindCornerButton />
+        <Footer />
 
-</body>
-<UserStateBar/>
-{children}
+        <NavimindCornerButton />
+
+      </body>
 
     </html>
 
