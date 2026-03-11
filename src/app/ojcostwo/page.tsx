@@ -1,165 +1,235 @@
-import Link from "next/link";
-import WorldLayout from "@/components/layout/WorldLayout";
+import Link from "next/link"
 
 export const metadata = {
   title: "Ojcostwo | MenMind",
   description:
-    "Relacja z dzieckiem, prawa ojca i odbudowa kontaktu.",
-};
+    "Wsparcie dla ojców: prawa ojca, relacja z dzieckiem, rozwód, opieka naprzemienna i odbudowa relacji.",
+}
 
 export default function OjcostwoPage() {
+
   return (
-    <WorldLayout
-      title="Ojcostwo"
-      intro="Relacja z dzieckiem jest jedną z najważniejszych części życia mężczyzny. 
-Czasem naturalna. Czasem wymaga cierpliwości i wsparcia."
-    >
 
-      <section className="grid md:grid-cols-2 gap-6">
+    <main className="bg-[#111827] text-zinc-100 min-h-screen">
 
-        <Link href="/ojcostwo/ojciec-po-rozwodzie" className="card">
-          <h3 className="font-semibold mb-2">
-            Mam konflikt prawny
-          </h3>
+      <div className="max-w-5xl mx-auto px-6 py-24">
 
-          <p className="text-gray-600 text-sm">
-            Rozwód, alimenty, opieka nad dzieckiem.
-          </p>
-        </Link>
+        {/* HERO */}
 
-        <Link href="/ojcostwo/odbudowa-relacji" className="card">
-          <h3 className="font-semibold mb-2">
-            Chcę poprawić relację
-          </h3>
+        <h1 className="text-4xl md:text-5xl font-semibold text-blue-500 mb-6">
+          Ojcostwo
+        </h1>
 
-          <p className="text-gray-600 text-sm">
-            Dystans lub trudny etap.
-          </p>
-        </Link>
+        <div className="h-px w-16 bg-blue-500 mb-12" />
 
-      </section>
-
-      <section>
-
-        <h2 className="text-xl font-semibold mb-4">
-          Prawo i sytuacja formalna
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-4">
-
-          <Link href="/ojcostwo/prawa-ojca" className="card">
-            Prawa ojca
-          </Link>
-
-          <Link href="/ojcostwo/opieka-naprzemienna" className="card">
-            Opieka naprzemienna
-          </Link>
-
-          <Link href="/ojcostwo/alimenty" className="card">
-            Alimenty
-          </Link>
-
-          <Link href="/ojcostwo/kontakty-z-dzieckiem" className="card">
-            Kontakty z dzieckiem
-          </Link>
-
-        </div>
-
-      </section>
-
-      <section>
-
-        <h2 className="text-xl font-semibold mb-4">
-          Relacja z dzieckiem
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-4">
-
-          <Link href="/ojcostwo/relacja-z-nastolatkiem" className="card">
-            Relacja z nastolatkiem
-          </Link>
-
-          <Link href="/ojcostwo/gdy-dziecko-nie-chce-rozmawiac" className="card">
-            Gdy dziecko nie chce rozmawiać
-          </Link>
-
-          <Link href="/ojcostwo/rytual-15-min" className="card">
-            Rytuał 15 minut
-          </Link>
-
-          <Link href="/ojcostwo/zabawy" className="card">
-            Zabawy z dzieckiem
-          </Link>
-
-        </div>
-
-      </section>
-
-      <section>
-
-        <h2 className="text-xl font-semibold mb-4">
-          Stabilizacja sytuacji
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-4">
-
-          <Link href="/ojcostwo/co-oddala-relacje" className="card">
-            Co oddala relację
-          </Link>
-
-          <Link href="/ojcostwo/plan-awaryjny" className="card">
-            Plan awaryjny
-          </Link>
-
-        </div>
-
-      </section>
-
-      <section className="card">
-
-        <h2 className="text-xl font-semibold mb-3">
-          Dlaczego relacja z ojcem jest ważna
-        </h2>
-
-        <p className="text-gray-700 mb-4">
-          Obecność ojca wpływa na poczucie bezpieczeństwa i rozwój dziecka.
-          Wielu ojców traci kontakt nie dlatego że nie chcą,
-          ale dlatego że nie wiedzą jak przejść przez konflikt.
+        <p className="text-lg text-zinc-400 max-w-2xl mb-16 leading-relaxed">
+          Bycie ojcem nie kończy się po rozstaniu.
+          Relacja z dzieckiem może się zmieniać,
+          ale nadal można ją budować.
         </p>
 
-        <Link
-          href="/ojcostwo/ojciec-po-rozwodzie"
-          className="text-black underline"
-        >
-          Czytaj dalej →
-        </Link>
+        {/* PRAWO */}
 
-      </section>
+        <section className="mb-20">
 
-      <section>
+          <h2 className="text-2xl font-semibold mb-6">
+            Prawo i formalności
+          </h2>
 
-        <h2 className="text-xl font-semibold mb-4">
-          Możliwe wsparcie
-        </h2>
+          <div className="grid md:grid-cols-2 gap-6">
 
-        <div className="space-y-2">
+            <Link
+              href="/ojcostwo/prawa-ojca"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Prawa ojca
+              </h3>
 
-          <Link href="/kategoria/prawo-rodzinne" className="link-subtle">
-            Prawo rodzinne
-          </Link>
+              <p className="text-zinc-400 text-sm">
+                Podstawowe prawa ojca po rozstaniu lub rozwodzie.
+              </p>
+            </Link>
 
-          <Link href="/kategoria/mediacje" className="block link-subtle">
-            Mediacje
-          </Link>
+            <Link
+              href="/ojcostwo/opieka-naprzemienna"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Opieka naprzemienna
+              </h3>
 
-          <Link href="/kategoria/psycholog" className="block link-subtle">
-            Psycholog rodzinny
-          </Link>
+              <p className="text-zinc-400 text-sm">
+                Kiedy sąd może ją przyznać i jakie są warunki.
+              </p>
+            </Link>
 
-        </div>
+            <Link
+              href="/ojcostwo/alimenty"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Alimenty
+              </h3>
 
-      </section>
+              <p className="text-zinc-400 text-sm">
+                Fakty, które warto znać.
+              </p>
+            </Link>
 
-    </WorldLayout>
-  );
+            <Link
+              href="/ojcostwo/kontakty-z-dzieckiem"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Kontakty z dzieckiem
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Jak je ustalić i utrzymać.
+              </p>
+            </Link>
+
+          </div>
+
+        </section>
+
+        {/* RELACJA */}
+
+        <section className="mb-20">
+
+          <h2 className="text-2xl font-semibold mb-6">
+            Relacja z dzieckiem
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            <Link
+              href="/ojcostwo/ojciec-po-rozwodzie"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Ojciec po rozwodzie
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Jak nie stracić relacji z dzieckiem.
+              </p>
+            </Link>
+
+            <Link
+              href="/ojcostwo/odbudowa-relacji"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Odbudowa relacji
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Jak spokojnie odbudować kontakt.
+              </p>
+            </Link>
+
+            <Link
+              href="/ojcostwo/relacja-z-nastolatkiem"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Relacja z nastolatkiem
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Jak budować zaufanie.
+              </p>
+            </Link>
+
+            <Link
+              href="/ojcostwo/co-oddala-relacje"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Co oddala relację
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Zachowania które niszczą kontakt.
+              </p>
+            </Link>
+
+          </div>
+
+        </section>
+
+        {/* NARZĘDZIA */}
+
+        <section>
+
+          <h2 className="text-2xl font-semibold mb-6">
+            Narzędzia dla ojców
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+
+            <Link
+              href="/ojcostwo/rytual"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Rytuał 15 minut
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Prosty sposób na budowanie relacji.
+              </p>
+            </Link>
+
+            <Link
+              href="/ojcostwo/zabawy"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Generator zabaw
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Pomysły na wspólny czas.
+              </p>
+            </Link>
+
+            <Link
+              href="/ojcostwo/plan"
+              className="border border-neutral-800 rounded-xl p-6 hover:shadow transition"
+            >
+              <h3 className="font-semibold mb-2">
+                Plan 3h z dzieckiem
+              </h3>
+
+              <p className="text-zinc-400 text-sm">
+                Prosty plan wspólnego dnia.
+              </p>
+            </Link>
+<Link
+href="/ojcostwo/faq"
+className="border border-neutral-800 rounded-xl p-6 hover:shadow"
+>
+
+<h3 className="font-semibold mb-2">
+Najczęstsze pytania ojców
+</h3>
+
+<p className="text-zinc-400 text-sm">
+Odpowiedzi na pytania które pojawiają się najczęściej.
+</p>
+
+</Link>
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  )
+
 }

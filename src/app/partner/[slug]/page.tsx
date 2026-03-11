@@ -1,142 +1,82 @@
-import { partners } from "@/data/partners"
+import { proposals } from "@/data/proposals"
+import { notFound } from "next/navigation"
 import Link from "next/link"
 
-export default function PartnerProfilePage({params}:{params:{slug:string}}){
+export default function PartnerPage({ params }) {
 
-const partner=partners.find((p)=>p.slug===params.slug)
+const partner = proposals.find(
+p => p.slug === params.slug
+)
 
-if(!partner) return null
+if(!partner) return notFound()
 
-return(
+return (
 
 <main className="bg-white min-h-screen">
 
 <div className="max-w-4xl mx-auto px-6 py-24">
 
-{/* HEADER */}
+<h1 className="text-4xl font-semibold mb-4">
+{partner.name}
+</h1>
 
-<div className="flex gap-6 mb-10">
+<p className="text-gray-600 mb-10">
+{partner.description}
+</p>
 
-{partner.photo &&(
+{/* OBRAZ */}
+
+{partner.image && (
 
 <img
-src={partner.photo}
-className="w-28 h-28 rounded-lg object-cover"
+src={partner.image}
+alt={partner.name}
+className="rounded-xl mb-10"
 />
 
 )}
 
-<div>
+{/* INFORMACJE */}
 
-<h1 className="text-3xl font-semibold text-black mb-2">
-{partner.name}
-</h1>
+<div className="border rounded-xl p-6 mb-10">
 
-<p className="text-black text-sm">
-{partner.category} – {partner.city}
+<p className="text-gray-700 mb-2">
+Miasto: <span className="font-semibold">{partner.city}</span>
 </p>
 
-{partner.verified &&(
-
-<span className="inline-block text-xs bg-green-100 text-green-800 px-2 py-1 rounded mt-2">
-Zweryfikowany specjalista
-</span>
-
-)}
-
-</div>
-
-</div>
-
-{/* OPIS */}
-
-<p className="text-black mb-10">
-{partner.description}
-</p>
-
-{/* DOŚWIADCZENIE */}
-
-{partner.experience &&(
-
-<div className="mb-10">
-
-<h2 className="text-xl font-semibold text-black mb-3">
-Doświadczenie
-</h2>
-
-<p className="text-black">
-{partner.experience}
+<p className="text-gray-700">
+Kategoria: <span className="font-semibold">{partner.category}</span>
 </p>
 
 </div>
 
-)}
+{/* LINK */}
 
-{/* SPECJALIZACJE */}
-
-{partner.specialties &&(
-
-<div className="mb-10">
-
-<h2 className="text-xl font-semibold text-black mb-3">
-Specjalizacje
-</h2>
-
-<div className="flex flex-wrap gap-2">
-
-{partner.specialties.map((s)=>(
-
-<span
-key={s}
-className="border px-3 py-1 rounded text-sm"
->
-
-{s}
-
-</span>
-
-))}
-
-</div>
-
-</div>
-
-)}
-
-{/* CTA */}
-
-{partner.website &&(
+{partner.link && (
 
 <a
-href={partner.website}
+href={partner.link}
 target="_blank"
-className="inline-block bg-black text-white px-6 py-3 rounded-lg mb-12"
+rel="noopener noreferrer"
+className="inline-block bg-black text-white px-6 py-3 rounded-lg"
 >
 
-Przejdź do strony
+Przejdź do strony partnera
 
 </a>
 
 )}
 
-{/* NAVIMIND */}
+{/* POWRÓT */}
 
-<div className="border rounded-xl p-6">
-
-<h2 className="text-xl font-semibold text-black mb-3">
-Nie jesteś pewien czy to właściwa pomoc?
-</h2>
-
-<p className="text-black mb-4">
-Możesz najpierw porozmawiać i uporządkować sytuację.
-</p>
+<div className="mt-16">
 
 <Link
-href="/navimind"
-className="border px-4 py-2 rounded"
+href="/propozycje"
+className="text-gray-600 underline"
 >
 
-Rozmowa w NaviMind
+← Wróć do propozycji
 
 </Link>
 

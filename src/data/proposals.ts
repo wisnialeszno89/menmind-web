@@ -1,88 +1,48 @@
-export const proposalSections = [
+export const proposals = [
 
 {
-slug: "sport",
-name: "Sport i ciało",
-categories: [
+slug: "klub-bokserski-warszawa",
+name: "Klub Bokserski Warszawa",
+category: "sztuki-walki",
+section: "sport",
+city: "warszawa",
 
-{ slug: "sztuki-walki", name: "Sztuki walki" },
-{ slug: "silownia", name: "Siłownia" },
-{ slug: "bieganie", name: "Bieganie" },
-{ slug: "wspinaczka", name: "Wspinaczka" },
-{ slug: "crossfit", name: "Crossfit" },
-{ slug: "sporty-zespolowe", name: "Sporty zespołowe" }
+description:
+"Treningi boksu dla początkujących i zaawansowanych.",
 
-]
+link: "https://example.pl",
+
+image: "/proposals/boks.jpg"
 },
 
 {
-slug: "przygoda",
-name: "Przygoda",
-categories: [
+slug: "warsztaty-meskie-droga-wojownika",
+name: "Warsztaty Męskie – Droga Wojownika",
+category: "warsztaty-meskie",
+section: "rozwoj",
+city: "krakow",
 
-{ slug: "survival", name: "Survival" },
-{ slug: "trekking", name: "Trekking" },
-{ slug: "wyprawy-gorskie", name: "Wyprawy górskie" },
-{ slug: "offroad", name: "Offroad" },
-{ slug: "zeglarstwo", name: "Żeglarstwo" },
-{ slug: "strzelectwo", name: "Strzelectwo" }
+description:
+"Warsztaty pracy z emocjami i kierunkiem życia.",
 
-]
+link: "https://example.pl",
+
+image: "/proposals/warsztaty.jpg"
 },
 
 {
-slug: "rozwoj",
-name: "Rozwój",
-categories: [
+slug: "szkola-survivalu-bieszczady",
+name: "Szkoła Survivalu – Bieszczady",
+category: "survival",
+section: "przygoda",
+city: "rzeszow",
 
-{ slug: "warsztaty-meskie", name: "Warsztaty męskie" },
-{ slug: "coaching", name: "Coaching" },
-{ slug: "rozwoj-osobisty", name: "Rozwój osobisty" },
-{ slug: "szkolenia-biznesowe", name: "Szkolenia biznesowe" }
+description:
+"Weekendowe szkolenia survivalowe w górach.",
 
-]
-},
+link: "https://example.pl",
 
-{
-slug: "spolecznosc",
-name: "Społeczność",
-categories: [
-
-{ slug: "spotkania-mezczyzn", name: "Spotkania mężczyzn" },
-{ slug: "kregi-meskie", name: "Kręgi męskie" },
-{ slug: "networking", name: "Networking" },
-{ slug: "wolontariat", name: "Wolontariat" }
-
-]
-},
-
-{
-slug: "hobby",
-name: "Hobby",
-categories: [
-
-{ slug: "fotografia", name: "Fotografia" },
-{ slug: "majsterkowanie", name: "Majsterkowanie" },
-{ slug: "kolekcjonerstwo", name: "Kolekcjonerstwo" },
-{ slug: "modelarstwo", name: "Modelarstwo" },
-{ slug: "muzyka", name: "Muzyka" }
-
-]
-},
-
-{
-slug: "zdrowie",
-name: "Zdrowie i regeneracja",
-categories: [
-
-{ slug: "medytacja", name: "Medytacja" },
-{ slug: "oddech", name: "Praca z oddechem" },
-{ slug: "sauna", name: "Sauna" },
-{ slug: "terapia-zimnem", name: "Terapia zimnem" },
-{ slug: "masaze", name: "Masaże" },
-{ slug: "fizjoterapia", name: "Fizjoterapia" }
-
-]
+image: "/proposals/survival.jpg"
 }
 
 ]

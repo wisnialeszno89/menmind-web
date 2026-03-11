@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { trackEvent } from "@/lib/track"
 
 type Props = {
@@ -75,18 +76,21 @@ export default function PartnerCard({
         )}
 
         {isTop && (
-<span className="text-xs bg-black text-white px-2 py-1 rounded">
-Najczęściej wybierany
-</span>
-)}
+          <span className="text-xs bg-black text-white px-2 py-1 rounded">
+            Najczęściej wybierany
+          </span>
+        )}
 
       </div>
 
       {/* NAZWA */}
-        
-      <h3 className="text-xl font-semibold mb-2 text-gray-900">
+
+      <Link
+        href={`/partner/${id}`}
+        className="text-xl font-semibold mb-2 text-gray-900 block hover:underline"
+      >
         {name}
-      </h3>
+      </Link>
 
       {/* OPIS */}
 
@@ -94,7 +98,7 @@ Najczęściej wybierany
         {description}
       </p>
 
-      {/* LINK */}
+      {/* LINK ZEWNĘTRZNY */}
 
       {website && (
 
@@ -105,9 +109,7 @@ Najczęściej wybierany
           onClick={handleClick}
           className="text-blue-600 hover:underline font-medium"
         >
-
           Przejdź do strony →
-
         </a>
 
       )}

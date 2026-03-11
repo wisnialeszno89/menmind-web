@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { proposalSections } from "@/data/proposals"
+import { proposalSections } from "@/data/proposalSections"
 
 export default function ProposalsGrid() {
 

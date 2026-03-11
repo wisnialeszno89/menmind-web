@@ -63,7 +63,8 @@ export default function ZabawyPage() {
 
         <button
           onClick={generate}
-          className="mt-8 rounded-xl bg-accent px-6 py-3 text-black font-medium"
+          className="mt-8 rounded-xl bg-[#111827]
+text-zinc-100"
         >
           Losuj pomysł
         </button>

@@ -37,7 +37,7 @@ export default function PlanPage() {
               <div
                 className={`h-5 w-5 rounded border ${
                   checked.includes(task)
-                    ? "bg-accent border-accent"
+                    ? "bg-[#111827]"
                     : "border-borderSoft"
                 }`}
               />
