@@ -5,8 +5,8 @@ export default function WorldPreview() {
   return (
     <section className="max-w-6xl mx-auto px-6 py-24">
       <h2 className="text-3xl font-semibold text-black mb-12">
-        Od czego chcesz zacząć?
-      </h2>
+Wybierz obszar który jest Ci teraz najbliższy
+</h2>
 
       <div className="grid md:grid-cols-2 gap-8">
         {worlds.map((world) => (

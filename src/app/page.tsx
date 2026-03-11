@@ -1,5 +1,5 @@
-import Link from "next/link"
 import TrustSection from "@/components/TrustSection"
+import WorldPreview from "@/components/WorldPreview"
 import QuickScan from "@/components/QuickScan"
 
 export default function HomePage() {
@@ -16,9 +16,10 @@ return (
 MenMind
 </h1>
 
-<p className="text-black max-w-2xl mb-12">
-Przestrzeń dla mężczyzn którzy chcą odzyskać kierunek,
-spokój lub zbudować coś więcej.
+<p className="text-black max-w-2xl mb-16">
+Przestrzeń dla mężczyzn.
+Miejsce gdzie możesz uporządkować sytuację,
+odbudować energię i znaleźć kierunek.
 </p>
 
 {/* QUICK SCAN */}
@@ -27,73 +28,7 @@ spokój lub zbudować coś więcej.
 
 {/* ŚWIATY */}
 
-<h2 className="text-3xl font-semibold text-black mb-8">
-Od czego chcesz zacząć?
-</h2>
-
-<div className="grid md:grid-cols-2 gap-8 mb-24">
-
-<Link
-href="/kryzys"
-className="border rounded-xl p-10 hover:shadow transition"
->
-
-<h3 className="text-2xl font-semibold text-black mb-2">
-Kryzys
-</h3>
-
-<p className="text-gray-600">
-Gdy życie zaczyna się komplikować.
-</p>
-
-</Link>
-
-<Link
-href="/odbudowa"
-className="border rounded-xl p-10 hover:shadow transition"
->
-
-<h3 className="text-2xl font-semibold text-black mb-2">
-Odbudowa
-</h3>
-
-<p className="text-gray-600">
-Powrót do energii, struktury i stabilności.
-</p>
-
-</Link>
-
-<Link
-href="/wzrost"
-className="border rounded-xl p-10 hover:shadow transition"
->
-
-<h3 className="text-2xl font-semibold text-black mb-2">
-Wzrost
-</h3>
-
-<p className="text-gray-600">
-Rozwój osobisty, kierunek życia i możliwości.
-</p>
-
-</Link>
-
-<Link
-href="/ojcostwo"
-className="border rounded-xl p-10 hover:shadow transition"
->
-
-<h3 className="text-2xl font-semibold text-black mb-2">
-Ojcostwo
-</h3>
-
-<p className="text-gray-600">
-Relacja z dzieckiem i rola ojca.
-</p>
-
-</Link>
-
-</div>
+<WorldPreview/>
 
 {/* TRUST */}
 
