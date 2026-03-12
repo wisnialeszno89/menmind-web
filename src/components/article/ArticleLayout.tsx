@@ -21,22 +21,12 @@ return(
 </h1>
 
 {intro && (
-
 <p className="text-lg text-neutral-600 mb-10 leading-relaxed">
 {intro}
 </p>
-
 )}
 
-<div className="
-prose
-prose-neutral
-max-w-none
-text-base
-md:text-lg
-leading-relaxed
-space-y-6
-">
+<div className="prose prose-neutral max-w-none text-base md:text-lg leading-relaxed space-y-6">
 
 {children}
 

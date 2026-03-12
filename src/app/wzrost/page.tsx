@@ -1,7 +1,6 @@
 import Container from "@/components/ui/Container"
 import CategoryIntro from "@/components/ui/CategoryIntro"
 import ArticleGrid from "@/components/ui/ArticleGrid"
-
 import { getWorldArticles } from "@/lib/getWorldArticles"
 
 export default function Page(){
