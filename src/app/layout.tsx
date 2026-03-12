@@ -2,27 +2,30 @@ import "./globals.css"
 
 import Navbar from "@/components/ui/Navbar"
 import Footer from "@/components/ui/Footer"
+import ChatBubble from "@/components/ui/ChatBubble"
 
 export default function RootLayout({ children }) {
 
-  return (
+return(
 
-    <html lang="pl">
+<html lang="pl">
 
-      <body className="min-h-screen flex flex-col">
+<body className="min-h-screen flex flex-col">
 
-        <Navbar />
+<Navbar />
 
-        <main className="flex-1">
-          {children}
-        </main>
+<main className="flex-1">
+{children}
+</main>
 
-        <Footer />
+<Footer />
 
-      </body>
+<ChatBubble />
 
-    </html>
+</body>
 
-  )
+</html>
+
+)
 
 }
