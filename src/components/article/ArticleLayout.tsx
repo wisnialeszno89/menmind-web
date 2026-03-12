@@ -3,17 +3,16 @@ import Link from "next/link"
 type Props = {
   title: string
   intro?: string
-  children: React.ReactNode
   category?: string
+  children: React.ReactNode
 }
 
 export default function ArticleLayout({
   title,
   intro,
-  children,
-  category
+  category,
+  children
 }: Props) {
-
   return (
     <main className="bg-white min-h-screen">
 
@@ -22,7 +21,7 @@ export default function ArticleLayout({
         {category && (
           <div className="text-sm text-neutral-500 mb-6">
             <Link href="/">MenMind</Link>
-            {" / "}
+            <span className="mx-2">/</span>
             <span>{category}</span>
           </div>
         )}
@@ -32,28 +31,25 @@ export default function ArticleLayout({
         </h1>
 
         {intro && (
-          <p className="text-lg text-neutral-700 mb-12 leading-relaxed">
+          <p className="text-lg text-neutral-700 leading-relaxed mb-12">
             {intro}
           </p>
         )}
 
-        <div className="prose prose-neutral max-w-none">
+        <article className="prose prose-neutral max-w-none">
           {children}
-        </div>
+        </article>
 
-        <div className="border-t mt-20 pt-10">
-
+        <div className="border-t mt-20 pt-8">
           <Link
             href="/"
             className="text-sm text-neutral-500 hover:text-black"
           >
             ← powrót
           </Link>
-
         </div>
 
       </div>
-
     </main>
   )
 }
