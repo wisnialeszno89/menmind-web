@@ -1,19 +1,20 @@
+import { notFound } from "next/navigation"
 import ArticleLayout from "@/components/article/ArticleLayout"
 
-export default function Page({ params }: { params: { slug: string } }) {
+type Params = {
+  params: { slug: string }
+}
 
-const title = params.slug
-.replaceAll("-", " ")
-.replace(/\b\w/g, l => l.toUpperCase())
+export default function Page({ params }: Params) {
 
 return (
 
 <ArticleLayout
-title={title}
+title={params.slug.replaceAll("-"," ")}
 intro=""
 >
 
-<p>Treść artykułu znajduje się w jego pliku.</p>
+<p>Treść artykułu.</p>
 
 </ArticleLayout>
 
