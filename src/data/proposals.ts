@@ -1,48 +1,16 @@
-export const proposals = [
+export type Proposal = {
 
-{
-slug: "klub-bokserski-warszawa",
-name: "Klub Bokserski Warszawa",
-category: "sztuki-walki",
-section: "sport",
-city: "warszawa",
+slug: string
+name: string
 
-description:
-"Treningi boksu dla początkujących i zaawansowanych.",
+category: string
+section: string
 
-link: "https://example.pl",
+city: string
 
-image: "/proposals/boks.jpg"
-},
+description: string
 
-{
-slug: "warsztaty-meskie-droga-wojownika",
-name: "Warsztaty Męskie – Droga Wojownika",
-category: "warsztaty-meskie",
-section: "rozwoj",
-city: "krakow",
+link: string
+image?: string
 
-description:
-"Warsztaty pracy z emocjami i kierunkiem życia.",
-
-link: "https://example.pl",
-
-image: "/proposals/warsztaty.jpg"
-},
-
-{
-slug: "szkola-survivalu-bieszczady",
-name: "Szkoła Survivalu – Bieszczady",
-category: "survival",
-section: "przygoda",
-city: "rzeszow",
-
-description:
-"Weekendowe szkolenia survivalowe w górach.",
-
-link: "https://example.pl",
-
-image: "/proposals/survival.jpg"
 }
-
-]

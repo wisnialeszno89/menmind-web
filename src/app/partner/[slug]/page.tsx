@@ -1,88 +1,58 @@
-import { proposals } from "@/data/proposals"
-import { notFound } from "next/navigation"
-import Link from "next/link"
+import Container from "@/components/ui/Container"
 
-export default function PartnerPage({ params }) {
+import { partners } from "@/data/partners"
 
-const partner = proposals.find(
+export default function Page({ params }) {
+
+const partner = partners.find(
 p => p.slug === params.slug
 )
 
-if(!partner) return notFound()
+if(!partner){
 
-return (
+return(
 
-<main className="bg-white min-h-screen">
+<main className="py-24">
+<Container>
+Partner nie istnieje
+</Container>
+</main>
 
-<div className="max-w-4xl mx-auto px-6 py-24">
+)
 
-<h1 className="text-4xl font-semibold mb-4">
+}
+
+return(
+
+<main className="py-16 md:py-24">
+
+<Container>
+
+<h1 className="text-3xl font-semibold mb-6">
 {partner.name}
 </h1>
 
-<p className="text-gray-600 mb-10">
+<p className="text-neutral-700 mb-6">
 {partner.description}
 </p>
 
-{/* OBRAZ */}
-
-{partner.image && (
-
-<img
-src={partner.image}
-alt={partner.name}
-className="rounded-xl mb-10"
-/>
-
-)}
-
-{/* INFORMACJE */}
-
-<div className="border rounded-xl p-6 mb-10">
-
-<p className="text-gray-700 mb-2">
-Miasto: <span className="font-semibold">{partner.city}</span>
+<p className="text-sm text-neutral-500 mb-4">
+Miasto: {partner.city}
 </p>
 
-<p className="text-gray-700">
-Kategoria: <span className="font-semibold">{partner.category}</span>
-</p>
-
-</div>
-
-{/* LINK */}
-
-{partner.link && (
+{partner.website && (
 
 <a
-href={partner.link}
+href={partner.website}
 target="_blank"
-rel="noopener noreferrer"
-className="inline-block bg-black text-white px-6 py-3 rounded-lg"
+className="underline text-sm"
 >
-
-Przejdź do strony partnera
-
+Strona partnera
 </a>
 
 )}
 
-{/* POWRÓT */}
-
-<div className="mt-16">
-
-<Link
-href="/propozycje"
-className="text-gray-600 underline"
->
-
-← Wróć do propozycji
-
-</Link>
-
-</div>
-
-</div>
+</Container>
 
 </main>
 

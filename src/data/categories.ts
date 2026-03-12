@@ -1,68 +1,81 @@
-export const categories = [
+export type MarketCategory = {
+slug: string
+name: string
+description: string
+}
+
+export const marketCategories: MarketCategory[] = [
 
 {
-slug: "psycholog",
-name: "Psycholog"
+slug:"psycholog",
+name:"Psycholog",
+description:"Wsparcie psychologiczne"
 },
 
 {
-slug: "psychoterapia",
-name: "Psychoterapia"
+slug:"psychoterapia",
+name:"Psychoterapia",
+description:"Długoterminowa terapia"
 },
 
 {
-slug: "mediator",
-name: "Mediator rodzinny"
+slug:"mediator",
+name:"Mediator rodzinny",
+description:"Pomoc w konfliktach i sprawach rodzinnych"
 },
 
 {
-slug: "prawnik",
-name: "Prawnik rodzinny"
+slug:"prawnik",
+name:"Prawnik rodzinny",
+description:"Rozwody, opieka nad dzieckiem, alimenty"
 },
 
 {
-slug: "coach",
-name: "Coach"
+slug:"coach",
+name:"Coaching",
+description:"Rozwój osobisty i mentoring"
 },
 
 {
-slug: "terapia",
-name: "Terapia dla mężczyzn"
+slug:"trening",
+name:"Sport i trening",
+description:"Aktywność fizyczna i zdrowie"
 },
 
 {
-slug: "trening",
-name: "Trening i fitness"
+slug:"zdrowie",
+name:"Zdrowie mężczyzny",
+description:"Lekarze, fizjoterapia, regeneracja"
 },
 
 {
-slug: "zdrowie",
-name: "Zdrowie mężczyzny"
+slug:"rozwoj",
+name:"Rozwój osobisty",
+description:"Warsztaty, szkolenia i rozwój"
 },
 
 {
-slug: "rozwoj",
-name: "Rozwój osobisty"
+slug:"kariera",
+name:"Kariera i biznes",
+description:"Mentorzy, doradcy zawodowi"
 },
 
 {
-slug: "kariera",
-name: "Kariera i biznes"
+slug:"wyjazdy",
+name:"Wyjazdy rozwojowe",
+description:"Wyprawy, retreaty i obozy"
 },
 
 {
-slug: "wyjazdy",
-name: "Wyjazdy rozwojowe"
+slug:"warsztaty",
+name:"Warsztaty dla mężczyzn",
+description:"Praca nad emocjami i kierunkiem życia"
 },
 
 {
-slug: "warsztaty",
-name: "Warsztaty dla mężczyzn"
-},
-
-{
-slug: "ojcostwo",
-name: "Wsparcie dla ojców"
+slug:"ojcostwo",
+name:"Wsparcie dla ojców",
+description:"Pomoc prawna i psychologiczna"
 }
 
 ]

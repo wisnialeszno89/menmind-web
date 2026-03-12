@@ -1,55 +1,46 @@
-import Link from "next/link"
+import Container from "../ui/Container"
+import ToolsBox from "../ui/ToolsBox"
+import NextStep from "../ui/NextStep"
 
 type Props = {
   title: string
-  intro?: string
-  category?: string
+  intro: string
   children: React.ReactNode
 }
 
-export default function ArticleLayout({
-  title,
-  intro,
-  category,
-  children
-}: Props) {
+export default function ArticleLayout({ title, intro, children }: Props) {
+
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-white py-16 md:py-24">
 
-      <div className="max-w-3xl mx-auto px-6 py-24">
+      <Container>
 
-        {category && (
-          <div className="text-sm text-neutral-500 mb-6">
-            <Link href="/">MenMind</Link>
-            <span className="mx-2">/</span>
-            <span>{category}</span>
-          </div>
-        )}
+        <div className="max-w-3xl mx-auto">
 
-        <h1 className="text-4xl font-semibold text-black mb-6">
-          {title}
-        </h1>
+          <h1 className="text-3xl md:text-4xl font-semibold mb-6">
+            {title}
+          </h1>
 
-        {intro && (
-          <p className="text-lg text-neutral-700 leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-neutral-700 mb-10 leading-relaxed">
             {intro}
           </p>
-        )}
 
-        <article className="prose prose-neutral max-w-none">
-          {children}
-        </article>
+          <article className="prose prose-neutral max-w-none text-base md:text-lg">
+            {children}
+          </article>
 
-        <div className="border-t mt-20 pt-8">
-          <Link
-            href="/"
-            className="text-sm text-neutral-500 hover:text-black"
-          >
-            ← powrót
-          </Link>
+          <ToolsBox />
+
+          <NextStep
+            items={[
+              { title: "Przejdź do etapu odbudowy", href: "/odbudowa" }
+            ]}
+          />
+
         </div>
 
-      </div>
+      </Container>
+
     </main>
   )
 }

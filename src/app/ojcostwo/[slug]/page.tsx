@@ -13,10 +13,9 @@ export default function Page({ params }: { params: { slug: string } }) {
     <ArticleLayout
       title={article.title}
       intro={article.description}
-      category="Ojcostwo"
     >
 
-      <p>{article.content}</p>
+      <p>Treść artykułu będzie tutaj.</p>
 
     </ArticleLayout>
   )

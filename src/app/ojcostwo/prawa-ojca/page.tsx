@@ -1,57 +1,74 @@
-import Link from "next/link"
-import ArticleLayout from "@/components/ArticleLayout"
+import ArticleLayout from "@/components/article/ArticleLayout"
+import NextStep from "@/components/ui/NextStep"
+import ToolsBox from "@/components/ui/ToolsBox"
 
-export const metadata = {
-title: "Prawa ojca – podstawy | MenMind",
-description:
-"Jakie prawa ma ojciec po rozstaniu lub rozwodzie."
-}
+export default function Page() {
+  return (
+    <ArticleLayout
+      title="Prawa ojca"
+      intro="Ojciec ma takie same prawa rodzicielskie jak matka. W praktyce wielu mężczyzn nie zna jednak swoich możliwości działania ani zasad, które chronią relację z dzieckiem."
+    >
 
-export default function PrawaOjcaPage(){
+      <h2>Równość praw rodzicielskich</h2>
 
-return(
+      <p>
+        Z punktu widzenia prawa oboje rodzice są równi. Oznacza to,
+        że ojciec ma prawo uczestniczyć w wychowaniu dziecka,
+        podejmować decyzje dotyczące jego życia oraz utrzymywać
+        regularny kontakt.
+      </p>
 
-<ArticleLayout
-title="Prawa ojca – podstawy"
-intro="Znajomość swoich praw daje spokój i większą kontrolę nad sytuacją."
->
+      <p>
+        Problem pojawia się często dopiero w sytuacji konfliktu
+        między rodzicami. Wtedy wiele spraw zaczyna być
+        interpretowanych przez emocje zamiast przez fakty.
+      </p>
 
-<section>
+      <h2>Najważniejsze prawa ojca</h2>
 
-<h2 className="text-2xl font-semibold mb-4">
-Kontakty z dzieckiem
-</h2>
+      <ul>
+        <li>prawo do kontaktu z dzieckiem</li>
+        <li>prawo do współdecydowania o wychowaniu</li>
+        <li>prawo do informacji o zdrowiu i edukacji dziecka</li>
+        <li>prawo do budowania relacji emocjonalnej</li>
+      </ul>
 
-<p className="text-zinc-400">
-Ojciec ma prawo do kontaktu z dzieckiem nawet jeśli
-nie mieszka z nim na co dzień.
-</p>
+      <h2>Dlaczego wielu ojców czuje się bezsilnych</h2>
 
-</section>
+      <p>
+        Najczęściej nie wynika to z braku praw, lecz z braku wiedzy
+        i wsparcia. Konflikt między rodzicami może powodować
+        poczucie chaosu, a decyzje podejmowane w emocjach
+        często pogarszają sytuację.
+      </p>
 
-<section>
+      <h2>Co pomaga utrzymać relację</h2>
 
-<h2 className="text-2xl font-semibold mb-4">
-Opieka naprzemienna
-</h2>
+      <ul>
+        <li>spokojna komunikacja</li>
+        <li>konsekwencja w utrzymywaniu kontaktu</li>
+        <li>unikanie konfliktów przy dziecku</li>
+        <li>skupienie się na relacji, a nie sporze</li>
+      </ul>
 
-<p className="text-zinc-400">
-W wielu sytuacjach możliwe jest ustalenie opieki naprzemiennej.
-</p>
+      <h2>Najczęstsze błędy</h2>
 
-<Link
-href="/ojcostwo/opieka-naprzemienna"
-className="text-blue-500 underline hover:text-blue-400 mt-3 block"
->
+      <ul>
+        <li>rezygnacja z kontaktu z powodu frustracji</li>
+        <li>eskalowanie konfliktu</li>
+        <li>próba wciągania dziecka w konflikt dorosłych</li>
+      </ul>
 
-Przeczytaj więcej →
+      <ToolsBox />
 
-</Link>
+      <NextStep
+        items={[
+          { title: "Kontakty z dzieckiem", href: "/ojcostwo/kontakty-z-dzieckiem" },
+          { title: "Odbudowa relacji", href: "/ojcostwo/odbudowa-relacji" },
+          { title: "Relacja z nastolatkiem", href: "/ojcostwo/relacja-z-nastolatkiem" }
+        ]}
+      />
 
-</section>
-
-</ArticleLayout>
-
-)
-
+    </ArticleLayout>
+  )
 }

@@ -46,7 +46,7 @@ slug: "mediacje-nowak",
 name: "Mediacje Rodzinne Nowak",
 description: "Mediacje rodzinne i sprawy opieki",
 city: "warszawa",
-category: "mediacje",
+category: "mediator",
 views: 45
 }
 

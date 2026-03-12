@@ -1,41 +1,23 @@
-import Header from "../components/layout/Header"
-import Footer from "../components/layout/Footer"
-import NavimindCornerButton from "../components/NavimindCornerButton"
-import UserStateBar from "@/components/UserStateBar"
+import Navbar from "@/components/ui/Navbar"
+import Footer from "@/components/ui/Footer"
 
-import "./globals.css"
+export default function RootLayout({ children }) {
 
-export const metadata = {
-  title: "MenMind",
-  description: "Mapa wsparcia dla mężczyzn",
-}
+return (
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+<html lang="pl">
 
-  return (
+<body>
 
-    <html lang="pl">
+<Navbar />
+<Footer />
 
-      <body className="bg-gray-50">
+{children}
 
-        <Header />
+</body>
 
-        <UserStateBar />
+</html>
 
-        {children}
-
-        <Footer />
-
-        <NavimindCornerButton />
-
-      </body>
-
-    </html>
-
-  )
+)
 
 }

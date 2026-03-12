@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { cities } from "@/data/cities"
-import { categories } from "@/data/categories"
+import { marketCategories as categories } from "@/data/marketCategories"
 
 export async function generateStaticParams(){
 

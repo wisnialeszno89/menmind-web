@@ -4,14 +4,15 @@ type Props = {
 }
 
 export default function SectionHero({ title, description }: Props) {
-  return (
-    <div className="max-w-2xl mb-16">
 
-      <h1 className="text-4xl font-semibold mb-6 text-black">
+  return (
+    <div className="max-w-2xl mb-14">
+
+      <h1 className="text-3xl md:text-4xl font-semibold mb-5">
         {title}
       </h1>
 
-      <p className="text-neutral-700 text-lg leading-relaxed">
+      <p className="text-base md:text-lg text-neutral-700 leading-relaxed">
         {description}
       </p>
 

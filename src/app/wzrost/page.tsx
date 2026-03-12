@@ -1,78 +1,31 @@
-import Link from "next/link";
+import Container from "@/components/ui/Container"
+import CategoryIntro from "@/components/ui/CategoryIntro"
+import ArticleGrid from "@/components/ui/ArticleGrid"
 
-export const metadata = {
-  title: "Wzrost | MenMind",
-  description:
-    "Świadome rozszerzanie wpływu, kierunku i odpowiedzialności.",
-};
+import { wzrost } from "@/content/wzrost"
 
-export default function WzrostPage() {
-  return (
-    <main className="bg-gray-100 min-h-screen text-gray-800">
-      <div className="max-w-4xl mx-auto px-6 py-24">
+export default function Page(){
 
-        <h1 className="text-5xl md:text-6xl font-semibold mb-6 text-gray-900">
-          Wzrost
-        </h1>
+return(
 
-        <div className="h-px w-16 bg-blue-600 mb-12" />
+<main className="py-16 md:py-24">
 
-        <p className="text-lg text-gray-700 mb-16 max-w-2xl leading-8">
-          Gdy sytuacja jest stabilna, pojawia się pytanie:
-          co dalej? Wzrost to świadome budowanie kierunku.
-        </p>
+<Container>
 
-        <div className="space-y-16 mb-24">
+<CategoryIntro
+title="Wzrost"
+description="Moment gdy zaczynasz świadomie budować silniejsze życie."
+/>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
-              Kierunek
-            </h2>
+<ArticleGrid
+articles={wzrost}
+base="wzrost"
+/>
 
-            <p className="text-gray-700 leading-8">
-              Wzrost zaczyna się od jasności celu.
-            </p>
-          </section>
+</Container>
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
-              Odpowiedzialność
-            </h2>
+</main>
 
-            <p className="text-gray-700 leading-8">
-              Odpowiedzialność daje sprawczość.
-            </p>
-          </section>
+)
 
-          <section>
-            <h2 className="text-2xl font-semibold mb-4 text-gray-900">
-              Wpływ
-            </h2>
-
-            <p className="text-gray-700 leading-8">
-              Decyzje zaczynają mieć realny wpływ
-              na Twoje życie i otoczenie.
-            </p>
-          </section>
-
-        </div>
-
-        <section className="border-t border-gray-300 pt-16">
-
-          <h2 className="text-2xl font-semibold mb-6 text-gray-900">
-            Zobacz dostępne możliwości rozwoju
-          </h2>
-
-          <Link
-            href="/propozycje"
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg"
-          >
-            Zobacz propozycje
-          </Link>
-
-        </section>
-
-      </div>
-    </main>
-  );
 }

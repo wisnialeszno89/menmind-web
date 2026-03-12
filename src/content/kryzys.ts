@@ -1,43 +1,30 @@
-export const kryzysFAQ = [
-  {
-    question: "Czy szukanie pomocy oznacza, że sobie nie radzę?",
-    answer:
-      "Nie. Oznacza, że chcesz zatrzymać eskalację problemu. Wiele kryzysów pogłębia się właśnie przez zwlekanie."
-  },
-  {
-    question: "Czy mężczyźni przechodzą kryzys inaczej?",
-    answer:
-      "Często reagują zamknięciem, impulsywnością lub nadmiernym działaniem. To nie słabość – to mechanizm obronny."
-  },
-  {
-    question: "Skąd mam wiedzieć, że to coś poważnego?",
-    answer:
-      "Jeśli napięcie trwa tygodniami, wpływa na sen, relacje i decyzje – warto skonsultować się ze specjalistą."
-  },
-  {
-    question: "Czy muszę od razu iść na terapię?",
-    answer:
-      "Nie zawsze. Czasem wystarczy jedna rozmowa konsultacyjna, by uporządkować sytuację."
-  }
-];
+export const kryzys = [
 
-export const kryzysArticles = [
-  {
-    title: "Dlaczego mężczyźni zwlekają z szukaniem pomocy?",
-    excerpt:
-      "Mechanizmy, które każą radzić sobie samemu — i moment, w którym przestają działać.",
-    slug: "dlaczego-mezczyzni-zwlekaja"
-  },
-  {
-    title: "Kryzys emocjonalny a załamanie – czym się różnią?",
-    excerpt:
-      "Nie każde załamanie jest depresją, ale każde wymaga uważności.",
-    slug: "kryzys-a-zalamanie"
-  },
-  {
-    title: "Najczęstsze błędy podczas rozwodu",
-    excerpt:
-      "Impulsywne decyzje, które później kosztują najwięcej.",
-    slug: "bledy-podczas-rozwodu"
-  }
-];
+{
+slug:"pierwsze-48h",
+title:"Pierwsze 48 godzin po rozstaniu",
+description:"Najtrudniejsze godziny po rozstaniu",
+content:`
+Pierwsze godziny po rozstaniu mogą być bardzo trudne.
+
+Emocje są silne i łatwo podejmować decyzje,
+które później okazują się błędem.
+
+Najważniejsze w tym czasie jest zatrzymanie się
+i danie sobie czasu.
+`
+},
+
+{
+slug:"samotnosc-po-rozstaniu",
+title:"Samotność po rozstaniu",
+description:"Dlaczego samotność uderza najmocniej",
+content:`
+Samotność jest jednym z najtrudniejszych doświadczeń
+po zakończeniu relacji.
+
+Wiele osób nagle traci codzienną strukturę życia.
+`
+}
+
+]

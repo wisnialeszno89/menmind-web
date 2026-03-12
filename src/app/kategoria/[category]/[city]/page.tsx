@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { categories } from "@/data/categories"
+import { marketCategories as categories } from "@/data/marketCategories"
 import { cities } from "@/data/cities"
 
 type Params = {

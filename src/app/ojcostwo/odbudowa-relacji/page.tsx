@@ -1,97 +1,56 @@
-import Link from "next/link";
+import ArticleLayout from "@/components/article/ArticleLayout"
+import NextStep from "@/components/ui/NextStep"
+import ToolsBox from "@/components/ui/ToolsBox"
 
-export const metadata = {
-  title: "Jak odbudować relację z dzieckiem | MenMind",
-  description:
-    "Relacja z dzieckiem może się ochłodzić. Sprawdź, jak spokojnie odbudować kontakt i zaufanie.",
-};
-
-export default function OdbudowaRelacjiPage() {
+export default function Page() {
   return (
-    <main className="bg-[#111827] text-zinc-100">
-      <section className="section-2026">
-        <div className="container-2026 max-w-4xl">
+    <ArticleLayout
+      title="Odbudowa relacji z dzieckiem"
+      intro="Relacja ojciec–dziecko potrafi zostać osłabiona przez konflikt dorosłych, rozstanie lub brak regularnych spotkań. Na szczęście relacje można odbudować."
+    >
 
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-blue-500">
-            Odbudowa relacji
-          </h1>
+      <h2>Dlaczego relacja słabnie</h2>
 
-          <div className="h-px w-16 bg-blue-500 mb-12" />
+      <p>
+        Dzieci są bardzo wrażliwe na napięcie między rodzicami.
+        Gdy pojawia się konflikt, dziecko może zacząć unikać
+        kontaktu z jednym z nich, aby uniknąć emocjonalnego chaosu.
+      </p>
 
-          <p className="text-lg text-zinc-400 mb-16 leading-relaxed max-w-2xl">
-            Relacje nie psują się nagle.
-            Najczęściej oddalają się powoli.
-            Dobra wiadomość? To też można odwrócić.
-          </p>
+      <h2>Najważniejsza zasada odbudowy</h2>
 
-          <div className="space-y-14">
+      <p>
+        Relacje odbudowują się powoli. Nie przez jedną rozmowę,
+        lecz przez serię małych momentów zaufania.
+      </p>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">
-                1. Zauważ dystans bez obrony
-              </h2>
-              <p className="text-zinc-400 leading-relaxed">
-                Czasem pierwszym krokiem nie jest działanie,
-                ale przyznanie przed sobą, że coś się ochłodziło.
-                Bez szukania winnych.
-              </p>
-            </section>
+      <h2>Małe rzeczy które działają</h2>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">
-                2. Zacznij od małych rzeczy
-              </h2>
-              <p className="text-zinc-400 leading-relaxed">
-                Krótka rozmowa.
-                Wspólne wyjście.
-                Wiadomość „myślę o tobie”.
-                Nie potrzebujesz wielkiego gestu.
-              </p>
-            </section>
+      <ul>
+        <li>regularne spotkania</li>
+        <li>wspólne rytuały</li>
+        <li>rozmowa bez oceniania</li>
+        <li>cierpliwość</li>
+      </ul>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">
-                3. Przestań udowadniać
-              </h2>
-              <p className="text-zinc-400 leading-relaxed">
-                Relacja to nie sala sądowa.
-                Jeśli próbujesz udowodnić, że masz rację,
-                kontakt zwykle słabnie.
-              </p>
-            </section>
+      <h2>Co dziecko naprawdę chce poczuć</h2>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">
-                4. Daj czas
-              </h2>
-              <p className="text-zinc-400 leading-relaxed">
-                Zaufanie buduje się powtarzalnością.
-                Stabilność działa ciszej niż słowa.
-              </p>
-            </section>
+      <p>
+        Najważniejsze dla dziecka jest poczucie bezpieczeństwa.
+        Gdy widzi stabilność emocjonalną u ojca,
+        relacja zaczyna się odbudowywać.
+      </p>
 
-          </div>
+      <ToolsBox />
 
-          <div className="mt-20 border-t border-neutral-800 pt-10 space-y-4">
+      <NextStep
+        items={[
+          { title: "Kontakty z dzieckiem", href: "/ojcostwo/kontakty-z-dzieckiem" },
+          { title: "Jak rozmawiać z dzieckiem", href: "/ojcostwo/jak-rozmawiac-z-dzieckiem" },
+          { title: "Relacja z nastolatkiem", href: "/ojcostwo/relacja-z-nastolatkiem" }
+        ]}
+      />
 
-            <Link
-              href="/ojcostwo/relacja-z-nastolatkiem"
-              className="block text-blue-500 underline underline-offset-4 hover:text-blue-400"
-            >
-              Relacja z nastolatkiem →
-            </Link>
-
-            <Link
-              href="/propozycje/stabilizacja"
-              className="block text-zinc-400 underline underline-offset-4 hover:text-zinc-200"
-            >
-              Jeśli potrzebujesz wsparcia →
-            </Link>
-
-          </div>
-
-        </div>
-      </section>
-    </main>
-  );
+    </ArticleLayout>
+  )
 }

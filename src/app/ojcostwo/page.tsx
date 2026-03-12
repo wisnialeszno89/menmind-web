@@ -1,37 +1,31 @@
 import Container from "@/components/ui/Container"
-import SectionHero from "@/components/ui/SectionHero"
-import ArticleCard from "@/components/ui/ArticleCard"
+import CategoryIntro from "@/components/ui/CategoryIntro"
+import ArticleGrid from "@/components/ui/ArticleGrid"
 
-export default function Page() {
+import { ojcostwo } from "@/content/ojcostwo"
 
-  return (
-    <main className="bg-white py-24">
+export default function Page(){
 
-      <Container>
+return(
 
-        <SectionHero
-          title="Ojcostwo"
-          description="Przewodnik dla ojców którzy chcą zachować relację z dzieckiem mimo konfliktu lub rozstania."
-        />
+<main className="py-16 md:py-24">
 
-        <div className="grid md:grid-cols-2 gap-8">
+<Container>
 
-          <ArticleCard
-            title="Kontakty z dzieckiem"
-            description="Co zrobić gdy drugi rodzic utrudnia spotkania."
-            href="/ojcostwo/kontakty-z-dzieckiem"
-          />
+<CategoryIntro
+title="Ojcostwo"
+description="Relacja z dzieckiem jest jedną z najważniejszych ról w życiu wielu mężczyzn."
+/>
 
-          <ArticleCard
-            title="Prawa ojca"
-            description="Podstawowe prawa i obowiązki ojca."
-            href="/ojcostwo/prawa-ojca"
-          />
+<ArticleGrid
+articles={ojcostwo}
+base="ojcostwo"
+/>
 
-        </div>
+</Container>
 
-      </Container>
+</main>
 
-    </main>
-  )
+)
+
 }

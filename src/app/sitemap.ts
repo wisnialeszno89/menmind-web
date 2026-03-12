@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { cities } from "@/data/cities";
-import { categories } from "@/data/categories";
+import { marketCategories as categories } from "@/data/marketCategories"
 
 const baseUrl = "https://menmind.app";
 
