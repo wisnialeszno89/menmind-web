@@ -2,9 +2,11 @@ import Container from "@/components/ui/Container"
 import CategoryIntro from "@/components/ui/CategoryIntro"
 import ArticleGrid from "@/components/ui/ArticleGrid"
 
-import { kryzys } from "@/content/kryzys"
+import { getWorldArticles } from "@/lib/getWorldArticles"
 
 export default function Page(){
+
+const articles = getWorldArticles("kryzys")
 
 return(
 
@@ -14,11 +16,11 @@ return(
 
 <CategoryIntro
 title="Kryzys"
-description="Moment gdy życie się rozpada. Tu zaczyna się pierwszy krok."
+description="Moment gdy życie się rozpada"
 />
 
 <ArticleGrid
-articles={kryzys}
+articles={articles}
 base="kryzys"
 />
 

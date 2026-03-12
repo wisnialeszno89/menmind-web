@@ -1,24 +1,19 @@
-import { odbudowa } from "@/content/odbudowa"
 import ArticleLayout from "@/components/article/ArticleLayout"
 
 export default function Page({ params }: { params: { slug: string } }) {
 
-const article = odbudowa.find(a => a.slug === params.slug)
+const title = params.slug
+.replaceAll("-", " ")
+.replace(/\b\w/g, l => l.toUpperCase())
 
-if(!article){
-return <div>Brak artykułu</div>
-}
-
-return(
+return (
 
 <ArticleLayout
-title={article.title}
-intro={article.description}
+title={title}
+intro=""
 >
 
-<p>
-Treść artykułu pojawi się tutaj.
-</p>
+<p>Treść artykułu znajduje się w jego pliku.</p>
 
 </ArticleLayout>
 

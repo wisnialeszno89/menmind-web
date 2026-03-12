@@ -2,9 +2,11 @@ import Container from "@/components/ui/Container"
 import CategoryIntro from "@/components/ui/CategoryIntro"
 import ArticleGrid from "@/components/ui/ArticleGrid"
 
-import { ojcostwo } from "@/content/ojcostwo"
+import { getWorldArticles } from "@/lib/getWorldArticles"
 
 export default function Page(){
+
+const articles = getWorldArticles("ojcostwo")
 
 return(
 
@@ -14,11 +16,11 @@ return(
 
 <CategoryIntro
 title="Ojcostwo"
-description="Relacja z dzieckiem i odpowiedzialność ojca."
+description="Relacja z dzieckiem i odpowiedzialność ojca"
 />
 
 <ArticleGrid
-articles={ojcostwo}
+articles={articles}
 base="ojcostwo"
 />
 

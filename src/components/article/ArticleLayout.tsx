@@ -1,46 +1,53 @@
-import Container from "../ui/Container"
-import ToolsBox from "../ui/ToolsBox"
-import NextStep from "../ui/NextStep"
+import Container from "@/components/ui/Container"
 
-type Props = {
-  title: string
-  intro: string
-  children: React.ReactNode
+type Props={
+title:string
+intro?:string
+children:React.ReactNode
 }
 
-export default function ArticleLayout({ title, intro, children }: Props) {
+export default function ArticleLayout({title,intro,children}:Props){
 
-  return (
-    <main className="bg-white py-16 md:py-24">
+return(
 
-      <Container>
+<main className="py-16 md:py-24">
 
-        <div className="max-w-3xl mx-auto">
+<Container>
 
-          <h1 className="text-3xl md:text-4xl font-semibold mb-6">
-            {title}
-          </h1>
+<article className="max-w-3xl mx-auto">
 
-          <p className="text-base md:text-lg text-neutral-700 mb-10 leading-relaxed">
-            {intro}
-          </p>
+<h1 className="text-3xl md:text-4xl font-semibold mb-6">
+{title}
+</h1>
 
-          <article className="prose prose-neutral max-w-none text-base md:text-lg">
-            {children}
-          </article>
+{intro && (
 
-          <ToolsBox />
+<p className="text-lg text-neutral-600 mb-10 leading-relaxed">
+{intro}
+</p>
 
-          <NextStep
-            items={[
-              { title: "Przejdź do etapu odbudowy", href: "/odbudowa" }
-            ]}
-          />
+)}
 
-        </div>
+<div className="
+prose
+prose-neutral
+max-w-none
+text-base
+md:text-lg
+leading-relaxed
+space-y-6
+">
 
-      </Container>
+{children}
 
-    </main>
-  )
+</div>
+
+</article>
+
+</Container>
+
+</main>
+
+)
+
 }

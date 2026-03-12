@@ -1,22 +1,22 @@
-import { ojcostwo } from "@/content/ojcostwo"
 import ArticleLayout from "@/components/article/ArticleLayout"
 
 export default function Page({ params }: { params: { slug: string } }) {
 
-  const article = ojcostwo.find(a => a.slug === params.slug)
+const title = params.slug
+.replaceAll("-", " ")
+.replace(/\b\w/g, l => l.toUpperCase())
 
-  if (!article) {
-    return <div>Brak artykułu</div>
-  }
+return (
 
-  return (
-    <ArticleLayout
-      title={article.title}
-      intro={article.description}
-    >
+<ArticleLayout
+title={title}
+intro=""
+>
 
-      <p>Treść artykułu będzie tutaj.</p>
+<p>Treść artykułu znajduje się w jego pliku.</p>
 
-    </ArticleLayout>
-  )
+</ArticleLayout>
+
+)
+
 }

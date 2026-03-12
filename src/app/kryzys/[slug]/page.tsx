@@ -1,28 +1,19 @@
-import { kryzys } from "@/content/kryzys"
 import ArticleLayout from "@/components/article/ArticleLayout"
-import RelatedArticles from "@/components/ui/RelatedArticles"
 
-export default function Page({ params }) {
+export default function Page({ params }: { params: { slug: string } }) {
 
-const article = kryzys.find(a => a.slug === params.slug)
+const title = params.slug
+.replaceAll("-", " ")
+.replace(/\b\w/g, l => l.toUpperCase())
 
-if(!article){
-return <div>Artykuł nie istnieje</div>
-}
-
-return(
+return (
 
 <ArticleLayout
-title={article.title}
-intro={article.description}
+title={title}
+intro=""
 >
 
-<p>{article.content}</p>
-
-<RelatedArticles
-articles={kryzys.filter(a=>a.slug !== params.slug)}
-base="kryzys"
-/>
+<p>Treść artykułu znajduje się w jego pliku.</p>
 
 </ArticleLayout>
 

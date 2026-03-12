@@ -2,9 +2,11 @@ import Container from "@/components/ui/Container"
 import CategoryIntro from "@/components/ui/CategoryIntro"
 import ArticleGrid from "@/components/ui/ArticleGrid"
 
-import { wzrost } from "@/content/wzrost"
+import { getWorldArticles } from "@/lib/getWorldArticles"
 
 export default function Page(){
+
+const articles = getWorldArticles("wzrost")
 
 return(
 
@@ -14,11 +16,11 @@ return(
 
 <CategoryIntro
 title="Wzrost"
-description="Budowanie silniejszej wersji siebie."
+description="Budowanie silniejszej wersji siebie"
 />
 
 <ArticleGrid
-articles={wzrost}
+articles={articles}
 base="wzrost"
 />
 
