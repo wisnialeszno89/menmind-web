@@ -1,23 +1,28 @@
+import "./globals.css"
+
 import Navbar from "@/components/ui/Navbar"
 import Footer from "@/components/ui/Footer"
 
 export default function RootLayout({ children }) {
 
-return (
+  return (
 
-<html lang="pl">
+    <html lang="pl">
 
-<body>
+      <body className="min-h-screen flex flex-col">
 
-<Navbar />
-<Footer />
+        <Navbar />
 
-{children}
+        <main className="flex-1">
+          {children}
+        </main>
 
-</body>
+        <Footer />
 
-</html>
+      </body>
 
-)
+    </html>
+
+  )
 
 }
