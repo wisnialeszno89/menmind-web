@@ -15,7 +15,7 @@ return(
 
 <CategoryIntro
 title="Ojcostwo"
-description="Relacja z dzieckiem i odpowiedzialność ojca"
+description="Relacja z dzieckiem i odpowiedzialność"
 />
 
 <ArticleGrid

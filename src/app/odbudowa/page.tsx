@@ -15,7 +15,7 @@ return(
 
 <CategoryIntro
 title="Odbudowa"
-description="Etap odzyskiwania stabilności"
+description="Odzyskiwanie stabilności"
 />
 
 <ArticleGrid

@@ -5,6 +5,8 @@ export function getWorldArticles(world: string) {
 
 const dir = path.join(process.cwd(),"src/app",world)
 
+if (!fs.existsSync(dir)) return []
+
 const items = fs.readdirSync(dir,{withFileTypes:true})
 
 return items
