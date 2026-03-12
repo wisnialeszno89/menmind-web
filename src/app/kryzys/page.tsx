@@ -14,7 +14,7 @@ return(
 
 <CategoryIntro
 title="Kryzys"
-description="Moment gdy wszystko się rozpada. Ta sekcja pomaga przejść przez najtrudniejsze chwile i odzyskać równowagę."
+description="Moment gdy życie się rozpada. Tu zaczyna się pierwszy krok."
 />
 
 <ArticleGrid

@@ -14,7 +14,7 @@ return(
 
 <CategoryIntro
 title="Ojcostwo"
-description="Relacja z dzieckiem jest jedną z najważniejszych ról w życiu wielu mężczyzn."
+description="Relacja z dzieckiem i odpowiedzialność ojca."
 />
 
 <ArticleGrid

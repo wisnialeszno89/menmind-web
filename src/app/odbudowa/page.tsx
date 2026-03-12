@@ -14,7 +14,7 @@ return(
 
 <CategoryIntro
 title="Odbudowa"
-description="Etap odzyskiwania stabilności po kryzysie. Tutaj zaczyna się proces odbudowy życia."
+description="Etap odzyskiwania stabilności po kryzysie."
 />
 
 <ArticleGrid

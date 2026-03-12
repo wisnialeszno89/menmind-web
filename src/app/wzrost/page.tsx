@@ -14,7 +14,7 @@ return(
 
 <CategoryIntro
 title="Wzrost"
-description="Moment gdy zaczynasz świadomie budować silniejsze życie."
+description="Budowanie silniejszej wersji siebie."
 />
 
 <ArticleGrid
