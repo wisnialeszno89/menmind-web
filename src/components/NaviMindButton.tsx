@@ -1,14 +1,13 @@
 "use client"
 
-import Link from "next/link"
-
 export default function NaviMindButton() {
 
   return (
 
-    <Link
+    <a
       href="https://navimind.app"
       target="_blank"
+      rel="noopener noreferrer"
       className="
       fixed
       bottom-6
@@ -19,11 +18,13 @@ export default function NaviMindButton() {
       gap-3
       bg-black
       text-white
-      px-4
+      px-5
       py-3
       rounded-full
       shadow-lg
+      backdrop-blur
       hover:scale-105
+      hover:shadow-xl
       transition
       "
     >
@@ -36,8 +37,7 @@ export default function NaviMindButton() {
         💬
       </span>
 
-    </Link>
+    </a>
 
   )
-
 }

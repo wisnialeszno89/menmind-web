@@ -3,6 +3,7 @@ import "./globals.css"
 import Navbar from "@/components/ui/Navbar"
 import Footer from "@/components/ui/Footer"
 import ChatBubble from "@/components/ui/ChatBubble"
+import NaviMindButton from "@/components/NaviMindButton"
 
 export default function RootLayout({ children }) {
 
@@ -23,7 +24,13 @@ return(
 <ChatBubble />
 
 </body>
+<body>
 
+  {children}
+
+  <NaviMindButton />
+
+</body>
 </html>
 
 )
