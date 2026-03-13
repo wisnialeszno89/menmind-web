@@ -10,17 +10,21 @@ return (
 
 <main className="max-w-3xl mx-auto px-6 py-20">
 
-<h1 className="text-4xl font-semibold mb-6">
+<header className="mb-14">
+
+<h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-6">
 {title}
 </h1>
 
 {description && (
-<p className="text-gray-600 mb-10 text-lg">
+<p className="text-xl text-gray-600 leading-relaxed">
 {description}
 </p>
 )}
 
-<article className="prose prose-lg max-w-none">
+</header>
+
+<article className="text-lg leading-relaxed space-y-6">
 
 {children}
 
