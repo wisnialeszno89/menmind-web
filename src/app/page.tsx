@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container"
 import Link from "next/link"
 import WorldPreview from "@/components/WorldPreview"
+import HomeArticles from "@/components/HomeArticles"
 
 export default function Home() {
 
@@ -112,6 +113,7 @@ zrozumienie i kierunek działania.
 
 </Container>
 <WorldPreview />
+<HomeArticles />
 
 </section>
 
