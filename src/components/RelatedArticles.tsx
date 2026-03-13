@@ -1,36 +1,67 @@
 import Link from "next/link"
-import { getRelatedArticles } from "@/lib/getRelatedArticles"
 
-export default function RelatedArticles({world,slug}:{world:string,slug:string}){
+import { kryzys } from "@/content/kryzys"
+import { ojcostwo } from "@/content/ojcostwo"
+import { odbudowa } from "@/content/odbudowa"
+import { wzrost } from "@/content/wzrost"
 
-const related=getRelatedArticles(world,slug)
+type Props = {
+world: string
+slug: string
+}
 
-if(related.length===0) return null
+const worlds: Record<string, any[]> = {
+kryzys,
+ojcostwo,
+odbudowa,
+wzrost
+}
 
-return(
+const worldLabels: Record<string,string> = {
+kryzys:"Kryzys",
+ojcostwo:"Ojcostwo",
+odbudowa:"Odbudowa",
+wzrost:"Wzrost"
+}
 
-<section className="mt-20">
+export default function RelatedArticles({ world, slug }: Props) {
 
-<h2 className="text-2xl font-semibold text-black mb-6">
+const articles = worlds[world] || []
+
+const related = articles
+.filter(a => a.slug !== slug)
+.slice(0,3)
+
+if (related.length === 0) return null
+
+return (
+
+<div>
+
+<h3 className="text-2xl font-semibold mb-8">
 Możesz też przeczytać
-</h2>
+</h3>
 
-<div className="grid md:grid-cols-2 gap-6">
+<div className="grid md:grid-cols-3 gap-6">
 
-{related.map((article)=>(
+{related.map(article => (
 
 <Link
 key={article.slug}
-href={`/content/${article.slug}`}
-className="border rounded-xl p-6 hover:shadow"
+href={`/${world}/${article.slug}`}
+className="group border rounded-xl p-6 hover:shadow-lg transition bg-white"
 >
 
-<h3 className="font-semibold text-black mb-2">
-{article.title}
-</h3>
+<div className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
+{worldLabels[world]}
+</div>
 
-<p className="text-black text-sm">
-{article.intro}
+<h4 className="font-semibold text-lg mb-2 group-hover:underline">
+{article.title}
+</h4>
+
+<p className="text-sm text-gray-600 leading-relaxed">
+{article.description}
 </p>
 
 </Link>
@@ -39,7 +70,7 @@ className="border rounded-xl p-6 hover:shadow"
 
 </div>
 
-</section>
+</div>
 
 )
 

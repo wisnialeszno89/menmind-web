@@ -108,10 +108,12 @@ export default async function Page({ params }: any) {
 
       <div className="mt-20">
 
-        <RelatedArticles
-          world={world}
-          slug={slug}
-        />
+        <hr className="my-16 border-gray-200" />
+
+<RelatedArticles
+world={world}
+slug={slug}
+/>
 
       </div>
 
