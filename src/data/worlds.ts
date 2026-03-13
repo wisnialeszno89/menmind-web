@@ -1,63 +1,31 @@
-export type World = {
-  slug: string
-  name: string
-  description: string
-  preview: string[]
-}
-
-export const worlds: World[] = [
+export const worlds = [
 
 {
-slug: "kryzys",
-name: "Kryzys",
-description: "Gdy życie zaczyna się sypać: rozstanie, stres, chaos.",
-
-preview: [
-"rozstanie",
-"silny stres",
-"problemy finansowe",
-"samotność"
-]
-
+  slug: "kryzys",
+  title: "Kryzys",
+  description: "Kiedy życie się rozpada i trzeba przetrwać dzień po dniu.",
+  color: "red"
 },
 
 {
-slug: "odbudowa",
-name: "Odbudowa",
-description: "Powrót do stabilności, energii i poukładania życia.",
-
-preview: [
-"powrót do energii",
-"nowa rutyna",
-"stabilizacja"
-]
-
+  slug: "ojcostwo",
+  title: "Ojcostwo",
+  description: "Relacja z dzieckiem, rozwód, alienacja, codzienność ojca.",
+  color: "blue"
 },
 
 {
-slug: "wzrost",
-name: "Wzrost",
-description: "Rozwój osobisty, kierunek życia i nowe możliwości.",
-
-preview: [
-"kariera",
-"dyscyplina",
-"rozwój osobisty"
-]
-
+  slug: "odbudowa",
+  title: "Odbudowa",
+  description: "Powrót do stabilności po trudnym czasie.",
+  color: "green"
 },
 
 {
-slug: "ojcostwo",
-name: "Ojcostwo",
-description: "Relacja z dzieckiem i odpowiedzialność ojca.",
-
-preview: [
-"relacja z dzieckiem",
-"opieka naprzemienna",
-"prawa ojca"
-]
-
+  slug: "wzrost",
+  title: "Wzrost",
+  description: "Rozwój, dyscyplina i kierunek w życiu.",
+  color: "purple"
 }
 
 ]
