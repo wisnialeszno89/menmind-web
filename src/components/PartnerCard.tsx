@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { trackEvent } from "@/lib/track"
+import { trackEvent } from "@/lib/tracking"
 
 type Props = {
   id: string

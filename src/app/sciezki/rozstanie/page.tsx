@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getPathArticles } from "@/lib/getPathArticles"
+import { getArticlesByPath } from "@/lib/getArticlesByPath"
 
 export const metadata = {
   title: "Rozstanie | MenMind",
@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RozstaniePage() {
 
-  const articles = getPathArticles("rozstanie")
+  const articles = getArticlesByPath("rozstanie")
 
   return (
 

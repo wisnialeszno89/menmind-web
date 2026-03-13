@@ -31,12 +31,12 @@ export default function WorldPreview() {
           >
 
             <h3 className="text-xl font-semibold mb-3 group-hover:underline">
-              {world.name}
-            </h3>
+  {world.title}
+</h3>
 
-            <p className="text-gray-700 mb-6">
-              {world.description}
-            </p>
+<p className="text-gray-700 mb-6">
+  {world.description}
+</p>
 
             {/* PREVIEW PROBLEMÓW */}
 

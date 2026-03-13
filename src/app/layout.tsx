@@ -6,33 +6,22 @@ import ChatBubble from "@/components/ui/ChatBubble"
 import NaviMindButton from "@/components/NaviMindButton"
 
 export default function RootLayout({ children }) {
+  return (
+    <html lang="pl">
+      <body className="min-h-screen flex flex-col">
 
-return(
+        <Navbar />
 
-<html lang="pl">
+        <main className="flex-1">
+          {children}
+        </main>
 
-<body className="min-h-screen flex flex-col">
+        <Footer />
 
-<Navbar />
+        <ChatBubble />
+        <NaviMindButton />
 
-<main className="flex-1">
-{children}
-</main>
-
-<Footer />
-
-<ChatBubble />
-
-</body>
-<body>
-
-  {children}
-
-  <NaviMindButton />
-
-</body>
-</html>
-
-)
-
+      </body>
+    </html>
+  )
 }

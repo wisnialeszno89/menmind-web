@@ -3,29 +3,30 @@ import CategoryIntro from "@/components/ui/CategoryIntro"
 import ArticleGrid from "@/components/ui/ArticleGrid"
 
 import { ojcostwo } from "@/content/ojcostwo"
+import WorldLayout from "@/components/layout/WorldLayout"
 
-export default function Page(){
+export default function OjcostwoPage() {
+  return (
+    <WorldLayout title="Ojcostwo">
 
-return(
+      <main className="py-16 md:py-24">
 
-<main className="py-16 md:py-24">
+        <Container>
 
-<Container>
+          <CategoryIntro
+            title="Ojcostwo"
+            description="Relacja z dzieckiem, rozwód, alienacja rodzicielska i codzienność ojca."
+          />
 
-<CategoryIntro
-title="Ojcostwo"
-description="Relacja z dzieckiem jest jedną z najważniejszych ról w życiu wielu mężczyzn."
-/>
+          <ArticleGrid
+            articles={ojcostwo}
+            base="ojcostwo"
+          />
 
-<ArticleGrid
-articles={ojcostwo}
-base="ojcostwo"
-/>
+        </Container>
 
-</Container>
+      </main>
 
-</main>
-
-)
-
+    </WorldLayout>
+  )
 }

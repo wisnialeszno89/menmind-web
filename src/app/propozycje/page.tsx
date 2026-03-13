@@ -1,5 +1,5 @@
 import ProposalsGrid from "@/components/ProposalsGrid"
-import CitySearch from "@/components/CitySearch"
+import CitySearch from "@/components/suggestions/CitySearch"
 
 export default function ProposalsPage() {
 
@@ -19,7 +19,14 @@ export default function ProposalsPage() {
         </p>
 
         <ProposalsGrid />
-        <CitySearch />
+        <CitySearch
+  baseHref="/wsparcie"
+  state=""
+  city=""
+  cities={[]}
+  placeholder="Wpisz miasto"
+  tip="Znajdź pomoc w swojej okolicy"
+/>
 
       </div>
 

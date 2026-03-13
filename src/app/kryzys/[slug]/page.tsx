@@ -1,6 +1,6 @@
 import { kryzys } from "@/content/kryzys"
 import ArticleLayout from "@/components/article/ArticleLayout"
-import RelatedArticles from "@/components/ui/RelatedArticles"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export default function Page({ params }) {
 
@@ -20,8 +20,8 @@ intro={article.description}
 <p>{article.content}</p>
 
 <RelatedArticles
-articles={kryzys.filter(a=>a.slug !== params.slug)}
-base="kryzys"
+  world="kryzys"
+  slug={params.slug}
 />
 
 </ArticleLayout>

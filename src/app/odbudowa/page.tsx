@@ -3,29 +3,30 @@ import CategoryIntro from "@/components/ui/CategoryIntro"
 import ArticleGrid from "@/components/ui/ArticleGrid"
 
 import { odbudowa } from "@/content/odbudowa"
+import WorldLayout from "@/components/layout/WorldLayout"
 
-export default function Page(){
+export default function OdbudowaPage() {
+  return (
+    <WorldLayout title="Odbudowa">
 
-return(
+      <main className="py-16 md:py-24">
 
-<main className="py-16 md:py-24">
+        <Container>
 
-<Container>
+          <CategoryIntro
+            title="Odbudowa"
+            description="Powrót do stabilności po kryzysie. Małe kroki, które odbudowują życie."
+          />
 
-<CategoryIntro
-title="Odbudowa"
-description="Etap odzyskiwania stabilności po kryzysie. Tutaj zaczyna się proces odbudowy życia."
-/>
+          <ArticleGrid
+            articles={odbudowa}
+            base="odbudowa"
+          />
 
-<ArticleGrid
-articles={odbudowa}
-base="odbudowa"
-/>
+        </Container>
 
-</Container>
+      </main>
 
-</main>
-
-)
-
+    </WorldLayout>
+  )
 }

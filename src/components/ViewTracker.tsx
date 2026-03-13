@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackEvent } from "@/lib/track";
+import { trackEvent } from "@/lib/tracking";
 
 type Props = {
   event: string;

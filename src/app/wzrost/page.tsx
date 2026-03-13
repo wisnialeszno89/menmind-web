@@ -3,29 +3,30 @@ import CategoryIntro from "@/components/ui/CategoryIntro"
 import ArticleGrid from "@/components/ui/ArticleGrid"
 
 import { wzrost } from "@/content/wzrost"
+import WorldLayout from "@/components/layout/WorldLayout"
 
-export default function Page(){
+export default function WzrostPage() {
+  return (
+    <WorldLayout title="Wzrost">
 
-return(
+      <main className="py-16 md:py-24">
 
-<main className="py-16 md:py-24">
+        <Container>
 
-<Container>
+          <CategoryIntro
+            title="Wzrost"
+            description="Rozwój, dyscyplina i budowanie kierunku w życiu."
+          />
 
-<CategoryIntro
-title="Wzrost"
-description="Moment gdy zaczynasz świadomie budować silniejsze życie."
-/>
+          <ArticleGrid
+            articles={wzrost}
+            base="wzrost"
+          />
 
-<ArticleGrid
-articles={wzrost}
-base="wzrost"
-/>
+        </Container>
 
-</Container>
+      </main>
 
-</main>
-
-)
-
+    </WorldLayout>
+  )
 }
