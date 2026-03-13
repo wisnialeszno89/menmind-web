@@ -29,6 +29,9 @@ className="font-medium text-black"
 >
 NaviMind
 </Link>
+<Link href="/wydarzenia">
+Wydarzenia
+</Link>
 
 </nav>
 

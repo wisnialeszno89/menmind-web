@@ -1,54 +1,33 @@
 export const proposalCategories = [
 
 {
-slug: "sztuki-walki",
-name: "Sztuki walki"
+slug: "wsparcie",
+name: "Wsparcie"
 },
 
 {
-slug: "sport",
-name: "Sport i aktywność"
-},
-
-{
-slug: "wyjazdy",
-name: "Wyjazdy i wyprawy"
-},
-
-{
-slug: "warsztaty",
-name: "Warsztaty i rozwój"
-},
-
-{
-slug: "hobby",
-name: "Hobby i pasje"
-},
-
-{
-slug: "spotkania",
-name: "Spotkania i społeczność"
-},
-
-{
-slug: "edukacja",
-name: "Szkolenia i edukacja"
-},
-
-{
-slug: "przygoda",
-name: "Przygoda i adrenalina"
+slug: "rozwoj",
+name: "Rozwój"
 },
 
 {
 slug: "zdrowie",
-name: "Zdrowie i regeneracja"
+name: "Zdrowie"
 },
 
 {
-slug: "technologia",
-name: "Technologia i projekty"
+slug: "czas-wolny",
+name: "Czas wolny"
+},
 
+{
+slug: "doswiadczenia",
+name: "Doświadczenia"
+},
+
+{
+slug: "styl-zycia",
+name: "Styl życia"
 }
 
 ]

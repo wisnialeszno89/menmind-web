@@ -1,9 +1,7 @@
-export function readingTime(text: string) {
+export function readingTime(text:string){
 
-const words = text.split(/\s+/).length
+const words = text.split(" ").length
 
-const minutes = Math.ceil(words / 200)
-
-return minutes
+return Math.ceil(words / 200)
 
 }

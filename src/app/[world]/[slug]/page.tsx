@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import ArticleLayout from "@/components/article/ArticleLayout"
 import RelatedArticles from "@/components/RelatedArticles"
+import ArticlePartners from "@/components/ArticlePartners"
 
 import { kryzys } from "@/content/kryzys"
 import { ojcostwo } from "@/content/ojcostwo"
@@ -16,21 +17,31 @@ odbudowa,
 wzrost
 }
 
-export default async function Page({ params }: any) {
+export default function Page({
+params
+}:{
+params:{ world:string; slug:string }
+}){
 
-const { world, slug } = await params
+const { world, slug } = params
 
 const articles = worlds[world]
 
-if (!articles) return notFound()
+if(!articles) return notFound()
 
-const article = articles.find((a) => a.slug === slug)
+const article = articles.find((a)=>a.slug === slug)
 
-if (!article) return notFound()
+if(!article) return notFound()
 
 const minutes = readingTime(article.content)
 
-return (
+const paragraphs = article.content.split("\n\n")
+
+const headings = paragraphs
+.filter((p:string)=>p.startsWith("## "))
+.map((p:string)=>p.replace("## ",""))
+
+return(
 
 <ArticleLayout
 title={article.title}
@@ -40,44 +51,96 @@ world={world}
 
 {/* META */}
 
-<div className="text-sm text-gray-500 mb-10">
+<p className="text-sm text-gray-500 mb-8">
+{minutes} min czytania
+</p>
 
-<span className="mr-4">
-Czas czytania: <strong>{minutes} min</strong>
-</span>
+{/* SPIS TREŚCI */}
+
+{headings.length > 0 && (
+
+<div className="bg-gray-50 p-6 rounded-xl mb-12">
+
+<h3 className="font-semibold mb-4">
+W tym artykule
+</h3>
+
+<ul className="space-y-2 text-gray-700">
+
+{headings.map((h:string,i:number)=>(
+<li key={i}>• {h}</li>
+))}
+
+</ul>
 
 </div>
 
+)}
 
 {/* TREŚĆ */}
 
-{article.content.split("\n\n").map((paragraph: string, i: number) => {
+{paragraphs.map((paragraph:string,i:number)=>{
+
+/* H2 */
+
+if(paragraph.startsWith("## ")){
+
+const text = paragraph.replace("## ","")
+
+return(
+<h2 key={i} className="text-2xl font-semibold mt-12 mb-4">
+{text}
+</h2>
+)
+
+}
+
+/* CYTAT */
+
+if(paragraph.startsWith(">> ")){
+
+const text = paragraph.replace(">> ","")
+
+return(
+<div
+key={i}
+className="border-l-4 border-black pl-4 py-2 italic text-gray-700 my-8"
+>
+{text}
+</div>
+)
+
+}
+
+/* FORMATOWANIE */
 
 let formatted = paragraph
-.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-.replace(/__(.*?)__/g, "<u>$1</u>")
-.replace(/• (.*?)(\n|$)/g, "<li>$1</li>")
+.replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
+.replace(/__(.*?)__/g,"<u>$1</u>")
+.replace(/^- (.*?)(\n|$)/gm,"<li>$1</li>")
+.replace(/• (.*?)(\n|$)/g,"<li>$1</li>")
 
-if (formatted.includes("<li>")) {
-return (
+if(formatted.includes("<li>")){
+
+return(
 <ul
 key={i}
 dangerouslySetInnerHTML={{ __html: formatted }}
 className="list-disc pl-6 space-y-2 mb-6"
 />
 )
+
 }
 
-return (
+return(
 <p
 key={i}
 dangerouslySetInnerHTML={{ __html: formatted }}
-className="mb-6"
+className="text-lg leading-relaxed mb-6"
 />
 )
 
 })}
-
 
 {/* WSPARCIE */}
 
@@ -100,16 +163,18 @@ Zobacz narzędzia
 
 </div>
 
-
 <hr className="my-16 border-gray-200" />
 
-
-{/* POLECANE */}
+{/* POLECANE ARTYKUŁY */}
 
 <RelatedArticles
 world={world}
 slug={slug}
 />
+
+{/* PARTNERZY */}
+
+<ArticlePartners world={world} />
 
 </ArticleLayout>
 

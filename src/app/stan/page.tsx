@@ -1,66 +1,56 @@
 "use client"
 
-import Link from "next/link"
-import { stateScale } from "@/lib/stateScale"
+import { useEffect, useState } from "react"
+import { getResults } from "@/lib/userState"
 
 export default function StatePage(){
 
-// przykładowy wynik (później podłączymy localStorage)
+const [results,setResults]=useState<any[]>([])
 
-const level = 2
+useEffect(()=>{
 
-const state = stateScale[level]
+setResults(getResults())
+
+},[])
 
 return(
 
-<main className="bg-white min-h-screen">
+<main className="min-h-screen bg-white">
 
-<div className="max-w-2xl mx-auto px-6 py-24">
+<div className="max-w-3xl mx-auto px-6 py-24">
 
-<h1 className="text-4xl font-semibold mb-10">
+<h1 className="text-3xl font-semibold mb-12">
 Twój stan
 </h1>
 
-<div className="border rounded-xl p-8">
+{results.length === 0 && (
 
-<h2 className={`text-2xl font-semibold mb-4 ${state.color}`}>
-{state.label}
-</h2>
-
-<p className="text-gray-700 mb-6">
-{state.meaning}
+<p className="text-gray-600">
+Nie masz jeszcze zapisanych wyników testów.
 </p>
 
-</div>
+)}
 
-<div className="mt-10">
+<div className="space-y-6">
 
-<h3 className="font-semibold mb-4">
-Co możesz zrobić teraz
-</h3>
+{results.map((r,i)=>(
 
-<div className="space-y-3">
-
-{state.actions.map((a)=>(
-<Link
-key={a.href}
-href={a.href}
-className="block border p-4 rounded-lg hover:shadow"
+<div
+key={i}
+className="border rounded-lg p-6"
 >
-{a.label}
-</Link>
-))}
 
-</div>
-
-</div>
-
-<div className="mt-12 text-sm text-gray-600">
-
-<p>
-Stan może się zmieniać wraz z Twoimi działaniami.
-Małe rzeczy jak sen, ruch i struktura dnia mają ogromny wpływ.
+<p className="text-sm text-gray-500 mb-2">
+Test: {r.id}
 </p>
+
+<p className="text-2xl font-semibold">
+{r.percent}%
+</p>
+
+</div>
+
+))}
 
 </div>
 

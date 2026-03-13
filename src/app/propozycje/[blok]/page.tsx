@@ -3,13 +3,17 @@ import { proposalCategories } from "@/data/proposalsCategories"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
-export default function ProposalCategoryPage({ params }) {
+export default function ProposalCategoryPage({
+  params,
+}: {
+  params: { blok: string }
+}) {
 
 const category = proposalCategories.find(
-c => c.slug === params.blok
+  (c) => c.slug === params.blok
 )
 
-if(!category) return notFound()
+if (!category) return notFound()
 
 return (
 
@@ -21,21 +25,28 @@ return (
 {category.name}
 </h1>
 
-<p className="text-gray-700 mb-10">
-Zobacz dostępne propozycje w różnych miastach.
+<p className="text-gray-700 mb-12 max-w-xl">
+Zobacz miejsca, wydarzenia i firmy w kategorii {category.name}
+w różnych miastach.
 </p>
 
 <div className="grid md:grid-cols-3 gap-4">
 
-{cities.map((city)=>(
+{cities.map((city) => (
 
 <Link
 key={city.slug}
 href={`/propozycje/${category.slug}/${city.slug}`}
-className="border rounded-lg p-4 hover:shadow"
+className="border rounded-lg p-4 hover:shadow transition"
 >
 
-{category.name} — {city.name}
+<strong>
+{city.name}
+</strong>
+
+<p className="text-sm text-gray-600">
+{category.name}
+</p>
 
 </Link>
 

@@ -2,7 +2,7 @@ import { notFound } from "next/navigation"
 import { cities } from "@/data/cities"
 import { proposalCategories } from "@/data/proposalsCategories"
 
-export default function ProposalCityPage({ params }) {
+export default function ProposalCityPage({ params }: any) {
 
 const category = proposalCategories.find(
 c => c.slug === params.blok
@@ -14,7 +14,7 @@ c => c.slug === params.miasto
 
 if(!category || !city) return notFound()
 
-return (
+return(
 
 <main className="bg-white min-h-screen">
 
@@ -24,16 +24,25 @@ return (
 {category.name} — {city.name}
 </h1>
 
-<p className="text-gray-700 mb-10">
-W tym miejscu będą pojawiać się firmy i organizacje oferujące
-aktywności w kategorii {category.name} w mieście {city.name}.
+<p className="text-gray-700 mb-10 max-w-xl">
+Firmy, miejsca i wydarzenia w kategorii {category.name}
+w mieście {city.name}.
 </p>
+
+{/* LISTA PARTNERÓW */}
+
+<div className="grid md:grid-cols-2 gap-6">
 
 <div className="border rounded-xl p-6">
+<h3 className="font-semibold mb-2">
+Tutaj pojawi się partner
+</h3>
 
-<p className="text-gray-600">
-Lista partnerów pojawi się tutaj.
+<p className="text-gray-600 text-sm">
+System partnerów będzie wyświetlany tutaj.
 </p>
+
+</div>
 
 </div>
 

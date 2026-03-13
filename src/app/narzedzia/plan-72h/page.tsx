@@ -1,67 +1,53 @@
-"use client"
+import ToolLayout from "@/components/tools/ToolLayout"
 
-import { useState } from "react"
-import Link from "next/link"
+export default function Page() {
 
-export default function Plan72(){
+return (
 
-const tasks=[
-"śpij minimum 7 godzin",
-"30 minut ruchu",
-"jedna konkretna decyzja",
-"ogranicz media i wiadomości"
-]
-
-const [done,setDone]=useState<string[]>([])
-
-function toggle(task:string){
-
-setDone(prev=>
-prev.includes(task)
-? prev.filter(t=>t!==task)
-: [...prev,task]
-)
-
-}
-
-return(
-
-<main className="bg-white min-h-screen">
-
-<div className="max-w-xl mx-auto px-6 py-24">
-
-<h1 className="text-3xl font-semibold text-black mb-10">
-Plan stabilizacji 72h
-</h1>
-
-<div className="space-y-4">
-
-{tasks.map(task=>(
-<div
-key={task}
-onClick={()=>toggle(task)}
-className="border rounded-lg p-4 cursor-pointer"
+<ToolLayout
+title="Plan 72h"
+description="Gdy wszystko się sypie, najważniejsze są pierwsze trzy dni."
 >
-{task}
-</div>
-))}
 
-</div>
+<p>
+Jeśli przechodzisz przez kryzys, Twój umysł jest przeciążony.
+Dlatego zamiast próbować rozwiązać całe życie, skup się na najbliższych 72 godzinach.
+</p>
 
-<div className="mt-12">
+<h2 className="text-2xl font-semibold mt-10">
+Krok 1 — zatrzymaj chaos
+</h2>
 
-<Link
-href="/propozycje"
-className="text-blue-600 underline"
->
-Jeśli sytuacja jest trudna → zobacz wsparcie
-</Link>
+<ul className="list-disc pl-6 space-y-2">
 
-</div>
+<li>zjedz normalny posiłek</li>
+<li>wyjdź na 20 minut spaceru</li>
+<li>odłóż trudne decyzje</li>
 
-</div>
+</ul>
 
-</main>
+<h2 className="text-2xl font-semibold mt-10">
+Krok 2 — uporządkuj myśli
+</h2>
+
+<ul className="list-disc pl-6 space-y-2">
+
+<li>zapisz wszystko co masz w głowie</li>
+<li>oddziel fakty od emocji</li>
+<li>zostaw tylko najważniejsze sprawy</li>
+
+</ul>
+
+<h2 className="text-2xl font-semibold mt-10">
+Krok 3 — jeden mały ruch
+</h2>
+
+<p>
+Nie musisz rozwiązać wszystkiego.
+Wystarczy jeden mały krok który przywróci poczucie kontroli.
+</p>
+
+</ToolLayout>
 
 )
 

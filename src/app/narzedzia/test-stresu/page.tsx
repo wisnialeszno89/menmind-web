@@ -1,14 +1,16 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
+import ProgressBar from "@/components/tools/ProgressBar"
+import StateScale from "@/components/tools/StateScale"
+import { saveTestResult } from "@/lib/userState"
 
 const questions = [
-"Czy masz problemy ze snem?",
-"Czy czujesz napięcie w ciele?",
-"Czy łatwo się irytujesz?",
-"Czy masz trudność z koncentracją?",
-"Czy czujesz przeciążenie obowiązkami?"
+"Czuję napięcie w ciele",
+"Mam problemy ze snem",
+"Łatwo się irytuję",
+"Mam trudność z koncentracją",
+"Czuję presję i przeciążenie"
 ]
 
 export default function StressTest(){
@@ -16,9 +18,9 @@ export default function StressTest(){
 const [step,setStep]=useState(0)
 const [score,setScore]=useState(0)
 
-function answer(yes:boolean){
+function answer(val:boolean){
 
-if(yes) setScore(score+1)
+if(val) setScore(score+1)
 
 setStep(step+1)
 
@@ -26,63 +28,48 @@ setStep(step+1)
 
 if(step>=questions.length){
 
-let level="niski"
-let description="Twój poziom stresu wygląda na niski."
+const percent=Math.round((score/questions.length)*100)
 
-if(score>=2){
-level="umiarkowany"
-description="Pojawiają się oznaki napięcia."
+saveTestResult({
+ id:"stres",
+ score,
+ percent,
+ date:Date.now()
+})
+
+let label="spokojnie"
+let desc="Twój poziom stresu jest w normie."
+
+if(percent>=40){
+label="napięcie"
+desc="Twój organizm zaczyna być przeciążony."
 }
 
-if(score>=4){
-level="wysoki"
-description="Twój organizm może być przeciążony."
+if(percent>=70){
+label="wysoki stres"
+desc="Twój organizm jest w stanie silnego napięcia."
 }
 
 return(
 
-<main className="bg-white min-h-screen">
+<main className="min-h-screen bg-white">
 
 <div className="max-w-xl mx-auto px-6 py-24">
 
-<h1 className="text-3xl font-semibold mb-6">
-Poziom stresu: {level}
+<h1 className="text-3xl font-semibold mb-4">
+Poziom stresu: {label}
 </h1>
 
-<p className="text-gray-700 mb-10">
-{description}
+<p className="text-gray-700 mb-6">
+{desc}
 </p>
 
-<div className="space-y-4">
+<p className="text-sm text-gray-500 mb-10">
+Wynik: {percent}%
+</p>
 
-<Link
-href="/narzedzia/reset"
-className="block border p-4 rounded-lg"
->
-Zrób szybki reset
-</Link>
+<StateScale value={percent} />
 
-<Link
-href="/narzedzia/plan-72h"
-className="block border p-4 rounded-lg"
->
-Plan stabilizacji 72h
-</Link>
-
-<Link
-href="/propozycje"
-className="block bg-black text-white px-6 py-3 rounded-lg text-center"
->
-Znajdź wsparcie
-</Link>
-
-</div>
-<Link
-href="/stan"
-className="block bg-black text-white px-6 py-3 rounded-lg text-center mt-6"
->
-Zobacz swój ogólny stan
-</Link>
 </div>
 
 </main>
@@ -93,9 +80,11 @@ Zobacz swój ogólny stan
 
 return(
 
-<main className="bg-white min-h-screen">
+<main className="min-h-screen bg-white">
 
 <div className="max-w-xl mx-auto px-6 py-24">
+
+<ProgressBar step={step+1} total={questions.length}/>
 
 <h1 className="text-xl mb-8">
 {questions[step]}
@@ -105,14 +94,14 @@ return(
 
 <button
 onClick={()=>answer(true)}
-className="block w-full border p-4 rounded-lg"
+className="block w-full border p-4 rounded-lg hover:shadow"
 >
 Tak
 </button>
 
 <button
 onClick={()=>answer(false)}
-className="block w-full border p-4 rounded-lg"
+className="block w-full border p-4 rounded-lg hover:shadow"
 >
 Nie
 </button>
