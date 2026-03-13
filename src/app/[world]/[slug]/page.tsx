@@ -1,8 +1,5 @@
 import { notFound } from "next/navigation"
-
 import ArticleLayout from "@/components/ArticleLayout"
-import RelatedArticles from "@/components/RelatedArticles"
-import ArticlePartners from "@/components/ArticlePartners"
 
 import { kryzys } from "@/content/kryzys"
 import { ojcostwo } from "@/content/ojcostwo"
@@ -12,96 +9,76 @@ import { wzrost } from "@/content/wzrost"
 import { readingTime } from "@/lib/readingTime"
 
 type Article = {
-slug:string
-title:string
-description:string
-content:string
+  slug: string
+  title: string
+  description: string
+  content: string
 }
 
 type World = "kryzys" | "ojcostwo" | "odbudowa" | "wzrost"
 
-const worlds:Record<World,Article[]> = {
-kryzys,
-ojcostwo,
-odbudowa,
-wzrost
+const worlds: Record<World, Article[]> = {
+  kryzys,
+  ojcostwo,
+  odbudowa,
+  wzrost
 }
 
-/* STATIC GENERATION */
-
-export function generateStaticParams(){
-
-return Object.entries(worlds).flatMap(
-([world,articles])=>
-
-articles.map((a)=>({
-world,
-slug:a.slug
-}))
-
-)
-
+export function generateStaticParams() {
+  return Object.entries(worlds).flatMap(([world, articles]) =>
+    articles.map((a) => ({
+      world,
+      slug: a.slug
+    }))
+  )
 }
-
-/* PAGE */
 
 export default function Page({
-params
-}:{
-params:{ world:string; slug:string }
-}){
+  params
+}: {
+  params: { world: string; slug: string }
+}) {
 
-const { world, slug } = params
+  const { world, slug } = params
 
-const articles = worlds[world as World]
+  const articles = worlds[world as World]
 
-if(!articles) return notFound()
+  if (!articles) return notFound()
 
-const article = articles.find((a)=>a.slug === slug)
+  const article = articles.find((a) => a.slug === slug)
 
-if(!article) return notFound()
+  if (!article) return notFound()
 
-const minutes = readingTime(article.content)
+  const minutes = readingTime(article.content)
 
-const paragraphs = article.content
-.split("\n\n")
-.map(p=>p.trim())
-.filter(Boolean)
+  const paragraphs = article.content
+    .split("\n")
+    .map((p) => p.trim())
+    .filter(Boolean)
 
-return(
+  return (
 
-<ArticleLayout
-title={article.title}
-description={article.description}
-world={world}
->
+    <ArticleLayout
+      title={article.title}
+      description={article.description}
+      world={world}
+    >
 
-<p className="text-sm text-gray-500 mb-8">
-{minutes} min czytania
-</p>
+      <p className="text-sm text-gray-500 mb-8">
+        {minutes} min czytania
+      </p>
 
-{paragraphs.map((paragraph,i)=>(
+      {paragraphs.map((paragraph, i) => (
+        <p
+          key={i}
+          className="text-lg leading-relaxed mb-6"
+        >
+          {paragraph}
+        </p>
+      ))}
 
-<p
-key={i}
-className="text-lg leading-relaxed mb-6"
->
-{paragraph}
-</p>
+    </ArticleLayout>
 
-))}
-
-<hr className="my-16 border-gray-200" />
-
-<RelatedArticles
-world={world}
-slug={slug}
-/>
-
-<ArticlePartners world={world} />
-
-</ArticleLayout>
-
-)
+  )
 
 }
