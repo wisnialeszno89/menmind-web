@@ -4,8 +4,9 @@ export default function Page() {
 
   return (
     <ArticleLayout
-title="Pierwsze spotkanie z dzieckiem po rozstaniu"
-description="Pierwsze spotkanie po rozstaniu bywa trudne zarówno dla ojca jak i dla dziecka."
+title="Pierwsze spotkanie po rozstaniu"
+description="..."
+world="ojcostwo"
 >
 
       <h2>Dlaczego to spotkanie jest ważne</h2>

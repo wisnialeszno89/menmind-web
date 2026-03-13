@@ -1,4 +1,11 @@
-export const ojcostwo = [
+type Article = {
+slug:string
+title:string
+description:string
+content:string
+}
+
+export const ojcostwo:Article[] = [
 
 {
 slug:"ojciec-po-rozwodzie-od-czego-zaczac",

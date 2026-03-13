@@ -1,4 +1,11 @@
-export const odbudowa = [
+type Article = {
+slug:string
+title:string
+description:string
+content:string
+}
+
+export const odbudowa:Article[] = [
 
 {
 slug:"pierwsze-kroki-po-kryzysie",

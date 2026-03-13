@@ -1,4 +1,11 @@
-export const wzrost = [
+type Article = {
+slug:string
+title:string
+description:string
+content:string
+}
+
+export const wzrost:Article[] = [
 
 {
 slug:"dlaczego-dyscyplina-daje-wolnosc",

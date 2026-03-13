@@ -1,5 +1,11 @@
 import Link from "next/link"
 import { tools } from "@/data/tools"
+import BreathingTool from "@/components/BreathingTool"
+import ThoughtJournal from "@/components/ThoughtJournal"
+import StressTest from "@/components/StressTest"
+import MoodLog from "@/components/MoodLog"
+import MicroPlan from "@/components/MicroPlan"
+import QuickScan from "@/components/QuickScan"
 
 export default function ToolsPage(){
 
@@ -102,7 +108,16 @@ className="border rounded-xl p-6 hover:shadow transition"
 ))}
 
 </div>
+<section className="grid md:grid-cols-2 gap-8">
 
+<BreathingTool />
+<StressTest />
+<ThoughtJournal />
+<MoodLog />
+<MicroPlan />
+<QuickScan />
+
+</section>
 </div>
 
 </main>
