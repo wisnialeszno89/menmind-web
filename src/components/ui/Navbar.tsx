@@ -21,6 +21,7 @@ MenMind
 <Link href="/wzrost">Wzrost</Link>
 <Link href="/ojcostwo">Ojcostwo</Link>
 <Link href="/rynek">Rynek</Link>
+<Link href="/artykuly">Artykuły</Link>
 
 <Link
 href="/navimind"
