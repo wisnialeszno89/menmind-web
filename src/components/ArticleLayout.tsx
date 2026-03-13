@@ -1,59 +1,57 @@
-import Link from "next/link"
+import { ReactNode } from "react"
 
 type Props = {
   title: string
-  intro?: string
-  children: React.ReactNode
-  category?: string
+  description: string
+  world: string
+  children: ReactNode
 }
 
 export default function ArticleLayout({
   title,
-  intro,
-  children,
-  category
+  description,
+  world,
+  children
 }: Props) {
 
   return (
-    <main className="bg-white min-h-screen">
 
-      <div className="max-w-3xl mx-auto px-6 py-24">
+    <article className="max-w-3xl mx-auto px-6 py-16">
 
-        {category && (
-          <div className="text-sm text-neutral-500 mb-6">
-            <Link href="/">MenMind</Link>
-            {" / "}
-            <span>{category}</span>
-          </div>
-        )}
+      {/* NAWIGACJA */}
 
-        <h1 className="text-4xl font-semibold text-black mb-6">
+      <div className="text-sm text-gray-500 mb-6">
+        <a href="/" className="hover:underline">MenMind</a>
+        {" / "}
+        <span className="capitalize">{world}</span>
+      </div>
+
+
+      {/* HEADER */}
+
+      <header className="mb-12">
+
+        <h1 className="text-4xl font-semibold mb-4">
           {title}
         </h1>
 
-        {intro && (
-          <p className="text-lg text-neutral-700 mb-12 leading-relaxed">
-            {intro}
-          </p>
-        )}
+        <p className="text-xl text-gray-600">
+          {description}
+        </p>
 
-        <div className="prose prose-neutral max-w-none">
-          {children}
-        </div>
+      </header>
 
-        <div className="border-t mt-20 pt-10">
 
-          <Link
-            href="/"
-            className="text-sm text-neutral-500 hover:text-black"
-          >
-            ← powrót
-          </Link>
+      {/* TREŚĆ */}
 
-        </div>
+      <div className="prose prose-lg max-w-none">
+
+        {children}
 
       </div>
 
-    </main>
+    </article>
+
   )
+
 }
