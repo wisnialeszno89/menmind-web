@@ -1,32 +1,42 @@
-import Container from "@/components/ui/Container"
-import CategoryIntro from "@/components/ui/CategoryIntro"
-import ArticleGrid from "@/components/ui/ArticleGrid"
-
+import Link from "next/link"
 import { wzrost } from "@/content/wzrost"
-import WorldLayout from "@/components/layout/WorldLayout"
 
-export default function WzrostPage() {
-  return (
-    <WorldLayout title="Wzrost">
+export default function Page(){
 
-      <main className="py-16 md:py-24">
+return(
 
-        <Container>
+<div className="max-w-4xl mx-auto px-6 py-16">
 
-          <CategoryIntro
-            title="Wzrost"
-            description="Rozwój, dyscyplina i budowanie kierunku w życiu."
-          />
+<h1 className="text-3xl font-semibold mb-10">
+Wzrost
+</h1>
 
-          <ArticleGrid
-            articles={wzrost}
-            base="wzrost"
-          />
+<div className="space-y-8">
 
-        </Container>
+{wzrost.map((article)=>(
 
-      </main>
+<Link
+key={article.slug}
+href={`/wzrost/${article.slug}`}
+className="block border-b pb-6 hover:opacity-70"
+>
 
-    </WorldLayout>
-  )
+<h2 className="text-xl font-semibold mb-2">
+{article.title}
+</h2>
+
+<p className="text-gray-600">
+{article.description}
+</p>
+
+</Link>
+
+))}
+
+</div>
+
+</div>
+
+)
+
 }

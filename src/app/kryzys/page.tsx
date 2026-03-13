@@ -1,32 +1,42 @@
-import Container from "@/components/ui/Container"
-import CategoryIntro from "@/components/ui/CategoryIntro"
-import ArticleGrid from "@/components/ui/ArticleGrid"
-
+import Link from "next/link"
 import { kryzys } from "@/content/kryzys"
-import WorldLayout from "@/components/layout/WorldLayout"
 
-export default function KryzysPage() {
-  return (
-    <WorldLayout title="Kryzys">
+export default function Page(){
 
-      <main className="py-16 md:py-24">
+return(
 
-        <Container>
+<div className="max-w-4xl mx-auto px-6 py-16">
 
-          <CategoryIntro
-            title="Kryzys"
-            description="Moment gdy wszystko się rozpada. Ta sekcja pomaga przejść przez najtrudniejsze chwile i odzyskać równowagę."
-          />
+<h1 className="text-3xl font-semibold mb-10">
+Kryzys
+</h1>
 
-          <ArticleGrid
-            articles={kryzys}
-            base="kryzys"
-          />
+<div className="space-y-8">
 
-        </Container>
+{kryzys.map((article)=>(
 
-      </main>
+<Link
+key={article.slug}
+href={`/kryzys/${article.slug}`}
+className="block border-b pb-6 hover:opacity-70"
+>
 
-    </WorldLayout>
-  )
+<h2 className="text-xl font-semibold mb-2">
+{article.title}
+</h2>
+
+<p className="text-gray-600">
+{article.description}
+</p>
+
+</Link>
+
+))}
+
+</div>
+
+</div>
+
+)
+
 }

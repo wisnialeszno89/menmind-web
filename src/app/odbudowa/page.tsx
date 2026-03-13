@@ -1,32 +1,42 @@
-import Container from "@/components/ui/Container"
-import CategoryIntro from "@/components/ui/CategoryIntro"
-import ArticleGrid from "@/components/ui/ArticleGrid"
-
+import Link from "next/link"
 import { odbudowa } from "@/content/odbudowa"
-import WorldLayout from "@/components/layout/WorldLayout"
 
-export default function OdbudowaPage() {
-  return (
-    <WorldLayout title="Odbudowa">
+export default function Page(){
 
-      <main className="py-16 md:py-24">
+return(
 
-        <Container>
+<div className="max-w-4xl mx-auto px-6 py-16">
 
-          <CategoryIntro
-            title="Odbudowa"
-            description="Powrót do stabilności po kryzysie. Małe kroki, które odbudowują życie."
-          />
+<h1 className="text-3xl font-semibold mb-10">
+Odbudowa
+</h1>
 
-          <ArticleGrid
-            articles={odbudowa}
-            base="odbudowa"
-          />
+<div className="space-y-8">
 
-        </Container>
+{odbudowa.map((article)=>(
 
-      </main>
+<Link
+key={article.slug}
+href={`/odbudowa/${article.slug}`}
+className="block border-b pb-6 hover:opacity-70"
+>
 
-    </WorldLayout>
-  )
+<h2 className="text-xl font-semibold mb-2">
+{article.title}
+</h2>
+
+<p className="text-gray-600">
+{article.description}
+</p>
+
+</Link>
+
+))}
+
+</div>
+
+</div>
+
+)
+
 }

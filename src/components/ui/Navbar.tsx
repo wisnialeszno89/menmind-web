@@ -33,7 +33,12 @@ export default function Navbar() {
         </Link>
 
       </div>
-
+<Link
+href="/navimind"
+className="font-semibold text-indigo-600"
+>
+NaviMind
+</Link>
     </nav>
 
   )
