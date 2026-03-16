@@ -1,27 +1,9 @@
-export type World =
-  | "kryzys"
-  | "odbudowa"
-  | "wzrost"
-  | "ojcostwo"
-
 export type Article = {
   slug: string
   title: string
   description: string
+  world: "kryzys" | "ojcostwo" | "odbudowa" | "wzrost"
+  category: string
   content: string
-
-  world: World
-
-  category?: string
-
   keywords?: string[]
-
-  faq?: {
-    q: string
-    a: string
-  }[]
-
-  updated?: string
-
-  author?: string
 }

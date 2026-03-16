@@ -1,54 +1,22 @@
-import ToolLayout from "@/components/tools/ToolLayout"
+import Container from "@/components/layout/Container"
 
 export default function Page() {
 
-return (
+  return (
 
-<ToolLayout
-title="Plan 72h"
-description="Gdy wszystko się sypie, najważniejsze są pierwsze trzy dni."
->
+    <Container>
 
-<p>
-Jeśli przechodzisz przez kryzys, Twój umysł jest przeciążony.
-Dlatego zamiast próbować rozwiązać całe życie, skup się na najbliższych 72 godzinach.
-</p>
+      <h1 className="text-3xl font-semibold mb-6">
+        Plan 72h
+      </h1>
 
-<h2 className="text-2xl font-semibold mt-10">
-Krok 1 — zatrzymaj chaos
-</h2>
+      <p>
+        Narzędzie pomoże Ci ustabilizować sytuację w ciągu
+        najbliższych 72 godzin.
+      </p>
 
-<ul className="list-disc pl-6 space-y-2">
+    </Container>
 
-<li>zjedz normalny posiłek</li>
-<li>wyjdź na 20 minut spaceru</li>
-<li>odłóż trudne decyzje</li>
-
-</ul>
-
-<h2 className="text-2xl font-semibold mt-10">
-Krok 2 — uporządkuj myśli
-</h2>
-
-<ul className="list-disc pl-6 space-y-2">
-
-<li>zapisz wszystko co masz w głowie</li>
-<li>oddziel fakty od emocji</li>
-<li>zostaw tylko najważniejsze sprawy</li>
-
-</ul>
-
-<h2 className="text-2xl font-semibold mt-10">
-Krok 3 — jeden mały ruch
-</h2>
-
-<p>
-Nie musisz rozwiązać wszystkiego.
-Wystarczy jeden mały krok który przywróci poczucie kontroli.
-</p>
-
-</ToolLayout>
-
-)
+  )
 
 }

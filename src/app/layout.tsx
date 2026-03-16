@@ -2,12 +2,10 @@ import "./globals.css"
 
 import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
-import FloatingChat from "@/components/FloatingChat"
 
 export const metadata = {
   title: "MenMind",
-  description:
-    "MenMind – platforma dla mężczyzn. Kryzys, odbudowa, rozwój i ojcostwo."
+  description: "Kompas dla mężczyzn"
 }
 
 export default function RootLayout({
@@ -19,21 +17,15 @@ export default function RootLayout({
   return (
 
     <html lang="pl">
-
-      <body className="bg-white text-neutral-900">
+      <body>
 
         <Header />
 
-        <main className="min-h-screen">
-          {children}
-        </main>
+        {children}
 
         <Footer />
 
-        <FloatingChat />
-
       </body>
-
     </html>
 
   )
