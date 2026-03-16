@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import ArticleLayout from "@/components/ArticleLayout"
+import ArticleLayout from "@/features/articles/ArticleLayout"
 
 import { kryzys } from "@/content/kryzys"
 import { ojcostwo } from "@/content/ojcostwo"

@@ -1,7 +1,7 @@
 import ProposalsGrid from "@/components/ProposalsGrid"
 import CitySearch from "@/components/suggestions/CitySearch"
 import Link from "next/link"
-import FeaturedPartners from "@/components/FeaturedPartners"
+import FeaturedPartners from "@/features/marketplace/FeaturedPartners"
 
 export default function ProposalsPage() {
 

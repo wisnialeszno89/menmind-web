@@ -1,4 +1,4 @@
-import ArticleCard from "./ArticleCard"
+import ArticleCard from "@/features/articles/ArticleCard"
 
 type Article={
 slug:string
@@ -20,10 +20,11 @@ return(
 {articles.map(article=>(
 
 <ArticleCard
-key={article.slug}
-title={article.title}
-description={article.description}
-href={`/${base}/${article.slug}`}
+  key={article.slug}
+  slug={article.slug}
+  base={base}
+  title={article.title}
+  description={article.description}
 />
 
 ))}

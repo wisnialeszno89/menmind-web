@@ -1,42 +1,31 @@
-import Link from "next/link"
-import { kryzys } from "@/content/kryzys"
+import WorldLayout from "@/components/layout/WorldLayout"
+import WorldPaths from "@/features/worlds/WorldPaths"
+import WorldArticles from "@/features/worlds/WorldArticles"
+import WorldTools from "@/features/worlds/WorldTools"
+import WorldSupport from "@/features/worlds/WorldSupport"
+import StateScale from "@/features/tools/StateScale"
 
-export default function Page(){
+export default function Page() {
 
-return(
+  return (
 
-<div className="max-w-4xl mx-auto px-6 py-16">
+    <WorldLayout
+      title="Kryzys"
+      description="Moment gdy wszystko zaczyna się rozpadać. Tutaj zaczyna się pierwszy krok."
+    >
 
-<h1 className="text-3xl font-semibold mb-10">
-Kryzys
-</h1>
+      <StateScale value={5} />
 
-<div className="space-y-8">
+      <WorldPaths world="kryzys" />
 
-{kryzys.map((article)=>(
+      <WorldArticles world="kryzys" />
 
-<Link
-key={article.slug}
-href={`/kryzys/${article.slug}`}
-className="block border-b pb-6 hover:opacity-70"
->
+      <WorldTools world="kryzys" />
 
-<h2 className="text-xl font-semibold mb-2">
-{article.title}
-</h2>
+      <WorldSupport world="kryzys" />
 
-<p className="text-gray-600">
-{article.description}
-</p>
+    </WorldLayout>
 
-</Link>
-
-))}
-
-</div>
-
-</div>
-
-)
+  )
 
 }

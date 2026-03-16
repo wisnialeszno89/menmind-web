@@ -1,7 +1,11 @@
-import Container from "@/components/ui/Container"
-import WorldPreview from "@/components/WorldPreview"
-import HomeArticles from "@/components/HomeArticles"
-import StartSection from "@/components/StartSection"
+import Hero from "@/features/home/Hero"
+import StartSection from "@/features/home/StartSection"
+import WorldPreview from "@/features/home/WorldPreview"
+import HomeArticles from "@/features/home/HomeArticles"
+import TrustSection from "@/features/home/TrustSection"
+import FeaturedPartners from "@/features/marketplace/FeaturedPartners"
+import NaviMindButton from "@/features/navimind/NaviMindButton"
+import StateScale from "@/features/tools/StateScale"
 
 export default function Home() {
 
@@ -9,21 +13,21 @@ export default function Home() {
 
     <main>
 
-      <section className="py-24">
+      <Hero
+        title="MenMind"
+        intro="Miejsce dla mężczyzn, którzy chcą odzyskać kierunek, spokój i sprawczość."
+      />
 
-        <Container>
+      <section className="py-16 border-t border-neutral-200">
+        <div className="max-w-5xl mx-auto px-6">
 
-          <h1 className="text-4xl md:text-5xl font-semibold max-w-2xl mb-6">
-            Platforma dla mężczyzn
-          </h1>
+          <h2 className="text-3xl font-semibold mb-8 text-center">
+            Gdzie jesteś teraz?
+          </h2>
 
-          <p className="text-neutral-700 text-lg max-w-xl leading-relaxed">
-            MenMind pomaga przejść przez kryzys,
-            odbudować stabilność i zbudować silniejsze życie.
-          </p>
+          <StateScale value={5} />
 
-        </Container>
-
+        </div>
       </section>
 
       <StartSection />
@@ -31,6 +35,29 @@ export default function Home() {
       <WorldPreview />
 
       <HomeArticles />
+
+      <section className="py-20 border-t">
+
+        <div className="max-w-5xl mx-auto px-6 text-center">
+
+          <h2 className="text-3xl font-semibold mb-6">
+            Nie chcesz rozmawiać z człowiekiem?
+          </h2>
+
+          <p className="text-neutral-600 mb-10">
+            Możesz zacząć od rozmowy z NaviMind.
+            To asystent AI który pomaga przejść przez trudne momenty.
+          </p>
+
+          <NaviMindButton />
+
+        </div>
+
+      </section>
+
+      <TrustSection />
+
+      <FeaturedPartners />
 
     </main>
 

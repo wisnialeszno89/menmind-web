@@ -1,42 +1,28 @@
-import Link from "next/link"
-import { odbudowa } from "@/content/odbudowa"
+import WorldLayout from "@/components/layout/WorldLayout"
+import WorldPaths from "@/features/worlds/WorldPaths"
+import WorldArticles from "@/features/worlds/WorldArticles"
+import WorldTools from "@/features/worlds/WorldTools"
+import WorldSupport from "@/features/worlds/WorldSupport"
 
-export default function Page(){
+export default function Page() {
 
-return(
+  return (
 
-<div className="max-w-4xl mx-auto px-6 py-16">
+    <WorldLayout
+      title="Odbudowa"
+      description="Moment gdy zaczynasz wracać do równowagi i odzyskiwać kontrolę nad swoim życiem."
+    >
 
-<h1 className="text-3xl font-semibold mb-10">
-Odbudowa
-</h1>
+      <WorldPaths world="odbudowa" />
 
-<div className="space-y-8">
+      <WorldArticles world="odbudowa" />
 
-{odbudowa.map((article)=>(
+      <WorldTools world="odbudowa" />
 
-<Link
-key={article.slug}
-href={`/odbudowa/${article.slug}`}
-className="block border-b pb-6 hover:opacity-70"
->
+      <WorldSupport world="odbudowa" />
 
-<h2 className="text-xl font-semibold mb-2">
-{article.title}
-</h2>
+    </WorldLayout>
 
-<p className="text-gray-600">
-{article.description}
-</p>
-
-</Link>
-
-))}
-
-</div>
-
-</div>
-
-)
+  )
 
 }

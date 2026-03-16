@@ -2,43 +2,52 @@ import Link from "next/link"
 
 export default function Navbar() {
 
+  const linkStyle =
+    "text-sm text-neutral-700 hover:text-black transition"
+
   return (
 
-    <nav className="w-full border-b border-gray-200">
+    <nav className="flex items-center gap-6">
 
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center gap-8">
+      <Link href="/" className={linkStyle}>
+        Start
+      </Link>
 
-        <Link href="/" className="font-semibold">
-          MenMind
-        </Link>
+      <Link href="/kryzys" className={linkStyle}>
+        Kryzys
+      </Link>
 
-        <Link href="/kryzys">
-          Kryzys
-        </Link>
+      <Link href="/odbudowa" className={linkStyle}>
+        Odbudowa
+      </Link>
 
-        <Link href="/ojcostwo">
-          Ojcostwo
-        </Link>
+      <Link href="/wzrost" className={linkStyle}>
+        Wzrost
+      </Link>
 
-        <Link href="/odbudowa">
-          Odbudowa
-        </Link>
+      <Link href="/ojcostwo" className={linkStyle}>
+        Ojcostwo
+      </Link>
 
-        <Link href="/wzrost">
-          Wzrost
-        </Link>
+      <Link href="/narzedzia" className={linkStyle}>
+        Narzędzia
+      </Link>
 
-        <Link href="/narzedzia">
-          Narzędzia
-        </Link>
+      <Link href="/droga" className={linkStyle}>
+        Droga
+      </Link>
 
-      </div>
-<Link
-href="/navimind"
-className="font-semibold text-indigo-600"
->
-NaviMind
-</Link>
+      <Link href="/wsparcie" className={linkStyle}>
+        Wsparcie
+      </Link>
+
+      <Link
+        href="/navimind"
+        className="px-4 py-2 rounded-lg bg-black text-white text-sm hover:opacity-90"
+      >
+        NaviMind
+      </Link>
+
     </nav>
 
   )

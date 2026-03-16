@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { getAllArticles } from "@/lib/getAllArticles"
-import Container from "@/components/ui/Container"
+import Container from "@/components/layout/Container"
 
 export default function ArtykulyPage() {
 

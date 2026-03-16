@@ -1,101 +1,53 @@
-"use client";
+import MenMindCompass from "@/components/MenMindCompass"
+import NaviMindButton from "@/features/navimind/NaviMindButton"
+import Link from "next/link"
 
-import { useState } from "react";
-import Link from "next/link";
+export default function Page() {
 
-export default function DrogaPage() {
+  return (
 
-  const [step, setStep] = useState(0);
-  const [result, setResult] = useState("");
+    <main className="max-w-5xl mx-auto px-6 py-20">
 
-  const questions = [
+      <header className="mb-16 text-center">
 
-    {
-      q: "Czy czujesz obecnie chaos w życiu?",
-      a: "kryzys",
-    },
+        <h1 className="text-4xl font-semibold mb-6">
+          Twoja droga
+        </h1>
 
-    {
-      q: "Czy próbujesz odbudować energię i kierunek?",
-      a: "odbudowa",
-    },
+        <p className="text-neutral-600 max-w-2xl mx-auto">
+          Każdy mężczyzna przechodzi przez różne momenty w życiu.
+          Kryzys, odbudowę, rozwój i ojcostwo.
+          Ten kompas pomaga zrozumieć gdzie jesteś teraz
+          i jaki może być kolejny krok.
+        </p>
 
-    {
-      q: "Czy szukasz rozwoju i nowych możliwości?",
-      a: "wzrost",
-    },
+      </header>
 
-    {
-      q: "Czy Twoim głównym tematem jest relacja z dzieckiem?",
-      a: "ojcostwo",
-    },
+      <MenMindCompass />
 
-  ];
+      <section className="mt-20 text-center">
 
-  const answer = (a: string) => {
+        <h2 className="text-2xl font-semibold mb-6">
+          Nie wiesz od czego zacząć?
+        </h2>
 
-    setResult(a);
+        <NaviMindButton />
 
-    setStep(questions.length);
-  };
-
-  if (step >= questions.length) {
-
-    return (
-
-      <main className="min-h-screen flex items-center justify-center">
-
-        <div className="text-center">
-
-          <h1 className="text-3xl font-semibold mb-6">
-            Twoje miejsce teraz
-          </h1>
+        <div className="mt-10">
 
           <Link
-            href={`/${result}`}
-            className="bg-black text-white px-6 py-3 rounded-lg"
+            href="/narzedzia"
+            className="text-sm text-neutral-600 underline"
           >
-            Przejdź dalej
+            zobacz narzędzia które pomogą Ci się ustabilizować
           </Link>
 
         </div>
 
-      </main>
-
-    );
-  }
-
-  return (
-
-    <main className="min-h-screen flex items-center justify-center">
-
-      <div className="max-w-xl text-center">
-
-        <h1 className="text-2xl font-semibold mb-10">
-          {questions[step].q}
-        </h1>
-
-        <div className="space-y-4">
-
-          <button
-            onClick={() => answer(questions[step].a)}
-            className="block w-full border p-4 rounded-lg"
-          >
-            Tak
-          </button>
-
-          <button
-            onClick={() => setStep(step + 1)}
-            className="block w-full border p-4 rounded-lg"
-          >
-            Nie
-          </button>
-
-        </div>
-
-      </div>
+      </section>
 
     </main>
 
-  );
+  )
+
 }

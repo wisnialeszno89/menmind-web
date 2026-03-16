@@ -1,4 +1,4 @@
-import ArticleLayout from "@/components/ArticleLayout"
+import ArticleLayout from "@/features/articles/ArticleLayout"
 
 export default function Page() {
 

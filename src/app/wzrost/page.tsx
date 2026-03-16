@@ -1,42 +1,28 @@
-import Link from "next/link"
-import { wzrost } from "@/content/wzrost"
+import WorldLayout from "@/components/layout/WorldLayout"
+import WorldPaths from "@/features/worlds/WorldPaths"
+import WorldArticles from "@/features/worlds/WorldArticles"
+import WorldTools from "@/features/worlds/WorldTools"
+import WorldSupport from "@/features/worlds/WorldSupport"
 
-export default function Page(){
+export default function Page() {
 
-return(
+  return (
 
-<div className="max-w-4xl mx-auto px-6 py-16">
+    <WorldLayout
+      title="Wzrost"
+      description="Moment gdy przestajesz tylko przetrwać i zaczynasz świadomie budować swoje życie."
+    >
 
-<h1 className="text-3xl font-semibold mb-10">
-Wzrost
-</h1>
+      <WorldPaths world="wzrost" />
 
-<div className="space-y-8">
+      <WorldArticles world="wzrost" />
 
-{wzrost.map((article)=>(
+      <WorldTools world="wzrost" />
 
-<Link
-key={article.slug}
-href={`/wzrost/${article.slug}`}
-className="block border-b pb-6 hover:opacity-70"
->
+      <WorldSupport world="wzrost" />
 
-<h2 className="text-xl font-semibold mb-2">
-{article.title}
-</h2>
+    </WorldLayout>
 
-<p className="text-gray-600">
-{article.description}
-</p>
-
-</Link>
-
-))}
-
-</div>
-
-</div>
-
-)
+  )
 
 }

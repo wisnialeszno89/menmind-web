@@ -1,42 +1,28 @@
-import Link from "next/link"
-import { ojcostwo } from "@/content/ojcostwo"
+import WorldLayout from "@/components/layout/WorldLayout"
+import WorldPaths from "@/features/worlds/WorldPaths"
+import WorldArticles from "@/features/worlds/WorldArticles"
+import WorldTools from "@/features/worlds/WorldTools"
+import WorldSupport from "@/features/worlds/WorldSupport"
 
-export default function Page(){
+export default function Page() {
 
-return(
+  return (
 
-<div className="max-w-4xl mx-auto px-6 py-16">
+    <WorldLayout
+      title="Ojcostwo"
+      description="Relacja z dzieckiem jest jedną z najważniejszych rzeczy w życiu mężczyzny."
+    >
 
-<h1 className="text-3xl font-semibold mb-10">
-Ojcostwo
-</h1>
+      <WorldPaths world="ojcostwo" />
 
-<div className="space-y-8">
+      <WorldArticles world="ojcostwo" />
 
-{ojcostwo.map((article)=>(
+      <WorldTools world="ojcostwo" />
 
-<Link
-key={article.slug}
-href={`/ojcostwo/${article.slug}`}
-className="block border-b pb-6 hover:opacity-70"
->
+      <WorldSupport world="ojcostwo" />
 
-<h2 className="text-xl font-semibold mb-2">
-{article.title}
-</h2>
+    </WorldLayout>
 
-<p className="text-gray-600">
-{article.description}
-</p>
-
-</Link>
-
-))}
-
-</div>
-
-</div>
-
-)
+  )
 
 }

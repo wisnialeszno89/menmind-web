@@ -1,86 +1,27 @@
-import Link from "next/link";
+import Link from "next/link"
+import Navbar from "@/components/ui/Navbar"
 
 export default function Header() {
 
   return (
 
-    <header className="border-b border-zinc-200 bg-white">
+    <header className="border-b border-neutral-200">
 
-      <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-
-        {/* LOGO */}
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
         <Link
           href="/"
-          className="font-semibold tracking-tight text-lg"
+          className="font-semibold text-lg tracking-tight"
         >
           MenMind
         </Link>
 
-
-        {/* NAV */}
-
-        <nav className="flex items-center gap-6 text-sm text-zinc-600">
-
-          <Link
-            href="/zacznij"
-            className="hover:text-black transition"
-          >
-            Zacznij
-          </Link>
-
-          <Link
-            href="/narzedzia"
-            className="hover:text-black transition"
-          >
-            Narzędzia
-          </Link>
-
-          <Link
-            href="/droga"
-            className="hover:text-black transition"
-          >
-            Droga
-          </Link>
-
-          <Link
-            href="/sciezki"
-            className="hover:text-black transition"
-          >
-            Ścieżki
-          </Link>
-
-          <Link
-            href="/wsparcie"
-            className="hover:text-black transition"
-          >
-            Wsparcie
-          </Link>
-
-          {/* PARTNERZY */}
-
-          <Link
-            href="/dla-partnerow"
-            className="hover:text-black transition"
-          >
-            Dla partnerów
-          </Link>
-
-          {/* NAVIMIND */}
-
-          <Link
-            href="/navimind"
-            className="ml-2 px-4 py-2 rounded-full bg-black text-white font-medium hover:opacity-90 transition"
-          >
-            NaviMind
-          </Link>
-
-        </nav>
+        <Navbar />
 
       </div>
 
     </header>
 
-  );
+  )
 
 }

@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Partner } from "@/data/partners"
 import RatingStars from "@/components/RatingStars"
-import PartnerBadges from "@/components/PartnerBadges"
+import PartnerBadges from "@/features/marketplace/PartnerBadges"
 
 export default function PartnersList({
 partners

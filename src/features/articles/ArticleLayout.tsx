@@ -1,13 +1,14 @@
 import { ReactNode } from "react"
 import Link from "next/link"
 
-import NavimindEmbed from "@/components/NavimindEmbed"
+import NavimindEmbed from "@/features/navimind/NavimindEmbed"
 import ExploreTools from "@/components/ExploreTools"
-import RelatedArticles from "@/components/RelatedArticles"
-import ArticlePartners from "@/components/ArticlePartners"
+import RelatedArticles from "@/features/articles/RelatedArticles"
+import ArticlePartners from "@/features/articles/ArticlePartners"
 import NextSteps from "@/components/NextSteps"
 
 import { navimindLink } from "@/lib/navimind"
+import StateScale from "@/features/tools/StateScale"
 
 type Props = {
   title: string
@@ -164,6 +165,7 @@ export default function ArticleLayout({
       {/* NEXT STEPS */}
 
       <NextSteps world={world} />
+      <StateScale value={5} />
 
 
     </article>

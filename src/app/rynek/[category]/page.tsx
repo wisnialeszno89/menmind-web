@@ -1,4 +1,4 @@
-import Container from "@/components/ui/Container"
+import Container from "@/components/layout/Container"
 import Link from "next/link"
 
 import { cities } from "@/data/cities"

@@ -1,7 +1,7 @@
 import { getPartners } from "@/lib/getPartners";
-import { cities } from "@/lib/cities";
+import { cities } from "@/data/cities";
 import { notFound } from "next/navigation";
-import PartnerCard from "@/components/PartnerCard";
+import PartnerCard from "@/features/marketplace/PartnerCard";
 
 type Props = {
   params: {

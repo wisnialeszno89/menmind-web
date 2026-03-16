@@ -1,61 +1,29 @@
-import Link from "next/link";
-import { cities } from "@/lib/cities";
+import { partners } from "@/data/partners"
+import PartnersList from "@/features/marketplace/PartnersList"
 
-export default function WsparciePage() {
+export default function Page() {
+
   return (
-    <main className="min-h-screen px-6 py-20">
-      <div className="mx-auto max-w-5xl">
 
-        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6 text-blue-500">
+    <main className="max-w-5xl mx-auto px-6 py-20">
+
+      <header className="mb-12">
+
+        <h1 className="text-4xl font-semibold mb-4">
           Wsparcie
         </h1>
 
-        <div className="h-px w-12 bg-blue-500 mb-10" />
-
-        <p className="mt-6 text-textMuted max-w-2xl">
-          Wybierz miasto i znajdź sprawdzone wsparcie:
-          psychologiczne, prawne, sportowe i rozwojowe.
+        <p className="text-neutral-600">
+          Jeśli potrzebujesz rozmowy lub pomocy specjalisty,
+          tutaj znajdziesz ludzi którzy pracują z mężczyznami.
         </p>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {cities.map((city) => (
-            <Link
-              key={city.slug}
-              href={`/wsparcie/${city.slug}`}
-              className="rounded-2xl border border-borderSoft p-6 hover:bg-navySoft transition"
-            >
-              <div className="flex justify-between items-center">
+      </header>
 
-                <span className="font-medium">
-                  {city.name}
-                </span>
+      <PartnersList partners={partners} />
 
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* ONLINE */}
-        <div className="mt-20 rounded-2xl border border-accent p-8 text-center">
-
-          <h2 className="text-2xl font-semibold">
-            Wsparcie online
-          </h2>
-
-          <p className="mt-4 text-textMuted">
-            Jeśli nie ma Twojego miasta — sprawdź oferty online.
-          </p>
-
-          <Link
-            href="/wsparcie/online"
-            className="inline-block mt-6 rounded-xl bg-accent px-6 py-3 text-black font-medium"
-          >
-            Zobacz online →
-          </Link>
-
-        </div>
-
-      </div>
     </main>
-  );
+
+  )
+
 }

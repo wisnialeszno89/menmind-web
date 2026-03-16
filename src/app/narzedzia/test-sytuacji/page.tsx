@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import StateScale from "@/components/tools/StateScale"
-import ProgressBar from "@/components/tools/ProgressBar"
+import StateScale from "@/features/tools/StateScale"
+import ProgressBar from "@/features/tools/ProgressBar"
 import { saveTestResult } from "@/lib/userState"
 
 const questions = [

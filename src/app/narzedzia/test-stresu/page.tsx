@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import ProgressBar from "@/components/tools/ProgressBar"
-import StateScale from "@/components/tools/StateScale"
+import ProgressBar from "@/features/tools/ProgressBar"
+import StateScale from "@/features/tools/StateScale"
 import { saveTestResult } from "@/lib/userState"
 
 const questions = [
