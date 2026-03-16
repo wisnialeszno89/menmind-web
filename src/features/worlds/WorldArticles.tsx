@@ -5,24 +5,22 @@ import { ojcostwo } from "@/content/ojcostwo"
 import { odbudowa } from "@/content/odbudowa"
 import { wzrost } from "@/content/wzrost"
 
-import { Article } from "@/types/article"
-
-const worlds: Record<string, Article[]> = {
+const worlds = {
   kryzys,
   ojcostwo,
   odbudowa,
   wzrost
 }
 
-type Props = {
+export default function WorldArticles({
+  world
+}: {
   world: keyof typeof worlds
-}
+}) {
 
-export default function WorldArticles({ world }: Props) {
+  const articles = worlds[world]
 
-  const articles = worlds[world] ?? []
-
-  if (!articles.length) return null
+  if (!articles?.length) return null
 
   return (
 
