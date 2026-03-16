@@ -1,28 +1,36 @@
 import Link from "next/link"
 import { partners } from "@/data/partners"
 
+type World = "kryzys" | "ojcostwo" | "odbudowa" | "wzrost"
+
+function isWorld(value:string): value is World {
+  return ["kryzys","ojcostwo","odbudowa","wzrost"].includes(value)
+}
+
 export default function ArticlePartners({
-world
+  world
 }:{
-world:string
+  world:string
 }){
 
-const mapping:any = {
+if(!isWorld(world)) return null
 
-kryzys:["psycholog","mediator","coach"],
+const mapping:Record<World,string[]> = {
 
-ojcostwo:["mediator","prawnik"],
+  kryzys:["psycholog","mediator","coach"],
 
-odbudowa:["coach","warsztaty-meskie"],
+  ojcostwo:["mediator","prawnik"],
 
-wzrost:["coaching","rozwoj-osobisty"]
+  odbudowa:["coach","warsztaty-meskie"],
+
+  wzrost:["coaching","rozwoj-osobisty"]
 
 }
 
 const categories = mapping[world] || []
 
 const filtered = partners.filter(
-p => categories.includes(p.category)
+  p => categories.includes(p.category)
 )
 
 if(!filtered.length) return null

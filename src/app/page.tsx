@@ -1,128 +1,156 @@
-import Container from "@/components/ui/Container"
-import Link from "next/link"
-import WorldPreview from "@/components/WorldPreview"
-import HomeArticles from "@/components/HomeArticles"
-import StartSection from "@/components/StartSection"
+import { notFound } from "next/navigation"
+import ArticleLayout from "@/components/ArticleLayout"
 
-export default function Home() {
+import { kryzys } from "@/content/kryzys"
+import { ojcostwo } from "@/content/ojcostwo"
+import { odbudowa } from "@/content/odbudowa"
+import { wzrost } from "@/content/wzrost"
 
-return (
+import { readingTime } from "@/lib/readingTime"
+import { articleSchema } from "@/lib/articleSchema"
 
-<main>
+type Article = {
+  slug: string
+  title: string
+  description: string
+  content: string
+}
 
-<section className="py-24">
+type World =
+  | "kryzys"
+  | "ojcostwo"
+  | "odbudowa"
+  | "wzrost"
 
-<Container>
+const worlds: Record<World, Article[]> = {
+  kryzys,
+  ojcostwo,
+  odbudowa,
+  wzrost
+}
 
-<h1 className="text-4xl md:text-5xl font-semibold max-w-2xl mb-6">
-Platforma dla mężczyzn w kryzysie i w rozwoju
-</h1>
+function isWorld(value: string): value is World {
+  return [
+    "kryzys",
+    "ojcostwo",
+    "odbudowa",
+    "wzrost"
+  ].includes(value)
+}
 
-<p className="text-neutral-700 text-lg max-w-xl leading-relaxed">
-MenMind pomaga przejść przez trudne momenty życia
-i budować silniejsze życie krok po kroku.
-</p>
+export function generateStaticParams() {
 
-</Container>
+  return Object.entries(worlds).flatMap(
+    ([world, articles]) =>
+      articles.map((a) => ({
+        world,
+        slug: a.slug
+      }))
+  )
 
-</section>
+}
 
+export function generateMetadata({
+  params
+}: {
+  params: { world: string; slug: string }
+}) {
 
+  const { world, slug } = params
 
-<section className="py-20 border-t">
+  if (!isWorld(world)) return {}
 
-<Container>
+  const article = worlds[world].find(
+    (a) => a.slug === slug
+  )
 
-<h2 className="text-2xl font-semibold mb-12">
-Droga przez kryzys
-</h2>
+  if (!article) return {}
 
-<div className="grid md:grid-cols-2 gap-10">
+  return {
 
-<Link href="/kryzys" className="block border p-8 hover:border-black">
+    title: `${article.title} | MenMind`,
 
-<h3 className="text-xl font-medium mb-3">
-Kryzys
-</h3>
+    description: article.description,
 
-<p className="text-neutral-600 text-sm">
-Moment gdy wszystko się rozpada.
-Tu zaczyna się pierwszy krok.
-</p>
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      url: `https://menmind.app/${world}/${slug}`,
+      type: "article"
+    }
 
-</Link>
+  }
 
-<Link href="/odbudowa" className="block border p-8 hover:border-black">
+}
 
-<h3 className="text-xl font-medium mb-3">
-Odbudowa
-</h3>
+export default function Page({
+  params
+}: {
+  params: { world: string; slug: string }
+}) {
 
-<p className="text-neutral-600 text-sm">
-Odzyskiwanie stabilności po chaosie.
-</p>
+  const { world, slug } = params
 
-</Link>
+  if (!isWorld(world)) return notFound()
 
-<Link href="/wzrost" className="block border p-8 hover:border-black">
+  const articles = worlds[world]
 
-<h3 className="text-xl font-medium mb-3">
-Wzrost
-</h3>
+  const article = articles.find(
+    (a) => a.slug === slug
+  )
 
-<p className="text-neutral-600 text-sm">
-Budowanie silniejszej wersji siebie.
-</p>
+  if (!article) return notFound()
 
-</Link>
+  const minutes = readingTime(article.content)
 
-<Link href="/ojcostwo" className="block border p-8 hover:border-black">
+  const paragraphs = article.content
+    .split("\n")
+    .map((p) => p.trim())
+    .filter(Boolean)
 
-<h3 className="text-xl font-medium mb-3">
-Ojcostwo
-</h3>
+  const schema = articleSchema({
+    title: article.title,
+    description: article.description,
+    slug: `${world}/${slug}`
+  })
 
-<p className="text-neutral-600 text-sm">
-Relacja z dzieckiem i odpowiedzialność.
-</p>
+  return (
 
-</Link>
+    <>
+    
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema)
+        }}
+      />
 
-</div>
+      <ArticleLayout
+        title={article.title}
+        description={article.description}
+        world={world}
+        slug={slug}
+      >
 
-</Container>
+        <p className="text-sm text-gray-500 mb-8">
+          {minutes} min czytania
+        </p>
 
-</section>
+        {paragraphs.map((paragraph, i) => (
 
+          <p
+            key={i}
+            className="text-lg leading-relaxed mb-6"
+          >
+            {paragraph}
+          </p>
 
+        ))}
 
-<section className="py-24 border-t">
+      </ArticleLayout>
 
-<Container>
+    </>
 
-<h2 className="text-2xl font-semibold mb-6">
-Dlaczego powstał MenMind
-</h2>
-
-<p className="max-w-2xl text-neutral-700 leading-relaxed">
-Wielu mężczyzn przechodzi przez trudne momenty w samotności.
-Rozstania, kryzysy życiowe, utrata sensu.
-MenMind powstał jako miejsce,
-w którym można znaleźć wsparcie,
-zrozumienie i kierunek działania.
-</p>
-
-</Container>
-
-<StartSection />
-
-<WorldPreview />
-<HomeArticles />
-
-</section>
-
-</main>
-
-)
+  )
 
 }

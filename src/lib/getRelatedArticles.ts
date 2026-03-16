@@ -1,12 +1,15 @@
-import { articles } from "@/content/articles"
+import { Article } from "@/types/article"
 
-export function getRelatedArticles(world: string, currentSlug: string) {
+export function getRelatedArticles(
+  articles: Article[],
+  current: Article
+) {
 
   return articles
     .filter(
-      (article) =>
-        article.world === world &&
-        article.slug !== currentSlug
+      (a) =>
+        a.slug !== current.slug &&
+        a.world === current.world
     )
     .slice(0, 3)
 

@@ -1,88 +1,74 @@
-export const kryzys = [
+import { Article } from "@/types/article"
+
+export const kryzys: Article[] = [
 
 {
-slug:"gdy-nie-wiesz-co-zrobic-ze-swoim-zyciem",
-title:"Gdy nie wiesz co zrobić ze swoim życiem",
-description:"Moment gdy tracisz kierunek i zaczynasz zadawać sobie pytanie: co dalej?",
+slug:"samotnosc-mezczyzny",
+title:"Samotność mężczyzny",
+description:"Dlaczego tak wielu mężczyzn doświadcza samotności.",
+world:"kryzys",
+category:"relacje",
+keywords:["samotność mężczyzny","dlaczego mężczyźni są samotni"],
 content:`
-Wielu mężczyzn przechodzi moment, w którym pojawia się jedno bardzo trudne pytanie.
+Samotność mężczyzny rzadko wygląda tak, jak wielu ludzi sobie wyobraża.
 
-Co ja właściwie robię ze swoim życiem?
+Nie zawsze oznacza brak ludzi wokół.  
+Często oznacza brak prawdziwego kontaktu.
 
-Czasami pojawia się ono nagle. Czasami narasta latami.
+Możesz mieć znajomych.  
+Możesz mieć pracę.  
+Możesz mieć codzienność pełną obowiązków.
 
-Masz pracę, masz codzienność, wszystko teoretycznie działa – ale w środku pojawia się pustka.
+A mimo to w pewnym momencie pojawia się poczucie, że z nikim nie możesz naprawdę porozmawiać.
 
-To nie zawsze jest dramatyczny kryzys. Częściej jest to ciche poczucie zagubienia.
+Wielu mężczyzn zostało wychowanych w przekonaniu, że z trudnościami trzeba radzić sobie samemu.  
+Że pokazywanie słabości oznacza porażkę.
 
-Przestajesz czuć kierunek.
+Problem polega na tym, że emocje nie znikają tylko dlatego, że o nich nie mówimy.
 
-Przestajesz czuć sens.
+Zostają w środku i z czasem zaczynają wpływać na sposób myślenia.
 
-I zaczynasz zastanawiać się czy życie nie wyglądało inaczej, niż kiedyś sobie wyobrażałeś.
+Samotność często nie polega na braku ludzi.  
+Polega na braku miejsca, w którym można być sobą.
 
-Najważniejsze jest zrozumieć jedną rzecz.
+Dlatego czasami pierwszy krok nie polega na rozwiązaniu wszystkich problemów.
 
-To doświadczenie nie oznacza, że coś jest z Tobą nie tak.
-
-Bardzo często oznacza, że Twoje życie przestało być zgodne z tym kim naprawdę jesteś.
-
-Pierwszym krokiem nie jest natychmiastowa zmiana wszystkiego.
-
-Pierwszym krokiem jest zatrzymanie się i zadanie sobie kilku prostych pytań.
-
-Co mnie dziś naprawdę męczy?
-
-Co w moim życiu daje mi energię?
-
-A co tę energię zabiera?
-
-Czasami już sama szczera odpowiedź na te pytania jest początkiem zmiany.
-
-Kryzys często nie jest końcem drogi.
-
-Bardzo często jest początkiem nowej.
+Pierwszy krok polega na tym, żeby przestać być z nimi całkowicie samemu.
 `
 },
 
 {
-slug:"dlaczego-mezczyzna-traci-motywacje",
-title:"Dlaczego mężczyzna nagle traci motywację",
-description:"Co się dzieje gdy przestajesz mieć siłę i chęć do działania.",
+slug:"jak-poradzic-sobie-z-rozstaniem",
+title:"Jak poradzić sobie z rozstaniem",
+description:"Rozstanie potrafi zachwiać całym życiem.",
+world:"kryzys",
+category:"relacje",
+keywords:["jak poradzić sobie z rozstaniem","rozstanie mężczyzny"],
 content:`
-Motywacja nie znika z dnia na dzień.
+Rozstanie potrafi wstrząsnąć całym poczuciem stabilności.
 
-Najczęściej wyczerpuje się powoli.
+Zmienia się codzienność.  
+Zmieniają się plany.  
+Zmienia się obraz przyszłości.
 
-Najpierw przestajesz mieć ochotę na rzeczy, które kiedyś były naturalne.
+Wielu mężczyzn reaguje podobnie.
 
-Potem odkładasz coraz więcej spraw na później.
+Najpierw pojawia się szok.  
+Potem próba zrozumienia, co się właściwie wydarzyło.
 
-W końcu pojawia się moment, gdy masz wrażenie że nie masz już siły do niczego.
+A później myśli zaczynają krążyć w kółko.
 
-Wielu mężczyzn interpretuje to jako własną słabość.
+To naturalne.
 
-W rzeczywistości bardzo często jest to sygnał przeciążenia.
+Umysł próbuje odzyskać kontrolę nad sytuacją.
 
-Zbyt dużo odpowiedzialności.
+Problem pojawia się wtedy, gdy analiza zamienia się w niekończące się rozpamiętywanie.
 
-Zbyt mało przestrzeni dla siebie.
+Rozstanie to nie tylko koniec relacji.
 
-Zbyt długie życie w trybie „muszę”.
+To również koniec pewnej wizji przyszłości.
 
-Motywacja wraca wtedy, gdy wraca energia.
-
-Dlatego zamiast zmuszać się do jeszcze większego wysiłku, warto najpierw odzyskać równowagę.
-
-Sen.
-
-Ruch.
-
-Kontakt z ludźmi.
-
-Proste rzeczy które przywracają stabilność.
-
-Dopiero potem pojawia się przestrzeń na działanie.
+Dlatego potrzebny jest czas, aby stworzyć nową.
 `
 },
 
@@ -90,43 +76,97 @@ Dopiero potem pojawia się przestrzeń na działanie.
 slug:"kryzys-mezczyzny-po-30",
 title:"Kryzys mężczyzny po trzydziestce",
 description:"Moment gdy zaczynasz inaczej patrzeć na swoje życie.",
+world:"kryzys",
+category:"tozsamosc",
+keywords:["kryzys po 30","kryzys mężczyzny"],
 content:`
 Dla wielu mężczyzn okolice trzydziestego roku życia są momentem przełomowym.
 
-Do tej pory życie było często napędzane przez oczekiwania.
+Do tej pory życie często było napędzane przez oczekiwania.
 
-Szkoła.
-
-Studia.
-
+Szkoła.  
+Studia.  
 Pierwsza praca.
-
-Budowanie stabilności.
 
 Ale w pewnym momencie pojawia się pytanie.
 
 Czy to jest życie, którego naprawdę chcę?
 
-Niektórzy odkrywają, że ich wybory były bardziej reakcją na oczekiwania otoczenia niż własnym wyborem.
+Niektórzy odkrywają, że wiele decyzji było reakcją na oczekiwania innych ludzi.
 
-To może wywołać poczucie zagubienia.
+Ten moment może wywołać poczucie zagubienia.
 
-Ale może też być początkiem ogromnej zmiany.
+Ale może też być początkiem bardzo ważnej zmiany.
 
-Bo dopiero w tym momencie wielu mężczyzn zaczyna naprawdę poznawać siebie.
+Bo dopiero wtedy wielu mężczyzn zaczyna naprawdę poznawać siebie.
+`
+},
 
-Kryzys po trzydziestce nie musi być czymś złym.
+{
+slug:"gdy-nie-wiesz-co-zrobic-ze-swoim-zyciem",
+title:"Gdy nie wiesz co zrobić ze swoim życiem",
+description:"Moment gdy tracisz kierunek i zaczynasz zadawać pytanie: co dalej.",
+world:"kryzys",
+category:"kierunek",
+keywords:["brak kierunku w życiu","co zrobić ze swoim życiem"],
+content:`
+Są momenty w życiu, gdy wszystko teoretycznie działa.
 
-Często jest momentem, w którym zaczynasz budować życie bardziej świadomie.
+Masz pracę.  
+Masz codzienność.  
+Masz obowiązki.
+
+A mimo to pojawia się dziwne uczucie pustki.
+
+To często moment, w którym człowiek zaczyna zadawać sobie pytanie.
+
+Czy to jest życie, którego naprawdę chcę.
+
+Nie oznacza to, że wszystko jest złe.
+
+Czasami oznacza tylko, że dotychczasowy kierunek przestał być aktualny.
+
+I że czas zacząć szukać nowego.
+`
+},
+
+{
+slug:"brak-motywacji-u-mezczyzny",
+title:"Dlaczego mężczyzna traci motywację",
+description:"Co się dzieje gdy przestajesz mieć siłę do działania.",
+world:"kryzys",
+category:"energia",
+keywords:["brak motywacji","utrata motywacji"],
+content:`
+Motywacja rzadko znika nagle.
+
+Najczęściej wyczerpuje się powoli.
+
+Najpierw przestajesz mieć ochotę na rzeczy które kiedyś były naturalne.
+
+Potem odkładasz coraz więcej spraw.
+
+W końcu pojawia się moment, gdy masz wrażenie że nie masz siły do niczego.
+
+Wielu mężczyzn interpretuje to jako własną słabość.
+
+W rzeczywistości bardzo często jest to sygnał przeciążenia.
+
+Organizm mówi wtedy jedno.
+
+Potrzebujesz odzyskać równowagę.
 `
 },
 
 {
 slug:"kiedy-zycie-zaczyna-przerastac",
 title:"Kiedy życie zaczyna Cię przerastać",
-description:"Jak rozpoznać moment przeciążenia i co wtedy zrobić.",
+description:"Jak rozpoznać moment przeciążenia.",
+world:"kryzys",
+category:"stres",
+keywords:["przeciążenie życiem","stres mężczyzny"],
 content:`
-Są momenty w życiu, gdy wszystko zaczyna się kumulować.
+Są momenty gdy wszystko zaczyna się kumulować.
 
 Problemy w pracy.
 
@@ -134,129 +174,35 @@ Napięcia w relacjach.
 
 Odpowiedzialność finansowa.
 
-Brak czasu dla siebie.
-
-Na początku radzisz sobie z tym wszystkim.
+Na początku człowiek radzi sobie z tym wszystkim.
 
 Ale z czasem napięcie zaczyna rosnąć.
 
-Ciało zaczyna reagować.
+Ciało reaguje.
 
 Problemy ze snem.
 
-Nerwowość.
+Rozdrażnienie.
 
 Poczucie ciągłego napięcia.
 
-To znak, że Twoje zasoby są przeciążone.
+To znak że zasoby są przeciążone.
 
-Najgorszą reakcją w takim momencie jest udawanie, że wszystko jest w porządku.
-
-Najlepszą – zatrzymanie się i przywrócenie równowagi.
-
-Czasami kilka prostych zmian w codzienności może znacząco zmniejszyć poziom napięcia.
-`
-},
-
-{
-slug:"samotnosc-mezczyzny",
-title:"Samotność mężczyzny",
-description:"Dlaczego tak wielu mężczyzn doświadcza samotności.",
-content:`
-Samotność jest jednym z najmniej rozumianych doświadczeń w życiu mężczyzn.
-
-Wielu z nich ma znajomych.
-
-Ma pracę.
-
-Ma codzienne obowiązki.
-
-A mimo to czuje się samotnych.
-
-Często wynika to z braku głębszych relacji.
-
-Relacji w których można powiedzieć co naprawdę się czuje.
-
-Bez udawania.
-
-Bez oceniania.
-
-Samotność nie zawsze oznacza brak ludzi wokół.
-
-Często oznacza brak prawdziwego kontaktu.
-
-Dlatego jednym z ważniejszych kroków wychodzenia z kryzysu jest budowanie autentycznych relacji.
-`
-},
-
-{
-slug:"kryzys-w-zwiazku",
-title:"Kryzys w związku",
-description:"Dlaczego relacje przechodzą kryzysy i co można z tym zrobić.",
-content:`
-Każdy związek przechodzi momenty napięcia.
-
-To naturalne.
-
-Problem pojawia się wtedy, gdy napięcie zaczyna narastać przez długi czas.
-
-Brak rozmów.
-
-Niewyrażone emocje.
-
-Rosnące frustracje.
-
-W pewnym momencie relacja zaczyna przypominać pole konfliktu zamiast miejsca wsparcia.
-
-W takich momentach kluczowa jest rozmowa.
-
-Nie oskarżenia.
-
-Nie walka.
-
-Tylko szczera próba zrozumienia siebie nawzajem.
-
-Czasami kryzys w związku prowadzi do rozstania.
-
-Ale bardzo często może też być początkiem głębszego zrozumienia.
-`
-},
-
-{
-slug:"rozstanie-i-kryzys-tozsamosci",
-title:"Rozstanie i kryzys tożsamości",
-description:"Dlaczego po rozstaniu wielu mężczyzn czuje się zagubionych.",
-content:`
-Relacje często stają się ważną częścią naszej tożsamości.
-
-Planów.
-
-Codzienności.
-
-Wyobrażenia o przyszłości.
-
-Gdy relacja się kończy, nagle znika duża część tej struktury.
-
-Pojawia się pytanie.
-
-Kim jestem teraz?
-
-To trudny moment.
-
-Ale może być też okazją do ponownego odkrycia siebie.
-
-Do zbudowania życia bardziej opartego na własnych wartościach.
+W takich momentach najważniejsze jest zatrzymanie się i odzyskanie równowagi.
 `
 },
 
 {
 slug:"brak-sensu-zycia",
 title:"Gdy życie zaczyna tracić sens",
-description:"Dlaczego pojawia się poczucie pustki i jak na nie reagować.",
+description:"Dlaczego pojawia się poczucie pustki.",
+world:"kryzys",
+category:"sens",
+keywords:["brak sensu życia","poczucie pustki"],
 content:`
-Czasami kryzys nie ma jednego konkretnego powodu.
+Czasami kryzys nie ma jednego powodu.
 
-Nie ma jednego wydarzenia które wszystko zmienia.
+Nie ma jednej sytuacji która wszystko zmienia.
 
 Po prostu pojawia się poczucie pustki.
 
@@ -264,40 +210,39 @@ Codzienność przestaje cieszyć.
 
 Cele przestają motywować.
 
-To moment który wielu ludzi interpretuje jako coś bardzo złego.
+Wielu ludzi interpretuje to jako coś bardzo złego.
 
-W rzeczywistości może to być sygnał że Twoje życie potrzebuje zmiany kierunku.
+W rzeczywistości często jest to moment, w którym życie próbuje zmienić kierunek.
 
 Pytanie nie brzmi czy masz kryzys.
 
-Pytanie brzmi czego ten kryzys próbuje Cię nauczyć.
+Pytanie brzmi czego ten moment próbuje Cię nauczyć.
 `
 },
 
 {
 slug:"pierwszy-krok-w-kryzysie",
 title:"Pierwszy krok gdy jesteś w kryzysie",
-description:"Od czego zacząć gdy czujesz że wszystko się sypie.",
+description:"Od czego zacząć gdy wszystko się sypie.",
+world:"kryzys",
+category:"start",
+keywords:["co zrobić w kryzysie"],
 content:`
 W kryzysie łatwo wpaść w pułapkę myślenia że trzeba naprawić całe życie naraz.
 
-To niemożliwe.
+To prawie zawsze prowadzi do frustracji.
 
 Najważniejszy jest pierwszy mały krok.
 
-Może to być rozmowa z kimś zaufanym.
+Rozmowa.
 
-Może to być zapisanie swoich myśli.
+Spacer.
 
-Może to być jeden spacer.
+Zapisanie swoich myśli.
 
 Nie musisz dziś rozwiązać wszystkiego.
 
-Wystarczy że zrobisz jeden krok w stronę stabilności.
-
-Potem kolejny.
-
-I jeszcze jeden.
+Wystarczy jeden krok w stronę stabilności.
 `
 },
 
@@ -305,12 +250,15 @@ I jeszcze jeden.
 slug:"jak-zaczyna-sie-wychodzenie-z-kryzysu",
 title:"Jak zaczyna się wychodzenie z kryzysu",
 description:"Dlaczego zmiana zaczyna się od małych rzeczy.",
+world:"kryzys",
+category:"proces",
+keywords:["wychodzenie z kryzysu"],
 content:`
 Wychodzenie z kryzysu rzadko wygląda spektakularnie.
 
 Nie ma jednego momentu w którym wszystko nagle się zmienia.
 
-Najczęściej zmiana zaczyna się od małych decyzji.
+Zmiana zaczyna się od małych decyzji.
 
 Lepszy sen.
 
@@ -318,13 +266,9 @@ Więcej ruchu.
 
 Jedna szczera rozmowa.
 
-Stopniowo chaos zaczyna się porządkować.
+Z czasem chaos zaczyna się porządkować.
 
-I pojawia się przestrzeń na budowanie nowego kierunku.
-
-Kryzys nie musi być końcem.
-
-Często jest początkiem nowego etapu życia.
+I pojawia się przestrzeń na nowy kierunek.
 `
 }
 

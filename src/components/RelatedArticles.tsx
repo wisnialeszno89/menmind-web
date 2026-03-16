@@ -6,72 +6,80 @@ import { odbudowa } from "@/content/odbudowa"
 import { wzrost } from "@/content/wzrost"
 
 type Props = {
-world: string
-slug: string
+  world: string
+  slug: string
 }
 
-const worlds: Record<string, any[]> = {
-kryzys,
-ojcostwo,
-odbudowa,
-wzrost
+type World = "kryzys" | "ojcostwo" | "odbudowa" | "wzrost"
+
+const worlds: Record<World, any[]> = {
+  kryzys,
+  ojcostwo,
+  odbudowa,
+  wzrost
 }
 
-const worldLabels: Record<string,string> = {
-kryzys:"Kryzys",
-ojcostwo:"Ojcostwo",
-odbudowa:"Odbudowa",
-wzrost:"Wzrost"
+const worldLabels: Record<World,string> = {
+  kryzys:"Kryzys",
+  ojcostwo:"Ojcostwo",
+  odbudowa:"Odbudowa",
+  wzrost:"Wzrost"
+}
+
+function isWorld(value:string): value is World {
+  return ["kryzys","ojcostwo","odbudowa","wzrost"].includes(value)
 }
 
 export default function RelatedArticles({ world, slug }: Props) {
 
-const articles = worlds[world] || []
+  if(!isWorld(world)) return null
 
-const related = articles
-.filter(a => a.slug !== slug)
-.slice(0,3)
+  const articles = worlds[world] || []
 
-if (related.length === 0) return null
+  const related = articles
+    .filter(a => a.slug !== slug)
+    .slice(0,3)
 
-return (
+  if (related.length === 0) return null
 
-<div>
+  return (
 
-<h3 className="text-2xl font-semibold mb-8">
-Możesz też przeczytać
-</h3>
+    <div>
 
-<div className="grid md:grid-cols-3 gap-6">
+      <h3 className="text-2xl font-semibold mb-8">
+        Możesz też przeczytać
+      </h3>
 
-{related.map(article => (
+      <div className="grid md:grid-cols-3 gap-6">
 
-<Link
-key={article.slug}
-href={`/${world}/${article.slug}`}
-className="group border rounded-xl p-6 hover:shadow-lg transition bg-white"
->
+        {related.map(article => (
 
-<div className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
-{worldLabels[world]}
-</div>
+          <Link
+            key={article.slug}
+            href={`/${world}/${article.slug}`}
+            className="group border rounded-xl p-6 hover:shadow-lg transition bg-white"
+          >
 
-<h4 className="font-semibold text-lg mb-2 group-hover:underline">
-{article.title}
-</h4>
+            <div className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
+              {worldLabels[world]}
+            </div>
 
-<p className="text-sm text-gray-600 leading-relaxed">
-{article.description}
-</p>
+            <h4 className="font-semibold text-lg mb-2 group-hover:underline">
+              {article.title}
+            </h4>
 
-</Link>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              {article.description}
+            </p>
 
-))}
+          </Link>
 
-</div>
+        ))}
 
-</div>
+      </div>
 
-)
+    </div>
+
+  )
 
 }

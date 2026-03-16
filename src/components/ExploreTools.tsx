@@ -1,6 +1,9 @@
 import Link from "next/link"
+import { navimindLink } from "@/lib/navimind"
 
 export default function ExploreTools(){
+
+const navimind = navimindLink({})
 
 return(
 
@@ -20,25 +23,26 @@ Test sytuacji
 </Link>
 
 <Link
-href="/narzedzia/stres"
+href="/narzedzia/test-stresu"
 className="border rounded-lg p-4 hover:shadow"
 >
 Test poziomu stresu
 </Link>
 
 <Link
-href="/narzedzia/stabilizacja"
+href="/narzedzia/reset"
 className="border rounded-lg p-4 hover:shadow"
 >
 Narzędzia stabilizacji
 </Link>
 
-<Link
-href="/navimind"
+<a
+href={navimind}
+target="_blank"
 className="border rounded-lg p-4 hover:shadow"
 >
 Rozmowa w NaviMind
-</Link>
+</a>
 
 </div>
 

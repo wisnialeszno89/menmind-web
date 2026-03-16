@@ -1,25 +1,25 @@
 import Link from "next/link"
+import { navimindLink } from "@/lib/navimind"
 
 export default function NextSteps({world}:{world:string}){
 
 let pathLink="/sciezki"
 let toolLink="/narzedzia"
-let navimindLink="/navimind"
+let navimind = navimindLink({state:world})
+
 let supportLink="/propozycje"
 
 if(world==="kryzys"){
 
 pathLink="/kryzys"
-toolLink="/narzedzia/stabilizacja"
-navimindLink="/navimind?state=kryzys"
+toolLink="/narzedzia/reset"
 
 }
 
 if(world==="ojcostwo"){
 
 pathLink="/ojcostwo"
-toolLink="/narzedzia/ojcostwo"
-navimindLink="/navimind?state=ojcostwo"
+toolLink="/narzedzia/relacje"
 
 }
 
@@ -27,7 +27,13 @@ if(world==="wzrost"){
 
 pathLink="/wzrost"
 toolLink="/narzedzia/energia"
-navimindLink="/navimind?state=wzrost"
+
+}
+
+if(world==="odbudowa"){
+
+pathLink="/odbudowa"
+toolLink="/narzedzia/plan-72h"
 
 }
 
@@ -55,12 +61,13 @@ className="border rounded-lg p-4 hover:shadow"
 Spróbuj narzędzia
 </Link>
 
-<Link
-href={navimindLink}
+<a
+href={navimind}
+target="_blank"
 className="border rounded-lg p-4 hover:shadow"
 >
-Porozmawiaj w NaviMind
-</Link>
+Porozmawiaj z NaviMind
+</a>
 
 <Link
 href={supportLink}

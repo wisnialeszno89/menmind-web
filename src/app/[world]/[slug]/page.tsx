@@ -15,7 +15,11 @@ type Article = {
   content: string
 }
 
-type World = "kryzys" | "ojcostwo" | "odbudowa" | "wzrost"
+type World =
+  | "kryzys"
+  | "ojcostwo"
+  | "odbudowa"
+  | "wzrost"
 
 const worlds: Record<World, Article[]> = {
   kryzys,
@@ -24,13 +28,51 @@ const worlds: Record<World, Article[]> = {
   wzrost
 }
 
+function isWorld(value: string): value is World {
+  return [
+    "kryzys",
+    "ojcostwo",
+    "odbudowa",
+    "wzrost"
+  ].includes(value)
+}
+
 export function generateStaticParams() {
-  return Object.entries(worlds).flatMap(([world, articles]) =>
-    articles.map((a) => ({
-      world,
-      slug: a.slug
-    }))
+
+  return Object.entries(worlds).flatMap(
+    ([world, articles]) =>
+      articles.map((a) => ({
+        world,
+        slug: a.slug
+      }))
   )
+
+}
+
+export function generateMetadata({
+  params
+}: {
+  params: { world: string; slug: string }
+}) {
+
+  const { world, slug } = params
+
+  if (!isWorld(world)) return {}
+
+  const article = worlds[world].find(
+    (a) => a.slug === slug
+  )
+
+  if (!article) return {}
+
+  return {
+
+    title: `${article.title} | MenMind`,
+
+    description: article.description
+
+  }
+
 }
 
 export default function Page({
@@ -41,11 +83,13 @@ export default function Page({
 
   const { world, slug } = params
 
-  const articles = worlds[world as World]
+  if (!isWorld(world)) return notFound()
 
-  if (!articles) return notFound()
+  const articles = worlds[world]
 
-  const article = articles.find((a) => a.slug === slug)
+  const article = articles.find(
+    (a) => a.slug === slug
+  )
 
   if (!article) return notFound()
 
@@ -62,6 +106,7 @@ export default function Page({
       title={article.title}
       description={article.description}
       world={world}
+      slug={slug}
     >
 
       <p className="text-sm text-gray-500 mb-8">
@@ -69,12 +114,14 @@ export default function Page({
       </p>
 
       {paragraphs.map((paragraph, i) => (
+
         <p
           key={i}
           className="text-lg leading-relaxed mb-6"
         >
           {paragraph}
         </p>
+
       ))}
 
     </ArticleLayout>

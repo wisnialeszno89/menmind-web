@@ -1,25 +1,13 @@
-import "./globals.css"
-
-import Navbar from "@/components/ui/Navbar"
-import Footer from "@/components/ui/Footer"
-import ChatBubble from "@/components/ui/ChatBubble"
-import NaviMindButton from "@/components/NaviMindButton"
-import UserStateBar from "@/components/UserStateBar"
+import FloatingChat from "@/components/FloatingChat"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl">
-      <body className="min-h-screen flex flex-col">
+      <body>
 
-        <UserStateBar />
-        <Navbar />
+        {children}
 
-        <main className="flex-1">
-          {children}
-        </main>
-
-        <Footer />
-                <NaviMindButton />
+        <FloatingChat />
 
       </body>
     </html>
