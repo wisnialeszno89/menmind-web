@@ -5,7 +5,6 @@ import HomeArticles from "@/features/home/HomeArticles"
 import TrustSection from "@/features/home/TrustSection"
 import FeaturedPartners from "@/features/marketplace/FeaturedPartners"
 import NaviMindButton from "@/features/navimind/NaviMindButton"
-import UserStateBar from "@/features/home/UserStateBar"
 
 export default function Home() {
 
@@ -17,15 +16,11 @@ export default function Home() {
         title="MenMind"
         intro="Miejsce dla mężczyzn, którzy chcą odzyskać kierunek, spokój i sprawczość."
       />
-      
-            {/* 🔥 1. ŚWIATY */}
-            <UserStateBar />
+
       <WorldPreview />
 
-      {/* 🔥 2. TEST (główne wejście jeśli ktoś nie wie) */}
       <StartSection />
 
-      {/* 🔥 3. NAVIMIND (backup emocjonalny) */}
       <section className="py-20 border-t">
 
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -46,15 +41,11 @@ export default function Home() {
 
       </section>
 
-      {/* 🔥 4. TREŚCI */}
-      
       <HomeArticles />
 
       <TrustSection />
 
       <FeaturedPartners />
-
-      
 
     </main>
 
