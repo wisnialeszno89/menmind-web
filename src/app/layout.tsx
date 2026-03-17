@@ -17,11 +17,13 @@ export default function RootLayout({
   return (
 
     <html lang="pl">
-      <body>
+      <body className="bg-white text-black antialiased">
 
         <Header />
 
-        {children}
+        <main className="min-h-screen">
+          {children}
+        </main>
 
         <Footer />
 

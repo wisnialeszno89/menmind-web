@@ -5,59 +5,63 @@ export default function WorldPreview() {
 
   return (
 
-    <section className="max-w-6xl mx-auto px-6 py-24">
+    <section className="py-20 border-t">
 
-      <div className="max-w-2xl mb-16">
+      <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-3xl font-semibold text-black mb-4">
-          Wybierz obszar który jest Ci teraz najbliższy
-        </h2>
+        {/* 🔥 WYŚRODKOWANY HEADER */}
+        <div className="max-w-2xl mx-auto text-center mb-16">
 
-        <p className="text-gray-600">
-          Nie musisz mieć wszystkiego poukładanego.
-          Wybierz miejsce które najlepiej opisuje Twoją sytuację.
-        </p>
+          <h2 className="text-3xl font-semibold text-black mb-4">
+            Wybierz obszar który jest Ci teraz najbliższy
+          </h2>
 
-      </div>
+          <p className="text-gray-600">
+            Nie musisz mieć wszystkiego poukładanego.
+            Wybierz miejsce które najlepiej opisuje Twoją sytuację.
+          </p>
 
-      <div className="grid md:grid-cols-2 gap-8">
+        </div>
 
-        {worlds.map((world) => (
+        {/* 🔥 GRID */}
+        <div className="grid md:grid-cols-2 gap-8">
 
-          <Link
-            key={world.slug}
-            href={`/${world.slug}`}
-            className="group border rounded-xl p-8 hover:shadow-lg hover:border-black transition"
-          >
+          {worlds.map((world) => (
 
-            <h3 className="text-xl font-semibold mb-3 group-hover:underline">
-  {world.title}
-</h3>
+            <Link
+              key={world.slug}
+              href={`/${world.slug}`}
+              className="group border rounded-xl p-8 hover:shadow-lg hover:border-black transition"
+            >
 
-<p className="text-gray-700 mb-6">
-  {world.description}
-</p>
+              <h3 className="text-xl font-semibold mb-3 group-hover:underline">
+                {world.title}
+              </h3>
 
-            {/* PREVIEW PROBLEMÓW */}
+              <p className="text-gray-700 mb-6">
+                {world.description}
+              </p>
 
-            <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2">
 
-              {world.preview.map((item) => (
+                {world.preview.map((item) => (
 
-                <span
-                  key={item}
-                  className="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-600"
-                >
-                  {item}
-                </span>
+                  <span
+                    key={item}
+                    className="text-xs bg-gray-100 px-3 py-1 rounded-full text-gray-600"
+                  >
+                    {item}
+                  </span>
 
-              ))}
+                ))}
 
-            </div>
+              </div>
 
-          </Link>
+            </Link>
 
-        ))}
+          ))}
+
+        </div>
 
       </div>
 
