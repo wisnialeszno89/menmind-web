@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getResults, getWorldFromPercent } from "../../lib/userState"
+import { getResults, getWorldFromPercent } from "@/lib/userState"
 import Link from "next/link"
 
 export default function UserStateBar(){

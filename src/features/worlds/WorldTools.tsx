@@ -1,34 +1,39 @@
+import { tools } from "@/content/tools"
 import Link from "next/link"
-import { getToolsByWorld } from "@/lib/getToolsByCategory"
 
-export default function WorldTools({ world }: { world: string }) {
-  const tools = getToolsByWorld(world)
+export default function WorldTools({ world }) {
 
-  if (tools.length === 0) return null
+  const filtered = tools.filter(t => t.world === world)
+
+  if (!filtered.length) return null
 
   return (
-    <section className="mt-20">
-      <h2 className="text-2xl font-semibold text-black mb-6">
-        Narzędzia które mogą pomóc
+    <section className="mt-16">
+
+      <h2 className="text-2xl font-semibold mb-8">
+        Narzędzia
       </h2>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {tools.slice(0,4).map((tool) => (
+
+        {filtered.map(tool => (
           <Link
             key={tool.slug}
             href={`/narzedzia/${tool.slug}`}
-            className="border rounded-xl p-6 hover:shadow"
+            className="border p-6 rounded-lg hover:shadow"
           >
-            <h3 className="font-semibold text-black mb-2">
+            <h3 className="text-lg font-medium">
               {tool.title}
             </h3>
 
-            <p className="text-black text-sm">
+            <p className="text-sm text-gray-600">
               {tool.description}
             </p>
           </Link>
         ))}
+
       </div>
+
     </section>
   )
 }

@@ -25,14 +25,13 @@ export default function Page() {
     },
 
     {
-      title: "Reset",
-      href: "/narzedzia/reset"
-    },
-
-    {
-      title: "Energia",
-      href: "/narzedzia/energia"
-    }
+  title: "Reset 90 sekund",
+  href: "/narzedzia/reset-90"
+},
+{
+  title: "Mapa energii",
+  href: "/narzedzia/energy-map"
+}
 
   ]
 

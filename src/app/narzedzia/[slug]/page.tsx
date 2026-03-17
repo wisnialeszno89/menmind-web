@@ -1,76 +1,37 @@
-import { tools } from "@/data/tools"
-import Link from "next/link"
+import { tools } from "@/content/tools"
+import BrainDumpPage from "@/features/tools/BrainDumpPage"
+import Reset90Page from "@/features/tools/Reset90Page"
+import MinimumPage from "@/features/tools/MinimumPage"
+import SleepTracker from "@/features/tools/SleepTracker"
+import Plan72hPage from "@/features/tools/Plan72hPage"
 import { notFound } from "next/navigation"
 
-export function generateStaticParams(){
+// 🔥 JEDNO źródło prawdy
+const toolMap = {
+  "brain-dump": BrainDumpPage,
+  "reset-90": Reset90Page,
+  "reset": Reset90Page, // alias
 
-return tools.map(tool=>({
-slug:tool.slug
-}))
-
+  "plan-72h": Plan72hPage,
+  "energy-map": SleepTracker,
 }
 
-export default function ToolPage({params}:{params:{slug:string}}){
+export function generateStaticParams() {
+  return tools.map((tool) => ({
+    slug: tool.slug,
+  }))
+}
 
-const tool = tools.find(t=>t.slug===params.slug)
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
 
-if(!tool) return notFound()
+  const ToolComponent = toolMap[slug as keyof typeof toolMap]
 
-return(
+  if (!ToolComponent) return notFound()
 
-<main className="bg-white min-h-screen">
-
-<div className="max-w-3xl mx-auto px-6 py-24">
-
-<h1 className="text-4xl font-semibold text-black mb-6">
-{tool.title}
-</h1>
-
-<p className="text-gray-700 mb-12">
-{tool.description}
-</p>
-
-<div className="border rounded-xl p-8 mb-16">
-
-<p className="text-gray-700">
-Tutaj pojawi się interaktywne narzędzie.
-</p>
-
-</div>
-
-<h2 className="text-xl font-semibold text-black mb-6">
-Co możesz zrobić dalej
-</h2>
-
-<div className="grid md:grid-cols-2 gap-4">
-
-<Link
-href="/navimind"
-className="border rounded-lg p-4 hover:shadow"
->
-Porozmawiaj w NaviMind
-</Link>
-
-<Link
-href="/sciezki"
-className="border rounded-lg p-4 hover:shadow"
->
-Zobacz ścieżki działania
-</Link>
-
-<Link
-href="/propozycje"
-className="border rounded-lg p-4 hover:shadow"
->
-Znajdź realne wsparcie
-</Link>
-
-</div>
-
-</div>
-
-</main>
-
-)
-
+  return <ToolComponent />
 }
