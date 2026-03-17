@@ -1,5 +1,8 @@
 import { Article } from "@/types/article"
 
+export function getArticleHref(world: string, slug: string) {
+  return `/${world}/${slug}`
+}
 export const ojcostwo: Article[] = [
 
 {

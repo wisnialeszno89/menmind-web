@@ -1,6 +1,10 @@
 import { Article } from "@/types/article"
 
-export const wzrost: Article[] = [
+export function getArticleHref(world: string, slug: string) {
+  return `/${world}/${slug}`
+}
+
+export const wzrost = [
 
 {
 slug:"dlaczego-dyscyplina-daje-wolnosc",
@@ -8,7 +12,6 @@ title:"Dlaczego dyscyplina daje wolność",
 description:"Paradoks polega na tym, że ograniczenia często prowadzą do większej wolności.",
 world:"wzrost",
 category:"dyscyplina",
-
 content:`
 Wielu ludzi uważa dyscyplinę za coś ograniczającego.
 
@@ -60,7 +63,6 @@ title:"Jak znaleźć kierunek w życiu",
 description:"Kierunek w życiu rzadko pojawia się nagle – częściej buduje się stopniowo.",
 world:"wzrost",
 category:"kierunek",
-
 content:`
 Wielu mężczyzn czeka na moment olśnienia.
 
@@ -106,7 +108,6 @@ title:"5 nawyków które naprawdę zmieniają życie",
 description:"Małe codzienne nawyki mają ogromny wpływ na jakość życia.",
 world:"wzrost",
 category:"nawyki",
-
 content:`
 Wielkie zmiany w życiu rzadko zaczynają się od jednego spektakularnego wydarzenia.
 
@@ -148,7 +149,6 @@ title:"Dlaczego mężczyzna potrzebuje celu",
 description:"Poczucie kierunku daje energię do działania.",
 world:"wzrost",
 category:"cel",
-
 content:`
 Człowiek bez celu zaczyna się gubić.
 
@@ -182,7 +182,6 @@ title:"Jak budować siłę psychiczną",
 description:"Siła psychiczna nie oznacza braku emocji.",
 world:"wzrost",
 category:"psychika",
-
 content:`
 Siła psychiczna często jest błędnie rozumiana.
 
@@ -193,18 +192,6 @@ Albo zdolność ignorowania trudnych sytuacji.
 W rzeczywistości jest odwrotnie.
 
 Siła psychiczna polega na zdolności przechodzenia przez trudne momenty bez uciekania od nich.
-
-Buduje się ją przez doświadczenie.
-
-Przez pokonywanie przeszkód.
-
-Przez wychodzenie z kryzysów.
-
-Każda trudna sytuacja może być okazją do wzmocnienia charakteru.
-
-Nie dlatego że cierpienie jest dobre.
-
-Dlatego że uczy radzenia sobie z rzeczywistością.
 `
 },
 
@@ -214,7 +201,6 @@ title:"Dlaczego odpowiedzialność daje siłę",
 description:"Branie odpowiedzialności zmienia sposób myślenia.",
 world:"wzrost",
 category:"postawa",
-
 content:`
 Łatwo jest obwiniać okoliczności.
 
@@ -240,21 +226,16 @@ title:"Jak budować prawdziwą pewność siebie",
 description:"Pewność siebie buduje się przez doświadczenie.",
 world:"wzrost",
 category:"psychika",
-
 content:`
-Prawdziwa pewność siebie nie bierze się z motywacyjnych haseł.
+Prawdziwa pewność siebie nie bierze się z motywacyjnych haseł. 
 
-Buduje się przez doświadczenie.
+Buduje się przez doświadczenie. 
 
-Każda sytuacja w której robisz coś trudnego wzmacnia wiarę w siebie.
+Każda sytuacja w której robisz coś trudnego wzmacnia wiarę w siebie. 
 
-Dlatego najprostszą drogą do pewności siebie jest działanie.
+Dlatego najprostszą drogą do pewności siebie jest działanie. Małe wyzwania. 
 
-Małe wyzwania.
-
-Małe decyzje.
-
-Małe zwycięstwa.
+Małe decyzje. Małe zwycięstwa. 
 
 Z czasem zaczynasz widzieć, że potrafisz więcej niż wcześniej myślałeś.
 `
@@ -266,27 +247,26 @@ title:"Dlaczego rozwój jest procesem",
 description:"Zmiana rzadko jest natychmiastowa.",
 world:"wzrost",
 category:"proces",
-
 content:`
-Wiele osób oczekuje szybkiej zmiany.
+Wiele osób oczekuje szybkiej zmiany. 
 
-Jednej książki.
+Jednej książki. 
 
-Jednego kursu.
+Jednego kursu. 
 
-Jednej decyzji.
+Jednej decyzji. 
 
-Ale rozwój rzadko działa w taki sposób.
+Ale rozwój rzadko działa w taki sposób. 
 
-To proces.
+To proces. 
 
-Powolny.
+Powolny. 
 
-Czasami wymagający.
+Czasami wymagający. 
 
-Ale właśnie dlatego trwały.
+Ale właśnie dlatego trwały. 
 
-Każda mała zmiana buduje kolejną.
+Każda mała zmiana buduje kolejną. 
 
 Z czasem te zmiany zaczynają się łączyć i tworzyć zupełnie nową jakość życia.
 `
@@ -298,23 +278,14 @@ title:"Jak wyjść z trybu przetrwania",
 description:"Po długim stresie wielu ludzi działa na autopilocie.",
 world:"wzrost",
 category:"energia",
-
 content:`
-Tryb przetrwania pojawia się wtedy, gdy przez długi czas jesteśmy w stresie.
+Tryb przetrwania pojawia się wtedy, gdy przez długi czas jesteśmy w stresie. 
 
-Organizm skupia się wtedy na podstawowych funkcjach.
+Organizm skupia się wtedy na podstawowych funkcjach. Nie ma przestrzeni na rozwój. 
 
-Nie ma przestrzeni na rozwój.
+Dlatego powrót do pełnej energii wymaga czasu. Najpierw trzeba przywrócić równowagę. 
 
-Dlatego powrót do pełnej energii wymaga czasu.
-
-Najpierw trzeba przywrócić równowagę.
-
-Sen.
-
-Ruch.
-
-Spokojniejsze tempo życia.
+Sen. Ruch. Spokojniejsze tempo życia. 
 
 Gdy napięcie opada, pojawia się przestrzeń na nowe działania.
 `
@@ -326,22 +297,18 @@ title:"Jak budować nowe życie po trudnym czasie",
 description:"Nowy etap życia zaczyna się od decyzji o zmianie.",
 world:"wzrost",
 category:"kierunek",
-
 content:`
-Po trudnych doświadczeniach wielu ludzi czuje, że ich życie musi wyglądać inaczej.
+Po trudnych doświadczeniach wielu ludzi czuje, że ich życie musi wyglądać inaczej. 
 
-To naturalne.
+To naturalne. Ale zmiana nie polega na odcięciu przeszłości. 
 
-Ale zmiana nie polega na odcięciu przeszłości.
+Polega na wyciągnięciu z niej wniosków. 
 
-Polega na wyciągnięciu z niej wniosków.
+Każde doświadczenie – nawet trudne – może stać się fundamentem czegoś nowego. 
 
-Każde doświadczenie – nawet trudne – może stać się fundamentem czegoś nowego.
-
-Nowe życie buduje się krok po kroku.
+Nowe życie buduje się krok po kroku. 
 
 Z czasem te kroki zaczynają tworzyć zupełnie nową drogę.
 `
 }
-
-]
+] satisfies Article[]

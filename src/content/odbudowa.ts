@@ -1,5 +1,8 @@
 import { Article } from "@/types/article"
 
+export function getArticleHref(world: string, slug: string) {
+  return `/${world}/${slug}`
+}
 export const odbudowa: Article[] = [
 
 {
@@ -48,7 +51,7 @@ Pierwszym krokiem jest odzyskanie stabilnego fundamentu.
 },
 
 {
-slug:"jak-odzyskac-energie-po-kryzysie",
+slug:"jak-odzyskac-energie",
 title:"Jak odzyskać energię po trudnym czasie",
 description:"Zmęczenie psychiczne potrafi odebrać siłę do działania.",
 world:"odbudowa",

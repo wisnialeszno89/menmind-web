@@ -49,13 +49,13 @@ export function generateStaticParams() {
 
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params
 }: {
-  params: { world: string; slug: string }
+  params: Promise<{ world: string; slug: string }>
 }) {
 
-  const { world, slug } = params
+  const { world, slug } = await params
 
   if (!isWorld(world)) return {}
 
@@ -75,13 +75,13 @@ export function generateMetadata({
 
 }
 
-export default function Page({
+export default async function Page({
   params
 }: {
-  params: { world: string; slug: string }
+  params: Promise<{ world: string; slug: string }>
 }) {
 
-  const { world, slug } = params
+  const { world, slug } = await params
 
   if (!isWorld(world)) return notFound()
 

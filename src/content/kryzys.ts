@@ -1,5 +1,8 @@
 import { Article } from "@/types/article"
 
+export function getArticleHref(world: string, slug: string) {
+  return `/${world}/${slug}`
+}
 export const kryzys: Article[] = [
 
 {
@@ -73,8 +76,8 @@ Dlatego potrzebny jest czas, aby stworzyć nową.
 },
 
 {
-slug:"kryzys-mezczyzny-po-30",
-title:"Kryzys mężczyzny po trzydziestce",
+slug:"kryzys-po-30",
+title:"Kryzys mężczyzn po trzydziestce",
 description:"Moment gdy zaczynasz inaczej patrzeć na swoje życie.",
 world:"kryzys",
 category:"tozsamosc",

@@ -3,11 +3,16 @@ import Link from "next/link"
 type Props = {
   slug: string
   title: string
-  description: string
+  description?: string
   base: string
 }
 
-export default function ArticleCard({ slug, title, description, base }: Props) {
+export default function ArticleCard({
+  slug,
+  title,
+  description,
+  base
+}: Props) {
 
   return (
     <Link
@@ -18,9 +23,11 @@ export default function ArticleCard({ slug, title, description, base }: Props) {
         {title}
       </h3>
 
-      <p className="text-sm text-neutral-600">
-        {description}
-      </p>
+      {description && (
+        <p className="text-sm text-neutral-600">
+          {description}
+        </p>
+      )}
     </Link>
   )
 }

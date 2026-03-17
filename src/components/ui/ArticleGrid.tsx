@@ -1,36 +1,26 @@
 import ArticleCard from "@/features/articles/ArticleCard"
+import { Article } from "@/types/article"
 
-type Article={
-slug:string
-title:string
-description:string
+type Props = {
+  articles: Article[]
+  base: string
 }
 
-type Props={
-articles:Article[]
-base:string
-}
+export default function ArticleGrid({ articles, base }: Props) {
 
-export default function ArticleGrid({articles,base}:Props){
+  if (!articles?.length) return null
 
-return(
-
-<div className="grid md:grid-cols-2 gap-6">
-
-{articles.map(article=>(
-
-<ArticleCard
-  key={article.slug}
-  slug={article.slug}
-  base={base}
-  title={article.title}
-  description={article.description}
-/>
-
-))}
-
-</div>
-
-)
-
+  return (
+    <div className="grid md:grid-cols-2 gap-6">
+      {articles.map(article => (
+        <ArticleCard
+          key={article.slug}
+          slug={article.slug}
+          base={base}
+          title={article.title}
+          description={article.description ?? ""}
+        />
+      ))}
+    </div>
+  )
 }
