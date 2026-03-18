@@ -6,40 +6,43 @@ type Props = {
 }
 
 export default function Hero({ title, intro }: Props) {
+
   return (
-    <section className="py-28 bg-white border-b">
 
-      <div className="container-mm text-center max-w-3xl">
+    <section className="py-20 bg-white border-b">
 
-        <h1 className="heading-xl mb-6">
+      <div className="max-w-xl mx-auto px-6 text-center">
+
+        <h1 className="text-3xl md:text-5xl font-semibold mb-4">
           {title}
         </h1>
 
-        <p className="text-lead mb-10">
+        <p className="text-base md:text-lg text-neutral-600 mb-8">
           {intro}
         </p>
 
-        {/* 🔥 GŁÓWNA AKCJA */}
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        {/* 🔥 GŁÓWNY CTA */}
 
-          <Link
-            href="/narzedzia/test-sytuacji"
-            className="bg-gray-100 text-black rounded-xl px-8 py-4 text-lg font-medium hover:bg-gray-200 transition"          >
-            Zacznij od testu
-          </Link>
+        <Link
+          href="/narzedzia/test-sytuacji"
+          className="block w-full bg-black text-white py-4 rounded-xl hover:opacity-90 transition"
+        >
+          Zacznij od testu
+        </Link>
 
-          {/* 🧠 BACKUP */}
-          <Link
-            href="/narzedzia"
-            className="border rounded-xl px-8 py-4 hover:shadow"
-          >
-            Zobacz narzędzia
-          </Link>
+        {/* 🔽 SUBTELNA OPCJA */}
 
-        </div>
+        <Link
+          href="/narzedzia"
+          className="block mt-4 text-sm text-gray-500 hover:underline"
+        >
+          albo zobacz narzędzia
+        </Link>
 
       </div>
 
     </section>
+
   )
+
 }
