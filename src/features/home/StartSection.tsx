@@ -1,50 +1,53 @@
 import Link from "next/link"
 
-export default function StartSection(){
+export default function StartSection() {
 
-return(
+  return (
 
-<section className="bg-gray-50 py-20">
+    <section className="py-20">
 
-<div className="max-w-5xl mx-auto px-6 text-center">
+      <div className="max-w-3xl mx-auto px-6 text-center">
 
-<h2 className="text-3xl font-semibold mb-6">
-Nie wiesz od czego zacząć?
-</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+          Możesz zacząć od krótkiego sprawdzenia swojej sytuacji
+        </h2>
 
-<p className="text-gray-700 mb-10 max-w-xl mx-auto">
-Możesz zacząć od krótkiego testu który pomoże zobaczyć
-gdzie jesteś i jaki kierunek może być dla Ciebie najlepszy.
-</p>
+        <p className="text-gray-600 mb-10">
+          Kilka prostych pytań pomoże zobaczyć gdzie jesteś
+          i co może być dobrym kolejnym krokiem.
+        </p>
 
-<div className="grid md:grid-cols-3 gap-6">
+        {/* 🔥 GŁÓWNY CTA (już spokojniejszy) */}
+        <Link
+          href="/narzedzia/test-sytuacji"
+          className="inline-block border rounded-xl px-8 py-4 hover:shadow transition"
+        >
+          Sprawdź swoją sytuację
+        </Link>
 
-<Link
-href="/narzedzia/test-sytuacji"
-className="border rounded-xl p-6 hover:shadow"
->
-Sprawdź swoją sytuację
-</Link>
+        {/* 🔽 OPCJONALNE (jeszcze spokojniejsze) */}
+        <div className="mt-6 flex flex-col md:flex-row gap-4 justify-center text-sm text-gray-500">
 
-<Link
-href="/sciezki/kompas"
-className="border rounded-xl p-6 hover:shadow"
->
-Zobacz swój kierunek
-</Link>
+          <Link
+            href="/narzedzia"
+            className="hover:underline"
+          >
+            lub zobacz dostępne narzędzia
+          </Link>
 
-<Link
-href="/narzedzia"
-className="border rounded-xl p-6 hover:shadow"
->
-Zobacz narzędzia
-</Link>
+          <Link
+            href="/sciezki/kompas"
+            className="hover:underline"
+          >
+            albo przejdź do kierunku działania
+          </Link>
 
-</div>
+        </div>
 
-</div>
+      </div>
 
-</section>
+    </section>
 
-)
+  )
+
 }

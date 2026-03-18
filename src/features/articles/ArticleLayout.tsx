@@ -9,6 +9,7 @@ import NextSteps from "@/components/NextSteps"
 
 import { navimindLink } from "@/lib/navimind"
 import StateScale from "@/features/tools/StateScale"
+import ArticleCTA from "@/features/articles/ArticleCTA"
 
 type Props = {
   title: string
@@ -163,7 +164,7 @@ export default function ArticleLayout({
 
 
       {/* NEXT STEPS */}
-
+      <ArticleCTA world={world} />
       <NextSteps world={world} />
       <StateScale value={5} />
 

@@ -17,21 +17,20 @@ export default function PartnerzyPage() {
         {/* HEADER */}
 
         <h1 className="text-5xl font-semibold text-gray-900 mb-6">
-          Dla partnerów
-        </h1>
+  Docieraj do mężczyzn, którzy realnie szukają pomocy
+</h1>
 
-        <div className="h-px w-16 bg-blue-600 mb-10" />
+<div className="h-px w-16 bg-blue-600 mb-10" />
 
-        <p className="text-gray-700 mb-10 max-w-2xl">
-          MenMind to platforma która pomaga mężczyznom
-          odnaleźć kierunek w trudnych momentach życia.
-        </p>
+<p className="text-gray-700 mb-10 max-w-2xl">
+  MenMind łączy użytkowników z konkretnymi specjalistami i miejscami.
+  Nie budujemy zasięgu — kierujemy ludzi gotowych do działania.
+</p>
 
-        <p className="text-gray-700 mb-16 max-w-2xl">
-          Łączymy użytkowników z psychologami, mediatorami,
-          trenerami, warsztatami i miejscami które pomagają
-          odzyskać stabilność, energię i rozwój.
-        </p>
+<p className="text-gray-700 mb-16 max-w-2xl">
+  Jeśli prowadzisz terapię, mediacje, treningi lub rozwój —
+  możesz być dokładnie tam, gdzie ktoś właśnie szuka rozwiązania.
+</p>
 
 
         {/* STATYSTYKI PLATFORMY */}
@@ -130,6 +129,25 @@ className="text-blue-600 underline"
 >
 Zobacz gdzie firmy są najbardziej poszukiwane
 </Link>
+<section className="mt-20 border-t pt-12">
+
+  <h3 className="text-xl font-semibold mb-4">
+    Liczba miejsc jest ograniczona
+  </h3>
+
+  <p className="text-gray-600 mb-6 max-w-xl">
+    W każdej kategorii i mieście pokazujemy ograniczoną liczbę partnerów.
+    Decyduje kolejność zgłoszeń i dopasowanie do użytkowników.
+  </p>
+
+  <Link
+    href="/dla-partnerow/zgloszenie"
+    className="inline-block bg-black text-white px-6 py-3 rounded-lg"
+  >
+    Dołącz teraz
+  </Link>
+
+</section>
       </div>
 
     </main>

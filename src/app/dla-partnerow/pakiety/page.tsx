@@ -23,7 +23,7 @@ Basic
 </h2>
 
 <p className="text-3xl font-semibold mb-6">
-59 zł / miesiąc
+99 zł / miesiąc
 </p>
 
 <ul className="space-y-2 text-gray-600 mb-8">
@@ -53,7 +53,7 @@ Pro
 </h2>
 
 <p className="text-3xl font-semibold mb-6">
-149 zł / miesiąc
+249 zł / miesiąc
 </p>
 
 <ul className="space-y-2 text-gray-600 mb-8">
@@ -84,7 +84,7 @@ Strategic
 </h2>
 
 <p className="text-3xl font-semibold mb-6">
-399 zł / miesiąc
+699 zł / miesiąc
 </p>
 
 <ul className="space-y-2 text-gray-600 mb-8">

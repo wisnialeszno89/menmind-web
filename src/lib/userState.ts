@@ -1,47 +1,59 @@
-export type TestResult = {
+export type UserState = "kryzys" | "nisko" | "ok"
+
+type TestResult = {
+  id: string
+  score: number
+  percent: number
+  state: UserState
+  label?: string
+  date: number
+}
+
+// 🔥 ZAPIS WYNIKU
+export function saveTestResult(result: {
   id: string
   score: number
   percent: number
   date: number
-}
+}) {
 
-const KEY = "menmind_state"
+  let state: UserState = "ok"
+  let label = "Stabilnie"
 
-export function saveTestResult(result: TestResult) {
-  if (typeof window === "undefined") return
-
-  const raw = localStorage.getItem(KEY)
-
-  let data: TestResult[] = []
-
-  if (raw) {
-    try {
-      data = JSON.parse(raw)
-    } catch {}
+  if (result.percent >= 40) {
+    state = "nisko"
+    label = "Przeciążenie"
   }
 
-  data.push(result)
+  if (result.percent >= 70) {
+    state = "kryzys"
+    label = "Kryzys"
+  }
 
-  localStorage.setItem(KEY, JSON.stringify(data))
+  const fullResult: TestResult = {
+    ...result,
+    state,
+    label
+  }
+
+  localStorage.setItem(
+    "test-sytuacji",
+    JSON.stringify(fullResult)
+  )
 }
 
-export function getResults(): TestResult[] {
-  if (typeof window === "undefined") return []
+// 🔥 ODCZYT STANU
+export function getUserState(): UserState | null {
+  if (typeof window === "undefined") return null
 
-  const raw = localStorage.getItem(KEY)
+  const saved = localStorage.getItem("test-sytuacji")
 
-  if (!raw) return []
+  if (!saved) return null
 
   try {
-    return JSON.parse(raw)
+    const data = JSON.parse(saved)
+    return data.state || null
   } catch {
-    return []
+    return null
   }
-}
-
-export function getWorldFromPercent(percent: number) {
-  if (percent >= 80) return "kryzys"
-  if (percent >= 60) return "odbudowa"
-  if (percent >= 30) return "wzrost"
-  return "wzrost"
 }

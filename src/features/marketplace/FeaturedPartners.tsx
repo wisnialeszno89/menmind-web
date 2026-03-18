@@ -1,46 +1,68 @@
-import Link from "next/link"
+"use client"
+
+import { useEffect, useState } from "react"
 import { partners } from "@/data/partners"
+import { getPartnerClicks } from "@/lib/tracking"
+import { rankPartners } from "@/lib/rankPartners"
+import PartnerCard from "./PartnerCard"
 
-export default function FeaturedPartners(){
+export default function FeaturedPartners() {
 
-const featured = partners.filter(p => p.featured)
+  const [sorted, setSorted] = useState<any[]>([])
 
-if(!featured.length) return null
+  useEffect(() => {
 
-return(
+    const clicks = getPartnerClicks()
 
-<div className="mt-20">
+    const enriched = partners.map(p => ({
+      ...p,
+      clicks: clicks[p.slug] || 0
+    }))
 
-<h2 className="text-2xl font-semibold mb-6">
-Polecane miejsca
-</h2>
+    const ranked = rankPartners(enriched)
+      .filter(p => p.featured)
+      .slice(0, 6)
+      
 
-<div className="grid md:grid-cols-3 gap-6">
+    setSorted(ranked)
 
-{featured.map(p => (
+  }, [])
 
-<Link
-key={p.slug}
-href={`/partner/${p.slug}`}
-className="border rounded-xl p-6 hover:shadow"
->
+  if (!sorted.length) return null
 
-<h3 className="font-semibold mb-2">
-{p.name}
-</h3>
+  return (
 
-<p className="text-sm text-gray-600">
-{p.description}
-</p>
+    <section className="py-20">
 
-</Link>
+      <div className="max-w-5xl mx-auto px-6">
 
-))}
+        <h2 className="text-xl font-semibold mb-8 text-center">
+          Sprawdzone miejsca, z których możesz skorzystać
+        </h2>
 
-</div>
+        <div className="grid md:grid-cols-2 gap-6">
 
-</div>
+          {sorted.map((p, i) => (
 
-)
+            <PartnerCard
+              key={p.slug}
+              id={p.slug}
+              name={p.name}
+              description={p.description}
+              tier={p.tier || "standard"}
+              website={p.website}
+              featured={p.featured}
+              verified={p.verified}
+              isTop={i === 0}
+            />
 
+          ))}
+
+        </div>
+
+      </div>
+
+    </section>
+
+  )
 }
