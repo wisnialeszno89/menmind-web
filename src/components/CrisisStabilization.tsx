@@ -43,11 +43,11 @@ export default function CrisisStabilization() {
 
       <div className="flex gap-4">
         {day < 6 && (
-          <button onClick={next} className="px-6 py-3 bg-black text-white rounded-lg">
+          <button type="button" onClick={next} className="px-6 py-3 bg-black text-white rounded-lg">
             Zrobione
           </button>
         )}
-        <button onClick={reset} className="px-6 py-3 border rounded-lg">
+        <button type="button" onClick={reset} className="px-6 py-3 border rounded-lg">
           Zacznij od początku
         </button>
       </div>
