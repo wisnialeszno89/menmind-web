@@ -5,12 +5,37 @@ import { useState } from "react"
 export default function ZgloszeniePage() {
 
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setLoading(true)
 
-    // 🔥 NA RAZIE FAKE SUBMIT (później podepniemy API)
-    setSent(true)
+    const form = e.currentTarget
+    const formData = new FormData(form)
+
+    const data = Object.fromEntries(formData.entries())
+
+    try {
+      const res = await fetch("/api/partner/apply", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (res.ok) {
+        setSent(true)
+      } else {
+        alert("Coś poszło nie tak. Spróbuj ponownie.")
+      }
+
+    } catch (err) {
+      alert("Błąd połączenia. Spróbuj ponownie.")
+    }
+
+    setLoading(false)
   }
 
   if (sent) {
@@ -44,7 +69,6 @@ export default function ZgloszeniePage() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
 
-        {/* NAZWA */}
         <input
           name="name"
           placeholder="Nazwa firmy / imię i nazwisko"
@@ -53,12 +77,11 @@ export default function ZgloszeniePage() {
         />
 
         <input
-        name="company"
-        placeholder="Nazwa firmy"
-        className="w-full border p-3 rounded"
+          name="company"
+          placeholder="Nazwa firmy"
+          className="w-full border p-3 rounded"
         />
 
-        {/* EMAIL */}
         <input
           name="email"
           type="email"
@@ -67,14 +90,12 @@ export default function ZgloszeniePage() {
           required
         />
 
-        {/* TELEFON */}
         <input
           name="phone"
           placeholder="Telefon (opcjonalnie)"
           className="w-full border p-3 rounded"
         />
 
-        {/* KATEGORIA */}
         <input
           name="category"
           placeholder="Czym się zajmujesz? (np. psycholog, trener)"
@@ -82,21 +103,18 @@ export default function ZgloszeniePage() {
           required
         />
 
-        {/* MIASTO */}
         <input
           name="city"
           placeholder="Miasto / obszar działania"
           className="w-full border p-3 rounded"
         />
 
-        {/* STRONA */}
         <input
           name="website"
           placeholder="Strona www (jeśli masz)"
           className="w-full border p-3 rounded"
         />
 
-        {/* PAKIET */}
         <select
           name="tier"
           className="w-full border p-3 rounded"
@@ -106,19 +124,18 @@ export default function ZgloszeniePage() {
           <option value="strategic">Strategic — 699 zł</option>
         </select>
 
-        {/* WIADOMOŚĆ */}
         <textarea
           name="message"
           placeholder="Opisz krótko swoją działalność"
           className="w-full border p-3 rounded h-32"
         />
 
-        {/* SUBMIT */}
         <button
           type="submit"
-          className="w-full bg-black text-white py-3 rounded-lg hover:opacity-90"
+          disabled={loading}
+          className="w-full bg-black text-white py-3 rounded-lg hover:opacity-90 disabled:opacity-50"
         >
-          Wyślij zgłoszenie
+          {loading ? "Wysyłanie..." : "Wyślij zgłoszenie"}
         </button>
 
       </form>
