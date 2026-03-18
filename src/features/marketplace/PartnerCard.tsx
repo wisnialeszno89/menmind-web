@@ -104,7 +104,6 @@ export default function PartnerCard({
           href={website}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={handleClick}
           className="text-sm text-blue-600 hover:underline font-medium"
         >
           Przejdź do strony →

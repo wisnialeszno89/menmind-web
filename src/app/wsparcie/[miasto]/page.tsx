@@ -27,7 +27,7 @@ export default async function MiastoPage({ params }: Props) {
         </h1>
 
         {partners.length === 0 && (
-          <p className="text-textMuted">
+          <p className="text-gray-500">
             Wkrótce pojawią się tu specjaliści w Twoim mieście.
           </p>
         )}
@@ -42,7 +42,6 @@ export default async function MiastoPage({ params }: Props) {
               description={partner.description}
               tier={partner.tier}
               website={partner.website}
-              highlighted={partner.tier === "strategic"}
               isTop={index === 0}
             />
           ))}

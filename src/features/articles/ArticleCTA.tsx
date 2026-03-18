@@ -54,7 +54,6 @@ export default function ArticleCTA({ world }: Props) {
           <Link
             key={p.slug}
             href={`/partner/${p.slug}`}
-            onClick={() => trackEvent("partner_click", { slug: p.slug })}
             className="border rounded-xl p-4 hover:shadow transition"
           >
 

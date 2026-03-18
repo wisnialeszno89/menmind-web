@@ -57,3 +57,12 @@ export function getUserState(): UserState | null {
     return null
   }
 }
+export function getResults() {
+  if (typeof window === "undefined") return []
+
+  const data = localStorage.getItem("test_results")
+
+  if (!data) return []
+
+  return JSON.parse(data)
+}
