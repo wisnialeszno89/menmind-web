@@ -113,11 +113,11 @@ return(
 
 <div className="space-y-4">
 
-<button type="button" type="button" onClick={()=>answer(true)} className="block w-full border p-4 rounded-lg hover:shadow">
+<button type="button" onClick={()=>answer(true)} className="block w-full border p-4 rounded-lg hover:shadow">
 Tak
 </button>
 
-<button type="button" type="button" onClick={()=>answer(false)} className="block w-full border p-4 rounded-lg hover:shadow">
+<button type="button" onClick={()=>answer(false)} className="block w-full border p-4 rounded-lg hover:shadow">
 Nie
 </button>
 
