@@ -100,7 +100,7 @@ views: 45
 
   description: "Biżuteria złota 585 i srebrna 925. Grawer i Naprawa",
 
-  tier: "basic",
+  tier: "strategic",
 
   featured: true,
   verified: true,
@@ -178,7 +178,7 @@ views: 45
 
   description: "Wyjazdy dla facetów, którzy chcą się ogarnąć.",
 
-  tier: "strategic",
+  tier: "pro",
 
   featured: true,
   verified: true,
@@ -203,7 +203,7 @@ views: 45
 
   website: "",
 
-  tier: "pro", // możesz dać strategic jak chcesz ją wyróżnić
+  tier: "strategic", // możesz dać strategic jak chcesz ją wyróżnić
   featured: true,
   verified: true,
 

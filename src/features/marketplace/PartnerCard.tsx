@@ -7,11 +7,10 @@ type Props = {
   id: string
   name: string
   description: string
-  tier: "standard" | "strategic"
+  tier?: "basic" | "pro" | "strategic"
   website?: string
   featured?: boolean
   verified?: boolean
-  highlighted?: boolean
   isTop?: boolean
 }
 
@@ -48,24 +47,24 @@ export default function PartnerCard({
     <div
       className={`rounded-xl p-6 border transition bg-white hover:shadow-md ${
         tier === "strategic"
-          ? "border-blue-500"
+          ? "border-black"
           : "border-neutral-200"
       }`}
     >
 
-      {/* BADGES */}
+      {/* 🔥 BADGES */}
 
       <div className="flex flex-wrap gap-2 mb-3">
 
         {tier === "strategic" && (
-          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-            Partner Premium
+          <span className="text-xs bg-black text-white px-2 py-1 rounded">
+            TOP partner
           </span>
         )}
 
         {featured && (
           <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
-            Polecany przez MenMind
+            Polecany
           </span>
         )}
 
@@ -76,42 +75,40 @@ export default function PartnerCard({
         )}
 
         {isTop && (
-          <span className="text-xs bg-black text-white px-2 py-1 rounded">
+          <span className="text-xs bg-gray-200 text-black px-2 py-1 rounded">
             Najczęściej wybierany
           </span>
         )}
 
       </div>
 
-      {/* NAZWA */}
+      {/* 🔥 NAZWA */}
 
       <Link
         href={`/partner/${id}`}
-        className="text-xl font-semibold mb-2 text-gray-900 block hover:underline"
+        className="text-lg font-semibold mb-2 text-gray-900 block hover:underline"
       >
         {name}
       </Link>
 
-      {/* OPIS */}
+      {/* 🔥 OPIS */}
 
       <p className="text-gray-600 mb-4">
         {description}
       </p>
 
-      {/* LINK ZEWNĘTRZNY */}
+      {/* 🔥 CTA */}
 
       {website && (
-
         <a
           href={website}
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleClick}
-          className="text-blue-600 hover:underline font-medium"
+          className="text-sm text-blue-600 hover:underline font-medium"
         >
           Przejdź do strony →
         </a>
-
       )}
 
     </div>

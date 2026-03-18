@@ -7,15 +7,25 @@ export function rankPartners(partners: (Partner & { clicks?: number })[]) {
 
       let score = 0
 
-      if (partner.featured) score += 100
-      if (partner.verified) score += 50
+// 🔥 TIER = NAJWAŻNIEJSZE (pieniądz)
+if (partner.tier === "strategic") score += 1000
+if (partner.tier === "pro") score += 300
+if (partner.tier === "basic") score += 50
 
-      if (partner.tier === "pro") score += 80
-      if (partner.tier === "strategic") score += 200
+// featured
+if (partner.featured) score += 200
 
-      if (partner.views) score += Math.floor(partner.views / 10)
-      if (partner.reviews) score += partner.reviews * 2
-      if (partner.rating) score += Math.round(partner.rating * 10)
+// verified
+if (partner.verified) score += 100
+
+// ruch
+if (partner.clicks) score += partner.clicks * 10
+
+// opinie
+if (partner.reviews) score += partner.reviews * 2
+
+// rating
+if (partner.rating) score += Math.round(partner.rating * 10)
 
       if (partner.clicks) score += partner.clicks * 5
 
