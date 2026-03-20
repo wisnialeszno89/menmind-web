@@ -29,11 +29,11 @@ export default function QuickStart() {
       <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-3xl font-semibold mb-4">
-          Zacznij od tego
+          Jeśli nie chcesz robić testu:
         </h2>
 
         <p className="text-neutral-600 mb-10">
-          Jeśli nie wiesz co zrobić — wybierz jeden z kroków poniżej.
+          Możesz zacząć od jednego konkretnego kroku.
         </p>
 
         <div className="grid md:grid-cols-2 gap-6">

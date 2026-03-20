@@ -21,8 +21,6 @@ export default function Hero({ title, intro }: Props) {
           {intro}
         </p>
 
-        {/* 🔥 GŁÓWNY CTA */}
-
         <Link
           href="/narzedzia/test-sytuacji"
           className="block w-full bg-black text-white py-4 rounded-xl hover:opacity-90 transition"
@@ -30,7 +28,9 @@ export default function Hero({ title, intro }: Props) {
           Zacznij od testu
         </Link>
 
-        {/* 🔽 SUBTELNA OPCJA */}
+        <p className="text-xs text-gray-400 mt-3">
+          zajmie Ci mniej niż 2 minuty
+        </p>
 
         <Link
           href="/narzedzia"

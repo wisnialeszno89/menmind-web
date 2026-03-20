@@ -1,90 +1,115 @@
+"use client"
+
 import Link from "next/link"
 import { Partner } from "@/data/partners"
 import RatingStars from "@/components/RatingStars"
 import PartnerBadges from "@/features/marketplace/PartnerBadges"
 
-export default function PartnersList({
-partners
-}:{
-partners: Partner[]
-}){
+// 🔥 TRACK + PRZEJŚCIE
+async function handleClick(partner: Partner) {
 
-if(!partners.length){
+  try {
+    await fetch("/api/partner/click", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        slug: partner.slug
+      })
+    })
+  } catch {}
 
-return(
-
-<div className="border rounded-xl p-8 text-center text-gray-600">
-Brak partnerów w tej kategorii.
-</div>
-
-)
-
+  if (partner.website) {
+    window.open(partner.website, "_blank")
+  }
 }
 
-return(
+export default function PartnersList({
+  partners
+}:{
+  partners: Partner[]
+}){
 
-<div className="grid md:grid-cols-2 gap-6">
+  if(!partners.length){
 
-{partners.map((partner)=>(
+    return(
 
-<div
-key={partner.slug}
-className="border rounded-xl p-6 hover:shadow transition"
->
+      <div className="border rounded-xl p-8 text-center text-gray-600">
+        Brak partnerów w tej kategorii.
+      </div>
 
-<h3 className="text-xl font-semibold mb-2">
-{partner.name}
-</h3>
+    )
 
-{/* RATING */}
+  }
 
-{partner.rating && (
+  return(
 
-<div className="flex items-center gap-2 mb-2">
+    <div className="grid md:grid-cols-2 gap-6">
 
-<RatingStars rating={partner.rating} />
+      {partners.map((partner)=>(
 
-<span className="text-sm text-gray-500">
-{partner.reviews || 0} opinii
-</span>
+        <div
+          key={partner.slug}
+          className="border rounded-xl p-6 hover:shadow transition"
+        >
 
-</div>
+          <h3 className="text-xl font-semibold mb-2">
+            {partner.name}
+          </h3>
 
-)}
+          {/* 🔥 DLA KOGO (prosty kontekst) */}
+          <p className="text-xs text-gray-500 mb-2">
+            Najlepsze dla: {partner.category}
+          </p>
 
-<p className="text-gray-700 mb-4">
-{partner.description}
-</p>
+          {/* RATING */}
+          {partner.rating && (
 
-<div className="flex gap-4 text-sm">
+            <div className="flex items-center gap-2 mb-2">
 
-{partner.website && (
+              <RatingStars rating={partner.rating} />
 
-<a
-href={partner.website}
-target="_blank"
-className="underline"
->
-Strona
-</a>
+              <span className="text-sm text-gray-500">
+                {partner.reviews || 0} opinii
+              </span>
 
-)}
+            </div>
 
-<Link
-href={`/partner/${partner.slug}`}
-className="underline"
->
-Profil
-</Link>
+          )}
 
-</div>
+          <p className="text-gray-700 mb-4">
+            {partner.description}
+          </p>
 
-</div>
+          <div className="flex gap-4 text-sm">
 
-))}
+            {partner.website && (
 
-</div>
+              <button
+                onClick={() => handleClick(partner)}
+                className="underline"
+              >
+                Strona
+              </button>
 
-)
+            )}
+
+            <Link
+              href={`/partner/${partner.slug}`}
+              className="underline"
+            >
+              Profil
+            </Link>
+
+          </div>
+
+        </div>
+
+      ))}
+
+    </div>
+
+  )
 
 }

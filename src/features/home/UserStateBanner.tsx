@@ -38,7 +38,7 @@ export default function UserStateBanner() {
         <div className="bg-gray-50 border rounded-xl px-6 py-5">
 
           <p className="text-sm text-gray-500 mb-2">
-            Twój punkt wyjścia
+            Wracasz tutaj
           </p>
 
           <p className="font-semibold mb-1">
@@ -49,13 +49,16 @@ export default function UserStateBanner() {
             {config.desc}
           </p>
 
-          {/* 🔥 CTA POD TEKSTEM */}
           <Link
             href={config.href}
             className="text-sm font-medium underline hover:opacity-70"
           >
             {config.cta}
           </Link>
+
+          <p className="text-xs text-gray-400 mt-2">
+            na podstawie Twojego ostatniego testu
+          </p>
 
         </div>
 

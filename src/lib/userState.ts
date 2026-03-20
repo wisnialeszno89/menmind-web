@@ -36,8 +36,29 @@ export function saveTestResult(result: {
     label
   }
 
+  // 🔥 sprawdz poprzedni stan
+  const prev = localStorage.getItem("user_state")
+
+  if (prev) {
+    try {
+      const prevData = JSON.parse(prev)
+
+      const priority = {
+        kryzys: 3,
+        nisko: 2,
+        ok: 1
+      }
+
+      // jeśli poprzedni był gorszy → nie nadpisuj
+      if (priority[prevData.state] > priority[state]) {
+        return
+      }
+
+    } catch {}
+  }
+
   localStorage.setItem(
-    "test-sytuacji",
+    "user_state",
     JSON.stringify(fullResult)
   )
 }
@@ -46,7 +67,7 @@ export function saveTestResult(result: {
 export function getUserState(): UserState | null {
   if (typeof window === "undefined") return null
 
-  const saved = localStorage.getItem("test-sytuacji")
+  const saved = localStorage.getItem("user_state")
 
   if (!saved) return null
 
@@ -57,6 +78,7 @@ export function getUserState(): UserState | null {
     return null
   }
 }
+
 export function getResults() {
   if (typeof window === "undefined") return []
 

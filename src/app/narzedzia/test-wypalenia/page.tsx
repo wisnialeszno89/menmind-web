@@ -5,128 +5,166 @@ import Link from "next/link"
 import ProgressBar from "@/features/tools/ProgressBar"
 import StateScale from "@/features/tools/StateScale"
 import { saveTestResult } from "@/lib/userState"
+import { getPartnersByCategory } from "@/lib/getPartnersByCategory"
+import { rankPartners } from "@/lib/rankPartners"
+import PartnersList from "@/features/marketplace/PartnersList"
+import LeadBox from "@/components/LeadBox"
 
 const questions = [
-"Czujesz zmęczenie mimo odpoczynku",
-"Praca przestała dawać sens",
-"Trudno Ci się zmotywować",
-"Czujesz frustrację",
-"Masz poczucie że wszystko Cię męczy"
+  "Czujesz zmęczenie mimo odpoczynku",
+  "Praca przestała dawać sens",
+  "Trudno Ci się zmotywować",
+  "Czujesz frustrację",
+  "Masz poczucie że wszystko Cię męczy"
 ]
 
 export default function BurnoutTest(){
 
-const [step,setStep]=useState(0)
-const [score,setScore]=useState(0)
+  const [step,setStep]=useState(0)
+  const [score,setScore]=useState(0)
 
-function answer(val:boolean){
+  function answer(val:boolean){
+    if(val) setScore(score+1)
+    setStep(step+1)
+  }
 
-if(val) setScore(score+1)
+  if(step>=questions.length){
 
-setStep(step+1)
+    const percent=Math.round((score/questions.length)*100)
 
-}
+    saveTestResult({
+      id:"wypalenie",
+      score,
+      percent,
+      date:Date.now()
+    })
 
-if(step>=questions.length){
+    let label="stabilnie"
+    let desc="Nie widać silnych objawów wypalenia."
 
-const percent=Math.round((score/questions.length)*100)
+    if(percent>=40){
+      label="przeciążenie"
+      desc="Twoja energia zaczyna spadać. Warto zrobić reset."
+    }
 
-saveTestResult({
- id:"zycie",
- score,
- percent,
- date:Date.now()
-})
+    if(percent>=70){
+      label="wypalenie"
+      desc="Możliwe że jesteś w stanie wypalenia i potrzebujesz regeneracji."
+    }
 
-let label="stabilnie"
-let desc="Nie widać silnych objawów wypalenia."
+    // 🔥 partnerzy
+    let category = "coaching"
+    if (percent >= 70) category = "psycholog"
+    else if (percent >= 40) category = "coach"
 
-if(percent>=40){
-label="przeciążenie"
-desc="Twoja energia zaczyna spadać. Warto zrobić reset."
-}
+    const partners = rankPartners(
+      getPartnersByCategory(category)
+    ).slice(0,4)
 
-if(percent>=70){
-label="wypalenie"
-desc="Możliwe że jesteś w stanie wypalenia i potrzebujesz regeneracji."
-}
+    return(
 
-return(
+      <main className="min-h-screen bg-white">
 
-<main className="min-h-screen bg-white">
+        <div className="max-w-xl mx-auto px-6 py-24">
 
-<div className="max-w-xl mx-auto px-6 py-24">
+          <h1 className="text-3xl font-semibold mb-4">
+            Poziom: {label}
+          </h1>
 
-<h1 className="text-3xl font-semibold mb-4">
-Poziom: {label}
-</h1>
+          <p className="text-gray-700 mb-6">
+            {desc}
+          </p>
 
-<p className="text-gray-700 mb-6">
-{desc}
-</p>
+          <p className="text-sm text-gray-500 mb-10">
+            Wynik: {percent}%
+          </p>
 
-<p className="text-sm text-gray-500 mb-10">
-Wynik: {percent}%
-</p>
+          <StateScale value={percent}/>
 
-<StateScale value={percent}/>
+          <h2 className="text-lg font-semibold mt-12 mb-4">
+            Twój następny krok:
+          </h2>
 
-<h2 className="text-lg font-semibold mt-12 mb-4">
-Co możesz zrobić teraz
-</h2>
+          <p className="text-gray-600 mb-6">
+            Na podstawie Twojego wyniku, zacznij od tego:
+          </p>
 
-<div className="space-y-4">
+          <div className="space-y-4">
 
-<Link href="/narzedzia/reset" className="block border p-4 rounded-lg hover:shadow">
-Zrób reset stresu
-</Link>
+            <Link
+              href="/narzedzia/reset"
+              className="block border-2 border-black p-5 rounded-lg"
+            >
+              👉 Zacznij od resetu (90 sekund)
+            </Link>
 
-<Link href="/narzedzia/plan-72h" className="block border p-4 rounded-lg hover:shadow">
-Zrób plan 72h
-</Link>
+            <Link
+              href="/narzedzia/plan-72h"
+              className="block border p-4 rounded-lg"
+            >
+              Ułóż plan 72h
+            </Link>
 
-<Link href="/propozycje" className="block border p-4 rounded-lg hover:shadow">
-Znajdź wsparcie
-</Link>
+            <Link
+              href="/propozycje"
+              className="block border p-4 rounded-lg"
+            >
+              Znajdź wsparcie
+            </Link>
 
-</div>
+          </div>
 
-</div>
+          <h3 className="mt-12 mb-4 font-semibold">
+            Dopasowane wsparcie
+          </h3>
 
-</main>
+          <PartnersList partners={partners} />
 
-)
+        <LeadBox />
+        </div>
 
-}
+      </main>
 
-return(
+    )
 
-<main className="min-h-screen bg-white">
+  }
 
-<div className="max-w-xl mx-auto px-6 py-24">
+  return(
 
-<ProgressBar step={step+1} total={questions.length}/>
+    <main className="min-h-screen bg-white">
 
-<h1 className="text-xl mb-8">
-{questions[step]}
-</h1>
+      <div className="max-w-xl mx-auto px-6 py-24">
 
-<div className="space-y-4">
+        <ProgressBar step={step+1} total={questions.length}/>
 
-<button type="button" onClick={()=>answer(true)} className="block w-full border p-4 rounded-lg hover:shadow">
-Tak
-</button>
+        <h1 className="text-xl mb-8">
+          {questions[step]}
+        </h1>
 
-<button type="button" onClick={()=>answer(false)} className="block w-full border p-4 rounded-lg hover:shadow">
-Nie
-</button>
+        <div className="space-y-4">
 
-</div>
+          <button
+            type="button"
+            onClick={()=>answer(true)}
+            className="block w-full border p-4 rounded-lg hover:shadow"
+          >
+            Tak
+          </button>
 
-</div>
+          <button
+            type="button"
+            onClick={()=>answer(false)}
+            className="block w-full border p-4 rounded-lg hover:shadow"
+          >
+            Nie
+          </button>
 
-</main>
+        </div>
 
-)
+      </div>
+
+    </main>
+
+  )
 
 }
