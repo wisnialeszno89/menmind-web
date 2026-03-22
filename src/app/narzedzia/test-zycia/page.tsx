@@ -1,121 +1,77 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
+import { useState, useEffect } from "react"
 import ProgressBar from "@/features/tools/ProgressBar"
-import StateScale from "@/features/tools/StateScale"
 import { saveTestResult } from "@/lib/userState"
+import TestResultFlow from "@/components/TestResultFlow"
 
 const questions = [
-"Masz ostatnio mało energii",
-"Czujesz chaos w życiu",
-"Masz trudności ze snem",
-"Czujesz że utknąłeś w miejscu",
-"Masz poczucie że wszystko jest na Twojej głowie",
-"Masz mało czasu dla siebie"
+  "Masz ostatnio mało energii",
+  "Czujesz chaos w życiu",
+  "Masz trudności ze snem",
+  "Czujesz że utknąłeś w miejscu",
+  "Masz poczucie że wszystko jest na Twojej głowie",
+  "Masz mało czasu dla siebie"
 ]
 
 export default function LifeTestPage(){
 
-const [step,setStep]=useState(0)
-const [score,setScore]=useState(0)
+  const [step,setStep]=useState(0)
+  const [score,setScore]=useState(0)
+  const [saved,setSaved]=useState(false)
 
-function answer(val:boolean){
+  function answer(val:boolean){
+    if(val) setScore(prev => prev + 1)
+    setStep(prev => prev + 1)
+  }
 
-if(val) setScore(score+1)
+  const finished = step >= questions.length
 
-setStep(step+1)
+  const percent = finished
+    ? Math.round((score/questions.length)*100)
+    : 0
 
-}
+  useEffect(() => {
+    if(finished && !saved){
+      saveTestResult({
+        id:"zycie",
+        score,
+        percent,
+        date:Date.now()
+      })
+      setSaved(true)
+    }
+  }, [finished, saved, score, percent])
 
-if(step>=questions.length){
+  if(finished){
 
-const percent=Math.round((score/questions.length)*100)
+    return(
+      <main className="min-h-screen bg-white">
+        <div className="max-w-xl mx-auto px-6 py-24">
+          <TestResultFlow percent={percent} />
+        </div>
+      </main>
+    )
 
-saveTestResult({
- id:"zycie",
- score,
- percent,
- date:Date.now()
-})
+  }
 
-let stage="wzrost"
-let desc="Twoje życie wygląda na stabilne."
+  return(
+    <main className="min-h-screen bg-white">
+      <div className="max-w-xl mx-auto px-6 py-24">
 
-if(percent>=30){
-stage="stabilizacja"
-desc="Twoje życie potrzebuje lekkiego uporządkowania."
-}
+        <ProgressBar step={step+1} total={questions.length}/>
 
-if(percent>=60){
-stage="odbudowa"
-desc="Prawdopodobnie potrzebujesz czasu na odbudowę."
-}
+        <h1 className="text-xl mb-8">
+          {questions[step]}
+        </h1>
 
-if(percent>=80){
-stage="kryzys"
-desc="Możliwe że przechodzisz trudniejszy moment życia."
-}
+        <div className="space-y-4">
+          <button onClick={()=>answer(true)} className="w-full border p-4 rounded-lg">Tak</button>
+          <button onClick={()=>answer(false)} className="w-full border p-4 rounded-lg">Nie</button>
+        </div>
 
-return(
-
-<main className="min-h-screen flex items-center justify-center bg-white">
-
-<div className="max-w-xl text-center">
-
-<h1 className="text-3xl font-semibold mb-4">
-Twój etap: {stage}
-</h1>
-
-<p className="text-gray-600 mb-6">
-{desc}
-</p>
-
-<StateScale value={percent}/>
-
-<Link
-href={`/${stage}`}
-className="bg-black text-white px-6 py-3 rounded-lg block mt-8"
->
-Zobacz kierunek
-</Link>
-
-</div>
-
-</main>
-
-)
-
-}
-
-return(
-
-<main className="min-h-screen flex items-center justify-center bg-white">
-
-<div className="max-w-xl text-center">
-
-<ProgressBar step={step+1} total={questions.length}/>
-
-<h1 className="text-2xl font-semibold mb-10">
-{questions[step]}
-</h1>
-
-<div className="space-y-4">
-
-<button type="button" onClick={()=>answer(true)} className="block w-full border p-4 rounded-lg hover:shadow">
-Tak
-</button>
-
-<button type="button" onClick={()=>answer(false)} className="block w-full border p-4 rounded-lg hover:shadow">
-Nie
-</button>
-
-</div>
-
-</div>
-
-</main>
-
-)
+      </div>
+    </main>
+  )
 
 }

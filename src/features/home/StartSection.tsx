@@ -9,37 +9,34 @@ export default function StartSection() {
       <div className="max-w-xl mx-auto px-6 text-center">
 
         <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-          Możesz zacząć od krótkiego sprawdzenia swojej sytuacji
+          Jeśli wiesz czego potrzebujesz, możesz zacząć od razu
         </h2>
 
         <p className="text-gray-600 mb-8">
-          Kilka prostych pytań pomoże zobaczyć gdzie jesteś
-          i co może być dobrym kolejnym krokiem.
+          Wybierz konkretny obszar i przejdź do działania.
         </p>
 
-        {/* 🔥 GŁÓWNY CTA — spokojny, ale czytelny */}
-        <Link
-          href="/narzedzia/test-sytuacji"
-          className="block w-full border border-black/20 bg-black/5 rounded-xl py-4 hover:bg-black/10 transition"
-        >
-          Sprawdź swoją sytuację
-        </Link>
-
-        {/* 🔽 OPCJE — jako drugorzędne */}
-        <div className="mt-6 space-y-2 text-sm text-gray-500">
+        <div className="space-y-4">
 
           <Link
             href="/narzedzia"
-            className="block hover:underline"
+            className="block border border-black/20 rounded-xl py-4 hover:bg-black/5 transition"
           >
-            zobacz dostępne narzędzia
+            Zobacz narzędzia
           </Link>
 
           <Link
             href="/sciezki/kompas"
-            className="block hover:underline"
+            className="block border border-black/20 rounded-xl py-4 hover:bg-black/5 transition"
           >
-            przejdź do kierunku działania
+            Przejdź do kierunku działania
+          </Link>
+
+          <Link
+            href="/propozycje"
+            className="block border border-black/20 rounded-xl py-4 hover:bg-black/5 transition"
+          >
+            Znajdź wsparcie
           </Link>
 
         </div>

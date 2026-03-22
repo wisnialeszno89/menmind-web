@@ -3,9 +3,7 @@
 import Link from "next/link"
 import { Partner } from "@/data/partners"
 import RatingStars from "@/components/RatingStars"
-import PartnerBadges from "@/features/marketplace/PartnerBadges"
 
-// 🔥 TRACK + PRZEJŚCIE
 async function handleClick(partner: Partner) {
 
   try {
@@ -32,81 +30,119 @@ export default function PartnersList({
 }){
 
   if(!partners.length){
-
     return(
-
       <div className="border rounded-xl p-8 text-center text-gray-600">
-        Brak partnerów w tej kategorii.
+        Brak dopasowanych specjalistów w tej kategorii.
       </div>
-
     )
-
   }
 
   return(
 
-    <div className="grid md:grid-cols-2 gap-6">
+    <div>
 
-      {partners.map((partner)=>(
+      <p className="text-sm font-medium mb-6">
+        👉 Zacznij od pierwszej opcji — najczęściej wybieranej
+      </p>
 
-        <div
-          key={partner.slug}
-          className="border rounded-xl p-6 hover:shadow transition"
-        >
+      <div className="grid md:grid-cols-2 gap-6">
 
-          <h3 className="text-xl font-semibold mb-2">
-            {partner.name}
-          </h3>
+        {partners.map((partner, index)=>(
 
-          {/* 🔥 DLA KOGO (prosty kontekst) */}
-          <p className="text-xs text-gray-500 mb-2">
-            Najlepsze dla: {partner.category}
-          </p>
+          <div
+            key={partner.slug}
+            className={`border rounded-xl p-6 hover:shadow transition ${
+              index === 0 ? "border-black" : ""
+            }`}
+          >
 
-          {/* RATING */}
-          {partner.rating && (
+            {/* 🔥 BADGE ONLINE */}
+            {partner.locationType === "online" && (
+              <div className="inline-block text-xs bg-green-100 text-green-800 px-2 py-1 rounded mb-2">
+                🌍 Online
+              </div>
+        )}
 
-            <div className="flex items-center gap-2 mb-2">
+            {partner.locationType === "national" && (
+              <div className="inline-block text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mb-2">
+                Cała Polska
+              </div>
+        )}
 
-              <RatingStars rating={partner.rating} />
+            {partner.locationType === "city" && partner.city && (
+              <div className="inline-block text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded mb-2">
+                📍 {partner.city}
+              </div>
+        )}
+              {/* 🔥 BADGES */}
+              <div className="flex gap-2 mb-2 flex-wrap">
 
-              <span className="text-sm text-gray-500">
-                {partner.reviews || 0} opinii
-              </span>
+            {partner.tier === "strategic" && (
+             <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">
+              💎 Premium
+            </span>
+        )}
+
+            {partner.featured && (
+            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
+           ⭐ Polecane
+            </span>
+        )}
+
+           {(!partner.reviews || partner.reviews < 3) && (
+          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+          🆕 Nowe
+          </span>
+        )}
 
             </div>
 
-          )}
+            <h3 className="text-xl font-semibold mb-2">
+              {partner.name}
+            </h3>
 
-          <p className="text-gray-700 mb-4">
-            {partner.description}
-          </p>
+            <p className="text-xs text-gray-500 mb-2">
+              Dla: {partner.category}
+            </p>
 
-          <div className="flex gap-4 text-sm">
-
-            {partner.website && (
-
-              <button
-                onClick={() => handleClick(partner)}
-                className="underline"
-              >
-                Strona
-              </button>
-
+            {partner.rating && (
+              <div className="flex items-center gap-2 mb-2">
+                <RatingStars rating={partner.rating} />
+                <span className="text-sm text-gray-500">
+                  {partner.reviews || 0} opinii
+                </span>
+              </div>
             )}
 
-            <Link
-              href={`/partner/${partner.slug}`}
-              className="underline"
-            >
-              Profil
-            </Link>
+            <p className="text-gray-700 mb-4">
+              {partner.description}
+            </p>
+
+            <div className="flex gap-4 text-sm">
+
+              {partner.website && (
+                <button
+                  onClick={() => handleClick(partner)}
+                  className="underline font-medium"
+                >
+                  👉 Umów rozmowę
+                </button>
+              )}
+
+              <Link
+                href={`/partner/${partner.slug}`}
+                className="underline"
+              >
+                Profil
+              </Link>
+
+            </div>
 
           </div>
 
-        </div>
+        ))}
 
-      ))}
+      </div>
 
     </div>
 

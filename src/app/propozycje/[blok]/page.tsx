@@ -1,7 +1,9 @@
 import { cities } from "@/data/cities"
 import { proposalCategories } from "@/data/proposalsCategories"
+import { partners } from "@/data/partners"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import PartnersList from "@/features/marketplace/PartnersList"
 
 export default function ProposalCategoryPage({
   params,
@@ -9,55 +11,67 @@ export default function ProposalCategoryPage({
   params: { blok: string }
 }) {
 
-const category = proposalCategories.find(
-  (c) => c.slug === params.blok
-)
+  const category = proposalCategories.find(
+    (c) => c.slug === params.blok
+  )
 
-if (!category) return notFound()
+  if (!category) return notFound()
 
-return (
+  // 🔥 PARTNERZY Z TEJ KATEGORII
+  const filteredPartners = partners.filter(p => 
+    p.category === category.slug
+  )
 
-<main className="bg-white min-h-screen">
+  return (
 
-<div className="max-w-6xl mx-auto px-6 py-24">
+    <main className="bg-white min-h-screen">
 
-<h1 className="text-4xl font-semibold mb-6">
-{category.name}
-</h1>
+      <div className="max-w-6xl mx-auto px-6 py-24">
 
-<p className="text-gray-700 mb-12 max-w-xl">
-Zobacz miejsca, wydarzenia i firmy w kategorii {category.name}
-w różnych miastach.
-</p>
+        <h1 className="text-4xl font-semibold mb-6">
+          {category.name}
+        </h1>
 
-<div className="grid md:grid-cols-3 gap-4">
+        <p className="text-gray-700 mb-8 max-w-xl">
+          Dopasowane wsparcie w kategorii {category.name}.
+        </p>
 
-{cities.map((city) => (
+        {/* 🔥 PARTNERZY OD RAZU */}
+        <PartnersList partners={filteredPartners} />
 
-<Link
-key={city.slug}
-href={`/propozycje/${category.slug}/${city.slug}`}
-className="border rounded-lg p-4 hover:shadow transition"
->
+        {/* 🔽 MIASTA (OPCJONALNE) */}
+        <h2 className="text-2xl font-semibold mt-20 mb-6">
+          Lub znajdź w swoim mieście
+        </h2>
 
-<strong>
-{city.name}
-</strong>
+        <div className="grid md:grid-cols-3 gap-4">
 
-<p className="text-sm text-gray-600">
-{category.name}
-</p>
+          {cities.map((city) => (
 
-</Link>
+            <Link
+              key={city.slug}
+              href={`/propozycje/${category.slug}/${city.slug}`}
+              className="border rounded-lg p-4 hover:shadow transition"
+            >
 
-))}
+              <strong>
+                {city.name}
+              </strong>
 
-</div>
+              <p className="text-sm text-gray-600">
+                {category.name}
+              </p>
 
-</div>
+            </Link>
 
-</main>
+          ))}
 
-)
+        </div>
+
+      </div>
+
+    </main>
+
+  )
 
 }

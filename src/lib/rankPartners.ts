@@ -1,35 +1,38 @@
 import { Partner } from "@/data/partners"
 
-export function rankPartners(partners: (Partner & { clicks?: number })[]) {
+export function rankPartners(
+  partners: (Partner & { clicks?: number })[]
+) {
 
   return partners
     .map((partner) => {
 
       let score = 0
 
-// 🔥 TIER = NAJWAŻNIEJSZE (pieniądz)
-if (partner.tier === "strategic") score += 1000
-if (partner.tier === "pro") score += 300
-if (partner.tier === "basic") score += 50
+      // 💎 TIER (najważniejsze)
+      if (partner.tier === "strategic") score += 10000
+      if (partner.tier === "pro") score += 3000
+      if (partner.tier === "basic") score += 500
 
-// featured
-if (partner.featured) score += 200
+      // ⭐ featured
+      if (partner.featured) score += 2000
 
-// verified
-if (partner.verified) score += 100
+      // 🌍 online
+      if (partner.locationType === "online") score += 1500
+      if (partner.locationType === "national") score += 800
 
-// ruch
-if (partner.clicks) score += partner.clicks * 10
+      // ⭐ rating
+      if (partner.rating) score += Math.round(partner.rating * 100)
 
-// opinie
-if (partner.reviews) score += partner.reviews * 2
+      // 👥 reviews
+      if (partner.reviews) score += partner.reviews * 10
 
-// rating
-if (partner.rating) score += Math.round(partner.rating * 10)
-
+      // 🔥 kliknięcia
       if (partner.clicks) score += partner.clicks * 5
 
       return { ...partner, score }
+
     })
     .sort((a, b) => b.score - a.score)
+
 }

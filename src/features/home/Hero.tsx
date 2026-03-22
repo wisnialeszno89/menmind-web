@@ -21,6 +21,7 @@ export default function Hero({ title, intro }: Props) {
           {intro}
         </p>
 
+        {/* PRIMARY */}
         <Link
           href="/narzedzia/test-sytuacji"
           className="block w-full bg-black text-white py-4 rounded-xl hover:opacity-90 transition"
@@ -32,11 +33,20 @@ export default function Hero({ title, intro }: Props) {
           zajmie Ci mniej niż 2 minuty
         </p>
 
+        {/* MARKETPLACE */}
+        <Link
+          href="/propozycje"
+          className="block w-full mt-4 border border-black py-4 rounded-xl hover:bg-black hover:text-white transition"
+        >
+          Znajdź rozwiązania
+        </Link>
+
+        {/* TERTIARY */}
         <Link
           href="/narzedzia"
           className="block mt-4 text-sm text-gray-500 hover:underline"
         >
-          albo zobacz narzędzia
+          lub przejdź bezpośrednio do narzędzi
         </Link>
 
       </div>

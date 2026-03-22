@@ -220,6 +220,96 @@ views: 45
   ],
 
   experience: "Wsparcie prawne w trudnych sytuacjach życiowych i rodzinnych."
+},
+  {
+  id: "online-1",
+  slug: "psycholog-online-centrum",
+  name: "Psycholog Online Centrum",
+  section: "wsparcie",
+  category: "psycholog",
+  locationType: "online",
+  description: "Sesje psychologiczne online dla mężczyzn w kryzysie.",
+  tier: "pro",
+  featured: true,
+  verified: true,
+  rating: 4.9,
+  reviews: 21
+},
+{
+  id: "online-2",
+  slug: "coach-kierunku-online",
+  name: "Coach Kierunku Online",
+  section: "rozwoj",
+  category: "coaching",
+  locationType: "online",
+  description: "Pomaga wyjść z chaosu i ustawić kierunek działania.",
+  tier: "pro",
+  featured: true,
+  rating: 4.8,
+  reviews: 14
+},
+{
+  id: "online-3",
+  slug: "mediacje-rodzinne-online",
+  name: "Mediacje Rodzinne Online",
+  section: "wsparcie",
+  category: "mediator",
+  locationType: "online",
+  description: "Mediacje relacyjne i rozwodowe online.",
+  tier: "basic",
+  rating: 4.7,
+  reviews: 8
+},
+{
+  id: "online-4",
+  slug: "mental-reset-online",
+  name: "Mental Reset Online",
+  section: "rozwoj",
+  category: "mental",
+  locationType: "online",
+  description: "Szybkie sesje mentalne pomagające wrócić do równowagi.",
+  tier: "pro",
+  featured: true,
+  rating: 5.0,
+  reviews: 9
+},
+{
+  id: "online-5",
+  slug: "trener-online-start",
+  name: "Trener Online Start",
+  section: "zdrowie",
+  category: "trening",
+  locationType: "online",
+  description: "Plan treningowy i wsparcie online.",
+  tier: "basic",
+  rating: 4.6,
+  reviews: 6
+},
+{
+  id: "trip-1",
+  slug: "reset-adventure-travel",
+
+  name: "Reset Adventure Travel",
+
+  section: "wyjazdy",
+  category: "wyjazdy-meskie",
+
+  locationType: "national",
+
+  description: "Wyjazdy dla mężczyzn: reset, sport i odbudowa kierunku.",
+
+  tier: "strategic",
+  featured: true,
+  verified: true,
+
+  rating: 5.0,
+  reviews: 4,
+
+  specialties: [
+    "reset",
+    "wyprawy",
+    "rozwój"
+  ]
 }
 
 ]

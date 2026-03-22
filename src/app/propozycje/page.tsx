@@ -5,79 +5,131 @@ import FeaturedPartners from "@/features/marketplace/FeaturedPartners"
 
 export default function ProposalsPage() {
 
-return(
+  return(
 
-<main className="bg-white min-h-screen">
+    <main className="bg-white min-h-screen">
 
-<div className="max-w-6xl mx-auto px-6 py-24">
+      <div className="max-w-6xl mx-auto px-6 py-24">
 
-<h1 className="text-4xl font-semibold mb-6">
-Znajdź coś dla siebie
-</h1>
+        {/* 🔥 HERO */}
+        <h1 className="text-4xl font-semibold mb-6">
+          Znajdź rozwiązania i sprawdzone opcje działania
+        </h1>
 
-<p className="text-gray-700 max-w-xl mb-16">
-Miejsca, wydarzenia i doświadczenia które pomagają
-rozwijać życie, poznawać ludzi i zdobywać nowe doświadczenia.
-</p>
+        <p className="text-gray-700 max-w-xl mb-12">
+          Specjaliści, usługi i możliwości dopasowane do kryzysu, odbudowy i wzrostu.
+          Wybierz obszar i działaj.
+        </p>
 
-{/* SZYBKI START */}
+        {/* 🔥 TEST (opcjonalny start) */}
+        <div className="bg-gray-50 border rounded-xl p-6 mb-16">
+          <h2 className="font-semibold mb-2">
+            Nie wiesz od czego zacząć?
+          </h2>
 
-<div className="grid md:grid-cols-3 gap-6 mb-20">
+          <p className="text-sm text-gray-600 mb-4">
+            Zrób szybki test i zobacz dopasowane opcje.
+          </p>
 
-<Link
-href="/narzedzia/test-sytuacji"
-className="border rounded-xl p-6 hover:shadow"
->
-Sprawdź swoją sytuację
-</Link>
+          <Link
+            href="/narzedzia/test-sytuacji"
+            className="inline-block border border-black px-4 py-2 rounded-lg text-sm hover:bg-black hover:text-white transition"
+          >
+            Zrób szybki test
+          </Link>
+        </div>
 
-<Link
-href="/sciezki/kompas"
-className="border rounded-xl p-6 hover:shadow"
->
-Zobacz swój kierunek
-</Link>
+        {/* 🔥 KATEGORIE */}
+        <h2 className="text-2xl font-semibold mb-8">
+          Wybierz obszar
+        </h2>
 
-<Link
-href="/narzedzia"
-className="border rounded-xl p-6 hover:shadow"
->
-Zobacz narzędzia
-</Link>
+        <ProposalsGrid />
 
-</div>
+        <div className="mt-24">
 
-{/* KATEGORIE */}
+        <h2 className="text-2xl font-semibold mb-8">
+        Popularne teraz
+        </h2>
 
-<h2 className="text-2xl font-semibold mb-8">
-Kategorie
-</h2>
+        <div className="grid md:grid-cols-3 gap-4">
 
-<ProposalsGrid />
+        <Link
+        href="/propozycje/psycholog"
+        className="border rounded-xl p-5 hover:shadow"
+        >
+        🧠 Psycholog
+        </Link>
 
-{/* WYSZUKIWARKA MIAST */}
+        <Link
+        href="/propozycje/coaching"
+        className="border rounded-xl p-5 hover:shadow"
+        >
+        🎯 Coaching
+        </Link>
 
-<div className="mt-20">
+        <Link
+        href="/propozycje/prawo"
+        className="border rounded-xl p-5 hover:shadow"
+        >
+        ⚖️ Prawo
+        </Link>
 
-<h2 className="text-2xl font-semibold mb-6">
-Znajdź coś w swojej okolicy
-</h2>
+        </div>
 
-<CitySearch
-baseHref="/propozycje"
-state=""
-city=""
-cities={[]}
-placeholder="Wpisz miasto"
-tip="Znajdź wydarzenia i miejsca w swojej okolicy"
-/>
+        </div>
+        {/* 🔥 MIASTA (opcjonalne) */}
+        <div className="mt-24">
 
-</div>
-<FeaturedPartners />
-</div>
+          <h2 className="text-2xl font-semibold mb-6">
+            Lub znajdź w swoim mieście
+          </h2>
 
-</main>
+          <CitySearch
+         baseHref="/propozycje"
+         placeholder="Wpisz miasto"
+         tip="Znajdź lokalne usługi i wsparcie"
+        />
 
-)
+        </div>
+
+        <div className="mt-24">
+
+        <h2 className="text-2xl font-semibold mb-8">
+        Dostępne od razu online
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-4">
+
+        <Link href="/propozycje/psycholog" className="border p-5 rounded-xl">
+        🌍 Psycholog online
+        </Link>
+
+        <Link href="/propozycje/coaching" className="border p-5 rounded-xl">
+        🌍 Coaching online
+        </Link>
+
+        <Link href="/propozycje/mental" className="border p-5 rounded-xl">
+        🌍 Mental online
+        </Link>
+
+    </div>
+
+    </div>
+
+        {/* 🔥 FEATURED */}
+        <div className="mt-24">
+          <h2 className="text-2xl font-semibold mb-8">
+            Najczęściej wybierane
+          </h2>
+
+          <FeaturedPartners />
+        </div>
+
+      </div>
+
+    </main>
+
+  )
 
 }

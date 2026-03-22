@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import ProgressBar from "@/features/tools/ProgressBar"
 import StateScale from "@/features/tools/StateScale"
@@ -9,6 +9,7 @@ import { getPartnersByCategory } from "@/lib/getPartnersByCategory"
 import { rankPartners } from "@/lib/rankPartners"
 import PartnersList from "@/features/marketplace/PartnersList"
 import LeadBox from "@/components/LeadBox"
+import TestResultFlow from "@/components/TestResultFlow"
 
 const questions = [
   "Czujesz zmęczenie mimo odpoczynku",
@@ -22,22 +23,35 @@ export default function BurnoutTest(){
 
   const [step,setStep]=useState(0)
   const [score,setScore]=useState(0)
+  const [saved,setSaved]=useState(false)
 
   function answer(val:boolean){
-    if(val) setScore(score+1)
-    setStep(step+1)
+    if(val) setScore(prev => prev + 1)
+    setStep(prev => prev + 1)
   }
 
-  if(step>=questions.length){
+  const finished = step >= questions.length
 
-    const percent=Math.round((score/questions.length)*100)
+  const percent = finished
+    ? Math.round((score/questions.length)*100)
+    : 0
 
-    saveTestResult({
-      id:"wypalenie",
-      score,
-      percent,
-      date:Date.now()
-    })
+  // 🔥 zapis tylko raz
+  useEffect(() => {
+    if(finished && !saved){
+
+      saveTestResult({
+        id:"wypalenie",
+        score,
+        percent,
+        date:Date.now()
+      })
+
+      setSaved(true)
+    }
+  }, [finished, saved, score, percent])
+
+  if(finished){
 
     let label="stabilnie"
     let desc="Nie widać silnych objawów wypalenia."
@@ -52,7 +66,6 @@ export default function BurnoutTest(){
       desc="Możliwe że jesteś w stanie wypalenia i potrzebujesz regeneracji."
     }
 
-    // 🔥 partnerzy
     let category = "coaching"
     if (percent >= 70) category = "psycholog"
     else if (percent >= 40) category = "coach"
@@ -109,7 +122,7 @@ export default function BurnoutTest(){
               href="/propozycje"
               className="block border p-4 rounded-lg"
             >
-              Znajdź wsparcie
+              👉 Porozmawiaj z kimś dziś
             </Link>
 
           </div>
@@ -120,7 +133,8 @@ export default function BurnoutTest(){
 
           <PartnersList partners={partners} />
 
-        <LeadBox />
+          <LeadBox />
+
         </div>
 
       </main>
@@ -131,40 +145,16 @@ export default function BurnoutTest(){
 
   return(
 
-    <main className="min-h-screen bg-white">
+  <main className="min-h-screen bg-white">
 
-      <div className="max-w-xl mx-auto px-6 py-24">
+    <div className="max-w-xl mx-auto px-6 py-24">
 
-        <ProgressBar step={step+1} total={questions.length}/>
+      <TestResultFlow percent={percent} />
 
-        <h1 className="text-xl mb-8">
-          {questions[step]}
-        </h1>
+    </div>
 
-        <div className="space-y-4">
+  </main>
 
-          <button
-            type="button"
-            onClick={()=>answer(true)}
-            className="block w-full border p-4 rounded-lg hover:shadow"
-          >
-            Tak
-          </button>
-
-          <button
-            type="button"
-            onClick={()=>answer(false)}
-            className="block w-full border p-4 rounded-lg hover:shadow"
-          >
-            Nie
-          </button>
-
-        </div>
-
-      </div>
-
-    </main>
-
-  )
+)
 
 }

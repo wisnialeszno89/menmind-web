@@ -54,6 +54,27 @@ export default function Home() {
       {/* 🔥 EKSPLORACJA */}
       <WorldPreview />
 
+      <section className="py-20 border-t">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+
+      <h2 className="text-2xl font-semibold mb-4">
+      Nie wiesz który kierunek wybrać?
+      </h2>
+
+      <p className="text-neutral-600 mb-8">
+      Możesz od razu zobaczyć specjalistów i formy wsparcia dopasowane do Twojej sytuacji.
+      </p>
+
+      <a
+      href="/propozycje"
+      className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
+      >
+      Zobacz dostępne wsparcie
+      </a>
+
+      </div>
+      </section>
+
       {/* 🔥 TREŚCI */}
       <HomeArticles />
 

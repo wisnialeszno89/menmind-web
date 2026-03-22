@@ -1,55 +1,47 @@
 import { notFound } from "next/navigation"
 import { cities } from "@/data/cities"
 import { proposalCategories } from "@/data/proposalsCategories"
+import { getPartnersByCategory } from "@/lib/getPartnersByCategory"
+import { rankPartners } from "@/lib/rankPartners"
+import PartnersList from "@/features/marketplace/PartnersList"
 
 export default function ProposalCityPage({ params }: any) {
 
-const category = proposalCategories.find(
-c => c.slug === params.blok
-)
+  const category = proposalCategories.find(
+    c => c.slug === params.blok
+  )
 
-const city = cities.find(
-c => c.slug === params.miasto
-)
+  const city = cities.find(
+    c => c.slug === params.miasto
+  )
 
-if(!category || !city) return notFound()
+  if(!category || !city) return notFound()
 
-return(
+  const partners = rankPartners(
+    getPartnersByCategory(category.slug, city.slug)
+  )
 
-<main className="bg-white min-h-screen">
+  return(
 
-<div className="max-w-5xl mx-auto px-6 py-24">
+    <main className="bg-white min-h-screen">
 
-<h1 className="text-4xl font-semibold mb-6">
-{category.name} — {city.name}
-</h1>
+      <div className="max-w-5xl mx-auto px-6 py-24">
 
-<p className="text-gray-700 mb-10 max-w-xl">
-Firmy, miejsca i wydarzenia w kategorii {category.name}
-w mieście {city.name}.
-</p>
+        <h1 className="text-4xl font-semibold mb-6">
+          {category.name} — {city.name}
+        </h1>
 
-{/* LISTA PARTNERÓW */}
+        <p className="text-gray-700 mb-10 max-w-xl">
+          Dostępne opcje w tej kategorii. Jeśli brak lokalnych,
+          pokażemy dostępne online.
+        </p>
 
-<div className="grid md:grid-cols-2 gap-6">
+        <PartnersList partners={partners} />
 
-<div className="border rounded-xl p-6">
-<h3 className="font-semibold mb-2">
-Tutaj pojawi się partner
-</h3>
+      </div>
 
-<p className="text-gray-600 text-sm">
-System partnerów będzie wyświetlany tutaj.
-</p>
+    </main>
 
-</div>
-
-</div>
-
-</div>
-
-</main>
-
-)
+  )
 
 }

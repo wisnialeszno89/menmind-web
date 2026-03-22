@@ -25,25 +25,25 @@ export default function Navbar() {
         Wzrost
       </Link>
 
-      <Link href="/ojcostwo" className={linkStyle}>
-        Ojcostwo
+      {/* 🔥 MARKETPLACE */}
+      <Link
+        href="/propozycje"
+        className="text-sm font-semibold px-3 py-1 rounded-lg bg-black text-white"
+      >
+        Znajdź
       </Link>
 
       <Link href="/narzedzia" className={linkStyle}>
         Narzędzia
       </Link>
 
-      <Link href="/droga" className={linkStyle}>
-        Droga
-      </Link>
-
-      <Link href="/wsparcie" className={linkStyle}>
-        Wsparcie
+      <Link href="/ojcostwo" className={linkStyle}>
+        Ojcostwo
       </Link>
 
       <Link
         href="/navimind"
-        className="px-4 py-2 rounded-lg bg-black text-white text-sm hover:opacity-90"
+        className="text-sm text-neutral-500 hover:text-black"
       >
         NaviMind
       </Link>

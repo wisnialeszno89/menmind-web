@@ -58,8 +58,12 @@ export default function Footer() {
             Dla partnerów
           </Link>
           <Link href="/pomoc/warszawa">Pomoc dla mężczyzn Warszawa</Link>
-<Link href="/pomoc/krakow">Pomoc dla mężczyzn Kraków</Link>
-<Link href="/pomoc/wroclaw">Pomoc dla mężczyzn Wrocław</Link>
+          <Link href="/pomoc/krakow">Pomoc dla mężczyzn Kraków</Link>
+          <Link href="/pomoc/wroclaw">Pomoc dla mężczyzn Wrocław</Link>
+          
+          <Link href="/propozycje">
+          Znajdź wsparcie
+          </Link>
 
         </div>
 

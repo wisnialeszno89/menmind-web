@@ -1,170 +1,69 @@
 import Link from "next/link"
-import { getArticlesByPath } from "@/lib/getArticlesByPath"
-
-export const metadata = {
-  title: "Rozstanie | MenMind",
-  description:
-    "Jak przejść przez rozstanie i odzyskać stabilność emocjonalną.",
-}
 
 export default function RozstaniePage() {
-
-  const articles = getArticlesByPath("rozstanie")
 
   return (
 
     <main className="bg-white min-h-screen">
 
-      <div className="max-w-4xl mx-auto px-6 py-24">
+      <div className="max-w-3xl mx-auto px-6 py-24">
 
-        {/* HEADER */}
-
-        <h1 className="text-4xl font-semibold text-black mb-6">
-          Rozstanie
+        <h1 className="text-4xl font-semibold mb-6">
+          Rozstanie — co zrobić, żeby się nie rozsypać
         </h1>
 
-        <p className="text-black mb-12">
-          Rozstanie potrafi wywrócić życie do góry nogami.
-          Najpierw trzeba zatrzymać chaos i odzyskać równowagę.
+        <p className="text-gray-700 mb-10">
+          Rozstanie potrafi wywrócić wszystko: emocje, głowę, codzienność.
+          Najważniejsze teraz to nie robić gwałtownych ruchów i odzyskać stabilność.
         </p>
 
-
-        {/* ARTYKUŁY */}
-
-        <h2 className="text-2xl font-semibold text-black mb-4">
-          Artykuły
+        <h2 className="text-2xl font-semibold mb-4">
+          1. Zatrzymaj spiralę
         </h2>
 
-        <div className="space-y-4 mb-12">
-
-          {articles.map((article) => (
-
-            <Link
-              key={article.slug}
-              href={`/content/${article.slug}`}
-              className="block border p-4 rounded-lg hover:shadow"
-            >
-
-              <h3 className="font-semibold text-black">
-                {article.title}
-              </h3>
-
-              <p className="text-black text-sm">
-                {article.intro}
-              </p>
-
-            </Link>
-
-          ))}
-
-        </div>
-
-
-        {/* NARZĘDZIA */}
-
-        <h2 className="text-2xl font-semibold text-black mb-4">
-          Narzędzia
-        </h2>
+        <p className="text-gray-700 mb-6">
+          Najpierw ciało. Jeśli jesteś w napięciu — nie podejmuj decyzji.
+          Uspokój układ nerwowy, zanim zaczniesz analizować.
+        </p>
 
         <Link
-          href="/narzedzia/stabilizacja"
-          className="block border p-4 rounded-lg mb-12 hover:shadow"
+          href="/narzedzia/reset"
+          className="block border p-4 rounded-lg mb-10"
         >
-          Narzędzia stabilizacji
+          👉 Zrób szybki reset (90 sekund)
         </Link>
 
-
-        {/* WSPARCIE */}
-
-        <h2 className="text-2xl font-semibold text-black mb-4">
-          Wsparcie
+        <h2 className="text-2xl font-semibold mb-4">
+          2. Uporządkuj chaos w głowie
         </h2>
+
+        <p className="text-gray-700 mb-6">
+          Wyrzuć wszystko z głowy. Bez filtrowania.
+          Dopiero potem zobaczysz co jest naprawdę ważne.
+        </p>
 
         <Link
-          href="/propozycje"
-          className="block border p-4 rounded-lg mb-12 hover:shadow"
+          href="/narzedzia/brain-dump"
+          className="block border p-4 rounded-lg mb-10"
         >
-          Znajdź specjalistę
+          👉 Wyrzuć wszystko na papier
         </Link>
 
+        <h2 className="text-2xl font-semibold mb-4">
+          3. Nie zostawaj z tym sam
+        </h2>
 
-        {/* NAVIMIND */}
+        <p className="text-gray-700 mb-6">
+          Rozstanie to jeden z momentów, gdzie rozmowa z kimś ogarniętym
+          potrafi skrócić miesiące chaosu do kilku tygodni.
+        </p>
 
         <Link
-          href="/navimind?state=rozstanie"
-          className="inline-block bg-black text-white px-6 py-3 rounded-lg mb-16"
+          href="/propozycje/psycholog"
+          className="block border p-4 rounded-lg mb-10"
         >
-          Porozmawiaj w NaviMind
+          👉 Znajdź wsparcie
         </Link>
-
-
-        {/* SEO — MIASTA */}
-
-        <h2 className="text-2xl font-semibold text-black mb-6">
-          Pomoc w Twoim mieście
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-4 mb-16">
-
-          <Link
-            href="/kategoria/psycholog/warszawa"
-            className="border rounded-lg p-4 hover:shadow"
-          >
-            Psycholog – Warszawa
-          </Link>
-
-          <Link
-            href="/kategoria/psycholog/krakow"
-            className="border rounded-lg p-4 hover:shadow"
-          >
-            Psycholog – Kraków
-          </Link>
-
-          <Link
-            href="/kategoria/psycholog/wroclaw"
-            className="border rounded-lg p-4 hover:shadow"
-          >
-            Psycholog – Wrocław
-          </Link>
-
-        </div>
-
-
-        {/* FAQ SEO */}
-
-        <h2 className="text-2xl font-semibold text-black mb-6">
-          Najczęstsze pytania
-        </h2>
-
-        <div className="space-y-4">
-
-          <div>
-
-            <p className="font-semibold text-black">
-              Jak poradzić sobie z rozstaniem?
-            </p>
-
-            <p className="text-black">
-              Najpierw stabilizacja emocjonalna,
-              potem odbudowa struktury życia.
-            </p>
-
-          </div>
-
-          <div>
-
-            <p className="font-semibold text-black">
-              Czy warto iść do psychologa po rozstaniu?
-            </p>
-
-            <p className="text-black">
-              Dla wielu mężczyzn rozmowa z profesjonalistą
-              pomaga szybciej odzyskać równowagę.
-            </p>
-
-          </div>
-
-        </div>
 
       </div>
 

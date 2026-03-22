@@ -18,9 +18,10 @@ export default function LeadBox(){
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          email
+        email,
+        state: localStorage.getItem("user_state")
         })
-      })
+      })  
 
       setSent(true)
 
@@ -35,7 +36,10 @@ export default function LeadBox(){
           Dzięki 👍
         </p>
         <p className="text-sm text-gray-600">
-          Odezwiesz się do Ciebie z dopasowaną opcją.
+        Sprawdź powyżej — dobraliśmy dla Ciebie dopasowane opcje.
+        </p>
+        <p className="text-xs text-gray-400 mb-3">
+       Opcje masz już powyżej — jeśli chcesz, zapisz je sobie na później.
         </p>
       </div>
     )
