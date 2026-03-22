@@ -4,8 +4,28 @@ import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
 
 export const metadata = {
-  title: "MenMind",
-  description: "Kompas dla mężczyzn"
+  title: {
+    default: "MenMind – poukładaj swoją sytuację",
+    template: "%s | MenMind"
+  },
+  description:
+    "MenMind pomaga mężczyznom ogarnąć kryzys, odbudowę i rozwój. Test, narzędzia i sprawdzone opcje działania.",
+  keywords: [
+    "kryzys mężczyzny",
+    "jak ogarnąć życie",
+    "wypalenie",
+    "rozstanie",
+    "brak motywacji",
+    "stres",
+    "menmind"
+  ],
+  openGraph: {
+    title: "MenMind",
+    description:
+      "Poukladaj swoją sytuację krok po kroku.",
+    type: "website",
+    url: "https://menmind.app"
+  }
 }
 
 export default function RootLayout({

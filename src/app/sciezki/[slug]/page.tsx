@@ -1,6 +1,30 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+export async function generateMetadata({ params }: any) {
+
+  const titles: Record<string,string> = {
+    rozstanie: "Co zrobić po rozstaniu",
+    stres: "Jak radzić sobie ze stresem",
+    finanse: "Problemy finansowe co zrobić",
+    samotnosc: "Samotność u mężczyzny",
+    energia: "Brak energii co robić",
+    stabilnosc: "Jak odzyskać stabilność",
+    rutyna: "Jak zbudować rutynę",
+    kariera: "Zmiana kariery od czego zacząć",
+    dyscyplina: "Jak zbudować dyscyplinę",
+    relacja: "Problemy w relacji co robić",
+    prawo: "Prawo rodzinne co zrobić"
+  }
+
+  const title = titles[params.slug] || "Ścieżka działania"
+
+  return {
+    title,
+    description: `${title}. Konkretne kroki dla mężczyzn.`
+  }
+}
+
 const content: Record<string, any> = {
 
   finanse: {
