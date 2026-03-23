@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Chaos w życiu – jak to poukładać | MenMind",
@@ -51,6 +52,8 @@ export default function Page(){
         >
           👉 Zobacz ścieżkę stabilności
         </Link>
+
+        <RelatedArticles />
 
       </div>
     </main>

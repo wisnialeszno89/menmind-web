@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Wypalenie zawodowe u mężczyzny | MenMind",
@@ -21,6 +22,8 @@ export default function Page(){
         <Link href="/narzedzia/test-wypalenia" className="block border p-4 rounded-lg">
           👉 Zrób test wypalenia
         </Link>
+
+        <RelatedArticles />
 
       </div>
     </main>

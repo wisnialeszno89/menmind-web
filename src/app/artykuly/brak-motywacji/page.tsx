@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Brak motywacji – co robić | MenMind",
@@ -52,6 +53,8 @@ export default function Page(){
           👉 Zobacz ścieżkę dyscypliny
         </Link>
 
+        <RelatedArticles />
+        
       </div>
     </main>
 

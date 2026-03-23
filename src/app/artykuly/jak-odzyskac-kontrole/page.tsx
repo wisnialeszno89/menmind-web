@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Jak odzyskać kontrolę nad życiem | MenMind",
@@ -21,6 +22,8 @@ export default function Page(){
         <Link href="/narzedzia/plan-72h" className="block border p-4 rounded-lg">
           👉 Ułóż plan 72h
         </Link>
+
+        <RelatedArticles />
 
       </div>
     </main>

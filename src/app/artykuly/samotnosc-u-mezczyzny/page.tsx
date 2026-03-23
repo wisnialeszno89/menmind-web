@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Samotność u mężczyzny – co robić | MenMind",
@@ -34,6 +35,8 @@ export default function Page(){
           👉 Znajdź społeczność
         </Link>
 
+         <RelatedArticles />
+         
       </div>
     </main>
   )

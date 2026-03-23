@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Jak radzić sobie ze stresem | MenMind",
@@ -26,6 +27,8 @@ export default function Page(){
           👉 Reset 90 sekund
         </Link>
 
+        <RelatedArticles />
+        
       </div>
     </main>
   )

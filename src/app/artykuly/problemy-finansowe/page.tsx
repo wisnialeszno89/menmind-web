@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Problemy finansowe – co robić | MenMind",
@@ -22,6 +23,8 @@ export default function Page(){
           👉 Zobacz ścieżkę finansową
         </Link>
 
+        <RelatedArticles />
+        
       </div>
     </main>
   )

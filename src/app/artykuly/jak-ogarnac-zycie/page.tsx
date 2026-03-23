@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Jak ogarnąć życie gdy wszystko się sypie | MenMind",
@@ -59,6 +60,8 @@ export default function Page(){
         >
           👉 Zobacz ścieżkę stabilności
         </Link>
+        
+        <RelatedArticles />
 
       </div>
     </main>

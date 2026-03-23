@@ -1,4 +1,5 @@
 import Link from "next/link"
+import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Brak energii – co robić | MenMind",
@@ -25,6 +26,8 @@ export default function Page(){
         <Link href="/narzedzia/reset" className="block border p-4 rounded-lg">
           👉 Zrób szybki reset
         </Link>
+        
+        <RelatedArticles />
 
       </div>
     </main>
