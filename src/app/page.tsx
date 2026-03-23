@@ -7,6 +7,7 @@ import HomeArticles from "@/features/home/HomeArticles"
 import TrustSection from "@/features/home/TrustSection"
 import FeaturedPartners from "@/features/marketplace/FeaturedPartners"
 import UserStateBanner from "@/features/home/UserStateBanner"
+import HomeSeoArticles from "@/features/home/HomeSeoArticles"
 
 import { MessageCircle } from "lucide-react"
 
@@ -26,7 +27,7 @@ export default function Home() {
       {/* 🔥 START */}
       <StartSection />
 
-      {/* 🔥 NAVIMIND (subtelne wejście) */}
+      {/* 🔥 NAVIMIND */}
       <section className="py-20 border-t">
         <div className="max-w-4xl mx-auto px-6 text-center">
 
@@ -54,25 +55,29 @@ export default function Home() {
       {/* 🔥 EKSPLORACJA */}
       <WorldPreview />
 
+      {/* 🔥 SEO ARTYKUŁY */}
+      <HomeSeoArticles />
+
+      {/* 🔥 MARKETPLACE CTA */}
       <section className="py-20 border-t">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-6 text-center">
 
-      <h2 className="text-2xl font-semibold mb-4">
-      Nie wiesz który kierunek wybrać?
-      </h2>
+          <h2 className="text-2xl font-semibold mb-4">
+            Nie wiesz który kierunek wybrać?
+          </h2>
 
-      <p className="text-neutral-600 mb-8">
-      Możesz od razu zobaczyć specjalistów i formy wsparcia dopasowane do Twojej sytuacji.
-      </p>
+          <p className="text-neutral-600 mb-8">
+            Możesz od razu zobaczyć specjalistów i formy wsparcia dopasowane do Twojej sytuacji.
+          </p>
 
-      <a
-      href="/propozycje"
-      className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
-      >
-      Zobacz dostępne wsparcie
-      </a>
+          <a
+            href="/propozycje"
+            className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
+          >
+            Zobacz dostępne wsparcie
+          </a>
 
-      </div>
+        </div>
       </section>
 
       {/* 🔥 TREŚCI */}
