@@ -1,66 +1,9 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import { paths } from "@/data/paths"
 import FindSupportCTA from "@/components/FindSupportCTA"
 
 export const dynamic = "force-dynamic"
-
-const content: Record<string, any> = {
-  rozstanie: {
-    title: "Rozstanie",
-    desc: "Rozstanie potrafi wywrócić wszystko. Zacznij od stabilizacji.",
-    tool: "/narzedzia/reset"
-  },
-  stres: {
-    title: "Silny stres",
-    desc: "Gdy napięcie przejmuje kontrolę, zacznij od uspokojenia.",
-    tool: "/narzedzia/reset"
-  },
-  finanse: {
-    title: "Problemy finansowe",
-    desc: "Chaos finansowy zwiększa stres.",
-    tool: "/narzedzia/plan-72h"
-  },
-  samotnosc: {
-    title: "Samotność",
-    desc: "Izolacja pogłębia problem.",
-    tool: "/narzedzia/minimum"
-  },
-  energia: {
-    title: "Powrót do energii",
-    desc: "Energia wraca gdy uporządkujesz podstawy.",
-    tool: "/narzedzia/reset"
-  },
-  stabilnosc: {
-    title: "Nowa stabilność",
-    desc: "Stabilność zaczyna się od rutyny.",
-    tool: "/narzedzia/stabilizacja"
-  },
-  rutyna: {
-    title: "Rutyna i dyscyplina",
-    desc: "Powtarzalność zmniejsza chaos.",
-    tool: "/narzedzia/minimum"
-  },
-  kariera: {
-    title: "Kariera",
-    desc: "Rozwój zawodowy wymaga kierunku.",
-    tool: "/narzedzia/brain-dump"
-  },
-  dyscyplina: {
-    title: "Dyscyplina",
-    desc: "Małe kroki budują system.",
-    tool: "/narzedzia/minimum"
-  },
-  relacja: {
-    title: "Relacje",
-    desc: "Silne relacje stabilizują życie.",
-    tool: "/narzedzia/reset"
-  },
-  prawo: {
-    title: "Sprawy prawne",
-    desc: "Uporządkuj formalności spokojnie.",
-    tool: "/narzedzia/brain-dump"
-  }
-}
 
 export default async function Page({
   params,
@@ -70,9 +13,9 @@ export default async function Page({
 
   const { slug } = await params
 
-  const data = content[slug]
+  const path = paths.find(p => p.slug === slug)
 
-  if (!data) return notFound()
+  if (!path) return notFound()
 
   return (
 
@@ -81,21 +24,44 @@ export default async function Page({
       <div className="max-w-3xl mx-auto px-6 py-24">
 
         <h1 className="text-4xl font-semibold mb-6">
-          {data.title}
+          {path.title}
         </h1>
 
         <p className="text-gray-700 mb-10">
-          {data.desc}
+          {path.description}
         </p>
 
+        <div className="space-y-4 mb-10">
+
+          <div className="border rounded-lg p-4">
+            Zatrzymaj chaos i oceń sytuację
+          </div>
+
+          <div className="border rounded-lg p-4">
+            Wybierz jeden mały krok
+          </div>
+
+          <div className="border rounded-lg p-4">
+            Wprowadź prostą strukturę dnia
+          </div>
+
+        </div>
+
         <Link
-          href={data.tool}
-          className="block border p-4 rounded-lg mb-6"
+          href="/narzedzia/test-sytuacji"
+          className="block border p-4 rounded-lg mb-4"
         >
-          👉 Zrób pierwszy krok
+          👉 Sprawdź swoją sytuację
         </Link>
 
         <FindSupportCTA />
+
+        <Link
+          href={`/navimind?state=${path.navimindState}`}
+          className="block mt-6 text-sm underline"
+        >
+          Porozmawiaj w NaviMind
+        </Link>
 
       </div>
 
