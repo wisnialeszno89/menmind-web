@@ -7,7 +7,7 @@ export default function ZacznijPage() {
   const router = useRouter()
 
   function go(world: string) {
-    router.push(`/world/${world}`)
+    router.push(`/${world}`)
   }
 
   return (
@@ -28,12 +28,10 @@ export default function ZacznijPage() {
         <div className="grid md:grid-cols-2 gap-6">
 
           {/* KRYZYS */}
-
           <button
             onClick={() => go("kryzys")}
             className="border rounded-xl p-8 text-left hover:shadow"
           >
-
             <h2 className="text-xl font-semibold mb-2">
               Mam kryzys
             </h2>
@@ -47,17 +45,14 @@ export default function ZacznijPage() {
               <li>• uspokój emocje</li>
               <li>• znajdź pierwszy krok</li>
             </ul>
-
           </button>
 
 
           {/* ODBUDOWA */}
-
           <button
             onClick={() => go("odbudowa")}
             className="border rounded-xl p-8 text-left hover:shadow"
           >
-
             <h2 className="text-xl font-semibold mb-2">
               Chcę się odbudować
             </h2>
@@ -71,17 +66,14 @@ export default function ZacznijPage() {
               <li>• uporządkuj dzień</li>
               <li>• wróć do działania</li>
             </ul>
-
           </button>
 
 
           {/* WZROST */}
-
           <button
             onClick={() => go("wzrost")}
             className="border rounded-xl p-8 text-left hover:shadow"
           >
-
             <h2 className="text-xl font-semibold mb-2">
               Chcę się rozwijać
             </h2>
@@ -95,17 +87,14 @@ export default function ZacznijPage() {
               <li>• buduj dyscyplinę</li>
               <li>• rozwijaj potencjał</li>
             </ul>
-
           </button>
 
 
           {/* OJCOSTWO */}
-
           <button
             onClick={() => go("ojcostwo")}
             className="border rounded-xl p-8 text-left hover:shadow"
           >
-
             <h2 className="text-xl font-semibold mb-2">
               Chodzi o moje dziecko
             </h2>
@@ -119,7 +108,6 @@ export default function ZacznijPage() {
               <li>• zrozum sytuację prawną</li>
               <li>• odzyskaj kontakt</li>
             </ul>
-
           </button>
 
         </div>
