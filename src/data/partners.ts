@@ -1,3 +1,4 @@
+
 export type Partner = {
 
 id: string
@@ -13,7 +14,7 @@ city?: string
 locationType?: "city" | "online" | "national"
 
 website?: string
-phone?: string   // 👈 DODAJ TO
+phone?: string   
 
 
 tier?: "basic" | "pro" | "strategic"
@@ -189,7 +190,7 @@ views: 45
   views: 25
 },
 {
-  id: "3",
+  id: "7",
   slug: "kancelaria-chocianowska-poznan",
 
   name: "Kancelaria Adwokacka Marta Chocianowska",

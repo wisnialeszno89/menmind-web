@@ -2,79 +2,75 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import FindSupportCTA from "@/components/FindSupportCTA"
 
-const content: Record<string, any> = {
+export const dynamic = "force-dynamic"
 
+const content: Record<string, any> = {
   rozstanie: {
     title: "Rozstanie",
-    desc: "Rozstanie potrafi wywrócić życie. Zacznij od stabilizacji.",
+    desc: "Rozstanie potrafi wywrócić wszystko. Zacznij od stabilizacji.",
     tool: "/narzedzia/reset"
   },
-
   stres: {
     title: "Silny stres",
     desc: "Gdy napięcie przejmuje kontrolę, zacznij od uspokojenia.",
     tool: "/narzedzia/reset"
   },
-
   finanse: {
     title: "Problemy finansowe",
-    desc: "Chaos finansowy zwiększa stres. Zacznij od planu.",
+    desc: "Chaos finansowy zwiększa stres.",
     tool: "/narzedzia/plan-72h"
   },
-
   samotnosc: {
     title: "Samotność",
-    desc: "Izolacja pogłębia problem. Zacznij od kontaktu.",
+    desc: "Izolacja pogłębia problem.",
     tool: "/narzedzia/minimum"
   },
-
   energia: {
     title: "Powrót do energii",
     desc: "Energia wraca gdy uporządkujesz podstawy.",
     tool: "/narzedzia/reset"
   },
-
   stabilnosc: {
     title: "Nowa stabilność",
     desc: "Stabilność zaczyna się od rutyny.",
     tool: "/narzedzia/stabilizacja"
   },
-
   rutyna: {
     title: "Rutyna i dyscyplina",
     desc: "Powtarzalność zmniejsza chaos.",
     tool: "/narzedzia/minimum"
   },
-
   kariera: {
     title: "Kariera",
     desc: "Rozwój zawodowy wymaga kierunku.",
     tool: "/narzedzia/brain-dump"
   },
-
   dyscyplina: {
     title: "Dyscyplina",
     desc: "Małe kroki budują system.",
     tool: "/narzedzia/minimum"
   },
-
   relacja: {
     title: "Relacje",
     desc: "Silne relacje stabilizują życie.",
     tool: "/narzedzia/reset"
   },
-
   prawo: {
     title: "Sprawy prawne",
     desc: "Uporządkuj formalności spokojnie.",
     tool: "/narzedzia/brain-dump"
   }
-
 }
 
-export default function PathPage({ params }: any) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
 
-  const data = content[params.slug]
+  const { slug } = await params
+
+  const data = content[slug]
 
   if (!data) return notFound()
 
@@ -94,7 +90,7 @@ export default function PathPage({ params }: any) {
 
         <Link
           href={data.tool}
-          className="block border p-4 rounded-lg mb-4"
+          className="block border p-4 rounded-lg mb-6"
         >
           👉 Zrób pierwszy krok
         </Link>
@@ -106,5 +102,4 @@ export default function PathPage({ params }: any) {
     </main>
 
   )
-
 }
