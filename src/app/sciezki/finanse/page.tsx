@@ -38,10 +38,10 @@ export default function FinansePage(){
         </Link>
 
         <Link
-          href="/propozycje/prawo"
-          className="block border p-4 rounded-lg"
-        >
-          👉 Znajdź wsparcie
+        href="/propozycje"
+        className="block border p-4 rounded-lg"
+      >
+         👉 Znajdź wsparcie
         </Link>
 
       </div>

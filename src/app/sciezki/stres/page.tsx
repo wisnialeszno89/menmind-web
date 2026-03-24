@@ -54,10 +54,10 @@ export default function StresPage(){
         </h2>
 
         <Link
-          href="/propozycje/coaching"
-          className="block border p-4 rounded-lg"
+        href="/propozycje"
+        className="block border p-4 rounded-lg"
         >
-          👉 Zobacz dostępne opcje
+        👉 Znajdź wsparcie
         </Link>
 
       </div>
