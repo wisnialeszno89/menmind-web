@@ -1,55 +1,51 @@
 import Link from "next/link"
 import FindSupportCTA from "@/components/FindSupportCTA"
 
-export default function SamotnoscPage(){
+export default function PrawoPage(){
   return (
     <main className="bg-white min-h-screen">
 
       <div className="max-w-3xl mx-auto px-6 py-24">
 
         <h1 className="text-4xl font-semibold mb-6">
-          Samotność
+          Sprawy prawne
         </h1>
 
         <p className="text-gray-700 mb-10">
-          Samotność pogłębia chaos i stres.
-          Pierwszym krokiem jest wyjście z izolacji.
+          Kontakty z dzieckiem, opieka i sprawy formalne wymagają spokoju
+          i jasnych kroków.
         </p>
 
         <div className="space-y-4 mb-10">
 
           <div className="border rounded-lg p-4">
-            Odezwij się do jednej osoby
+            Zbierz dokumenty
           </div>
 
           <div className="border rounded-lg p-4">
-            Wyjdź z domu
+            Spisz aktualną sytuację
           </div>
 
           <div className="border rounded-lg p-4">
-            Znajdź społeczność
+            Określ czego chcesz
+          </div>
+
+          <div className="border rounded-lg p-4">
+            Skonsultuj możliwe opcje
           </div>
 
         </div>
 
         <Link
-          href="/narzedzia/minimum"
+          href="/narzedzia/brain-dump"
           className="block border p-4 rounded-lg mb-4"
         >
-          👉 Zrób pierwszy krok
+          👉 Uporządkuj sytuację
         </Link>
 
-          </div>
-
-      {/* 🔥 CTA marketplace */}
-      <section className="max-w-3xl mx-auto px-6 pb-24">
-        <div className="border rounded-xl p-8 text-center">
-
-          
         <FindSupportCTA />
 
-        </div>
-      </section>
+      </div>
 
     </main>
   )
