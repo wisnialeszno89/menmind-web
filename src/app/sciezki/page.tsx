@@ -1,6 +1,7 @@
 import PathCompass from "@/components/PathCompass";
 import { paths } from "@/data/paths";
 import Link from "next/link";
+import FindSupportCTA from "@/components/FindSupportCTA";
 
 export const metadata = {
   title: "Ścieżki | MenMind",
@@ -38,7 +39,6 @@ export default function SciezkiPage() {
               href={`/sciezki/${path.slug}`}
               className="border rounded-xl p-6 hover:shadow"
             >
-
               <h3 className="text-xl font-semibold text-black mb-2">
                 {path.title}
               </h3>
@@ -53,6 +53,27 @@ export default function SciezkiPage() {
         </div>
 
       </div>
+
+      {/* 🔥 GLOBALNE CTA DO MARKETPLACE */}
+      <section className="max-w-4xl mx-auto px-6 pb-24">
+        <div className="border rounded-xl p-10 text-center">
+
+          <h2 className="text-2xl font-semibold mb-4">
+            Potrzebujesz konkretnego wsparcia?
+          </h2>
+
+          <p className="text-gray-600 mb-6">
+            Możesz od razu zobaczyć specjalistów,
+            miejsca i rozwiązania dopasowane do Twojej sytuacji.
+          </p>
+
+          <FindSupportCTA
+            label="Przejdź do zakładki Znajdź"
+            className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
+          />
+
+        </div>
+      </section>
 
     </main>
   );

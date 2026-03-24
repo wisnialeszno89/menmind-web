@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FindSupportCTA from "@/components/FindSupportCTA";
 
 export default function SciezkaKryzys() {
 
@@ -25,14 +26,14 @@ export default function SciezkaKryzys() {
         <div className="space-y-4 mb-12">
 
           <Link
-            href="/content/dlaczego-mezczyzni-zwlekaja"
+            href="/artykuly/jak-ogarnac-zycie"
             className="block border p-4 rounded-lg bg-white hover:shadow"
           >
             Dlaczego mężczyźni zwlekają z decyzją
           </Link>
 
           <Link
-            href="/content/jak-mezczyzni-reaguja-na-stres"
+            href="/artykuly/jak-poradzic-sobie-ze-stresem"
             className="block border p-4 rounded-lg bg-white hover:shadow"
           >
             Jak mężczyźni reagują na stres
@@ -63,12 +64,7 @@ export default function SciezkaKryzys() {
 
         <div className="space-y-4 mb-12">
 
-          <Link
-            href="/propozycje"
-            className="block border p-4 rounded-lg bg-white hover:shadow"
-          >
-            Zobacz dostępnych specjalistów
-          </Link>
+          <FindSupportCTA />
 
         </div>
 
@@ -80,32 +76,36 @@ export default function SciezkaKryzys() {
           Porozmawiaj w NaviMind
         </Link>
 
+
+        {/* FAQ */}
+        <h2 className="text-2xl font-semibold text-black mt-16 mb-6">
+          Najczęstsze pytania
+        </h2>
+
+        <div className="space-y-4">
+
+          <div>
+            <p className="font-semibold text-black">
+              Jak poradzić sobie z rozstaniem?
+            </p>
+            <p className="text-black">
+              Najpierw stabilizacja emocjonalna, potem odbudowa struktury życia.
+            </p>
+          </div>
+
+          <div>
+            <p className="font-semibold text-black">
+              Czy warto iść do psychologa po rozstaniu?
+            </p>
+            <p className="text-black">
+              Dla wielu mężczyzn rozmowa z profesjonalistą pomaga szybciej odzyskać równowagę.
+            </p>
+          </div>
+
+        </div>
+
       </div>
-<h2 className="text-2xl font-semibold text-black mt-16 mb-6">
-Najczęstsze pytania
-</h2>
 
-<div className="space-y-4">
-
-<div>
-<p className="font-semibold text-black">
-Jak poradzić sobie z rozstaniem?
-</p>
-<p className="text-black">
-Najpierw stabilizacja emocjonalna, potem odbudowa struktury życia.
-</p>
-</div>
-
-<div>
-<p className="font-semibold text-black">
-Czy warto iść do psychologa po rozstaniu?
-</p>
-<p className="text-black">
-Dla wielu mężczyzn rozmowa z profesjonalistą pomaga szybciej odzyskać równowagę.
-</p>
-</div>
-
-</div>
     </main>
 
   );

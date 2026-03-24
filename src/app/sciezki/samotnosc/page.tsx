@@ -1,8 +1,10 @@
 import Link from "next/link"
+import FindSupportCTA from "@/components/FindSupportCTA"
 
 export default function SamotnoscPage(){
   return (
     <main className="bg-white min-h-screen">
+
       <div className="max-w-3xl mx-auto px-6 py-24">
 
         <h1 className="text-4xl font-semibold mb-6">
@@ -37,14 +39,31 @@ export default function SamotnoscPage(){
           👉 Zrób pierwszy krok
         </Link>
 
-        <Link
-          href="/propozycje/coaching"
-          className="block border p-4 rounded-lg"
-        >
-          👉 Znajdź wsparcie
-        </Link>
+        <FindSupportCTA />
 
       </div>
+
+      {/* 🔥 CTA marketplace */}
+      <section className="max-w-3xl mx-auto px-6 pb-24">
+        <div className="border rounded-xl p-8 text-center">
+
+          <h2 className="text-2xl font-semibold mb-4">
+            Nie musisz wychodzić z tego sam
+          </h2>
+
+          <p className="text-gray-600 mb-6">
+            Rozmowa, grupa wsparcia lub społeczność
+            mogą pomóc szybciej wrócić do ludzi.
+          </p>
+
+          <FindSupportCTA
+            label="Zobacz dostępne wsparcie"
+            className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
+          />
+
+        </div>
+      </section>
+
     </main>
   )
 }

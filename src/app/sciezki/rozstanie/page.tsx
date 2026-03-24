@@ -1,4 +1,5 @@
 import Link from "next/link"
+import FindSupportCTA from "@/components/FindSupportCTA"
 
 export default function RozstaniePage() {
 
@@ -58,14 +59,30 @@ export default function RozstaniePage() {
           potrafi skrócić miesiące chaosu do kilku tygodni.
         </p>
 
-        <Link
-          href="/propozycje/psycholog"
-          className="block border p-4 rounded-lg mb-10"
-        >
-          👉 Znajdź wsparcie
-        </Link>
+        <FindSupportCTA />
 
       </div>
+
+      {/* 🔥 MOCNY CTA DO MARKETPLACE */}
+      <section className="max-w-3xl mx-auto px-6 pb-24">
+        <div className="border rounded-xl p-8 text-center">
+
+          <h2 className="text-2xl font-semibold mb-4">
+            Potrzebujesz konkretnej pomocy?
+          </h2>
+
+          <p className="text-gray-600 mb-6">
+            Psycholog, mediator lub grupa wsparcia może pomóc
+            szybciej poukładać sytuację.
+          </p>
+
+          <FindSupportCTA
+            label="Zobacz dostępne wsparcie"
+            className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
+          />
+
+        </div>
+      </section>
 
     </main>
 
