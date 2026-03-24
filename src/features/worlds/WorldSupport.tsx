@@ -25,7 +25,7 @@ export default function WorldSupport({ world }: { world: string }) {
 
           <Link
             key={item.slug}
-            href={`/kategoria/${item.slug}`}
+            href="/propozycje"
             className="border rounded-lg p-4 hover:shadow"
           >
 

@@ -48,18 +48,15 @@ export default function SamotnoscPage(){
         <div className="border rounded-xl p-8 text-center">
 
           <h2 className="text-2xl font-semibold mb-4">
-            Nie musisz wychodzić z tego sam
+          Nie musisz wychodzić z tego sam
           </h2>
 
-          <p className="text-gray-600 mb-6">
-            Rozmowa, grupa wsparcia lub społeczność
-            mogą pomóc szybciej wrócić do ludzi.
+          <p className="text-gray-700 mb-6">
+           Rozmowa, grupa wsparcia lub społeczność mogą pomóc
+           szybciej wrócić do ludzi.
           </p>
 
-          <FindSupportCTA
-            label="Zobacz dostępne wsparcie"
-            className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
-          />
+          <FindSupportCTA />
 
         </div>
       </section>
