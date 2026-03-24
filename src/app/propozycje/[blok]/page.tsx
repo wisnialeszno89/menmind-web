@@ -29,11 +29,11 @@ export default function ProposalCategoryPage({
   const allowed = mapping[params.blok] || [params.blok]
 
   const categoryPartners = rankPartners(
-  partners.filter(
-    p =>
-      allowed.includes(p.category) ||
-      (params.blok === "coaching" && p.category === "coach")
-  )
+    partners.filter(
+      p =>
+        allowed.includes(p.category) ||
+        (params.blok === "coaching" && p.category === "coach")
+    )
   ).slice(0,6)
 
   return (
@@ -54,7 +54,44 @@ export default function ProposalCategoryPage({
           Dostępne wsparcie
         </h2>
 
-        <PartnersList partners={categoryPartners} />
+        {/* 🔥 PARTNERZY LUB FALLBACK */}
+        {categoryPartners.length > 0 ? (
+
+          <PartnersList partners={categoryPartners} />
+
+        ) : (
+
+          <div className="border rounded-xl p-8 text-center">
+
+            <p className="text-gray-700 mb-4">
+              Aktualnie dodajemy partnerów w tej kategorii.
+            </p>
+
+            <p className="text-sm text-gray-500 mb-6">
+              Możesz zobaczyć inne dostępne opcje lub wrócić za chwilę.
+            </p>
+
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+
+              <Link
+                href="/propozycje"
+                className="border px-6 py-3 rounded-lg hover:shadow"
+              >
+                👉 Zobacz wszystkie opcje
+              </Link>
+
+              <Link
+                href="/dla-partnerow"
+                className="border px-6 py-3 rounded-lg hover:shadow"
+              >
+                Zgłoś swoją usługę
+              </Link>
+
+            </div>
+
+          </div>
+
+        )}
 
         <h2 className="text-2xl font-semibold mt-16 mb-6">
           Wybierz miasto

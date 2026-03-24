@@ -29,12 +29,21 @@ export default function PartnersList({
   partners: Partner[]
 }){
 
-  if(!partners.length){
+  if(!partners || partners.length === 0){
     return(
-      <div className="border rounded-xl p-8 text-center text-gray-600">
-        Brak dopasowanych specjalistów w tej kategorii.
-      </div>
-    )
+  <div className="border rounded-xl p-8 text-center">
+    <p className="mb-4">
+      Trwają rozmowy z partnerami w tej kategorii.
+    </p>
+
+    <Link
+      href="/dla-partnerow"
+      className="underline"
+    >
+      Zgłoś swoją usługę
+    </Link>
+  </div>
+)
   }
 
   return(

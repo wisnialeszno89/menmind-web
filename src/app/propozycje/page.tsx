@@ -46,6 +46,35 @@ export default function ProposalsPage() {
 
         <ProposalsGrid />
 
+        <h2 className="text-2xl font-semibold mt-16 mb-6">
+        Popularne teraz
+        </h2>
+
+      <div className="grid md:grid-cols-3 gap-4 mb-20">
+
+      <Link
+      href="/propozycje/psycholog"
+      className="border rounded-xl p-5 hover:shadow"
+      >
+      Psycholog
+      </Link>
+
+    <Link
+    href="/propozycje/coaching"
+    className="border rounded-xl p-5 hover:shadow"
+    >
+    Coaching
+    </Link>
+
+    <Link
+    href="/propozycje/prawo"
+    className="border rounded-xl p-5 hover:shadow"
+    >
+    Prawo rodzinne
+    </Link>
+
+  </div>
+
         <div className="mt-24">
 
         <h2 className="text-2xl font-semibold mb-8">
