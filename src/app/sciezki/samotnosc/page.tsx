@@ -47,16 +47,8 @@ export default function SamotnoscPage(){
       <section className="max-w-3xl mx-auto px-6 pb-24">
         <div className="border rounded-xl p-8 text-center">
 
-          <h2 className="text-2xl font-semibold mb-4">
-          Nie musisz wychodzić z tego sam
-          </h2>
-
-          <p className="text-gray-700 mb-6">
-           Rozmowa, grupa wsparcia lub społeczność mogą pomóc
-           szybciej wrócić do ludzi.
-          </p>
-
-          <FindSupportCTA />
+          
+        <FindSupportCTA />
 
         </div>
       </section>

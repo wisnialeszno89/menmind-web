@@ -48,16 +48,26 @@ export const worldPaths: Record<string, WorldPath[]> = {
   ],
 
   wzrost: [
-    {
-      name: "Kariera",
-      slug: "kariera",
-      description: "Rozwój zawodowy i nowe możliwości."
-    },
-    {
-      name: "Dyscyplina",
-      slug: "dyscyplina",
-      description: "System działania zamiast chaosu."
-    }
+  {
+    name: "Kariera",
+    slug: "kariera",
+    description: "Rozwój zawodowy i nowe możliwości."
+  },
+  {
+    name: "Dyscyplina",
+    slug: "dyscyplina",
+    description: "System działania zamiast chaosu."
+  },
+  {
+    name: "Relacje",
+    slug: "relacja",
+    description: "Budowanie silniejszych relacji i komunikacji."
+  },
+  {
+    name: "Energia mentalna",
+    slug: "energia",
+    description: "Więcej skupienia i wewnętrznej stabilności."
+  }
   ],
 
   ojcostwo: [
