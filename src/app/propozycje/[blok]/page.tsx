@@ -18,13 +18,19 @@ export default function ProposalCategoryPage({
 
   if (!category) return notFound()
 
-  // 🔥 partnerzy globalni
-  const categoryPartners = rankPartners(
-  partners.filter(p => 
-    p.category === category.slug ||
-    p.section === category.slug
+  // 🔥 najpierw próbuj dopasować
+  let categoryPartners = partners.filter(
+    (p) =>
+      p.category === params.blok ||
+      p.section === params.blok
   )
-).slice(0,6)
+
+  // 🔥 fallback — pokaż wszystkich jeśli brak
+  if (categoryPartners.length === 0) {
+    categoryPartners = partners
+  }
+
+  const ranked = rankPartners(categoryPartners).slice(0,6)
 
   return (
 
@@ -37,36 +43,17 @@ export default function ProposalCategoryPage({
         </h1>
 
         <p className="text-gray-700 mb-12 max-w-xl">
-          Sprawdzeni specjaliści i formy wsparcia w kategorii {category.name}.
+          Sprawdzeni specjaliści i formy wsparcia.
         </p>
 
-        {/* 🔥 partnerzy od razu */}
-        {categoryPartners.length > 0 && (
-          <>
-            <h2 className="text-2xl font-semibold mb-6">
-              Dostępne wsparcie
-            </h2>
+        {/* 🔥 PARTNERZY */}
+        <h2 className="text-2xl font-semibold mb-6">
+          Dostępne wsparcie
+        </h2>
 
-            <PartnersList partners={categoryPartners} />
-          </>
-        )}
+        <PartnersList partners={ranked} />
 
-        {/* 🔥 fallback online */}
-        {categoryPartners.length === 0 && (
-          <div className="border rounded-xl p-8 text-center mb-12">
-            <p className="mb-4">
-              Brak specjalistów w tej kategorii w Twojej okolicy.
-            </p>
-            <Link
-              href="/dla-partnerow"
-              className="underline"
-            >
-              Zostań pierwszym partnerem
-            </Link>
-          </div>
-        )}
-
-        {/* 🔥 miasta */}
+        {/* 🔥 MIASTA */}
         <h2 className="text-2xl font-semibold mt-16 mb-6">
           Wybierz miasto
         </h2>
@@ -77,7 +64,7 @@ export default function ProposalCategoryPage({
 
             <Link
               key={city.slug}
-              href={`/propozycje/${category.slug}/${city.slug}`}
+              href={`/propozycje/${params.blok}/${city.slug}`}
               className="border rounded-lg p-4 hover:shadow transition"
             >
               <strong>
