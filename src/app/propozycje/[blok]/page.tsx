@@ -20,8 +20,11 @@ export default function ProposalCategoryPage({
 
   // 🔥 partnerzy globalni
   const categoryPartners = rankPartners(
-    partners.filter(p => p.category === category.slug)
-  ).slice(0,6)
+  partners.filter(p => 
+    p.category === category.slug ||
+    p.section === category.slug
+  )
+).slice(0,6)
 
   return (
 
