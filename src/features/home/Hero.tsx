@@ -9,7 +9,7 @@ export default function Hero({ title, intro }: Props) {
 
   return (
 
-    <section className="py-20 bg-white border-b">
+    <section className="py-24 bg-white border-b">
 
       <div className="max-w-xl mx-auto px-6 text-center">
 
@@ -17,42 +17,44 @@ export default function Hero({ title, intro }: Props) {
           {title}
         </h1>
 
-        <p className="text-base md:text-lg text-neutral-600 mb-8">
+        <p className="text-base md:text-lg text-neutral-600 mb-10">
           {intro}
         </p>
 
         {/* PRIMARY */}
         <Link
           href="/narzedzia/test-sytuacji"
-          className="block w-full bg-black text-white py-4 rounded-xl hover:opacity-90 transition"
+          className="block w-full bg-black text-white py-4 rounded-xl hover:opacity-90 transition text-lg"
         >
           Zacznij od testu
         </Link>
 
-        <p className="text-xs text-gray-400 mt-3">
-          zajmie Ci mniej niż 2 minuty
+        <p className="text-xs text-gray-400 mt-3 mb-6">
+          zajmie mniej niż 2 minuty
         </p>
 
-        {/* MARKETPLACE */}
-        <Link
-          href="/propozycje"
-          className="block w-full mt-4 border border-black py-4 rounded-xl hover:bg-black hover:text-white transition"
-        >
-          Znajdź rozwiązania
-        </Link>
+        {/* SECONDARY */}
+        <div className="grid grid-cols-2 gap-3">
 
-        {/* TERTIARY */}
-        <Link
-          href="/narzedzia"
-          className="block mt-4 text-sm text-gray-500 hover:underline"
-        >
-          lub przejdź bezpośrednio do narzędzi
-        </Link>
+          <Link
+            href="/propozycje"
+            className="border border-black py-3 rounded-xl hover:bg-black hover:text-white transition"
+          >
+            Znajdź
+          </Link>
+
+          <Link
+            href="/narzedzia"
+            className="border border-black/20 py-3 rounded-xl hover:bg-black/5 transition"
+          >
+            Narzędzia
+          </Link>
+
+        </div>
 
       </div>
 
     </section>
 
   )
-
 }

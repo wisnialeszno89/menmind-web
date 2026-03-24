@@ -3,7 +3,6 @@ import { worlds } from "@/data/worlds"
 
 export default function WorldPreview() {
 
-  // 🔥 WYMUSZONA KOLEJNOŚĆ
   const ordered = [
     "kryzys",
     "odbudowa",
@@ -22,7 +21,7 @@ export default function WorldPreview() {
         Wybierz obszar który jest Ci teraz najbliższy
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-6 mb-10">
 
         {sortedWorlds.map((world) => (
 
@@ -42,6 +41,15 @@ export default function WorldPreview() {
 
         ))}
 
+      </div>
+
+      <div className="text-center">
+        <Link
+          href="/propozycje"
+          className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
+        >
+          Nie wiesz? Zobacz dostępne wsparcie
+        </Link>
       </div>
 
     </section>

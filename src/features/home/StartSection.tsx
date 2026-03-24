@@ -4,39 +4,39 @@ export default function StartSection() {
 
   return (
 
-    <section className="py-16">
+    <section className="py-16 bg-gray-50">
 
-      <div className="max-w-xl mx-auto px-6 text-center">
+      <div className="max-w-4xl mx-auto px-6 text-center">
 
         <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-          Jeśli wiesz czego potrzebujesz, możesz zacząć od razu
+          Możesz też zacząć bez testu
         </h2>
 
-        <p className="text-gray-600 mb-8">
-          Wybierz konkretny obszar i przejdź do działania.
+        <p className="text-gray-600 mb-10">
+          Wybierz jedną z dróg i przejdź od razu do działania.
         </p>
 
-        <div className="space-y-4">
+        <div className="grid md:grid-cols-3 gap-4">
 
           <Link
             href="/narzedzia"
-            className="block border border-black/20 rounded-xl py-4 hover:bg-black/5 transition"
+            className="border rounded-xl py-6 hover:shadow transition"
           >
-            Zobacz narzędzia
-          </Link>
-
-          <Link
-            href="/sciezki/kompas"
-            className="block border border-black/20 rounded-xl py-4 hover:bg-black/5 transition"
-          >
-            Przejdź do kierunku działania
+            Narzędzia
           </Link>
 
           <Link
             href="/propozycje"
-            className="block border border-black/20 rounded-xl py-4 hover:bg-black/5 transition"
+            className="border rounded-xl py-6 hover:shadow transition"
           >
             Znajdź wsparcie
+          </Link>
+
+          <Link
+            href="/sciezki"
+            className="border rounded-xl py-6 hover:shadow transition"
+          >
+            Ścieżki działania
           </Link>
 
         </div>

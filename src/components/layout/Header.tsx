@@ -9,7 +9,6 @@ export default function Header() {
 
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        {/* LOGO */}
         <Link
           href="/"
           className="font-semibold text-lg tracking-tight"
@@ -17,12 +16,17 @@ export default function Header() {
           MenMind
         </Link>
 
-        {/* NAV + CTA */}
         <div className="flex items-center gap-6">
 
           <Navbar />
 
-          {/* 🔥 CTA PARTNER */}
+          <Link
+            href="/propozycje"
+            className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90 transition"
+          >
+            Znajdź
+          </Link>
+
           <Link
             href="/dla-partnerow"
             className="text-sm px-4 py-2 rounded-lg border hover:bg-black hover:text-white transition"

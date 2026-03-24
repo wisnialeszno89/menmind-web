@@ -8,6 +8,8 @@ import TrustSection from "@/features/home/TrustSection"
 import FeaturedPartners from "@/features/marketplace/FeaturedPartners"
 import UserStateBanner from "@/features/home/UserStateBanner"
 import HomeSeoArticles from "@/features/home/HomeSeoArticles"
+import QuickProblems from "@/features/home/QuickProblems"
+import PopularTools from "@/features/home/PopularTools"
 
 import { MessageCircle } from "lucide-react"
 
@@ -80,7 +82,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🔥 TREŚCI */}
+            {/* 🔥 TREŚCI */}
       <HomeArticles />
 
       {/* 🔥 PARTNERZY */}
@@ -88,6 +90,12 @@ export default function Home() {
 
       {/* 🔥 ZAUFANIE */}
       <TrustSection />
+
+      {/* 🔥 NAJCZĘŚCIEJ WYBIERANE */}
+      <PopularTools />
+
+      {/* 🔥 SZYBKIE PROBLEMY */}
+      <QuickProblems />
 
     </main>
   )
