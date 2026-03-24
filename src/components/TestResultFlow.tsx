@@ -51,12 +51,11 @@ export default function TestResultFlow({ percent }: Props){
 
       {/* 🔥 GŁÓWNY CTA DO MARKETPLACE */}
       <Link
-        href={`/propozycje/${category}`}
-        className="block border-2 border-black p-5 rounded-lg mb-10 text-center font-medium"
+       href="/navimind"
+      className="block border p-4 rounded-lg"
       >
-        👉 Porozmawiaj z kimś dziś
+      👉 Porozmawiaj w NaviMind
       </Link>
-
       {/* 🔥 PARTNERZY */}
       <h3 className="mt-6 mb-2 font-semibold">
         Kto może Ci realnie pomóc teraz:
