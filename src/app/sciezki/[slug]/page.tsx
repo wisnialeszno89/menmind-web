@@ -1,208 +1,82 @@
-import Link from "next/link"
+import { cities } from "@/data/cities"
+import { proposalCategories } from "@/data/proposalsCategories"
+import { partners } from "@/data/partners"
 import { notFound } from "next/navigation"
-import { supportMapping } from "@/lib/supportMapping"
+import Link from "next/link"
+import PartnersList from "@/features/marketplace/PartnersList"
+import { rankPartners } from "@/lib/rankPartners"
 
-export async function generateMetadata({ params }: any) {
+export default function ProposalCategoryPage({
+  params,
+}: {
+  params: { blok: string }
+}) {
 
-  const titles: Record<string,string> = {
-    rozstanie: "Co zrobić po rozstaniu",
-    stres: "Jak radzić sobie ze stresem",
-    finanse: "Problemy finansowe co zrobić",
-    samotnosc: "Samotność u mężczyzny",
-    energia: "Brak energii co robić",
-    stabilnosc: "Jak odzyskać stabilność",
-    rutyna: "Jak zbudować rutynę",
-    kariera: "Zmiana kariery od czego zacząć",
-    dyscyplina: "Jak zbudować dyscyplinę",
-    relacja: "Problemy w relacji co robić",
-    prawo: "Prawo rodzinne co zrobić"
-  }
+  const category = proposalCategories.find(
+    (c) => c.slug === params.blok
+  )
 
-  const title = titles[params.slug] || "Ścieżka działania"
+  if (!category) return notFound()
 
-  return {
-    title,
-    description: `${title}. Konkretne kroki dla mężczyzn.`
-  }
-}
+  // 🔥 klucz — filtr bez komplikacji
+  const filtered = partners.filter(
+    (p) => p.category === params.blok
+  )
 
-const content: Record<string, any> = {
-
-  finanse: {
-    title: "Finanse — odzyskaj kontrolę",
-    desc: "Problemy finansowe zwiększają stres. Zacznij od prostych kroków.",
-    steps: [
-      "Sprawdź realne koszty",
-      "Odetnij zbędne wydatki",
-      "Ustal plan 30 dni"
-    ],
-    tool: "/narzedzia/plan-72h"
-  },
-
-  samotnosc: {
-    title: "Samotność — wyjdź z izolacji",
-    desc: "Samotność potrafi pogłębiać chaos w głowie.",
-    steps: [
-      "Zacznij od jednej rozmowy",
-      "Wyjdź do ludzi",
-      "Znajdź społeczność"
-    ],
-    tool: "/narzedzia/minimum"
-  },
-
-  energia: {
-    title: "Energia — wróć do sił",
-    desc: "Brak energii to często przeciążenie.",
-    steps: [
-      "Sen",
-      "Ruch",
-      "Mniej chaosu"
-    ],
-    tool: "/narzedzia/reset"
-  },
-
-  stabilnosc: {
-    title: "Stabilność — wróć do podstaw",
-    desc: "Stabilność zaczyna się od dnia.",
-    steps: [
-      "Jedzenie",
-      "Sen",
-      "Ruch"
-    ],
-    tool: "/narzedzia/stabilizacja"
-  },
-
-  rutyna: {
-    title: "Rutyna — zbuduj strukturę dnia",
-    desc: "Rutyna zmniejsza chaos.",
-    steps: [
-      "Stała godzina pobudki",
-      "Plan dnia",
-      "Wieczorne zamknięcie"
-    ],
-    tool: "/narzedzia/minimum"
-  },
-
-  kariera: {
-    title: "Kariera — określ kierunek",
-    desc: "Brak kierunku powoduje stagnację.",
-    steps: [
-      "Określ co chcesz zmienić",
-      "Sprawdź opcje",
-      "Zrób pierwszy ruch"
-    ],
-    tool: "/narzedzia/brain-dump"
-  },
-
-  dyscyplina: {
-    title: "Dyscyplina — wróć do działania",
-    desc: "Dyscyplina to małe powtarzalne kroki.",
-    steps: [
-      "Małe cele",
-      "Stała pora",
-      "Zero negocjacji"
-    ],
-    tool: "/narzedzia/minimum"
-  },
-
-  relacja: {
-    title: "Relacja — popraw komunikację",
-    desc: "Problemy w relacji wymagają spokoju.",
-    steps: [
-      "Zatrzymaj emocje",
-      "Nazwij problem",
-      "Rozmawiaj spokojnie"
-    ],
-    tool: "/narzedzia/reset"
-  },
-
-  prawo: {
-    title: "Prawo — uporządkuj sytuację",
-    desc: "Prawo rodzinne wymaga jasności.",
-    steps: [
-      "Zbierz dokumenty",
-      "Sprawdź opcje",
-      "Skonsultuj"
-    ],
-    tool: "/narzedzia/brain-dump"
-  }
-
-}
-
-export default function PathPage({ params }: any) {
-
-  const data = content[params.slug]
-
-  if (!data) return notFound()
-
-  const support = supportMapping[params.slug]
+  const ranked = rankPartners(filtered).slice(0,6)
 
   return (
 
     <main className="bg-white min-h-screen">
 
-      <div className="max-w-3xl mx-auto px-6 py-24">
+      <div className="max-w-6xl mx-auto px-6 py-24">
 
         <h1 className="text-4xl font-semibold mb-6">
-          {data.title}
+          {category.name}
         </h1>
 
-        <p className="text-gray-700 mb-10">
-          {data.desc}
+        <p className="text-gray-700 mb-12 max-w-xl">
+          Sprawdzeni specjaliści i formy wsparcia.
         </p>
 
-        <div className="space-y-4 mb-10">
+        {/* 🔥 PARTNERZY */}
+        <h2 className="text-2xl font-semibold mb-6">
+          Dostępne wsparcie
+        </h2>
 
-          {data.steps.map((step: string, i: number) => (
-            <div
-              key={i}
-              className="border rounded-lg p-4"
+        {ranked.length > 0 ? (
+          <PartnersList partners={ranked} />
+        ) : (
+          <div className="border rounded-xl p-8 text-center">
+            Brak specjalistów w tej kategorii.
+          </div>
+        )}
+
+        {/* 🔥 MIASTA */}
+        <h2 className="text-2xl font-semibold mt-16 mb-6">
+          Wybierz miasto
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-4">
+
+          {cities.map((city) => (
+
+            <Link
+              key={city.slug}
+              href={`/propozycje/${params.blok}/${city.slug}`}
+              className="border rounded-lg p-4 hover:shadow transition"
             >
-              {step}
-            </div>
+              <strong>{city.name}</strong>
+              <p className="text-sm text-gray-600">
+                {category.name}
+              </p>
+            </Link>
+
           ))}
 
         </div>
 
-        <Link
-          href={data.tool}
-          className="block border p-4 rounded-lg mb-4"
-        >
-          👉 Zrób pierwszy krok
-        </Link>
-
-        {support && (
-          <Link
-            href={`/propozycje/${support}`}
-            className="block border p-4 rounded-lg"
-          >
-            👉 Znajdź wsparcie
-          </Link>
-        )}
-
       </div>
-
-      {/* 🔥 marketplace CTA */}
-      {support && (
-        <section className="max-w-3xl mx-auto px-6 pb-24">
-          <div className="border rounded-xl p-8 text-center">
-            <h2 className="text-2xl font-semibold mb-4">
-              Potrzebujesz konkretnego wsparcia?
-            </h2>
-
-            <p className="text-gray-600 mb-6">
-              Zobacz specjalistów dopasowanych do tej sytuacji.
-            </p>
-
-            <Link
-              href={`/propozycje/${support}`}
-              className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
-            >
-              Znajdź wsparcie
-            </Link>
-          </div>
-        </section>
-      )}
 
     </main>
 
