@@ -1,9 +1,10 @@
 import { cities } from "@/data/cities"
 import { proposalCategories } from "@/data/proposalsCategories"
 import { partners } from "@/data/partners"
-import Link from "next/link"
 import { notFound } from "next/navigation"
+import Link from "next/link"
 import PartnersList from "@/features/marketplace/PartnersList"
+import { rankPartners } from "@/lib/rankPartners"
 
 export default function ProposalCategoryPage({
   params,
@@ -17,10 +18,10 @@ export default function ProposalCategoryPage({
 
   if (!category) return notFound()
 
-  // 🔥 PARTNERZY Z TEJ KATEGORII
-  const filteredPartners = partners.filter(p => 
-    p.category === category.slug
-  )
+  // 🔥 partnerzy globalni
+  const categoryPartners = rankPartners(
+    partners.filter(p => p.category === category.slug)
+  ).slice(0,6)
 
   return (
 
@@ -32,16 +33,39 @@ export default function ProposalCategoryPage({
           {category.name}
         </h1>
 
-        <p className="text-gray-700 mb-8 max-w-xl">
-          Dopasowane wsparcie w kategorii {category.name}.
+        <p className="text-gray-700 mb-12 max-w-xl">
+          Sprawdzeni specjaliści i formy wsparcia w kategorii {category.name}.
         </p>
 
-        {/* 🔥 PARTNERZY OD RAZU */}
-        <PartnersList partners={filteredPartners} />
+        {/* 🔥 partnerzy od razu */}
+        {categoryPartners.length > 0 && (
+          <>
+            <h2 className="text-2xl font-semibold mb-6">
+              Dostępne wsparcie
+            </h2>
 
-        {/* 🔽 MIASTA (OPCJONALNE) */}
-        <h2 className="text-2xl font-semibold mt-20 mb-6">
-          Lub znajdź w swoim mieście
+            <PartnersList partners={categoryPartners} />
+          </>
+        )}
+
+        {/* 🔥 fallback online */}
+        {categoryPartners.length === 0 && (
+          <div className="border rounded-xl p-8 text-center mb-12">
+            <p className="mb-4">
+              Brak specjalistów w tej kategorii w Twojej okolicy.
+            </p>
+            <Link
+              href="/dla-partnerow"
+              className="underline"
+            >
+              Zostań pierwszym partnerem
+            </Link>
+          </div>
+        )}
+
+        {/* 🔥 miasta */}
+        <h2 className="text-2xl font-semibold mt-16 mb-6">
+          Wybierz miasto
         </h2>
 
         <div className="grid md:grid-cols-3 gap-4">
@@ -53,7 +77,6 @@ export default function ProposalCategoryPage({
               href={`/propozycje/${category.slug}/${city.slug}`}
               className="border rounded-lg p-4 hover:shadow transition"
             >
-
               <strong>
                 {city.name}
               </strong>
