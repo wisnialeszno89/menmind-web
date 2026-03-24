@@ -26,13 +26,7 @@ export default function Navbar() {
       </Link>
 
       {/* 🔥 MARKETPLACE */}
-      <Link
-        href="/propozycje"
-        className="text-sm font-semibold px-3 py-1 rounded-lg bg-black text-white"
-      >
-        Znajdź
-      </Link>
-
+      
       <Link href="/narzedzia" className={linkStyle}>
         Narzędzia
       </Link>
