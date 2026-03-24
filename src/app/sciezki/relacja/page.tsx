@@ -1,5 +1,6 @@
 import Link from "next/link"
 import FindSupportCTA from "@/components/FindSupportCTA"
+import FatherContactPlan from "@/components/FatherContactPlan"
 
 export default function RelacjaDzieckoPage(){
   return (
@@ -36,14 +37,9 @@ export default function RelacjaDzieckoPage(){
 
         </div>
 
-        <Link
-          href="/narzedzia/plan-72h"
-          className="block border p-4 rounded-lg mb-4"
-        >
-          👉 Zaplanuj najbliższy kontakt
-        </Link>
-
+        
         <FindSupportCTA />
+        <FatherContactPlan />
 
       </div>
 
