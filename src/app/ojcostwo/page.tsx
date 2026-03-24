@@ -4,6 +4,9 @@ import WorldArticles from "@/features/worlds/WorldArticles"
 import WorldTools from "@/features/worlds/WorldTools"
 import WorldSupport from "@/features/worlds/WorldSupport"
 
+import FatherActivityIdeas from "@/components/FatherActivityIdeas"
+import FatherContactPlan from "@/components/FatherContactPlan"
+
 export default function Page() {
 
   return (
@@ -18,6 +21,10 @@ export default function Page() {
       <WorldArticles world="ojcostwo" />
 
       <WorldTools world="ojcostwo" />
+
+      <FatherActivityIdeas />
+
+      <FatherContactPlan />
 
       <WorldSupport world="ojcostwo" />
 
