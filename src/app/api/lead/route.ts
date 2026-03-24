@@ -5,9 +5,13 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request){
 
+  console.log("EMAIL API CALLED")
+
   try {
 
     const body = await req.json()
+
+    console.log("BODY:", body)
 
     const email = body.email
     const rawState = body.state
@@ -27,8 +31,6 @@ Jesteś w trudniejszym momencie.
 
 Zobacz wsparcie:
 https://menmind.app/propozycje/kryzys
-
-Nie musisz tego ogarniać sam.
 `
     }
 
@@ -38,8 +40,6 @@ Widać przeciążenie.
 
 Zacznij od:
 https://menmind.app/propozycje/stres
-
-Małe kroki robią różnicę.
 `
     }
 
@@ -52,21 +52,24 @@ https://menmind.app/wzrost
 `
     }
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "MenMind <kontakt@menmind.app>",
       to: "kontakt.menmind@gmail.com",
-      subject: "Nowe zapytanie z MenMind",
+      subject: "TEST MENMIND EMAIL",
       html: `
         <p><strong>Email użytkownika:</strong> ${email}</p>
         <p>${message.replace(/\n/g,"<br/>")}</p>
       `
     })
 
+    console.log("RESEND DATA:", data)
+    console.log("RESEND ERROR:", error)
+
     return NextResponse.json({ ok: true })
 
   } catch (e) {
 
-    console.error(e)
+    console.error("EMAIL ERROR:", e)
 
     return NextResponse.json({ ok: false }, { status: 500 })
 
