@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { supportMapping } from "@/lib/supportMapping"
 
 export async function generateMetadata({ params }: any) {
 
@@ -35,8 +36,7 @@ const content: Record<string, any> = {
       "Odetnij zbędne wydatki",
       "Ustal plan 30 dni"
     ],
-    tool: "/narzedzia/plan-72h",
-    support: "/propozycje/finanse"
+    tool: "/narzedzia/plan-72h"
   },
 
   samotnosc: {
@@ -47,8 +47,7 @@ const content: Record<string, any> = {
       "Wyjdź do ludzi",
       "Znajdź społeczność"
     ],
-    tool: "/narzedzia/minimum",
-    support: "/propozycje/spotkania-mezczyzn"
+    tool: "/narzedzia/minimum"
   },
 
   energia: {
@@ -59,8 +58,7 @@ const content: Record<string, any> = {
       "Ruch",
       "Mniej chaosu"
     ],
-    tool: "/narzedzia/reset",
-    support: "/propozycje/trening"
+    tool: "/narzedzia/reset"
   },
 
   stabilnosc: {
@@ -71,8 +69,7 @@ const content: Record<string, any> = {
       "Sen",
       "Ruch"
     ],
-    tool: "/narzedzia/stabilizacja",
-    support: "/propozycje/coaching"
+    tool: "/narzedzia/stabilizacja"
   },
 
   rutyna: {
@@ -83,8 +80,7 @@ const content: Record<string, any> = {
       "Plan dnia",
       "Wieczorne zamknięcie"
     ],
-    tool: "/narzedzia/minimum",
-    support: "/propozycje/produktywnosc"
+    tool: "/narzedzia/minimum"
   },
 
   kariera: {
@@ -95,8 +91,7 @@ const content: Record<string, any> = {
       "Sprawdź opcje",
       "Zrób pierwszy ruch"
     ],
-    tool: "/narzedzia/brain-dump",
-    support: "/propozycje/kariera"
+    tool: "/narzedzia/brain-dump"
   },
 
   dyscyplina: {
@@ -107,8 +102,7 @@ const content: Record<string, any> = {
       "Stała pora",
       "Zero negocjacji"
     ],
-    tool: "/narzedzia/minimum",
-    support: "/propozycje/produktywnosc"
+    tool: "/narzedzia/minimum"
   },
 
   relacja: {
@@ -119,8 +113,7 @@ const content: Record<string, any> = {
       "Nazwij problem",
       "Rozmawiaj spokojnie"
     ],
-    tool: "/narzedzia/reset",
-    support: "/propozycje/mediator"
+    tool: "/narzedzia/reset"
   },
 
   prawo: {
@@ -131,8 +124,7 @@ const content: Record<string, any> = {
       "Sprawdź opcje",
       "Skonsultuj"
     ],
-    tool: "/narzedzia/brain-dump",
-    support: "/propozycje/prawo"
+    tool: "/narzedzia/brain-dump"
   }
 
 }
@@ -142,6 +134,8 @@ export default function PathPage({ params }: any) {
   const data = content[params.slug]
 
   if (!data) return notFound()
+
+  const support = supportMapping[params.slug]
 
   return (
 
@@ -177,14 +171,38 @@ export default function PathPage({ params }: any) {
           👉 Zrób pierwszy krok
         </Link>
 
-        <Link
-          href={data.support}
-          className="block border p-4 rounded-lg"
-        >
-          👉 Znajdź wsparcie
-        </Link>
+        {support && (
+          <Link
+            href={`/propozycje/${support}`}
+            className="block border p-4 rounded-lg"
+          >
+            👉 Znajdź wsparcie
+          </Link>
+        )}
 
       </div>
+
+      {/* 🔥 marketplace CTA */}
+      {support && (
+        <section className="max-w-3xl mx-auto px-6 pb-24">
+          <div className="border rounded-xl p-8 text-center">
+            <h2 className="text-2xl font-semibold mb-4">
+              Potrzebujesz konkretnego wsparcia?
+            </h2>
+
+            <p className="text-gray-600 mb-6">
+              Zobacz specjalistów dopasowanych do tej sytuacji.
+            </p>
+
+            <Link
+              href={`/propozycje/${support}`}
+              className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
+            >
+              Znajdź wsparcie
+            </Link>
+          </div>
+        </section>
+      )}
 
     </main>
 
