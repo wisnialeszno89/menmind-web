@@ -29,7 +29,11 @@ export default function ProposalCategoryPage({
   const allowed = mapping[params.blok] || [params.blok]
 
   const categoryPartners = rankPartners(
-    partners.filter(p => allowed.includes(p.category))
+  partners.filter(
+    p =>
+      allowed.includes(p.category) ||
+      (params.blok === "coaching" && p.category === "coach")
+  )
   ).slice(0,6)
 
   return (
