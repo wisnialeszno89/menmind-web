@@ -8,7 +8,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   const linkStyle =
-  "block py-3 text-neutral-700 hover:text-black transition"
+    "block py-3 text-neutral-700 hover:text-black transition"
+
+  function close() {
+    setOpen(false)
+  }
 
   return (
     <div className="relative">
@@ -23,10 +27,7 @@ export default function Navbar() {
         <Link href="/ojcostwo">Ojcostwo</Link>
         <Link href="/narzedzia">Narzędzia</Link>
 
-        <Link
-          href="/propozycje"
-          className="font-medium"
-        >
+        <Link href="/propozycje" className="font-medium">
           Znajdź
         </Link>
 
@@ -39,30 +40,39 @@ export default function Navbar() {
       {/* MOBILE BUTTON */}
       <button
         onClick={() => setOpen(!open)}
-        className="md:hidden text-sm border px-3 py-1 rounded"
+        className="md:hidden text-sm border px-3 py-2 rounded-lg"
       >
         Menu
       </button>
 
+      {/* BACKDROP */}
+      {open && (
+        <div
+          className="fixed inset-0 z-40"
+          onClick={close}
+        />
+      )}
+
       {/* MOBILE MENU */}
       {open && (
-        <div className="absolute left-0 right-0 mt-3 mx-4 bg-white border rounded-xl shadow-lg p-5 md:hidden">
+        <div className="fixed top-16 left-4 right-4 z-50 bg-white border rounded-xl shadow-xl p-5 md:hidden">
 
-          <Link href="/" className={linkStyle}>Start</Link>
-          <Link href="/kryzys" className={linkStyle}>Kryzys</Link>
-          <Link href="/odbudowa" className={linkStyle}>Odbudowa</Link>
-          <Link href="/wzrost" className={linkStyle}>Wzrost</Link>
-          <Link href="/ojcostwo" className={linkStyle}>Ojcostwo</Link>
-          <Link href="/narzedzia" className={linkStyle}>Narzędzia</Link>
+          <Link href="/" className={linkStyle} onClick={close}>Start</Link>
+          <Link href="/kryzys" className={linkStyle} onClick={close}>Kryzys</Link>
+          <Link href="/odbudowa" className={linkStyle} onClick={close}>Odbudowa</Link>
+          <Link href="/wzrost" className={linkStyle} onClick={close}>Wzrost</Link>
+          <Link href="/ojcostwo" className={linkStyle} onClick={close}>Ojcostwo</Link>
+          <Link href="/narzedzia" className={linkStyle} onClick={close}>Narzędzia</Link>
 
           <Link
             href="/propozycje"
-            className="block py-2 font-medium"
+            className="block py-3 font-medium"
+            onClick={close}
           >
             Znajdź
           </Link>
 
-          <Link href="/navimind" className={linkStyle}>
+          <Link href="/navimind" className={linkStyle} onClick={close}>
             NaviMind
           </Link>
 
