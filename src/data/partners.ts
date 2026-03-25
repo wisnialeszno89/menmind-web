@@ -204,7 +204,7 @@ views: 45
   city: "poznan",
   locationType: "city",
 
-  website: "",
+  website: "undefined",
   phone: "660 493 324",  
   address: "skwer Marszałka Ferdynand Focha 10/7b, 60-749 Poznań",
 

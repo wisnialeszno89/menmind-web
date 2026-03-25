@@ -10,7 +10,8 @@ const mapping: Record<string,string[]> = {
   psycholog: ["psycholog"],
   mediator: ["mediator"],
   coaching: ["coach","coaching"],
-  prawo: ["prawo","prawnik"],
+  prawo: ["prawo","prawo-rodzinne","prawnik"],
+  "prawo-rodzinne": ["prawo","prawo-rodzinne","prawnik"],
   warsztaty: ["warsztaty-meskie"],
 }
 
