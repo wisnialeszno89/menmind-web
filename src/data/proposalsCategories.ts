@@ -113,6 +113,10 @@ export const proposalCategories = [
     slug: "randki",
     name: "Relacje i randki"
   },
+  {
+  slug: "aktywnosci-z-dziecmi",
+  name: "👨‍👧 Aktywności z dzieckiem"
+ },
 
   // 🔥 ONLINE
   {

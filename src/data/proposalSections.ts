@@ -134,6 +134,13 @@ categories: [
   categories: [
     { slug: "prezent", name: "🎁 Prezent i relacje" }
   ]
+},
+{
+  slug: "ojcostwo",
+  name: "Ojcostwo",
+  categories: [
+    { slug: "aktywnosci-z-dziecmi", name: "👨‍👧 Aktywności z dzieckiem" }
+  ]
 }
 
 ]
