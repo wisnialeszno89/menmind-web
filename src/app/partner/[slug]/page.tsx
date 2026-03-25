@@ -108,7 +108,16 @@ export default async function PartnerPage({
               Przejdź do strony partnera
             </a>
           )}
-
+            {partner.website2 && (
+            <a
+            href={partner.website2}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block border px-6 py-3 rounded-lg text-center"
+            >
+            Zobacz YouTube
+            </a>
+          )}
           {partner.phone && (
             <a
               href={`tel:${partner.phone.replace(/\s+/g, "")}`}

@@ -14,6 +14,7 @@ city?: string
 locationType?: "city" | "online" | "national"
 
 website?: string
+website2?: string
 phone?: string
 email?: string
 address?: string  
@@ -91,9 +92,9 @@ views: 45
 },
 {
   id: "3",
-  slug: "wega",
+  slug: "wega-jubiler-leszno",
 
-  name: "Wega – Salon Jubilerski",
+  name: "WEGA Jubiler",
 
   section: "relacje",
   category: "prezent",
@@ -101,22 +102,29 @@ views: 45
   city: "leszno",
   locationType: "city",
 
-  description: "Biżuteria złota 585 i srebrna 925. Grawer i Naprawa",
+  description:
+    "Biżuteria złota 585 i srebra 925. Obrączki, grawer i naprawa biżuterii. Idealne prezenty na zaręczyny, rocznice i relacje.",
+
+  website: "https://www.facebook.com/wegasrebro",
+  phone: "781 087 214",
+  email: "ewa.wisniewska@hotmail.co.uk",
 
   tier: "strategic",
-
   featured: true,
   verified: true,
 
   rating: 5.0,
-  reviews: 3,
+  reviews: 12,
 
-  views: 89,
+  views: 120,
 
   specialties: [
     "prezent dla kobiety",
     "zaręczyny",
-    "rocznica"
+    "obrączki",
+    "rocznica",
+    "grawer",
+    "naprawa biżuterii"
   ]
 },
 
@@ -227,23 +235,31 @@ views: 45
 },
 {
   id: "kids-1",
-  slug: "zabawy-dla-dzieci-poznan",
+  slug: "zabawy-dla-dzieci-leszno",
 
-  name: "Zabawy dla dzieci – aktywności z tatą",
+  name: "FOTOKLOCEK - Zabawy dla dzieci",
 
   section: "ojcostwo",
   category: "aktywnosci-z-dziecmi",
 
-  city: "poznan",
+  city: "leszno",
   locationType: "city",
+
+  website: "https://www.facebook.com/profile.php?id=61587259344650",
+  website2: "https://www.youtube.com/@FotoKlocek",
+
+  phone: "664 413 816",
 
   description:
     "Organizowane zabawy i aktywności dla ojców z dziećmi. Wspólny czas, ruch i budowanie relacji.",
 
-  website: "https://www.facebook.com/profile.php?id=61587259344650",
-
-  tier: "basic",
+  tier: "strategic",
   featured: true,
+  verified: true,
+
+  rating: 5.0,
+  reviews: 10,
+  views: 50,
 
   specialties: [
     "czas ojciec dziecko",
