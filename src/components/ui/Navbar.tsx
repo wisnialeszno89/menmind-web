@@ -8,7 +8,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   const linkStyle =
-    "block py-2 text-neutral-700 hover:text-black transition"
+  "block py-3 text-neutral-700 hover:text-black transition"
 
   return (
     <div className="relative">
@@ -46,7 +46,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="absolute right-0 mt-3 w-48 bg-white border rounded-xl shadow-lg p-4 md:hidden">
+        <div className="absolute left-0 right-0 mt-3 mx-4 bg-white border rounded-xl shadow-lg p-5 md:hidden">
 
           <Link href="/" className={linkStyle}>Start</Link>
           <Link href="/kryzys" className={linkStyle}>Kryzys</Link>
