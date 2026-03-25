@@ -1,33 +1,119 @@
 export const proposalCategories = [
 
-{
-slug: "wsparcie",
-name: "Wsparcie"
-},
+  // 🔥 WSPARCIE
+  {
+    slug: "psycholog",
+    name: "Psycholog"
+  },
+  {
+    slug: "mediator",
+    name: "Mediator rodzinny"
+  },
+  {
+    slug: "prawo",
+    name: "Prawo rodzinne"
+  },
+  {
+    slug: "coaching",
+    name: "Coaching"
+  },
+  {
+    slug: "mental",
+    name: "Wsparcie mentalne"
+  },
 
-{
-slug: "rozwoj",
-name: "Rozwój"
-},
+  // 🔥 ZDROWIE
+  {
+    slug: "trening",
+    name: "Trening i ruch"
+  },
+  {
+    slug: "fizjoterapia",
+    name: "Fizjoterapia"
+  },
+  {
+    slug: "masaz",
+    name: "Masaż"
+  },
+  {
+    slug: "sen",
+    name: "Sen i regeneracja"
+  },
 
-{
-slug: "zdrowie",
-name: "Zdrowie"
-},
+  // 🔥 ROZWÓJ
+  {
+    slug: "warsztaty-meskie",
+    name: "Warsztaty męskie"
+  },
+  {
+    slug: "rozwoj-osobisty",
+    name: "Rozwój osobisty"
+  },
+  {
+    slug: "produktywnosc",
+    name: "Produktywność"
+  },
+  {
+    slug: "kariera",
+    name: "Kariera"
+  },
 
-{
-slug: "czas-wolny",
-name: "Czas wolny"
-},
+  // 🔥 SPOŁECZNOŚĆ
+  {
+    slug: "spotkania-mezczyzn",
+    name: "Spotkania mężczyzn"
+  },
+  {
+    slug: "grupa-wsparcia",
+    name: "Grupy wsparcia"
+  },
+  {
+    slug: "networking",
+    name: "Networking"
+  },
 
-{
-slug: "doswiadczenia",
-name: "Doświadczenia"
-},
+  // 🔥 AKTYWNOŚĆ
+  {
+    slug: "sport",
+    name: "Sport"
+  },
+  {
+    slug: "sztuki-walki",
+    name: "Sztuki walki"
+  },
+  {
+    slug: "silownia",
+    name: "Siłownia"
+  },
 
-{
-slug: "styl-zycia",
-name: "Styl życia"
-}
+  // 🔥 WYJAZDY
+  {
+    slug: "wyjazdy-meskie",
+    name: "Wyjazdy męskie"
+  },
+  {
+    slug: "reset",
+    name: "Reset i retreat"
+  },
+  {
+    slug: "survival",
+    name: "Survival"
+  },
+
+  // 🔥 RELACJE
+  {
+    slug: "prezent",
+    name: "Prezent i relacje"
+  },
+  {
+    slug: "randki",
+    name: "Relacje i randki"
+  },
+
+  // 🔥 ONLINE
+  {
+    slug: "online",
+    name: "Wsparcie online"
+  }
 
 ]
