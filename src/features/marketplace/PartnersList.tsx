@@ -134,23 +134,14 @@ export default function PartnersList({
 
             <div className="flex gap-4 text-sm">
 
-              {partner.website && (
-                <button
-                  onClick={() => handleClick(partner)}
-                  className="underline font-medium"
-                >
-                  👉 Umów rozmowę
-                </button>
-              )}
+            <Link
+            href={`/partner/${partner.slug}`}
+            className="underline font-medium"
+            >
+            👉 Zobacz profil
+            </Link>
 
-              <Link
-                href={`/partner/${partner.slug}`}
-                className="underline"
-              >
-                Profil
-              </Link>
-
-            </div>
+          </div>
 
           </div>
 

@@ -206,6 +206,7 @@ views: 45
 
   website: "undefined",
   phone: "660 493 324",  
+  email: "undefined",
   address: "skwer Marszałka Ferdynand Focha 10/7b, 60-749 Poznań",
 
   tier: "strategic",

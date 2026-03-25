@@ -44,6 +44,58 @@ export default async function PartnerPage({
         </p>
 
         {/* CTA */}
+        {partner.email && (
+        <div className="border rounded-xl p-6 mt-10">
+
+        <h2 className="text-xl font-semibold mb-4">
+          Napisz wiadomość
+         </h2>
+
+        <form
+        action="/api/partner/email"
+        method="POST"
+        className="space-y-4"
+        >
+
+      <input
+        type="hidden"
+        name="to"
+        value={partner.email}
+      />
+
+      <input
+        name="name"
+        placeholder="Twoje imię"
+        className="w-full border rounded-lg p-3"
+        required
+      />
+
+      <input
+        name="email"
+        type="email"
+        placeholder="Twój email"
+        className="w-full border rounded-lg p-3"
+        required
+      />
+
+      <textarea
+        name="message"
+        placeholder="Twoja wiadomość"
+        className="w-full border rounded-lg p-3 h-32"
+        required
+      />
+
+      <button
+        type="submit"
+        className="bg-black text-white px-6 py-3 rounded-lg"
+      >
+        Wyślij wiadomość
+      </button>
+
+    </form>
+
+  </div>
+)}
         <div className="mb-12 flex flex-col gap-4">
 
           {partner.website && (
