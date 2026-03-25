@@ -2,6 +2,7 @@ import "./globals.css"
 
 import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
+import ScrollToTop from "@/components/ScrollToTop"
 
 export const metadata = {
   title: {
@@ -28,6 +29,12 @@ export const metadata = {
   }
 }
 
+// 🔥 MOBILE VIEWPORT
+export const viewport = {
+  width: "device-width",
+  initialScale: 1
+}
+
 export default function RootLayout({
   children
 }: {
@@ -39,6 +46,9 @@ export default function RootLayout({
     <html lang="pl">
       <body className="bg-white text-black antialiased">
 
+        {/* 🔥 FIX SCROLL */}
+        <ScrollToTop />
+
         <Header />
 
         <main className="min-h-screen">
@@ -46,7 +56,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
-        
+
       </body>
     </html>
 
