@@ -6,38 +6,27 @@ import Link from "next/link"
 import PartnersList from "@/features/marketplace/PartnersList"
 import { rankPartners } from "@/lib/rankPartners"
 
-const mapping: Record<string,string[]> = {
-  psycholog: ["psycholog"],
-  mediator: ["mediator"],
-  coaching: ["coach","coaching"],
-  prawo: ["prawo","prawo-rodzinne","prawnik"],
-  "prawo-rodzinne": ["prawo","prawo-rodzinne","prawnik"],
-  warsztaty: ["warsztaty-meskie"],
-}
+export const dynamic = "force-dynamic"
 
-export default function ProposalCategoryPage({
+export default async function ProposalCategoryPage({
   params,
 }: {
-  params: { blok: string }
+  params: Promise<{ blok: string }>
 }) {
 
+  const { blok } = await params
+
   const category = proposalCategories.find(
-    (c) => c.slug === params.blok
+    (c) => c.slug === blok
   )
 
   if (!category) return notFound()
 
-  const allowed = mapping[params.blok] || [params.blok]
-
   const categoryPartners = rankPartners(
-  partners.filter(
-    p =>
-      allowed.includes(p.category) ||
-      (params.blok === "coaching" && p.category === "coach") ||
-      p.category?.includes(params.blok) ||
-      params.blok.includes(p.category)
+  partners.filter(p =>
+    p.category?.toLowerCase().includes(blok.toLowerCase())
   )
-  ).slice(0,6)
+).slice(0,6)
 
   return (
 
@@ -57,7 +46,6 @@ export default function ProposalCategoryPage({
           Dostępne wsparcie
         </h2>
 
-        {/* 🔥 PARTNERZY LUB FALLBACK */}
         {categoryPartners.length > 0 ? (
 
           <PartnersList partners={categoryPartners} />
@@ -70,27 +58,12 @@ export default function ProposalCategoryPage({
               Aktualnie dodajemy partnerów w tej kategorii.
             </p>
 
-            <p className="text-sm text-gray-500 mb-6">
-              Możesz zobaczyć inne dostępne opcje lub wrócić za chwilę.
-            </p>
-
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-
-              <Link
-                href="/propozycje"
-                className="border px-6 py-3 rounded-lg hover:shadow"
-              >
-                👉 Zobacz wszystkie opcje
-              </Link>
-
-              <Link
-                href="/dla-partnerow"
-                className="border px-6 py-3 rounded-lg hover:shadow"
-              >
-                Zgłoś swoją usługę
-              </Link>
-
-            </div>
+            <Link
+              href="/dla-partnerow"
+              className="border px-6 py-3 rounded-lg hover:shadow"
+            >
+              Dodaj swoją usługę
+            </Link>
 
           </div>
 
@@ -106,7 +79,7 @@ export default function ProposalCategoryPage({
 
             <Link
               key={city.slug}
-              href={`/propozycje/${params.blok}/${city.slug}`}
+              href={`/propozycje/${blok}/${city.slug}`}
               className="border rounded-lg p-4 hover:shadow transition"
             >
               <strong>{city.name}</strong>
