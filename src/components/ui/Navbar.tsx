@@ -1,54 +1,74 @@
+"use client"
+
 import Link from "next/link"
+import { useState } from "react"
 
 export default function Navbar() {
 
+  const [open, setOpen] = useState(false)
+
   const linkStyle =
-    "text-sm text-neutral-700 hover:text-black transition shrink-0"
+    "block py-2 text-neutral-700 hover:text-black transition"
 
   return (
+    <div className="relative">
 
-    <nav className="flex items-center gap-6 overflow-x-auto no-scrollbar whitespace-nowrap md:overflow-visible">
+      {/* DESKTOP */}
+      <nav className="hidden md:flex items-center gap-6">
 
-      <Link href="/" className={linkStyle}>
-        Start
-      </Link>
+        <Link href="/">Start</Link>
+        <Link href="/kryzys">Kryzys</Link>
+        <Link href="/odbudowa">Odbudowa</Link>
+        <Link href="/wzrost">Wzrost</Link>
+        <Link href="/ojcostwo">Ojcostwo</Link>
+        <Link href="/narzedzia">Narzędzia</Link>
 
-      <Link href="/kryzys" className={linkStyle}>
-        Kryzys
-      </Link>
+        <Link
+          href="/propozycje"
+          className="font-medium"
+        >
+          Znajdź
+        </Link>
 
-      <Link href="/odbudowa" className={linkStyle}>
-        Odbudowa
-      </Link>
+        <Link href="/navimind">
+          NaviMind
+        </Link>
 
-      <Link href="/wzrost" className={linkStyle}>
-        Wzrost
-      </Link>
+      </nav>
 
-      <Link href="/ojcostwo" className={linkStyle}>
-        Ojcostwo
-      </Link>
-
-      <Link href="/narzedzia" className={linkStyle}>
-        Narzędzia
-      </Link>
-
-      <Link
-        href="/propozycje"
-        className="text-sm font-medium text-black shrink-0"
+      {/* MOBILE BUTTON */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="md:hidden text-sm border px-3 py-1 rounded"
       >
-        Znajdź
-      </Link>
+        Menu
+      </button>
 
-      <Link
-        href="/navimind"
-        className="text-sm text-neutral-500 hover:text-black shrink-0"
-      >
-        NaviMind
-      </Link>
+      {/* MOBILE MENU */}
+      {open && (
+        <div className="absolute right-0 mt-3 w-48 bg-white border rounded-xl shadow-lg p-4 md:hidden">
 
-    </nav>
+          <Link href="/" className={linkStyle}>Start</Link>
+          <Link href="/kryzys" className={linkStyle}>Kryzys</Link>
+          <Link href="/odbudowa" className={linkStyle}>Odbudowa</Link>
+          <Link href="/wzrost" className={linkStyle}>Wzrost</Link>
+          <Link href="/ojcostwo" className={linkStyle}>Ojcostwo</Link>
+          <Link href="/narzedzia" className={linkStyle}>Narzędzia</Link>
 
+          <Link
+            href="/propozycje"
+            className="block py-2 font-medium"
+          >
+            Znajdź
+          </Link>
+
+          <Link href="/navimind" className={linkStyle}>
+            NaviMind
+          </Link>
+
+        </div>
+      )}
+
+    </div>
   )
-
 }
