@@ -18,9 +18,14 @@ async function handleClick(partner: Partner) {
     })
   } catch {}
 
+  // 🔥 jeśli ma stronę → otwórz
   if (partner.website) {
     window.open(partner.website, "_blank")
+    return
   }
+
+  // 🔥 jeśli brak strony → idź do profilu
+  window.location.href = `/partner/${partner.slug}`
 }
 
 export default function PartnersList({
