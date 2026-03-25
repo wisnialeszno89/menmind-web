@@ -215,3 +215,15 @@ a:hover {
 iframe {
   display: block;
 }
+/* ============================= */
+/* MOBILE NAV SCROLL            */
+/* ============================= */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
