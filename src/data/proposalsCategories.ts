@@ -73,7 +73,7 @@ export const proposalCategories = [
   },
 
   // 🔥 AKTYWNOŚĆ
-  {
+    {
     slug: "sport",
     name: "Sport"
   },
@@ -101,6 +101,10 @@ export const proposalCategories = [
   },
 
   // 🔥 RELACJE
+  {
+  slug: "aktywnosci-z-dziecmi",
+  name: "Aktywności z dziećmi"
+  },
   {
     slug: "prezent",
     name: "Prezent i relacje"

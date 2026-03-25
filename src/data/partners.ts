@@ -225,6 +225,33 @@ views: 45
 
   experience: "Wsparcie prawne w trudnych sytuacjach życiowych i rodzinnych."
 },
+{
+  id: "kids-1",
+  slug: "zabawy-dla-dzieci-poznan",
+
+  name: "Zabawy dla dzieci – aktywności z tatą",
+
+  section: "ojcostwo",
+  category: "aktywnosci-z-dziecmi",
+
+  city: "poznan",
+  locationType: "city",
+
+  description:
+    "Organizowane zabawy i aktywności dla ojców z dziećmi. Wspólny czas, ruch i budowanie relacji.",
+
+  website: "https://www.facebook.com/profile.php?id=61587259344650",
+
+  tier: "basic",
+  featured: true,
+
+  specialties: [
+    "czas ojciec dziecko",
+    "zabawy dla dzieci",
+    "aktywności rodzinne",
+    "warsztaty dla ojców"
+  ]
+},
   {
   id: "online-1",
   slug: "psycholog-online-centrum",

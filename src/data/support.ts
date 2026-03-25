@@ -95,7 +95,13 @@ export const supportByWorld: Record<string, SupportItem[]> = {
       name: "Warsztaty dla ojców",
       slug: "warsztaty-ojcowskie",
       description: "Rozwój roli ojca i budowanie relacji."
-    }
+    },
+     {
+    slug: "aktywnosci-z-dziecmi",
+    name: "Aktywności z dzieckiem",
+    description: "Pomysły i zajęcia dla ojca z dzieckiem"
+  },
+    
   ]
 
 }
