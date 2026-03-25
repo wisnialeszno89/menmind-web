@@ -134,9 +134,6 @@ categories: [
   categories: [
     { slug: "prezent", name: "🎁 Prezent i relacje" }
   ]
-},
-
-{ 
 }
 
 ]
