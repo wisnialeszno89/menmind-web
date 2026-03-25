@@ -14,7 +14,9 @@ city?: string
 locationType?: "city" | "online" | "national"
 
 website?: string
-phone?: string   
+phone?: string
+email?: string
+address?: string  
 
 
 tier?: "basic" | "pro" | "strategic"
@@ -197,21 +199,21 @@ views: 45
   description: "Pomoc prawna w sprawach rodzinnych, rozwodach i opiece nad dziećmi",
 
   section: "wsparcie",
-  category: "prawo",
+  category: "prawo",   
 
   city: "poznan",
   locationType: "city",
 
   website: "",
+  phone: "660 493 324",  
+  address: "skwer Marszałka Ferdynand Focha 10/7b, 60-749 Poznań",
 
-  tier: "strategic", // możesz dać strategic jak chcesz ją wyróżnić
+  tier: "strategic",
   featured: true,
   verified: true,
 
   rating: 4.9,
   reviews: 8,
-
-  views: 0,
 
   specialties: [
     "rozwód",

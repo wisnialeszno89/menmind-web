@@ -23,18 +23,27 @@ export default async function PartnerPage({
 
       <div className="max-w-3xl mx-auto px-6 py-20">
 
-        <p className="text-sm text-gray-500 mb-3">
+        {/* LOKALIZACJA */}
+        <p className="text-sm text-gray-500 mb-2">
           {partner.city || (partner.locationType === "online" ? "Online" : "Cała Polska")}
         </p>
 
-        <h1 className="text-4xl font-semibold mb-4">
+        <h1 className="text-4xl font-semibold mb-2">
           {partner.name}
         </h1>
+
+        {/* ADRES */}
+        {partner.address && (
+          <p className="text-sm text-gray-500 mb-4">
+            📍 {partner.address}
+          </p>
+        )}
 
         <p className="text-xl text-gray-700 mb-10">
           {partner.description}
         </p>
 
+        {/* CTA */}
         <div className="mb-12 flex flex-col gap-4">
 
           {partner.website && (
@@ -53,12 +62,22 @@ export default async function PartnerPage({
               href={`tel:${partner.phone.replace(/\s+/g, "")}`}
               className="inline-block border px-6 py-3 rounded-lg text-center"
             >
-              Zadzwoń: {partner.phone}
+              📞 Zadzwoń: {partner.phone}
+            </a>
+          )}
+
+          {partner.email && (
+            <a
+              href={`mailto:${partner.email}`}
+              className="inline-block border px-6 py-3 rounded-lg text-center"
+            >
+              ✉️ Napisz: {partner.email}
             </a>
           )}
 
         </div>
 
+        {/* SPECJALIZACJE */}
         {partner.specialties && (
           <div className="mb-10">
 
