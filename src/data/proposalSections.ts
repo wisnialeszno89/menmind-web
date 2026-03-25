@@ -126,6 +126,17 @@ categories: [
 { slug: "muzyka", name: "Muzyka" }
 
 ]
+},
+
+{
+  slug: "relacje",
+  name: "Relacje",
+  categories: [
+    { slug: "prezent", name: "🎁 Prezent i relacje" }
+  ]
+},
+
+{ 
 }
 
 ]
