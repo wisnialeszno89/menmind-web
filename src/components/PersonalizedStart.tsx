@@ -35,17 +35,23 @@ export default function PersonalizedStart(){
   }
 
   return(
-    <div className="border rounded-xl p-6 bg-neutral-50">
-      <p className="text-sm text-gray-500 mb-2">
-        Dopasowany start
-      </p>
+  <section className="py-12 border-t">
+    <div className="max-w-xl mx-auto px-6">
 
-      <Link
-        href={href}
-        className="inline-block bg-black text-white px-6 py-3 rounded-lg"
-      >
-        {label}
-      </Link>
+      <div className="border rounded-xl p-6 text-center">
+        <p className="text-sm text-gray-500 mb-2">
+          Dopasowany start
+        </p>
+
+        <a
+          href={href}
+          className="inline-block bg-black text-white px-6 py-3 rounded-lg"
+        >
+          {label}
+        </a>
+      </div>
+
     </div>
-  )
+  </section>
+)
 }
