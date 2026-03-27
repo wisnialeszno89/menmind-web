@@ -27,10 +27,6 @@ export default function Navbar() {
         <Link href="/ojcostwo">Ojcostwo</Link>
         <Link href="/narzedzia">Narzędzia</Link>
 
-        <Link href="/propozycje" className="font-medium">
-          Znajdź
-        </Link>
-
         <Link href="/navimind">
           NaviMind
         </Link>
@@ -63,14 +59,6 @@ export default function Navbar() {
           <Link href="/wzrost" className={linkStyle} onClick={close}>Wzrost</Link>
           <Link href="/ojcostwo" className={linkStyle} onClick={close}>Ojcostwo</Link>
           <Link href="/narzedzia" className={linkStyle} onClick={close}>Narzędzia</Link>
-
-          <Link
-            href="/propozycje"
-            className="block py-3 font-medium"
-            onClick={close}
-          >
-            Znajdź
-          </Link>
 
           <Link href="/navimind" className={linkStyle} onClick={close}>
             NaviMind
