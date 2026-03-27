@@ -1,4 +1,5 @@
 export default function WhatsNew() {
+
   const items = [
     "Nowy test sytuacji życiowej",
     "Ścieżka stabilizacji",
@@ -7,21 +8,24 @@ export default function WhatsNew() {
   ]
 
   return (
-    <section className="py-16 border-t bg-neutral-50">
-      <div className="max-w-4xl mx-auto px-6">
+    <section className="py-20 border-t">
+      <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-xl font-semibold mb-6">
+        <h2 className="text-2xl font-semibold mb-6">
           Nowości w MenMind
         </h2>
 
-        <ul className="space-y-3">
-          {items.map((i, idx) => (
-            <li key={idx} className="flex gap-3">
+        <div className="space-y-3">
+          {items.map((item, i) => (
+            <div
+              key={i}
+              className="flex gap-3 text-neutral-700"
+            >
               <span>🆕</span>
-              {i}
-            </li>
+              {item}
+            </div>
           ))}
-        </ul>
+        </div>
 
       </div>
     </section>

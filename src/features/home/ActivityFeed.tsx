@@ -1,4 +1,5 @@
 export default function ActivityFeed() {
+
   const activity = [
     "Nowy artykuł: Jak odzyskać kontrolę",
     "Dodano narzędzie: Plan 72h",
@@ -8,10 +9,10 @@ export default function ActivityFeed() {
   ]
 
   return (
-    <section className="py-16 border-t">
-        <div className="max-w-6xl mx-auto px-6">
+    <section className="py-20 border-t">
+      <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-lg font-medium mb-6 text-neutral-700">
+        <h2 className="text-2xl font-semibold mb-6">
           Ostatnia aktywność
         </h2>
 
@@ -19,9 +20,9 @@ export default function ActivityFeed() {
           {activity.map((item, i) => (
             <div
               key={i}
-              className="text-sm text-neutral-600 flex gap-3"
+              className="flex gap-3 text-neutral-700"
             >
-              <span className="text-neutral-400">•</span>
+              <span>•</span>
               {item}
             </div>
           ))}
