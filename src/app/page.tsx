@@ -39,6 +39,9 @@ import Streak from "@/components/Streak"
 import QuickOnboarding from "@/components/QuickOnboarding"
 import PersonalizedStart from "@/components/PersonalizedStart"
 import AIRecommendations from "@/components/AIRecommendations"
+import AIRecommendedPartners from "@/components/AIRecommendedPartners"
+import AIRecommendedArticles from "@/components/AIRecommendedArticles"
+import AIRecommendedTests from "@/components/AIRecommendedTests"
 
 export default function Home() {
   return (
@@ -57,6 +60,14 @@ export default function Home() {
       <PersonalizedStart />
 
       <AIRecommendations />
+
+      <AIRecommendedPartners />
+
+      <AIRecommendedArticles />
+
+      <AIRecommendedTests />
+
+       {/* 🔥 KONTYNUUJ TAM, GDZIE PRZERWAŁEŚ */}
       
       <ContinueWhereLeft />
 
