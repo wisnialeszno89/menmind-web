@@ -30,9 +30,9 @@ import LiveUsersCounter from "@/components/LiveUsersCounter"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
 import StartDecision from "@/features/home/StartDecision"
 import PathsSection from "@/features/home/PathsSection"
-import UserProgress from "@/features/home/UserProgress"
-
+import UserProgress from "@/features/home/UserProgress" 
 import { MessageCircle } from "lucide-react"
+import ContinueWhereLeft from "@/features/home/ContinueWhereLeft"
 
 export default function Home() {
   return (
@@ -46,6 +46,7 @@ export default function Home() {
       title="Miejsce, w którym możesz poukładać swoją sytuację"
       intro="Bez presji. Krok po kroku, w swoim tempie."
       />
+      <ContinueWhereLeft />
       {/* 🔥 POSTĘP UŻYTKOWNIKA */}
       <UserProgress />
       
