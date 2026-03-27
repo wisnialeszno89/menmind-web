@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Partner } from "@/data/partners"
 import RatingStars from "@/components/RatingStars"
+import MarketplacePlaceholder from "@/features/marketplace/MarketplacePlaceholder"
 
 async function handleClick(partner: Partner) {
 
@@ -18,13 +19,11 @@ async function handleClick(partner: Partner) {
     })
   } catch {}
 
-  // 🔥 jeśli ma stronę → otwórz
   if (partner.website) {
     window.open(partner.website, "_blank")
     return
   }
 
-  // 🔥 jeśli brak strony → idź do profilu
   window.location.href = `/partner/${partner.slug}`
 }
 
@@ -34,21 +33,18 @@ export default function PartnersList({
   partners: Partner[]
 }){
 
+  // 🔥 NOWY FALLBACK — placeholder marketplace
   if(!partners || partners.length === 0){
     return(
-  <div className="border rounded-xl p-8 text-center">
-    <p className="mb-4">
-      Trwają rozmowy z partnerami w tej kategorii.
-    </p>
+      <div className="grid md:grid-cols-2 gap-6">
+        
+        <MarketplacePlaceholder category="Coaching" />
+        <MarketplacePlaceholder category="Psycholog" />
+        <MarketplacePlaceholder category="Prawo" />
+        <MarketplacePlaceholder category="Rozwój" />
 
-    <Link
-      href="/dla-partnerow"
-      className="underline"
-    >
-      Zgłoś swoją usługę
-    </Link>
-  </div>
-)
+      </div>
+    )
   }
 
   return(
@@ -62,52 +58,51 @@ export default function PartnersList({
       <div className="grid md:grid-cols-2 gap-6">
 
         {partners.map((partner, index)=>(
-
+          
           <div
             key={partner.slug}
-            className={`border rounded-xl p-6 hover:shadow transition ${
+            className={`border rounded-xl p-6 card-hover hover:shadow transition ${
               index === 0 ? "border-black" : ""
             }`}
           >
 
-            {/* 🔥 BADGE ONLINE */}
             {partner.locationType === "online" && (
               <div className="inline-block text-xs bg-green-100 text-green-800 px-2 py-1 rounded mb-2">
                 🌍 Online
               </div>
-        )}
+            )}
 
             {partner.locationType === "national" && (
               <div className="inline-block text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mb-2">
                 Cała Polska
               </div>
-        )}
+            )}
 
             {partner.locationType === "city" && partner.city && (
               <div className="inline-block text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded mb-2">
                 📍 {partner.city}
               </div>
-        )}
-              {/* 🔥 BADGES */}
-              <div className="flex gap-2 mb-2 flex-wrap">
+            )}
 
-            {partner.tier === "strategic" && (
-             <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">
-              💎 Premium
-            </span>
-        )}
+            <div className="flex gap-2 mb-2 flex-wrap">
 
-            {partner.featured && (
-            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
-           ⭐ Polecane
-            </span>
-        )}
+              {partner.tier === "strategic" && (
+                <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">
+                  💎 Premium
+                </span>
+              )}
 
-           {(!partner.reviews || partner.reviews < 3) && (
-          <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
-          🆕 Nowe
-          </span>
-        )}
+              {partner.featured && (
+                <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
+                  ⭐ Polecane
+                </span>
+              )}
+
+              {(!partner.reviews || partner.reviews < 3) && (
+                <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                  🆕 Nowe
+                </span>
+              )}
 
             </div>
 
@@ -134,14 +129,14 @@ export default function PartnersList({
 
             <div className="flex gap-4 text-sm">
 
-            <Link
-            href={`/partner/${partner.slug}`}
-            className="underline font-medium"
-            >
-            👉 Zobacz profil
-            </Link>
+              <Link
+                href={`/partner/${partner.slug}`}
+                className="underline font-medium"
+              >
+                👉 Zobacz profil
+              </Link>
 
-          </div>
+            </div>
 
           </div>
 
