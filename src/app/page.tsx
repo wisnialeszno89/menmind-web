@@ -17,100 +17,49 @@ import WhatsNew from "@/features/home/WhatsNew"
 import TrendingPaths from "@/features/home/TrendingPaths"
 import StatsCounter from "@/components/StatsCounter"
 import ActivityFeed from "@/features/home/ActivityFeed"
-import ForYouSection from "@/features/home/ForYouSection"
-import Statement from "@/features/home/Statement"
-import StartHere from "@/features/home/StartHere"
 import StartSteps from "@/features/home/StartSteps"
 import QuickTests from "@/features/home/QuickTests"
-import NowDoing from "@/features/home/NowDoing"
-import CommonProblems from "@/features/home/CommonProblems"
-import CrisisMode from "@/features/home/CrisisMode"
-import LiveUsersCounter from "@/components/LiveUsersCounter"
-import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
-import StartDecision from "@/features/home/StartDecision"
 import PathsSection from "@/features/home/PathsSection"
-import UserProgress from "@/features/home/UserProgress" 
-import { MessageCircle } from "lucide-react"
-import ContinueWhereLeft from "@/features/home/ContinueWhereLeft"
-import DailyAction from "@/features/home/DailyAction"
-import DynamicCase from "@/components/DynamicCase"
-import Streak from "@/components/Streak"
+import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
+
 import QuickOnboarding from "@/components/QuickOnboarding"
 
-import AIRecommendations from "@/components/AIRecommendations"
-
-import DailyMission from "@/features/home/DailyMission"
+import { MessageCircle } from "lucide-react"
 
 export default function Home() {
   return (
-     <>
-
-      {/* 🔥 STAN UŻYTKOWNIKA */}
+    <>
+      {/* STAN */}
       <UserStateBanner />
 
-      {/* 🔥 HERO */}
+      {/* HERO */}
       <Hero
-      title="Miejsce, w którym możesz poukładać swoją sytuację"
-      intro="Bez presji. Krok po kroku, w swoim tempie."
+        title="Miejsce, w którym możesz poukładać swoją sytuację"
+        intro="Bez presji. Krok po kroku, w swoim tempie."
       />
+
+      {/* DOPASOWANIE */}
       <QuickOnboarding />
-      
-      <AIRecommendations />
-      
-      <DailyMission />     
 
-       <Streak />
-
-      
-    {/* 🔥 KONTYNUUJ TAM, GDZIE PRZERWAŁEŚ */}
-      
-      <ContinueWhereLeft />
-
-      <DailyAction />
-
-      <DynamicCase />
-      {/* 🔥 POSTĘP UŻYTKOWNIKA */}
-      <UserProgress />
-      
-      {/* 🔥 PIERWSZE KROKI */}
+      {/* PIERWSZE KROKI */}
       <StartSteps />
 
-      <LiveUsersCounter />
-
-      <CrisisMode />
-
+      {/* TESTY */}
       <QuickTests />
 
-      <StartDecision />
-
+      {/* ŚCIEŻKI */}
       <PathsSection />
 
-      <NowDoing />
-
-      <StartSection />
-
-      <CommonProblems />
-
-      <ForYouSection />
-
-      <Statement />
-
-      <StartHere />
-
-      <LiveActivity />
-
-      <WhatsNew />
-
+      {/* JAK TO DZIAŁA */}
       <HowItWorks />
 
       <StatsCounter />
 
       <ActivityFeed />
 
-      {/* 🔥 NAVIMIND */}
+      {/* NAVIMIND */}
       <section className="py-20 border-t">
         <div className="max-w-4xl mx-auto px-6 text-center">
-
           <h2 className="text-2xl font-semibold mb-4">
             Nie wiesz co wybrać?
           </h2>
@@ -128,20 +77,18 @@ export default function Home() {
             <MessageCircle size={18} />
             Przejdź do rozmowy w NaviMind
           </a>
-
         </div>
       </section>
 
-      {/* 🔥 EKSPLORACJA */}
+      {/* EKSPLORACJA */}
       <WorldPreview />
 
-      {/* 🔥 SEO ARTYKUŁY */}
+      {/* SEO */}
       <HomeSeoArticles />
 
-      {/* 🔥 MARKETPLACE CTA */}
+      {/* MARKETPLACE CTA */}
       <section className="py-20 border-t">
         <div className="max-w-4xl mx-auto px-6 text-center">
-
           <h2 className="text-2xl font-semibold mb-4">
             Nie wiesz który kierunek wybrać?
           </h2>
@@ -156,31 +103,31 @@ export default function Home() {
           >
             Zobacz dostępne wsparcie
           </a>
-
         </div>
       </section>
 
-            {/* 🔥 TREŚCI */}
+      {/* TREŚCI */}
       <HomeArticles />
 
-      {/* 🔥 PARTNERZY */}
+      {/* PARTNERZY */}
       <FeaturedPartners />
 
-      {/* 🔥 ZAUFANIE */}
+      {/* ZAUFANIE */}
       <TrustSection />
 
       <Testimonials />
 
-      {/* 🔥 NAJCZĘŚCIEJ WYBIERANE */}
+      {/* NAJCZĘŚCIEJ WYBIERANE */}
       <PopularTools />
-      
+
       <TrendingPaths />
 
       <ComeBackTomorrow />
 
-      {/* 🔥 SZYBKIE PROBLEMY */}
+      {/* SZYBKIE PROBLEMY */}
       <QuickProblems />
 
+      <LiveActivity />
     </>
-      )
+  )
 }
