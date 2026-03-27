@@ -205,3 +205,6 @@ section > div:first-child {
   padding-right: 1.5rem;
   width: 100%;
 }
+section {
+  width: 100%;
+}

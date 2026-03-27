@@ -6,13 +6,12 @@ import SleepTracker from "@/features/tools/SleepTracker"
 import Plan72hPage from "@/features/tools/Plan72hPage"
 import { notFound } from "next/navigation"
 
-// 🔥 JEDNO źródło prawdy
 const toolMap = {
   "brain-dump": BrainDumpPage,
   "reset-90": Reset90Page,
-  "reset": Reset90Page, // alias
-
+  "reset": Reset90Page,
   "plan-72h": Plan72hPage,
+  "minimum": MinimumPage,
   "energy-map": SleepTracker,
 }
 

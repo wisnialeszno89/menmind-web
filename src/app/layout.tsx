@@ -29,7 +29,6 @@ export const metadata = {
   }
 }
 
-// 🔥 MOBILE VIEWPORT
 export const viewport = {
   width: "device-width",
   initialScale: 1
@@ -40,18 +39,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
   return (
-
     <html lang="pl">
       <body className="bg-white text-black antialiased">
 
-        {/* 🔥 FIX SCROLL */}
         <ScrollToTop />
 
         <Header />
 
-        <main className="min-h-screen w-full">
+        <main className="w-full min-h-screen">
           {children}
         </main>
 
@@ -59,7 +55,5 @@ export default function RootLayout({
 
       </body>
     </html>
-
   )
-
 }

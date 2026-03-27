@@ -25,13 +25,24 @@ export default function Page() {
     },
 
     {
-  title: "Reset 90 sekund",
-  href: "/narzedzia/reset-90"
-},
-{
-  title: "Mapa energii",
-  href: "/narzedzia/energy-map"
-}
+      title: "Reset 90 sekund",
+      href: "/narzedzia/reset-90"
+    },
+
+    {
+      title: "Brain dump",
+      href: "/narzedzia/brain-dump"
+    },
+
+    {
+      title: "Minimum stabilizacji",
+      href: "/narzedzia/minimum"
+    },
+
+    {
+      title: "Mapa energii",
+      href: "/narzedzia/energy-map"
+    }
 
   ]
 
@@ -59,7 +70,7 @@ export default function Page() {
           <Link
             key={tool.href}
             href={tool.href}
-            className="border rounded-xl p-6 hover:shadow transition"
+            className="border rounded-xl p-6 card-hover bg-white"
           >
 
             <h3 className="font-semibold mb-2">
