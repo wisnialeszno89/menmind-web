@@ -28,6 +28,8 @@ import CommonProblems from "@/features/home/CommonProblems"
 import CrisisMode from "@/features/home/CrisisMode"
 import LiveUsersCounter from "@/components/LiveUsersCounter"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
+import UserProgress from "@/components/UserProgress"
+import StartDecision from "@/features/home/StartDecision"
 
 import { MessageCircle } from "lucide-react"
 
@@ -43,6 +45,10 @@ export default function Home() {
       title="Miejsce, w którym możesz poukładać swoją sytuację"
       intro="Bez presji. Krok po kroku, w swoim tempie."
       />
+      {/* 🔥 POSTĘP UŻYTKOWNIKA */}
+      <UserProgress />
+      
+      {/* 🔥 PIERWSZE KROKI */}
       <StartSteps />
 
       <LiveUsersCounter />
@@ -51,9 +57,11 @@ export default function Home() {
 
       <QuickTests />
 
-      <StartSection />
+      <StartDecision />
 
       <NowDoing />
+
+      <StartSection />
 
       <CommonProblems />
 
