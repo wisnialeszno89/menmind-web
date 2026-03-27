@@ -42,6 +42,21 @@ export default function Page() {
     {
       title: "Mapa energii",
       href: "/narzedzia/energy-map"
+    },
+
+    {
+      title: "Test kierunku życia",
+      href: "/narzedzia/test-kierunku"
+    },
+
+    {
+      title: "Test relacji",
+      href: "/narzedzia/test-relacji"
+    },
+
+    {
+      title: "Test energii",
+      href: "/narzedzia/test-energii"
     }
 
   ]
