@@ -18,10 +18,7 @@ export default function ActivityFeed() {
 
         <div className="space-y-3">
           {activity.map((item, i) => (
-            <div
-              key={i}
-              className="flex gap-3 text-neutral-700"
-            >
+            <div key={i} className="flex gap-3 text-neutral-700">
               <span>•</span>
               {item}
             </div>

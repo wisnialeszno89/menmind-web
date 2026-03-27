@@ -17,10 +17,7 @@ export default function WhatsNew() {
 
         <div className="space-y-3">
           {items.map((item, i) => (
-            <div
-              key={i}
-              className="flex gap-3 text-neutral-700"
-            >
+            <div key={i} className="flex gap-3 text-neutral-700">
               <span>🆕</span>
               {item}
             </div>

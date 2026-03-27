@@ -2,19 +2,24 @@
 import { useEffect, useState } from "react"
 
 export default function LiveActivity() {
-  const [users, setUsers] = useState(23)
+
+  const [count, setCount] = useState(38)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setUsers((u) => u + Math.floor(Math.random() * 2))
-    }, 5000)
+      setCount(c => c + Math.floor(Math.random()*2))
+    }, 6000)
 
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="text-sm text-neutral-500 text-center py-6 border-b">
-      🔴 {users} mężczyzn korzysta teraz z MenMind
-    </div>
+    <section className="py-6 border-t">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="text-sm text-neutral-500">
+          🔴 {count} mężczyzn korzysta teraz z MenMind
+        </div>
+      </div>
+    </section>
   )
 }
