@@ -15,10 +15,12 @@ export default function LiveActivity() {
 
   return (
     <section className="py-6 border-t">
-        <div className="section-inner">
-        <div className="text-sm text-neutral-500">
+      <div className="max-w-6xl mx-auto px-6">
+
+        <div className="max-w-3xl text-sm text-neutral-500">
           🔴 {count} mężczyzn korzysta teraz z MenMind
         </div>
+
       </div>
     </section>
   )

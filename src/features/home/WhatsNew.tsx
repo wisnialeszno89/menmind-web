@@ -9,19 +9,23 @@ export default function WhatsNew() {
 
   return (
     <section className="py-20 border-t">
-        <div className="section-inner">
+      <div className="max-w-6xl mx-auto px-6">
 
-        <h2 className="text-2xl font-semibold mb-6">
-          Nowości w MenMind
-        </h2>
+        <div className="max-w-3xl">
 
-        <div className="space-y-3">
-          {items.map((item, i) => (
-            <div key={i} className="flex gap-3 text-neutral-700">
-              <span>🆕</span>
-              {item}
-            </div>
-          ))}
+          <h2 className="text-2xl font-semibold mb-6">
+            Nowości w MenMind
+          </h2>
+
+          <div className="space-y-3">
+            {items.map((item, i) => (
+              <div key={i} className="flex gap-3 text-neutral-700">
+                <span>🆕</span>
+                {item}
+              </div>
+            ))}
+          </div>
+
         </div>
 
       </div>
