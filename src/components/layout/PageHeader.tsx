@@ -6,7 +6,7 @@ type Props = {
 export default function PageHeader({ title, description }: Props) {
 
   return (
-    <div className="max-w-2xl mb-16">
+    <div className="max-w-2xl mb-16 mx-auto">
 
       <h1 className="text-4xl font-semibold mb-6">
         {title}
