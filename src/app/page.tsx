@@ -34,6 +34,8 @@ import UserProgress from "@/features/home/UserProgress"
 import { MessageCircle } from "lucide-react"
 import ContinueWhereLeft from "@/features/home/ContinueWhereLeft"
 import DailyAction from "@/features/home/DailyAction"
+import DynamicCase from "@/components/DynamicCase"
+import Streak from "@/components/Streak"
 
 export default function Home() {
   return (
@@ -47,9 +49,12 @@ export default function Home() {
       title="Miejsce, w którym możesz poukładać swoją sytuację"
       intro="Bez presji. Krok po kroku, w swoim tempie."
       />
+      
       <ContinueWhereLeft />
 
       <DailyAction />
+
+      <DynamicCase />
       {/* 🔥 POSTĘP UŻYTKOWNIKA */}
       <UserProgress />
       

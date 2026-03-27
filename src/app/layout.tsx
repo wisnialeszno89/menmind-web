@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/ScrollToTop"
 import StickyTestCTA from "@/components/StickyTestCTA"
 import NextActionBar from "@/components/NextActionBar"
+import CrisisAuto from "@/components/CrisisAuto"
 
 export const metadata = {
   title: {
@@ -55,6 +56,7 @@ export default function RootLayout({
 
         <Footer />
         <NextActionBar />
+        <CrisisAuto />
         <StickyTestCTA />
 
       </body>

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import LiveUsers from "@/components/LiveUsers"
 
 type Props = {
   title: string
@@ -6,9 +7,7 @@ type Props = {
 }
 
 export default function Hero({ title, intro }: Props) {
-
   return (
-
     <section className="py-24 bg-white border-b">
 
       <div className="max-w-6xl mx-auto px-6">
@@ -52,11 +51,14 @@ export default function Hero({ title, intro }: Props) {
 
           </div>
 
+          <div className="mt-4 text-center">
+            <LiveUsers />
+          </div>
+
         </div>
 
       </div>
 
     </section>
-
   )
 }
