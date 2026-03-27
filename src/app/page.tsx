@@ -26,6 +26,8 @@ import QuickTests from "@/features/home/QuickTests"
 import NowDoing from "@/features/home/NowDoing"
 import CommonProblems from "@/features/home/CommonProblems"
 import CrisisMode from "@/features/home/CrisisMode"
+import LiveUsersCounter from "@/components/LiveUsersCounter"
+import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
 
 import { MessageCircle } from "lucide-react"
 
@@ -43,31 +45,33 @@ export default function Home() {
       />
       <StartSteps />
 
-<CrisisMode />
+      <LiveUsersCounter />
 
-<QuickTests />
+      <CrisisMode />
 
-<StartSection />
+      <QuickTests />
 
-<NowDoing />
+      <StartSection />
 
-<CommonProblems />
+      <NowDoing />
 
-<ForYouSection />
+      <CommonProblems />
 
-<Statement />
+      <ForYouSection />
 
-<StartHere />
+      <Statement />
 
-<LiveActivity />
+      <StartHere />
 
-<WhatsNew />
+      <LiveActivity />
 
-<HowItWorks />
+      <WhatsNew />
 
-<StatsCounter />
+      <HowItWorks />
 
-<ActivityFeed />
+      <StatsCounter />
+
+      <ActivityFeed />
 
       {/* 🔥 NAVIMIND */}
       <section className="py-20 border-t">
@@ -139,6 +143,8 @@ export default function Home() {
       <PopularTools />
       
       <TrendingPaths />
+
+      <ComeBackTomorrow />
 
       {/* 🔥 SZYBKIE PROBLEMY */}
       <QuickProblems />
