@@ -10,23 +10,18 @@ export default function ForYouSection(){
 
   return(
     <section className="py-20 border-t bg-neutral-50">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6 text-center">
 
-        <div className="max-w-3xl">
+        <h2 className="text-2xl font-semibold mb-6">
+          To miejsce jest dla Ciebie jeśli:
+        </h2>
 
-          <h2 className="text-2xl font-semibold mb-6">
-            To miejsce jest dla Ciebie jeśli:
-          </h2>
-
-          <div className="space-y-3">
-            {items.map((item,i)=>(
-              <div key={i} className="flex gap-3 text-neutral-700">
-                <span>•</span>
-                {item}
-              </div>
-            ))}
-          </div>
-
+        <div className="max-w-xl mx-auto space-y-3">
+          {items.map((item,i)=>(
+            <div key={i} className="text-neutral-700">
+              • {item}
+            </div>
+          ))}
         </div>
 
       </div>

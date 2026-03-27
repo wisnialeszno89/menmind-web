@@ -10,23 +10,21 @@ export default function ActivityFeed() {
 
   return (
     <section className="py-20 border-t">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6 text-center">
 
-        <div className="max-w-3xl">
+        <h2 className="text-2xl font-semibold mb-6">
+          Ostatnia aktywność
+        </h2>
 
-          <h2 className="text-2xl font-semibold mb-6">
-            Ostatnia aktywność
-          </h2>
-
-          <div className="space-y-3">
-            {activity.map((item, i) => (
-              <div key={i} className="flex gap-3 text-neutral-700">
-                <span>•</span>
-                {item}
-              </div>
-            ))}
-          </div>
-
+        <div className="space-y-3 max-w-xl mx-auto">
+          {activity.map((item, i) => (
+            <div
+              key={i}
+              className="text-neutral-700"
+            >
+              • {item}
+            </div>
+          ))}
         </div>
 
       </div>
