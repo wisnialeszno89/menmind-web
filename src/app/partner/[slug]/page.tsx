@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation"
-import { partners } from "@/data/partners"
+import { partners, placeholderPartners } from "@/data/partners"
 
 export const dynamic = "force-dynamic"
 
@@ -10,10 +10,10 @@ export default async function PartnerPage({
 }) {
 
   const { slug } = await params
-
-  const partner = partners.find(
-    p => p.slug === slug
-  )
+  
+  const partner =
+    partners.find(p => p.slug === slug) ||
+    placeholderPartners.find(p => p.slug === slug)
 
   if (!partner) return notFound()
 
@@ -22,6 +22,13 @@ export default async function PartnerPage({
     <main className="bg-white min-h-screen">
 
       <div className="max-w-3xl mx-auto px-6 py-20">
+
+        {/* PLACEHOLDER BADGE */}
+        {partner.placeholder && (
+          <div className="mb-4 text-sm bg-neutral-100 text-neutral-600 px-3 py-2 rounded-lg inline-block">
+            Profil poglądowy — trwają rozmowy z partnerem
+          </div>
+        )}
 
         {/* LOKALIZACJA */}
         <p className="text-sm text-gray-500 mb-2">
@@ -96,6 +103,7 @@ export default async function PartnerPage({
 
   </div>
 )}
+
         <div className="mb-12 flex flex-col gap-4">
 
           {partner.website && (
@@ -108,16 +116,18 @@ export default async function PartnerPage({
               Przejdź do strony partnera
             </a>
           )}
-            {partner.website2 && (
+
+          {partner.website2 && (
             <a
-            href={partner.website2}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block border px-6 py-3 rounded-lg text-center"
+              href={partner.website2}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block border px-6 py-3 rounded-lg text-center"
             >
-            Zobacz YouTube
+              Zobacz YouTube
             </a>
           )}
+
           {partner.phone && (
             <a
               href={`tel:${partner.phone.replace(/\s+/g, "")}`}

@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { Partner } from "@/data/partners"
+import { Partner, placeholderPartners } from "@/data/partners"
 import RatingStars from "@/components/RatingStars"
-import MarketplacePlaceholder from "@/features/marketplace/MarketplacePlaceholder"
 
 async function handleClick(partner: Partner) {
 
@@ -33,19 +32,11 @@ export default function PartnersList({
   partners: Partner[]
 }){
 
-  // 🔥 NOWY FALLBACK — placeholder marketplace
-  if(!partners || partners.length === 0){
-    return(
-      <div className="grid md:grid-cols-2 gap-6">
-        
-        <MarketplacePlaceholder category="Coaching" />
-        <MarketplacePlaceholder category="Psycholog" />
-        <MarketplacePlaceholder category="Prawo" />
-        <MarketplacePlaceholder category="Rozwój" />
-
-      </div>
-    )
-  }
+  // fallback jeśli brak partnerów
+  const safePartners =
+    !partners || partners.length === 0
+      ? placeholderPartners
+      : partners
 
   return(
 
@@ -57,7 +48,7 @@ export default function PartnersList({
 
       <div className="grid md:grid-cols-2 gap-6">
 
-        {partners.map((partner, index)=>(
+        {safePartners.map((partner, index)=>(
           
           <div
             key={partner.slug}
@@ -85,6 +76,12 @@ export default function PartnersList({
             )}
 
             <div className="flex gap-2 mb-2 flex-wrap">
+
+              {partner.placeholder && (
+                <span className="text-xs bg-neutral-100 text-neutral-600 px-2 py-1 rounded">
+                  Profil poglądowy
+                </span>
+              )}
 
               {partner.tier === "strategic" && (
                 <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">
