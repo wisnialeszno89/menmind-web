@@ -36,15 +36,10 @@ import DailyAction from "@/features/home/DailyAction"
 import DynamicCase from "@/components/DynamicCase"
 import Streak from "@/components/Streak"
 import QuickOnboarding from "@/components/QuickOnboarding"
-import PersonalizedStart from "@/components/PersonalizedStart"
+
 import AIRecommendations from "@/components/AIRecommendations"
-import AIRecommendedPartners from "@/components/AIRecommendedPartners"
-import AIRecommendedArticles from "@/components/AIRecommendedArticles"
-import AIRecommendedTests from "@/components/AIRecommendedTests"
+
 import DailyMission from "@/features/home/DailyMission"
-import AIIdleNudge from "@/components/AIIdleNudge"
-import AICrisisDetector from "@/components/AICrisisDetector"
-import UserJourneyProgress from "@/components/UserJourneyProgress"
 
 export default function Home() {
   return (
@@ -59,21 +54,15 @@ export default function Home() {
       intro="Bez presji. Krok po kroku, w swoim tempie."
       />
       <QuickOnboarding />
-      <PersonalizedStart />
+      
       <AIRecommendations />
+      
+      <DailyMission />     
 
-      <AICrisisDetector />
-      <DailyMission />
-      <AIIdleNudge />
+       <Streak />
 
-      <UserJourneyProgress />
-      <Streak />
-
-      <AIRecommendedTests />
-      <AIRecommendedArticles />
-      <AIRecommendedPartners />
-
-       {/* 🔥 KONTYNUUJ TAM, GDZIE PRZERWAŁEŚ */}
+      
+    {/* 🔥 KONTYNUUJ TAM, GDZIE PRZERWAŁEŚ */}
       
       <ContinueWhereLeft />
 
