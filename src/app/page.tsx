@@ -26,7 +26,7 @@ import { MessageCircle } from "lucide-react"
 
 export default function Home() {
   return (
-    <main>
+     <>
 
       {/* 🔥 STAN UŻYTKOWNIKA */}
       <UserStateBanner />
@@ -131,6 +131,6 @@ export default function Home() {
       {/* 🔥 SZYBKIE PROBLEMY */}
       <QuickProblems />
 
-    </main>
-  )
+    </>
+      )
 }

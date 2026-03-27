@@ -7,25 +7,15 @@
 /* ============================= */
 
 :root {
-
-  /* Background */
-
   --bg-main: #fafafa;
   --bg-section: #f3f4f6;
-
-  /* Text */
-
   --text-main: #111111;
   --text-muted: #6b7280;
-
-  /* Borders */
-
   --border-soft: #e5e7eb;
-
 }
 
 /* ============================= */
-/* RESET                        */
+/* RESET                         */
 /* ============================= */
 
 *,
@@ -39,25 +29,25 @@ html {
 }
 
 body {
-
   margin: 0;
-
   background: var(--bg-main);
   color: var(--text-main);
-
   font-family:
     system-ui,
     -apple-system,
     Segoe UI,
     Roboto,
     sans-serif;
-
   -webkit-font-smoothing: antialiased;
+}
 
+/* 🔥 WAŻNE — FIX ALIGNMENT */
+main {
+  width: 100%;
 }
 
 /* ============================= */
-/* TYPOGRAPHY                   */
+/* TYPOGRAPHY                    */
 /* ============================= */
 
 h1,
@@ -81,41 +71,32 @@ a:hover {
 }
 
 /* ============================= */
-/* LAYOUT                       */
+/* LAYOUT                        */
 /* ============================= */
 
 .container-mm {
-
   max-width: 1200px;
   margin: 0 auto;
-
   padding-left: 24px;
   padding-right: 24px;
-
 }
 
 .section-mm {
-
   padding-top: 100px;
   padding-bottom: 100px;
-
 }
 
 .section-soft {
-
   background: var(--bg-section);
-
   padding-top: 100px;
   padding-bottom: 100px;
-
 }
 
 /* ============================= */
-/* MOBILE                       */
+/* MOBILE                        */
 /* ============================= */
 
 @media (max-width: 768px) {
-
   .section-mm {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -125,79 +106,62 @@ a:hover {
     padding-top: 60px;
     padding-bottom: 60px;
   }
-
 }
 
 /* ============================= */
-/* CARDS                        */
+/* CARDS                         */
 /* ============================= */
 
 .card {
-
   background: white;
-
   border: 1px solid var(--border-soft);
-
   padding: 20px;
-
   border-radius: 12px;
-
   transition: all 0.15s ease;
-
 }
 
 .card:hover {
-
   border-color: #d4d4d4;
-
   transform: translateY(-2px);
+}
 
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-1px);
 }
 
 /* ============================= */
-/* TEXT HELPERS                 */
+/* TEXT HELPERS                  */
 /* ============================= */
 
 .text-body {
-
   font-size: 18px;
-
   line-height: 1.7;
-
   color: #374151;
-
 }
 
 .text-lead {
-
   font-size: 20px;
-
   line-height: 1.6;
-
   color: #4b5563;
-
 }
 
 .heading-xl {
-
   font-size: 44px;
-
   font-weight: 600;
-
   letter-spacing: -0.02em;
-
 }
 
 .heading-lg {
-
   font-size: 28px;
-
   font-weight: 600;
-
 }
 
 /* ============================= */
-/* UTILITIES                    */
+/* UTILITIES                     */
 /* ============================= */
 
 .border-soft {
@@ -209,15 +173,14 @@ a:hover {
 }
 
 /* ============================= */
-/* FIXES                        */
+/* FIXES                         */
 /* ============================= */
 
 iframe {
   display: block;
 }
-/* ============================= */
-/* MOBILE NAV SCROLL            */
-/* ============================= */
+
+/* MOBILE NAV SCROLL */
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -226,10 +189,4 @@ iframe {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-.card-hover {
-  transition: all 0.2s ease;
-}
-.card-hover:hover {
-  transform: translateY(-1px);
 }
