@@ -10,7 +10,7 @@ export default function ActivityFeed() {
 
   return (
     <section className="py-20 border-t">
-      <div className="max-w-6xl mx-auto px-6">
+        <div className="section-inner">
 
         <h2 className="text-2xl font-semibold mb-6">
           Ostatnia aktywność
