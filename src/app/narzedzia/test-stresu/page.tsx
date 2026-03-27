@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import ProgressBar from "@/features/tools/ProgressBar"
 import { saveTestResult } from "@/lib/userState"
 import TestResultFlow from "@/components/TestResultFlow"
+import TestNextSteps from "@/components/TestNextSteps"
 
 const questions = [
   "Czuję napięcie w ciele",
@@ -68,8 +69,12 @@ export default function StressTest(){
           <button onClick={()=>answer(true)} className="w-full border p-4 rounded-lg">Tak</button>
           <button onClick={()=>answer(false)} className="w-full border p-4 rounded-lg">Nie</button>
         </div>
-
+        
       </div>
+      <TestNextSteps
+      pathHref="/sciezki/stres"
+      toolHref="/narzedzia/reset-90"
+      />
     </main>
   )
 

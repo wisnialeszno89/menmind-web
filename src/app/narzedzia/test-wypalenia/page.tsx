@@ -10,6 +10,7 @@ import { rankPartners } from "@/lib/rankPartners"
 import PartnersList from "@/features/marketplace/PartnersList"
 import LeadBox from "@/components/LeadBox"
 import TestResultFlow from "@/components/TestResultFlow"
+import TestNextSteps from "@/components/TestNextSteps"
 
 const questions = [
   "Czujesz zmęczenie mimo odpoczynku",
@@ -152,6 +153,10 @@ export default function BurnoutTest(){
       <TestResultFlow percent={percent} />
 
     </div>
+      <TestNextSteps
+        pathHref="/sciezki/energia"
+        toolHref="/narzedzia/brain-dump"
+      />
 
   </main>
 

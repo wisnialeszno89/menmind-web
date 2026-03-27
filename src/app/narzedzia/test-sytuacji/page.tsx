@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import ProgressBar from "@/features/tools/ProgressBar"
 import { saveTestResult } from "@/lib/userState"
 import TestResultFlow from "@/components/TestResultFlow"
+import TestNextSteps from "@/components/TestNextSteps"
 
 const questions = [
   "Czuję że moje życie zaczyna się sypać",
@@ -69,7 +70,11 @@ export default function SituationTest(){
           <button onClick={()=>answer(false)} className="w-full border p-4 rounded-lg">Nie</button>
         </div>
 
-      </div>
+        </div>
+        <TestNextSteps
+        pathHref="/sciezki/stabilizacja"
+        toolHref="/narzedzia/plan-72h"
+      />
     </main>
   )
 
