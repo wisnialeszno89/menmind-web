@@ -60,6 +60,10 @@ export default function Navbar() {
           <Link href="/ojcostwo" className={linkStyle} onClick={close}>Ojcostwo</Link>
           <Link href="/narzedzia" className={linkStyle} onClick={close}>Narzędzia</Link>
 
+          <Link href="/moja-droga">
+          Twoja droga
+          </Link>
+
           <Link href="/navimind" className={linkStyle} onClick={close}>
             NaviMind
           </Link>

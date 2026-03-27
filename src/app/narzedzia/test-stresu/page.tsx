@@ -42,7 +42,8 @@ export default function StressTest(){
       date:Date.now()
     })
 
-    trackAction()   // ← DODAJ DOKŁADNIE TU
+    localStorage.setItem("mm_last_test", "Test stresu")
+    trackAction()
 
     setSaved(true)
   }

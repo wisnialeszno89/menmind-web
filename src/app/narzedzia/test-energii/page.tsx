@@ -39,8 +39,8 @@ export default function EnergyTest(){
       percent,
       date:Date.now()
     })
-
-    trackAction()
+    localStorage.setItem("mm_last_test", "Test energii")
+trackAction()
 
     setSaved(true)
   }

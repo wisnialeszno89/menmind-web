@@ -39,7 +39,8 @@ export default function BurnoutTest(){
       date:Date.now()
     })
 
-    trackAction()   // ← DODAJ DOKŁADNIE TU
+    localStorage.setItem("mm_last_test", "Test wypalenia")
+    trackAction()
 
     setSaved(true)
   }

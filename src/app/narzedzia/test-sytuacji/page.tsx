@@ -42,7 +42,8 @@ export default function SituationTest(){
       date:Date.now()
     })
 
-    trackAction()   // ← DODAJ DOKŁADNIE TU
+    localStorage.setItem("mm_last_test", "Test sytuacji")
+    trackAction()
 
     setSaved(true)
   }

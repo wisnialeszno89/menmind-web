@@ -31,6 +31,11 @@ export default function MyPath() {
         <h1 className="text-4xl font-semibold mb-10">
           Twoja droga
         </h1>
+        {!lastTest && (
+        <p className="text-gray-500 mb-6">
+        Zacznij od testu, aby zobaczyć swoją drogę.
+        </p>
+      )}
 
         <UserJourneyProgress />
 

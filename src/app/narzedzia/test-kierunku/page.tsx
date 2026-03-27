@@ -39,7 +39,8 @@ export default function DirectionTest(){
       date:Date.now()
     })
 
-    trackAction()   // ← DODAJ DOKŁADNIE TU
+    localStorage.setItem("mm_last_test", "Test energii")
+    trackAction()
 
     setSaved(true)
   }

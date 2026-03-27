@@ -39,8 +39,9 @@ export default function RelationTest(){
       date:Date.now()
     })
 
-    trackAction()   // ← DODAJ DOKŁADNIE TU
-
+    localStorage.setItem("mm_last_test", "Test relacji")
+    trackAction()
+    
     setSaved(true)
   }
 }, [finished, saved, score, percent])
