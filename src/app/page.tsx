@@ -21,6 +21,9 @@ import ActivityFeed from "@/features/home/ActivityFeed"
 import ForYouSection from "@/features/home/ForYouSection"
 import Statement from "@/features/home/Statement"
 import StartHere from "@/features/home/StartHere"
+import StartSteps from "@/features/home/StartSteps"
+import QuickTests from "@/features/home/QuickTests"
+import NowDoing from "@/features/home/NowDoing"
 
 import { MessageCircle } from "lucide-react"
 
@@ -36,6 +39,7 @@ export default function Home() {
       title="Miejsce, w którym możesz poukładać swoją sytuację"
       intro="Bez presji. Krok po kroku, w swoim tempie."
       />
+      <StartSteps />
 
       <ForYouSection />
 
@@ -52,6 +56,10 @@ export default function Home() {
       
       {/* 🔥 START */}
       <StartSection />
+
+      <QuickTests />
+
+      <NowDoing />
 
       <Statement />
 
