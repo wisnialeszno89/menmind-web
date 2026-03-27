@@ -42,6 +42,9 @@ import AIRecommendations from "@/components/AIRecommendations"
 import AIRecommendedPartners from "@/components/AIRecommendedPartners"
 import AIRecommendedArticles from "@/components/AIRecommendedArticles"
 import AIRecommendedTests from "@/components/AIRecommendedTests"
+import DailyMission from "@/features/home/DailyMission"
+import AIIdleNudge from "@/components/AIIdleNudge"
+import AICrisisDetector from "@/components/AICrisisDetector"
 
 export default function Home() {
   return (
@@ -56,16 +59,16 @@ export default function Home() {
       intro="Bez presji. Krok po kroku, w swoim tempie."
       />
       <QuickOnboarding />
-
       <PersonalizedStart />
-
       <AIRecommendations />
 
-      <AIRecommendedPartners />
-
-      <AIRecommendedArticles />
+      <AICrisisDetector />
+      <DailyMission />
+      <AIIdleNudge />
 
       <AIRecommendedTests />
+      <AIRecommendedArticles />
+      <AIRecommendedPartners />
 
        {/* 🔥 KONTYNUUJ TAM, GDZIE PRZERWAŁEŚ */}
       
