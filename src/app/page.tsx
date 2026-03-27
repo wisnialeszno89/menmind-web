@@ -33,6 +33,7 @@ import PathsSection from "@/features/home/PathsSection"
 import UserProgress from "@/features/home/UserProgress" 
 import { MessageCircle } from "lucide-react"
 import ContinueWhereLeft from "@/features/home/ContinueWhereLeft"
+import DailyAction from "@/features/home/DailyAction"
 
 export default function Home() {
   return (
@@ -47,6 +48,8 @@ export default function Home() {
       intro="Bez presji. Krok po kroku, w swoim tempie."
       />
       <ContinueWhereLeft />
+
+      <DailyAction />
       {/* 🔥 POSTĘP UŻYTKOWNIKA */}
       <UserProgress />
       
