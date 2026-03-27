@@ -5,6 +5,7 @@ import ProgressBar from "@/features/tools/ProgressBar"
 import { saveTestResult } from "@/lib/userState"
 import TestResultFlow from "@/components/TestResultFlow"
 import TestNextSteps from "@/components/TestNextSteps"
+import RecommendedPath from "@/components/RecommendedPath"
 
 const questions = [
   "Czuję że moje życie zaczyna się sypać",
@@ -48,7 +49,20 @@ export default function SituationTest(){
     return(
       <main className="min-h-screen bg-white">
         <div className="max-w-xl mx-auto px-6 py-24">
+
           <TestResultFlow percent={percent} />
+
+          <RecommendedPath
+            title="Stabilizacja"
+            description="Uporządkuj podstawy i wróć do równowagi."
+            href="/sciezki/stabilizacja"
+          />
+
+          <TestNextSteps
+            pathHref="/sciezki/stabilizacja"
+            toolHref="/narzedzia/plan-72h"
+          />
+
         </div>
       </main>
     )
@@ -66,15 +80,22 @@ export default function SituationTest(){
         </h1>
 
         <div className="space-y-4">
-          <button onClick={()=>answer(true)} className="w-full border p-4 rounded-lg">Tak</button>
-          <button onClick={()=>answer(false)} className="w-full border p-4 rounded-lg">Nie</button>
+          <button
+            onClick={()=>answer(true)}
+            className="w-full border p-4 rounded-lg"
+          >
+            Tak
+          </button>
+
+          <button
+            onClick={()=>answer(false)}
+            className="w-full border p-4 rounded-lg"
+          >
+            Nie
+          </button>
         </div>
 
-        </div>
-        <TestNextSteps
-        pathHref="/sciezki/stabilizacja"
-        toolHref="/narzedzia/plan-72h"
-      />
+      </div>
     </main>
   )
 

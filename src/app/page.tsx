@@ -30,6 +30,7 @@ import LiveUsersCounter from "@/components/LiveUsersCounter"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
 import UserProgress from "@/components/UserProgress"
 import StartDecision from "@/features/home/StartDecision"
+import PathsSection from "@/features/home/PathsSection"
 
 import { MessageCircle } from "lucide-react"
 
@@ -58,6 +59,8 @@ export default function Home() {
       <QuickTests />
 
       <StartDecision />
+
+      <PathsSection />
 
       <NowDoing />
 

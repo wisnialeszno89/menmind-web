@@ -5,13 +5,14 @@ import ProgressBar from "@/features/tools/ProgressBar"
 import { saveTestResult } from "@/lib/userState"
 import TestResultFlow from "@/components/TestResultFlow"
 import TestNextSteps from "@/components/TestNextSteps"
+import RecommendedPath from "@/components/RecommendedPath"
 
 const questions = [
-  "Czuję napięcie w ciele",
+  "Czuję napięcie przez większość dnia",
   "Mam problemy ze snem",
+  "Trudno mi się skupić",
   "Łatwo się irytuję",
-  "Mam trudność z koncentracją",
-  "Czuję presję i przeciążenie"
+  "Czuję ciągłe zmęczenie"
 ]
 
 export default function StressTest(){
@@ -48,7 +49,20 @@ export default function StressTest(){
     return(
       <main className="min-h-screen bg-white">
         <div className="max-w-xl mx-auto px-6 py-24">
+
           <TestResultFlow percent={percent} />
+
+          <RecommendedPath
+            title="Odbudowa energii"
+            description="Zmniejsz przeciążenie i odzyskaj siłę."
+            href="/sciezki/energia"
+          />
+
+          <TestNextSteps
+            pathHref="/sciezki/energia"
+            toolHref="/narzedzia/reset-90"
+          />
+
         </div>
       </main>
     )
@@ -66,15 +80,16 @@ export default function StressTest(){
         </h1>
 
         <div className="space-y-4">
-          <button onClick={()=>answer(true)} className="w-full border p-4 rounded-lg">Tak</button>
-          <button onClick={()=>answer(false)} className="w-full border p-4 rounded-lg">Nie</button>
+          <button onClick={()=>answer(true)} className="w-full border p-4 rounded-lg">
+            Tak
+          </button>
+
+          <button onClick={()=>answer(false)} className="w-full border p-4 rounded-lg">
+            Nie
+          </button>
         </div>
-        
+
       </div>
-      <TestNextSteps
-      pathHref="/sciezki/stres"
-      toolHref="/narzedzia/reset-90"
-      />
     </main>
   )
 
