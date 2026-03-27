@@ -3,6 +3,7 @@ import "./globals.css"
 import Header from "@/components/layout/Header"
 import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/ScrollToTop"
+import StickyTestCTA from "@/components/StickyTestCTA"
 
 export const metadata = {
   title: {
@@ -52,6 +53,7 @@ export default function RootLayout({
         </main>
 
         <Footer />
+        <StickyTestCTA />
 
       </body>
     </html>

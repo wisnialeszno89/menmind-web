@@ -24,6 +24,8 @@ import StartHere from "@/features/home/StartHere"
 import StartSteps from "@/features/home/StartSteps"
 import QuickTests from "@/features/home/QuickTests"
 import NowDoing from "@/features/home/NowDoing"
+import CommonProblems from "@/features/home/CommonProblems"
+import CrisisMode from "@/features/home/CrisisMode"
 
 import { MessageCircle } from "lucide-react"
 
@@ -41,29 +43,31 @@ export default function Home() {
       />
       <StartSteps />
 
-      <ForYouSection />
+<CrisisMode />
 
-      <LiveActivity />
+<QuickTests />
 
-      <WhatsNew />
+<StartSection />
 
-      {/* 🔥 JAK TO DZIAŁA */ }
-        <HowItWorks />
+<NowDoing />
 
-        <StatsCounter />
+<CommonProblems />
 
-        <ActivityFeed />
-      
-      {/* 🔥 START */}
-      <StartSection />
+<ForYouSection />
 
-      <QuickTests />
+<Statement />
 
-      <NowDoing />
+<StartHere />
 
-      <Statement />
+<LiveActivity />
 
-      <StartHere />
+<WhatsNew />
+
+<HowItWorks />
+
+<StatsCounter />
+
+<ActivityFeed />
 
       {/* 🔥 NAVIMIND */}
       <section className="py-20 border-t">
