@@ -37,35 +37,49 @@ export default function QuickOnboarding(){
 
   if(done){
     return(
-      <div className="border rounded-xl p-6">
-        Profil zapisany. Dopasowuję stronę.
-      </div>
+      <section className="py-12 border-t">
+        <div className="max-w-xl mx-auto px-6 text-center">
+          <div className="border rounded-xl p-6">
+            Profil zapisany. Dopasowuję stronę.
+          </div>
+        </div>
+      </section>
     )
   }
 
   return(
-    <div className="border rounded-xl p-6">
+    <section className="py-12 border-t">
 
-      <p className="text-sm text-gray-500 mb-2">
-        Dopasuj MenMind
-      </p>
+      <div className="max-w-xl mx-auto px-6">
 
-      <h3 className="font-semibold mb-4">
-        {questions[step].q}
-      </h3>
+        <div className="border rounded-xl p-6">
 
-      <div className="space-y-2">
-        {questions[step].a.map(opt=>(
-          <button
-            key={opt}
-            onClick={()=>choose(opt)}
-            className="w-full border p-3 rounded-lg text-left"
-          >
-            {opt}
-          </button>
-        ))}
+          <p className="text-sm text-gray-500 mb-2 text-center">
+            Dopasuj MenMind
+          </p>
+
+          <h3 className="font-semibold mb-4 text-center">
+            {questions[step].q}
+          </h3>
+
+          <div className="grid grid-cols-2 gap-3">
+
+            {questions[step].a.map(opt=>(
+              <button
+                key={opt}
+                onClick={()=>choose(opt)}
+                className="border p-3 rounded-lg hover:bg-black hover:text-white transition"
+              >
+                {opt}
+              </button>
+            ))}
+
+          </div>
+
+        </div>
+
       </div>
 
-    </div>
+    </section>
   )
 }

@@ -12,7 +12,6 @@ import QuickProblems from "@/features/home/QuickProblems"
 import PopularTools from "@/features/home/PopularTools"
 import LiveActivity from "@/components/LiveActivity"
 import HowItWorks from "@/features/home/HowItWorks"
-import CaseSection from "@/features/home/CaseSection"
 import Testimonials from "@/features/home/Testimonials"
 import WhatsNew from "@/features/home/WhatsNew"
 import TrendingPaths from "@/features/home/TrendingPaths"
@@ -180,8 +179,6 @@ export default function Home() {
 
       {/* 🔥 ZAUFANIE */}
       <TrustSection />
-
-      <CaseSection />
 
       <Testimonials />
 
