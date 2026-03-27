@@ -20,6 +20,7 @@ import StatsCounter from "@/components/StatsCounter"
 import ActivityFeed from "@/features/home/ActivityFeed"
 import ForYouSection from "@/features/home/ForYouSection"
 import Statement from "@/features/home/Statement"
+import StartHere from "@/features/home/StartHere"
 
 import { MessageCircle } from "lucide-react"
 
@@ -53,6 +54,8 @@ export default function Home() {
       <StartSection />
 
       <Statement />
+
+      <StartHere />
 
       {/* 🔥 NAVIMIND */}
       <section className="py-20 border-t">
