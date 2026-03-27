@@ -10,6 +10,16 @@ import UserStateBanner from "@/features/home/UserStateBanner"
 import HomeSeoArticles from "@/features/home/HomeSeoArticles"
 import QuickProblems from "@/features/home/QuickProblems"
 import PopularTools from "@/features/home/PopularTools"
+import LiveActivity from "@/components/LiveActivity"
+import HowItWorks from "@/features/home/HowItWorks"
+import CaseSection from "@/features/home/CaseSection"
+import Testimonials from "@/features/home/Testimonials"
+import WhatsNew from "@/features/home/WhatsNew"
+import TrendingPaths from "@/features/home/TrendingPaths"
+import StatsCounter from "@/components/StatsCounter"
+import ActivityFeed from "@/features/home/ActivityFeed"
+import ForYouSection from "@/features/home/ForYouSection"
+import Statement from "@/features/home/Statement"
 
 import { MessageCircle } from "lucide-react"
 
@@ -22,12 +32,27 @@ export default function Home() {
 
       {/* 🔥 HERO */}
       <Hero
-        title="Miejsce, w którym możesz poukładać swoją sytuację"
-        intro="Bez presji. Krok po kroku, w swoim tempie."
+      title="Miejsce, w którym możesz poukładać swoją sytuację"
+      intro="Bez presji. Krok po kroku, w swoim tempie."
       />
 
+      <ForYouSection />
+
+      <LiveActivity />
+
+      <WhatsNew />
+
+      {/* 🔥 JAK TO DZIAŁA */ }
+        <HowItWorks />
+
+        <StatsCounter />
+
+        <ActivityFeed />
+      
       {/* 🔥 START */}
       <StartSection />
+
+      <Statement />
 
       {/* 🔥 NAVIMIND */}
       <section className="py-20 border-t">
@@ -91,8 +116,14 @@ export default function Home() {
       {/* 🔥 ZAUFANIE */}
       <TrustSection />
 
+      <CaseSection />
+
+      <Testimonials />
+
       {/* 🔥 NAJCZĘŚCIEJ WYBIERANE */}
       <PopularTools />
+      
+      <TrendingPaths />
 
       {/* 🔥 SZYBKIE PROBLEMY */}
       <QuickProblems />

@@ -227,3 +227,9 @@ iframe {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.card-hover {
+  transition: all 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-1px);
+}

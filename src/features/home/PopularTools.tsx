@@ -5,11 +5,13 @@ export default function PopularTools(){
   const tools = [
     {
       title: "Reset 90 sekund",
-      href: "/narzedzia/reset"
+      href: "/narzedzia/reset",
+      badge: "Popularne"
     },
     {
       title: "Plan 72h",
-      href: "/narzedzia/plan-72h"
+      href: "/narzedzia/plan-72h",
+      badge: "Popularne"
     },
     {
       title: "Brain dump",
@@ -38,9 +40,17 @@ export default function PopularTools(){
             <Link
               key={tool.title}
               href={tool.href}
-              className="border rounded-xl p-6 text-center hover:shadow transition"
+              className="border rounded-xl p-6 text-center card-hover hover:shadow transition bg-white"
             >
+
+              {tool.badge && (
+                <div className="text-xs bg-neutral-100 px-2 py-1 rounded mb-3 inline-block">
+                  {tool.badge}
+                </div>
+              )}
+
               {tool.title}
+
             </Link>
 
           ))}

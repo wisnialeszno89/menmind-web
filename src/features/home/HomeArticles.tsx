@@ -1,59 +1,120 @@
 import Link from "next/link"
 
-import { kryzys } from "@/content/kryzys"
-import { ojcostwo } from "@/content/ojcostwo"
-import { odbudowa } from "@/content/odbudowa"
-import { wzrost } from "@/content/wzrost"
+const articles = [
+  {
+    title: "Jak ogarnąć życie gdy wszystko się sypie",
+    href: "/artykuly/jak-ogarnac-zycie"
+  },
+  {
+    title: "Brak motywacji – co robić",
+    href: "/artykuly/brak-motywacji"
+  },
+  {
+    title: "Chaos w życiu – jak to poukładać",
+    href: "/artykuly/chaos-w-zyciu"
+  },
+  {
+    title: "Samotność u mężczyzny",
+    href: "/artykuly/samotnosc-u-mezczyzny"
+  },
+  {
+    title: "Brak energii – co robić",
+    href: "/artykuly/brak-energii"
+  },
+  {
+    title: "Jak radzić sobie ze stresem",
+    href: "/artykuly/jak-poradzic-sobie-ze-stresem"
+  },
 
-const worlds = [
-  { name: "kryzys", articles: kryzys },
-  { name: "ojcostwo", articles: ojcostwo },
-  { name: "odbudowa", articles: odbudowa },
-  { name: "wzrost", articles: wzrost },
+  // NOWE SEO
+  {
+    title: "Kryzys po 35 roku życia u mężczyzny",
+    href: "/artykuly/kryzys-po-35",
+    isNew: true
+  },
+  {
+    title: "Brak sensu życia u mężczyzny",
+    href: "/artykuly/brak-sensu-zycia-mezczyzna",
+    isNew: true
+  },
+  {
+    title: "Co zrobić po rozstaniu",
+    href: "/artykuly/co-robic-po-rozstaniu-mezczyzna",
+    isNew: true
+  },
+  {
+    title: "Kryzys w małżeństwie",
+    href: "/artykuly/kryzys-w-malzenstwie-mezczyzna",
+    isNew: true
+  },
+  {
+    title: "Brak motywacji do pracy",
+    href: "/artykuly/brak-motywacji-do-pracy-mezczyzna",
+    isNew: true
+  },
+  {
+    title: "Wypalenie po 30",
+    href: "/artykuly/wypalenie-po-30",
+    isNew: true
+  },
+  {
+    title: "Jak ogarnąć finanse",
+    href: "/artykuly/jak-ogarnac-finanse-mezczyzna",
+    isNew: true
+  },
+  {
+    title: "Chaos w życiu mężczyzny",
+    href: "/artykuly/chaos-w-zyciu-mezczyzna",
+    isNew: true
+  }
 ]
 
-export default function HomeArticles() {
+export default function HomeSeoArticles(){
+  
+  const sorted = [
+  ...articles.filter(a => a.isNew),
+  ...articles.filter(a => !a.isNew)
+]
+  return(
 
-  const list = worlds.flatMap(world =>
-    world.articles.slice(0, 2).map(article => ({
-      ...article,
-      world: world.name
-    }))
-  )
+    <section className="py-20 border-t">
 
-  return (
+      <div className="max-w-6xl mx-auto px-6">
 
-    <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-semibold mb-4">
+          Przeczytaj i poukładaj sytuację
+        </h2>
 
-      <h2 className="text-3xl font-semibold mb-12">
-        Najczęściej czytane
-      </h2>
+        <p className="text-gray-600 mb-10">
+          Krótkie artykuły, które pomagają zobaczyć kierunek działania.
+        </p>
 
-      <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
 
-        {list.map(article => (
+          {sorted.map(article => (
 
-          <Link
-            key={article.slug}
-            href={`/${article.world}/${article.slug}`}
-            className="group border rounded-xl p-6 hover:shadow-lg transition"
-          >
+            <Link
+              key={article.href}
+              href={article.href}
+              className="border rounded-xl p-6 card-hover hover:shadow transition bg-white"
+            >
+              <div className="flex items-center justify-between">
 
-            <div className="text-xs uppercase text-gray-500 mb-2">
-              {article.world}
-            </div>
+                <span>{article.title}</span>
 
-            <h3 className="text-lg font-semibold mb-2 group-hover:underline">
-              {article.title}
-            </h3>
+                {article.isNew && (
+                  <span className="text-xs bg-black text-white px-2 py-1 rounded">
+                    Nowe
+                  </span>
+                )}
 
-            <p className="text-sm text-gray-600">
-              {article.description}
-            </p>
+              </div>
 
-          </Link>
+            </Link>
 
-        ))}
+          ))}
+
+        </div>
 
       </div>
 

@@ -5,22 +5,29 @@ type Props = {
   title: string
   description?: string
   base: string
+  isNew?: boolean
 }
 
 export default function ArticleCard({
   slug,
   title,
   description,
-  base
+  base,
+  isNew
 }: Props) {
-
   return (
     <Link
       href={`/${base}/${slug}`}
-      className="border p-6 block hover:border-black transition"
+      className="border rounded-xl p-6 block card-hover hover:border-black transition bg-white"
     >
-      <h3 className="text-xl font-medium mb-2">
+      <h3 className="text-xl font-medium mb-2 flex items-center">
         {title}
+
+        {isNew && (
+          <span className="ml-2 text-xs px-2 py-1 bg-black text-white rounded">
+            Nowe
+          </span>
+        )}
       </h3>
 
       {description && (
