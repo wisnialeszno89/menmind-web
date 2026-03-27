@@ -28,9 +28,9 @@ import CommonProblems from "@/features/home/CommonProblems"
 import CrisisMode from "@/features/home/CrisisMode"
 import LiveUsersCounter from "@/components/LiveUsersCounter"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
-import UserProgress from "@/components/UserProgress"
 import StartDecision from "@/features/home/StartDecision"
 import PathsSection from "@/features/home/PathsSection"
+import UserProgress from "@/features/home/UserProgress"
 
 import { MessageCircle } from "lucide-react"
 
