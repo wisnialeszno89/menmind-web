@@ -23,16 +23,16 @@ export default function Page(){
           ]
         }
       ]}
-      low={{
-        text:"Relacja wymaga zatrzymania i poukładania.",
-        path:"/sciezki/relacja",
-        tool:"/narzedzia/reset-90"
-      }}
-      high={{
-        text:"Relacja ma stabilny fundament.",
-        path:"/sciezki/stabilnosc",
-        tool:"/narzedzia/brain-dump"
-      }}
+            low={{
+            text:"Relacja wymaga zatrzymania i poukładania.",
+            path:"/kryzys",
+            tool:"/narzedzia/reset-90"
+        }}
+            high={{
+             text:"Relacja ma stabilny fundament — warto ją wzmacniać.",
+             path:"/wzrost",
+            tool:"/narzedzia/brain-dump"
+        }}
     />
   )
 }

@@ -23,16 +23,16 @@ export default function Page(){
           ]
         }
       ]}
-      low={{
-        text:"Potrzebujesz uporządkować kierunek działania.",
-        path:"/sciezki/kompas",
-        tool:"/narzedzia/plan-72h"
-      }}
-      high={{
-        text:"Masz kierunek — warto go wzmocnić.",
-        path:"/sciezki/wzrost",
-        tool:"/narzedzia/brain-dump"
-      }}
+        low={{
+            text:"Potrzebujesz uporządkować kierunek działania.",
+            path:"/odbudowa",
+            tool:"/narzedzia/plan-72h"
+            }}
+        high={{
+            text:"Masz kierunek — warto go wzmocnić.",
+            path:"/wzrost",
+            tool:"/narzedzia/brain-dump"
+        }}
     />
   )
 }

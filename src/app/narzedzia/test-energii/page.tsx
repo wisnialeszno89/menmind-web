@@ -25,14 +25,14 @@ export default function Page(){
       ]}
       low={{
         text:"Potrzebujesz odbudować energię.",
-        path:"/sciezki/energia",
+        path:"/odbudowa",
         tool:"/narzedzia/reset-90"
-      }}
-      high={{
+    }}
+    high={{
         text:"Masz dobrą energię — utrzymuj ją.",
-        path:"/sciezki/rutyna",
-        tool:"/narzedzia/plan-72h"
-      }}
+        path:"/wzrost",
+         tool:"/narzedzia/plan-72h"
+        }}
     />
   )
 }
