@@ -37,6 +37,8 @@ import DailyAction from "@/features/home/DailyAction"
 import DynamicCase from "@/components/DynamicCase"
 import Streak from "@/components/Streak"
 import QuickOnboarding from "@/components/QuickOnboarding"
+import PersonalizedStart from "@/components/PersonalizedStart"
+import AIRecommendations from "@/components/AIRecommendations"
 
 export default function Home() {
   return (
@@ -53,6 +55,8 @@ export default function Home() {
       <QuickOnboarding />
 
       <PersonalizedStart />
+
+      <AIRecommendations />
       
       <ContinueWhereLeft />
 
