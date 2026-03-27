@@ -45,6 +45,7 @@ import AIRecommendedTests from "@/components/AIRecommendedTests"
 import DailyMission from "@/features/home/DailyMission"
 import AIIdleNudge from "@/components/AIIdleNudge"
 import AICrisisDetector from "@/components/AICrisisDetector"
+import UserJourneyProgress from "@/components/UserJourneyProgress"
 
 export default function Home() {
   return (
@@ -65,6 +66,9 @@ export default function Home() {
       <AICrisisDetector />
       <DailyMission />
       <AIIdleNudge />
+
+      <UserJourneyProgress />
+      <Streak />
 
       <AIRecommendedTests />
       <AIRecommendedArticles />

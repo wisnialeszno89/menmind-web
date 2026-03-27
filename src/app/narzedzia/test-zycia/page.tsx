@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import ProgressBar from "@/features/tools/ProgressBar"
 import { saveTestResult } from "@/lib/userState"
 import TestResultFlow from "@/components/TestResultFlow"
+import { trackAction } from "@/lib/trackAction"
 
 const questions = [
   "Masz ostatnio mało energii",
@@ -32,16 +33,19 @@ export default function LifeTestPage(){
     : 0
 
   useEffect(() => {
-    if(finished && !saved){
-      saveTestResult({
-        id:"zycie",
-        score,
-        percent,
-        date:Date.now()
-      })
-      setSaved(true)
-    }
-  }, [finished, saved, score, percent])
+  if(finished && !saved){
+    saveTestResult({
+      id:"kierunek",
+      score,
+      percent,
+      date:Date.now()
+    })
+
+    trackAction()   // ← DODAJ DOKŁADNIE TU
+
+    setSaved(true)
+  }
+}, [finished, saved, score, percent])
 
   if(finished){
 

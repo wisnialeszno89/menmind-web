@@ -4,22 +4,26 @@ import { useEffect, useState } from "react"
 
 export default function Streak(){
 
-  const [days,setDays] = useState(1)
+  const [days,setDays] = useState(0)
 
   useEffect(()=>{
-    const stored = localStorage.getItem("mm_streak")
-    if(stored){
-      setDays(Number(stored))
+
+    const saved = localStorage.getItem("mm_streak")
+
+    if(saved){
+      setDays(Number(saved))
+    }else{
+      localStorage.setItem("mm_streak","1")
+      setDays(1)
     }
+
   },[])
 
-  useEffect(()=>{
-    localStorage.setItem("mm_streak", String(days))
-  },[days])
+  if(!days) return null
 
   return(
-    <div className="border rounded-xl p-4 text-sm">
-      🔥 Twój ciąg działania: {days} dzień
+    <div className="border rounded-xl p-4 text-center">
+      🔥 {days} dzień działania
     </div>
   )
 }

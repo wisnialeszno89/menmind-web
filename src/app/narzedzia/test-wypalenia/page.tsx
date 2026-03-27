@@ -6,6 +6,7 @@ import { saveTestResult } from "@/lib/userState"
 import TestResultFlow from "@/components/TestResultFlow"
 import TestNextSteps from "@/components/TestNextSteps"
 import RecommendedPath from "@/components/RecommendedPath"
+import { trackAction } from "@/lib/trackAction"
 
 const questions = [
   "Nie mam motywacji do pracy",
@@ -30,16 +31,19 @@ export default function BurnoutTest(){
   const percent = finished ? Math.round((score/questions.length)*100) : 0
 
   useEffect(() => {
-    if(finished && !saved){
-      saveTestResult({
-        id:"wypalenie",
-        score,
-        percent,
-        date:Date.now()
-      })
-      setSaved(true)
-    }
-  }, [finished, saved, score, percent])
+  if(finished && !saved){
+    saveTestResult({
+      id:"kierunek",
+      score,
+      percent,
+      date:Date.now()
+    })
+
+    trackAction()   // ← DODAJ DOKŁADNIE TU
+
+    setSaved(true)
+  }
+}, [finished, saved, score, percent])
 
   if(finished){
     return(

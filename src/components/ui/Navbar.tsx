@@ -64,6 +64,10 @@ export default function Navbar() {
             NaviMind
           </Link>
 
+          <Link href="/moja-droga">
+          Twoja droga
+          </Link>
+
         </div>
       )}
 
