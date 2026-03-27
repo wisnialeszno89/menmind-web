@@ -4,7 +4,7 @@ export default function Statement(){
 
     <section className="py-16 border-t">
 
-      <div className="max-w-3xl mx-auto px-6 text-center">
+        <div className="max-w-6xl mx-auto px-6 text-center">
 
         <p className="text-lg text-neutral-700 leading-relaxed">
           Nie znajdziesz tu motywacyjnych haseł.  
