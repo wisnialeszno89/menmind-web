@@ -57,7 +57,7 @@ locationType: "city",
 address: "Skwer Marszałka Ferdynanda Focha 10/7b, Poznań",
 phone: "660493324",
 
-website: "https://www.facebook.com/profile.php?id=61587259344650",
+website: "https://www.gowork.pl/kancelaria-adwokacka-marta-chocianowska,24278599/dane-kontaktowe-firmy",
 
 tier: "strategic",
 featured: true,
