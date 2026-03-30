@@ -81,6 +81,36 @@ slug:"test-sytuacji",
 title:"Test sytuacji",
 description:"Krótka diagnoza Twojej obecnej sytuacji życiowej.",
 world:"kryzys"
+},
+{
+  slug: "mikro-kroki",
+  title: "Plan mikro-kroków",
+  description: "Wyjście z paraliżu działania w jednym kroku",
+  world: "odbudowa"
+},
+{
+  slug: "generator-rozmowy-w-zwiazku",
+  title: "Generator rozmowy w związku",
+  description: "Jedno zdanie, które pomaga zacząć rozmowę",
+  world: "kryzys"
+},
+{
+  slug: "test-przeciazenia",
+  title: "Test przeciążenia",
+  description: "Sprawdź czy zbliżasz się do przeciążenia psychicznego",
+  world: "kryzys"
+},
+{
+  slug: "plan-po-rozstaniu",
+  title: "Plan po rozstaniu",
+  description: "Checklist odbudowy po rozpadzie relacji",
+  world: "odbudowa"
+},
+{
+  slug: "test-relacji-ratowac",
+  title: "Test relacji — czy warto ratować",
+  description: "Sprawdź czy relacja ma jeszcze fundament",
+  world: "odbudowa"
 }
 
 ]

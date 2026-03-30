@@ -31,5 +31,47 @@ export const tools: Tool[] = [
     title: "Mapa energii",
     description: "Zobacz gdzie tracisz energię",
     world: "wzrost"
+  },
+  {
+  slug: "kompas-decyzji",
+  title: "Kompas decyzji",
+  description: "Pomaga zdecydować: działać czy poczekać",
+  world: "wzrost"
+  },
+  {
+  slug: "plan-czasu-z-dzieckiem",
+  title: "Plan czasu z dzieckiem",
+  description: "Pomysły na wspólny czas w 15 min, godzinę lub weekend",
+  world: "ojcostwo"
+  },
+  {
+  slug: "checklista-obecnego-ojca",
+  title: "Checklista obecnego ojca",
+  description: "Szybkie sprawdzenie czy jesteś dziś obecny dla dziecka",
+  world: "ojcostwo"
+  },
+  {
+  slug: "generator-rozmow-z-dzieckiem",
+  title: "Generator rozmów z dzieckiem",
+  description: "Jedno pytanie, które pomaga zacząć rozmowę",
+  world: "ojcostwo"
+  },
+  {
+  slug: "plan-rozmowy-po-rozstaniu",
+  title: "Plan rozmowy po rozstaniu",
+  description: "Jak spokojnie porozmawiać z dzieckiem o rozstaniu",
+  world: "ojcostwo"
+  },
+  {
+  slug: "tracker-kontaktu-z-dzieckiem",
+  title: "Tracker kontaktu z dzieckiem",
+  description: "Zaznacz dni, w których miałeś kontakt z dzieckiem",
+  world: "ojcostwo"
+  },
+  {
+  slug: "plan-finansowy",
+  title: "Plan finansowy",
+  description: "Plan wyjścia z chaosu finansowego",
+  world: "odbudowa"
   }
 ]
