@@ -42,17 +42,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
+  <head>
+    <meta
+      name="google-site-verification"
+      content="se6SRN6vHZcVMykc1s-_5Bd4-uiAvBHn-14MKrWZUJM"
+    />
+  </head>
 
-      <head>
-        {<meta name="google-site-verification" 
-          content="se6SRN6vHZcVMykc1s-_5Bd4-uiAvBHn-14MKrWZUJM" />}
-        <meta
-          name="google-site-verification"
-          content="TU_WKLEJ_KOD_Z_GOOGLE"
-        />
-      </head>
-
-      <body className="bg-white text-black antialiased">
+  <body className="bg-white text-black antialiased">
 
         <ScrollToTop />
 
