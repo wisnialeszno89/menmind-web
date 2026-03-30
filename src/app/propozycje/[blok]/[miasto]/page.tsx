@@ -17,19 +17,23 @@ export default async function ProposalCityPage({
     partners.filter(p => {
 
       const categoryMatch =
-        p.category?.toLowerCase() === blok.toLowerCase()
+        p.category?.some(
+          c => c.toLowerCase() === blok.toLowerCase()
+        )
 
       const cityMatch =
         p.locationType === "online" ||
         p.locationType === "national" ||
-        p.city?.toLowerCase() === miasto.toLowerCase()
+        p.city?.some(
+          c => c.toLowerCase() === miasto.toLowerCase()
+        )
 
       return categoryMatch && cityMatch
 
     })
   )
 
-  if (!cityPartners) return notFound()
+  if (!cityPartners.length) return notFound()
 
   return (
 
@@ -37,7 +41,7 @@ export default async function ProposalCityPage({
 
       <div className="max-w-6xl mx-auto px-6 py-24">
 
-        <h1 className="text-4xl font-semibold mb-6">
+        <h1 className="text-4xl font-semibold mb-6 capitalize">
           {blok} — {miasto}
         </h1>
 
