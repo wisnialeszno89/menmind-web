@@ -58,7 +58,29 @@ export async function generateMetadata({
 
   return {
     title: `${article.title} | MenMind`,
-    description: article.description
+    description: article.description,
+
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      url: `https://menmind.app/${world}/${slug}`,
+      siteName: "MenMind",
+      images: [
+        {
+          url: "https://menmind.app/og",
+          width: 1200,
+          height: 630
+        }
+      ],
+      type: "article"
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.description,
+      images: ["https://menmind.app/og"]
+    }
   }
 }
 

@@ -22,9 +22,15 @@ export default function Page() {
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-20">
+
       <h1 className="text-4xl font-semibold mb-6">
         Artykuły
       </h1>
+
+      <p className="text-gray-600 mb-10">
+        Artykuły pomagające mężczyznom poukładać kryzys,
+        relacje, finanse i kierunek życia.
+      </p>
 
       <div className="flex flex-wrap gap-3 mb-10">
         {filters.map(f => (
@@ -44,6 +50,7 @@ export default function Page() {
       </div>
 
       <ArticleGrid articles={filtered} />
+
     </main>
   )
 }
