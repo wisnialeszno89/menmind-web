@@ -20,6 +20,14 @@ export default function Header() {
 
           <Navbar />
 
+          {/* NOWY LINK */}
+          <Link
+            href="/artykuly"
+            className="text-sm text-neutral-700 hover:text-black transition"
+          >
+            Artykuły
+          </Link>
+
           <Link
             href="/propozycje"
             className="text-sm px-4 py-2 rounded-lg bg-black text-white hover:opacity-90 transition"

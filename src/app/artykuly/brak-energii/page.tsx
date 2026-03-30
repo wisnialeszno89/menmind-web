@@ -1,35 +1,43 @@
-import Link from "next/link"
-import RelatedArticles from "@/components/RelatedArticles"
+import ArticleLayout from "@/features/articles/ArticleLayout"
 
 export const metadata = {
-  title: "Brak energii – co robić | MenMind",
-  description: "Jak odzyskać energię i wrócić do działania."
+  title: "Brak energii | MenMind",
+  description: "Co zrobić gdy brakuje energii do działania."
 }
 
-export default function Page(){
-  return(
-    <main className="bg-white min-h-screen">
-      <div className="max-w-3xl mx-auto px-6 py-24">
+export default function Page() {
+  return (
 
-        <h1 className="text-4xl font-semibold mb-6">
-          Brak energii – co robić
-        </h1>
+    <ArticleLayout
+      title="Brak energii"
+      description="Co zrobić gdy brakuje energii do działania."
+      world="kryzys"
+      slug="brak-energii"
+    >
 
-        <p className="mb-8">
-          Brak energii często wynika z przeciążenia i stresu.
-        </p>
+      <p>
+        Brak energii często pojawia się stopniowo.
+        Najpierw trudniej się skupić.
+      </p>
 
-        <Link href="/sciezki/energia" className="block border p-4 rounded-lg mb-4">
-          👉 Zobacz ścieżkę energii
-        </Link>
+      <p>
+        Potem odkładasz kolejne rzeczy.
+        W końcu pojawia się zmęczenie.
+      </p>
 
-        <Link href="/narzedzia/reset" className="block border p-4 rounded-lg">
-          👉 Zrób szybki reset
-        </Link>
-        
-        <RelatedArticles />
+      <h2>Najczęstsze przyczyny</h2>
 
-      </div>
-    </main>
+      <ul>
+        <li>przeciążenie</li>
+        <li>brak snu</li>
+        <li>stres</li>
+      </ul>
+
+      <p>
+        To sygnał, że potrzebujesz odzyskać równowagę.
+      </p>
+
+    </ArticleLayout>
+
   )
 }

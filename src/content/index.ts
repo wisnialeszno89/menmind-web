@@ -13,3 +13,10 @@ export const worlds = {
 }
 
 export type WorldKey = keyof typeof worlds
+
+export const allArticles: Article[] = [
+  ...kryzys,
+  ...odbudowa,
+  ...wzrost,
+  ...ojcostwo
+]

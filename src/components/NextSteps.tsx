@@ -1,7 +1,12 @@
 import Link from "next/link"
 import { navimindLink } from "@/lib/navimind"
 
-export default function NextSteps({world}:{world:string}){
+type Props = {
+  world?: string
+  slug?: string
+}
+
+export default function NextSteps({ world = "kryzys" }: Props){
 
 let pathLink="/sciezki"
 let toolLink="/narzedzia"
@@ -10,31 +15,23 @@ let navimind = navimindLink({state:world})
 let supportLink="/propozycje"
 
 if(world==="kryzys"){
-
-pathLink="/kryzys"
-toolLink="/narzedzia/reset"
-
+  pathLink="/kryzys"
+  toolLink="/narzedzia/reset"
 }
 
 if(world==="ojcostwo"){
-
-pathLink="/ojcostwo"
-toolLink="/narzedzia/relacje"
-
+  pathLink="/ojcostwo"
+  toolLink="/narzedzia/relacje"
 }
 
 if(world==="wzrost"){
-
-pathLink="/wzrost"
-toolLink="/narzedzia/energia"
-
+  pathLink="/wzrost"
+  toolLink="/narzedzia/energia"
 }
 
 if(world==="odbudowa"){
-
-pathLink="/odbudowa"
-toolLink="/narzedzia/plan-72h"
-
+  pathLink="/odbudowa"
+  toolLink="/narzedzia/plan-72h"
 }
 
 return(

@@ -3,7 +3,12 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
-export default function AIRecommendedTests(){
+type Props = {
+  world?: string
+  slug?: string
+}
+
+export default function AIRecommendedTests({ world, slug }: Props){
 
   const [test,setTest] = useState<any>(null)
 

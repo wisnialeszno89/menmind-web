@@ -1,37 +1,22 @@
 import Link from "next/link"
+import { allArticles } from "@/content"
 
-const related = [
-  {
-    title: "Jak ogarnąć życie",
-    href: "/artykuly/jak-ogarnac-zycie"
-  },
-  {
-    title: "Brak motywacji",
-    href: "/artykuly/brak-motywacji"
-  },
-  {
-    title: "Chaos w życiu",
-    href: "/artykuly/chaos-w-zyciu"
-  },
-  {
-    title: "Samotność u mężczyzny",
-    href: "/artykuly/samotnosc-u-mezczyzny"
-  },
-  {
-    title: "Brak energii",
-    href: "/artykuly/brak-energii"
-  },
-  {
-    title: "Jak radzić sobie ze stresem",
-    href: "/artykuly/jak-poradzic-sobie-ze-stresem"
-  }
-]
+type Props = {
+  world: string
+  slug: string
+}
 
-export default function RelatedArticles(){
+export default function RelatedArticles({ world, slug }: Props) {
 
-  return(
+  const related = allArticles
+    .filter(a => a.world === world && a.slug !== slug)
+    .slice(0, 3)
 
-    <section className="mt-16 border-t pt-10">
+  if (!related.length) return null
+
+  return (
+
+    <section className="mt-20">
 
       <h3 className="text-xl font-semibold mb-6">
         Powiązane artykuły
@@ -39,14 +24,22 @@ export default function RelatedArticles(){
 
       <div className="grid md:grid-cols-3 gap-4">
 
-        {related.map(article => (
+        {related.map(a => (
 
           <Link
-            key={article.href}
-            href={article.href}
-            className="border rounded-lg p-4 hover:shadow transition text-sm"
+            key={a.slug}
+            href={`/${a.world}/${a.slug}`}
+            className="border rounded-xl p-4 hover:shadow transition"
           >
-            {article.title}
+
+            <p className="font-medium mb-2">
+              {a.title}
+            </p>
+
+            <p className="text-sm text-gray-600">
+              {a.description}
+            </p>
+
           </Link>
 
         ))}

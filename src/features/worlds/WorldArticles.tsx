@@ -1,37 +1,28 @@
 import ArticleGrid from "@/components/ui/ArticleGrid"
-import { worlds, WorldKey } from "@/content"
+import { worlds } from "@/content"
 import { Article } from "@/types/article"
 
 type Props = {
-  world: WorldKey
+  world: "kryzys" | "ojcostwo" | "odbudowa" | "wzrost"
 }
 
 export default function WorldArticles({ world }: Props) {
 
-  if (!worlds[world]) {
-    console.error("Invalid world:", world)
-    return null
-  }
+  const articles: Article[] = worlds[world] || []
 
-  const articles = worlds[world]
+  const sortedArticles = [...articles]
 
-  if (!articles?.length) return null
-
-  // ❌ nie potrzebujesz już castowania
-  const sortedArticles = [...articles].reverse()
+  if (!sortedArticles.length) return null
 
   return (
-    <section className="mt-16">
-
-      <h2 className="text-2xl font-semibold mb-8">
-        Artykuły ({articles.length})
+    <section className="mt-20">
+      <h2 className="text-2xl font-semibold mb-6">
+        Artykuły
       </h2>
 
       <ArticleGrid
         articles={sortedArticles}
-        base={world}
       />
-
     </section>
   )
 }

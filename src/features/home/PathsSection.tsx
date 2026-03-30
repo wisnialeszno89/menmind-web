@@ -40,7 +40,7 @@ export default function PathsSection(){
           </Link>
 
         </div>
-src/app/page.tsx
+
       </div>
     </section>
   )

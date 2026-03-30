@@ -1,14 +1,13 @@
 import Link from "next/link"
 import { partners } from "@/data/partners"
-import { trackEvent } from "@/lib/tracking"
 
 type Props = {
-  world: string
+  world?: string
+  slug?: string
 }
 
-export default function ArticleCTA({ world }: Props) {
+export default function ArticleCTA({ world = "kryzys" }: Props) {
 
-  // 🔥 MAPA DOPASOWANIA
   const worldMap: Record<string, string[]> = {
     kryzys: ["psycholog", "mediator"],
     ojcostwo: ["prawo", "relacje"],
@@ -16,10 +15,8 @@ export default function ArticleCTA({ world }: Props) {
     wzrost: ["trening", "rozwoj"]
   }
 
-  // 🔥 WYBIERZ KATEGORIE
   const categories = worldMap[world] || []
 
-  // 🔥 FILTROWANIE PARTNERÓW
   const matched = partners
     .filter(p =>
       p.featured &&
@@ -27,12 +24,10 @@ export default function ArticleCTA({ world }: Props) {
     )
     .slice(0, 3)
 
-  // 🔥 FALLBACK (gdy brak dopasowania)
   const finalPartners = matched.length
     ? matched
     : partners.filter(p => p.featured).slice(0, 3)
 
-  // 🔥 JEŚLI NIC NIE MA → NIC NIE POKAZUJ
   if (!finalPartners.length) return null
 
   return (

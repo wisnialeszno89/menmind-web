@@ -1,3 +1,4 @@
+import ArticleLayout from "@/features/articles/ArticleLayout"
 export default function Page() {
   return (
     <article className="max-w-3xl mx-auto py-12 px-6">

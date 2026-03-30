@@ -1,5 +1,5 @@
+import ArticleLayout from "@/features/articles/ArticleLayout"
 import Link from "next/link"
-import RelatedArticles from "@/components/RelatedArticles"
 
 export const metadata = {
   title: "Brak motywacji – co robić | MenMind",
@@ -11,7 +11,7 @@ export default function Page(){
 
   return(
 
-    <main className="bg-white min-h-screen">
+    <ArticleLayout title="Tytuł artykułu" description="Opis artykułu" world="kryzys" slug="slug-artykulu">
       <div className="max-w-3xl mx-auto px-6 py-24">
 
         <h1 className="text-4xl font-semibold mb-6">
@@ -53,10 +53,9 @@ export default function Page(){
           👉 Zobacz ścieżkę dyscypliny
         </Link>
 
-        <RelatedArticles />
         
       </div>
-    </main>
+    </ArticleLayout>
 
   )
 

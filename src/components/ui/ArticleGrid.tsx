@@ -3,10 +3,9 @@ import { Article } from "@/types/article"
 
 type Props = {
   articles: Article[]
-  base: string
 }
 
-export default function ArticleGrid({ articles, base }: Props) {
+export default function ArticleGrid({ articles }: Props) {
 
   if (!articles?.length) return null
 
@@ -16,7 +15,7 @@ export default function ArticleGrid({ articles, base }: Props) {
         <ArticleCard
           key={article.slug}
           slug={article.slug}
-          base={base}
+          world={article.world}
           title={article.title}
           description={article.description ?? ""}
         />

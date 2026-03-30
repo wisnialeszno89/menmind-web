@@ -2,39 +2,35 @@ import Link from "next/link"
 
 type Props = {
   slug: string
+  world: string
   title: string
-  description?: string
-  base: string
-  isNew?: boolean
+  description: string
 }
 
 export default function ArticleCard({
   slug,
+  world,
   title,
-  description,
-  base,
-  isNew
+  description
 }: Props) {
-  return (
-    <Link
-      href={`/${base}/${slug}`}
-      className="border rounded-xl p-6 block card-hover hover:border-black transition bg-white"
-    >
-      <h3 className="text-xl font-medium mb-2 flex items-center">
-        {title}
 
-        {isNew && (
-          <span className="ml-2 text-xs px-2 py-1 bg-black text-white rounded">
-            Nowe
-          </span>
-        )}
+  return (
+
+    <Link
+      href={`/${world}/${slug}`}
+      className="block border rounded-xl p-6 hover:shadow transition"
+    >
+
+      <h3 className="font-semibold mb-2">
+        {title}
       </h3>
 
-      {description && (
-        <p className="text-sm text-neutral-600">
-          {description}
-        </p>
-      )}
+      <p className="text-sm text-gray-600">
+        {description}
+      </p>
+
     </Link>
+
   )
+
 }

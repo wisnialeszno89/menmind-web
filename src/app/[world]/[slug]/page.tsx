@@ -7,13 +7,7 @@ import { odbudowa } from "@/content/odbudowa"
 import { wzrost } from "@/content/wzrost"
 
 import { readingTime } from "@/lib/readingTime"
-
-type Article = {
-  slug: string
-  title: string
-  description: string
-  content: string
-}
+import { Article } from "@/types/article"
 
 type World =
   | "kryzys"
@@ -38,7 +32,6 @@ function isWorld(value: string): value is World {
 }
 
 export function generateStaticParams() {
-
   return Object.entries(worlds).flatMap(
     ([world, articles]) =>
       articles.map((a) => ({
@@ -46,7 +39,6 @@ export function generateStaticParams() {
         slug: a.slug
       }))
   )
-
 }
 
 export async function generateMetadata({
@@ -54,7 +46,6 @@ export async function generateMetadata({
 }: {
   params: Promise<{ world: string; slug: string }>
 }) {
-
   const { world, slug } = await params
 
   if (!isWorld(world)) return {}
@@ -66,13 +57,9 @@ export async function generateMetadata({
   if (!article) return {}
 
   return {
-
     title: `${article.title} | MenMind`,
-
     description: article.description
-
   }
-
 }
 
 export default async function Page({
@@ -80,7 +67,6 @@ export default async function Page({
 }: {
   params: Promise<{ world: string; slug: string }>
 }) {
-
   const { world, slug } = await params
 
   if (!isWorld(world)) return notFound()
@@ -91,7 +77,7 @@ export default async function Page({
     (a) => a.slug === slug
   )
 
-  if (!article) return notFound()
+  if (!article || !article.content) return notFound()
 
   const minutes = readingTime(article.content)
 
@@ -101,31 +87,24 @@ export default async function Page({
     .filter(Boolean)
 
   return (
-
     <ArticleLayout
       title={article.title}
-      description={article.description}
+      description={article.description ?? ""}
       world={world}
       slug={slug}
     >
-
       <p className="text-sm text-gray-500 mb-8">
         {minutes} min czytania
       </p>
 
       {paragraphs.map((paragraph, i) => (
-
         <p
           key={i}
           className="text-lg leading-relaxed mb-6"
         >
           {paragraph}
         </p>
-
       ))}
-
     </ArticleLayout>
-
   )
-
 }
