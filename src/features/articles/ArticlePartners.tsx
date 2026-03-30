@@ -18,20 +18,23 @@ if(!isWorld(world)) return null
 
 const mapping:Record<World,string[]> = {
 
-  kryzys:["psycholog","mediator","coach"],
+  kryzys:["psycholog","mediator","coach","prawo"],
 
-  ojcostwo:["mediator","prawnik"],
+  ojcostwo:["prawo","relacje","aktywnosci-z-dziecmi"],
 
-  odbudowa:["coach","warsztaty-meskie"],
+  odbudowa:["coach","mental","coaching"],
 
-  wzrost:["coaching","rozwoj-osobisty"]
+  wzrost:["coaching","rozwoj","rozwoj-osobisty"]
 
 }
 
 const categories = mapping[world] || []
 
 const filtered = partners.filter(
-  p => categories.includes(p.category)
+  p =>
+    p.category?.some(
+      c => categories.includes(c)
+    )
 )
 
 if(!filtered.length) return null

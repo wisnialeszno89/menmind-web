@@ -9,10 +9,10 @@ type Props = {
 export default function ArticleCTA({ world = "kryzys" }: Props) {
 
   const worldMap: Record<string, string[]> = {
-    kryzys: ["psycholog", "mediator"],
-    ojcostwo: ["prawo", "relacje"],
-    odbudowa: ["mental", "plan"],
-    wzrost: ["trening", "rozwoj"]
+    kryzys: ["psycholog", "mediator", "prawo"],
+    ojcostwo: ["prawo", "relacje", "aktywnosci-z-dziecmi"],
+    odbudowa: ["mental", "plan", "coaching"],
+    wzrost: ["trening", "rozwoj", "coaching"]
   }
 
   const categories = worldMap[world] || []
@@ -20,7 +20,9 @@ export default function ArticleCTA({ world = "kryzys" }: Props) {
   const matched = partners
     .filter(p =>
       p.featured &&
-      categories.includes(p.category)
+      p.category?.some(
+        c => categories.includes(c)
+      )
     )
     .slice(0, 3)
 

@@ -1,6 +1,6 @@
 import { cities } from "@/data/cities"
 import { proposalCategories } from "@/data/proposalsCategories"
-import { partners } from "@/data/partners"
+import { partners, placeholderPartners } from "@/data/partners"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import PartnersList from "@/features/marketplace/PartnersList"
@@ -22,11 +22,25 @@ export default async function ProposalCategoryPage({
 
   if (!category) return notFound()
 
-  const categoryPartners = rankPartners(
-  partners.filter(p =>
-    p.category?.toLowerCase().includes(blok.toLowerCase())
+  /* REAL PARTNERS */
+  const realPartners = partners.filter(p =>
+    p.category?.some(
+      c => c.toLowerCase() === blok.toLowerCase()
+    )
   )
-).slice(0,6)
+
+  /* PLACEHOLDER PARTNERS */
+  const fallbackPartners = placeholderPartners.filter(p =>
+    p.category?.some(
+      c => c.toLowerCase() === blok.toLowerCase()
+    )
+  )
+
+  /* MERGE + RANK */
+  const categoryPartners = rankPartners([
+    ...realPartners,
+    ...fallbackPartners
+  ]).slice(0,6)
 
   return (
 
@@ -46,28 +60,23 @@ export default async function ProposalCategoryPage({
           Dostępne wsparcie
         </h2>
 
-        {categoryPartners.length > 0 ? (
-
+        {categoryPartners.length > 0 && (
           <PartnersList partners={categoryPartners} />
-
-        ) : (
-
-          <div className="border rounded-xl p-8 text-center">
-
-            <p className="text-gray-700 mb-4">
-              Aktualnie dodajemy partnerów w tej kategorii.
-            </p>
-
-            <Link
-              href="/dla-partnerow"
-              className="border px-6 py-3 rounded-lg hover:shadow"
-            >
-              Dodaj swoją usługę
-            </Link>
-
-          </div>
-
         )}
+
+        {/* CTA zawsze widoczne */}
+        <div className="mt-8 border rounded-xl p-6 text-center bg-gray-50">
+          <p className="text-gray-700 mb-3">
+            Prowadzisz działalność w tej kategorii?
+          </p>
+
+          <Link
+            href="/dla-partnerow"
+            className="border px-6 py-3 rounded-lg hover:shadow"
+          >
+            Dodaj swoją usługę
+          </Link>
+        </div>
 
         <h2 className="text-2xl font-semibold mt-16 mb-6">
           Wybierz miasto

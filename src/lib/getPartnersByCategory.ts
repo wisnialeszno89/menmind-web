@@ -1,43 +1,61 @@
-import { partners } from "@/data/partners"
+import { partners, placeholderPartners } from "@/data/partners"
 
 export function getPartnersByCategory(
   category: string,
   city?: string
 ) {
 
-  // 🔥 jeśli nie ma miasta → zwróć wszystkich z kategorii
-  if (!city) {
-    return partners.filter(
-      (partner) => partner.category === category
+  const matchesCategory = (p:any) =>
+    p.category?.some(
+      (c:string) => c.toLowerCase() === category.toLowerCase()
     )
+
+  const matchesCity = (p:any) =>
+    p.city?.some(
+      (c:string) => c.toLowerCase() === city?.toLowerCase()
+    )
+
+  // 🔥 brak miasta → zwróć wszystkich + placeholder
+  if (!city) {
+
+    const real = partners.filter(matchesCategory)
+    const fallback = placeholderPartners.filter(matchesCategory)
+
+    return [...real, ...fallback]
   }
 
-  // 🔥 najpierw lokalni
+  // 🔥 lokalni
   const local = partners.filter(
-    (partner) =>
-      partner.category === category &&
-      partner.city === city
+    (p) => matchesCategory(p) && matchesCity(p)
   )
 
   if (local.length > 0) {
     return local
   }
 
-  // 🔥 fallback online
+  // 🔥 online fallback
   const online = partners.filter(
-    (partner) =>
-      partner.category === category &&
-      partner.locationType === "online"
+    (p) =>
+      matchesCategory(p) &&
+      p.locationType === "online"
   )
 
   if (online.length > 0) {
     return online
   }
 
-  // 🔥 fallback national
-  return partners.filter(
-    (partner) =>
-      partner.category === category &&
-      partner.locationType === "national"
+  // 🔥 national fallback
+  const national = partners.filter(
+    (p) =>
+      matchesCategory(p) &&
+      p.locationType === "national"
   )
+
+  if (national.length > 0) {
+    return national
+  }
+
+  // 🔥 ostatni fallback → placeholder
+  return placeholderPartners.filter(matchesCategory)
+
 }

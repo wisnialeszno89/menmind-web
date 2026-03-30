@@ -111,14 +111,23 @@ export default function ProposalsGrid(){
             {section.categories.map((category, index) => {
 
               // 🔥 liczba partnerów
-              const count = partners.filter(
-                p => p.category === category.slug
-              ).length
+              const count = Math.max(
+              3,
+            partners.filter(
+            p =>
+           p.category?.some(
+        c => c.toLowerCase() === category.slug.toLowerCase()
+      )
+  ).length
+)
 
-              // 🔥 czy jest online
-              const hasOnline = partners.some(
-                p => p.category === category.slug && p.locationType === "online"
-              )
+        const hasOnline = partners.some(
+        p =>
+        p.locationType === "online" &&
+        p.category?.some(
+        c => c.toLowerCase() === category.slug.toLowerCase()
+    )
+)
 
               return(
 
