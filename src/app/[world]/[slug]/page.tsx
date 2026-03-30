@@ -66,11 +66,7 @@ export async function generateMetadata({
       url: `https://menmind.app/${world}/${slug}`,
       siteName: "MenMind",
       images: [
-        {
-          url: "https://menmind.app/og",
-          width: 1200,
-          height: 630
-        }
+  `https://menmind.app/og?title=${encodeURIComponent(article.title)}&world=${world}`
       ],
       type: "article"
     },
