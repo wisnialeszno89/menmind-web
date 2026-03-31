@@ -201,9 +201,7 @@ export default function ArticleLayout({
 
       <ArticleCTA world={world} />
 
-      <ArticlePartners world={world} />
-
-      {slug && (
+        {slug && (
         <section className="mt-20">
           <RelatedArticles
             world={world}
