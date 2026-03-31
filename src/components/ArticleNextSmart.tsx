@@ -12,6 +12,11 @@ export default function ArticleNextSmart({ slug, world }: Props){
   // 1. slug mapping (najbardziej precyzyjne)
   const slugMap: Record<string, any> = {
 
+    "nie-mam-sily-po-pracy": {
+    test: "/narzedzia/test-energii",
+    tool: "/narzedzia/reset",
+    },
+
     "nie-lubie-swojej-pracy-ale-boje-sie-zmiany": {
     test: "/narzedzia/test-zmiany-pracy",
     tool: "/narzedzia/kompas-decyzji",
