@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import Link from "next/link"
 
 type Time = "15" | "60" | "weekend"
 type Age = "3-6" | "7-12" | "13+"
@@ -31,11 +32,33 @@ export default function PlanCzasuZDzieckiem() {
   const [time, setTime] = useState<Time | null>(null)
   const [age, setAge] = useState<Age | null>(null)
   const [goal, setGoal] = useState<Goal | null>(null)
+  const [done,setDone] = useState(false)
+
+  useEffect(()=>{
+    const saved = localStorage.getItem("father-last-plan")
+    if(saved){
+      const parsed = JSON.parse(saved)
+      setTime(parsed.time)
+      setAge(parsed.age)
+      setGoal(parsed.goal)
+    }
+  },[])
 
   const reset = () => {
     setTime(null)
     setAge(null)
     setGoal(null)
+    setDone(false)
+  }
+
+  function markDone(){
+    setDone(true)
+
+    localStorage.setItem("father-last-plan",
+      JSON.stringify({time,age,goal})
+    )
+
+    localStorage.setItem("mm_last_action","father-plan")
   }
 
   return (
@@ -89,19 +112,46 @@ export default function PlanCzasuZDzieckiem() {
 
       {time && age && goal && (
         <div className="border rounded-xl p-8">
+
           <h2 className="text-xl font-semibold mb-4">
             Twój plan
           </h2>
 
-          <p className="text-lg">
+          <p className="text-lg mb-6">
             {plans[time][age][goal]}
           </p>
 
+          {!done && (
+            <button
+              onClick={markDone}
+              className="w-full bg-black text-white py-3 rounded-lg mb-3"
+            >
+              Zrobione
+            </button>
+          )}
+
+          {done && (
+            <div className="space-y-3">
+
+              <p className="text-green-600 text-sm">
+                ✔ Zaznaczono
+              </p>
+
+              <Link
+                href="/narzedzia/tracker-kontaktu-z-dzieckiem"
+                className="block border rounded-lg p-3 text-center"
+              >
+                Zaznacz kontakt w trackerze
+              </Link>
+
+            </div>
+          )}
+
           <button
             onClick={reset}
-            className="mt-8 text-sm text-gray-500"
+            className="mt-6 text-sm text-gray-500"
           >
-            Zacznij od nowa
+            Nowy plan
           </button>
 
         </div>
