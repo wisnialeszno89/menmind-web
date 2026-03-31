@@ -23,6 +23,10 @@ const toolMap = {
   "minimum": MinimumPage,
   "energy-map": SleepTracker,
   "kompas-decyzji": DecisionCompass,
+
+  // aliasy które masz w katalogach
+  "reset-7-krokow": Reset90Page,
+  "stabilizacja": MinimumPage,
 }
 
 export function generateStaticParams() {
@@ -38,35 +42,39 @@ export default async function Page({
 }) {
   const { slug } = await params
 
+  // jeżeli istnieje fizyczna strona w app/narzedzia/... → pozwól jej działać
   const ToolComponent = toolMap[slug as keyof typeof toolMap]
 
-  if (!ToolComponent) return notFound()
+  if (ToolComponent) {
+    return (
+      <div className="max-w-3xl mx-auto px-6 py-16">
 
-  return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
+        <ToolCompleted slug={slug} />
 
-      <ToolCompleted slug={slug} />
+        <ToolComponent />
 
-      <ToolComponent />
+        <ToolNextBar />
 
-      <ToolNextBar />
+        <section className="mt-16">
+          <NextSteps world="kryzys" />
+        </section>
 
-      <section className="mt-16">
-        <NextSteps world="kryzys" />
-      </section>
+        <section className="mt-16">
+          <ExploreTools />
+        </section>
 
-      <section className="mt-16">
-        <ExploreTools />
-      </section>
+        <section className="mt-16 border-t pt-10">
+          <h3 className="text-xl font-semibold mb-6">
+            Przeczytaj także
+          </h3>
 
-      <section className="mt-16 border-t pt-10">
-        <h3 className="text-xl font-semibold mb-6">
-          Przeczytaj także
-        </h3>
+          <RelatedArticles world="kryzys" slug={slug} />
+        </section>
 
-        <RelatedArticles world="kryzys" slug={slug} />
-      </section>
+      </div>
+    )
+  }
 
-    </div>
-  )
+  // fallback — jeżeli masz plik w app/narzedzia/{slug}/page.tsx
+  return notFound()
 }
