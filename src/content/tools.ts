@@ -92,5 +92,66 @@ export const tools: Tool[] = [
   description: "Sprawdź czy stoisz w miejscu czy czas na zmianę",
   world: "wzrost"
   },
+  ,
+{
+  slug: "test-sytuacji",
+  title: "Test sytuacji",
+  description: "Sprawdź w jakim miejscu życia jesteś",
+  world: "kryzys"
+},
+{
+  slug: "test-stresu",
+  title: "Test stresu",
+  description: "Sprawdź poziom napięcia",
+  world: "kryzys"
+},
+{
+  slug: "test-chaosu",
+  title: "Test chaosu",
+  description: "Zobacz czy potrzebujesz stabilizacji",
+  world: "kryzys"
+},
+{
+  slug: "test-energii",
+  title: "Test energii",
+  description: "Sprawdź poziom energii",
+  world: "kryzys"
+},
+{
+  slug: "test-przeciazenia",
+  title: "Test przeciążenia",
+  description: "Sprawdź czy jesteś przeciążony",
+  world: "kryzys"
+},
+{
+  slug: "test-wypalenia",
+  title: "Test wypalenia",
+  description: "Sprawdź objawy wypalenia",
+  world: "kryzys"
+},
+{
+  slug: "test-zycia",
+  title: "Test życia",
+  description: "Ocena ogólnej sytuacji",
+  world: "wzrost"
+},
+{
+  slug: "test-kierunku",
+  title: "Test kierunku",
+  description: "Sprawdź kierunek działania",
+  world: "wzrost"
+},
+{
+  slug: "test-relacji",
+  title: "Test relacji",
+  description: "Sprawdź stan relacji",
+  world: "odbudowa"
+},
+{
+  slug: "test-relacji-ratowac",
+  title: "Ratować relację?",
+  description: "Sprawdź czy walczyć czy odpuścić",
+  world: "odbudowa"
+}
 
 ]
