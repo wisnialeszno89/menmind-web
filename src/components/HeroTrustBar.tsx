@@ -6,12 +6,8 @@ export default function HeroTrustBar(){
     <div className="border-b bg-white">
       <div className="max-w-4xl mx-auto px-6 py-3">
 
-        <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500">
-
-          <span>✓ anonimowo</span>
-          <span>✓ bez logowania</span>
-          <span>✓ pierwszy krok w 2 min</span>
-
+        <div className="text-xs text-gray-500 text-center">
+          Bez logowania • Anonimowo • Pierwszy krok w 2 minuty
         </div>
 
       </div>

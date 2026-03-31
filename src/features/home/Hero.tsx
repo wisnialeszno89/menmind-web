@@ -1,5 +1,4 @@
 import Link from "next/link"
-import LiveUsers from "@/components/LiveUsers"
 
 type Props = {
   title: string
@@ -33,29 +32,11 @@ export default function Hero({ title, intro }: Props) {
             zajmie mniej niż 2 minuty
           </p>
 
-          <div className="grid grid-cols-2 gap-3">
-
-            <Link
-              href="/propozycje"
-              className="border border-black py-3 rounded-xl hover:bg-black hover:text-white transition"
-            >
-              Znajdź
-            </Link>
-
-            <Link
-              href="/narzedzia"
-              className="border border-black/20 py-3 rounded-xl hover:bg-black/5 transition"
-            >
-              Narzędzia
-            </Link>
-
+          <div className="mt-6 text-sm text-gray-500">
+          lub <Link href="/narzedzia" className="underline">zobacz narzędzia</Link>
           </div>
 
-          <div className="mt-4 text-center">
-            <LiveUsers />
           </div>
-
-        </div>
 
       </div>
 

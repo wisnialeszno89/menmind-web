@@ -3,22 +3,20 @@ import { useEffect, useState } from "react"
 
 export default function LiveActivity() {
 
-  const [count, setCount] = useState(48)
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCount(c => c + Math.floor(Math.random()*2))
-    }, 6000)
-
-    return () => clearInterval(interval)
+    setCount(48 + Math.floor(Math.random()*12))
   }, [])
 
+  if(!count) return null
+
   return (
-    <section className="py-6 border-t">
+    <section className="py-4">
       <div className="max-w-6xl mx-auto px-6 text-center">
 
-        <div className="text-sm text-neutral-500">
-          🔴 {count} mężczyzn korzysta teraz z MenMind
+        <div className="text-xs text-neutral-400">
+          Ostatnio aktywnych: {count}
         </div>
 
       </div>

@@ -1,7 +1,6 @@
 "use client"
 
 import Hero from "@/features/home/Hero"
-import StartSection from "@/features/home/StartSection"
 import WorldPreview from "@/features/home/WorldPreview"
 import HomeArticles from "@/features/home/HomeArticles"
 import TrustSection from "@/features/home/TrustSection"
@@ -16,15 +15,12 @@ import Testimonials from "@/features/home/Testimonials"
 import TrendingPaths from "@/features/home/TrendingPaths"
 import StatsCounter from "@/components/StatsCounter"
 import ActivityFeed from "@/features/home/ActivityFeed"
-import StartSteps from "@/features/home/StartSteps"
 import QuickTests from "@/features/home/QuickTests"
 import PathsSection from "@/features/home/PathsSection"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
 import ContinueWhereLeft from "@/components/ContinueWhereLeft"
 import DailyStep from "@/components/DailyStep"
 import HeroTrustBar from "@/components/HeroTrustBar"
-
-import QuickOnboarding from "@/components/QuickOnboarding"
 
 import { MessageCircle } from "lucide-react"
 
@@ -41,17 +37,13 @@ export default function Home() {
       />
       <HeroTrustBar />
 
-      {/* DOPASOWANIE */}
-      <QuickOnboarding />
-      
+      {/* POWRÓT */}
       <ContinueWhereLeft />
 
+      {/* KROK DNIA */}
       <DailyStep />
 
-      {/* PIERWSZE KROKI */}
-      <StartSteps />
-
-      {/* TESTY */}
+      {/* GŁÓWNY START */}
       <QuickTests />
 
       {/* ŚCIEŻKI */}
@@ -62,17 +54,15 @@ export default function Home() {
 
       <StatsCounter />
 
-      <ActivityFeed />
-
-      {/* NAVIMIND */}
-      <section className="py-20 border-t">
+      {/* NAVIMIND - niżej */}
+      <section className="py-16 border-t">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold mb-3">
             Nie wiesz co wybrać?
           </h2>
 
-          <p className="text-neutral-600 mb-8">
-            Możesz to spokojnie przegadać i zobaczyć kolejny krok.
+          <p className="text-neutral-600 mb-6">
+            Możesz spokojnie przegadać i zobaczyć kolejny krok.
           </p>
 
           <a
@@ -82,57 +72,33 @@ export default function Home() {
             className="inline-flex items-center gap-2 text-gray-700 hover:text-black transition"
           >
             <MessageCircle size={18} />
-            Przejdź do rozmowy w NaviMind
+            Porozmawiaj w NaviMind
           </a>
         </div>
       </section>
 
-      {/* EKSPLORACJA */}
+      {/* RESZTA NIŻEJ */}
       <WorldPreview />
 
-      {/* SEO */}
       <HomeSeoArticles />
 
-      {/* MARKETPLACE CTA */}
-      <section className="py-20 border-t">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-semibold mb-4">
-            Nie wiesz który kierunek wybrać?
-          </h2>
-
-          <p className="text-neutral-600 mb-8">
-            Możesz od razu zobaczyć specjalistów i formy wsparcia dopasowane do Twojej sytuacji.
-          </p>
-
-          <a
-            href="/propozycje"
-            className="inline-block border border-black px-6 py-3 rounded-xl hover:bg-black hover:text-white transition"
-          >
-            Zobacz dostępne wsparcie
-          </a>
-        </div>
-      </section>
-
-      {/* TREŚCI */}
       <HomeArticles />
 
-      {/* PARTNERZY */}
-      <FeaturedPartners />
+      <TrendingPaths />
 
-      {/* ZAUFANIE */}
+      <PopularTools />
+
       <TrustSection />
 
       <Testimonials />
 
-      {/* NAJCZĘŚCIEJ WYBIERANE */}
-      <PopularTools />
-
-      <TrendingPaths />
+      <FeaturedPartners />
 
       <ComeBackTomorrow />
 
-      {/* SZYBKIE PROBLEMY */}
       <QuickProblems />
+
+      <ActivityFeed />
 
       <LiveActivity />
     </>

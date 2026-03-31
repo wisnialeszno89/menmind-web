@@ -30,18 +30,20 @@ const steps: Step[] = [
     href: "/narzedzia/reset",
     action: "daily-reset"
   },
-  {
-    label: "Zobacz dostępne wsparcie",
-    href: "/propozycje",
-    action: "daily-support"
-  }
 ]
 
 export default function DailyStep(){
 
   const [step,setStep] = useState<Step | null>(null)
+  const [hide,setHide] = useState(true)
 
   useEffect(()=>{
+
+    // jeśli jest last action → pokaże się ContinueWhereLeft
+    const last = localStorage.getItem("mm_last_action")
+    if(last) return
+
+    setHide(false)
 
     const today = new Date().toDateString()
     const savedDay = localStorage.getItem("mm_daily_date")
@@ -61,7 +63,7 @@ export default function DailyStep(){
 
   },[])
 
-  if(!step) return null
+  if(hide || !step) return null
 
   return(
     <section className="py-8 border-b bg-gray-50">
@@ -79,7 +81,7 @@ export default function DailyStep(){
           </p>
 
           <p className="font-medium">
-            👉 {step.label}
+            {step.label}
           </p>
 
           <p className="text-xs text-gray-400 mt-2">

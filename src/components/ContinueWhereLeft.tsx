@@ -44,7 +44,7 @@ export default function ContinueWhereLeft(){
   if(!link) return null
 
   return(
-    <section className="py-8 bg-gray-50">
+    <section className="py-8 border-b">
       <div className="max-w-4xl mx-auto px-6">
 
         <Link

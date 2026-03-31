@@ -13,8 +13,7 @@ export default function FeaturedPartners(){
       <div className="max-w-6xl mx-auto px-6">
 
         <h2 className="text-3xl font-semibold mb-4">
-          Sprawdzone miejsca, z których możesz skorzystać
-        </h2>
+          Opcje wsparcia, które wybierają inni        </h2>
 
         <p className="text-gray-600 mb-12 max-w-xl">
           Wybrane opcje, które najczęściej pomagają w podobnych sytuacjach.
