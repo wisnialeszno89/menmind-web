@@ -1,7 +1,18 @@
+"use client"
+
 import Link from "next/link"
 import { tools } from "@/content/tools"
+import { useEffect, useState } from "react"
+import ToolDoneBadge from "@/components/ToolDoneBadge"
 
 export default function Page() {
+
+  const [done,setDone] = useState<string[]>([])
+
+  useEffect(()=>{
+    const saved = JSON.parse(localStorage.getItem("mm_tools") || "[]")
+    setDone(saved)
+  },[])
 
   return (
 
@@ -22,27 +33,36 @@ export default function Page() {
 
       <div className="grid md:grid-cols-3 gap-6">
 
-        {tools.map((tool) => (
+        {tools.map((tool) => {
 
-          <Link
-            key={tool.slug}
-            href={`/narzedzia/${tool.slug}`}
-            className="border rounded-xl p-6 card-hover bg-white"
-          >
+          const isDone = done.includes(tool.slug)
 
-            <h3 className="font-semibold mb-2">
-              {tool.title}
-            </h3>
+          return (
 
-            {tool.description && (
-              <p className="text-sm text-neutral-500">
-                {tool.description}
-              </p>
-            )}
+            <Link
+              key={tool.slug}
+              href={`/narzedzia/${tool.slug}`}
+              className="border rounded-xl p-6 card-hover bg-white"
+            >
 
-          </Link>
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="font-semibold">
+                  {tool.title}
+                </h3>
 
-        ))}
+                {isDone && <ToolDoneBadge />}
+              </div>
+
+              {tool.description && (
+                <p className="text-sm text-neutral-500">
+                  {tool.description}
+                </p>
+              )}
+
+            </Link>
+
+          )
+        })}
 
       </div>
 

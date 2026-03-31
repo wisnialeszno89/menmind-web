@@ -12,9 +12,10 @@ import { notFound } from "next/navigation"
 import RelatedArticles from "@/features/articles/RelatedArticles"
 import ExploreTools from "@/components/ExploreTools"
 import NextSteps from "@/components/NextSteps"
+import ToolCompleted from "@/components/ToolCompleted"
+import ToolNextBar from "@/components/ToolNextBar"
 
 const toolMap = {
-  // stare narzędzia
   "brain-dump": BrainDumpPage,
   "reset-90": Reset90Page,
   "reset": Reset90Page,
@@ -44,7 +45,11 @@ export default async function Page({
   return (
     <div className="max-w-3xl mx-auto px-6 py-16">
 
+      <ToolCompleted slug={slug} />
+
       <ToolComponent />
+
+      <ToolNextBar />
 
       <section className="mt-16">
         <NextSteps world="kryzys" />

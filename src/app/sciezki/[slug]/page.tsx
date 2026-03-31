@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { paths } from "@/data/paths"
 import FindSupportCTA from "@/components/FindSupportCTA"
+import TrackPathClient from "@/components/TrackPathClient"
 
 export const dynamic = "force-dynamic"
 
@@ -20,6 +21,9 @@ export default async function Page({
   return (
 
     <main className="bg-white min-h-screen">
+
+      {/* zapis wejścia w ścieżkę */}
+      <TrackPathClient />
 
       <div className="max-w-3xl mx-auto px-6 py-24">
 
@@ -50,6 +54,7 @@ export default async function Page({
         <Link
           href="/narzedzia/test-sytuacji"
           className="block border p-4 rounded-lg mb-4"
+          onClick={() => localStorage.setItem("mm_last_action", "test-sytuacji")}
         >
           👉 Sprawdź swoją sytuację
         </Link>
@@ -59,6 +64,7 @@ export default async function Page({
         <Link
           href={`/navimind?state=${path.navimindState}`}
           className="block mt-6 text-sm underline"
+          onClick={() => localStorage.setItem("mm_last_action", "navimind")}
         >
           Porozmawiaj w NaviMind
         </Link>

@@ -73,5 +73,18 @@ export const tools: Tool[] = [
   title: "Plan finansowy",
   description: "Plan wyjścia z chaosu finansowego",
   world: "odbudowa"
-  }
+  },
+  {
+  slug: "test-stagnacji",
+  title: "Test stagnacji",
+  description: "Sprawdź czy stoisz w miejscu czy to tylko zmęczenie",
+  world: "wzrost"
+  },
+  {
+  slug: "test-zmiany-pracy",
+  title: "Czy zmieniać pracę?",
+  description: "Sprawdź czy to stagnacja czy czas na zmianę",
+  world: "wzrost"
+  },
+
 ]

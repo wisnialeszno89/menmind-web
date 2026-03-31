@@ -20,6 +20,9 @@ import StartSteps from "@/features/home/StartSteps"
 import QuickTests from "@/features/home/QuickTests"
 import PathsSection from "@/features/home/PathsSection"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
+import ContinueWhereLeft from "@/components/ContinueWhereLeft"
+import DailyStep from "@/components/DailyStep"
+import HeroTrustBar from "@/components/HeroTrustBar"
 
 import QuickOnboarding from "@/components/QuickOnboarding"
 
@@ -36,9 +39,14 @@ export default function Home() {
         title="Miejsce, w którym możesz poukładać swoją sytuację"
         intro="Bez presji. Krok po kroku, w swoim tempie."
       />
+      <HeroTrustBar />
 
       {/* DOPASOWANIE */}
       <QuickOnboarding />
+      
+      <ContinueWhereLeft />
+
+      <DailyStep />
 
       {/* PIERWSZE KROKI */}
       <StartSteps />

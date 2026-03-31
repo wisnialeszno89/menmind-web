@@ -9,11 +9,12 @@ import ArticleCTA from "@/features/articles/ArticleCTA"
 
 import AIRecommendedTests from "@/components/AIRecommendedTests"
 import StickyTestCTA from "@/components/StickyTestCTA"
+import ArticleNextSmart from "@/components/ArticleNextSmart"
 
 type Props = {
   title: string
   description: string
-  world: string
+  world: "kryzys" | "odbudowa" | "wzrost" | "ojcostwo"
   slug?: string
   children: ReactNode
   faq?: {
@@ -163,7 +164,15 @@ export default function ArticleLayout({
 
       <div className="prose prose-lg max-w-none mb-16">
         {children}
-      </div>
+          
+         </div>
+
+         {slug && (
+        <ArticleNextSmart
+        slug={slug}
+        world={world as any}
+      />
+    )}
 
       <section className="mt-16 border-t pt-10">
         <h2 className="text-2xl font-semibold mb-6">

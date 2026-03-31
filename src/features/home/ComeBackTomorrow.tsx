@@ -1,31 +1,30 @@
+"use client"
+
+import { useEffect, useState } from "react"
+
 export default function ComeBackTomorrow(){
 
-  const items = [
-    "Dodajemy nowe narzędzia",
-    "Rozwijamy sekcję kryzys",
-    "Pojawiają się nowi partnerzy",
-    "Rozbudowujemy testy"
-  ]
+  const [hide, setHide] = useState(false)
 
-  const text = items[new Date().getDay() % items.length]
+  useEffect(()=>{
+    const last = localStorage.getItem("mm_last_action")
 
-  return (
-    <section className="py-16 border-t">
-      <div className="max-w-6xl mx-auto px-6">
+    // jeśli user ma coś do kontynuacji → nie pokazuj
+    if(last){
+      setHide(true)
+    }
 
-        <div className="border rounded-xl p-6 bg-neutral-50">
+    // zapis comeback (retencja)
+    localStorage.setItem("mm_comeback","1")
 
-          <h3 className="font-semibold mb-2">
-            Wróć jutro
-          </h3>
+  },[])
 
-          <p className="text-sm text-neutral-600">
-            {text}. Małymi krokami poukładasz sytuację.
-          </p>
+  if(hide) return null
 
-        </div>
-
-      </div>
-    </section>
+  return(
+    <div className="border rounded-lg p-4 text-sm text-gray-600">
+      Wróć jutro — pokażemy kolejny krok.
+    </div>
   )
+
 }

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from "react"
 import Link from "next/link"
 import { getPartnersByCategory } from "@/lib/getPartnersByCategory"
 import { rankPartners } from "@/lib/rankPartners"
@@ -28,6 +29,20 @@ export default function TestResultFlow({ percent }: Props){
     desc = "Możliwe że jesteś w trudnym momencie."
   }
 
+  useEffect(() => {
+
+    // zapis ostatniej akcji
+    localStorage.setItem("mm_last_action", "test")
+
+    // zapis testu
+    const tests = JSON.parse(localStorage.getItem("mm_tests") || "[]")
+    if(!tests.includes(label)){
+      tests.push(label)
+      localStorage.setItem("mm_tests", JSON.stringify(tests))
+    }
+
+  },[label])
+
   const partners = rankPartners(
     getPartnersByCategory(category)
   ).slice(0,4)
@@ -36,7 +51,6 @@ export default function TestResultFlow({ percent }: Props){
 
     <>
 
-      {/* 🔥 WYNIK */}
       <h1 className="text-3xl font-semibold mb-4">
         Poziom: {label}
       </h1>
@@ -49,14 +63,17 @@ export default function TestResultFlow({ percent }: Props){
         Wynik: {percent}%
       </p>
 
-      {/* 🔥 GŁÓWNY CTA DO MARKETPLACE */}
+      {/* CTA NAVIMIND */}
       <Link
-       href="/navimind"
-      className="block border p-4 rounded-lg"
+        href="/navimind"
+        className="block border p-4 rounded-lg"
+        onClick={()=>{
+          localStorage.setItem("mm_last_action","navimind")
+        }}
       >
-      👉 Porozmawiaj w NaviMind
+        👉 Porozmawiaj w NaviMind
       </Link>
-      {/* 🔥 PARTNERZY */}
+
       <h3 className="mt-6 mb-2 font-semibold">
         Kto może Ci realnie pomóc teraz:
       </h3>
@@ -71,7 +88,6 @@ export default function TestResultFlow({ percent }: Props){
 
       <PartnersList partners={partners} />
 
-      {/* 🔽 ALTERNATYWA */}
       <h2 className="text-lg font-semibold mt-12 mb-4">
         Jeśli wolisz zacząć sam:
       </h2>
@@ -81,6 +97,7 @@ export default function TestResultFlow({ percent }: Props){
         <Link
           href="/narzedzia/reset"
           className="block border-2 border-black p-5 rounded-lg"
+          onClick={()=> localStorage.setItem("mm_last_action","reset")}
         >
           👉 Zacznij od resetu
         </Link>
@@ -88,17 +105,21 @@ export default function TestResultFlow({ percent }: Props){
         <Link
           href="/narzedzia/plan-72h"
           className="block border p-4 rounded-lg"
+          onClick={()=> localStorage.setItem("mm_last_action","plan")}
         >
           Ułóż plan 72h
         </Link>
 
       </div>
 
-      {/* 🔥 LEAD */}
       <LeadBox />
 
-    </>
+      {/* WRÓĆ JUTRO */}
+      <div className="mt-10 border rounded-lg p-4 text-sm text-gray-600">
+        Dziś wystarczy. Wróć jutro — pokażemy kolejny krok.
+      </div>
 
+    </>
   )
 
 }

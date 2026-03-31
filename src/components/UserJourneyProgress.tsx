@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import ProgressChecklist from "@/components/ProgressChecklist"
 
 export default function UserJourneyProgress(){
 
@@ -10,13 +11,15 @@ export default function UserJourneyProgress(){
 
     let score = 0
 
-    const profile = localStorage.getItem("mm_profile")
-    const last = localStorage.getItem("mm_last_action")
-    const streak = localStorage.getItem("mm_streak")
+    const tests = JSON.parse(localStorage.getItem("mm_tests") || "[]")
+    const path = localStorage.getItem("mm_path")
+    const action = localStorage.getItem("mm_last_action")
+    const comeback = localStorage.getItem("mm_comeback")
 
-    if(profile) score += 30
-    if(last) score += 30
-    if(streak) score += 40
+    if(tests.length > 0) score += 25
+    if(path) score += 25
+    if(action) score += 25
+    if(comeback) score += 25
 
     setProgress(score)
 
@@ -30,8 +33,12 @@ export default function UserJourneyProgress(){
 
         <div className="border rounded-xl p-6">
 
-          <p className="text-sm text-gray-500 mb-2">
+          <p className="text-sm text-gray-500 mb-1">
             Twoja droga
+          </p>
+
+          <p className="text-xs text-gray-400 mb-2">
+            Zrób 1 mały krok dziennie
           </p>
 
           <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
@@ -41,8 +48,13 @@ export default function UserJourneyProgress(){
             />
           </div>
 
+          <ProgressChecklist />
+
           <p className="text-sm text-gray-600">
-            Postęp: {progress}%
+            {progress < 100 
+              ? "Robisz postęp. Jeszcze jeden krok." 
+              : "Masz plan działania."
+            }
           </p>
 
         </div>
