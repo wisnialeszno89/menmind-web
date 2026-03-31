@@ -12,6 +12,11 @@ export default function ArticleNextSmart({ slug, world }: Props){
   // 1. slug mapping (najbardziej precyzyjne)
   const slugMap: Record<string, any> = {
     
+    "ojciec-po-rozstaniu-jak-odbudowac-relacje": {
+    test: "/narzedzia/test-relacji",
+    tool: "/narzedzia/tracker-kontaktu-z-dzieckiem",
+    },
+
     "dziecko-nie-chce-sie-ze-mna-spotykac": {
     test: "/narzedzia/test-relacji",
     tool: "/narzedzia/tracker-kontaktu-z-dzieckiem",
