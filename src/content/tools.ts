@@ -86,5 +86,11 @@ export const tools: Tool[] = [
   description: "Sprawdź czy to stagnacja czy czas na zmianę",
   world: "wzrost"
   },
+  {
+  slug: "test-kierunku-zycia",
+  title: "Test kierunku życia",
+  description: "Sprawdź czy stoisz w miejscu czy czas na zmianę",
+  world: "wzrost"
+  },
 
 ]
