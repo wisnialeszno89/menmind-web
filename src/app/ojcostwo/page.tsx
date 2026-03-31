@@ -6,6 +6,7 @@ import WorldSupport from "@/features/worlds/WorldSupport"
 
 import FatherActivityIdeas from "@/components/FatherActivityIdeas"
 import FatherContactPlan from "@/components/FatherContactPlan"
+import FatherStart from "@/components/FatherStart"
 
 export default function Page() {
 
@@ -15,16 +16,20 @@ export default function Page() {
       title="Ojcostwo"
       description="Relacja z dzieckiem jest jedną z najważniejszych rzeczy w życiu mężczyzny."
     >
+      <FatherStart />
 
-      <WorldPaths world="ojcostwo" />
-
-      <WorldArticles world="ojcostwo" />
-
-      <WorldTools world="ojcostwo" />
+      {/* najpierw konkret */}
+      <FatherContactPlan />
 
       <FatherActivityIdeas />
 
-      <FatherContactPlan />
+      {/* potem struktura */}
+      <WorldTools world="ojcostwo" />
+
+      {/* dopiero później eksploracja */}
+      <WorldArticles world="ojcostwo" />
+
+      <WorldPaths world="ojcostwo" />
 
       <WorldSupport world="ojcostwo" />
 

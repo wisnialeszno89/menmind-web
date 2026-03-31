@@ -16,14 +16,31 @@ export default function TrackerKontaktuZDzieckiem() {
   }, [days])
 
   const toggle = (day: number) => {
-    setDays(prev =>
-      prev.includes(day)
-        ? prev.filter(d => d !== day)
-        : [...prev, day]
-    )
+
+    const updated =
+      days.includes(day)
+        ? days.filter(d => d !== day)
+        : [...days, day]
+
+    setDays(updated)
+
+    localStorage.setItem("mm_last_action","father-tracker")
   }
 
   const today = new Date().getDate()
+
+  // streak
+  const sorted = [...days].sort((a,b)=>a-b)
+  let streak = 0
+  for(let i = sorted.length - 1; i >= 0; i--){
+    if(i === sorted.length - 1){
+      streak = 1
+    } else if(sorted[i+1] - sorted[i] === 1){
+      streak++
+    } else {
+      break
+    }
+  }
 
   return (
     <main className="max-w-2xl mx-auto px-6 py-20">
@@ -63,21 +80,25 @@ export default function TrackerKontaktuZDzieckiem() {
 
       </div>
 
-      <div className="mt-8 border rounded-xl p-6">
+      <div className="mt-8 grid grid-cols-2 gap-4">
 
-        <p className="text-sm text-gray-500">
-          Dni kontaktu
-        </p>
-
-        <p className="text-2xl font-semibold">
-          {days.length}
-        </p>
-
-        {days.length >= 8 && (
-          <p className="text-green-600 text-sm mt-2">
-            Utrzymujesz regularny kontakt
+        <div className="border rounded-xl p-6">
+          <p className="text-sm text-gray-500">
+            Dni kontaktu
           </p>
-        )}
+          <p className="text-2xl font-semibold">
+            {days.length}
+          </p>
+        </div>
+
+        <div className="border rounded-xl p-6">
+          <p className="text-sm text-gray-500">
+            Seria
+          </p>
+          <p className="text-2xl font-semibold">
+            {streak}
+          </p>
+        </div>
 
       </div>
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const ideas = [
   "Wyjście na rower",
@@ -17,11 +17,24 @@ const ideas = [
 
 export default function FatherActivityIdeas(){
 
-  const [idea,setIdea] = useState("Kliknij by wylosować pomysł")
+  const [idea,setIdea] = useState("")
+  const [done,setDone] = useState(false)
+
+  useEffect(()=>{
+    const saved = localStorage.getItem("father-idea")
+    if(saved) setIdea(saved)
+  },[])
 
   function generate(){
     const random = ideas[Math.floor(Math.random()*ideas.length)]
     setIdea(random)
+    setDone(false)
+    localStorage.setItem("father-idea", random)
+  }
+
+  function markDone(){
+    setDone(true)
+    localStorage.setItem("mm_last_action","father-activity")
   }
 
   return(
@@ -32,20 +45,31 @@ export default function FatherActivityIdeas(){
         Pomysł na czas z dzieckiem
       </h3>
 
-      <p className="text-gray-700 mb-6">
-        Nie wiesz co zrobić? Wylosuj prosty pomysł.
-      </p>
-
       <div className="border rounded-lg p-6 text-center mb-4">
-        {idea}
+        {idea || "Kliknij by wylosować pomysł"}
       </div>
 
       <button
         onClick={generate}
-        className="w-full bg-black text-white py-3 rounded-lg"
+        className="w-full border py-3 rounded-lg mb-3"
       >
         Wylosuj pomysł
       </button>
+
+      {idea && !done && (
+        <button
+          onClick={markDone}
+          className="w-full bg-black text-white py-3 rounded-lg"
+        >
+          Zrobione
+        </button>
+      )}
+
+      {done && (
+        <p className="text-sm text-green-600 mt-3">
+          ✔ Zaznaczono
+        </p>
+      )}
 
     </div>
 
