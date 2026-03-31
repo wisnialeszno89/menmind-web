@@ -7,6 +7,7 @@ import WorldSupport from "@/features/worlds/WorldSupport"
 import FatherActivityIdeas from "@/components/FatherActivityIdeas"
 import FatherContactPlan from "@/components/FatherContactPlan"
 import FatherStart from "@/components/FatherStart"
+import FatherSituations from "@/components/FatherSituations"
 
 export default function Page() {
 
@@ -16,6 +17,8 @@ export default function Page() {
       title="Ojcostwo"
       description="Relacja z dzieckiem jest jedną z najważniejszych rzeczy w życiu mężczyzny."
     >
+      <FatherSituations />
+      
       <FatherStart />
 
       {/* najpierw konkret */}

@@ -11,6 +11,16 @@ export default function ArticleNextSmart({ slug, world }: Props){
 
   // 1. slug mapping (najbardziej precyzyjne)
   const slugMap: Record<string, any> = {
+    
+    "dziecko-nie-chce-sie-ze-mna-spotykac": {
+    test: "/narzedzia/test-relacji",
+    tool: "/narzedzia/tracker-kontaktu-z-dzieckiem",
+    },
+
+    "praca-mnie-niszczy-psychicznie": {
+    test: "/narzedzia/test-przeciazenia",
+    tool: "/narzedzia/reset",
+    },
 
     "nie-wiem-co-robic-ze-swoim-zyciem-po-30": {
     test: "/narzedzia/test-kierunku-zycia",
