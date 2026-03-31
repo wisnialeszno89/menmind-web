@@ -1,5 +1,3 @@
-import { tools } from "@/content/tools"
-
 import BrainDumpPage from "@/features/tools/BrainDumpPage"
 import Reset90Page from "@/features/tools/Reset90Page"
 import MinimumPage from "@/features/tools/MinimumPage"
@@ -23,16 +21,8 @@ const toolMap = {
   "minimum": MinimumPage,
   "energy-map": SleepTracker,
   "kompas-decyzji": DecisionCompass,
-
-  // aliasy które masz w katalogach
   "reset-7-krokow": Reset90Page,
   "stabilizacja": MinimumPage,
-}
-
-export function generateStaticParams() {
-  return tools.map((tool) => ({
-    slug: tool.slug,
-  }))
 }
 
 export default async function Page({
@@ -42,39 +32,35 @@ export default async function Page({
 }) {
   const { slug } = await params
 
-  // jeżeli istnieje fizyczna strona w app/narzedzia/... → pozwól jej działać
   const ToolComponent = toolMap[slug as keyof typeof toolMap]
 
-  if (ToolComponent) {
-    return (
-      <div className="max-w-3xl mx-auto px-6 py-16">
+  if (!ToolComponent) return notFound()
 
-        <ToolCompleted slug={slug} />
+  return (
+    <div className="max-w-3xl mx-auto px-6 py-16">
 
-        <ToolComponent />
+      <ToolCompleted slug={slug} />
 
-        <ToolNextBar />
+      <ToolComponent />
 
-        <section className="mt-16">
-          <NextSteps world="kryzys" />
-        </section>
+      <ToolNextBar />
 
-        <section className="mt-16">
-          <ExploreTools />
-        </section>
+      <section className="mt-16">
+        <NextSteps world="kryzys" />
+      </section>
 
-        <section className="mt-16 border-t pt-10">
-          <h3 className="text-xl font-semibold mb-6">
-            Przeczytaj także
-          </h3>
+      <section className="mt-16">
+        <ExploreTools />
+      </section>
 
-          <RelatedArticles world="kryzys" slug={slug} />
-        </section>
+      <section className="mt-16 border-t pt-10">
+        <h3 className="text-xl font-semibold mb-6">
+          Przeczytaj także
+        </h3>
 
-      </div>
-    )
-  }
+        <RelatedArticles world="kryzys" slug={slug} />
+      </section>
 
-  // fallback — jeżeli masz plik w app/narzedzia/{slug}/page.tsx
-  return notFound()
+    </div>
+  )
 }
