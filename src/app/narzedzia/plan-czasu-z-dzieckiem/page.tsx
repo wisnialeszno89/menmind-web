@@ -10,19 +10,53 @@ type Goal = "wiez" | "rozmowa" | "ruch"
 const plans = {
   "15": {
     "3-6": {
-      wiez: "Rysujecie razem → pytasz: co było dziś najlepsze → przytulasz → koniec",
-      rozmowa: "Zabawa + 1 pytanie: co dziś było śmieszne",
+      wiez: "Rysujecie razem → pytasz: co było dziś najlepsze → przytulasz",
+      rozmowa: "Zabawa + pytanie: co dziś było śmieszne",
       ruch: "Wyścig po mieszkaniu + high five"
     },
     "7-12": {
-      wiez: "Krótka gra → pytanie o szkołę → wspólny śmiech",
-      rozmowa: "3 pytania: co było trudne / dobre / ciekawe",
-      ruch: "Krótki spacer lub piłka"
+      wiez: "Krótka gra → pytanie o szkołę",
+      rozmowa: "3 pytania: trudne / dobre / ciekawe",
+      ruch: "Spacer lub piłka"
     },
     "13+": {
       wiez: "Luźna rozmowa bez presji",
       rozmowa: "Pytanie: co Cię ostatnio wkurza",
-      ruch: "Krótki spacer razem"
+      ruch: "Krótki spacer"
+    }
+  },
+  "60": {
+    "3-6": {
+      wiez: "Budowanie LEGO + rozmowa",
+      rozmowa: "Czytanie + pytania",
+      ruch: "Plac zabaw"
+    },
+    "7-12": {
+      wiez: "Planszówka + rozmowa",
+      rozmowa: "Spacer + 3 pytania",
+      ruch: "Rowery"
+    },
+    "13+": {
+      wiez: "Wspólne gotowanie",
+      rozmowa: "Kawa / herbata",
+      ruch: "Sport"
+    }
+  },
+  "weekend": {
+    "3-6": {
+      wiez: "Wycieczka + zabawa",
+      rozmowa: "Zoo / park",
+      ruch: "Plac zabaw"
+    },
+    "7-12": {
+      wiez: "Wyjazd + aktywność",
+      rozmowa: "Wycieczka + rozmowa",
+      ruch: "Sport"
+    },
+    "13+": {
+      wiez: "Cały dzień razem",
+      rozmowa: "Wyjazd",
+      ruch: "Sport"
     }
   }
 }
@@ -33,32 +67,33 @@ export default function PlanCzasuZDzieckiem() {
   const [age, setAge] = useState<Age | null>(null)
   const [goal, setGoal] = useState<Goal | null>(null)
   const [done,setDone] = useState(false)
+  const [history,setHistory] = useState<string[]>([])
 
   useEffect(()=>{
-    const saved = localStorage.getItem("father-last-plan")
+    const saved = localStorage.getItem("father-history")
     if(saved){
-      const parsed = JSON.parse(saved)
-      setTime(parsed.time)
-      setAge(parsed.age)
-      setGoal(parsed.goal)
+      setHistory(JSON.parse(saved))
     }
   },[])
+
+  function markDone(){
+
+    const entry = `${new Date().toLocaleDateString()} - ${time} - ${goal}`
+
+    const newHistory = [...history, entry]
+
+    setHistory(newHistory)
+    setDone(true)
+
+    localStorage.setItem("father-history", JSON.stringify(newHistory))
+    localStorage.setItem("mm_last_action","father-plan")
+  }
 
   const reset = () => {
     setTime(null)
     setAge(null)
     setGoal(null)
     setDone(false)
-  }
-
-  function markDone(){
-    setDone(true)
-
-    localStorage.setItem("father-last-plan",
-      JSON.stringify({time,age,goal})
-    )
-
-    localStorage.setItem("mm_last_action","father-plan")
   }
 
   return (
@@ -105,7 +140,7 @@ export default function PlanCzasuZDzieckiem() {
             Porozmawiać
           </button>
           <button onClick={() => setGoal("ruch")} className="border p-4 rounded-xl w-full text-left">
-            Ruch / energia
+            Ruch
           </button>
         </div>
       )}
@@ -133,15 +168,15 @@ export default function PlanCzasuZDzieckiem() {
           {done && (
             <div className="space-y-3">
 
-              <p className="text-green-600 text-sm">
-                ✔ Zaznaczono
+              <p className="text-green-600">
+                ✔ zapisano spotkanie
               </p>
 
               <Link
                 href="/narzedzia/tracker-kontaktu-z-dzieckiem"
                 className="block border rounded-lg p-3 text-center"
               >
-                Zaznacz kontakt w trackerze
+                Zaznacz w trackerze
               </Link>
 
             </div>
@@ -153,6 +188,22 @@ export default function PlanCzasuZDzieckiem() {
           >
             Nowy plan
           </button>
+
+        </div>
+      )}
+
+      {history.length > 0 && (
+        <div className="mt-12 border rounded-xl p-6">
+
+          <h3 className="font-semibold mb-4">
+            Historia spotkań
+          </h3>
+
+          <div className="space-y-2 text-sm">
+            {history.slice(-5).map((h,i)=>(
+              <div key={i}>{h}</div>
+            ))}
+          </div>
 
         </div>
       )}

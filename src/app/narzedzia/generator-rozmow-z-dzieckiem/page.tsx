@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import Link from "next/link"
 
 const questions = {
   "3-6": [
@@ -27,12 +28,37 @@ export default function GeneratorRozmowZDzieckiem() {
 
   const [age, setAge] = useState<"3-6" | "7-12" | "13+" | null>(null)
   const [question, setQuestion] = useState<string | null>(null)
+  const [history,setHistory] = useState<string[]>([])
+  const [done,setDone] = useState(false)
 
-  const generate = (ageKey: "3-6" | "7-12" | "13+") => {
+  useEffect(()=>{
+    const saved = localStorage.getItem("father-talks")
+    if(saved){
+      setHistory(JSON.parse(saved))
+    }
+  },[])
+
+  function generate(ageKey: "3-6" | "7-12" | "13+") {
     const pool = questions[ageKey]
     const random = pool[Math.floor(Math.random() * pool.length)]
     setQuestion(random)
+    setDone(false)
   }
+
+  function markDone(){
+
+    const entry = `${new Date().toLocaleDateString()} - ${question}`
+
+    const updated = [...history, entry]
+
+    setHistory(updated)
+    setDone(true)
+
+    localStorage.setItem("father-talks", JSON.stringify(updated))
+    localStorage.setItem("mm_last_action","father-talk")
+  }
+
+  const streak = history.length
 
   return (
     <main className="max-w-2xl mx-auto px-6 py-20">
@@ -42,30 +68,21 @@ export default function GeneratorRozmowZDzieckiem() {
       </h1>
 
       <p className="text-gray-600 mb-10">
-        Jedno pytanie, które otwiera rozmowę.
+        Jedno pytanie dziennie buduje relację.
       </p>
 
       {!age && (
         <div className="space-y-3">
 
-          <button
-            onClick={() => setAge("3-6")}
-            className="border p-4 rounded-xl w-full text-left hover:shadow"
-          >
+          <button onClick={() => setAge("3-6")} className="border p-4 rounded-xl w-full text-left">
             3–6 lat
           </button>
 
-          <button
-            onClick={() => setAge("7-12")}
-            className="border p-4 rounded-xl w-full text-left hover:shadow"
-          >
+          <button onClick={() => setAge("7-12")} className="border p-4 rounded-xl w-full text-left">
             7–12 lat
           </button>
 
-          <button
-            onClick={() => setAge("13+")}
-            className="border p-4 rounded-xl w-full text-left hover:shadow"
-          >
+          <button onClick={() => setAge("13+")} className="border p-4 rounded-xl w-full text-left">
             13+ lat
           </button>
 
@@ -78,7 +95,7 @@ export default function GeneratorRozmowZDzieckiem() {
           {!question && (
             <button
               onClick={() => generate(age)}
-              className="border px-6 py-3 rounded-xl hover:shadow"
+              className="border px-6 py-3 rounded-xl"
             >
               Wylosuj pytanie
             </button>
@@ -90,24 +107,78 @@ export default function GeneratorRozmowZDzieckiem() {
                 {question}
               </p>
 
-              <button
-                onClick={() => generate(age)}
-                className="border px-6 py-2 rounded-xl hover:shadow mr-3"
-              >
-                Inne pytanie
-              </button>
+              {!done && (
+                <button
+                  onClick={markDone}
+                  className="bg-black text-white px-6 py-3 rounded-lg mb-4"
+                >
+                  Zadałem to pytanie
+                </button>
+              )}
 
-              <button
-                onClick={() => {
-                  setAge(null)
-                  setQuestion(null)
-                }}
-                className="text-sm text-gray-500"
-              >
-                Zmień wiek
-              </button>
+              {done && (
+                <p className="text-green-600 mb-4">
+                  ✔ zapisano rozmowę
+                </p>
+              )}
+
+              <div className="flex gap-3 justify-center">
+
+                <button
+                  onClick={() => generate(age)}
+                  className="border px-6 py-2 rounded-xl"
+                >
+                  Inne pytanie
+                </button>
+
+                <button
+                  onClick={() => {
+                    setAge(null)
+                    setQuestion(null)
+                  }}
+                  className="text-sm text-gray-500"
+                >
+                  Zmień wiek
+                </button>
+
+              </div>
+
             </>
           )}
+
+        </div>
+      )}
+
+      {history.length > 0 && (
+        <div className="mt-10 border rounded-xl p-6">
+
+          <p className="text-sm text-gray-500">
+            Rozmowy
+          </p>
+
+          <p className="text-xl font-semibold">
+            {streak}
+          </p>
+
+        </div>
+      )}
+
+      {done && (
+        <div className="mt-6 space-y-3">
+
+          <Link
+            href="/narzedzia/plan-czasu-z-dzieckiem"
+            className="block border rounded-lg p-3 text-center"
+          >
+            Zaplanuj czas razem
+          </Link>
+
+          <Link
+            href="/narzedzia/checklista-obecnego-ojca"
+            className="block bg-black text-white rounded-lg p-3 text-center"
+          >
+            Checklista ojca
+          </Link>
 
         </div>
       )}

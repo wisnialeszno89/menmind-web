@@ -1,60 +1,110 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import Link from "next/link"
+
+const steps = [
+  {
+    text: "Oddychaj powoli przez nos",
+    duration: 30
+  },
+  {
+    text: "Napnij ciało i rozluźnij",
+    duration: 10
+  },
+  {
+    text: "Powolny wdech i wydech",
+    duration: 30
+  }
+]
 
 export default function Reset90Page(){
 
-const steps=[
-"Oddychaj powoli przez nos przez 30 sekund.",
-"Napnij ciało na 10 sekund i rozluźnij.",
-"Powolny wdech i wydech przez 30 sekund."
-]
+  const [step,setStep]=useState(0)
+  const [time,setTime]=useState(steps[0].duration)
+  const [done,setDone]=useState(false)
 
-const [step,setStep]=useState(0)
+  useEffect(()=>{
 
-function next(){
-setStep(step+1)
-}
+    if(done) return
 
-return(
+    if(time === 0){
+      if(step < steps.length - 1){
+        setStep(step + 1)
+        setTime(steps[step + 1].duration)
+      } else {
+        setDone(true)
+        localStorage.setItem("reset90","done")
+      }
+      return
+    }
 
-<main className="bg-white min-h-screen">
+    const interval = setInterval(()=>{
+      setTime(t => t - 1)
+    },1000)
 
-<div className="max-w-xl mx-auto px-6 py-24">
+    return ()=>clearInterval(interval)
 
-<h1 className="text-3xl font-semibold text-black mb-8">
-Reset 90 sekund
-</h1>
+  },[time,step,done])
 
-{step < steps.length ? (
+  return(
 
-<div>
+    <main className="bg-white min-h-screen">
 
-<p className="mb-8 text-gray-700">
-{steps[step]}
-</p>
+      <div className="max-w-xl mx-auto px-6 py-24">
 
-<button
-onClick={next}
-className="bg-black text-white px-6 py-3 rounded-lg"
->
-Dalej
-</button>
+        <h1 className="text-3xl font-semibold mb-6">
+          Reset 90 sekund
+        </h1>
 
-</div>
+        {!done && (
+          <>
+            <p className="text-gray-600 mb-6">
+              Krok {step + 1} z {steps.length}
+            </p>
 
-):( 
+            <div className="border rounded-xl p-8 text-center mb-6">
 
-<p className="text-green-600">
-Ciało zaczyna się uspokajać.
-</p>
+              <p className="text-lg mb-4">
+                {steps[step].text}
+              </p>
 
-)}
+              <p className="text-3xl font-semibold">
+                {time}s
+              </p>
 
-</div>
+            </div>
+          </>
+        )}
 
-</main>
+        {done && (
+          <div className="space-y-4">
 
-)
+            <div className="border rounded-lg p-6">
+              ✔ ciało się uspokaja
+            </div>
+
+            <Link
+              href="/narzedzia/brain-dump"
+              className="block border rounded-lg p-3 text-center"
+            >
+              Wyrzuć myśli (Brain Dump)
+            </Link>
+
+            <Link
+              href="/narzedzia/plan-72h"
+              className="block bg-black text-white rounded-lg p-3 text-center"
+            >
+              Stabilizacja 72h
+            </Link>
+
+          </div>
+        )}
+
+      </div>
+
+    </main>
+
+  )
 
 }
