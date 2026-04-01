@@ -59,6 +59,12 @@ export default function Header() {
             Dla partnerów
           </Link>
 
+          <Link 
+          href="/praca"
+          >
+          Praca
+          </Link>
+          
           <Link
             href="/navimind"
             className="ml-2 px-4 py-2 rounded-full bg-black text-white font-medium hover:opacity-90 transition"

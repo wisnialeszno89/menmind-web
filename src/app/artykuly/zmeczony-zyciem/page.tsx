@@ -1,4 +1,6 @@
+import Link from "next/link"
 import ArticleLayout from "@/features/articles/ArticleLayout"
+
 export const metadata = {
   title: "Zmęczony życiem – kiedy to nie chodzi tylko o sen | MenMind",
   description: "Czujesz zmęczenie, które nie znika? Zobacz skąd może się brać i co oznacza."
@@ -75,9 +77,17 @@ export default function Page() {
       </p>
 
       <p>
-        To często pierwszy moment,
-        kiedy wraca oddech.
+      To często pierwszy moment,
+      kiedy wraca oddech.
       </p>
+
+      <p className="text-sm text-gray-500 mt-8">
+      Jeśli zmęczenie wynika z pracy, możesz też{" "}
+      <Link href="/praca" className="underline">
+      sprawdzić ogłoszenia pracy
+      </Link>.
+      </p>
+      
     </>
   )
 }

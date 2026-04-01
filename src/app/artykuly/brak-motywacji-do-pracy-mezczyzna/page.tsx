@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ArticleLayout from "@/features/articles/ArticleLayout"
 export default function Page() {
   return (
@@ -83,6 +84,13 @@ export default function Page() {
       <p>
         Jeśli nie chce Ci się pracować — to nie znaczy, że jesteś leniwy.
         Często to sygnał, że coś wymaga uporządkowania.
+      </p>
+
+      <p className="text-sm text-gray-500 mt-8">
+        Jeśli problem dotyczy pracy, możesz też{" "}
+        <Link href="/praca" className="underline">
+        sprawdzić aktualne ogłoszenia pracy
+        </Link>.
       </p>
 
     </article>

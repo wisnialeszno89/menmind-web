@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ArticleLayout from "@/features/articles/ArticleLayout"
 export const metadata = {
   title: "Chaos finansowy | MenMind",
@@ -32,6 +33,13 @@ export default function Page() {
       <p>
         Uporządkowanie to pierwszy krok
         do odzyskania spokoju.
+      </p>
+      
+      <p className="text-sm text-gray-500 mt-8">
+        Jeśli problem dotyczy pracy, możesz też{" "}
+        <Link href="/praca" className="underline">
+        sprawdzić aktualne ogłoszenia pracy
+        </Link>.
       </p>
     </>
   )

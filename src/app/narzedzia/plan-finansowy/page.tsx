@@ -144,11 +144,12 @@ export default function PlanFinansowy() {
           </p>
 
           <a
-            href="https://www.pracuj.pl"
-            target="_blank"
-            className="block underline"
+          href="https://www.pracuj.pl"
+          target="_blank"
+          rel="nofollow"
+          className="block underline"
           >
-            Pracuj.pl
+             Pracuj.pl
           </a>
 
           <a
@@ -166,7 +167,13 @@ export default function PlanFinansowy() {
           >
             LinkedIn Jobs
           </a>
-
+          
+          <Link
+          href="/praca"
+          className="block bg-black text-white text-center py-3 rounded-lg mt-4"
+          >
+          Zobacz ogłoszenia pracy
+          </Link>
         </div>
       )}
 

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ArticleLayout from "@/features/articles/ArticleLayout"
 export default function Page(){
   return(
@@ -16,11 +17,18 @@ export default function Page(){
       </h2>
 
       <ul className="list-disc pl-6 space-y-2">
-        <li>Brak sensu pracy</li>
-        <li>Zmęczenie</li>
-        <li>Chaos finansowy</li>
-        <li>Problemy w relacji</li>
+      <li>Brak sensu pracy</li>
+      <li>Zmęczenie</li>
+      <li>Chaos finansowy</li>
+      <li>Problemy w relacji</li>
       </ul>
+
+      <p className="text-sm text-gray-500 mt-8">
+      Jeśli po 35 roku życia myślisz o zmianie pracy,{" "}
+      <Link href="/praca" className="underline">
+      zobacz aktualne ogłoszenia pracy
+      </Link>.
+      </p>
 
     </article>
   )

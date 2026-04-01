@@ -1,6 +1,7 @@
+import Script from "next/script"
 import "./globals.css"
 
-import Header from "@/components/layout/Header"
+import Header from "../../Header"
 import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/ScrollToTop"
 import CrisisAuto from "@/components/CrisisAuto"
@@ -50,6 +51,19 @@ export default function RootLayout({
   </head>
 
   <body className="bg-white text-black antialiased">
+      <Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-1DW5RE250X"
+  strategy="afterInteractive"
+/>
+
+    <Script id="google-analytics" strategy="afterInteractive">
+    {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1DW5RE250X');
+`   }
+          </Script>
 
         <ScrollToTop />
 

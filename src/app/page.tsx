@@ -21,6 +21,7 @@ import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
 import ContinueWhereLeft from "@/components/ContinueWhereLeft"
 import DailyStep from "@/components/DailyStep"
 import HeroTrustBar from "@/components/HeroTrustBar"
+import HomeWorkHint from "@/components/HomeWorkHint"
 
 import { MessageCircle } from "lucide-react"
 
@@ -86,6 +87,8 @@ export default function Home() {
 
       <TrendingPaths />
 
+      <HomeWorkHint />
+    
       <PopularTools />
 
       <TrustSection />

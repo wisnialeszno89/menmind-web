@@ -31,10 +31,8 @@ export default function TestResultFlow({ percent }: Props){
 
   useEffect(() => {
 
-    // zapis ostatniej akcji
     localStorage.setItem("mm_last_action", "test")
 
-    // zapis testu
     const tests = JSON.parse(localStorage.getItem("mm_tests") || "[]")
     if(!tests.includes(label)){
       tests.push(label)
@@ -112,9 +110,31 @@ export default function TestResultFlow({ percent }: Props){
 
       </div>
 
+      {/* NOWY BLOK PRACA */}
+      {percent >= 60 && (
+        <div className="mt-10 border rounded-xl p-6 bg-neutral-50">
+
+          <h3 className="font-semibold mb-2">
+            Możliwa zmiana kierunku
+          </h3>
+
+          <p className="text-sm text-gray-600 mb-4">
+            Często przeciążenie lub stagnacja wynika z pracy.
+            Sprawdź dostępne ogłoszenia.
+          </p>
+
+          <Link
+            href="/praca"
+            className="inline-block border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white transition"
+          >
+            Zobacz ogłoszenia pracy
+          </Link>
+
+        </div>
+      )}
+
       <LeadBox />
 
-      {/* WRÓĆ JUTRO */}
       <div className="mt-10 border rounded-lg p-4 text-sm text-gray-600">
         Dziś wystarczy. Wróć jutro — pokażemy kolejny krok.
       </div>

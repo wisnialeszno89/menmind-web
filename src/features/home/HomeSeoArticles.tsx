@@ -80,7 +80,49 @@ const articles = [
     href: "/artykuly/chaos-w-zyciu-mezczyzna",
     time: "6 min",
     isNew: true
-  }
+  },
+  {
+  title: "Jak znaleźć lepszą pracę",
+  href: "/artykuly/jak-znalezc-lepsza-prace",
+  time: "7 min",
+  isNew: true
+},
+{
+  title: "Praca bez rozwoju – co dalej",
+  href: "/artykuly/praca-bez-rozwoju-co-dalej",
+  time: "7 min",
+  isNew: true
+},
+{
+  title: "Chcę się rozwijać, ale nie wiem od czego zacząć",
+  href: "/artykuly/chce-sie-rozwijac-ale-nie-wiem-od-czego-zaczac",
+  time: "8 min",
+  isNew: true
+},
+{
+  title: "Chcę zmienić życie zawodowe",
+  href: "/artykuly/chce-zmienic-zycie-zawodowe",
+  time: "8 min",
+  isNew: true
+},
+{
+  title: "Chcę robić coś więcej niż tylko pracować",
+  href: "/artykuly/chce-robic-cos-wiecej-niz-tylko-pracowac",
+  time: "7 min",
+  isNew: true
+},
+{
+  title: "Czy warto uczyć się czegoś nowego po 35",
+  href: "/artykuly/czy-warto-uczyc-sie-czegos-nowego-po-35",
+  time: "8 min",
+  isNew: true
+},
+{
+  title: "Praca nie daje mi satysfakcji",
+  href: "/artykuly/praca-nie-daje-mi-satysfakcji",
+  time: "7 min",
+  isNew: true
+}
 ]
 
 export default function HomeSeoArticles(){

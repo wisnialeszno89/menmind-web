@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import TestResultFlow from "@/components/TestResultFlow"
 
 const questions = [
@@ -74,10 +75,20 @@ export default function Page(){
 
       </div>
 
-      <p className="text-sm text-gray-400 mt-4">
+        <p className="text-sm text-gray-400 mt-4">
         {answers.length} / {questions.length}
-      </p>
+        </p>
 
+        <p className="text-sm text-gray-500 mt-6">
+        Jeśli czujesz, że potrzebujesz zmiany, sprawdź też{" "}
+        
+        <Link href="/praca" className="underline">
+        ogłoszenia pracy
+        
+        </Link>.
+        
+        </p>
+      
     </main>
   )
 }

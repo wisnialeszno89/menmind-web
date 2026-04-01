@@ -10,6 +10,7 @@ import ArticleCTA from "@/features/articles/ArticleCTA"
 import AIRecommendedTests from "@/components/AIRecommendedTests"
 import StickyTestCTA from "@/components/StickyTestCTA"
 import ArticleNextSmart from "@/components/ArticleNextSmart"
+import ArticleCrossLinks from "@/components/ArticleCrossLinks"
 
 type Props = {
   title: string
@@ -164,6 +165,9 @@ export default function ArticleLayout({
 
       <div className="prose prose-lg max-w-none mb-16">
         {children}
+        {slug && (
+      <ArticleCrossLinks slug={slug} />
+      )}
           
          </div>
 

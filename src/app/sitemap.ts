@@ -1,66 +1,44 @@
-import { MetadataRoute } from "next"
-import { cities } from "@/data/cities"
-import { marketCategories as categories } from "@/data/marketCategories"
-
-const baseUrl = "https://menmind.app"
-
-// 🔥 ścieżki (SEO)
-const paths = [
-  "rozstanie",
-  "stres",
-  "finanse",
-  "samotnosc",
-  "energia",
-  "stabilnosc",
-  "rutyna",
-  "kariera",
-  "dyscyplina",
-  "relacja",
-  "prawo"
-]
+import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
-  // 🔥 statyczne
+  const base = "https://menmind.app"
+
   const staticPages = [
     "",
     "/kryzys",
     "/odbudowa",
-    "/ojcostwo",
     "/wzrost",
-    "/dla-partnerow",
-    "/propozycje",
+    "/ojcostwo",
     "/narzedzia",
-    "/sciezki"
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-  }))
+    "/artykuly",
+    "/praca",
+    "/navimind"
+  ]
 
-  // 🔥 ścieżki
-  const pathPages = paths.map((slug) => ({
-    url: `${baseUrl}/sciezki/${slug}`,
-    lastModified: new Date(),
-  }))
-
-  // 🔥 kategorie marketplace
-  const categoryPages = categories.map((cat) => ({
-    url: `${baseUrl}/propozycje/${cat.slug}`,
-    lastModified: new Date(),
-  }))
-
-  // 🔥 miasta marketplace
-  const cityPages = categories.flatMap((cat) =>
-    cities.map((city) => ({
-      url: `${baseUrl}/propozycje/${cat.slug}/${city.slug}`,
-      lastModified: new Date(),
-    }))
-  )
+  const articles = [
+    "jak-znalezc-lepsza-prace",
+    "praca-bez-rozwoju-co-dalej",
+    "chce-sie-rozwijac-ale-nie-wiem-od-czego-zaczac",
+    "chce-zmienic-zycie-zawodowe",
+    "chce-robic-cos-wiecej-niz-tylko-pracowac",
+    "czy-warto-uczyc-sie-czegos-nowego-po-35",
+    "praca-nie-daje-mi-satysfakcji"
+  ]
 
   return [
-    ...staticPages,
-    ...pathPages,
-    ...categoryPages,
-    ...cityPages
+    ...staticPages.map(url => ({
+      url: `${base}${url}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8
+    })),
+
+    ...articles.map(slug => ({
+      url: `${base}/artykuly/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9
+    }))
   ]
 }

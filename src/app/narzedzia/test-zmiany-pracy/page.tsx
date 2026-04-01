@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState } from "react"
 import TestResultFlow from "@/components/TestResultFlow"
 
@@ -29,12 +30,21 @@ export default function TestZmianyPracy(){
     (questions.length * 2) * 100
 
   if(done){
-    return (
-      <div className="max-w-2xl mx-auto px-6 py-16">
-        <TestResultFlow percent={percent} />
-      </div>
-    )
-  }
+  return (
+    <div className="max-w-2xl mx-auto px-6 py-16">
+
+      <TestResultFlow percent={percent} />
+
+      <p className="text-sm text-gray-500 mt-6">
+        Rozważasz zmianę pracy?{" "}
+        <Link href="/praca" className="underline">
+          Zobacz ogłoszenia pracy
+        </Link>
+      </p>
+
+    </div>
+  )
+}
 
   const current = questions[answers.length]
 
@@ -81,11 +91,12 @@ export default function TestZmianyPracy(){
         </div>
 
       </div>
-
+      
       <p className="text-sm text-gray-400 mt-6">
         Pytanie {answers.length + 1} z {questions.length}
       </p>
-
+        
     </div>
+    
   )
 }
