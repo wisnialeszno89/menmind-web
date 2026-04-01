@@ -6,11 +6,12 @@ export default function AddJobForm(){
 
   const [loading,setLoading] = useState(false)
   const [sent,setSent] = useState(false)
-  const [featured,setFeatured] = useState(false)
+  const [error,setError] = useState(false)
 
   async function handleSubmit(e:any){
     e.preventDefault()
     setLoading(true)
+    setError(false)
 
     const form = e.target
 
@@ -20,14 +21,12 @@ export default function AddJobForm(){
       location: form.location.value,
       pay: form.pay.value,
       description: form.description.value,
-      contact: form.contact.value,
-      featured
+      contact: form.contact.value
     }
 
-    // jeśli wyróżnienie -> Stripe
-    if(featured){
+    try{
 
-      const res = await fetch("/api/jobs/checkout",{
+      const res = await fetch("/api/jobs",{
         method:"POST",
         headers:{
           "Content-Type":"application/json"
@@ -35,32 +34,27 @@ export default function AddJobForm(){
         body: JSON.stringify(data)
       })
 
-      const json = await res.json()
-      window.location.href = json.url
-      return
+      if(!res.ok){
+        throw new Error("API error")
+      }
+
+      setSent(true)
+
+    }catch(err){
+      setError(true)
     }
 
-    // normalne ogłoszenie
-    await fetch("/api/jobs",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify(data)
-    })
-
     setLoading(false)
-    setSent(true)
   }
 
   if(sent){
     return(
       <div className="border rounded-xl p-6 text-center">
         <p className="font-medium">
-          Ogłoszenie wysłane
+          Ogłoszenie wysłane ✅
         </p>
         <p className="text-sm text-gray-500 mt-2">
-          Po weryfikacji pojawi się na stronie.
+          Sprawdzimy je i dodamy na stronę.
         </p>
       </div>
     )
@@ -110,21 +104,17 @@ export default function AddJobForm(){
         className="w-full border rounded-lg p-3"
       />
 
-      {/* Wyróżnienie */}
-      <label className="flex items-center gap-2 text-sm border rounded-lg p-3">
-        <input
-          type="checkbox"
-          checked={featured}
-          onChange={(e)=>setFeatured(e.target.checked)}
-        />
-        Wyróżnij ogłoszenie (19 zł)
-      </label>
+      {error && (
+        <p className="text-red-500 text-sm">
+          Błąd wysyłania. Spróbuj ponownie.
+        </p>
+      )}
 
       <button
         disabled={loading}
         className="w-full bg-black text-white py-3 rounded-xl"
       >
-        {loading ? "Wysyłanie..." : featured ? "Przejdź do płatności" : "Dodaj ogłoszenie"}
+        {loading ? "Wysyłanie..." : "Dodaj ogłoszenie"}
       </button>
 
     </form>

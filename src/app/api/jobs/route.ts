@@ -18,12 +18,12 @@ export async function POST(req: Request){
       contact
     } = body
 
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: "MenMind <onboarding@resend.dev>",
       to: ["kontakt.menmind@gmail.com"],
       subject: "Nowe ogłoszenie pracy - MenMind",
       html: `
-        <h2>Nowe ogłoszenie</h2>
+        <h2>Nowe ogłoszenie pracy</h2>
         <p><strong>Typ:</strong> ${type}</p>
         <p><strong>Tytuł:</strong> ${title}</p>
         <p><strong>Lokalizacja:</strong> ${location}</p>
@@ -34,12 +34,16 @@ export async function POST(req: Request){
       `
     })
 
+    if(error){
+      console.error("Resend error:", error)
+      return NextResponse.json({ ok:false }, { status:500 })
+    }
+
     return NextResponse.json({ ok:true })
 
   }catch(e){
-
-    return NextResponse.json({ ok:false })
-
+    console.error("API error:", e)
+    return NextResponse.json({ ok:false }, { status:500 })
   }
 
 }
