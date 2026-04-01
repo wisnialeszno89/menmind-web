@@ -20,15 +20,25 @@ export default function Navbar() {
       {/* DESKTOP */}
       <nav className="hidden md:flex items-center gap-6">
 
-        <Link href="/">Start</Link>
-        <Link href="/kryzys">Kryzys</Link>
-        <Link href="/odbudowa">Odbudowa</Link>
-        <Link href="/wzrost">Wzrost</Link>
-        <Link href="/ojcostwo">Ojcostwo</Link>
-        <Link href="/narzedzia">Narzędzia</Link>
+        <Link href="/">Zacznij</Link>
+
+        <Link href="/narzedzia">
+          Narzędzia
+        </Link>
+
+        <Link href="/artykuly">
+          Artykuły
+        </Link>
 
         <Link href="/praca">
           Praca
+        </Link>
+
+        <Link
+          href="/propozycje"
+          className="font-medium text-black"
+        >
+          Znajdź
         </Link>
 
         <Link href="/navimind">
@@ -57,16 +67,28 @@ export default function Navbar() {
       {open && (
         <div className="fixed top-16 left-4 right-4 z-50 bg-white border rounded-xl shadow-xl p-5 md:hidden">
 
-          <Link href="/" className={linkStyle} onClick={close}>Start</Link>
-          <Link href="/kryzys" className={linkStyle} onClick={close}>Kryzys</Link>
-          <Link href="/odbudowa" className={linkStyle} onClick={close}>Odbudowa</Link>
-          <Link href="/wzrost" className={linkStyle} onClick={close}>Wzrost</Link>
-          <Link href="/ojcostwo" className={linkStyle} onClick={close}>Ojcostwo</Link>
-          <Link href="/narzedzia" className={linkStyle} onClick={close}>Narzędzia</Link>
-          <Link href="/praca" className={linkStyle} onClick={close}>Praca</Link>
+          <Link href="/" className={linkStyle} onClick={close}>
+            Zacznij
+          </Link>
 
-          <Link href="/moja-droga" className={linkStyle} onClick={close}>
-            Twoja droga
+          <Link href="/narzedzia" className={linkStyle} onClick={close}>
+            Narzędzia
+          </Link>
+
+          <Link href="/artykuly" className={linkStyle} onClick={close}>
+            Artykuły
+          </Link>
+
+          <Link href="/praca" className={linkStyle} onClick={close}>
+            Praca
+          </Link>
+
+          <Link
+            href="/propozycje"
+            className={linkStyle}
+            onClick={close}
+          >
+            Znajdź
           </Link>
 
           <Link href="/navimind" className={linkStyle} onClick={close}>
