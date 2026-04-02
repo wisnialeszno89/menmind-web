@@ -20,30 +20,31 @@ export default function Navbar() {
       {/* DESKTOP */}
       <nav className="hidden md:flex items-center gap-6">
 
-        <Link href="/">Zacznij</Link>
+      <Link href="/">Zacznij</Link>
 
-        <Link href="/narzedzia">
-          Narzędzia
-        </Link>
+      <Link href="/narzedzia">
+        Narzędzia
+      </Link>
 
-        <Link href="/artykuly">
-          Artykuły
-        </Link>
+      <Link href="/artykuly">
+        Artykuły
+      </Link>
 
-        <Link href="/praca">
-          Praca
-        </Link>
+      <Link href="/praca">
+        Praca
+      </Link>
 
-        <Link
-          href="/propozycje"
-          className="font-medium text-black"
-        >
-          Znajdź
-        </Link>
+      <Link href="/dla-partnerow">
+        dla Partnerów
+      </Link>
 
-        <Link href="/navimind">
-          NaviMind
-        </Link>
+      <Link href="/propozycje">
+        Znajdź
+      </Link>
+
+      <Link href="/navimind">
+       NaviMind
+      </Link>
 
       </nav>
 
