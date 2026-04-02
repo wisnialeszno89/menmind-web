@@ -16,7 +16,6 @@ import StatsCounter from "@/components/StatsCounter"
 import ActivityFeed from "@/features/home/ActivityFeed"
 import QuickTests from "@/features/home/QuickTests"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
-import ContinueWhereLeft from "@/components/ContinueWhereLeft"
 import DailyStep from "@/components/DailyStep"
 import HeroTrustBar from "@/components/HeroTrustBar"
 import HomeWorkHint from "@/components/HomeWorkHint"
@@ -35,10 +34,7 @@ export default function Home() {
         intro="Bez presji. Krok po kroku, w swoim tempie."
       />
       <HeroTrustBar />
-
-      {/* POWRÓT */}
-      <ContinueWhereLeft />
-
+      
       {/* KROK DNIA */}
       <DailyStep />
 

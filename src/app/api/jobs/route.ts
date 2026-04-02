@@ -1,46 +1,36 @@
+export const runtime = "nodejs"
+
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: Request){
-
   try{
 
+    console.log("API JOBS HIT")
+
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
     const body = await req.json()
+    console.log("BODY:", body)
 
-    const {
-      type,
-      title,
-      location,
-      pay,
-      description,
-      contact
-    } = body
-
-    const { error } = await resend.emails.send({
-      from: "onboarding@resend.dev",
+    const { data, error } = await resend.emails.send({
+      from: "MenMind <kontakt@menmind.app>",
       to: "kontakt.menmind@gmail.com",
       subject: "Nowe ogłoszenie pracy - MenMind",
-      html: `
-        <h2>Nowe ogłoszenie pracy</h2>
-        <p><strong>Typ:</strong> ${type}</p>
-        <p><strong>Tytuł:</strong> ${title}</p>
-        <p><strong>Lokalizacja:</strong> ${location}</p>
-        <p><strong>Stawka:</strong> ${pay || "-"}</p>
-        <p><strong>Opis:</strong></p>
-        <p>${description}</p>
-        <p><strong>Kontakt:</strong> ${contact}</p>
-      `
+      html: `<pre>${JSON.stringify(body, null, 2)}</pre>`
     })
 
+    console.log("RESEND DATA:", data)
+    console.log("RESEND ERROR:", error)
+
     if(error){
-      return NextResponse.json({ ok:false }, { status:500 })
+      return NextResponse.json({ ok:false, error }, { status:500 })
     }
 
     return NextResponse.json({ ok:true })
 
-  }catch(e){
-    return NextResponse.json({ ok:false }, { status:500 })
+  }catch(e:any){
+    console.error("CATCH ERROR:", e)
+    return NextResponse.json({ ok:false, error: e?.message }, { status:500 })
   }
 }
