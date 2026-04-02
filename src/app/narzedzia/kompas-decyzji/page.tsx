@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 
 const questions = [
@@ -42,127 +42,142 @@ export default function DecisionCompass() {
   }
 
   return (
-    <main className="max-w-2xl mx-auto px-6 py-20">
+    <main className="max-w-2xl mx-auto px-5 py-16">
 
-      <h1 className="text-3xl font-semibold mb-4">
+      <h1 className="text-3xl font-semibold mb-3">
         Kompas decyzji
       </h1>
 
-      <p className="text-gray-600 mb-6">
+      <p className="text-gray-600 mb-8">
         Pomaga zdecydować: działać, poczekać czy zebrać dane.
       </p>
 
       {!result && (
         <>
-          <div className="border rounded-lg p-3 mb-6">
-            Postęp: {progress}%
+          {/* PROGRESS BAR */}
+          <div className="mb-8">
+            <div className="flex justify-between text-sm mb-2">
+              <span>Postęp</span>
+              <span>{progress}%</span>
+            </div>
+
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div
+                className="bg-black h-2 rounded-full transition-all"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
           </div>
 
-          <div className="border rounded-xl p-8">
+          <div className="border rounded-xl p-6">
 
-            <p className="text-lg mb-6">
+            <p className="text-lg mb-8">
               {questions[current]}
             </p>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-3">
 
               <button
                 onClick={() => handleAnswer(1)}
-                className="border px-6 py-3 rounded-lg hover:shadow"
+                className="w-full border py-4 rounded-lg text-lg active:scale-[0.98]"
               >
                 Tak
               </button>
 
               <button
                 onClick={() => handleAnswer(0)}
-                className="border px-6 py-3 rounded-lg hover:shadow"
+                className="w-full border py-4 rounded-lg text-lg active:scale-[0.98]"
               >
                 Nie
               </button>
 
             </div>
 
+            <p className="text-xs text-gray-500 mt-4">
+              Nie musisz być pewny. Wystarczy pierwsza intuicja.
+            </p>
+
           </div>
         </>
       )}
 
       {result === "dzialaj" && (
-        <div className="border rounded-xl p-8">
+        <div className="border rounded-xl p-6 space-y-4">
 
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold">
             Czas działać
           </h2>
 
-          <p className="mb-6">
+          <p>
             Masz wystarczająco sygnałów. Wybierz jeden krok.
           </p>
 
           <Link
             href="/narzedzia/plan-72h"
-            className="block border px-6 py-3 rounded-lg mb-3 text-center"
+            className="block bg-black text-white px-6 py-3 rounded-lg text-center"
           >
-            Plan 72h
+            👉 Zrób pierwszy krok (Plan 72h)
           </Link>
 
           <Link
-            href="/narzedzia/mikro-kroki"
-            className="block bg-black text-white px-6 py-3 rounded-lg text-center"
+            href="/wzrost/jak-podjac-decyzje"
+            className="block border px-6 py-3 rounded-lg text-center"
           >
-            Mikro krok
+            Przeczytaj: jak podjąć decyzję
           </Link>
 
         </div>
       )}
 
       {result === "zbierz" && (
-        <div className="border rounded-xl p-8">
+        <div className="border rounded-xl p-6 space-y-4">
 
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold">
             Zbierz dane
           </h2>
 
-          <p className="mb-6">
+          <p>
             Doprecyzuj sytuację zanim ruszysz.
           </p>
 
           <Link
             href="/narzedzia/brain-dump"
-            className="block border px-6 py-3 rounded-lg mb-3 text-center"
+            className="block bg-black text-white px-6 py-3 rounded-lg text-center"
           >
-            Brain dump
+            👉 Zrób brain dump
           </Link>
 
           <Link
-            href="/narzedzia/test-sytuacji"
-            className="block bg-black text-white px-6 py-3 rounded-lg text-center"
+            href="/kryzys/nie-wiem-co-robic-ze-swoim-zyciem"
+            className="block border px-6 py-3 rounded-lg text-center"
           >
-            Test sytuacji
+            Przeczytaj: brak kierunku
           </Link>
 
         </div>
       )}
 
       {result === "poczekaj" && (
-        <div className="border rounded-xl p-8">
+        <div className="border rounded-xl p-6 space-y-4">
 
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold">
             Najpierw spokój
           </h2>
 
-          <p className="mb-6">
+          <p>
             Decyzja może poczekać. Uspokój ciało.
           </p>
 
           <Link
             href="/narzedzia/reset"
-            className="block border px-6 py-3 rounded-lg mb-3 text-center"
+            className="block bg-black text-white px-6 py-3 rounded-lg text-center"
           >
-            Reset 90
+            👉 Reset 90 sekund
           </Link>
 
           <Link
             href="/narzedzia/plan-72h"
-            className="block bg-black text-white px-6 py-3 rounded-lg text-center"
+            className="block border px-6 py-3 rounded-lg text-center"
           >
             Stabilizacja 72h
           </Link>
