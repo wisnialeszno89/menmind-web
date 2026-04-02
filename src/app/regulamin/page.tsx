@@ -1,14 +1,17 @@
 export default function TermsPL() {
   return (
-    <main className="min-h-screen px-6 py-16">
+    <main className="min-h-screen px-6 py-16 bg-white text-black">
       <div className="mx-auto max-w-3xl">
-        <p className="text-sm text-zinc-400">MenMind · dokument</p>
 
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-black">
+        <p className="text-sm text-gray-500">
+          MenMind · dokument
+        </p>
+
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight">
           Regulamin
         </h1>
 
-        <p className="mt-4 text-zinc-300 leading-relaxed">
+        <p className="mt-4 text-gray-700 leading-relaxed">
           MenMind to narzędzie wspierające w porządkowaniu sytuacji życiowej.
           Korzystając z serwisu akceptujesz poniższe zasady.
         </p>
@@ -20,7 +23,7 @@ export default function TermsPL() {
               1. Charakter serwisu
             </h2>
             <p className="mt-2">
-              MenMind ma charakter informacyjny i edukacyjny. 
+              MenMind ma charakter informacyjny i edukacyjny.
               Serwis nie świadczy usług medycznych, psychologicznych,
               terapeutycznych ani prawnych.
             </p>
@@ -125,11 +128,11 @@ export default function TermsPL() {
 
         </section>
 
-        <p className="mt-10 text-xs text-zinc-500">
+        <p className="mt-10 text-xs text-gray-500">
           Ostatnia aktualizacja: {new Date().toISOString().slice(0, 10)}
         </p>
 
       </div>
     </main>
-  );
+  )
 }
