@@ -12,11 +12,9 @@ import PopularTools from "@/features/home/PopularTools"
 import LiveActivity from "@/components/LiveActivity"
 import HowItWorks from "@/features/home/HowItWorks"
 import Testimonials from "@/features/home/Testimonials"
-import TrendingPaths from "@/features/home/TrendingPaths"
 import StatsCounter from "@/components/StatsCounter"
 import ActivityFeed from "@/features/home/ActivityFeed"
 import QuickTests from "@/features/home/QuickTests"
-import PathsSection from "@/features/home/PathsSection"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
 import ContinueWhereLeft from "@/components/ContinueWhereLeft"
 import DailyStep from "@/components/DailyStep"
@@ -44,48 +42,52 @@ export default function Home() {
       {/* KROK DNIA */}
       <DailyStep />
 
-      {/* GŁÓWNY START */}
+      {/* TESTY */}
       <QuickTests />
 
-      {/* ŚCIEŻKI */}
-      <PathsSection />
+      {/* WYBÓR OBSZARU */}
+      <WorldPreview />
 
       {/* JAK TO DZIAŁA */}
       <HowItWorks />
 
       <StatsCounter />
 
-      {/* NAVIMIND - niżej */}
+      {/* NAVIMIND */}
       <section className="py-16 border-t">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-xl font-semibold mb-3">
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-2xl font-semibold mb-6">
             Nie wiesz co wybrać?
           </h2>
-
-          <p className="text-neutral-600 mb-6">
-            Możesz spokojnie przegadać i zobaczyć kolejny krok.
-          </p>
 
           <a
             href="https://navimind.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-gray-700 hover:text-black transition"
+            className="block border rounded-2xl p-6 hover:shadow-md transition"
           >
-            <MessageCircle size={18} />
-            Porozmawiaj w NaviMind
+            <div className="flex items-start gap-4">
+              <MessageCircle className="mt-1" size={22} />
+
+              <div>
+                <div className="font-medium mb-1">
+                  Porozmawiaj w NaviMind
+                </div>
+
+                <div className="text-neutral-600 text-sm">
+                  Możesz spokojnie przegadać sytuację i zobaczyć kolejny krok.
+                </div>
+              </div>
+            </div>
           </a>
+
         </div>
       </section>
-
-      {/* RESZTA NIŻEJ */}
-      <WorldPreview />
 
       <HomeSeoArticles />
 
       <HomeArticles />
-
-      <TrendingPaths />
 
       <HomeWorkHint />
     
