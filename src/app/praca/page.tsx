@@ -77,7 +77,7 @@ export default function Page() {
 
         <Link
             href="/praca/dodaj"
-            className="inline-block mt-4 border border-black px-5 py-3 rounded-lg hover:bg-black hover:text-white transition"
+            className="inline-block mt-4 bg-neutral-800 text-white px-5 py-3 rounded-lg hover:bg-neutral-700 transition"
             >
             Dodaj ogłoszenie pracy
         </Link>

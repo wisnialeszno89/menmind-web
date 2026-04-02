@@ -82,14 +82,14 @@ export default function PartnerzyPage() {
 
           <Link
             href="/dla-partnerow/pakiety"
-            className="bg-blue-600 text-white px-8 py-4 rounded-lg"
+            className="bg-neutral-800 text-white px-8 py-4 rounded-lg hover:bg-neutral-700 transition"
           >
             Zobacz pakiety współpracy
           </Link>
 
           <Link
             href="/dla-partnerow/zgloszenie"
-            className="border border-gray-300 px-8 py-4 rounded-lg"
+            className="border border-neutral-400 px-8 py-4 rounded-lg hover:bg-neutral-100 transition"
           >
             Zgłoś swoją działalność
           </Link>
@@ -117,7 +117,7 @@ export default function PartnerzyPage() {
 
           <Link
             href="/dla-partnerow/pakiety"
-            className="inline-block bg-black text-white px-8 py-4 rounded-lg"
+            className="inline-block mt-4 bg-neutral-800 text-white px-5 py-3 rounded-lg hover:bg-neutral-700 transition"
           >
             Sprawdź pakiety
           </Link>
@@ -142,7 +142,7 @@ Zobacz gdzie firmy są najbardziej poszukiwane
 
   <Link
     href="/dla-partnerow/zgloszenie"
-    className="inline-block bg-black text-white px-6 py-3 rounded-lg"
+    className="inline-block bg-neutral-800 text-white px-6 py-3 rounded-lg hover:bg-neutral-700 transition"
   >
     Dołącz teraz
   </Link>
