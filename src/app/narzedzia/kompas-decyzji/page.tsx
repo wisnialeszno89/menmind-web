@@ -54,7 +54,7 @@ export default function DecisionCompass() {
 
       {!result && (
         <>
-          {/* PROGRESS BAR */}
+          {/* PROGRESS */}
           <div className="mb-8">
             <div className="flex justify-between text-sm mb-2">
               <span>Postęp</span>
@@ -109,21 +109,28 @@ export default function DecisionCompass() {
           </h2>
 
           <p>
-            Masz wystarczająco sygnałów. Wybierz jeden krok.
+            Decyzja nie musi być idealna. Wybierz pierwszy krok.
           </p>
 
           <Link
-            href="/narzedzia/plan-72h"
+            href="/navimind"
             className="block bg-black text-white px-6 py-3 rounded-lg text-center"
           >
-            👉 Zrób pierwszy krok (Plan 72h)
+            👉 Przegadaj decyzję w NaviMind
           </Link>
 
           <Link
-            href="/wzrost/jak-podjac-decyzje"
+            href="/artykuly"
             className="block border px-6 py-3 rounded-lg text-center"
           >
-            Przeczytaj: jak podjąć decyzję
+            Przeczytaj artykuły
+          </Link>
+
+          <Link
+            href="/praca"
+            className="block border px-6 py-3 rounded-lg text-center"
+          >
+            Sprawdź możliwości pracy
           </Link>
 
         </div>
@@ -133,25 +140,32 @@ export default function DecisionCompass() {
         <div className="border rounded-xl p-6 space-y-4">
 
           <h2 className="text-xl font-semibold">
-            Zbierz dane
+            Zbierz więcej danych
           </h2>
 
           <p>
-            Doprecyzuj sytuację zanim ruszysz.
+            Warto doprecyzować sytuację zanim ruszysz.
           </p>
 
           <Link
-            href="/narzedzia/brain-dump"
+            href="/navimind"
             className="block bg-black text-white px-6 py-3 rounded-lg text-center"
           >
-            👉 Zrób brain dump
+            👉 Przeanalizuj w NaviMind
           </Link>
 
           <Link
-            href="/kryzys/nie-wiem-co-robic-ze-swoim-zyciem"
+            href="/artykuly"
             className="block border px-6 py-3 rounded-lg text-center"
           >
-            Przeczytaj: brak kierunku
+            Zobacz artykuły
+          </Link>
+
+          <Link
+            href="/praca"
+            className="block border px-6 py-3 rounded-lg text-center"
+          >
+            Sprawdź kierunki pracy
           </Link>
 
         </div>
@@ -161,25 +175,32 @@ export default function DecisionCompass() {
         <div className="border rounded-xl p-6 space-y-4">
 
           <h2 className="text-xl font-semibold">
-            Najpierw spokój
+            Najpierw stabilizacja
           </h2>
 
           <p>
-            Decyzja może poczekać. Uspokój ciało.
+            Decyzja może poczekać. Najpierw uspokój sytuację.
           </p>
 
           <Link
-            href="/narzedzia/reset"
+            href="/navimind"
             className="block bg-black text-white px-6 py-3 rounded-lg text-center"
           >
-            👉 Reset 90 sekund
+            👉 Porozmawiaj w NaviMind
           </Link>
 
           <Link
-            href="/narzedzia/plan-72h"
+            href="/artykuly"
             className="block border px-6 py-3 rounded-lg text-center"
           >
-            Stabilizacja 72h
+            Przeczytaj artykuły
+          </Link>
+
+          <Link
+            href="/praca"
+            className="block border px-6 py-3 rounded-lg text-center"
+          >
+            Sprawdź pracę
           </Link>
 
         </div>
