@@ -5,22 +5,26 @@ type Props = {
   world: string
   title: string
   description: string
+  isSeo?: boolean
 }
 
 export default function ArticleCard({
   slug,
   world,
   title,
-  description
+  description,
+  isSeo
 }: Props) {
 
-  return (
+  const href = isSeo
+    ? `/artykuly/${slug}`
+    : `/${world}/${slug}`
 
+  return (
     <Link
-      href={`/${world}/${slug}`}
+      href={href}
       className="block border rounded-xl p-6 hover:shadow transition"
     >
-
       <h3 className="font-semibold mb-2">
         {title}
       </h3>
@@ -28,9 +32,6 @@ export default function ArticleCard({
       <p className="text-sm text-gray-600">
         {description}
       </p>
-
     </Link>
-
   )
-
 }
