@@ -65,6 +65,13 @@ export default function Footer() {
           Znajdź wsparcie
           </Link>
 
+          <div className="mt-12 pt-6 border-t text-xs text-gray-500 flex flex-wrap gap-4 justify-center">
+          <a href="/regulamin">Regulamin</a>
+          <a href="/polityka-prywatnosci">Prywatność</a>
+          <a href="/polityka-cookies">Cookies</a>
+          <a href="/ai-disclaimer">AI</a>
+        </div>
+
         </div>
 
       </div>

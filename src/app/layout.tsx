@@ -5,6 +5,7 @@ import Header from "../../Header"
 import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/ScrollToTop"
 import CrisisAuto from "@/components/CrisisAuto"
+import CookieBanner from "@/components/CookieBanner"
 
 export const metadata = {
   title: {
@@ -75,6 +76,7 @@ export default function RootLayout({
 
         <Footer />
         <CrisisAuto />
+        <CookieBanner />
 
       </body>
     </html>
