@@ -27,15 +27,17 @@ export default function AddJobForm(){
     try{
 
       const res = await fetch("/api/jobs",{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body: JSON.stringify(data)
-      })
+      method:"POST",
+      headers:{
+     "Content-Type":"application/json"
+      },
+      body: JSON.stringify(data)
+    })
 
-      if(!res.ok){
-        throw new Error("API error")
+      const json = await res.json()
+
+      if(!res.ok || !json.ok){
+      throw new Error("API error")
       }
 
       setSent(true)

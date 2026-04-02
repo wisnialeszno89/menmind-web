@@ -19,8 +19,8 @@ export async function POST(req: Request){
     } = body
 
     const { error } = await resend.emails.send({
-      from: "MenMind <onboarding@resend.dev>",
-      to: ["kontakt.menmind@gmail.com"],
+        from: "onboarding@resend.dev",
+        to: "kontakt.menmind@gmail.com",
       subject: "Nowe ogłoszenie pracy - MenMind",
       html: `
         <h2>Nowe ogłoszenie pracy</h2>

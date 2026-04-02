@@ -23,8 +23,7 @@ export default function Hero({ title, intro }: Props) {
 
           <Link
             href="/narzedzia/test-sytuacji"
-            className="block w-full bg-black text-white py-4 rounded-xl hover:opacity-90 transition text-lg"
-          >
+            className="block w-full bg-neutral-200 text-neutral-900 py-4 rounded-xl hover:bg-neutral-300 transition text-lg"          >
             Zacznij od testu
           </Link>
 

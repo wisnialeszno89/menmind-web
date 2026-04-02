@@ -82,7 +82,11 @@ export default function Navbar() {
           <Link href="/praca" className={linkStyle} onClick={close}>
             Praca
           </Link>
-
+          
+          <Link href="/dla-partnerow" className={linkStyle} onClick={close}>
+            Dla partnera
+          </Link>
+          
           <Link
             href="/propozycje"
             className={linkStyle}
