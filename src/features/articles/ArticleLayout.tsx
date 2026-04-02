@@ -165,11 +165,11 @@ export default function ArticleLayout({
 
       <div className="prose prose-lg max-w-none mb-16">
         {children}
+
         {slug && (
       <ArticleCrossLinks slug={slug} />
-      )}
-          
-         </div>
+    )}
+      </div>
 
          {slug && (
         <ArticleNextSmart

@@ -2,7 +2,19 @@
 
 import { useState } from "react"
 import ArticleGrid from "@/components/ui/ArticleGrid"
+
 import { allArticles } from "@/content"
+import { articles as seoArticles } from "@/content/articles"
+
+const seoMapped = seoArticles.map(a => ({
+  slug: a.slug,
+  title: a.title,
+  description: a.intro,
+  world: a.world as "kryzys" | "odbudowa" | "wzrost" | "ojcostwo",
+  category: "seo",
+  keywords: [],
+  content: ""
+}))
 
 const filters = [
   { key: "all", label: "Wszystko" },
@@ -15,10 +27,15 @@ const filters = [
 export default function Page() {
   const [active, setActive] = useState("all")
 
-  const filtered =
-    active === "all"
-      ? allArticles
-      : allArticles.filter(a => a.world === active)
+  const merged = [
+  ...allArticles,
+  ...seoMapped
+]
+
+const filtered =
+  active === "all"
+    ? merged
+    : merged.filter(a => a.world === active)
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-20">

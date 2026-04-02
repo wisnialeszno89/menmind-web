@@ -70,47 +70,107 @@ export default function TestRelacjiRatowac() {
       )}
 
       {result === "ratowac" && (
-        <div className="mt-6 border rounded p-4">
-          <p className="mb-4">
+        <div className="mt-6 border rounded-xl p-5 space-y-4">
+
+          <p>
             Relacja ma fundament. Warto spróbować odbudowy.
           </p>
 
-          <Link
-            href="/narzedzia/generator-rozmowy-w-zwiazku"
-            className="underline"
-          >
-            Zacznij rozmowę
-          </Link>
+          <div className="space-y-2">
+
+            <Link
+              href="/narzedzia/generator-rozmowy-w-zwiazku"
+              className="block border p-3 rounded-lg"
+            >
+              👉 Zacznij rozmowę
+            </Link>
+
+            <Link
+              href="/relacje/jak-rozmawiac-w-zwiazku"
+              className="block border p-3 rounded-lg"
+            >
+              Przeczytaj: jak rozmawiać w związku
+            </Link>
+
+            <Link
+              href="/narzedzia/plan-rozmowy"
+              className="block border p-3 rounded-lg"
+            >
+              Przygotuj plan rozmowy
+            </Link>
+
+          </div>
+
         </div>
       )}
 
       {result === "niepewne" && (
-        <div className="mt-6 border rounded p-4">
-          <p className="mb-4">
-            Sytuacja jest niejednoznaczna. Potrzebna spokojna rozmowa.
+        <div className="mt-6 border rounded-xl p-5 space-y-4">
+
+          <p>
+            Sytuacja jest niejednoznaczna. Potrzebna spokojna decyzja.
           </p>
 
-          <Link
-            href="/narzedzia/kompas-decyzji"
-            className="underline"
-          >
-            Użyj kompasu decyzji
-          </Link>
+          <div className="space-y-2">
+
+            <Link
+              href="/narzedzia/kompas-decyzji"
+              className="block border p-3 rounded-lg"
+            >
+              👉 Użyj kompasu decyzji
+            </Link>
+
+            <Link
+              href="/relacje/kryzys-w-zwiazku"
+              className="block border p-3 rounded-lg"
+            >
+              Przeczytaj: kryzys w związku
+            </Link>
+
+            <Link
+              href="/navimind"
+              className="block border p-3 rounded-lg"
+            >
+              Porozmawiaj w NaviMind
+            </Link>
+
+          </div>
+
         </div>
       )}
 
       {result === "puscic" && (
-        <div className="mt-6 border rounded p-4">
-          <p className="mb-4">
-            Relacja może być wyczerpana. Warto pomyśleć o odbudowie siebie.
+        <div className="mt-6 border rounded-xl p-5 space-y-4">
+
+          <p>
+            Relacja może być wyczerpana. Warto skupić się na odbudowie siebie.
           </p>
 
-          <Link
-            href="/narzedzia/plan-po-rozstaniu"
-            className="underline"
-          >
-            Plan po rozstaniu
-          </Link>
+          <div className="space-y-2">
+
+            <Link
+              href="/narzedzia/plan-po-rozstaniu"
+              className="block border p-3 rounded-lg"
+            >
+              👉 Plan po rozstaniu
+            </Link>
+
+            <Link
+              href="/kryzys/po-rozstaniu-czuje-pustke"
+              className="block border p-3 rounded-lg"
+            >
+              Przeczytaj: co po rozstaniu
+            </Link>
+
+            <Link
+              href="/narzedzia/plan-72h"
+              className="block border p-3 rounded-lg"
+            >
+              Zacznij stabilizację 72h
+            </Link>
+
+          </div>
+
         </div>
       )}
 

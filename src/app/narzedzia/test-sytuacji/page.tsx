@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import ProgressBar from "@/features/tools/ProgressBar"
 import { saveTestResult } from "@/lib/userState"
 import TestResultFlow from "@/components/TestResultFlow"
-import TestNextSteps from "@/components/TestNextSteps"
 import RecommendedPath from "@/components/RecommendedPath"
 import { trackAction } from "@/lib/trackAction"
 
@@ -63,12 +62,7 @@ export default function SituationTest(){
             href="/sciezki/stabilizacja"
           />
 
-          <TestNextSteps
-            pathHref="/sciezki/stabilizacja"
-            toolHref="/narzedzia/plan-72h"
-          />
-
-        </div>
+          </div>
       </main>
     )
 

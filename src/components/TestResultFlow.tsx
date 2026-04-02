@@ -48,7 +48,6 @@ export default function TestResultFlow({ percent }: Props){
   return(
 
     <>
-
       <h1 className="text-3xl font-semibold mb-4">
         Poziom: {label}
       </h1>
@@ -61,56 +60,59 @@ export default function TestResultFlow({ percent }: Props){
         Wynik: {percent}%
       </p>
 
-      {/* CTA NAVIMIND */}
-      <Link
-        href="/navimind"
-        className="block border p-4 rounded-lg"
-        onClick={()=>{
-          localStorage.setItem("mm_last_action","navimind")
-        }}
-      >
-        👉 Porozmawiaj w NaviMind
-      </Link>
+      {/* GŁÓWNE PROWADZENIE */}
+      <div className="border rounded-xl p-6 mb-10 bg-neutral-50">
 
+        <h2 className="font-semibold mb-3">
+          Twój następny krok
+        </h2>
+
+        <Link
+          href="/narzedzia/plan-72h"
+          className="block bg-black text-white p-4 rounded-lg text-center mb-3"
+          onClick={()=> localStorage.setItem("mm_last_action","plan")}
+        >
+          👉 Ułóż plan na 72h
+        </Link>
+
+        <div className="space-y-2 text-sm">
+
+          <Link
+            href="/narzedzia/reset"
+            className="block border p-3 rounded-lg"
+            onClick={()=> localStorage.setItem("mm_last_action","reset")}
+          >
+            ⚡ Szybki reset energii
+          </Link>
+
+          <Link
+            href="/navimind"
+            className="block border p-3 rounded-lg"
+            onClick={()=> localStorage.setItem("mm_last_action","navimind")}
+          >
+            💬 Porozmawiaj w NaviMind
+          </Link>
+
+        </div>
+
+        <p className="text-xs text-gray-500 mt-3">
+          To zajmuje 2–3 minuty i daje pierwszy konkretny krok.
+        </p>
+
+      </div>
+
+      {/* PARTNERZY */}
       <h3 className="mt-6 mb-2 font-semibold">
         Kto może Ci realnie pomóc teraz:
       </h3>
 
       <p className="text-sm text-gray-600 mb-4">
-        Wybierz jedną osobę poniżej i zrób pierwszy kontakt teraz (to zajmuje 2–3 minuty).
-      </p>
-
-      <p className="text-xs text-gray-400 mb-4">
-        Osoby w podobnej sytuacji najczęściej zaczynają od krótkiej rozmowy.
+        Wybierz jedną osobę poniżej i zrób pierwszy kontakt teraz.
       </p>
 
       <PartnersList partners={partners} />
 
-      <h2 className="text-lg font-semibold mt-12 mb-4">
-        Jeśli wolisz zacząć sam:
-      </h2>
-
-      <div className="space-y-4">
-
-        <Link
-          href="/narzedzia/reset"
-          className="block border-2 border-black p-5 rounded-lg"
-          onClick={()=> localStorage.setItem("mm_last_action","reset")}
-        >
-          👉 Zacznij od resetu
-        </Link>
-
-        <Link
-          href="/narzedzia/plan-72h"
-          className="block border p-4 rounded-lg"
-          onClick={()=> localStorage.setItem("mm_last_action","plan")}
-        >
-          Ułóż plan 72h
-        </Link>
-
-      </div>
-
-      {/* NOWY BLOK PRACA */}
+      {/* BLOK PRACA */}
       {percent >= 60 && (
         <div className="mt-10 border rounded-xl p-6 bg-neutral-50">
 
@@ -119,7 +121,7 @@ export default function TestResultFlow({ percent }: Props){
           </h3>
 
           <p className="text-sm text-gray-600 mb-4">
-            Często przeciążenie lub stagnacja wynika z pracy.
+            Często przeciążenie wynika z pracy.
             Sprawdź dostępne ogłoszenia.
           </p>
 
@@ -136,10 +138,9 @@ export default function TestResultFlow({ percent }: Props){
       <LeadBox />
 
       <div className="mt-10 border rounded-lg p-4 text-sm text-gray-600">
-        Dziś wystarczy. Wróć jutro — pokażemy kolejny krok.
+        Wystarczy jeden krok. Wróć jutro — pokażemy kolejny.
       </div>
 
     </>
   )
-
 }
