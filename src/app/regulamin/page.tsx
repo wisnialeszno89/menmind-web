@@ -4,7 +4,7 @@ export default function TermsPL() {
       <div className="mx-auto max-w-3xl">
         <p className="text-sm text-zinc-400">MenMind · dokument</p>
 
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight">
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-black">
           Regulamin
         </h1>
 
@@ -13,10 +13,10 @@ export default function TermsPL() {
           Korzystając z serwisu akceptujesz poniższe zasady.
         </p>
 
-        <section className="mt-10 space-y-6 text-zinc-300 leading-relaxed">
+        <section className="mt-10 space-y-6 text-gray-700 leading-relaxed">
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               1. Charakter serwisu
             </h2>
             <p className="mt-2">
@@ -30,7 +30,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               2. Brak gwarancji rezultatów
             </h2>
             <p className="mt-2">
@@ -41,7 +41,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               3. Odpowiedzialność użytkownika
             </h2>
             <p className="mt-2">
@@ -52,7 +52,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               4. Sytuacje kryzysowe
             </h2>
             <p className="mt-2">
@@ -66,7 +66,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               5. Narzędzia AI i automatyczne odpowiedzi
             </h2>
             <p className="mt-2">
@@ -78,7 +78,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               6. Linki zewnętrzne i partnerzy
             </h2>
             <p className="mt-2">
@@ -89,7 +89,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               7. Ograniczenie odpowiedzialności
             </h2>
             <p className="mt-2">
@@ -105,7 +105,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               8. Zmiany regulaminu
             </h2>
             <p className="mt-2">
@@ -115,7 +115,7 @@ export default function TermsPL() {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold text-zinc-100">
+            <h2 className="text-lg font-semibold text-black">
               9. Prawo właściwe
             </h2>
             <p className="mt-2">
