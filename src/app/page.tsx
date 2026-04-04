@@ -12,13 +12,13 @@ import PopularTools from "@/features/home/PopularTools"
 import LiveActivity from "@/components/LiveActivity"
 import HowItWorks from "@/features/home/HowItWorks"
 import Testimonials from "@/features/home/Testimonials"
-import StatsCounter from "@/components/StatsCounter"
 import ActivityFeed from "@/features/home/ActivityFeed"
 import QuickTests from "@/features/home/QuickTests"
 import ComeBackTomorrow from "@/features/home/ComeBackTomorrow"
 import DailyStep from "@/components/DailyStep"
 import HeroTrustBar from "@/components/HeroTrustBar"
 import HomeWorkHint from "@/components/HomeWorkHint"
+import LiveUsers from "@/components/LiveUsers"
 
 import { MessageCircle } from "lucide-react"
 
@@ -34,6 +34,10 @@ export default function Home() {
         intro="Bez presji. Krok po kroku, w swoim tempie."
       />
       <HeroTrustBar />
+
+      <div className="flex justify-center -mt-2 mb-6">
+      <LiveUsers />
+      </div>
       
       {/* KROK DNIA */}
       <DailyStep />
@@ -46,8 +50,6 @@ export default function Home() {
 
       {/* JAK TO DZIAŁA */}
       <HowItWorks />
-
-      <StatsCounter />
 
       {/* NAVIMIND */}
       <section className="py-16 border-t">

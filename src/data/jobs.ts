@@ -8,7 +8,8 @@ export type Job = {
   description: string
   pay?: string
   featured?: boolean
-  archived?: boolean   // ← DODAJ TO
+  archived?: boolean
+  status?: "pending" | "approved" | "rejected"
   createdAt: string
 }
 

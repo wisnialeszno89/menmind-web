@@ -15,17 +15,17 @@ export default function LiveUsers(){
         const change = Math.random() > 0.5 ? 1 : -1
         const next = prev + change
         if(next < 15) return 15
-        if(next > 40) return 40
+        if(next > 42) return 42
         return next
       })
-    }, 4000)
+    }, 5000)
 
     return ()=>clearInterval(interval)
   },[])
 
   return(
     <div className="text-sm text-red-600 font-medium">
-      🔴 {count} mężczyzn działa teraz
+      ● {count} mężczyzn teraz online
     </div>
   )
 }

@@ -1,8 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { jobs } from "@/data/jobs"
 import Link from "next/link"
+import { createClient } from "@supabase/supabase-js"
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 
 function isExpired(date: string){
   const created = new Date(date)
@@ -20,20 +25,34 @@ function isNew(date: string){
 
 export default function JobList({ type }: { type: "dam" | "szukam" }) {
 
+  const [jobs,setJobs] = useState<any[]>([])
   const [sort,setSort] = useState("featured")
   const [views,setViews] = useState<Record<string,number>>({})
 
   useEffect(()=>{
+    loadJobs()
 
     const saved = localStorage.getItem("mm_job_views")
     if(saved){
       setViews(JSON.parse(saved))
     }
-
   },[])
 
-  function registerView(id:string){
+  async function loadJobs(){
+    const { data } = await supabase
+      .from("jobs")
+      .select("*")
+      .eq("type", type)
+      .eq("status","approved")
+      .order("featured", { ascending:false })
+      .order("created_at", { ascending:false })
 
+    if(data){
+      setJobs(data)
+    }
+  }
+
+  function registerView(id:string){
     const updated = {
       ...views,
       [id]: (views[id] || 0) + 1
@@ -43,31 +62,11 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
     localStorage.setItem("mm_job_views", JSON.stringify(updated))
   }
 
-    let filtered = jobs.filter(j => j.type === type)
-
-    filtered = filtered.sort((a,b)=>{
-    // featured first
-    if(a.featured && !b.featured) return -1
-    if(!a.featured && b.featured) return 1
-
-    // newest next
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    })
-
-  if(sort === "featured"){
-    filtered = filtered.sort((a,b)=> Number(b.featured) - Number(a.featured))
-  }
-
-  if(sort === "new"){
-    filtered = filtered.sort(
-      (a,b)=> new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    )
-  }
+  let filtered = jobs.filter(job => !isExpired(job.created_at))
 
   return (
     <div>
 
-      {/* sticky CTA */}
       <div className="mb-6 flex justify-between items-center">
 
         <select
@@ -92,8 +91,8 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
 
         {filtered.map(job => {
 
-          const expired = isExpired(job.createdAt)
-          const fresh = isNew(job.createdAt)
+          const expired = isExpired(job.created_at)
+          const fresh = isNew(job.created_at)
 
           return (
 
@@ -120,12 +119,6 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
                   </span>
                 )}
 
-                {expired && (
-                  <span className="text-xs text-gray-500">
-                    Archiwum
-                  </span>
-                )}
-
               </div>
 
               <Link
@@ -144,11 +137,16 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
                 {job.description}
               </p>
 
-              {!expired && (
-                <div className="mt-3 text-xs text-gray-400">
-                  {views[job.id] || 0} wyświetleń
-                </div>
-              )}
+              <a
+                href={`mailto:kontakt.menmind@gmail.com?subject=Zgłoszenie ogłoszenia ${job.id}`}
+                className="block mt-3 text-xs text-gray-400 hover:underline"
+              >
+                Zgłoś ogłoszenie
+              </a>
+
+              <div className="mt-3 text-xs text-gray-400">
+                {views[job.id] || 0} wyświetleń
+              </div>
 
             </div>
 

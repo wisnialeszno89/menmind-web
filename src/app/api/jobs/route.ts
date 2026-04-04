@@ -1,36 +1,35 @@
-export const runtime = "nodejs"
-
 import { NextResponse } from "next/server"
-import { Resend } from "resend"
+import { createClient } from "@supabase/supabase-js"
 
-export async function POST(req: Request){
-  try{
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+)
 
-    console.log("API JOBS HIT")
-
-    const resend = new Resend(process.env.RESEND_API_KEY)
-
+export async function POST(req: Request) {
+  try {
     const body = await req.json()
-    console.log("BODY:", body)
 
-    const { data, error } = await resend.emails.send({
-      from: "MenMind <kontakt@menmind.app>",
-      to: "kontakt.menmind@gmail.com",
-      subject: "Nowe ogłoszenie pracy - MenMind",
-      html: `<pre>${JSON.stringify(body, null, 2)}</pre>`
-    })
+    const { data, error } = await supabase
+      .from("jobs")
+      .insert([
+        {
+          type: body.type,
+          title: body.title,
+          location: body.location,
+          description: body.description,
+          pay: body.pay,
+          contact: body.contact,
+          featured: body.featured || false,
+          status: "approved"
+        }
+      ])
+      .select()
 
-    console.log("RESEND DATA:", data)
-    console.log("RESEND ERROR:", error)
+    if (error) throw error
 
-    if(error){
-      return NextResponse.json({ ok:false, error }, { status:500 })
-    }
-
-    return NextResponse.json({ ok:true })
-
-  }catch(e:any){
-    console.error("CATCH ERROR:", e)
-    return NextResponse.json({ ok:false, error: e?.message }, { status:500 })
+    return NextResponse.json({ ok: true, data })
+  } catch (e: any) {
+    return NextResponse.json({ ok: false, error: e.message })
   }
 }

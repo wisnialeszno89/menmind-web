@@ -21,23 +21,37 @@ export default function AddJobForm(){
       location: form.location.value,
       pay: form.pay.value,
       description: form.description.value,
-      contact: form.contact.value
+      contact: form.contact.value,
+      featured: form.featured?.checked || false
     }
 
     try{
 
+      // jeśli płatne → checkout
+      if(data.featured){
+        const pay = await fetch("/api/jobs/checkout",{
+          method:"POST"
+        })
+
+        const jsonPay = await pay.json()
+
+        window.location.href = jsonPay.url
+        return
+      }
+
+      // darmowe ogłoszenie
       const res = await fetch("/api/jobs",{
-      method:"POST",
-      headers:{
-     "Content-Type":"application/json"
-      },
-      body: JSON.stringify(data)
-    })
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(data)
+      })
 
       const json = await res.json()
 
       if(!res.ok || !json.ok){
-      throw new Error("API error")
+        throw new Error("API error")
       }
 
       setSent(true)
@@ -53,10 +67,10 @@ export default function AddJobForm(){
     return(
       <div className="border rounded-xl p-6 text-center">
         <p className="font-medium">
-          Ogłoszenie wysłane ✅
+          Ogłoszenie dodane ✅
         </p>
         <p className="text-sm text-gray-500 mt-2">
-          Sprawdzimy je i dodamy na stronę.
+          Pojawi się na liście ogłoszeń.
         </p>
       </div>
     )
@@ -105,6 +119,25 @@ export default function AddJobForm(){
         required
         className="w-full border rounded-lg p-3"
       />
+
+      {/* wyróżnienie */}
+      <div className="border rounded-lg p-4 bg-neutral-50">
+        <label className="flex gap-3 items-start cursor-pointer">
+          <input 
+            type="checkbox" 
+            name="featured"
+            className="mt-1"
+          />
+          <div>
+            <div className="font-medium">
+              Wyróżnij ogłoszenie (100 zł)
+            </div>
+            <div className="text-sm text-gray-500">
+              Ogłoszenie pojawi się na górze listy i zostanie oznaczone jako wyróżnione.
+            </div>
+          </div>
+        </label>
+      </div>
 
       {error && (
         <p className="text-red-500 text-sm">
