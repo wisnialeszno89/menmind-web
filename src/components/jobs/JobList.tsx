@@ -66,7 +66,9 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
     localStorage.setItem("mm_job_views", JSON.stringify(updated))
   }
 
-  let filtered = jobs.filter(job => !isExpired(job.created_at))
+  let filtered = jobs
+  .filter(job => job.type === type)
+  .filter(job => !isExpired(job.created_at))
 
   if(sort === "new"){
     filtered = filtered.sort(
