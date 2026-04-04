@@ -114,18 +114,19 @@ export async function POST(req: Request) {
     const { data, error } = await supabase
       .from("jobs")
       .insert([
-        {
-          type: body.type,
-          title: body.title,
-          location: body.location,
-          description: body.description,
-          pay: body.pay,
-          contact: body.contact,
-          featured: false,
-          status: "approved"
-        }
-      ])
-      .select()
+    {
+      type: body.type,
+      title: body.title,
+      location: body.location,
+      description: body.description,
+      pay: body.pay || "",
+      contact: body.contact || "",
+      featured: false,
+      status: "approved",
+      reports: 0
+    }
+  ])
+    .select()
 
     if (error) throw error
 

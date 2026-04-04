@@ -34,7 +34,7 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
       .from("jobs")
       .select("*")
       .eq("type", type)
-      .in("status",["approved","featured"])
+      .select("*")
       .lt("reports",3)
       .order("created_at", { ascending:false })
 
