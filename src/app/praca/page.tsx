@@ -1,20 +1,12 @@
 import Link from "next/link"
 import JobList from "@/components/jobs/JobList"
 
+export const dynamic = "force-dynamic"
+
 export const metadata = {
   title: "Praca dla mężczyzn | Dam pracę | Szukam pracy | MenMind",
   description:
     "Ogłoszenia pracy dla mężczyzn. Dam pracę, szukam pracy, praca fizyczna, dodatkowa i zmiana zawodu.",
-  keywords: [
-    "praca dla mężczyzn",
-    "dam pracę",
-    "szukam pracy",
-    "praca fizyczna",
-    "praca bez CV",
-    "praca od zaraz",
-    "zmiana pracy",
-    "praca dodatkowa"
-  ]
 }
 
 export default function Page() {
@@ -28,7 +20,7 @@ export default function Page() {
 
       <p className="text-gray-600 mb-10 max-w-2xl">
         Oferty pracy, ogłoszenia „dam pracę” i „szukam pracy”.
-        Bez zbędnych formalności. Konkretne propozycje.
+        Bez zbędnych formalności.
       </p>
 
       <div className="grid md:grid-cols-2 gap-12">
@@ -51,41 +43,17 @@ export default function Page() {
 
       </div>
 
-      {/* SEO BLOCK */}
       <section className="mt-20 border-t pt-12">
 
-        <h2 className="text-2xl font-semibold mb-6">
-          Praca dla mężczyzn – konkretne ogłoszenia
-        </h2>
-
-        <div className="space-y-4 text-gray-600 max-w-3xl">
-
-          <p>
-            Ta sekcja powstała dla mężczyzn, którzy chcą szybko znaleźć pracę
-            albo zaoferować zatrudnienie. Bez CV, bez formalności.
-          </p>
-
-          <p>
-            Znajdziesz tutaj pracę fizyczną, dodatkową, dorywczą,
-            zmianę zawodu oraz ogłoszenia lokalne.
-          </p>
-
-          <p>
-            Jeśli szukasz pracy po rozstaniu, kryzysie finansowym
-            lub chcesz zwiększyć dochód — zacznij od aktualnych ogłoszeń.
-        </p>
-
         <Link
-            href="/praca/dodaj"
-            className="inline-block mt-4 bg-neutral-800 text-white px-5 py-3 rounded-lg hover:bg-neutral-700 transition"
-            >
-            Dodaj ogłoszenie pracy
+          href="/praca/dodaj"
+          className="inline-block mt-4 bg-neutral-800 text-white px-5 py-3 rounded-lg"
+        >
+          Dodaj ogłoszenie pracy
         </Link>
 
-        </div>
-        
-        </section>
+      </section>
 
-        </main>
+    </main>
   )
 }

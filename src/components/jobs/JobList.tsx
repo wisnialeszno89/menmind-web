@@ -33,9 +33,6 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
     const { data } = await supabase
       .from("jobs")
       .select("*")
-      .eq("type", type)
-      .select("*")
-      .lt("reports",3)
       .order("created_at", { ascending:false })
 
     if(data){
