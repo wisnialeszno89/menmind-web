@@ -4,11 +4,6 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { createClient } from "@supabase/supabase-js"
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
-
 function isExpired(date: string){
   const created = new Date(date)
   const now = new Date()
@@ -39,6 +34,12 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
   },[])
 
   async function loadJobs(){
+
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+
     const { data } = await supabase
       .from("jobs")
       .select("*")
@@ -63,6 +64,12 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
   }
 
   let filtered = jobs.filter(job => !isExpired(job.created_at))
+
+  if(sort === "new"){
+    filtered = filtered.sort(
+      (a,b)=> new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    )
+  }
 
   return (
     <div>
@@ -121,13 +128,9 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
 
               </div>
 
-              <Link
-                href={`/praca/${job.id}`}
-                onClick={()=>registerView(job.id)}
-                className="font-semibold mb-1 block hover:underline"
-              >
+              <div className="font-semibold mb-1">
                 {job.title}
-              </Link>
+              </div>
 
               <p className="text-sm text-gray-500 mb-2">
                 {job.location} {job.pay && `• ${job.pay}`}
@@ -137,12 +140,23 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
                 {job.description}
               </p>
 
-              <a
-                href={`mailto:kontakt.menmind@gmail.com?subject=Zgłoszenie ogłoszenia ${job.id}`}
-                className="block mt-3 text-xs text-gray-400 hover:underline"
-              >
-                Zgłoś ogłoszenie
-              </a>
+              <p className="mt-3 text-sm">
+                Kontakt: {job.contact}
+              </p>
+
+              <button
+              onClick={async ()=>{
+              await fetch("/api/jobs/report",{
+              method:"POST",
+              headers:{ "Content-Type":"application/json" },
+              body: JSON.stringify({ id: job.id })
+            })
+              alert("Dziękujemy za zgłoszenie")
+            }}
+              className="block mt-3 text-xs text-gray-400 hover:underline"
+            >
+              Zgłoś ogłoszenie
+              </button>
 
               <div className="mt-3 text-xs text-gray-400">
                 {views[job.id] || 0} wyświetleń
