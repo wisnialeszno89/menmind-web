@@ -104,6 +104,7 @@ export async function POST(req: Request) {
         .select("id")
         .eq("title", body.title)
         .eq("contact", body.contact)
+        .limit(1)
 
     if(duplicate && duplicate.length > 0){
       return NextResponse.json({
