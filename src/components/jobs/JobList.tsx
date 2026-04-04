@@ -150,12 +150,12 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
               method:"POST",
               headers:{ "Content-Type":"application/json" },
               body: JSON.stringify({ id: job.id })
-            })
-              alert("Dziękujemy za zgłoszenie")
-            }}
+              })
+                alert("Dziękujemy za zgłoszenie")
+              }}
               className="block mt-3 text-xs text-gray-400 hover:underline"
-            >
-              Zgłoś ogłoszenie
+              >
+                Zgłoś ogłoszenie
               </button>
 
               <div className="mt-3 text-xs text-gray-400">
