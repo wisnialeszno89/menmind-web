@@ -35,6 +35,10 @@ export async function POST(req: Request) {
 
     const body = await req.json()
 
+    if(body.website_hidden){
+      return NextResponse.json({ ok:true })
+    }
+
     // honeypot
     if(body.company_website){
       return NextResponse.json({ ok:true })

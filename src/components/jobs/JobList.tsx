@@ -4,6 +4,11 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { createClient } from "@supabase/supabase-js"
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
+
 function isExpired(date: string){
   const created = new Date(date)
   const now = new Date()
@@ -24,6 +29,27 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
   const [sort,setSort] = useState("featured")
   const [views,setViews] = useState<Record<string,number>>({})
 
+  async function loadJobs(){
+    const { data } = await supabase
+      .from("jobs")
+      .select("*")
+      .eq("type", type)
+      .in("status",["approved","featured"])
+      .lt("reports",3)
+      .order("created_at", { ascending:false })
+
+    if(data){
+
+      data.sort((a,b)=>{
+        if(a.featured && !b.featured) return -1
+        if(!a.featured && b.featured) return 1
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      })
+
+      setJobs(data)
+    }
+  }
+
   useEffect(()=>{
     loadJobs()
 
@@ -32,26 +58,6 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
       setViews(JSON.parse(saved))
     }
   },[])
-
-  async function loadJobs(){
-
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    )
-
-    const { data } = await supabase
-      .from("jobs")
-      .select("*")
-      .eq("type", type)
-      .eq("status","approved")
-      .order("featured", { ascending:false })
-      .order("created_at", { ascending:false })
-
-    if(data){
-      setJobs(data)
-    }
-  }
 
   function registerView(id:string){
     const updated = {
@@ -128,7 +134,10 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
 
               </div>
 
-              <div className="font-semibold mb-1">
+              <div
+                className="font-semibold mb-1"
+                onClick={()=>registerView(job.id)}
+              >
                 {job.title}
               </div>
 
@@ -145,15 +154,15 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
               </p>
 
               <button
-              onClick={async ()=>{
-              await fetch("/api/jobs/report",{
-              method:"POST",
-              headers:{ "Content-Type":"application/json" },
-              body: JSON.stringify({ id: job.id })
-              })
-                alert("Dziękujemy za zgłoszenie")
-              }}
-              className="block mt-3 text-xs text-gray-400 hover:underline"
+                onClick={async ()=>{
+                  await fetch("/api/jobs/report",{
+                    method:"POST",
+                    headers:{ "Content-Type":"application/json" },
+                    body: JSON.stringify({ id: job.id })
+                  })
+                  alert("Dziękujemy za zgłoszenie")
+                }}
+                className="block mt-3 text-xs text-gray-400 hover:underline"
               >
                 Zgłoś ogłoszenie
               </button>

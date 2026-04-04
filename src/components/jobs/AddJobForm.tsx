@@ -79,13 +79,10 @@ export default function AddJobForm(){
   return(
     <form onSubmit={handleSubmit} className="space-y-4">
       <input
-       name="company_website"
-       type="text"
-       style={{ display: "none" }}
-       tabIndex={-1}
-       autoComplete="off"
-    />
-
+      name="website_hidden"
+      className="hidden"
+      />
+      
       <select name="type" required className="w-full border rounded-lg p-3">
         <option value="">Typ ogłoszenia</option>
         <option value="dam">Dam pracę</option>
