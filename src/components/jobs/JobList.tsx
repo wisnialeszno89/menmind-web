@@ -36,13 +36,6 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
       .order("created_at", { ascending:false })
 
     if(data){
-
-      data.sort((a,b)=>{
-        if(a.featured && !b.featured) return -1
-        if(!a.featured && b.featured) return 1
-        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-      })
-
       setJobs(data)
     }
   }
@@ -54,7 +47,7 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
     if(saved){
       setViews(JSON.parse(saved))
     }
-  },[])
+  },[type])
 
   function registerView(id:string){
     const updated = {
@@ -67,11 +60,18 @@ export default function JobList({ type }: { type: "dam" | "szukam" }) {
   }
 
   let filtered = jobs
-  .filter(job => job.type === type)
-  .filter(job => !isExpired(job.created_at))
+    .filter(job => job.type === type)
+    .filter(job => !isExpired(job.created_at))
+
+  // featured first
+  filtered.sort((a,b)=>{
+    if(a.featured && !b.featured) return -1
+    if(!a.featured && b.featured) return 1
+    return 0
+  })
 
   if(sort === "new"){
-    filtered = filtered.sort(
+    filtered.sort(
       (a,b)=> new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
     )
   }
