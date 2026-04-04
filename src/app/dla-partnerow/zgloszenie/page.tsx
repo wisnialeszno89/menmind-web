@@ -4,7 +4,6 @@ import { useState } from "react"
 
 export default function ZgloszeniePage() {
 
-  const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -13,11 +12,13 @@ export default function ZgloszeniePage() {
 
     const form = e.currentTarget
     const formData = new FormData(form)
-
     const data = Object.fromEntries(formData.entries())
 
+    const plan = data.tier as string
+
     try {
-      const res = await fetch("/api/partner/apply", {
+
+      await fetch("/api/partner/apply", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,33 +26,19 @@ export default function ZgloszeniePage() {
         body: JSON.stringify(data),
       })
 
-      if (res.ok) {
-        setSent(true)
-      } else {
-        alert("Coś poszło nie tak. Spróbuj ponownie.")
+      const links:any = {
+        basic: "https://navimind.lemonsqueezy.com/checkout/buy/7db3c5e5-defb-4a19-b69f-2e9fc7b421e7",
+        pro: "https://navimind.lemonsqueezy.com/checkout/buy/4cfe43f8-f3e5-41b6-b76b-389aa02e6bab",
+        strategic: "https://navimind.lemonsqueezy.com/checkout/buy/edd53edf-1441-46c4-b5a5-e844f80008f4"
       }
 
+      window.location.href = links[plan]
+
     } catch (err) {
-      alert("Błąd połączenia. Spróbuj ponownie.")
+      alert("Błąd wysyłania. Spróbuj ponownie.")
     }
 
     setLoading(false)
-  }
-
-  if (sent) {
-    return (
-      <div className="max-w-xl mx-auto py-24 text-center">
-
-        <h1 className="text-3xl font-semibold mb-4">
-          Dzięki za zgłoszenie
-        </h1>
-
-        <p className="text-gray-600">
-          Skontaktujemy się z Tobą w ciągu 24h i przedstawimy kolejne kroki.
-        </p>
-
-      </div>
-    )
   }
 
   return (
@@ -63,8 +50,7 @@ export default function ZgloszeniePage() {
       </h1>
 
       <p className="text-gray-600 mb-10">
-        Wypełnij formularz — odezwiemy się i pokażemy Ci,
-        jak możesz pozyskiwać klientów z platformy.
+        Wypełnij formularz i aktywuj wybrany pakiet.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -92,13 +78,13 @@ export default function ZgloszeniePage() {
 
         <input
           name="phone"
-          placeholder="Telefon (opcjonalnie)"
+          placeholder="Telefon"
           className="w-full border p-3 rounded"
         />
 
         <input
           name="category"
-          placeholder="Czym się zajmujesz? (np. psycholog, trener)"
+          placeholder="Czym się zajmujesz"
           className="w-full border p-3 rounded"
           required
         />
@@ -111,17 +97,18 @@ export default function ZgloszeniePage() {
 
         <input
           name="website"
-          placeholder="Strona www (jeśli masz)"
+          placeholder="Strona www"
           className="w-full border p-3 rounded"
         />
 
         <select
           name="tier"
           className="w-full border p-3 rounded"
+          required
         >
-          <option value="basic">Basic — 99 zł</option>
-          <option value="pro">Pro — 249 zł</option>
-          <option value="strategic">Strategic — 699 zł</option>
+          <option value="basic">Basic — 99 zł / miesiąc</option>
+          <option value="pro">Pro — 249 zł / miesiąc</option>
+          <option value="strategic">Strategic — 699 zł / miesiąc</option>
         </select>
 
         <textarea
@@ -135,12 +122,11 @@ export default function ZgloszeniePage() {
           disabled={loading}
           className="w-full bg-black text-white py-3 rounded-lg hover:opacity-90 disabled:opacity-50"
         >
-          {loading ? "Wysyłanie..." : "Wyślij zgłoszenie"}
+          {loading ? "Przekierowanie..." : "Dołącz i przejdź do płatności"}
         </button>
 
       </form>
 
     </div>
-
   )
 }

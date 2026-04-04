@@ -1,6 +1,37 @@
 import { createClient } from "@supabase/supabase-js"
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+function getUrl() {
+  return process.env.NEXT_PUBLIC_SUPABASE_URL ?? ""
+}
 
-export const supabase = createClient(supabaseUrl, supabaseKey)
+function getAnon() {
+  return process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ""
+}
+
+function getService() {
+  return process.env.SUPABASE_SERVICE_ROLE_KEY ?? ""
+}
+
+export function getSupabasePublic() {
+  const url = getUrl()
+  const key = getAnon()
+
+  if (!url || !key) {
+    // build-time fallback
+    return null as any
+  }
+
+  return createClient(url, key)
+}
+
+export function getSupabaseAdmin() {
+  const url = getUrl()
+  const key = getService()
+
+  if (!url || !key) {
+    // build-time fallback
+    return null as any
+  }
+
+  return createClient(url, key)
+}
