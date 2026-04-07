@@ -282,6 +282,46 @@ title:"Ojciec nie widzi dziecka – co zrobić krok po kroku",
 description:"Pierwsze kroki gdy masz ograniczony kontakt z dzieckiem.",
 world:"ojcostwo",
 category:"kontakt",
+content:`
+To jeden z najtrudniejszych momentów dla ojca.
+
+Nagle kontakt z dzieckiem zostaje ograniczony
+albo znika całkowicie.
+
+Pojawia się złość,
+bezradność
+i chaos.
+
+Największy błąd to działanie w emocjach.
+
+Długie wiadomości.
+Oskarżenia.
+Presja.
+
+To zwykle pogarsza sytuację.
+
+Co pomaga
+
+uspokojenie emocji
+zachowanie komunikacji
+krótkie komunikaty
+konsekwencja
+
+Relacja z dzieckiem nadal istnieje.
+
+Brak spotkań nie oznacza końca więzi.
+
+Najważniejsza jest stabilność
+i spokojne działanie.
+
+Małe kroki mają znaczenie.
+
+Krótka wiadomość.
+Telefon.
+Propozycja spotkania.
+
+Konsekwencja buduje relację.
+`
 },
 
 {
@@ -290,6 +330,44 @@ title:"Alimenty a kontakt z dzieckiem – co warto wiedzieć",
 description:"Najczęstsze nieporozumienia wokół alimentów i relacji z dzieckiem.",
 world:"ojcostwo",
 category:"alimenty",
+content:`
+To jeden z najczęstszych konfliktów po rozstaniu.
+
+Pojawia się przekonanie:
+płacę alimenty – mam prawo do dziecka.
+
+Albo odwrotnie:
+nie widzę dziecka – nie będę płacił.
+
+To prowadzi do napięcia.
+
+Alimenty i kontakt to dwie różne rzeczy.
+
+alimenty dotyczą utrzymania dziecka
+kontakt dotyczy relacji
+
+Jedno nie powinno być narzędziem nacisku.
+
+Najczęstszy błąd
+
+Przestanie płacenia z powodu braku kontaktu.
+
+To zwykle pogarsza sytuację.
+
+Konflikt się zaostrza.
+Relacja się oddala.
+
+Relacja z dzieckiem
+nie opiera się na rozliczeniach.
+
+Dziecko potrzebuje obecności.
+
+Oddzielenie emocji od działania
+często daje lepszy efekt.
+
+Spokój i konsekwencja
+mają większe znaczenie niż walka.
+`
 },
 
 {
@@ -298,6 +376,50 @@ title:"Gdy dziecko nie chce przychodzić do ojca",
 description:"Jedna z najtrudniejszych sytuacji po rozstaniu.",
 world:"ojcostwo",
 category:"relacja",
+content:`
+To zdanie potrafi uderzyć najmocniej.
+
+Dziecko nie chce przyjść.
+
+Pojawia się ból i bezsilność.
+
+Najgorsze co można zrobić,
+to nacisk.
+
+Zmuszanie.
+Presja.
+Złość.
+
+To pogłębia problem.
+
+Dziecko często czuje konflikt lojalności.
+
+Nie chce ranić żadnego z rodziców.
+
+Czasem powtarza emocje dorosłych.
+
+Co pomaga
+
+spokojna reakcja
+brak presji
+krótkie komunikaty
+konsekwencja
+
+Relacja buduje się powoli.
+
+Telefon.
+Wiadomość.
+Krótka propozycja spotkania.
+
+To wystarczy.
+
+Najważniejsze
+
+Nie bierz tego personalnie.
+
+To trudna sytuacja dla dziecka,
+nie odrzucenie.
+`
 },
 
 {
@@ -306,6 +428,43 @@ title:"Matka utrudnia kontakty – jak reagować spokojnie",
 description:"Gdy kontakty z dzieckiem są utrudniane pojawiają się silne emocje.",
 world:"ojcostwo",
 category:"kontakt",
+content:`
+To częsta sytuacja po rozstaniu.
+
+Odwoływanie spotkań.
+Zmiana planów.
+Brak informacji.
+
+Pojawia się frustracja.
+
+Impulsywne reakcje
+często pogarszają sytuację.
+
+Najczęstsze błędy
+
+długie wiadomości
+oskarżenia
+groźby
+wycofanie się
+
+To rzadko pomaga.
+
+Co działa lepiej
+
+krótkie komunikaty
+spokój
+konsekwencja
+propozycje alternatyw
+
+Najważniejsze
+to nie walczyć przez dziecko.
+
+Dziecko widzi konflikt.
+
+Spokój daje większą kontrolę.
+
+Konsekwencja buduje relację.
+`
 }
 
 ]
