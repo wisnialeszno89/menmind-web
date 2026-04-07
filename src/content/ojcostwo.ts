@@ -275,6 +275,41 @@ Takie chwile budują poczucie bezpieczeństwa i bliskości.
 
 Z czasem stają się jednymi z najważniejszych momentów w relacji.
 `
+},
+{
+slug:"ojciec-nie-widzi-dziecka",
+title:"Ojciec nie widzi dziecka – co zrobić krok po kroku",
+description:"Pierwsze kroki gdy masz ograniczony kontakt z dzieckiem.",
+world:"ojcostwo",
+category:"kontakt",
+content:""
+},
+
+{
+slug:"alimenty-i-kontakt-z-dzieckiem",
+title:"Alimenty a kontakt z dzieckiem – co warto wiedzieć",
+description:"Najczęstsze nieporozumienia wokół alimentów i relacji z dzieckiem.",
+world:"ojcostwo",
+category:"alimenty",
+content:""
+},
+
+{
+slug:"gdy-dziecko-nie-chce-do-ojca",
+title:"Gdy dziecko nie chce przychodzić do ojca",
+description:"Jedna z najtrudniejszych sytuacji po rozstaniu.",
+world:"ojcostwo",
+category:"relacja",
+content:""
+},
+
+{
+slug:"matka-utrudnia-kontakty",
+title:"Matka utrudnia kontakty – jak reagować spokojnie",
+description:"Gdy kontakty z dzieckiem są utrudniane pojawiają się silne emocje.",
+world:"ojcostwo",
+category:"kontakt",
+content:""
 }
 
 ]
