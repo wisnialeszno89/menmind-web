@@ -12,6 +12,8 @@ import ExploreTools from "@/components/ExploreTools"
 import NextSteps from "@/components/NextSteps"
 import ToolCompleted from "@/components/ToolCompleted"
 import ToolNextBar from "@/components/ToolNextBar"
+import ResetPoSwietachPage from "@/app/narzedzia/reset-po-swietach/page"
+
 
 const toolMap = {
   "brain-dump": BrainDumpPage,
@@ -23,6 +25,7 @@ const toolMap = {
   "kompas-decyzji": DecisionCompass,
   "reset-7-krokow": Reset90Page,
   "stabilizacja": MinimumPage,
+  "reset-po-swietach": ResetPoSwietachPage
 }
 
 export default async function Page({
