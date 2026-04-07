@@ -6,6 +6,7 @@ import RelatedArticles from "@/components/RelatedArticles"
 import ArticlePartners from "@/features/articles/ArticlePartners"
 import NextSteps from "@/components/NextSteps"
 import ArticleCTA from "@/features/articles/ArticleCTA"
+import ArticleTestCTA from "@/components/ArticleTestCTA"
 
 import AIRecommendedTests from "@/components/AIRecommendedTests"
 import StickyTestCTA from "@/components/StickyTestCTA"
@@ -32,6 +33,52 @@ export default function ArticleLayout({
   children,
   faq
 }: Props) {
+
+  const articleTests: Record<string, {title:string,desc:string,test:string}> = {
+
+    "dlaczego-po-swietach-mezczyzna-czuje-pustke":{
+      title:"Sprawdź czy potrzebujesz resetu",
+      desc:"Krótki test pokaże czy jesteś w fazie spadku energii.",
+      test:"reset-po-swietach"
+    },
+
+    "brak-motywacji-po-swietach":{
+      title:"Sprawdź poziom energii",
+      desc:"Zobacz czy potrzebujesz stabilizacji.",
+      test:"reset-po-swietach"
+    },
+
+    "konflikty-w-zwiazku-po-swietach":{
+      title:"Sprawdź stan relacji",
+      desc:"Krótki test pokaże poziom napięcia w relacji.",
+      test:"test-relacji"
+    },
+
+    "jak-wrocic-do-rytmu-po-swietach":{
+      title:"Ułóż plan powrotu",
+      desc:"Prosty plan pomoże odzyskać rytm dnia.",
+      test:"plan-72h"
+    },
+
+    "samotnosc-mezczyzny-wsrod-ludzi":{
+      title:"Sprawdź relacje",
+      desc:"Zobacz czy potrzebujesz odbudowy kontaktów.",
+      test:"test-relacji"
+    },
+
+    "powrot-do-pracy-po-wolnym":{
+      title:"Wyrzuć chaos z głowy",
+      desc:"Brain Dump pomoże uporządkować zadania.",
+      test:"brain-dump"
+    },
+
+    "presja-po-swietach":{
+      title:"Podejmij decyzję",
+      desc:"Kompas decyzji pomoże określić kolejny krok.",
+      test:"kompas-decyzji"
+    }
+
+  }
 
   const url = slug
     ? `https://menmind.app/${world}/${slug}`
@@ -166,17 +213,25 @@ export default function ArticleLayout({
       <div className="prose prose-lg max-w-none mb-16">
         {children}
 
+        {slug && articleTests[slug] && (
+          <ArticleTestCTA
+            title={articleTests[slug].title}
+            description={articleTests[slug].desc}
+            testSlug={articleTests[slug].test}
+          />
+        )}
+
         {slug && (
-      <ArticleCrossLinks slug={slug} />
-    )}
+          <ArticleCrossLinks slug={slug} />
+        )}
       </div>
 
-         {slug && (
+      {slug && (
         <ArticleNextSmart
-        slug={slug}
-        world={world as any}
-      />
-    )}
+          slug={slug}
+          world={world as any}
+        />
+      )}
 
       <section className="mt-16 border-t pt-10">
         <h2 className="text-2xl font-semibold mb-6">
@@ -205,7 +260,7 @@ export default function ArticleLayout({
 
       <ArticleCTA world={world} />
 
-        {slug && (
+      {slug && (
         <section className="mt-20">
           <RelatedArticles
             world={world}
