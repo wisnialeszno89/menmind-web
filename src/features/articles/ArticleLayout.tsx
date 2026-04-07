@@ -6,7 +6,6 @@ import RelatedArticles from "@/components/RelatedArticles"
 import ArticlePartners from "@/features/articles/ArticlePartners"
 import NextSteps from "@/components/NextSteps"
 import ArticleCTA from "@/features/articles/ArticleCTA"
-import ArticleTestCTA from "@/components/ArticleTestCTA"
 
 import AIRecommendedTests from "@/components/AIRecommendedTests"
 import StickyTestCTA from "@/components/StickyTestCTA"
@@ -214,12 +213,23 @@ export default function ArticleLayout({
         {children}
 
         {slug && articleTests[slug] && (
-          <ArticleTestCTA
-            title={articleTests[slug].title}
-            description={articleTests[slug].desc}
-            testSlug={articleTests[slug].test}
-          />
-        )}
+      <div className="mt-16 border rounded-xl p-6 bg-neutral-50">
+      <h3 className="font-semibold mb-2">
+      Sprawdź swoją sytuację
+      </h3>
+
+      <p className="text-sm text-gray-600 mb-4">
+      {articleTests[slug].desc}
+       </p>
+
+      <Link
+      href={`/narzedzia/${articleTests[slug].test}`}
+      className="inline-block bg-black text-white px-5 py-3 rounded-lg"
+      >
+      {articleTests[slug].title}
+      </Link>
+      </div>
+     )}
 
         {slug && (
           <ArticleCrossLinks slug={slug} />
