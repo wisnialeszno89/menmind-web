@@ -372,6 +372,53 @@ Nie dlatego że wydarzyła się jedna wielka zmiana.
 
 Dlatego że wiele małych kroków stworzyło nową drogę.
 `
-}
+},
+{
+slug:"jak-wrocic-do-rytmu-po-swietach",
+title:"Jak wrócić do rytmu po świętach",
+description:"Powrót do struktury pomaga odzyskać stabilność.",
+world:"odbudowa",
+category:"nawyki",
+content:`
+Po świętach rytm dnia jest rozbity.
+
+Sen.
+Jedzenie.
+Plan dnia.
+
+Powrót zaczyna się od prostych rzeczy.
+
+Stała godzina wstawania.
+Ruch.
+Plan dnia.
+
+Małe kroki przywracają stabilność.
+
+Struktura daje poczucie kontroli.
+`
+},
+
+{
+slug:"powrot-do-pracy-po-wolnym",
+title:"Powrót do pracy po wolnym",
+description:"Powrót do obowiązków bywa trudny.",
+world:"odbudowa",
+category:"praca",
+content:`
+Po wolnym powrót do pracy jest trudny.
+
+Brak energii.
+Rozkojarzenie.
+Opór.
+
+Pierwszy dzień jest najcięższy.
+
+Potem wraca rytm.
+
+Najlepiej zacząć od małych zadań.
+
+Ruch przywraca koncentrację.
+`
+},
 
 ]

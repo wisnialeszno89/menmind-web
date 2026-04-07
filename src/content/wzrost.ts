@@ -329,5 +329,30 @@ To stabilność.
 Najlepsze relacje mają naturalną dynamikę.
 `
 },
+{
+slug:"konflikty-w-zwiazku-po-swietach",
+title:"Konflikty w związku po świętach",
+description:"Więcej czasu razem ujawnia napięcia.",
+world:"wzrost",
+category:"relacje",
+content:`
+Święta to więcej czasu razem.
+
+Więcej rozmów.
+Więcej emocji.
+
+Pojawia się zmęczenie.
+
+Małe rzeczy zaczynają irytować.
+
+To nie nowe problemy.
+
+To napięcia,
+które wyszły na powierzchnię.
+
+Często wystarczy powrót do rytmu,
+aby emocje opadły.
+`
+},
 
 ]

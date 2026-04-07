@@ -273,6 +273,125 @@ Z czasem chaos zaczyna się porządkować.
 
 I pojawia się przestrzeń na nowy kierunek.
 `
-}
+},
+{
+slug:"dlaczego-po-swietach-mezczyzna-czuje-pustke",
+title:"Dlaczego po świętach mężczyzna czuje pustkę",
+description:"Po intensywnym czasie pojawia się cisza i spadek energii.",
+world:"kryzys",
+category:"psychika",
+content:`
+Święta są intensywne.
+
+Rodzina.
+Spotkania.
+Emocje.
+
+Po nich wraca cisza.
+
+Wraca codzienność.
+
+I pojawia się pustka.
+
+To normalna reakcja.
+
+Przez kilka dni życie było inne.
+Więcej ludzi.
+Więcej bodźców.
+
+Po powrocie kontrast jest duży.
+
+Objawia się to spadkiem energii.
+Brakiem motywacji.
+Niechęcią do działania.
+
+To nie problem.
+
+To moment przejścia.
+
+Pustka mija,
+gdy wraca struktura.
+`
+},
+
+{
+slug:"brak-motywacji-po-swietach",
+title:"Brak motywacji po świętach",
+description:"Spadek energii po intensywnym czasie jest naturalny.",
+world:"kryzys",
+category:"psychika",
+content:`
+Po świętach wielu mężczyzn czuje spadek motywacji.
+
+Nie chce się wracać do pracy.
+Nie chce się planować.
+
+Święta zaburzają rytm.
+
+Późniejsze godziny.
+Mniej ruchu.
+Więcej jedzenia.
+
+Organizm zwalnia.
+
+Po powrocie do obowiązków pojawia się opór.
+
+To naturalne.
+
+Motywacja wraca po działaniu.
+
+Małe kroki przywracają energię.
+`
+},
+
+{
+slug:"samotnosc-mezczyzny-wsrod-ludzi",
+title:"Samotność mężczyzny wśród ludzi",
+description:"Można być wśród ludzi i czuć dystans.",
+world:"kryzys",
+category:"relacje",
+content:`
+Samotność nie oznacza braku ludzi.
+
+Można być wśród innych
+i czuć dystans.
+
+Brak rozmów.
+Brak otwartości.
+Presja bycia silnym.
+
+Mężczyźni często zamykają się w sobie.
+
+Z czasem pojawia się poczucie oddalenia.
+
+Samotność wynika
+z braku autentycznego kontaktu.
+`
+},
+
+{
+slug:"presja-po-swietach",
+title:"Presja po świętach",
+description:"Po czasie refleksji pojawia się presja działania.",
+world:"kryzys",
+category:"psychika",
+content:`
+Święta skłaniają do refleksji.
+
+Po nich pojawia się presja.
+
+Muszę coś zmienić.
+Czas ucieka.
+Stoję w miejscu.
+
+Bez planu presja rośnie.
+
+Pojawia się napięcie.
+
+Rozwiązaniem jest konkretny kierunek.
+
+Małe kroki zmniejszają presję.
+`
+},
 
 ]
