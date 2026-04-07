@@ -282,7 +282,6 @@ title:"Ojciec nie widzi dziecka – co zrobić krok po kroku",
 description:"Pierwsze kroki gdy masz ograniczony kontakt z dzieckiem.",
 world:"ojcostwo",
 category:"kontakt",
-content:""
 },
 
 {
@@ -291,7 +290,6 @@ title:"Alimenty a kontakt z dzieckiem – co warto wiedzieć",
 description:"Najczęstsze nieporozumienia wokół alimentów i relacji z dzieckiem.",
 world:"ojcostwo",
 category:"alimenty",
-content:""
 },
 
 {
@@ -300,7 +298,6 @@ title:"Gdy dziecko nie chce przychodzić do ojca",
 description:"Jedna z najtrudniejszych sytuacji po rozstaniu.",
 world:"ojcostwo",
 category:"relacja",
-content:""
 },
 
 {
@@ -309,7 +306,6 @@ title:"Matka utrudnia kontakty – jak reagować spokojnie",
 description:"Gdy kontakty z dzieckiem są utrudniane pojawiają się silne emocje.",
 world:"ojcostwo",
 category:"kontakt",
-content:""
 }
 
 ]
