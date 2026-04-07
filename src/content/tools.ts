@@ -152,6 +152,12 @@ export const tools: Tool[] = [
   title: "Ratować relację?",
   description: "Sprawdź czy walczyć czy odpuścić",
   world: "odbudowa"
-}
+},
+{
+slug:"reset-po-swietach",
+title:"Reset po świętach",
+description:"Sprawdź czy potrzebujesz stabilizacji po intensywnym czasie",
+world: "odbudowa"
+},
 
 ]

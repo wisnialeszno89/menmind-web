@@ -9,24 +9,33 @@ import LeadBox from "@/components/LeadBox"
 
 type Props = {
   percent: number
+  nextTool?: string
+  title?: string
 }
 
-export default function TestResultFlow({ percent }: Props){
+export default function TestResultFlow({
+  percent,
+  nextTool = "plan-72h",
+  title
+}: Props){
 
   let category = "coaching"
-  let label = "stabilnie"
-  let desc = "Nie widać większych problemów."
+  let label = "stabilizacja"
+  let desc = "Twoja sytuacja wygląda stabilnie. Wystarczy utrzymać rytm."
+  let level = "Stabilność"
 
   if(percent >= 40){
     category = "coach"
-    label = "przeciążenie"
-    desc = "Twoja energia spada. Warto to ogarnąć."
+    label = "przeciazenie"
+    level = "Przejście"
+    desc = "Twoja energia spada. Warto uporządkować rytm i zmniejszyć chaos."
   }
 
   if(percent >= 70){
     category = "psycholog"
     label = "kryzys"
-    desc = "Możliwe że jesteś w trudnym momencie."
+    level = "Kryzys"
+    desc = "Możliwe że jesteś w trudnym momencie. Warto zrobić reset i uporządkować sytuację."
   }
 
   useEffect(() => {
@@ -48,11 +57,17 @@ export default function TestResultFlow({ percent }: Props){
   return(
 
     <>
-      <h1 className="text-3xl font-semibold mb-4">
-        Poziom: {label}
+      {title && (
+        <p className="text-sm text-gray-500 mb-2">
+          {title}
+        </p>
+      )}
+
+      <h1 className="text-3xl font-semibold mb-2">
+        Poziom: {level}
       </h1>
 
-      <p className="text-gray-700 mb-6">
+      <p className="text-gray-700 mb-4">
         {desc}
       </p>
 
@@ -68,11 +83,11 @@ export default function TestResultFlow({ percent }: Props){
         </h2>
 
         <Link
-          href="/narzedzia/plan-72h"
+          href={`/narzedzia/${nextTool}`}
           className="block bg-black text-white p-4 rounded-lg text-center mb-3"
           onClick={()=> localStorage.setItem("mm_last_action","plan")}
         >
-          👉 Ułóż plan na 72h
+          👉 Przejdź do kolejnego kroku
         </Link>
 
         <div className="space-y-2 text-sm">
