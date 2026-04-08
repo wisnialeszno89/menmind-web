@@ -51,7 +51,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
         <a 
         href="/balans"
-        className="block bg-black text-white rounded-xl p-6 hover:opacity-90 transition"
+        className="block border rounded-xl p-6 hover:shadow-sm transition"
         >
         <div className="font-semibold mb-1">
           Sprawdź swój balans życia
