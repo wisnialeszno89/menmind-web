@@ -4,6 +4,10 @@ import { useEffect, useState } from "react"
 
 export default function BalancePage(){
 
+  const [tab,setTab]=useState<
+  "life" | "finance" | "father" | "health" | "relations" | "work" | "mind"
+    >("life")
+
   const [data, setData] = useState({
     sleep: 6,
     work: 9,
@@ -67,53 +71,141 @@ export default function BalancePage(){
   return (
     <div className="max-w-6xl mx-auto px-6 py-16">
 
-      <h1 className="text-3xl font-semibold mb-2">
-        Twój balans życia
-      </h1>
+      <div className="flex gap-2 mb-8">
+        <button
+          onClick={()=>setTab("life")}
+          className={`px-4 py-2 rounded-lg border ${tab==="life"?"bg-black text-white":"bg-white"}`}
+        >
+          Balans życia
+        </button>
 
-      <p className="text-gray-500 mb-6">
-        Sprawdź gdzie jesteś i popraw wynik
-      </p>
+        <button
+          onClick={()=>setTab("finance")}
+          className={`px-4 py-2 rounded-lg border ${tab==="finance"?"bg-black text-white":"bg-white"}`}
+        >
+          Balans finansowy
+        </button>
 
-      <Score score={score}/>
-        <LevelBadge score={score}/>
-        <ProgressDelta history={history}/>
-        <BestScore history={history}/>
-        <GoalBadge score={score}/>
-        <AverageCompare score={score}/>
-        <Streak history={history}/>
+        <button
+        onClick={()=>setTab("father")}
+        className={`px-4 py-2 rounded-lg border ${tab==="father"?"bg-black text-white":"bg-white"}`}
+        >
+          Balans ojcostwa
+        </button>
 
-      <div className="grid md:grid-cols-2 gap-10 mt-10">
+        <button
+        onClick={()=>setTab("health")}
+        className={`px-4 py-2 rounded-lg border ${tab==="health"?"bg-black text-white":"bg-white"}`}
+        >
+          Zdrowie
+        </button>
 
-        <div className="space-y-4">
-          <Input label="Sen (h)" value={data.sleep} onChange={(v)=>setData({...data,sleep:v})}/>
-          <Input label="Praca (h)" value={data.work} onChange={(v)=>setData({...data,work:v})}/>
-          <Input label="Rodzina (h)" value={data.family} onChange={(v)=>setData({...data,family:v})}/>
-          <Input label="Ruch (min)" value={data.sport} onChange={(v)=>setData({...data,sport:v})}/>
-          <Input label="Czas dla siebie (h)" value={data.self} onChange={(v)=>setData({...data,self:v})}/>
-          <Input label="Stres (1-10)" value={data.stress} onChange={(v)=>setData({...data,stress:v})}/>
-          <Input label="Ekran (h)" value={data.screen} onChange={(v)=>setData({...data,screen:v})}/>
-          <Input label="Energia (1-10)" value={data.energy} onChange={(v)=>setData({...data,energy:v})}/>
+        <button
+        onClick={()=>setTab("relations")}
+        className={`px-4 py-2 rounded-lg border ${tab==="relations"?"bg-black text-white":"bg-white"}`}
+        >
+          Relacje
+        </button>
+
+        <button
+        onClick={()=>setTab("work")}
+        className={`px-4 py-2 rounded-lg border ${tab==="work"?"bg-black text-white":"bg-white"}`}
+        >
+         Praca
+        </button>
+
+        <button
+        onClick={()=>setTab("mind")}
+        className={`px-4 py-2 rounded-lg border ${tab==="mind"?"bg-black text-white":"bg-white"}`}
+        >
+         Psychika
+        </button>
         </div>
 
-        <div className="space-y-4">
-          <Bar label="Sen" value={data.sleep} norm={norms.sleep}/>
-          <Bar label="Praca" value={data.work} norm={norms.work} inverse/>
-          <Bar label="Rodzina" value={data.family} norm={norms.family}/>
-          <Bar label="Ruch" value={data.sport} norm={norms.sport}/>
-          <Bar label="Ja" value={data.self} norm={norms.self}/>
-          <Bar label="Stres" value={data.stress} norm={norms.stress} inverse/>
-          <Bar label="Ekran" value={data.screen} norm={norms.screen} inverse/>
-          <Bar label="Energia" value={data.energy} norm={norms.energy}/>
-        </div>
+      {tab==="life" && (
+        <>
+          <h1 className="text-3xl font-semibold mb-2">
+            Twój balans życia
+          </h1>
 
+          <p className="text-gray-500 mb-6">
+            Sprawdź gdzie jesteś i popraw wynik
+          </p>
+
+          <Score score={score}/>
+          <LevelBadge score={score}/>
+          <ProgressDelta history={history}/>
+          <BestScore history={history}/>
+          <GoalBadge score={score}/>
+          <AverageCompare score={score}/>
+          <Streak history={history}/>
+
+          <div className="grid md:grid-cols-2 gap-10 mt-10">
+
+            <div className="space-y-4">
+              <Input label="Sen (h)" value={data.sleep} onChange={(v)=>setData({...data,sleep:v})}/>
+              <Input label="Praca (h)" value={data.work} onChange={(v)=>setData({...data,work:v})}/>
+              <Input label="Rodzina (h)" value={data.family} onChange={(v)=>setData({...data,family:v})}/>
+              <Input label="Ruch (min)" value={data.sport} onChange={(v)=>setData({...data,sport:v})}/>
+              <Input label="Czas dla siebie (h)" value={data.self} onChange={(v)=>setData({...data,self:v})}/>
+              <Input label="Stres (1-10)" value={data.stress} onChange={(v)=>setData({...data,stress:v})}/>
+              <Input label="Ekran (h)" value={data.screen} onChange={(v)=>setData({...data,screen:v})}/>
+              <Input label="Energia (1-10)" value={data.energy} onChange={(v)=>setData({...data,energy:v})}/>
+            </div>
+
+            <div className="space-y-4">
+              <Bar label="Sen" value={data.sleep} norm={norms.sleep}/>
+              <Bar label="Praca" value={data.work} norm={norms.work} inverse/>
+              <Bar label="Rodzina" value={data.family} norm={norms.family}/>
+              <Bar label="Ruch" value={data.sport} norm={norms.sport}/>
+              <Bar label="Ja" value={data.self} norm={norms.self}/>
+              <Bar label="Stres" value={data.stress} norm={norms.stress} inverse/>
+              <Bar label="Ekran" value={data.screen} norm={norms.screen} inverse/>
+              <Bar label="Energia" value={data.energy} norm={norms.energy}/>
+            </div>
+
+          </div>
+
+          <ProgressChart history={history}/>
+          <Insights data={data}/>
+          <TopFix data={data}/>
+          <RecommendedActions data={data}/>
+        </>
+      )}
+
+      {tab==="finance" && (
+        <FinancialBalance/>
+      )}
+
+      {tab==="father" && (
+       <FatherBalance/>
+      )}
+      {tab==="health" && (
+        <HealthBalance/>
+      )}
+      {tab==="relations" && (
+        <RelationsBalance/>
+      )}
+      {tab==="work" && (
+        <WorkBalance/>
+      )}
+      {tab==="mind" && (
+        <MindBalance/>
+      )}
+
+    </div>
+  )
+}
+
+function FinancePlaceholder(){
+  return(
+    <div className="border rounded-xl p-6">
+      <div className="text-lg font-semibold mb-2">
+        Balans finansowy
       </div>
-
-      <ProgressChart history={history}/>
-      <Insights data={data}/>
-      <TopFix data={data}/>
-      <RecommendedActions data={data}/>
-
+      <div className="text-sm text-gray-600">
+        W trakcie przygotowania
+      </div>
     </div>
   )
 }
@@ -121,7 +213,6 @@ export default function BalancePage(){
 function Score({score}:{score:number}){
   let color="bg-red-500"
   let label="Przeciążenie"
-
   if(score>50){color="bg-yellow-500";label="Niestabilny balans"}
   if(score>75){color="bg-green-600";label="Dobra równowaga"}
 
@@ -162,6 +253,27 @@ function AverageCompare({score}:{score:number}){
   return (
     <div className="text-sm text-gray-600 mt-1">
       Średni wynik mężczyzn: {avg}% • Ty: {score}%
+    </div>
+  )
+}
+
+function Streak({history}:{history:any[]}){
+
+  if(!history.length) return null
+  let streak = 1
+
+  for(let i=history.length-1;i>0;i--){
+    const d1 = new Date(history[i].date)
+    const d2 = new Date(history[i-1].date)
+    const diff = (d1.getTime() - d2.getTime()) / (1000*3600*24)
+
+    if(diff <= 1.5) streak++
+    else break
+  }
+
+  return (
+    <div className="mt-4 text-sm text-gray-600">
+      Seria dni: <span className="font-medium">{streak}</span>
     </div>
   )
 }
@@ -227,6 +339,32 @@ function TopFix({data}:{data:any}){
   )
 }
 
+function RecommendedActions({data}:{data:any}){
+  const actions=[]
+  if(data.sleep < 6) actions.push({ label:"Popraw sen", link:"/odbudowa" })
+  if(data.stress > 7) actions.push({ label:"Zrób test stresu", link:"/narzedzia/test-stresu" })
+  if(data.sport < 10) actions.push({ label:"Dodaj ruch", link:"/odbudowa" })
+  if(data.work > 10) actions.push({ label:"Sprawdź balans pracy", link:"/kryzys" })
+
+  if(!actions.length) return null
+
+  return (
+    <div className="mt-10 border rounded-xl p-6">
+      <div className="font-semibold mb-3">
+        Co możesz zrobić teraz
+      </div>
+
+      <div className="space-y-2">
+        {actions.map((a,i)=>(
+          <a key={i} href={a.link} className="block text-sm text-gray-700 hover:underline">
+            → {a.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function Input({label,value,onChange}:{label:string,value:number,onChange:(v:number)=>void}){
   return(
     <div>
@@ -240,7 +378,6 @@ function Input({label,value,onChange}:{label:string,value:number,onChange:(v:num
     </div>
   )
 }
-
 function LevelBadge({score}:{score:number}){
 
   let level="Start"
@@ -274,74 +411,221 @@ function LevelBadge({score}:{score:number}){
   )
 }
 
-function Streak({history}:{history:any[]}){
-
-  if(!history.length) return null
-
-  let streak = 1
-
-  for(let i=history.length-1;i>0;i--){
-    const d1 = new Date(history[i].date)
-    const d2 = new Date(history[i-1].date)
-
-    const diff = (d1.getTime() - d2.getTime()) / (1000*3600*24)
-
-    if(diff <= 1.5){
-      streak++
-    }else{
-      break
-    }
-  }
-
-  return (
-    <div className="mt-4 text-sm text-gray-600">
-      Seria dni: <span className="font-medium">{streak}</span>
-    </div>
-  )
-}
-
-function RecommendedActions({data}:{data:any}){
-
-  const actions = []
-
-  if(data.sleep < 6){
-    actions.push({ label:"Popraw sen", link:"/odbudowa" })
-  }
-
-  if(data.stress > 7){
-    actions.push({ label:"Zrób test stresu", link:"/narzedzia/test-stresu" })
-  }
-
-  if(data.sport < 10){
-    actions.push({ label:"Dodaj ruch", link:"/odbudowa" })
-  }
-
-  if(data.work > 10){
-    actions.push({ label:"Sprawdź balans pracy", link:"/kryzys" })
-  }
-
-  if(!actions.length) return null
-
-  return (
-    <div className="mt-10 border rounded-xl p-6">
-      <div className="font-semibold mb-3">
-        Co możesz zrobić teraz
-      </div>
-
-      <div className="space-y-2">
-        {actions.map((a,i)=>(
-          <a
-            key={i}
-            href={a.link}
-            className="block text-sm text-gray-700 hover:underline"
-          >
-            → {a.label}
-          </a>
-        ))}
-      </div>
-    </div>
-  )
-}
-
 function normalize(val:number,max:number){return Math.min(val/max,1)}
 function normalizeInverse(val:number,max:number){return Math.min(1-(val/max),1)}
+
+function FinancialBalance(){
+
+  const [data,setData]=useState({
+    income:5000,
+    expenses:3500,
+    savings:10000,
+    debt:5000,
+    buffer:2
+  })
+
+  const savingsRate = data.income>0
+    ? (data.income-data.expenses)/data.income
+    : 0
+
+  const debtRatio = data.debt/(data.income*12 || 1)
+
+  const score=Math.round(
+    (
+      normalize(savingsRate,0.3)+
+      normalize(data.buffer,6)+
+      normalizeInverse(debtRatio,0.5)+
+      normalize(data.savings,50000)
+    )/4*100
+  )
+
+  return(
+    <div>
+
+      <h2 className="text-2xl font-semibold mb-4">
+        Balans finansowy
+      </h2>
+
+      <Score score={score}/>
+
+      <div className="grid md:grid-cols-2 gap-8 mt-8">
+
+        <div className="space-y-3">
+          <Input label="Dochód" value={data.income} onChange={(v)=>setData({...data,income:v})}/>
+          <Input label="Wydatki" value={data.expenses} onChange={(v)=>setData({...data,expenses:v})}/>
+          <Input label="Oszczędności" value={data.savings} onChange={(v)=>setData({...data,savings:v})}/>
+          <Input label="Długi" value={data.debt} onChange={(v)=>setData({...data,debt:v})}/>
+          <Input label="Poduszka (miesiące)" value={data.buffer} onChange={(v)=>setData({...data,buffer:v})}/>
+        </div>
+
+        <div className="space-y-3">
+          <Bar label="Oszczędzanie" value={savingsRate*100} norm={20}/>
+          <Bar label="Poduszka" value={data.buffer} norm={6}/>
+          <Bar label="Dług" value={debtRatio*100} norm={50} inverse/>
+          <Bar label="Kapitał" value={data.savings} norm={50000}/>
+        </div>
+
+      </div>
+
+    </div>
+  )
+}
+function FatherBalance(){
+
+  const [data,setData]=useState({
+    time:8,
+    quality:6,
+    contact:7,
+    conflict:4,
+    stress:5
+  })
+
+  const score=Math.round(
+    (
+      normalize(data.time,14)+
+      normalize(data.quality,10)+
+      normalize(data.contact,10)+
+      normalizeInverse(data.conflict,10)+
+      normalizeInverse(data.stress,10)
+    )/5*100
+  )
+
+  return(
+    <div>
+
+      <h2 className="text-2xl font-semibold mb-4">
+        Balans ojcostwa
+      </h2>
+
+      <Score score={score}/>
+
+      <div className="grid md:grid-cols-2 gap-8 mt-8">
+
+        <div className="space-y-3">
+          <Input label="Czas z dzieckiem (h/tydz)" value={data.time} onChange={(v)=>setData({...data,time:v})}/>
+          <Input label="Jakość relacji (1-10)" value={data.quality} onChange={(v)=>setData({...data,quality:v})}/>
+          <Input label="Regularność kontaktu (1-10)" value={data.contact} onChange={(v)=>setData({...data,contact:v})}/>
+          <Input label="Konflikt z matką (1-10)" value={data.conflict} onChange={(v)=>setData({...data,conflict:v})}/>
+          <Input label="Stres ojcowski (1-10)" value={data.stress} onChange={(v)=>setData({...data,stress:v})}/>
+        </div>
+
+        <div className="space-y-3">
+          <Bar label="Czas" value={data.time} norm={14}/>
+          <Bar label="Relacja" value={data.quality} norm={10}/>
+          <Bar label="Kontakt" value={data.contact} norm={10}/>
+          <Bar label="Konflikt" value={data.conflict} norm={10} inverse/>
+          <Bar label="Stres" value={data.stress} norm={10} inverse/>
+        </div>
+
+      </div>
+
+    </div>
+  )
+}
+function HealthBalance(){
+
+  const [data,setData]=useState({
+    sleep:6,
+    sport:2,
+    weight:80,
+    stress:5,
+    energy:6
+  })
+
+  const score=Math.round(
+    (
+      normalize(data.sleep,8)+
+      normalize(data.sport,5)+
+      normalizeInverse(data.stress,10)+
+      normalize(data.energy,10)
+    )/4*100
+  )
+
+  return(
+    <div>
+      <h2 className="text-2xl font-semibold mb-4">Balans zdrowia</h2>
+      <Score score={score}/>
+    </div>
+  )
+}
+function RelationsBalance(){
+
+  const [data,setData]=useState({
+    partner:5,
+    family:6,
+    friends:4,
+    conflict:3,
+    loneliness:4
+  })
+
+  const score=Math.round(
+    (
+      normalize(data.partner,10)+
+      normalize(data.family,10)+
+      normalize(data.friends,10)+
+      normalizeInverse(data.conflict,10)+
+      normalizeInverse(data.loneliness,10)
+    )/5*100
+  )
+
+  return(
+    <div>
+      <h2 className="text-2xl font-semibold mb-4">Balans relacji</h2>
+      <Score score={score}/>
+    </div>
+  )
+}
+function WorkBalance(){
+
+  const [data,setData]=useState({
+    satisfaction:6,
+    stress:5,
+    income:6,
+    growth:5,
+    stability:7
+  })
+
+  const score=Math.round(
+    (
+      normalize(data.satisfaction,10)+
+      normalizeInverse(data.stress,10)+
+      normalize(data.income,10)+
+      normalize(data.growth,10)+
+      normalize(data.stability,10)
+    )/5*100
+  )
+
+  return(
+    <div>
+      <h2 className="text-2xl font-semibold mb-4">Balans pracy</h2>
+      <Score score={score}/>
+    </div>
+  )
+}
+function MindBalance(){
+
+  const [data,setData]=useState({
+    stress:6,
+    motivation:5,
+    focus:6,
+    control:5,
+    fatigue:4
+  })
+
+  const score=Math.round(
+    (
+      normalizeInverse(data.stress,10)+
+      normalize(data.motivation,10)+
+      normalize(data.focus,10)+
+      normalize(data.control,10)+
+      normalizeInverse(data.fatigue,10)
+    )/5*100
+  )
+
+  return(
+    <div>
+      <h2 className="text-2xl font-semibold mb-4">Balans psychiczny</h2>
+      <Score score={score}/>
+    </div>
+  )
+}
