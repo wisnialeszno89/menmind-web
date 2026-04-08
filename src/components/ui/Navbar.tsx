@@ -26,7 +26,7 @@ export default function Navbar() {
         Narzędzia
       </Link>
 
-      <Link href="/narzedzia">
+      <Link href="/balans">
         Balans
       </Link>
 
