@@ -5,6 +5,10 @@ export default function QuickTests(){
     <section className="py-10 border-t">
       <div className="max-w-5xl mx-auto px-6">
 
+        <div className="text-sm text-gray-500 mb-4">
+          Najczęściej wybierane na start
+        </div>
+
         <div className="grid md:grid-cols-3 gap-3">
 
           <Link 

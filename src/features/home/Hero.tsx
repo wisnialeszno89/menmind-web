@@ -17,8 +17,12 @@ export default function Hero({ title, intro }: Props) {
             {title}
           </h1>
 
-          <p className="text-base md:text-lg text-neutral-600 mb-10">
+          <p className="text-base md:text-lg text-neutral-600 mb-6">
             {intro}
+          </p>
+
+          <p className="text-sm text-gray-500 mb-6">
+            Większość mężczyzn zaczyna od krótkiego testu sytuacji
           </p>
 
           <Link
@@ -33,10 +37,10 @@ export default function Hero({ title, intro }: Props) {
           </p>
 
           <div className="mt-6 text-sm text-gray-500">
-          lub <Link href="/narzedzia" className="underline">zobacz narzędzia</Link>
+            lub <Link href="/narzedzia" className="underline">zobacz narzędzia</Link>
           </div>
 
-          </div>
+        </div>
 
       </div>
 

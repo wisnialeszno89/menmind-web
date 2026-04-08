@@ -19,6 +19,9 @@ import DailyStep from "@/components/DailyStep"
 import HeroTrustBar from "@/components/HeroTrustBar"
 import HomeWorkHint from "@/components/HomeWorkHint"
 import LiveUsers from "@/components/LiveUsers"
+import ActionPaths from "@/features/home/ActionPaths"
+import StickyAI from "@/components/StickyAI"
+import BalancePanel from "@/features/home/BalancePanel"
 
 import { MessageCircle } from "lucide-react"
 
@@ -40,10 +43,34 @@ export default function Home() {
       </div>
       
       {/* KROK DNIA */}
+      {/* KROK DNIA */}
       <DailyStep />
+
+      {/* BALANS */}
+      <section className="py-10 border-t">
+        <div className="max-w-6xl mx-auto px-6">
+        <a 
+        href="/balans"
+        className="block bg-black text-white rounded-xl p-6 hover:opacity-90 transition"
+        >
+        <div className="font-semibold mb-1">
+          Sprawdź swój balans życia
+        </div>
+        <div className="text-gray-600 text-sm">
+          Sen, praca, stres, energia – zobacz gdzie jesteś
+        </div>
+        </a>
+        </div>
+        </section>
 
       {/* TESTY */}
       <QuickTests />
+
+      <ActionPaths /> 
+
+      <div className="text-center text-sm text-gray-500 -mt-4 mb-6">
+      lub przejdź klasycznie:
+      </div>
 
       {/* WYBÓR OBSZARU */}
       <WorldPreview />
@@ -104,6 +131,10 @@ export default function Home() {
       <ActivityFeed />
 
       <LiveActivity />
+
+      <BalancePanel />
+
+      <StickyAI />
     </>
   )
 }

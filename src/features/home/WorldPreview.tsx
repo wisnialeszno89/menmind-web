@@ -17,9 +17,13 @@ export default function WorldPreview() {
   return (
     <section className="max-w-6xl mx-auto px-6 py-24">
 
-      <h2 className="text-3xl font-semibold text-black mb-12">
-        Wybierz obszar który jest Ci teraz najbliższy
+      <h2 className="text-3xl font-semibold text-black mb-3">
+      Wybierz obszar który jest Ci teraz najbliższy
       </h2>
+
+      <p className="text-gray-500 mb-9">
+      Możesz przechodzić między nimi w dowolnym momencie
+      </p>
 
       <div className="grid md:grid-cols-2 gap-6 mb-10">
 
