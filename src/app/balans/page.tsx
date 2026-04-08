@@ -527,9 +527,9 @@ function HealthBalance(){
   const [data,setData]=useState({
     sleep:6,
     sport:2,
-    weight:80,
     stress:5,
-    energy:6
+    energy:6,
+    screen:4
   })
 
   const score=Math.round(
@@ -537,17 +537,46 @@ function HealthBalance(){
       normalize(data.sleep,8)+
       normalize(data.sport,5)+
       normalizeInverse(data.stress,10)+
-      normalize(data.energy,10)
-    )/4*100
+      normalize(data.energy,10)+
+      normalizeInverse(data.screen,8)
+    )/5*100
   )
 
   return(
     <div>
-      <h2 className="text-2xl font-semibold mb-4">Balans zdrowia</h2>
+
+      <h2 className="text-2xl font-semibold mb-4">
+        Balans zdrowia
+      </h2>
+
       <Score score={score}/>
+
+      <div className="grid md:grid-cols-2 gap-8 mt-8">
+
+        <div className="space-y-3">
+          <Input label="Sen (h)" value={data.sleep} onChange={(v)=>setData({...data,sleep:v})}/>
+          <Input label="Ruch (dni/tydz)" value={data.sport} onChange={(v)=>setData({...data,sport:v})}/>
+          <Input label="Stres (1-10)" value={data.stress} onChange={(v)=>setData({...data,stress:v})}/>
+          <Input label="Energia (1-10)" value={data.energy} onChange={(v)=>setData({...data,energy:v})}/>
+          <Input label="Ekran (h)" value={data.screen} onChange={(v)=>setData({...data,screen:v})}/>
+        </div>
+
+        <div className="space-y-3">
+          <Bar label="Sen" value={data.sleep} norm={8}/>
+          <Bar label="Ruch" value={data.sport} norm={5}/>
+          <Bar label="Stres" value={data.stress} norm={10} inverse/>
+          <Bar label="Energia" value={data.energy} norm={10}/>
+          <Bar label="Ekran" value={data.screen} norm={8} inverse/>
+        </div>
+
+      </div>
+
     </div>
   )
 }
+// =====================
+// BALANS RELACJI
+// =====================
 function RelationsBalance(){
 
   const [data,setData]=useState({
@@ -570,11 +599,41 @@ function RelationsBalance(){
 
   return(
     <div>
-      <h2 className="text-2xl font-semibold mb-4">Balans relacji</h2>
+
+      <h2 className="text-2xl font-semibold mb-4">
+        Balans relacji
+      </h2>
+
       <Score score={score}/>
+
+      <div className="grid md:grid-cols-2 gap-8 mt-8">
+
+        <div className="space-y-3">
+          <Input label="Relacja partnerska (1-10)" value={data.partner} onChange={(v)=>setData({...data,partner:v})}/>
+          <Input label="Relacje rodzinne (1-10)" value={data.family} onChange={(v)=>setData({...data,family:v})}/>
+          <Input label="Znajomi (1-10)" value={data.friends} onChange={(v)=>setData({...data,friends:v})}/>
+          <Input label="Konflikty (1-10)" value={data.conflict} onChange={(v)=>setData({...data,conflict:v})}/>
+          <Input label="Samotność (1-10)" value={data.loneliness} onChange={(v)=>setData({...data,loneliness:v})}/>
+        </div>
+
+        <div className="space-y-3">
+          <Bar label="Partner" value={data.partner} norm={10}/>
+          <Bar label="Rodzina" value={data.family} norm={10}/>
+          <Bar label="Znajomi" value={data.friends} norm={10}/>
+          <Bar label="Konflikty" value={data.conflict} norm={10} inverse/>
+          <Bar label="Samotność" value={data.loneliness} norm={10} inverse/>
+        </div>
+
+      </div>
+
     </div>
   )
 }
+
+
+// =====================
+// BALANS PRACY
+// =====================
 function WorkBalance(){
 
   const [data,setData]=useState({
@@ -597,11 +656,41 @@ function WorkBalance(){
 
   return(
     <div>
-      <h2 className="text-2xl font-semibold mb-4">Balans pracy</h2>
+
+      <h2 className="text-2xl font-semibold mb-4">
+        Balans pracy
+      </h2>
+
       <Score score={score}/>
+
+      <div className="grid md:grid-cols-2 gap-8 mt-8">
+
+        <div className="space-y-3">
+          <Input label="Satysfakcja (1-10)" value={data.satisfaction} onChange={(v)=>setData({...data,satisfaction:v})}/>
+          <Input label="Stres (1-10)" value={data.stress} onChange={(v)=>setData({...data,stress:v})}/>
+          <Input label="Dochód vs potrzeby (1-10)" value={data.income} onChange={(v)=>setData({...data,income:v})}/>
+          <Input label="Rozwój (1-10)" value={data.growth} onChange={(v)=>setData({...data,growth:v})}/>
+          <Input label="Stabilność (1-10)" value={data.stability} onChange={(v)=>setData({...data,stability:v})}/>
+        </div>
+
+        <div className="space-y-3">
+          <Bar label="Satysfakcja" value={data.satisfaction} norm={10}/>
+          <Bar label="Stres" value={data.stress} norm={10} inverse/>
+          <Bar label="Dochód" value={data.income} norm={10}/>
+          <Bar label="Rozwój" value={data.growth} norm={10}/>
+          <Bar label="Stabilność" value={data.stability} norm={10}/>
+        </div>
+
+      </div>
+
     </div>
   )
 }
+
+
+// =====================
+// BALANS PSYCHIKI
+// =====================
 function MindBalance(){
 
   const [data,setData]=useState({
@@ -624,8 +713,33 @@ function MindBalance(){
 
   return(
     <div>
-      <h2 className="text-2xl font-semibold mb-4">Balans psychiczny</h2>
+
+      <h2 className="text-2xl font-semibold mb-4">
+        Balans psychiczny
+      </h2>
+
       <Score score={score}/>
+
+      <div className="grid md:grid-cols-2 gap-8 mt-8">
+
+        <div className="space-y-3">
+          <Input label="Stres (1-10)" value={data.stress} onChange={(v)=>setData({...data,stress:v})}/>
+          <Input label="Motywacja (1-10)" value={data.motivation} onChange={(v)=>setData({...data,motivation:v})}/>
+          <Input label="Koncentracja (1-10)" value={data.focus} onChange={(v)=>setData({...data,focus:v})}/>
+          <Input label="Kontrola (1-10)" value={data.control} onChange={(v)=>setData({...data,control:v})}/>
+          <Input label="Zmęczenie (1-10)" value={data.fatigue} onChange={(v)=>setData({...data,fatigue:v})}/>
+        </div>
+
+        <div className="space-y-3">
+          <Bar label="Stres" value={data.stress} norm={10} inverse/>
+          <Bar label="Motywacja" value={data.motivation} norm={10}/>
+          <Bar label="Koncentracja" value={data.focus} norm={10}/>
+          <Bar label="Kontrola" value={data.control} norm={10}/>
+          <Bar label="Zmęczenie" value={data.fatigue} norm={10} inverse/>
+        </div>
+
+      </div>
+
     </div>
   )
 }
