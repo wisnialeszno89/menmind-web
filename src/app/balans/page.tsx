@@ -740,6 +740,38 @@ function MindBalance(){
 
       </div>
 
+    <BalanceMethodology />
+    </div>
+  )
+}
+function BalanceMethodology(){
+  return(
+    <div className="mt-16 border rounded-xl p-6 text-sm text-gray-600">
+
+      <div className="font-semibold mb-3 text-black">
+        Na jakiej podstawie są te balanse?
+      </div>
+
+      <p className="mb-3">
+        Wyniki mają charakter orientacyjny i pokazują Twoje proporcje względem
+        zdrowych zakresów funkcjonowania dorosłych mężczyzn.
+      </p>
+
+      <ul className="space-y-1 mb-3">
+        <li>• Sen: 7–8h (zalecenia zdrowotne)</li>
+        <li>• Ruch: min. 3x tygodniowo</li>
+        <li>• Poduszka finansowa: 3–6 miesięcy</li>
+        <li>• Stres: poziom umiarkowany</li>
+        <li>• Relacje: regularne kontakty społeczne</li>
+        <li>• Ojcostwo: regularny kontakt i zaangażowanie</li>
+        <li>• Praca: równowaga satysfakcji i stabilności</li>
+      </ul>
+
+      <p>
+        Narzędzie nie jest diagnozą medyczną ani psychologiczną. 
+        Ma pomóc w refleksji i określeniu kierunku działania.
+      </p>
+
     </div>
   )
 }
