@@ -44,66 +44,100 @@ export default async function ProposalCategoryPage({
 
   return (
 
-    <main className="bg-white min-h-screen">
+  <main className="bg-white min-h-screen">
 
-      <div className="max-w-6xl mx-auto px-6 py-24">
+    <div className="max-w-6xl mx-auto px-6 py-24">
 
-        <h1 className="text-4xl font-semibold mb-6">
-          {category.name}
-        </h1>
+      <h1 className="text-4xl font-semibold mb-6">
+        {category.name}
+      </h1>
 
-        <p className="text-gray-700 mb-12 max-w-xl">
-          Sprawdzeni specjaliści w kategorii {category.name}.
-        </p>
+      <p className="text-gray-700 mb-12 max-w-xl">
+        Sprawdzeni specjaliści w kategorii {category.name}.
+      </p>
 
-        <h2 className="text-2xl font-semibold mb-6">
-          Dostępne wsparcie
-        </h2>
+      <h2 className="text-2xl font-semibold mb-6">
+        Dostępne wsparcie
+      </h2>
 
-        {categoryPartners.length > 0 && (
-          <PartnersList partners={categoryPartners} />
-        )}
+      {categoryPartners.length > 0 && (
+        <PartnersList partners={categoryPartners} />
+      )}
 
-        {/* CTA zawsze widoczne */}
-        <div className="mt-8 border rounded-xl p-6 text-center bg-gray-50">
-          <p className="text-gray-700 mb-3">
-            Prowadzisz działalność w tej kategorii?
-          </p>
+      {/* CTA PARTNER */}
+      <div className="mt-8 border rounded-xl p-6 bg-gray-50">
 
-          <Link
-            href="/dla-partnerow"
-            className="border px-6 py-3 rounded-lg hover:shadow"
-          >
-            Dodaj swoją usługę
-          </Link>
-        </div>
+        {categoryPartners.length === 0 ? (
+          <div className="text-center">
 
-        <h2 className="text-2xl font-semibold mt-16 mb-6">
-          Wybierz miasto
-        </h2>
+            <div className="text-sm text-green-700 bg-green-100 inline-block px-3 py-1 rounded mb-3">
+              Brak partnerów w tej kategorii
+            </div>
 
-        <div className="grid md:grid-cols-3 gap-4">
-
-          {cities.map((city) => (
+            <p className="text-gray-700 mb-3">
+              Zostań pierwszym partnerem i odbierz darmowy pakiet strategiczny na 1 miesiąc
+            </p>
 
             <Link
-              key={city.slug}
-              href={`/propozycje/${blok}/${city.slug}`}
-              className="border rounded-lg p-4 hover:shadow transition"
+              href="/dla-partnerow"
+              className="inline-block bg-black text-white px-6 py-3 rounded-lg hover:opacity-90 transition"
             >
-              <strong>{city.name}</strong>
-              <p className="text-sm text-gray-600">
-                {category.name}
-              </p>
+              Zostań pierwszym partnerem
             </Link>
 
-          ))}
+          </div>
+        ) : (
 
-        </div>
+          <div className="flex items-center justify-between flex-col md:flex-row gap-4">
+
+            <div>
+              <p className="font-medium">
+                Prowadzisz działalność w tej kategorii?
+              </p>
+              <p className="text-sm text-gray-600">
+                Dodaj swoją usługę i bądź widoczny dla użytkowników
+              </p>
+            </div>
+
+            <Link
+              href="/dla-partnerow"
+              className="border border-black px-5 py-2 rounded-lg hover:bg-black hover:text-white transition"
+            >
+              Dodaj swoją usługę
+            </Link>
+
+          </div>
+
+        )}
 
       </div>
 
-    </main>
+      <h2 className="text-2xl font-semibold mt-16 mb-6">
+        Wybierz miasto
+      </h2>
 
-  )
+      <div className="grid md:grid-cols-3 gap-4">
+
+        {cities.map((city) => (
+
+          <Link
+            key={city.slug}
+            href={`/propozycje/${blok}/${city.slug}`}
+            className="border rounded-lg p-4 hover:shadow transition"
+          >
+            <strong>{city.name}</strong>
+            <p className="text-sm text-gray-600">
+              {category.name}
+            </p>
+          </Link>
+
+        ))}
+
+      </div>
+
+    </div>
+
+  </main>
+
+)
 }
