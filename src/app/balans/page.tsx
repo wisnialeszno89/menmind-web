@@ -57,7 +57,10 @@ export default function BalancePage(){
       normalizeInverse(data.screen,4) +
       normalize(data.energy,8)
     ) / 8 * 100
-  )
+    )
+  useEffect(()=>{
+  localStorage.setItem("mm_balance_life", score.toString())
+  },[score])
 
   useEffect(()=>{
     const today = new Date().toISOString().slice(0,10)
@@ -81,42 +84,42 @@ export default function BalancePage(){
 
         <button
           onClick={()=>setTab("finance")}
-          className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="life"?"bg-black text-white":"bg-white"}`}
+          className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="finance"?"bg-black text-white":"bg-white"}`}
         >
           Balans finansowy
         </button>
-
+        
         <button
         onClick={()=>setTab("father")}
-        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="life"?"bg-black text-white":"bg-white"}`}
+        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="father"?"bg-black text-white":"bg-white"}`}
         >
           Balans ojcostwa
         </button>
 
         <button
         onClick={()=>setTab("health")}
-        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="life"?"bg-black text-white":"bg-white"}`}
+        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="health"?"bg-black text-white":"bg-white"}`}
         >
           Zdrowie
         </button>
 
         <button
         onClick={()=>setTab("relations")}
-        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="life"?"bg-black text-white":"bg-white"}`}
+        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="relations"?"bg-black text-white":"bg-white"}`}
         >
           Relacje
         </button>
 
         <button
         onClick={()=>setTab("work")}
-        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="life"?"bg-black text-white":"bg-white"}`}
+        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="work"?"bg-black text-white":"bg-white"}`}
         >
          Praca
         </button>
 
         <button
         onClick={()=>setTab("mind")}
-        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="life"?"bg-black text-white":"bg-white"}`}
+        className={`px-4 py-2 rounded-lg border whitespace-nowrap ${tab==="mind"?"bg-black text-white":"bg-white"}`}
         >
          Psychika
         </button>
@@ -193,6 +196,8 @@ export default function BalancePage(){
       {tab==="mind" && (
         <MindBalance/>
       )}
+
+      <OverallProfile />
 
     </div>
   )
@@ -818,6 +823,344 @@ function Ranking({score}:{score:number}){
       <span className={color}>
         {text}
       </span>
+    </div>
+  )
+}
+function OverallProfile(){
+
+  const [scores,setScores]=useState({
+    life:0,
+    finance:0,
+    father:0,
+    health:0,
+    relations:0,
+    work:0,
+    mind:0
+  })
+
+  useEffect(()=>{
+    setScores({
+      life:Number(localStorage.getItem("mm_balance_life")||0),
+      finance:Number(localStorage.getItem("mm_balance_finance")||0),
+      father:Number(localStorage.getItem("mm_balance_father")||0),
+      health:Number(localStorage.getItem("mm_balance_health")||0),
+      relations:Number(localStorage.getItem("mm_balance_relations")||0),
+      work:Number(localStorage.getItem("mm_balance_work")||0),
+      mind:Number(localStorage.getItem("mm_balance_mind")||0),
+    })
+  },[])
+
+  const avg = Math.round(
+    Object.values(scores).reduce((a,b)=>a+b,0) /
+    Object.values(scores).filter(v=>v>0).length || 0
+  )
+
+  if(avg === 0) return null
+
+  return(
+    <div className="mt-16 border rounded-xl p-6 bg-gray-50">
+
+      <h2 className="text-xl font-semibold mb-4">
+        Twoja mapa życia
+      </h2>
+
+      <Score score={avg}/>
+      <Ranking score={avg}/>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6">
+
+        <Mini label="Życie" value={scores.life}/>
+        <Mini label="Finanse" value={scores.finance}/>
+        <Mini label="Ojcostwo" value={scores.father}/>
+        <Mini label="Zdrowie" value={scores.health}/>
+        <Mini label="Relacje" value={scores.relations}/>
+        <Mini label="Praca" value={scores.work}/>
+        <Mini label="Psychika" value={scores.mind}/>
+
+        </div>
+        
+        <ProfileType scores={scores}/>
+
+        <ActionPlan scores={scores}/>
+
+        <WeeklyProgress />
+
+        <Badges />
+
+      </div>
+      )
+}
+function ProfileType({scores}:{scores:Record<string,number>}){
+
+  const entries = Object.entries(scores) as [string, number][]
+  const lowest = entries.sort((a,b)=>a[1]-b[1])[0]
+
+  let type = ""
+  let desc = ""
+
+  if(lowest[1] < 40){
+    type = "Tryb przetrwania"
+    desc = "Najpierw stabilizacja fundamentów życia"
+  }
+  else if(scores.work < 55){
+    type = "Odbudowa zawodowa"
+    desc = "Skup się na pracy i finansach"
+  }
+  else if(scores.mind < 55){
+    type = "Przeciążony mental"
+    desc = "Potrzebna redukcja stresu i reset"
+  }
+  else if(scores.relations < 55){
+    type = "Samotny wojownik"
+    desc = "Czas wzmocnić relacje"
+  }
+  else if(scores.life > 75){
+    type = "Strateg"
+    desc = "Masz dobrą bazę – czas na rozwój"
+  }
+  else{
+    type = "Budowanie równowagi"
+    desc = "Stopniowo poprawiaj wszystkie obszary"
+  }
+
+  return(
+    <div className="mt-8 border rounded-xl p-6 bg-white">
+      <div className="text-sm text-gray-500 mb-1">
+        Twój typ
+      </div>
+
+      <div className="text-xl font-semibold mb-1">
+        {type}
+      </div>
+
+      <div className="text-sm text-gray-600">
+        {desc}
+      </div>
+    </div>
+  )
+}
+function ActionPlan({scores}:{scores:Record<string,number>}){
+
+  const entries = Object.entries(scores) as [string, number][]
+  const lowest = entries.sort((a,b)=>a[1]-b[1])[0][0]
+
+  let title = ""
+  let steps:string[] = []
+
+  if(lowest === "finance"){
+    title = "Plan poprawy finansów"
+    steps = [
+      "Spisz miesięczne wydatki",
+      "Zbuduj poduszkę 1 miesiąca",
+      "Zwiększ dochód lub zmień pracę"
+    ]
+  }
+
+  if(lowest === "health"){
+    title = "Plan poprawy zdrowia"
+    steps = [
+      "Śpij minimum 7h",
+      "3x ruch w tygodniu",
+      "Ogranicz ekran wieczorem"
+    ]
+  }
+
+  if(lowest === "relations"){
+    title = "Plan poprawy relacji"
+    steps = [
+      "Skontaktuj się z jedną osobą",
+      "Zaplanuj spotkanie",
+      "Ogranicz konflikty"
+    ]
+  }
+
+  if(lowest === "work"){
+    title = "Plan poprawy pracy"
+    steps = [
+      "Określ czego brakuje",
+      "Zaktualizuj CV",
+      "Wyślij 3 aplikacje"
+    ]
+  }
+
+  if(lowest === "mind"){
+    title = "Plan resetu mentalnego"
+    steps = [
+      "Spacer 20 min dziennie",
+      "Ogranicz stresory",
+      "Ustal jedną rzecz dziennie"
+    ]
+  }
+
+  if(lowest === "father"){
+    title = "Plan poprawy ojcostwa"
+    steps = [
+      "Ustal stały kontakt",
+      "Zaplanuj czas z dzieckiem",
+      "Zmniejsz konflikt"
+    ]
+  }
+
+  if(lowest === "life"){
+    title = "Plan poprawy balansu"
+    steps = [
+      "Popraw sen",
+      "Dodaj ruch",
+      "Ogranicz przeciążenie"
+    ]
+  }
+
+  return(
+    <div className="mt-8 border rounded-xl p-6 bg-gray-50">
+
+      <div className="font-semibold mb-3">
+        {title}
+      </div>
+
+      <div className="space-y-2">
+        {steps.map((s,i)=>(
+          <div key={i} className="text-sm">
+            {i+1}. {s}
+          </div>
+        ))}
+      </div>
+
+    </div>
+  )
+}
+function WeeklyProgress(){
+
+  const [history,setHistory]=useState<number[]>([])
+
+  useEffect(()=>{
+    const saved = localStorage.getItem("mm_weekly_progress")
+    if(saved){
+      setHistory(JSON.parse(saved))
+    }
+  },[])
+
+  useEffect(()=>{
+    const avg = Number(localStorage.getItem("mm_balance_life")||0)
+
+    const saved = localStorage.getItem("mm_weekly_progress")
+    let arr = saved ? JSON.parse(saved) : []
+
+    const today = new Date().toDateString()
+
+    const lastDate = localStorage.getItem("mm_weekly_date")
+
+    if(lastDate !== today){
+      arr = [...arr.slice(-6), avg]
+      localStorage.setItem("mm_weekly_progress",JSON.stringify(arr))
+      localStorage.setItem("mm_weekly_date",today)
+      setHistory(arr)
+    }
+
+  },[])
+
+  if(history.length < 2) return null
+
+  const max = Math.max(...history)
+
+  return(
+    <div className="mt-8 border rounded-xl p-6">
+
+      <div className="font-semibold mb-3">
+        Progres tygodniowy
+      </div>
+
+      <div className="flex items-end gap-2 h-24">
+        {history.map((h,i)=>(
+          <div
+            key={i}
+            className="flex-1 bg-black rounded"
+            style={{height:`${(h/max)*100}%`}}
+          />
+        ))}
+      </div>
+
+      <div className="text-xs text-gray-500 mt-2">
+        Ostatnie 7 dni
+      </div>
+
+    </div>
+  )
+}
+function Badges(){
+
+  const [history,setHistory]=useState<number[]>([])
+
+  useEffect(()=>{
+    const saved = localStorage.getItem("mm_weekly_progress")
+    if(saved){
+      setHistory(JSON.parse(saved))
+    }
+  },[])
+
+  if(history.length < 2) return null
+
+  let badges:string[] = []
+
+  // wzrost
+  const last = history[history.length-1]
+  const prev = history[history.length-2]
+
+  if(last > prev){
+    badges.push("📈 Poprawa wyniku")
+  }
+
+  // seria wzrostowa
+  let streak = 1
+  for(let i=history.length-1;i>0;i--){
+    if(history[i] >= history[i-1]) streak++
+    else break
+  }
+
+  if(streak >= 3){
+    badges.push("🔥 3 dni progresu")
+  }
+
+  if(last >= 75){
+    badges.push("💪 Dobra forma")
+  }
+
+  if(last >= 85){
+    badges.push("🏆 Wysoki poziom")
+  }
+
+  if(!badges.length) return null
+
+  return(
+    <div className="mt-8 border rounded-xl p-6 bg-white">
+
+      <div className="font-semibold mb-3">
+        Twoje odznaki
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {badges.map((b,i)=>(
+          <div
+            key={i}
+            className="px-3 py-1 rounded-full border text-sm"
+          >
+            {b}
+          </div>
+        ))}
+      </div>
+
+    </div>
+  )
+}
+function Mini({label,value}:{label:string,value:number}){
+
+  return(
+    <div className="border rounded-lg p-3 text-center bg-white">
+      <div className="text-xs text-gray-500">
+        {label}
+      </div>
+      <div className="text-lg font-semibold">
+        {value || "-"}%
+      </div>
     </div>
   )
 }
