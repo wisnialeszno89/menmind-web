@@ -14,29 +14,12 @@ export const metadata = {
   },
   description:
     "MenMind pomaga mężczyznom ogarnąć kryzys, odbudowę i rozwój. Test, narzędzia i sprawdzone opcje działania.",
-  keywords: [
-    "kryzys mężczyzny",
-    "jak ogarnąć życie",
-    "wypalenie",
-    "rozstanie",
-    "brak motywacji",
-    "stres",
-    "menmind"
-  ],
   openGraph: {
     title: "MenMind",
     description: "Poukladaj swoją sytuację krok po kroku.",
     type: "website",
     url: "https://menmind.app"
-  },
-  verification: {
-    google: "se6SRN6vHZcVMykc1s-_5Bd4-uiAvBHn-14MKrWZUJM"
   }
-}
-
-export const viewport = {
-  width: "device-width",
-  initialScale: 1
 }
 
 export default function RootLayout({
@@ -46,6 +29,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="se6SRN6vHZcVMykc1s-_5Bd4-uiAvBHn-14MKrWZUJM"
+        />
+      </head>
+
       <body className="bg-white text-black antialiased">
 
         <Script
@@ -63,7 +53,6 @@ export default function RootLayout({
         </Script>
 
         <ScrollToTop />
-
         <Header />
 
         <main className="w-full min-h-screen">
