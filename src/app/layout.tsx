@@ -25,10 +25,12 @@ export const metadata = {
   ],
   openGraph: {
     title: "MenMind",
-    description:
-      "Poukladaj swoją sytuację krok po kroku.",
+    description: "Poukladaj swoją sytuację krok po kroku.",
     type: "website",
     url: "https://menmind.app"
+  },
+  verification: {
+    google: "se6SRN6vHZcVMykc1s-_5Bd4-uiAvBHn-14MKrWZUJM"
   }
 }
 
@@ -44,27 +46,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-  <head>
-    <meta
-      name="google-site-verification"
-      content="se6SRN6vHZcVMykc1s-_5Bd4-uiAvBHn-14MKrWZUJM"
-    />
-  </head>
+      <body className="bg-white text-black antialiased">
 
-  <body className="bg-white text-black antialiased">
-      <Script
-  src="https://www.googletagmanager.com/gtag/js?id=G-1DW5RE250X"
-  strategy="afterInteractive"
-/>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1DW5RE250X"
+          strategy="afterInteractive"
+        />
 
-    <Script id="google-analytics" strategy="afterInteractive">
-    {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-1DW5RE250X');
-`   }
-          </Script>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1DW5RE250X');
+          `}
+        </Script>
 
         <ScrollToTop />
 
