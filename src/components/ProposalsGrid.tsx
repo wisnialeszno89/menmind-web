@@ -91,8 +91,20 @@ export default function ProposalsGrid(){
   majsterkowanie: "🛠️",
   kolekcjonerstwo: "🏺",
   modelarstwo: "✈️",
-  muzyka: "🎵"
-}
+  muzyka: "🎵",
+
+  dietetyk: "🥗",
+  "trener-personalny": "🏋️",
+  "plan-treningowy": "📋",
+  "redukcja-wagi": "⚖️",
+  "budowa-masy": "💪",
+  "trening-domowy": "🏠",
+  
+  mobilnosc: "🤸",
+  "rehabilitacja-sportowa": "🦴",
+  "testy-wydolnosci": "📊",
+  "przygotowanie-motoryczne": "⚡",
+  }
 
   return(
 
@@ -133,46 +145,46 @@ export default function ProposalsGrid(){
 
                 <Link
                   key={category.slug}
-                  href={`/propozycje/${category.slug}`}
+                  href={count === 0 
+                  ? "/dla-partnerow" 
+                  : `/propozycje/${category.slug}`}
                   className={`border rounded-xl p-5 hover:shadow transition hover:border-black ${
-                    sectionIndex === 0 && index === 0
-                      ? "border-black"
-                      : ""
-                  }`}
-                >
+                  sectionIndex === 0 && index === 0
+                  ? "border-black"
+                  : ""
+              }`}
+            >
 
-                  {/* 🔥 wyróżnienie */}
-                  {sectionIndex === 0 && index === 0 && (
-                    <div className="text-xs bg-black text-white inline-block px-2 py-1 rounded mb-2">
-                      Najczęściej wybierane
-                    </div>
-                  )}
+             <h3 className="font-semibold mb-1 flex items-center gap-2">
+             <span>
+                 {icons[category.slug] || "🔹"}
+            </span>
+                  {category.name}
+            </h3>
 
-                  <h3 className="font-semibold mb-1 flex items-center gap-2">
-                    <span>
-                      {icons[category.slug] || "🔹"}
-                    </span>
-                    {category.name}
-                  </h3>
+              <div className="flex items-center gap-3 text-xs text-gray-500 mt-2">
 
-                  {/* 🔥 meta info */}
-                  <div className="flex items-center gap-3 text-xs text-gray-500 mt-2">
+                {count > 0 && (
+              <span>
+             {count} opcji
+              </span>
+            )}
 
-                    {count > 0 && (
-                      <span>
-                        {count} opcji
-                      </span>
-                    )}
+              {hasOnline && (
+              <span>
+              🌍 online
+              </span>
+          )}
 
-                    {hasOnline && (
-                      <span>
-                        🌍 online
-                      </span>
-                    )}
+            </div>
 
-                  </div>
+            {count === 0 && (
+            <div className="mt-3 text-xs text-green-700 bg-green-50 border border-green-200 rounded-lg px-3 py-2">
+             Zostań 1. partnerem i odbierz darmowy pakiet strategiczny na 1 miesiąc
+            </div>
+          )}
 
-                </Link>
+            </Link>
 
               )
 

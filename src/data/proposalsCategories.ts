@@ -39,6 +39,10 @@ export const proposalCategories = [
     slug: "sen",
     name: "Sen i regeneracja"
   },
+  {
+  slug: "dietetyk",
+  name: "Dietetyk",
+  },
 
   // 🔥 ROZWÓJ
   {

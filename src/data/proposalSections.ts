@@ -53,7 +53,18 @@ categories: [
 { slug: "bieganie", name: "Bieganie" },
 { slug: "wspinaczka", name: "Wspinaczka" },
 { slug: "crossfit", name: "Crossfit" },
-{ slug: "sporty-zespolowe", name: "Sporty zespołowe" }
+{ slug: "sporty-zespolowe", name: "Sporty zespołowe" },
+
+{ slug: "dietetyk", name: "Dietetyka" },
+{ slug: "trener-personalny", name: "Trener personalny" },
+{ slug: "plan-treningowy", name: "Plan treningowy" },
+{ slug: "redukcja-wagi", name: "Redukcja wagi" },
+{ slug: "budowa-masy", name: "Budowa masy" },
+{ slug: "trening-domowy", name: "Trening domowy" },
+{ slug: "mobilnosc", name: "Mobilność i rozciąganie" },
+{ slug: "rehabilitacja-sportowa", name: "Rehabilitacja sportowa" },
+{ slug: "testy-wydolnosci", name: "Testy wydolności" },
+{ slug: "przygotowanie-motoryczne", name: "Przygotowanie motoryczne" }
 
 ]
 },
