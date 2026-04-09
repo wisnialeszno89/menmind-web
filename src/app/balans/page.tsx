@@ -855,7 +855,7 @@ function OverallProfile(){
     mind:0
   })
 
-  useEffect(()=>{
+  function read(){
     setScores({
       life:Number(localStorage.getItem("mm_balance_life")||0),
       finance:Number(localStorage.getItem("mm_balance_finance")||0),
@@ -865,12 +865,20 @@ function OverallProfile(){
       work:Number(localStorage.getItem("mm_balance_work")||0),
       mind:Number(localStorage.getItem("mm_balance_mind")||0),
     })
+  }
+
+  useEffect(()=>{
+    read()
+
+    const interval = setInterval(read, 800)
+    return ()=>clearInterval(interval)
   },[])
 
-  const avg = Math.round(
-    Object.values(scores).reduce((a,b)=>a+b,0) /
-    Object.values(scores).filter(v=>v>0).length || 0
-  )
+  const values = Object.values(scores).filter(v=>v>0)
+
+  const avg = values.length
+    ? Math.round(values.reduce((a,b)=>a+b,0) / values.length)
+    : 0
 
   if(avg === 0) return null
 
@@ -894,18 +902,15 @@ function OverallProfile(){
         <Mini label="Praca" value={scores.work}/>
         <Mini label="Psychika" value={scores.mind}/>
 
-        </div>
-        
-        <ProfileType scores={scores}/>
-
-        <ActionPlan scores={scores}/>
-
-        <WeeklyProgress />
-
-        <Badges />
-
       </div>
-      )
+
+      <ProfileType scores={scores}/>
+      <ActionPlan scores={scores}/>
+      <WeeklyProgress />
+      <Badges />
+
+    </div>
+  )
 }
 function ProfileType({scores}:{scores:Record<string,number>}){
 
