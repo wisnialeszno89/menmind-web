@@ -134,6 +134,7 @@ export default function BalancePage(){
 
           <Score score={score}/>
           <LevelBadge score={score}/>
+          <Ranking score={score}/>
           <ProgressDelta history={history}/>
           <BestScore history={history}/>
           <GoalBadge score={score}/>
@@ -789,6 +790,34 @@ function BalanceMethodology(){
         Ma pomóc w refleksji i określeniu kierunku działania.
       </p>
 
+    </div>
+  )
+}
+function Ranking({score}:{score:number}){
+
+  let percent = Math.round(score * 0.9) // pseudo populacja
+  if(percent < 5) percent = 5
+  if(percent > 95) percent = 95
+
+  let text = ""
+  let color = "text-gray-600"
+
+  if(percent > 70){
+    text = `Lepszy wynik niż ${percent}% mężczyzn`
+    color = "text-green-600"
+  } else if(percent > 40){
+    text = `Blisko średniej (${percent}%)`
+    color = "text-yellow-600"
+  } else {
+    text = `Poniżej ${percent}% mężczyzn`
+    color = "text-red-600"
+  }
+
+  return (
+    <div className="mt-3 text-sm">
+      <span className={color}>
+        {text}
+      </span>
     </div>
   )
 }

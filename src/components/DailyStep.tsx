@@ -87,7 +87,17 @@ export default function DailyStep(){
           <p className="text-xs text-gray-400 mt-2">
             Zajmie około 2 minuty
           </p>
+
+          <p className="text-xs text-gray-400 mt-1">
+            Nowy krok pojawi się jutro
+          </p>
         </Link>
+
+        <div className="text-center mt-3">
+        <p className="text-xs text-gray-400">
+           Wróć jutro — pokażemy kolejny krok
+        </p>
+        </div>
 
       </div>
     </section>

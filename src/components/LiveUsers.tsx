@@ -23,9 +23,10 @@ export default function LiveUsers(){
     return ()=>clearInterval(interval)
   },[])
 
-  return(
-    <div className="text-sm text-red-600 font-medium">
-      ● {count} mężczyzn teraz online
-    </div>
+    return(
+      <div className="text-sm text-red-600 font-medium">
+       ● {count} mężczyzn teraz online · sprawdzają balans i testy
+      </div>
+
   )
 }
