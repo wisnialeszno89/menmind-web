@@ -461,6 +461,9 @@ function FinancialBalance(){
       normalize(data.savings,50000)
     )/4*100
   )
+  useEffect(()=>{
+  localStorage.setItem("mm_balance_finance", score.toString())
+  },[score])
 
   return(
     <div>
@@ -512,7 +515,10 @@ function FatherBalance(){
       normalizeInverse(data.stress,10)
     )/5*100
   )
-
+  useEffect(()=>{
+  localStorage.setItem("mm_balance_father", score.toString())
+  },[score])
+  
   return(
     <div>
 
@@ -564,6 +570,9 @@ function HealthBalance(){
       normalizeInverse(data.screen,8)
     )/5*100
   )
+  useEffect(()=>{
+  localStorage.setItem("mm_balance_health", score.toString())
+  },[score])
 
   return(
     <div>
@@ -619,6 +628,9 @@ function RelationsBalance(){
       normalizeInverse(data.loneliness,10)
     )/5*100
   )
+  useEffect(()=>{
+  localStorage.setItem("mm_balance_relations", score.toString())
+  },[score])
 
   return(
     <div>
@@ -676,7 +688,10 @@ function WorkBalance(){
       normalize(data.stability,10)
     )/5*100
   )
-
+  useEffect(()=>{
+  localStorage.setItem("mm_balance_work", score.toString())
+  },[score])
+  
   return(
     <div>
 
@@ -733,7 +748,9 @@ function MindBalance(){
       normalizeInverse(data.fatigue,10)
     )/5*100
   )
-
+  useEffect(()=>{
+  localStorage.setItem("mm_balance_mind", score.toString())
+  },[score])
   return(
     <div>
 
