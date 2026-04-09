@@ -80,6 +80,11 @@ export default function Navbar() {
             Narzędzia
           </Link>
 
+          
+          <Link href="/balans" className={linkStyle} onClick={close}>
+             Balans
+          </Link>
+
           <Link href="/artykuly" className={linkStyle} onClick={close}>
             Artykuły
           </Link>

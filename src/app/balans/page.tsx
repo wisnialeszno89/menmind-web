@@ -365,14 +365,31 @@ function RecommendedActions({data}:{data:any}){
   )
 }
 
-function Input({label,value,onChange}:{label:string,value:number,onChange:(v:number)=>void}){
+function Input({
+  label,
+  value,
+  onChange
+}:{
+  label:string,
+  value:number,
+  onChange:(v:number)=>void
+}){
   return(
     <div>
-      <label className="text-sm text-gray-600">{label}</label>
+      <label className="text-sm text-gray-600">
+        {label}
+      </label>
+
       <input
         type="number"
-        value={value}
-        onChange={(e)=>onChange(Number(e.target.value))}
+        inputMode="numeric"
+        value={value === 0 ? "" : value}
+        placeholder="0"
+        onFocus={(e)=>e.target.select()}
+        onChange={(e)=>{
+          const v=e.target.value
+          onChange(v===""?0:Number(v))
+        }}
         className="w-full border rounded-lg px-3 py-2"
       />
     </div>
