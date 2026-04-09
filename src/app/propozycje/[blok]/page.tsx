@@ -5,6 +5,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import PartnersList from "@/features/marketplace/PartnersList"
 import { rankPartners } from "@/lib/rankPartners"
+import { proposalSections } from "@/data/proposalSections"
 
 export const dynamic = "force-dynamic"
 
@@ -16,11 +17,22 @@ export default async function ProposalCategoryPage({
 
   const { blok } = await params
 
-  const category = proposalCategories.find(
-    (c) => c.slug === blok
-  )
+  let category = proposalCategories.find(
+  (c) => c.slug === blok
+)
 
-  if (!category) return notFound()
+// fallback do sections
+if (!category) {
+  const fromSections = proposalSections
+    .flatMap(section => section.categories)
+    .find(c => c.slug === blok)
+
+  if (fromSections) {
+    category = fromSections
+  }
+}
+
+if (!category) return notFound()
 
   /* REAL PARTNERS */
   const realPartners = partners.filter(p =>
