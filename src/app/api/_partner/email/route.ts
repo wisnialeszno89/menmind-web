@@ -15,7 +15,8 @@ export async function POST(req: Request) {
   try {
 
     await resend.emails.send({
-      from: "MenMind <kontakt@menmind.app>",
+      from: "MenMind <hello@navimind.app>",
+      replyTo: "kontakt@menmind.app",
       to: [String(to)],
       subject: "Nowa wiadomość z MenMind",
       html: `

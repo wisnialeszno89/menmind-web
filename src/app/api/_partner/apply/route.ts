@@ -29,7 +29,8 @@ export async function POST(req: Request){
       "Strategic (699 zł)"
 
     await resend.emails.send({
-      from: "MenMind <kontakt@menmind.app>",
+      from: "MenMind <hello@navimind.app>",
+      replyTo: "kontakt@menmind.app",
       to: "kontakt.menmind@gmail.com",
       subject: "Nowe zgłoszenie partnera - MenMind",
       html: `

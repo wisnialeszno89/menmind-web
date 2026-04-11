@@ -53,7 +53,8 @@ https://menmind.app/wzrost
     }
 
     const { data, error } = await resend.emails.send({
-      from: "MenMind <kontakt@menmind.app>",
+      from: "MenMind <hello@navimind.app>",
+      replyTo: "kontakt@menmind.app",
       to: "kontakt.menmind@gmail.com",
       subject: "TEST MENMIND EMAIL",
       html: `
