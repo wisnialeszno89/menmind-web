@@ -12,8 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ojcostwo",
     "/narzedzia",
     "/artykuly",
-    "/praca",
-    "/navimind"
+    "/praca"
   ]
 
   const articles = [
