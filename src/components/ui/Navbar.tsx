@@ -100,10 +100,6 @@ export default function Navbar() {
             Znajdź
           </Link>
 
-          <Link href="/navimind" className={linkStyle} onClick={close}>
-            NaviMind
-          </Link>
-
         </div>
       )}
 
