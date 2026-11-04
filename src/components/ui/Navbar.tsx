@@ -45,12 +45,7 @@ export default function Navbar() {
       <Link href="/propozycje">
         Znajdź
       </Link>
-
-      <Link href="/navimind">
-       NaviMind
-      </Link>
-
-      </nav>
+</nav>
 
       {/* MOBILE BUTTON */}
       <button
