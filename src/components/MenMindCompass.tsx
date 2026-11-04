@@ -10,32 +10,28 @@ kryzys:{
 title:"Jeśli jesteś w kryzysie",
 text:"Najważniejsze teraz jest zatrzymanie chaosu i odzyskanie stabilności.",
 tool:"/narzedzia/reset",
-path:"/kryzys",
-navimind:"/navimind?state=kryzys"
+path:"/kryzys"
 },
 
 odbudowa:{
 title:"Jeśli jesteś w odbudowie",
 text:"Powoli odzyskujesz energię i porządek w życiu.",
 tool:"/narzedzia/plan-72h",
-path:"/odbudowa",
-navimind:"/navimind?state=odbudowa"
+path:"/odbudowa"
 },
 
 wzrost:{
 title:"Jeśli jesteś w rozwoju",
 text:"To moment budowania silniejszej wersji siebie.",
 tool:"/narzedzia/energia",
-path:"/wzrost",
-navimind:"/navimind?state=wzrost"
+path:"/wzrost"
 },
 
 ojcostwo:{
 title:"Jeśli jesteś ojcem",
 text:"Twoja obecność i relacja z dzieckiem mają ogromne znaczenie.",
 tool:"/narzedzia/relacje",
-path:"/ojcostwo",
-navimind:"/navimind?state=ojcostwo"
+path:"/ojcostwo"
 }
 
 }
@@ -62,7 +58,7 @@ Kompas MenMind
 {state.text}
 </p>
 
-<div className="grid md:grid-cols-3 gap-4">
+<div className="grid md:grid-cols-2 gap-4">
 
 <Link
 href={state.tool}
@@ -78,12 +74,7 @@ className="border rounded-lg p-4 hover:shadow"
 Zobacz ścieżkę
 </Link>
 
-<Link
-href={state.navimind}
-className="border rounded-lg p-4 hover:shadow"
->
-Porozmawiaj z NaviMind
-</Link>
+
 
 </div>
 
@@ -113,12 +104,7 @@ className="border rounded-lg p-4 hover:shadow"
 Zobacz narzędzia
 </Link>
 
-<Link
-href="/navimind"
-className="border rounded-lg p-4 hover:shadow"
->
-Porozmawiaj z NaviMind
-</Link>
+
 
 </div>
 
