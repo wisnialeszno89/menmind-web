@@ -1,5 +1,4 @@
 import MenMindCompass from "@/components/MenMindCompass"
-import NaviMindButton from "@/features/navimind/NaviMindButton"
 import Link from "next/link"
 
 export default function Page() {
@@ -31,7 +30,7 @@ export default function Page() {
           Nie wiesz od czego zacząć?
         </h2>
 
-        <NaviMindButton />
+        <p className="text-neutral-600">Wybierz narzędzie lub ścieżkę odpowiednią do swojej sytuacji.</p>
 
         <div className="mt-10">
 
