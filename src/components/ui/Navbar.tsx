@@ -45,12 +45,7 @@ export default function Navbar() {
       <Link href="/propozycje">
         Znajdź
       </Link>
-
-      <Link href="/navimind">
-       NaviMind
-      </Link>
-
-      </nav>
+</nav>
 
       {/* MOBILE BUTTON */}
       <button
@@ -103,10 +98,6 @@ export default function Navbar() {
             onClick={close}
           >
             Znajdź
-          </Link>
-
-          <Link href="/navimind" className={linkStyle} onClick={close}>
-            NaviMind
           </Link>
 
         </div>

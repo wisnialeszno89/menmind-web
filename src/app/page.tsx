@@ -23,7 +23,6 @@ import ActionPaths from "@/features/home/ActionPaths"
 import StickyAI from "@/components/StickyAI"
 import BalancePanel from "@/features/home/BalancePanel"
 
-import { MessageCircle } from "lucide-react"
 
 export default function Home() {
   return (
@@ -77,38 +76,6 @@ export default function Home() {
 
       {/* JAK TO DZIAŁA */}
       <HowItWorks />
-
-      {/* NAVIMIND */}
-      <section className="py-16 border-t">
-        <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-2xl font-semibold mb-6">
-            Nie wiesz co wybrać?
-          </h2>
-
-          <a
-            href="https://navimind.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block border rounded-2xl p-6 hover:shadow-md transition"
-          >
-            <div className="flex items-start gap-4">
-              <MessageCircle className="mt-1" size={22} />
-
-              <div>
-                <div className="font-medium mb-1">
-                  Porozmawiaj w NaviMind
-                </div>
-
-                <div className="text-neutral-600 text-sm">
-                  Możesz spokojnie przegadać sytuację i zobaczyć kolejny krok.
-                </div>
-              </div>
-            </div>
-          </a>
-
-        </div>
-      </section>
 
       <HomeSeoArticles />
 
