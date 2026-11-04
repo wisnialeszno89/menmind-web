@@ -24,6 +24,10 @@ test("MenMind source does not embed or redirect to NaviMind", () => {
     /\bNaviMindButton\b/,
     /\bnavimindLink\b/,
     /\bmenmind_navimind_uid\b/,
+    /from\s+["'`]@\/features\/navimind\//i,
+    /from\s+["'`]@\/lib\/navimind["'`]/i,
+    /href=\{navimind\}/i,
+    /<NaviMindButton\s*\/>/i,
   ];
   const matches = [];
   for (const filename of files) {
