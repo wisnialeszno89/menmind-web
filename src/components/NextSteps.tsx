@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { navimindLink } from "@/lib/navimind"
 
 type Props = {
   world?: string
@@ -10,7 +9,6 @@ export default function NextSteps({ world = "kryzys" }: Props){
 
 let pathLink="/sciezki"
 let toolLink="/narzedzia"
-let navimind = navimindLink({state:world})
 
 let supportLink="/propozycje"
 
@@ -58,13 +56,7 @@ className="border rounded-lg p-4 hover:shadow"
 Spróbuj narzędzia
 </Link>
 
-<a
-href={navimind}
-target="_blank"
-className="border rounded-lg p-4 hover:shadow"
->
-Porozmawiaj z NaviMind
-</a>
+
 
 <Link
 href={supportLink}
