@@ -1,9 +1,7 @@
 import Link from "next/link"
-import { navimindLink } from "@/lib/navimind"
 
 export default function ExploreTools(){
 
-const navimind = navimindLink({})
 
 return(
 
@@ -36,13 +34,7 @@ className="border rounded-lg p-4 hover:shadow"
 Narzędzia stabilizacji
 </Link>
 
-<a
-href={navimind}
-target="_blank"
-className="border rounded-lg p-4 hover:shadow"
->
-Rozmowa w NaviMind
-</a>
+
 
 </div>
 
