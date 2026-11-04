@@ -1,0 +1,21 @@
+name: MenMind independence
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  no-navimind-coupling:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify MenMind has no NaviMind links or integration
+        run: node --test tests/no-navimind-coupling.test.mjs
